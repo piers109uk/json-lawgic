@@ -1,6 +1,6 @@
 # Json Lawgic
 
-An experiment to express the law as json-logic
+An experiment to express the law as [json-logic](https://jsonlogic.com/)
 
 ## Motivation
 
