@@ -1,0 +1,7 @@
+{
+	"id": "325K.23",
+	"url": "https://www.revisor.mn.gov/statutes/cite/325K.23",
+	"title": "325K.23 ACKNOWLEDGMENTS.",
+	"text": "Unless otherwise provided by law or contract, a certificate issued by a licensed certification authority satisfies the requirement for an acknowledgment pursuant to section 358.52 of a digital signature verified by reference to the public key listed in the certificate, regardless of whether words of an express acknowledgment appear with the digital signature and regardless of whether the signer physically appeared before the certification authority when the digital signature was created, if that digital signature is:\n(1) verifiable by that certificate; and\n(2) affixed when that certificate was valid.\nIf the digital signature is used as an acknowledgment, then the certification authority is responsible to the same extent as a notary up to any limit on liability stated in the certification authority's certification practice statement for failure to satisfy the requirements for an acknowledgment. The certification authority may not disclaim or limit, other than as provided in section 325K.17, the effect of this section.",
+	"repealed": false
+}

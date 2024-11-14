@@ -1,0 +1,7 @@
+{
+	"id": "325K.21",
+	"url": "https://www.revisor.mn.gov/statutes/cite/325K.21",
+	"title": "325K.21 DIGITALLY SIGNED DOCUMENT IS WRITTEN.",
+	"text": "(a) A message is as valid, enforceable, and effective as if it had been written on paper, if it:\n(1) bears in its entirety a digital signature; and\n(2) that digital signature is verified by the public key listed in a certificate that:\n(i) was issued by a licensed certification authority; and\n(ii) was valid at the time the digital signature was created.\n(b) Nothing in this chapter shall be construed to eliminate, modify, or condition any other requirements for a contract to be valid, enforceable, and effective. No digital message shall be deemed to be an instrument under the provisions of section 336.3-104 unless all parties to the transaction agree.",
+	"repealed": false
+}

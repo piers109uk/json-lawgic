@@ -1,0 +1,7 @@
+{
+	"id": "62J.55",
+	"url": "https://www.revisor.mn.gov/statutes/cite/62J.55",
+	"title": "62J.55 PRIVACY OF UNIQUE IDENTIFIERS.",
+	"text": "(a) When the unique identifiers specified in section 62J.54 are used for data collection purposes, the identifiers must be encrypted, as required in section 62J.321, subdivision 1. Encryption must follow encryption standards set by the National Bureau of Standards and approved by the American National Standards Institute as ANSIX3. 92-1982/R 1987 to protect the confidentiality of the data. Social Security numbers must not be maintained in unencrypted form in the database, and the data must never be released in a form that would allow for the identification of individuals. The encryption algorithm and hardware used must not use clipper chip technology.\n(b) Providers and group purchasers shall treat medical records, including the Social Security number if it is used as a unique patient identifier, in accordance with sections 144.291 to 144.298. The Social Security number may be disclosed by providers and group purchasers to the commissioner as necessary to allow performance of those duties set forth in section 144.05.",
+	"repealed": false
+}

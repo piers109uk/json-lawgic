@@ -1,0 +1,7 @@
+{
+	"id": "325K.13",
+	"url": "https://www.revisor.mn.gov/statutes/cite/325K.13",
+	"title": "325K.13 CONTROL OF PRIVATE KEY.",
+	"text": "By accepting a certificate issued by a licensed certification authority, the subscriber identified in the certificate assumes a duty to exercise reasonable care to retain control of the private key and prevent its disclosure to a person not authorized to create the subscriber's digital signature.\n[Repealed, 1998 c 321 s 31]\nA certification authority cannot hold a private key on behalf of a subscriber.\n[Repealed, 1998 c 321 s 31]",
+	"repealed": false
+}

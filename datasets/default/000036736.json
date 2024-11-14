@@ -1,0 +1,7 @@
+{
+	"id": "325K.19",
+	"url": "https://www.revisor.mn.gov/statutes/cite/325K.19",
+	"title": "325K.19 SATISFACTION OF SIGNATURE REQUIREMENTS.",
+	"text": "(a) Where a rule of law requires a signature, or provides for certain consequences in the absence of a signature, that rule is satisfied by a digital signature, if:\n(1)(i) the digital signature is that of a public or local official as defined in section 10A.01, subdivisions 22 and 35, on government records described in section 15.17; or\n(ii) no party affected by a digital signature objects to the use of digital signatures in lieu of a signature, and the objection may be evidenced by refusal to provide or accept a digital signature;\n(2) that digital signature is verified by reference to the public key listed in a valid certificate issued by a licensed certification authority;\n(3) that digital signature was affixed by the signer with the intention of signing the message and after the signer has had an opportunity to review items being signed; and\n(4) the recipient has no knowledge or notice that the signer either:\n(i) breached a duty as a subscriber; or\n(ii) does not rightfully hold the private key used to affix the digital signature.\n(b) However, nothing in this chapter precludes a mark from being valid as a signature under other applicable law.",
+	"repealed": false
+}

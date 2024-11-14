@@ -1,0 +1,7 @@
+{
+	"id": "325K.09",
+	"url": "https://www.revisor.mn.gov/statutes/cite/325K.09",
+	"title": "325K.09 GENERAL REQUIREMENTS FOR CERTIFICATION AUTHORITIES.",
+	"text": "A licensed certification authority or subscriber may use only a trustworthy system:\n(1) to issue, suspend, or revoke a certificate;\n(2) to publish or give notice of the issuance, suspension, or revocation of a certificate; or\n(3) to create a private key.\nA licensed certification authority shall disclose any material certification practice statement and disclose any fact material to either the reliability of a certificate that it has issued or its ability to perform its services. A certification authority may require a signed, written, and reasonably specific inquiry from an identified person and payment of reasonable compensation as conditions precedent to effecting a disclosure required in this subdivision.\nA recipient who accepts a digital signature when the certificate was issued by a licensed certification authority becomes a party to and accepts all of the terms and conditions of the licensed certification authority's certification practice statement.",
+	"repealed": false
+}
