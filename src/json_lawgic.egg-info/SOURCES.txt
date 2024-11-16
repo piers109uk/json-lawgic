@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/__init__.py
+src/dataset_create.py
+src/main.py
+src/json_lawgic.egg-info/PKG-INFO
+src/json_lawgic.egg-info/SOURCES.txt
+src/json_lawgic.egg-info/dependency_links.txt
+src/json_lawgic.egg-info/requires.txt
+src/json_lawgic.egg-info/top_level.txt
