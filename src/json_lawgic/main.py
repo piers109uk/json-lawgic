@@ -1,10 +1,30 @@
 import json
+from llama_cpp import Llama
 
 
 def main():
+    # d = fetch_data()
+    # print(d)
+    llm = Llama(
+        model_path="/Users/piersbrennand-francis/.cache/lm-studio/models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf"
+    )
+    # llm.create_completion(prompt="What is the meaning of life?")
+    output = llm(
+        "Q: Name the planets in the solar system? A: ",  # Prompt
+        max_tokens=32,  # Generate up to 32 tokens, set to None to generate up to the end of the context window
+        stop=[
+            "Q:",
+            "\n",
+        ],  # Stop generating just before the model would generate a new question
+        echo=True,  # Echo the prompt back in the output
+    )  # Generate a completion, can also call create_completion
+    print("------")
+    print(output)
+
+
+def fetch_data():
     with open("data/default/000000001.json") as json_data:
-        d = json.load(json_data)
-        print(d)
+        return json.load(json_data)
 
 
 if __name__ == "__main__":
