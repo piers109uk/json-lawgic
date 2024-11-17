@@ -14,6 +14,7 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
 ## TO DO
 
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
+- [ ] Instrument with Langfuse
 
 # Disclaimer
 
