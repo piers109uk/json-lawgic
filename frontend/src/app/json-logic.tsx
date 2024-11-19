@@ -1,7 +1,10 @@
 "use client"
 import jsonLogic from "json-logic-js"
 import { useState } from "react"
-import { convertJsonLogicToBlockly } from "./json-to-blockly"
+
+/**
+ * TODO: input/output the rules & data
+ */
 
 export default function JsonLogic() {
   const [rule, setRule] = useState<string>("")
@@ -10,7 +13,6 @@ export default function JsonLogic() {
 
   const handleApplyLogic = () => {
     const { parsedRule, parsedData } = parseJson({ rule, data })
-    convertToBlockly(parsedRule)
     const result = calculateResult(rule, data)
     setResult(result)
   }
@@ -64,9 +66,4 @@ function calculateResult(rule: string, data: string) {
     console.error(error)
     return `Invalid JSON: ${error.message}`
   }
-}
-
-function convertToBlockly(rule: object) {
-  const blockly = convertJsonLogicToBlockly(rule)
-  console.log({ blockly })
 }

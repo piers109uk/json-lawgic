@@ -15,6 +15,8 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
 
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
 - [ ] Instrument with Langfuse
+- [ ] Law search & selector
+- [ ] Visual editor with Blockly just like https://github.com/katirasole/JSONLogic-Editor (see https://katirasole.github.io/JSONLogic-Editor/ )
 
 # Disclaimer
 

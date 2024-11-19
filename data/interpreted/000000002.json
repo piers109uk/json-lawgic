@@ -1,0 +1,107 @@
+{
+  "id": "1.01",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.01",
+  "title": "1.01 EXTENT.",
+  "text": "The sovereignty and jurisdiction of this state extend to all places within its boundaries as defined in the constitution and, concurrently, to the waters forming a common boundary between this and adjoining states, subject only to rights of jurisdiction acquired by the United States over places in it.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "location_within_boundaries"
+          },
+          "state"
+        ]
+      },
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "location_type"
+              },
+              "land"
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "location_type"
+                  },
+                  "water"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "boundary_type"
+                  },
+                  "common"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "jurisdiction"
+              },
+              "state"
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "jurisdiction"
+                  },
+                  "US"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "jurisdiction_rights"
+                  },
+                  "acquired"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "location_within_boundaries": "state",
+      "location_type": "land",
+      "boundary_type": "common",
+      "jurisdiction": "state",
+      "jurisdiction_rights": "none"
+    },
+    {
+      "location_within_boundaries": "state",
+      "location_type": "water",
+      "boundary_type": "common",
+      "jurisdiction": "US",
+      "jurisdiction_rights": "acquired"
+    },
+    {
+      "location_within_boundaries": "state",
+      "location_type": "water",
+      "boundary_type": "common",
+      "jurisdiction": "state",
+      "jurisdiction_rights": "none"
+    }
+  ],
+  "variables": ["location_within_boundaries", "location_type", "boundary_type", "jurisdiction", "jurisdiction_rights"]
+}

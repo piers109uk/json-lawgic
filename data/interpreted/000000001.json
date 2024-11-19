@@ -1,0 +1,53 @@
+{
+  "id": "1.03",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.03",
+  "title": "1.03 WATERS INCLUDED.",
+  "text": "The concurrent jurisdiction of a county and of courts and officers exercising jurisdiction throughout it extends over the water area that would be included if the boundary lines of the county were produced in the direction of their approach and extended across the waters to the opposite shore.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "jurisdiction_type"
+          },
+          "concurrent"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "entity_type"
+          },
+          "county"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "boundary_extension"
+          },
+          "across_waters"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "jurisdiction_type": "concurrent",
+      "entity_type": "county",
+      "boundary_extension": "across_waters"
+    },
+    {
+      "jurisdiction_type": "exclusive",
+      "entity_type": "state",
+      "boundary_extension": "across_waters"
+    },
+    {
+      "jurisdiction_type": "concurrent",
+      "entity_type": "county",
+      "boundary_extension": "land_only"
+    }
+  ],
+  "variables": ["jurisdiction_type", "entity_type", "boundary_extension"]
+}

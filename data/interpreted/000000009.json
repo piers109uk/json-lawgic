@@ -1,0 +1,98 @@
+{
+  "id": "1.043",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.043",
+  "title": "1.043 JURISDICTION, WHEN TO VEST.",
+  "text": "The jurisdiction granted or ceded to the United States over any place in the state under sections 1.041 or 1.042 shall not vest until the United States has acquired the title to or right of possession of the premises affected, and shall continue only while the United States owns or occupies them for the purposes to which the jurisdiction appertains as specified in those sections or until the United States relinquishes to the state full or partial jurisdiction under section 1.0431.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "title_acquired"
+              },
+              "yes"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "right_of_possession"
+              },
+              "yes"
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "ownership"
+              },
+              "yes"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "occupation"
+              },
+              "yes"
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "purpose_matches"
+              },
+              "yes"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "jurisdiction_relinquished"
+              },
+              "yes"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "title_acquired": "yes",
+      "right_of_possession": "no",
+      "ownership": "yes",
+      "occupation": "no",
+      "purpose_matches": "yes",
+      "jurisdiction_relinquished": "no"
+    },
+    {
+      "title_acquired": "no",
+      "right_of_possession": "yes",
+      "ownership": "no",
+      "occupation": "yes",
+      "purpose_matches": "no",
+      "jurisdiction_relinquished": "yes"
+    },
+    {
+      "title_acquired": "no",
+      "right_of_possession": "no",
+      "ownership": "no",
+      "occupation": "no",
+      "purpose_matches": "no",
+      "jurisdiction_relinquished": "no"
+    }
+  ],
+  "variables": ["title_acquired", "right_of_possession", "ownership", "occupation", "purpose_matches", "jurisdiction_relinquished"]
+}

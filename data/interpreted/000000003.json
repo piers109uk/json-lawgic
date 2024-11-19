@@ -1,0 +1,51 @@
+{
+  "id": "1.02",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.02",
+  "title": "1.02 JURISDICTION OVER WATERS.",
+  "text": "Courts and officers having jurisdiction in a county bordering upon Big Stone Lake, Lake Traverse, Bois de Sioux River, or the Red River of the North, have jurisdiction in civil and criminal cases upon those waters concurrently with the courts and officers of other states bordering on them, to the extent any of them forms a common boundary between this state and any other state.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "in": [
+          {
+            "var": "county"
+          },
+          {
+            "var": "bordering_counties"
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "water_body"
+              },
+              ["Big Stone Lake", "Lake Traverse", "Bois de Sioux River", "Red River of the North"]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "county": "Traverse",
+      "bordering_counties": ["Traverse", "Grant"],
+      "water_body": "Big Stone Lake"
+    },
+    {
+      "county": "Wilkin",
+      "bordering_counties": ["Wilkin", "Clay"],
+      "water_body": "Red River of the North"
+    },
+    {
+      "county": "Stevens",
+      "bordering_counties": ["Stevens", "Pope"],
+      "water_body": "Lake Traverse"
+    }
+  ],
+  "variables": ["county", "bordering_counties", "water_body"]
+}
