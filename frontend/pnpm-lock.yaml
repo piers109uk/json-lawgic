@@ -11,6 +11,9 @@ importers:
       blockly:
         specifier: ^11.1.1
         version: 11.1.1
+      fracturedjsonjs:
+        specifier: ^4.0.2
+        version: 4.0.2
       json-logic-js:
         specifier: ^2.0.5
         version: 2.0.5
@@ -868,6 +871,9 @@ packages:
   form-data@4.0.1:
     resolution: {integrity: sha512-tzN8e4TX8+kkxGPK8D5u0FNmjPUjw3lwC9lSLxxoB/+GtsJG91CO8bSWy73APlgAZzZbXEYZJuxjkHH2w+Ezhw==}
     engines: {node: '>= 6'}
+
+  fracturedjsonjs@4.0.2:
+    resolution: {integrity: sha512-+vGJH9wK0EEhbbn50V2sOebLRaar1VL3EXr02kxchIwpkhQk0ItrPjIOtYPYuU9hNFpVzxjrPgzjtMJih+ae4A==}
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -2792,6 +2798,8 @@ snapshots:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+
+  fracturedjsonjs@4.0.2: {}
 
   fs.realpath@1.0.0: {}
 

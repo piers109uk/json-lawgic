@@ -1,20 +1,48 @@
 "use client"
 import jsonLogic from "json-logic-js"
 import { useState } from "react"
+import { stringifyJson } from "./format-json"
 
 type JsonLogicResult = boolean | boolean[] | string
+
+export interface JsonLogicProps {
+  rule?: object
+  data?: object | object[]
+  setRule: (rule: object) => void
+  setData: (data: object | object[]) => void
+}
 
 /**
  * TODO: input/output the rules & data
  */
 
-export default function JsonLogic() {
-  const [rule, setRule] = useState<string>("")
-  const [data, setData] = useState<string>("")
+export default function JsonLogic({ rule, data, setRule, setData }: JsonLogicProps) {
   const [result, setResult] = useState<JsonLogicResult | null>(null)
 
-  const handleApplyLogic = () => {
-    // const { parsedRule, parsedData } = parseJson({ rule, data })
+  const ruleString = stringifyJson(rule)
+  const dataString = stringifyJson(data)
+
+  const onRuleChange = (v: string) => {
+    console.log("onRuleChange", v)
+    try {
+      setRule(JSON.parse(v))
+    } catch (error: any) {
+      console.error(error)
+      setResult(`Invalid Rule: ${error.message}`)
+    }
+  }
+
+  const onDataChange = (v: string) => {
+    console.log("onDataChange", v)
+    try {
+      setData(JSON.parse(v))
+    } catch (error: any) {
+      console.error(error)
+      setResult(`Invalid Data: ${error.message}`)
+    }
+  }
+
+  const handleApplyLogic = (rule: string, data: string) => {
     const result = calculateResult(rule, data)
     setResult(result)
   }
@@ -26,8 +54,8 @@ export default function JsonLogic() {
         <textarea
           className="w-full p-2 border border-gray-300 rounded text-sm"
           placeholder="Enter JSON Logic Rule"
-          value={rule}
-          onChange={(e) => setRule(e.target.value)}
+          value={ruleString}
+          onChange={(e) => onRuleChange(e.target.value)}
           rows={10}
         />
       </div>
@@ -35,12 +63,12 @@ export default function JsonLogic() {
         <textarea
           className="w-full p-2 border border-gray-300 rounded text-sm"
           placeholder="Enter Data"
-          value={data}
-          onChange={(e) => setData(e.target.value)}
+          value={dataString}
+          onChange={(e) => onDataChange(e.target.value)}
           rows={10}
         />
       </div>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={handleApplyLogic}>
+      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={() => handleApplyLogic(ruleString, dataString)}>
         Apply Logic
       </button>
       <div className="mt-4">
