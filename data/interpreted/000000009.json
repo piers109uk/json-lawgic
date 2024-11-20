@@ -11,17 +11,17 @@
           {
             "==": [
               {
-                "var": "title_acquired"
+                "var": "US_title_acquired"
               },
-              "yes"
+              true
             ]
           },
           {
             "==": [
               {
-                "var": "right_of_possession"
+                "var": "US_right_of_possession"
               },
-              "yes"
+              true
             ]
           }
         ]
@@ -29,39 +29,39 @@
       {
         "or": [
           {
-            "==": [
+            "and": [
               {
-                "var": "ownership"
+                "==": [
+                  {
+                    "var": "US_owns"
+                  },
+                  true
+                ]
               },
-              "yes"
+              {
+                "==": [
+                  {
+                    "var": "purpose_matches"
+                  },
+                  true
+                ]
+              }
             ]
           },
           {
             "==": [
               {
-                "var": "occupation"
+                "var": "US_occupies"
               },
-              "yes"
-            ]
-          }
-        ]
-      },
-      {
-        "or": [
-          {
-            "==": [
-              {
-                "var": "purpose_matches"
-              },
-              "yes"
+              true
             ]
           },
           {
             "==": [
               {
-                "var": "jurisdiction_relinquished"
+                "var": "US_relinquishes_jurisdiction"
               },
-              "yes"
+              true
             ]
           }
         ]
@@ -70,29 +70,39 @@
   },
   "examples": [
     {
-      "title_acquired": "yes",
-      "right_of_possession": "no",
-      "ownership": "yes",
-      "occupation": "no",
-      "purpose_matches": "yes",
-      "jurisdiction_relinquished": "no"
+      "US_title_acquired": true,
+      "US_right_of_possession": false,
+      "US_owns": true,
+      "purpose_matches": true,
+      "US_occupies": false,
+      "US_relinquishes_jurisdiction": false
     },
     {
-      "title_acquired": "no",
-      "right_of_possession": "yes",
-      "ownership": "no",
-      "occupation": "yes",
-      "purpose_matches": "no",
-      "jurisdiction_relinquished": "yes"
+      "US_title_acquired": false,
+      "US_right_of_possession": true,
+      "US_owns": false,
+      "purpose_matches": false,
+      "US_occupies": true,
+      "US_relinquishes_jurisdiction": false
     },
     {
-      "title_acquired": "no",
-      "right_of_possession": "no",
-      "ownership": "no",
-      "occupation": "no",
-      "purpose_matches": "no",
-      "jurisdiction_relinquished": "no"
+      "US_title_acquired": false,
+      "US_right_of_possession": false,
+      "US_owns": false,
+      "purpose_matches": false,
+      "US_occupies": false,
+      "US_relinquishes_jurisdiction": true
     }
   ],
-  "variables": ["title_acquired", "right_of_possession", "ownership", "occupation", "purpose_matches", "jurisdiction_relinquished"]
+  "variables": [
+    "US_title_acquired",
+    "US_right_of_possession",
+    "US_owns",
+    "purpose_matches",
+    "US_occupies",
+    "US_relinquishes_jurisdiction"
+  ],
+  "consequences": [
+    "Jurisdiction is vested and continues"
+  ]
 }

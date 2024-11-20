@@ -9,9 +9,9 @@
       {
         "==": [
           {
-            "var": "location_within_boundaries"
+            "var": "location.within_boundaries"
           },
-          "state"
+          true
         ]
       },
       {
@@ -19,61 +19,17 @@
           {
             "==": [
               {
-                "var": "location_type"
+                "var": "location.waters_common_boundary"
               },
-              "land"
+              true
             ]
           },
-          {
-            "and": [
-              {
-                "==": [
-                  {
-                    "var": "location_type"
-                  },
-                  "water"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "boundary_type"
-                  },
-                  "common"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "or": [
           {
             "==": [
               {
-                "var": "jurisdiction"
+                "var": "location.jurisdiction_acquired_by_us"
               },
-              "state"
-            ]
-          },
-          {
-            "and": [
-              {
-                "==": [
-                  {
-                    "var": "jurisdiction"
-                  },
-                  "US"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "jurisdiction_rights"
-                  },
-                  "acquired"
-                ]
-              }
+              true
             ]
           }
         ]
@@ -82,26 +38,33 @@
   },
   "examples": [
     {
-      "location_within_boundaries": "state",
-      "location_type": "land",
-      "boundary_type": "common",
-      "jurisdiction": "state",
-      "jurisdiction_rights": "none"
+      "location": {
+        "within_boundaries": true,
+        "waters_common_boundary": false,
+        "jurisdiction_acquired_by_us": false
+      }
     },
     {
-      "location_within_boundaries": "state",
-      "location_type": "water",
-      "boundary_type": "common",
-      "jurisdiction": "US",
-      "jurisdiction_rights": "acquired"
+      "location": {
+        "within_boundaries": false,
+        "waters_common_boundary": true,
+        "jurisdiction_acquired_by_us": false
+      }
     },
     {
-      "location_within_boundaries": "state",
-      "location_type": "water",
-      "boundary_type": "common",
-      "jurisdiction": "state",
-      "jurisdiction_rights": "none"
+      "location": {
+        "within_boundaries": true,
+        "waters_common_boundary": true,
+        "jurisdiction_acquired_by_us": false
+      }
     }
   ],
-  "variables": ["location_within_boundaries", "location_type", "boundary_type", "jurisdiction", "jurisdiction_rights"]
+  "variables": [
+    "location.within_boundaries",
+    "location.waters_common_boundary",
+    "location.jurisdiction_acquired_by_us"
+  ],
+  "consequences": [
+    "State has sovereignty and jurisdiction over the location."
+  ]
 }

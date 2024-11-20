@@ -60,5 +60,13 @@
       "duplicate_recorded": "yes"
     }
   ],
-  "variables": ["offer_made", "governor_accepted", "certificate_filed", "duplicate_recorded"]
+  "variables": [
+    "offer_made",
+    "governor_accepted",
+    "certificate_filed",
+    "duplicate_recorded"
+  ],
+  "consequences": [
+    "Jurisdiction is retroceded to the state and exercised by state and local authorities."
+  ]
 }

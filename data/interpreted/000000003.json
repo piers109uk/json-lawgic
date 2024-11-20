@@ -17,15 +17,24 @@
         ]
       },
       {
-        "or": [
+        "in": [
           {
-            "in": [
-              {
-                "var": "water_body"
-              },
-              ["Big Stone Lake", "Lake Traverse", "Bois de Sioux River", "Red River of the North"]
-            ]
-          }
+            "var": "water_body"
+          },
+          [
+            "Big Stone Lake",
+            "Lake Traverse",
+            "Bois de Sioux River",
+            "Red River of the North"
+          ]
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "forms_common_boundary"
+          },
+          true
         ]
       }
     ]
@@ -33,19 +42,39 @@
   "examples": [
     {
       "county": "Traverse",
-      "bordering_counties": ["Traverse", "Grant"],
-      "water_body": "Big Stone Lake"
+      "bordering_counties": [
+        "Traverse",
+        "Grant"
+      ],
+      "water_body": "Lake Traverse",
+      "forms_common_boundary": true
     },
     {
       "county": "Wilkin",
-      "bordering_counties": ["Wilkin", "Clay"],
-      "water_body": "Red River of the North"
+      "bordering_counties": [
+        "Wilkin",
+        "Clay"
+      ],
+      "water_body": "Red River of the North",
+      "forms_common_boundary": true
     },
     {
       "county": "Stevens",
-      "bordering_counties": ["Stevens", "Pope"],
-      "water_body": "Lake Traverse"
+      "bordering_counties": [
+        "Stevens",
+        "Big Stone"
+      ],
+      "water_body": "Big Stone Lake",
+      "forms_common_boundary": false
     }
   ],
-  "variables": ["county", "bordering_counties", "water_body"]
+  "variables": [
+    "county",
+    "bordering_counties",
+    "water_body",
+    "forms_common_boundary"
+  ],
+  "consequences": [
+    "Courts and officers have jurisdiction in civil and criminal cases on the specified waters."
+  ]
 }

@@ -17,9 +17,9 @@
       {
         "==": [
           {
-            "var": "entity_type"
+            "var": "area_type"
           },
-          "county"
+          "water"
         ]
       },
       {
@@ -27,7 +27,15 @@
           {
             "var": "boundary_extension"
           },
-          "across_waters"
+          "produced"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "direction"
+          },
+          "across"
         ]
       }
     ]
@@ -35,19 +43,30 @@
   "examples": [
     {
       "jurisdiction_type": "concurrent",
-      "entity_type": "county",
-      "boundary_extension": "across_waters"
+      "area_type": "water",
+      "boundary_extension": "produced",
+      "direction": "across"
     },
     {
       "jurisdiction_type": "exclusive",
-      "entity_type": "state",
-      "boundary_extension": "across_waters"
+      "area_type": "land",
+      "boundary_extension": "not_produced",
+      "direction": "not_across"
     },
     {
       "jurisdiction_type": "concurrent",
-      "entity_type": "county",
-      "boundary_extension": "land_only"
+      "area_type": "water",
+      "boundary_extension": "not_produced",
+      "direction": "across"
     }
   ],
-  "variables": ["jurisdiction_type", "entity_type", "boundary_extension"]
+  "variables": [
+    "jurisdiction_type",
+    "area_type",
+    "boundary_extension",
+    "direction"
+  ],
+  "consequences": [
+    "The county and courts have jurisdiction over the extended water area."
+  ]
 }

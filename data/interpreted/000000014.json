@@ -19,7 +19,18 @@
           {
             "var": "land_location"
           },
-          ["Chippewa National Forest", "Superior National Forest"]
+          [
+            "Chippewa National Forest",
+            "Superior National Forest"
+          ]
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "purpose"
+          },
+          "development or maintenance"
         ]
       },
       {
@@ -27,7 +38,7 @@
           {
             "var": "jurisdiction"
           },
-          ["concurrent"]
+          "concurrent"
         ]
       }
     ]
@@ -36,18 +47,29 @@
     {
       "state": "Minnesota",
       "land_location": "Chippewa National Forest",
+      "purpose": "development or maintenance",
       "jurisdiction": "concurrent"
     },
     {
       "state": "Minnesota",
       "land_location": "Superior National Forest",
+      "purpose": "development or maintenance",
       "jurisdiction": "concurrent"
     },
     {
       "state": "Minnesota",
-      "land_location": "Superior National Forest",
+      "land_location": "Chippewa National Forest",
+      "purpose": "development or maintenance",
       "jurisdiction": "exclusive"
     }
   ],
-  "variables": ["state", "land_location", "jurisdiction"]
+  "variables": [
+    "state",
+    "land_location",
+    "purpose",
+    "jurisdiction"
+  ],
+  "consequences": [
+    "Consent is given for the acquisition of lands by the United States."
+  ]
 }

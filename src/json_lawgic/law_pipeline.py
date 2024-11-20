@@ -31,6 +31,7 @@ def run_pipeline():
         pprint(law_object)
         limit -= 1
         law_rules = interpreter.interpret_law(law_object)
+
         interpreted_law = {**law_object, **law_rules}
         new_path = f"data/interpreted/{file.name}"
         print(new_path)
