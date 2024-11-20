@@ -1,0 +1,908 @@
+[
+  {
+    "id": "1.045",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.045",
+    "title": "1.045 STATE, CONSENT TO ACQUISITION OF LANDS.",
+    "text": "Consent of the state of Minnesota is given to the acquisition by the United States in any manner authorized by act of Congress of lands lying within the original boundaries of the Chippewa National Forest and the Superior National Forest for any purpose incident to the development or maintenance of those forests, subject to concurrent jurisdiction of the state and the United States as defined in section 1.041.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "in": [
+            {
+              "var": "land_location"
+            },
+            [
+              "Chippewa National Forest",
+              "Superior National Forest"
+            ]
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "jurisdiction"
+            },
+            [
+              "concurrent"
+            ]
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "land_location": "Chippewa National Forest",
+        "jurisdiction": "concurrent"
+      },
+      {
+        "state": "Minnesota",
+        "land_location": "Superior National Forest",
+        "jurisdiction": "concurrent"
+      },
+      {
+        "state": "Minnesota",
+        "land_location": "Superior National Forest",
+        "jurisdiction": "exclusive"
+      }
+    ],
+    "variables": [
+      "state",
+      "land_location",
+      "jurisdiction"
+    ]
+  },
+  {
+    "id": "1.01",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.01",
+    "title": "1.01 EXTENT.",
+    "text": "The sovereignty and jurisdiction of this state extend to all places within its boundaries as defined in the constitution and, concurrently, to the waters forming a common boundary between this and adjoining states, subject only to rights of jurisdiction acquired by the United States over places in it.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "location_within_boundaries"
+            },
+            "state"
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "location_type"
+                },
+                "land"
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "location_type"
+                    },
+                    "water"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "boundary_type"
+                    },
+                    "common"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "jurisdiction"
+                },
+                "state"
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "jurisdiction"
+                    },
+                    "US"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "jurisdiction_rights"
+                    },
+                    "acquired"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "location_within_boundaries": "state",
+        "location_type": "land",
+        "boundary_type": "common",
+        "jurisdiction": "state",
+        "jurisdiction_rights": "none"
+      },
+      {
+        "location_within_boundaries": "state",
+        "location_type": "water",
+        "boundary_type": "common",
+        "jurisdiction": "US",
+        "jurisdiction_rights": "acquired"
+      },
+      {
+        "location_within_boundaries": "state",
+        "location_type": "water",
+        "boundary_type": "common",
+        "jurisdiction": "state",
+        "jurisdiction_rights": "none"
+      }
+    ],
+    "variables": [
+      "location_within_boundaries",
+      "location_type",
+      "boundary_type",
+      "jurisdiction",
+      "jurisdiction_rights"
+    ]
+  },
+  {
+    "id": "1.0451",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.0451",
+    "title": "1.0451 LIMITS ON CONSENT TO FEDERAL ACQUISITIONS OF LANDS IN ST. LOUIS, LAKE, AND COOK COUNTIES; WATER AND LAND OWNERSHIP; DUTIES OF STATE OFFICIALS.",
+    "text": "Pursuant to applicable federal and state law under which Minnesota was admitted to the union on equal footing with the original 13 states, navigable waters and their beds located within the exterior boundaries of the state are owned by the state. In a few limited circumstances, as in section 1.044, relating to the Upper Mississippi Wildlife and Fish Refuge, the state has expressly granted its consent and concurrent jurisdiction to the United States to acquire interests in water, as well as land, for a limited purpose and in the limited area described in its consent. Unlike section 1.044, the consent granted by the state in section 1.045 to acquisitions by the United States for the Superior National Forest is limited to land, only. The state has never ceded to the United States, either expressly or implicitly, its ownership of and jurisdiction over the navigable waters and their beds that are located within the exterior boundaries of the forest.\nPursuant to the Organic Act that created the territory of Minnesota (Act of Congress, March 3, 1849, 9 Stat. ch. 121, section 18), and the Enabling Act that authorized the people of the territory of Minnesota to establish the state of Minnesota (Act of Congress, February 26, 1857, 11 Stat. ch. 60, section 5, first paragraph), federal public domain lands located in sections 16 and 36 in every township at the time of statehood were granted to the state for the use of schools, together with equivalent land located in other sections if section 16 or 36 had been disposed of before statehood. In conformity with the terms of the federal grant, the citizens of Minnesota, by constitution, article XI, section 8, have dedicated the proceeds from the sale or other disposition of these school grant lands, and the proceeds from the sale or other disposition of lands subsequently received from the United States under swampland grants, to public school purposes. By constitution, article XI, sections 8 and 10, the disposition of school and swampland grant lands, frequently referred to as trust fund lands, is limited to sale at public auction or exchange. Roughly 100,000 acres of state-owned, mostly trust fund land, is located within that portion of the Superior National Forest that is described as the Boundary Waters Canoe Area Wilderness. Much of this state-owned trust fund land, as well as other state-owned land that is tax-forfeited and is held in trust for local taxing districts, is high-value lakeshore land. The state has not disposed of these lands to the United States and has not ceded jurisdiction over these lands, either expressly or implicitly, to the United States.\nIn the discharge of their official duties, the governor, attorney general, other constitutional officers, and other public officials, such as the commissioner of natural resources, shall vigorously assert and defend, in all forums, the state's ownership of and jurisdiction over the navigable waters and their beds, the state trust fund lands and lands held in trust for local taxing districts located in the Superior National Forest, the natural resources related to these lands, waters, and beds, and the associated rights of the state and its citizens arising from the state's ownership and jurisdictional interests in these lands, waters, and beds. In furtherance of their duties, the governor, attorney general, other constitutional officers, and other public officials shall, additionally, be especially cognizant of the free rights of travel afforded to citizens of Minnesota and others under the Webster-Ashburton Treaty (proclaimed November 10, 1842) and the Root-Bryce Treaty (proclaimed May 13, 1910) on international and associated boundary waters. Also, in furtherance of their duties, in any exchange or other disposition of state-owned land located within the Boundary Waters Canoe Area Wilderness, the governor, attorney general, state auditor, commissioner of natural resources, and any other public official involved in such matters shall be especially cognizant of the high value of the lakeshore and other state land located within the area.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "state"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "navigable_waters"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "var": "state_ownership"
+        },
+        {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "section"
+                },
+                1.044
+              ]
+            },
+            {
+              "var": "consent_granted"
+            },
+            {
+              "if": [
+                {
+                  "===": [
+                    {
+                      "var": "section"
+                    },
+                    1.045
+                  ]
+                },
+                {
+                  "var": "land_only"
+                },
+                {
+                  "var": "no_consent"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": true,
+        "navigable_waters": true,
+        "section": 1.044
+      },
+      {
+        "state": true,
+        "navigable_waters": true,
+        "section": 1.045
+      },
+      {
+        "state": false,
+        "navigable_waters": false,
+        "section": 1.046
+      }
+    ],
+    "variables": [
+      "state",
+      "navigable_waters",
+      "section"
+    ]
+  },
+  {
+    "id": "1.02",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.02",
+    "title": "1.02 JURISDICTION OVER WATERS.",
+    "text": "Courts and officers having jurisdiction in a county bordering upon Big Stone Lake, Lake Traverse, Bois de Sioux River, or the Red River of the North, have jurisdiction in civil and criminal cases upon those waters concurrently with the courts and officers of other states bordering on them, to the extent any of them forms a common boundary between this state and any other state.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "in": [
+            {
+              "var": "county"
+            },
+            {
+              "var": "bordering_counties"
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "in": [
+                {
+                  "var": "water_body"
+                },
+                [
+                  "Big Stone Lake",
+                  "Lake Traverse",
+                  "Bois de Sioux River",
+                  "Red River of the North"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "county": "Traverse",
+        "bordering_counties": [
+          "Traverse",
+          "Grant"
+        ],
+        "water_body": "Big Stone Lake"
+      },
+      {
+        "county": "Wilkin",
+        "bordering_counties": [
+          "Wilkin",
+          "Clay"
+        ],
+        "water_body": "Red River of the North"
+      },
+      {
+        "county": "Stevens",
+        "bordering_counties": [
+          "Stevens",
+          "Pope"
+        ],
+        "water_body": "Lake Traverse"
+      }
+    ],
+    "variables": [
+      "county",
+      "bordering_counties",
+      "water_body"
+    ]
+  },
+  {
+    "id": "1.042",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.042",
+    "title": "1.042 CONSENT OF STATE.",
+    "text": "The consent of the State of Minnesota is given in accordance with the Constitution of the United States, Article I, Section 8, Clause 17, to the acquisition by the United States in any manner of any land or right or interest in land in this state required for sites for customs houses, courthouses, hospitals, sanitariums, post offices, prisons, reformatories, jails, forestry depots, supply houses, or offices, aviation fields or stations, radio stations, military or naval camps, bases, stations, arsenals, depots, terminals, cantonments, storage places, target ranges, or any other military or naval purpose of the United States.\nSo far as jurisdiction, exclusive or partial, in or over any land or place in Minnesota acquired by the United States for any purpose specified in subdivision 1 is accepted by the head or other authorized officer of any department or independent establishment or agency of the United States as provided by the laws of the United States, the jurisdiction is ceded to the United States, subject to the conditions and reservations of subdivision 3. When the premises abut upon the navigable waters of Minnesota, the jurisdiction shall include the underwater lands adjacent to them lying between the line of low-water mark and the bulkhead or pierhead line as now or hereafter established.\nThe right of the state to cause its civil and criminal process to be executed in any ceded land or place is reserved to the state. The state also reserves the right to impose the following taxes:\n(A) an income tax on persons residing in the land or place or receiving income from transactions occurring or services performed there;\n(B) a sales or use tax levied on or measured by sales, receipts from sales, purchases, storage, or use of tangible personal property in the land or place;\n(C) a tax on personal property situated in the land or place, or on the use of personal property by a private individual, association, or corporation there, except personal property owned by the United States or by law exempt from taxation; and\n(D) a tax on the use of real property within the land or place by a private individual, association, or corporation.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "state"
+                },
+                "Minnesota"
+              ]
+            },
+            {
+              "in": [
+                {
+                  "var": "purpose"
+                },
+                [
+                  "customs houses",
+                  "courthouses",
+                  "hospitals",
+                  "sanitariums",
+                  "post offices",
+                  "prisons",
+                  "reformatories",
+                  "jails",
+                  "forestry depots",
+                  "supply houses",
+                  "offices",
+                  "aviation fields",
+                  "stations",
+                  "radio stations",
+                  "military camps",
+                  "naval camps",
+                  "bases",
+                  "stations",
+                  "arsenals",
+                  "depots",
+                  "terminals",
+                  "cantonments",
+                  "storage places",
+                  "target ranges",
+                  "military purpose",
+                  "naval purpose"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "jurisdiction_accepted"
+                },
+                true
+              ]
+            },
+            {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "navigable_waters"
+                    },
+                    false
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "===": [
+                        {
+                          "var": "navigable_waters"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "jurisdiction_includes_underwater_lands"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "state_rights_reserved"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "taxes_imposed"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "purpose": "courthouses",
+        "jurisdiction_accepted": true,
+        "navigable_waters": true,
+        "jurisdiction_includes_underwater_lands": true,
+        "state_rights_reserved": true,
+        "taxes_imposed": true
+      },
+      {
+        "state": "Minnesota",
+        "purpose": "military camps",
+        "jurisdiction_accepted": true,
+        "navigable_waters": false,
+        "jurisdiction_includes_underwater_lands": false,
+        "state_rights_reserved": true,
+        "taxes_imposed": true
+      },
+      {
+        "state": "Minnesota",
+        "purpose": "post offices",
+        "jurisdiction_accepted": false,
+        "navigable_waters": false,
+        "jurisdiction_includes_underwater_lands": false,
+        "state_rights_reserved": false,
+        "taxes_imposed": false
+      }
+    ],
+    "variables": [
+      "state",
+      "purpose",
+      "jurisdiction_accepted",
+      "navigable_waters",
+      "jurisdiction_includes_underwater_lands",
+      "state_rights_reserved",
+      "taxes_imposed"
+    ]
+  },
+  {
+    "id": "1.041",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.041",
+    "title": "1.041 CONCURRENT JURISDICTION OF STATE AND UNITED STATES.",
+    "text": "Except as otherwise expressly provided, the jurisdiction of the United States over any land or other property in this state owned for national purposes is concurrent with and subject to the jurisdiction and right of the state to cause its civil and criminal process to be executed there, to punish offenses against its laws committed there, and to protect, regulate, control, and dispose of any property of the state there.\nIn any case not otherwise provided for, the consent of the state to the acquisition by the United States of any land or right or interest in land in this state, desired for any authorized national purpose, with concurrent jurisdiction as defined in subdivision 1, may be given by concurrence of a majority of the members of the Land Exchange Commission created by the Constitution of Minnesota, article XI, section 10, upon finding that the acquisition and the methods of the acquisition and the exercise of the jurisdiction are consistent with the best interests of the state, if application for the state's consent is made by an authorized officer of the United States, setting forth a description of the property, with a map when necessary for its proper identification, and the authority for, purpose of, and method used or to be used in acquiring it. The commission may specify the method of acquisition as a condition of its consent.\nIn case of acquisition by purchase or gift, the state's consent shall be obtained before the execution of any instrument conveying the lands involved or any interest in them to the United States. In case of condemnation, consent shall be obtained before the commencement of a condemnation proceeding.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "or": [
+            {
+              "===": [
+                {
+                  "var": "jurisdiction"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "state_consent"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "acquisition_method"
+                },
+                "purchase"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "state_consent"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "acquisition_method"
+                },
+                "condemnation"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "state_consent"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "jurisdiction": true,
+        "state_consent": true,
+        "acquisition_method": "purchase"
+      },
+      {
+        "jurisdiction": false,
+        "state_consent": true,
+        "acquisition_method": "condemnation"
+      },
+      {
+        "jurisdiction": true,
+        "state_consent": false,
+        "acquisition_method": "purchase"
+      }
+    ],
+    "variables": [
+      "jurisdiction",
+      "state_consent",
+      "acquisition_method"
+    ]
+  },
+  {
+    "id": "1.044",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.044",
+    "title": "1.044 UPPER MISSISSIPPI RIVER WILD LIFE AND FISH REFUGE.",
+    "text": "Consent of the state of Minnesota is given to the acquisition by the United States by purchase, gift, or lease of the areas of land or water, or both, in this state as the United States deems necessary for the establishment of the Upper Mississippi River Wild Life and Fish Refuge in accordance with and for the purposes of the Act of Congress approved June 7, 1924, entitled \"An act to establish the Upper Mississippi River Wild Life and Fish Refuge,\" reserving to the state full and complete jurisdiction and authority over the areas compatible with their maintenance and control by the United States for the purposes and under the terms of that Act of Congress.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "acquisition_method"
+                },
+                "purchase"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "acquisition_method"
+                },
+                "gift"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "acquisition_method"
+                },
+                "lease"
+              ]
+            }
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "purpose"
+            },
+            "Upper Mississippi River Wild Life and Fish Refuge"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "act_of_congress"
+            },
+            "June 7, 1924"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "acquisition_method": "purchase",
+        "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
+        "act_of_congress": "June 7, 1924"
+      },
+      {
+        "state": "Minnesota",
+        "acquisition_method": "gift",
+        "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
+        "act_of_congress": "June 7, 1924"
+      },
+      {
+        "state": "Minnesota",
+        "acquisition_method": "lease",
+        "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
+        "act_of_congress": "June 7, 1924"
+      }
+    ],
+    "variables": [
+      "state",
+      "acquisition_method",
+      "purpose",
+      "act_of_congress"
+    ]
+  },
+  {
+    "id": "1.043",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.043",
+    "title": "1.043 JURISDICTION, WHEN TO VEST.",
+    "text": "The jurisdiction granted or ceded to the United States over any place in the state under sections 1.041 or 1.042 shall not vest until the United States has acquired the title to or right of possession of the premises affected, and shall continue only while the United States owns or occupies them for the purposes to which the jurisdiction appertains as specified in those sections or until the United States relinquishes to the state full or partial jurisdiction under section 1.0431.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "title_acquired"
+                },
+                "yes"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "right_of_possession"
+                },
+                "yes"
+              ]
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "ownership"
+                },
+                "yes"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "occupation"
+                },
+                "yes"
+              ]
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "purpose_matches"
+                },
+                "yes"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "jurisdiction_relinquished"
+                },
+                "yes"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title_acquired": "yes",
+        "right_of_possession": "no",
+        "ownership": "yes",
+        "occupation": "no",
+        "purpose_matches": "yes",
+        "jurisdiction_relinquished": "no"
+      },
+      {
+        "title_acquired": "no",
+        "right_of_possession": "yes",
+        "ownership": "no",
+        "occupation": "yes",
+        "purpose_matches": "no",
+        "jurisdiction_relinquished": "yes"
+      },
+      {
+        "title_acquired": "no",
+        "right_of_possession": "no",
+        "ownership": "no",
+        "occupation": "no",
+        "purpose_matches": "no",
+        "jurisdiction_relinquished": "no"
+      }
+    ],
+    "variables": [
+      "title_acquired",
+      "right_of_possession",
+      "ownership",
+      "occupation",
+      "purpose_matches",
+      "jurisdiction_relinquished"
+    ]
+  },
+  {
+    "id": "1.0431",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.0431",
+    "title": "1.0431 RETROCESSION.",
+    "text": "Notwithstanding any other law, all or any part of the jurisdiction acquired by the United States over any land or place in the state under section 1.041 or 1.042 or any other statute may be retroceded to the state in the manner provided in this section.\nRetrocession of jurisdiction shall be initiated by written offer to the governor by an authorized officer of the United States agency having supervision over the land. Retrocession shall not take effect until\n(a) the governor, after consulting with the governing bodies of counties or municipalities where all or part of the federal lands are situated, has accepted jurisdiction on behalf of the state,\n(b) a certificate evidencing acceptance is filed with the secretary of state, and\n(c) a duplicate is recorded in the office of the county recorder of each county where the lands or any part of them are situated.\nThe jurisdiction ceded to the state under subdivision 1 shall be exercised by the appropriate state authorities and by the local governmental units where all or part of the affected federal lands are situated.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "offer_made"
+            },
+            "yes"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "governor_accepted"
+            },
+            "yes"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "certificate_filed"
+            },
+            "yes"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "duplicate_recorded"
+            },
+            "yes"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "offer_made": "yes",
+        "governor_accepted": "yes",
+        "certificate_filed": "yes",
+        "duplicate_recorded": "yes"
+      },
+      {
+        "offer_made": "yes",
+        "governor_accepted": "no",
+        "certificate_filed": "yes",
+        "duplicate_recorded": "yes"
+      },
+      {
+        "offer_made": "yes",
+        "governor_accepted": "yes",
+        "certificate_filed": "no",
+        "duplicate_recorded": "yes"
+      }
+    ],
+    "variables": [
+      "offer_made",
+      "governor_accepted",
+      "certificate_filed",
+      "duplicate_recorded"
+    ]
+  },
+  {
+    "id": "1.03",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.03",
+    "title": "1.03 WATERS INCLUDED.",
+    "text": "The concurrent jurisdiction of a county and of courts and officers exercising jurisdiction throughout it extends over the water area that would be included if the boundary lines of the county were produced in the direction of their approach and extended across the waters to the opposite shore.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "jurisdiction_type"
+            },
+            "concurrent"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "entity_type"
+            },
+            "county"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundary_extension"
+            },
+            "across_waters"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "jurisdiction_type": "concurrent",
+        "entity_type": "county",
+        "boundary_extension": "across_waters"
+      },
+      {
+        "jurisdiction_type": "exclusive",
+        "entity_type": "state",
+        "boundary_extension": "across_waters"
+      },
+      {
+        "jurisdiction_type": "concurrent",
+        "entity_type": "county",
+        "boundary_extension": "land_only"
+      }
+    ],
+    "variables": [
+      "jurisdiction_type",
+      "entity_type",
+      "boundary_extension"
+    ]
+  }
+]
