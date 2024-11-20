@@ -1,7 +1,7 @@
 "use client"
-import { useRef, useState } from "react"
-import { BlocklyWorkspace } from "react-blockly"
 import * as Blockly from "blockly/core"
+import { useState } from "react"
+import { BlocklyWorkspace } from "react-blockly"
 import { registerCustomBlocks } from "./custom-blocks"
 registerCustomBlocks()
 
@@ -128,6 +128,7 @@ export default function BlocklyWrapper() {
   return (
     <BlocklyWorkspace
       className="w-full h-full"
+      workspaceConfiguration={{}}
       toolboxConfiguration={toolbox} // this must be a JSON toolbox definition
       initialJson={json}
       onJsonChange={setJson}

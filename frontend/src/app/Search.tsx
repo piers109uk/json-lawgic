@@ -1,12 +1,12 @@
 "use client"
 
-import MiniSearch from "minisearch"
+import MiniSearch, { SearchResult } from "minisearch"
 import { IStatuteData, statutes } from "./statutes"
 import { useEffect, useState } from "react"
 
 // TODO: include text in search
 
-const miniSearch = new MiniSearch({
+const miniSearch = new MiniSearch<IStatuteData>({
   fields: ["title"], // fields to index for full-text search
   storeFields: ["id", "url", "title", "text"], // fields to return with search results
   searchOptions: { fuzzy: true, prefix: true, boost: { title: 2 } },
@@ -27,7 +27,7 @@ export default function Search({ statutes, setSelectedLaw }: SearchWidgetProps) 
   useEffect(() => {
     console.log("Search effect query", query)
     if (query) {
-      const searchResults = miniSearch.search(query) as any
+      const searchResults = miniSearch.search(query) as (IStatuteData & SearchResult)[]
       setResults(searchResults)
     } else {
       setResults(statutes)

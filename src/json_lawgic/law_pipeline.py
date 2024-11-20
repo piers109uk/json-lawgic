@@ -10,31 +10,32 @@ interpreter = LawInterpreter()
 # law_dict = interpreter.interpret_law(law_object)
 # pprint(law_dict)
 
-p = Path("data/default")
-limit = 10
-
-files = sorted(p.glob("*.json"))
-
 
 def write_json(path: str | Path, data: dict):
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
 
 
-for file in files:
-    law_object = read_json(file)
-    if limit == 0:
-        break
-    if law_object.get("text") is None:
-        continue
-    # if "text" in law_object:
-    #     law_dict = interpreter.interpret_law(law_object)
-    # pprint(law_dict)
-    print(file)
-    pprint(law_object)
-    limit -= 1
-    law_rules = interpreter.interpret_law(law_object)
-    interpreted_law = {**law_object, **law_rules}
-    new_path = f"data/interpreted/{file.name}"
-    print(new_path)
-    write_json(new_path, interpreted_law)
+def run_pipeline():
+    limit = 10
+    p = Path("data/default")
+    files = sorted(p.glob("*.json"))
+    for file in files:
+        law_object = read_json(file)
+        if limit == 0:
+            break
+        if law_object.get("text") is None:
+            continue
+
+        print(file)
+        pprint(law_object)
+        limit -= 1
+        law_rules = interpreter.interpret_law(law_object)
+        interpreted_law = {**law_object, **law_rules}
+        new_path = f"data/interpreted/{file.name}"
+        print(new_path)
+        write_json(new_path, interpreted_law)
+
+
+if __name__ == "__main__":
+    run_pipeline()

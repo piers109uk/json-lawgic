@@ -7,7 +7,7 @@ export interface IJsonLogicInterpretation {
   variables: string[]
 }
 
-export interface IStatuteData {
+export interface IStatuteData extends Partial<IJsonLogicInterpretation> {
   id: string
   url: string
   title: string | null

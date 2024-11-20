@@ -2,6 +2,8 @@
 import jsonLogic from "json-logic-js"
 import { useState } from "react"
 
+type JsonLogicResult = boolean | boolean[] | string
+
 /**
  * TODO: input/output the rules & data
  */
@@ -9,10 +11,10 @@ import { useState } from "react"
 export default function JsonLogic() {
   const [rule, setRule] = useState<string>("")
   const [data, setData] = useState<string>("")
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<JsonLogicResult | null>(null)
 
   const handleApplyLogic = () => {
-    const { parsedRule, parsedData } = parseJson({ rule, data })
+    // const { parsedRule, parsedData } = parseJson({ rule, data })
     const result = calculateResult(rule, data)
     setResult(result)
   }
@@ -56,7 +58,7 @@ function parseJson({ rule, data }: { rule: string; data: string }) {
 }
 
 /** parse rule & date, then apply logic */
-function calculateResult(rule: string, data: string) {
+function calculateResult(rule: string, data: string): JsonLogicResult {
   try {
     const { parsedRule, parsedData } = parseJson({ rule, data })
 
