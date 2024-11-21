@@ -1,0 +1,66 @@
+{
+  "id": "1.146",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.146",
+  "title": "1.146 STATE FISH.",
+  "text": "The walleye, Stizostedion v. vitreum, is the official fish of the state of Minnesota.\nA photograph of the walleye shall be preserved in the Office of the Secretary of State.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "official_fish.state"
+          },
+          "Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "official_fish.name"
+          },
+          "walleye"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "official_fish.scientific_name"
+          },
+          "Stizostedion v. vitreum"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "official_fish": {
+        "state": "Minnesota",
+        "name": "walleye",
+        "scientific_name": "Stizostedion v. vitreum"
+      }
+    },
+    {
+      "official_fish": {
+        "state": "Minnesota",
+        "name": "bass",
+        "scientific_name": "Micropterus salmoides"
+      }
+    },
+    {
+      "official_fish": {
+        "state": "Wisconsin",
+        "name": "walleye",
+        "scientific_name": "Stizostedion v. vitreum"
+      }
+    }
+  ],
+  "variables": [
+    "official_fish.state",
+    "official_fish.name",
+    "official_fish.scientific_name"
+  ],
+  "consequences": [
+    "A photograph of the walleye shall be preserved in the Office of the Secretary of State."
+  ]
+}

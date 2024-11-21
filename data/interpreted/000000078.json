@@ -1,0 +1,60 @@
+{
+  "id": "1.23",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.23",
+  "title": "1.23 STATE OFFICERS, DUTIES.",
+  "text": "All officers of this state shall do all things falling within their respective jurisdictions necessary to or incidental to carrying out the compact in every particular. It is the policy of this state to perform and carry out the compact and to accomplish its purposes. All officers, bureaus, departments and persons of the state government or administration shall, at reasonable times and upon request of the commission, furnish it with information and data possessed by them and aid it by loan of personnel or other means within their legal powers.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "officer_jurisdiction"
+          },
+          "state"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "policy"
+          },
+          "perform_compact"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "request_from_commission"
+          },
+          true
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "officer_jurisdiction": "state",
+      "policy": "perform_compact",
+      "request_from_commission": true
+    },
+    {
+      "officer_jurisdiction": "state",
+      "policy": "perform_compact",
+      "request_from_commission": false
+    },
+    {
+      "officer_jurisdiction": "federal",
+      "policy": "perform_compact",
+      "request_from_commission": true
+    }
+  ],
+  "variables": [
+    "officer_jurisdiction",
+    "policy",
+    "request_from_commission"
+  ],
+  "consequences": [
+    "Officers and departments must provide information, data, and aid to the commission."
+  ]
+}

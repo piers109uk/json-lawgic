@@ -1,0 +1,89 @@
+{
+  "id": "1.048",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.048",
+  "title": "1.048 EFFECT OF REPEAL OF CERTAIN LAWS.",
+  "text": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1, are repealed, but their repeal shall not affect any case in which the consent of the state to the acquisition of property or the exercise of jurisdiction by the United States was given by any of them and the acquisition of the property was completed before the taking effect of Laws 1943, chapter 343, nor any case in which the consent of the state was given by Laws 1941, chapter 66, before the taking effect of Laws 1943, chapter 343.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "or": [
+          {
+            "<": [
+              {
+                "var": "acquisition_date"
+              },
+              "1943-01-01"
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "consent_given_by"
+                  },
+                  "Laws 1941, chapter 66"
+                ]
+              },
+              {
+                "<": [
+                  {
+                    "var": "consent_date"
+                  },
+                  "1943-01-01"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "statute_referenced"
+              },
+              [
+                "Mason's Minnesota Statutes of 1927, sections 4 and 5",
+                "Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6",
+                "Mason's Supplement 1940, Section 6-1",
+                "Laws 1941, chapter 66"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "acquisition_date": "1942-12-31",
+      "consent_given_by": "Laws 1941, chapter 66",
+      "consent_date": "1942-12-30",
+      "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
+    },
+    {
+      "acquisition_date": "1943-01-02",
+      "consent_given_by": "Laws 1941, chapter 66",
+      "consent_date": "1942-12-30",
+      "statute_referenced": "Laws 1941, chapter 66"
+    },
+    {
+      "acquisition_date": "1942-12-31",
+      "consent_given_by": "Other Law",
+      "consent_date": "1942-12-30",
+      "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
+    }
+  ],
+  "variables": [
+    "acquisition_date",
+    "consent_given_by",
+    "consent_date",
+    "statute_referenced"
+  ],
+  "consequences": [
+    "The repeal does not affect the case."
+  ]
+}

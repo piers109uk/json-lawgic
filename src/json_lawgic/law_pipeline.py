@@ -17,7 +17,7 @@ def write_json(path: str | Path, data: dict):
 
 
 def run_pipeline():
-    limit = 10
+    limit = 50
     p = Path("data/default")
     files = sorted(p.glob("*.json"))
     for file in files:

@@ -1,0 +1,120 @@
+{
+  "id": "1.16",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.16",
+  "title": "1.16 MAPS ON FILE.",
+  "text": "The maps referred to in the compact in section 1.15 as Exhibits A, B, and C are the original maps on file with the report of the Michigan-Minnesota-Wisconsin boundary conference in the Office of the Secretary of State of Wisconsin, of which duplicate original maps are on file in the Office of the Secretary of State of Minnesota.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitA.location"
+          },
+          "Office of the Secretary of State of Wisconsin"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitB.location"
+          },
+          "Office of the Secretary of State of Wisconsin"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitC.location"
+          },
+          "Office of the Secretary of State of Wisconsin"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitA.duplicateLocation"
+          },
+          "Office of the Secretary of State of Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitB.duplicateLocation"
+          },
+          "Office of the Secretary of State of Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "maps.ExhibitC.duplicateLocation"
+          },
+          "Office of the Secretary of State of Minnesota"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "maps": {
+        "ExhibitA": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitB": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitC": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        }
+      }
+    },
+    {
+      "maps": {
+        "ExhibitA": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitB": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitC": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        }
+      }
+    },
+    {
+      "maps": {
+        "ExhibitA": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitB": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        },
+        "ExhibitC": {
+          "location": "Office of the Secretary of State of Wisconsin",
+          "duplicateLocation": "Office of the Secretary of State of Minnesota"
+        }
+      }
+    }
+  ],
+  "variables": [
+    "maps.ExhibitA.location",
+    "maps.ExhibitB.location",
+    "maps.ExhibitC.location",
+    "maps.ExhibitA.duplicateLocation",
+    "maps.ExhibitB.duplicateLocation",
+    "maps.ExhibitC.duplicateLocation"
+  ],
+  "consequences": [
+    "The maps are correctly filed in the respective offices as per the compact."
+  ]
+}

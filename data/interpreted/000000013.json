@@ -7,39 +7,23 @@
   "rule": {
     "and": [
       {
-        "or": [
-          {
-            "==": [
-              {
-                "var": "acquisition_method"
-              },
-              "purchase"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "acquisition_method"
-              },
-              "gift"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "acquisition_method"
-              },
-              "lease"
-            ]
-          }
-        ]
-      },
-      {
         "==": [
           {
             "var": "state"
           },
           "Minnesota"
+        ]
+      },
+      {
+        "in": [
+          {
+            "var": "acquisition_method"
+          },
+          [
+            "purchase",
+            "gift",
+            "lease"
+          ]
         ]
       },
       {
@@ -62,31 +46,31 @@
   },
   "examples": [
     {
+      "state": "Minnesota",
       "acquisition_method": "purchase",
-      "state": "Minnesota",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
       "act_of_congress": "June 7, 1924"
     },
     {
+      "state": "Minnesota",
       "acquisition_method": "gift",
-      "state": "Minnesota",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
       "act_of_congress": "June 7, 1924"
     },
     {
-      "acquisition_method": "lease",
       "state": "Minnesota",
+      "acquisition_method": "lease",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
       "act_of_congress": "June 7, 1924"
     }
   ],
   "variables": [
-    "acquisition_method",
     "state",
+    "acquisition_method",
     "purpose",
     "act_of_congress"
   ],
   "consequences": [
-    "Consent is given to the United States for land or water acquisition in Minnesota for the Upper Mississippi River Wild Life and Fish Refuge."
+    "Consent is given to the United States for land acquisition in Minnesota for the refuge."
   ]
 }

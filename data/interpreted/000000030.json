@@ -1,0 +1,43 @@
+{
+  "id": "1.13",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.13",
+  "title": "1.13 MONEY RECEIVED CREDITED TO HIGHWAY FUND.",
+  "text": "Any payment so received for the granting of an easement shall be deposited in the trunk highway fund.",
+  "repealed": false,
+  "rule": {
+    "if": [
+      {
+        "==": [
+          {
+            "var": "payment_type"
+          },
+          "easement"
+        ]
+      },
+      {
+        "log": "Deposit in trunk highway fund"
+      },
+      "Do nothing"
+    ]
+  },
+  "examples": [
+    {
+      "payment_type": "easement",
+      "amount": 1000
+    },
+    {
+      "payment_type": "lease",
+      "amount": 500
+    },
+    {
+      "payment_type": "easement",
+      "amount": 2000
+    }
+  ],
+  "variables": [
+    "payment_type"
+  ],
+  "consequences": [
+    "Deposit in trunk highway fund"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "id": "1.1465",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.1465",
+  "title": "1.1465 STATE BEE.",
+  "text": "The rusty patched bumble bee, Bombus affinis, is the official bee of the state of Minnesota.\nA photograph of the rusty patched bumble bee must be preserved in the Office of the Secretary of State.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "official_bee"
+          },
+          "Bombus affinis"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "photo_preserved"
+          },
+          true
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "official_bee": "Bombus affinis",
+      "state": "Minnesota",
+      "photo_preserved": true
+    },
+    {
+      "official_bee": "Bombus affinis",
+      "state": "Minnesota",
+      "photo_preserved": false
+    },
+    {
+      "official_bee": "Apis mellifera",
+      "state": "Minnesota",
+      "photo_preserved": true
+    }
+  ],
+  "variables": [
+    "official_bee",
+    "state",
+    "photo_preserved"
+  ],
+  "consequences": [
+    "The rusty patched bumble bee is recognized as the official bee of Minnesota and its photograph is preserved in the Office of the Secretary of State."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "1.1498",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.1498",
+  "title": "1.1498 STATE PHOTOGRAPH.",
+  "text": "The world-renowned photograph \"Grace,\" depicting an elderly man bowing his head and giving thanks, taken in Bovey, Minnesota, in 1918, by Eric Enstrom, is designated as the state photograph.\nA copy of the photograph \"Grace\" must be displayed in the Office of the Secretary of State.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "photograph_name"
+          },
+          "Grace"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "photographer"
+          },
+          "Eric Enstrom"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "year_taken"
+          },
+          1918
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "location"
+          },
+          "Bovey, Minnesota"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "photograph_name": "Grace",
+      "photographer": "Eric Enstrom",
+      "year_taken": 1918,
+      "location": "Bovey, Minnesota",
+      "office_displayed": "Secretary of State"
+    },
+    {
+      "photograph_name": "Grace",
+      "photographer": "Eric Enstrom",
+      "year_taken": 1918,
+      "location": "Bovey, Minnesota",
+      "office_displayed": "Governor's Office"
+    },
+    {
+      "photograph_name": "Sunset",
+      "photographer": "John Doe",
+      "year_taken": 1920,
+      "location": "New York",
+      "office_displayed": "Secretary of State"
+    }
+  ],
+  "variables": [
+    "photograph_name",
+    "photographer",
+    "year_taken",
+    "location",
+    "office_displayed"
+  ],
+  "consequences": [
+    "A copy of the photograph 'Grace' must be displayed in the Office of the Secretary of State."
+  ]
+}

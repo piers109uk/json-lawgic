@@ -1,0 +1,84 @@
+{
+  "id": "1.141",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.141",
+  "title": "1.141 STATE FLAG.",
+  "text": "The design of the state flag as certified in the report of the State Emblems Redesign Commission, as established by Laws 2023, chapter 62, article 2, section 118, is adopted as the official state flag.\nThe secretary of state shall file a photograph of the state flag. The secretary shall also retain custodial control over the sample design flag of the commission for use by the public for copies.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nThe official state flag shall be flown on the State Capitol grounds at all times between sunrise and sunset.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nWhen folding the Minnesota State Flag for storage, the proper procedure is to fold and store the flag in the same manner as the national colors.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "flag_design_certified"
+          },
+          true
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "secretary_of_state_filed_photograph"
+          },
+          true
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "secretary_of_state_custodial_control"
+          },
+          true
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "flag_flown_on_capitol_grounds"
+          },
+          true
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "flag_folded_properly"
+          },
+          true
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "flag_design_certified": true,
+      "secretary_of_state_filed_photograph": true,
+      "secretary_of_state_custodial_control": true,
+      "flag_flown_on_capitol_grounds": true,
+      "flag_folded_properly": true
+    },
+    {
+      "flag_design_certified": false,
+      "secretary_of_state_filed_photograph": true,
+      "secretary_of_state_custodial_control": true,
+      "flag_flown_on_capitol_grounds": true,
+      "flag_folded_properly": true
+    },
+    {
+      "flag_design_certified": true,
+      "secretary_of_state_filed_photograph": false,
+      "secretary_of_state_custodial_control": true,
+      "flag_flown_on_capitol_grounds": true,
+      "flag_folded_properly": true
+    }
+  ],
+  "variables": [
+    "flag_design_certified",
+    "secretary_of_state_filed_photograph",
+    "secretary_of_state_custodial_control",
+    "flag_flown_on_capitol_grounds",
+    "flag_folded_properly"
+  ],
+  "consequences": [
+    "The state flag is officially adopted and properly managed."
+  ]
+}

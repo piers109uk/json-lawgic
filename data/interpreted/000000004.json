@@ -31,23 +31,15 @@
           {
             "===": [
               {
-                "var": "land_acquisition"
+                "var": "land_acquisition_method"
               },
-              true
+              "purchase"
             ]
           },
           {
             "===": [
               {
-                "var": "land_exchange_commission_approval"
-              },
-              true
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "best_interests_of_state"
+                "var": "state_consent_obtained"
               },
               true
             ]
@@ -55,11 +47,23 @@
         ]
       },
       {
-        "===": [
+        "and": [
           {
-            "var": "state_consent_before_execution"
+            "===": [
+              {
+                "var": "land_acquisition_method"
+              },
+              "condemnation"
+            ]
           },
-          true
+          {
+            "===": [
+              {
+                "var": "state_consent_obtained"
+              },
+              true
+            ]
+          }
         ]
       }
     ]
@@ -68,37 +72,29 @@
     {
       "jurisdiction": true,
       "state_consent": true,
-      "land_acquisition": true,
-      "land_exchange_commission_approval": true,
-      "best_interests_of_state": true,
-      "state_consent_before_execution": true
+      "land_acquisition_method": "purchase",
+      "state_consent_obtained": true
     },
     {
       "jurisdiction": true,
-      "state_consent": false,
-      "land_acquisition": false,
-      "land_exchange_commission_approval": false,
-      "best_interests_of_state": false,
-      "state_consent_before_execution": false
+      "state_consent": true,
+      "land_acquisition_method": "condemnation",
+      "state_consent_obtained": true
     },
     {
       "jurisdiction": false,
-      "state_consent": true,
-      "land_acquisition": true,
-      "land_exchange_commission_approval": true,
-      "best_interests_of_state": true,
-      "state_consent_before_execution": true
+      "state_consent": false,
+      "land_acquisition_method": "purchase",
+      "state_consent_obtained": false
     }
   ],
   "variables": [
     "jurisdiction",
     "state_consent",
-    "land_acquisition",
-    "land_exchange_commission_approval",
-    "best_interests_of_state",
-    "state_consent_before_execution"
+    "land_acquisition_method",
+    "state_consent_obtained"
   ],
   "consequences": [
-    "The United States can exercise jurisdiction over the land with state consent and approval from the Land Exchange Commission, ensuring it aligns with the state's best interests."
+    "The United States can exercise jurisdiction over the land with state consent."
   ]
 }

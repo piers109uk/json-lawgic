@@ -58,15 +58,15 @@
     },
     {
       "state": true,
-      "navigable_waters_owned_by_state": false,
-      "state_consent": false,
+      "navigable_waters_owned_by_state": true,
+      "state_consent": true,
       "trust_fund_lands_disposed": false,
       "jurisdiction_ceded": false
     },
     {
       "state": true,
-      "navigable_waters_owned_by_state": true,
-      "state_consent": true,
+      "navigable_waters_owned_by_state": false,
+      "state_consent": false,
       "trust_fund_lands_disposed": false,
       "jurisdiction_ceded": false
     }

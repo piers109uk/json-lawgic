@@ -6,7 +6,8 @@ import Search from "./Search"
 import { IStatuteData, statutes } from "./statutes"
 import LawDisplay from "./law-display"
 
-// TODO: reducer
+// TODO: reducer?
+// TODO: Move to provider
 
 export default function Home() {
   const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
@@ -24,11 +25,11 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex h-screen">
-        <div className="flex-1 p-4">
+      <div className="flex h-screen bg-background">
+        <div className="w-1/3 p-4 bg-white shadow-md">
           <Search statutes={statutes} setSelectedLaw={setSelectedLaw}></Search>
         </div>
-        <div className="flex-1 p-4">
+        <div className="w-2/3 p-4 overflow-auto">
           <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
           <JsonLogic data={selectedLaw.examples} rule={selectedLaw.rule} setRule={setRule} setData={setData}></JsonLogic>
         </div>

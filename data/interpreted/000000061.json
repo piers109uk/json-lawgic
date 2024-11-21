@@ -1,0 +1,35 @@
+{
+  "id": "1.1496",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.1496",
+  "title": "1.1496 STATE MUFFIN.",
+  "text": "The blueberry muffin is adopted as the official muffin of the state of Minnesota.",
+  "repealed": false,
+  "rule": {
+    "==": [
+      {
+        "var": "state"
+      },
+      "Minnesota"
+    ]
+  },
+  "examples": [
+    {
+      "state": "Minnesota",
+      "muffin": "blueberry"
+    },
+    {
+      "state": "California",
+      "muffin": "banana"
+    },
+    {
+      "state": "Minnesota",
+      "muffin": "chocolate chip"
+    }
+  ],
+  "variables": [
+    "state"
+  ],
+  "consequences": [
+    "The blueberry muffin is the official muffin."
+  ]
+}

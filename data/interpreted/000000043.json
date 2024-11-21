@@ -1,0 +1,60 @@
+{
+  "id": "1.142",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.142",
+  "title": "1.142 STATE FLOWER.",
+  "text": "The pink and white lady slipper, Cypripedium reginae, is the official flower of the state of Minnesota.\nA photograph of the pink and white lady slipper, obtained and approved by the commissioner of natural resources, shall be preserved in the Office of the Secretary of State.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "flower_name"
+          },
+          "Cypripedium reginae"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "approved_by"
+          },
+          "commissioner of natural resources"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "flower_name": "Cypripedium reginae",
+      "state": "Minnesota",
+      "approved_by": "commissioner of natural resources"
+    },
+    {
+      "flower_name": "Cypripedium reginae",
+      "state": "Minnesota",
+      "approved_by": "someone else"
+    },
+    {
+      "flower_name": "Another flower",
+      "state": "Minnesota",
+      "approved_by": "commissioner of natural resources"
+    }
+  ],
+  "variables": [
+    "flower_name",
+    "state",
+    "approved_by"
+  ],
+  "consequences": [
+    "A photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
+  ]
+}

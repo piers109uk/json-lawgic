@@ -1,0 +1,48 @@
+{
+  "id": "1.1497",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.1497",
+  "title": "1.1497 STATE BUTTERFLY.",
+  "text": "The Monarch butterfly (Danaus plexippus) is the official butterfly of the state of Minnesota.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "butterfly"
+          },
+          "Monarch butterfly"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "butterfly": "Monarch butterfly",
+      "state": "Minnesota"
+    },
+    {
+      "butterfly": "Viceroy butterfly",
+      "state": "Minnesota"
+    },
+    {
+      "butterfly": "Monarch butterfly",
+      "state": "California"
+    }
+  ],
+  "variables": [
+    "butterfly",
+    "state"
+  ],
+  "consequences": [
+    "The Monarch butterfly is the official butterfly of Minnesota."
+  ]
+}

@@ -1,7 +1,8 @@
-"use client"
 import jsonLogic from "json-logic-js"
 import { useState } from "react"
 import { stringifyJson } from "./format-json"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
 
 type JsonLogicResult = boolean | boolean[] | string
 
@@ -51,26 +52,23 @@ export default function JsonLogic({ rule, data, setRule, setData }: JsonLogicPro
     <>
       <h1 className="text-2xl font-bold mb-4">JSON Logic Evaluator</h1>
       <div className="mb-4">
-        <textarea
-          className="w-full p-2 border border-gray-300 rounded text-sm"
-          placeholder="Enter JSON Logic Rule"
-          value={ruleString}
-          onChange={(e) => onRuleChange(e.target.value)}
-          rows={10}
-        />
+        <label htmlFor="rule" className="block text-sm font-medium text-gray-700 mb-1">
+          Rule
+        </label>
+        <Textarea id="rule" value={ruleString} onChange={(e) => onRuleChange(e.target.value)} rows={10} className="font-mono" />
       </div>
+
       <div className="mb-4">
-        <textarea
-          className="w-full p-2 border border-gray-300 rounded text-sm"
-          placeholder="Enter Data"
-          value={dataString}
-          onChange={(e) => onDataChange(e.target.value)}
-          rows={10}
-        />
+        <label htmlFor="examples" className="block text-sm font-medium text-gray-700 mb-1">
+          Examples
+        </label>
+        <Textarea id="examples" value={dataString} onChange={(e) => onDataChange(e.target.value)} rows={10} className="font-mono" />
       </div>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={() => handleApplyLogic(ruleString, dataString)}>
+
+      <Button onClick={() => handleApplyLogic(ruleString, dataString)} className="rounded-full">
         Apply Logic
-      </button>
+      </Button>
+
       <div className="mt-4">
         <h2 className="text-xl font-bold">Result:</h2>
         <pre className="bg-gray-100 p-2 rounded whitespace-pre-wrap break-words">{JSON.stringify(result, null, 2)}</pre>

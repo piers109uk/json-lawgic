@@ -1,0 +1,94 @@
+{
+  "id": "1.51",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.51",
+  "title": "1.51 FLAGS FLOWN AT HALF-STAFF FOLLOWING PUBLIC SAFETY OFFICER DEATH.",
+  "text": "Each American flag and Minnesota flag flown on the grounds of the Capitol Area, as described in section 15B.02, must be flown at half-staff following the death of a public safety officer, as defined in section 299A.41, subdivision 4, killed in the line of duty in Minnesota, or the death of Minnesota military personnel killed in the line of duty. The flags must be flown at half-staff for a period of time determined by the governor.",
+  "repealed": false,
+  "rule": {
+    "if": [
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "event.type"
+              },
+              "public_safety_officer_death"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "event.type"
+              },
+              "military_personnel_death"
+            ]
+          }
+        ]
+      },
+      {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "location"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "flag_location"
+              },
+              "Capitol Area"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "flag_type"
+              },
+              "American or Minnesota"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "event": {
+        "type": "public_safety_officer_death"
+      },
+      "location": "Minnesota",
+      "flag_location": "Capitol Area",
+      "flag_type": "American"
+    },
+    {
+      "event": {
+        "type": "military_personnel_death"
+      },
+      "location": "Minnesota",
+      "flag_location": "Capitol Area",
+      "flag_type": "Minnesota"
+    },
+    {
+      "event": {
+        "type": "public_safety_officer_death"
+      },
+      "location": "Minnesota",
+      "flag_location": "Capitol Area",
+      "flag_type": "Other"
+    }
+  ],
+  "variables": [
+    "event.type",
+    "location",
+    "flag_location",
+    "flag_type"
+  ],
+  "consequences": [
+    "Flags must be flown at half-staff for a period determined by the governor."
+  ]
+}

@@ -1,8 +1,9 @@
-"use client"
-
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import MiniSearch, { SearchResult } from "minisearch"
-import { IStatuteData, statutes } from "./statutes"
 import { useEffect, useState } from "react"
+import { IStatuteData, statutes } from "./statutes"
 
 // TODO: include text in search
 
@@ -36,20 +37,15 @@ export default function Search({ statutes, setSelectedLaw }: SearchWidgetProps) 
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search laws..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="w-full p-2 border rounded"
-      />
-      <ul className="mt-4">
+      <Input type="text" placeholder="Search laws.." value={query} onChange={(e) => setQuery(e.target.value)} className="w-full p-2 border rounded" />
+
+      <ScrollArea className="h-[calc(100vh-140px)]">
         {results.map((law) => (
-          <li key={law.id} className="p-2 cursor-pointer" onClick={() => setSelectedLaw(law)}>
+          <Button key={law.id} variant="ghost" className="w-full justify-start mb-2 text-left" onClick={() => setSelectedLaw(law)}>
             {law.title}
-          </li>
+          </Button>
         ))}
-      </ul>
+      </ScrollArea>
     </div>
   )
 }

@@ -1,0 +1,108 @@
+{
+  "id": "1.143",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.143",
+  "title": "1.143 STATE TREE.",
+  "text": "The Red pine (Pinus resinosa), more commonly known as Norway pine, is designated as the official state tree of the state of Minnesota.\nA photograph of the Red pine, to be obtained and approved by the commissioner of natural resources, shall be certified and preserved in the Office of the Secretary of State.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "state_tree.name"
+          },
+          "Red pine"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state_tree.scientific_name"
+          },
+          "Pinus resinosa"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state_tree.common_name"
+          },
+          "Norway pine"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "photo.status"
+          },
+          "approved"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "photo.location"
+          },
+          "Office of the Secretary of State"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "state_tree": {
+        "name": "Red pine",
+        "scientific_name": "Pinus resinosa",
+        "common_name": "Norway pine"
+      },
+      "state": "Minnesota",
+      "photo": {
+        "status": "approved",
+        "location": "Office of the Secretary of State"
+      }
+    },
+    {
+      "state_tree": {
+        "name": "Red pine",
+        "scientific_name": "Pinus resinosa",
+        "common_name": "Norway pine"
+      },
+      "state": "Minnesota",
+      "photo": {
+        "status": "pending",
+        "location": "Office of the Secretary of State"
+      }
+    },
+    {
+      "state_tree": {
+        "name": "White pine",
+        "scientific_name": "Pinus strobus",
+        "common_name": "Eastern white pine"
+      },
+      "state": "Minnesota",
+      "photo": {
+        "status": "approved",
+        "location": "Office of the Secretary of State"
+      }
+    }
+  ],
+  "variables": [
+    "state_tree.name",
+    "state_tree.scientific_name",
+    "state_tree.common_name",
+    "state",
+    "photo.status",
+    "photo.location"
+  ],
+  "consequences": [
+    "The Red pine is the official state tree of Minnesota and its approved photograph is preserved in the Office of the Secretary of State."
+  ]
+}

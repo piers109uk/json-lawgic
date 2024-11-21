@@ -1,0 +1,72 @@
+{
+  "id": "2.031",
+  "url": "https://www.revisor.mn.gov/statutes/cite/2.031",
+  "title": "2.031 APPORTIONMENT.",
+  "text": "The representatives in the senate and house of representatives are apportioned throughout the state in 67 senate districts and 134 house of representatives districts. Each senate district is entitled to elect one senator and each house of representatives district is entitled to elect one representative.\n[Repealed, 2013 c 125 art 1 s 108]",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "senate_districts"
+          },
+          67
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "house_districts"
+          },
+          134
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "senators_per_district"
+          },
+          1
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "representatives_per_district"
+          },
+          1
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "senate_districts": 67,
+      "house_districts": 134,
+      "senators_per_district": 1,
+      "representatives_per_district": 1
+    },
+    {
+      "senate_districts": 66,
+      "house_districts": 134,
+      "senators_per_district": 1,
+      "representatives_per_district": 1
+    },
+    {
+      "senate_districts": 67,
+      "house_districts": 133,
+      "senators_per_district": 1,
+      "representatives_per_district": 1
+    }
+  ],
+  "variables": [
+    "senate_districts",
+    "house_districts",
+    "senators_per_district",
+    "representatives_per_district"
+  ],
+  "consequences": [
+    "Each senate district elects one senator and each house district elects one representative."
+  ]
+}

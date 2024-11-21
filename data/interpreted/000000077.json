@@ -1,0 +1,96 @@
+{
+  "id": "1.22",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.22",
+  "title": "1.22 COMMISSIONERS.",
+  "text": "In pursuance of Article IV of the compact, there shall be five commissioners on the Great Lakes Commission from this state. Two shall be members of the house of representatives and two shall be members of the state senate. One member shall be appointed by and serve at the pleasure of the governor. The house of representatives members shall be appointed by the speaker of the house and the members of the senate shall be appointed by the Committee on Committees. The commissioners shall exercise all voting rights conferred by the compact on the commissioners from the party state as provided in Article IV, (B and C) of the compact.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "total_commissioners"
+          },
+          5
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "house_representatives"
+          },
+          2
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state_senate"
+          },
+          2
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "governor_appointed"
+          },
+          1
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "house_appointed_by"
+          },
+          "speaker_of_house"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "senate_appointed_by"
+          },
+          "committee_on_committees"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "total_commissioners": 5,
+      "house_representatives": 2,
+      "state_senate": 2,
+      "governor_appointed": 1,
+      "house_appointed_by": "speaker_of_house",
+      "senate_appointed_by": "committee_on_committees"
+    },
+    {
+      "total_commissioners": 5,
+      "house_representatives": 3,
+      "state_senate": 1,
+      "governor_appointed": 1,
+      "house_appointed_by": "speaker_of_house",
+      "senate_appointed_by": "committee_on_committees"
+    },
+    {
+      "total_commissioners": 5,
+      "house_representatives": 2,
+      "state_senate": 2,
+      "governor_appointed": 1,
+      "house_appointed_by": "speaker_of_house",
+      "senate_appointed_by": "wrong_committee"
+    }
+  ],
+  "variables": [
+    "total_commissioners",
+    "house_representatives",
+    "state_senate",
+    "governor_appointed",
+    "house_appointed_by",
+    "senate_appointed_by"
+  ],
+  "consequences": [
+    "The commissioners are correctly appointed as per Article IV of the compact."
+  ]
+}

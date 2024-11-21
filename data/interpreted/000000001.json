@@ -33,9 +33,9 @@
       {
         "==": [
           {
-            "var": "direction"
+            "var": "boundary_extension_direction"
           },
-          "across"
+          "towards_opposite_shore"
         ]
       }
     ]
@@ -45,28 +45,28 @@
       "jurisdiction_type": "concurrent",
       "area_type": "water",
       "boundary_extension": "produced",
-      "direction": "across"
+      "boundary_extension_direction": "towards_opposite_shore"
     },
     {
       "jurisdiction_type": "exclusive",
       "area_type": "land",
       "boundary_extension": "not_produced",
-      "direction": "not_across"
+      "boundary_extension_direction": "away_from_shore"
     },
     {
       "jurisdiction_type": "concurrent",
       "area_type": "water",
       "boundary_extension": "not_produced",
-      "direction": "across"
+      "boundary_extension_direction": "towards_opposite_shore"
     }
   ],
   "variables": [
     "jurisdiction_type",
     "area_type",
     "boundary_extension",
-    "direction"
+    "boundary_extension_direction"
   ],
   "consequences": [
-    "The county and courts have jurisdiction over the extended water area."
+    "County and courts have jurisdiction over the extended water area."
   ]
 }

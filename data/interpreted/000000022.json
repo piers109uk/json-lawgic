@@ -1,0 +1,135 @@
+{
+  "id": "1.047",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.047",
+  "title": "1.047 CONDEMNATION PROCEEDINGS IN STATE COURTS BY UNITED STATES.",
+  "text": "When consent to the acquisition by the United States of any land or any right or interest in land by condemnation is given by sections 1.041 to 1.048, the United States may effect condemnation in the courts of this state in accordance with the laws of this state relating to eminent domain, or may effect condemnation in the courts of the United States as authorized by act of Congress. When consent by the Land Exchange Commission is required by section 1.041 the commission may specify which method of condemnation shall be used as a condition of its consent.",
+  "repealed": false,
+  "rule": {
+    "if": [
+      {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "consent_given_by_sections"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "consent_required_by_commission"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "court"
+              },
+              "state"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "court"
+              },
+              "federal"
+            ]
+          }
+        ]
+      },
+      {
+        "if": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "consent_given_by_sections"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "consent_required_by_commission"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "or": [
+                  {
+                    "==": [
+                      {
+                        "var": "court"
+                      },
+                      "state"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "court"
+                      },
+                      "federal"
+                    ]
+                  }
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "method_specified_by_commission"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "consent_given_by_sections": true,
+      "consent_required_by_commission": false,
+      "court": "state"
+    },
+    {
+      "consent_given_by_sections": true,
+      "consent_required_by_commission": false,
+      "court": "federal"
+    },
+    {
+      "consent_given_by_sections": true,
+      "consent_required_by_commission": true,
+      "court": "state",
+      "method_specified_by_commission": true
+    }
+  ],
+  "variables": [
+    "consent_given_by_sections",
+    "consent_required_by_commission",
+    "court",
+    "method_specified_by_commission"
+  ],
+  "consequences": [
+    "The United States may effect condemnation in the state or federal courts according to the laws of eminent domain.",
+    "The Land Exchange Commission may specify the method of condemnation as a condition of its consent."
+  ]
+}

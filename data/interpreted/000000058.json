@@ -1,0 +1,35 @@
+{
+  "id": "1.1485",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.1485",
+  "title": "1.1485 STATE SOIL.",
+  "text": "Lester is designated as the official soil of the state of Minnesota.",
+  "repealed": false,
+  "rule": {
+    "==": [
+      {
+        "var": "state"
+      },
+      "Minnesota"
+    ]
+  },
+  "examples": [
+    {
+      "state": "Minnesota",
+      "soil": "Lester"
+    },
+    {
+      "state": "Iowa",
+      "soil": "Tama"
+    },
+    {
+      "state": "Minnesota",
+      "soil": "Clayton"
+    }
+  ],
+  "variables": [
+    "state"
+  ],
+  "consequences": [
+    "Lester is the official soil"
+  ]
+}

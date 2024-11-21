@@ -1,0 +1,72 @@
+{
+  "id": "1.12",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.12",
+  "title": "1.12 FEDERAL FLOWAGE EASEMENTS OVER HIGHWAYS.",
+  "text": "When requested by the commissioner of transportation the governor, in behalf of the state, may grant, bargain, sell, and convey to the United States of America any easement for flowage in and upon any easement or fee owned by the state of Minnesota for trunk highway right-of-way purposes when it is required by the United States to aid a public improvement.",
+  "repealed": false,
+  "rule": {
+    "and": [
+      {
+        "==": [
+          {
+            "var": "requester"
+          },
+          "commissioner of transportation"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "required_by"
+          },
+          "United States"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "purpose"
+          },
+          "aid a public improvement"
+        ]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "requester": "commissioner of transportation",
+      "state": "Minnesota",
+      "required_by": "United States",
+      "purpose": "aid a public improvement"
+    },
+    {
+      "requester": "commissioner of transportation",
+      "state": "Minnesota",
+      "required_by": "United States",
+      "purpose": "not for public improvement"
+    },
+    {
+      "requester": "someone else",
+      "state": "Minnesota",
+      "required_by": "United States",
+      "purpose": "aid a public improvement"
+    }
+  ],
+  "variables": [
+    "requester",
+    "state",
+    "required_by",
+    "purpose"
+  ],
+  "consequences": [
+    "The governor may grant, bargain, sell, and convey an easement for flowage to the United States."
+  ]
+}
