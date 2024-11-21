@@ -61,8 +61,13 @@
         "action": "omit_true_entry"
       }
     ],
-    "variables": ["intent_to_defraud", "action"],
-    "consequences": ["Class A misdemeanor for falsifying business records in the second degree"]
+    "variables": [
+      "intent_to_defraud",
+      "action"
+    ],
+    "consequences": [
+      "Class A misdemeanor for falsifying business records in the second degree"
+    ]
   },
   {
     "id": "175.10",
@@ -103,7 +108,13 @@
         "intent_to_aid_or_conceal_commission": true
       }
     ],
-    "variables": ["falsifying_business_records_second_degree", "intent_to_commit_another_crime", "intent_to_aid_or_conceal_commission"],
-    "consequences": ["Class E felony"]
+    "variables": [
+      "falsifying_business_records_second_degree",
+      "intent_to_commit_another_crime",
+      "intent_to_aid_or_conceal_commission"
+    ],
+    "consequences": [
+      "Class E felony"
+    ]
   }
 ]

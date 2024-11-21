@@ -16,9 +16,13 @@ def write_json(path: str | Path, data: dict):
         json.dump(data, f, indent=2)
 
 
+input_folder = "data/examples"
+output_folder = "data/examples-interpreted"
+
+
 def run_pipeline():
     limit = 50
-    p = Path("data/default")
+    p = Path(input_folder)
     files = sorted(p.glob("*.json"))
     for file in files:
         law_object = read_json(file)
@@ -33,7 +37,7 @@ def run_pipeline():
         law_rules = interpreter.interpret_law(law_object)
 
         interpreted_law = {**law_object, **law_rules}
-        new_path = f"data/interpreted/{file.name}"
+        new_path = f"{output_folder}/{file.name}"
         print(new_path)
         write_json(new_path, interpreted_law)
 

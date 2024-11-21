@@ -3,7 +3,7 @@
 import { useState } from "react"
 import JsonLogic from "./json-logic"
 import Search from "./Search"
-import { IStatuteData, statutes } from "./statutes"
+import { IStatuteData, showcase, statutes } from "./statutes"
 import LawDisplay from "./law-display"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScaleIcon } from "@heroicons/react/24/solid"
@@ -44,18 +44,18 @@ export default function Home() {
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic data={selectedLaw.examples} rule={selectedLaw.rule} setRule={setRule} setData={setData}></JsonLogic>
+                <JsonLogic interpretation={selectedLaw} setRule={setRule} setData={setData}></JsonLogic>
               </div>
             </div>
           </TabsContent>
           <TabsContent value="showcase" className="flex-grow flex">
             <div className="flex">
               <div className="w-1/3 p-4 bg-white shadow-md">
-                <Search statutes={statutes} setSelectedLaw={setSelectedLaw}></Search>
+                <Search statutes={showcase} setSelectedLaw={setSelectedLaw}></Search>
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic data={selectedLaw.examples} rule={selectedLaw.rule} setRule={setRule} setData={setData}></JsonLogic>
+                <JsonLogic interpretation={selectedLaw} setRule={setRule} setData={setData}></JsonLogic>
               </div>
             </div>
           </TabsContent>

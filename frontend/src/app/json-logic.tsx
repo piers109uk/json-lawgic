@@ -3,12 +3,15 @@ import { useState } from "react"
 import { stringifyJson } from "./format-json"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { IJsonLogicInterpretation } from "./statutes"
 
 type JsonLogicResult = boolean | boolean[] | string
 
 export interface JsonLogicProps {
-  rule?: object
-  data?: object | object[]
+  // rule?: object
+  // data?: object | object[]
+  // consequences?: string[]
+  interpretation?: Partial<IJsonLogicInterpretation>
   setRule: (rule: object) => void
   setData: (data: object | object[]) => void
 }
@@ -17,11 +20,12 @@ export interface JsonLogicProps {
  * TODO: input/output the rules & data
  */
 
-export default function JsonLogic({ rule, data, setRule, setData }: JsonLogicProps) {
+export default function JsonLogic({ interpretation, setRule, setData }: JsonLogicProps) {
+  const { rule, consequences, examples } = interpretation || {}
   const [result, setResult] = useState<JsonLogicResult | null>(null)
 
   const ruleString = stringifyJson(rule)
-  const dataString = stringifyJson(data)
+  const dataString = stringifyJson(examples)
 
   const onRuleChange = (v: string) => {
     console.log("onRuleChange", v)
@@ -58,6 +62,14 @@ export default function JsonLogic({ rule, data, setRule, setData }: JsonLogicPro
         <Textarea id="rule" value={ruleString} onChange={(e) => onRuleChange(e.target.value)} rows={10} className="font-mono" />
       </div>
 
+      <div className="mb-4">
+        <label htmlFor="examples" className="block text-sm font-medium text-gray-700 mb-1">
+          Consequences
+        </label>
+        {consequences?.map((c) => (
+          <div key={c}>{c}</div>
+        ))}
+      </div>
       <div className="mb-4">
         <label htmlFor="examples" className="block text-sm font-medium text-gray-700 mb-1">
           Examples

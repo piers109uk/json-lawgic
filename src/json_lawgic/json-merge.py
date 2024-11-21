@@ -2,8 +2,8 @@ import json
 import glob
 
 # Directory containing the JSON files
-input_directory = "data/interpreted"
-output_file = "data/interpreted-laws.json"
+input_directory = "data/examples-interpreted"
+output_file = "data/showcase.json"
 
 # Use glob to find all JSON files in the directory
 json_files = glob.glob(f"{input_directory}/*.json")
