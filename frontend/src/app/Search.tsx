@@ -23,7 +23,6 @@ interface SearchWidgetProps {
 export default function Search({ statutes, setSelectedLaw }: SearchWidgetProps) {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState<IStatuteData[]>(statutes)
-  // const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
 
   useEffect(() => {
     console.log("Search effect query", query)

@@ -18,3 +18,9 @@ export interface IStatuteData extends Partial<IJsonLogicInterpretation> {
 }
 
 export const statutes: IStatuteData[] = interpretedLaws
+
+// export async function fetchStatutes() {
+//   const response = await fetch("https://github.com/piers109uk/json-lawgic/blob/main/data/interpreted-laws.json")
+//   const data = await response.json()
+//   return data as IStatuteData[]
+// }

@@ -1,5 +1,141 @@
 [
   {
+    "id": "2.031",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.031",
+    "title": "2.031 APPORTIONMENT.",
+    "text": "The representatives in the senate and house of representatives are apportioned throughout the state in 67 senate districts and 134 house of representatives districts. Each senate district is entitled to elect one senator and each house of representatives district is entitled to elect one representative.\n[Repealed, 2013 c 125 art 1 s 108]",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "senate_districts"
+            },
+            67
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "house_districts"
+            },
+            134
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "senators_per_district"
+            },
+            1
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "representatives_per_district"
+            },
+            1
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "senate_districts": 67,
+        "house_districts": 134,
+        "senators_per_district": 1,
+        "representatives_per_district": 1
+      },
+      {
+        "senate_districts": 66,
+        "house_districts": 134,
+        "senators_per_district": 1,
+        "representatives_per_district": 1
+      },
+      {
+        "senate_districts": 67,
+        "house_districts": 133,
+        "senators_per_district": 1,
+        "representatives_per_district": 1
+      }
+    ],
+    "variables": [
+      "senate_districts",
+      "house_districts",
+      "senators_per_district",
+      "representatives_per_district"
+    ],
+    "consequences": [
+      "Each senate district elects one senator and each house district elects one representative."
+    ]
+  },
+  {
+    "id": "2.095",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.095",
+    "title": "2.095 NINTH DISTRICT.",
+    "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 9 consists of the district as described in that order, with the modification contained in file L12B-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 9 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 9A consists of the district as described in that order.\n(b) House of Representatives District 9B consists of all territory of Senate District 9, as modified by subdivision 1, that is not included in House of Representatives District 9A.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "===": [
+            {
+              "var": "district"
+            },
+            9
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "order"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "modification"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "district": 9,
+        "order": true,
+        "modification": true
+      },
+      {
+        "district": 9,
+        "order": false,
+        "modification": true
+      },
+      {
+        "district": 8,
+        "order": true,
+        "modification": true
+      }
+    ],
+    "variables": [
+      "district",
+      "order",
+      "modification"
+    ],
+    "consequences": [
+      "Senate District 9 is defined and divided into House Districts 9A and 9B as per the specified order and modification."
+    ]
+  },
+  {
     "id": "1.045",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.045",
     "title": "1.045 STATE, CONSENT TO ACQUISITION OF LANDS.",
@@ -31,9 +167,15 @@
             {
               "var": "jurisdiction"
             },
-            [
-              "concurrent"
-            ]
+            "concurrent"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "purpose"
+            },
+            "development or maintenance"
           ]
         }
       ]
@@ -42,23 +184,138 @@
       {
         "state": "Minnesota",
         "land_location": "Chippewa National Forest",
-        "jurisdiction": "concurrent"
+        "jurisdiction": "concurrent",
+        "purpose": "development or maintenance"
       },
       {
         "state": "Minnesota",
         "land_location": "Superior National Forest",
-        "jurisdiction": "concurrent"
+        "jurisdiction": "concurrent",
+        "purpose": "development or maintenance"
       },
       {
         "state": "Minnesota",
-        "land_location": "Superior National Forest",
-        "jurisdiction": "exclusive"
+        "land_location": "Chippewa National Forest",
+        "jurisdiction": "concurrent",
+        "purpose": "development"
       }
     ],
     "variables": [
       "state",
       "land_location",
-      "jurisdiction"
+      "jurisdiction",
+      "purpose"
+    ],
+    "consequences": [
+      "Consent is given for the acquisition of lands by the United States."
+    ]
+  },
+  {
+    "id": "1.142",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.142",
+    "title": "1.142 STATE FLOWER.",
+    "text": "The pink and white lady slipper, Cypripedium reginae, is the official flower of the state of Minnesota.\nA photograph of the pink and white lady slipper, obtained and approved by the commissioner of natural resources, shall be preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "flower_name"
+            },
+            "Cypripedium reginae"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "approved_by"
+            },
+            "commissioner of natural resources"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "flower_name": "Cypripedium reginae",
+        "state": "Minnesota",
+        "approved_by": "commissioner of natural resources"
+      },
+      {
+        "flower_name": "Cypripedium reginae",
+        "state": "Minnesota",
+        "approved_by": "someone else"
+      },
+      {
+        "flower_name": "Another flower",
+        "state": "Minnesota",
+        "approved_by": "commissioner of natural resources"
+      }
+    ],
+    "variables": [
+      "flower_name",
+      "state",
+      "approved_by"
+    ],
+    "consequences": [
+      "A photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.1475",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1475",
+    "title": "1.1475 STATE FRUIT.",
+    "text": "The Honeycrisp apple is the official fruit of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "fruit"
+            },
+            "Honeycrisp apple"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "fruit": "Honeycrisp apple",
+        "state": "Minnesota"
+      },
+      {
+        "fruit": "Granny Smith apple",
+        "state": "Minnesota"
+      },
+      {
+        "fruit": "Honeycrisp apple",
+        "state": "Wisconsin"
+      }
+    ],
+    "variables": [
+      "fruit",
+      "state"
+    ],
+    "consequences": [
+      "The Honeycrisp apple is the official fruit of Minnesota."
     ]
   },
   {
@@ -72,9 +329,9 @@
         {
           "==": [
             {
-              "var": "location_within_boundaries"
+              "var": "location.within_boundaries"
             },
-            "state"
+            true
           ]
         },
         {
@@ -82,29 +339,79 @@
             {
               "==": [
                 {
-                  "var": "location_type"
+                  "var": "location.waters_common_boundary"
                 },
-                "land"
+                true
               ]
             },
             {
-              "and": [
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "location_type"
-                    },
-                    "water"
-                  ]
+                  "var": "location.jurisdiction_acquired_by_us"
                 },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "location": {
+          "within_boundaries": true,
+          "waters_common_boundary": false,
+          "jurisdiction_acquired_by_us": false
+        }
+      },
+      {
+        "location": {
+          "within_boundaries": false,
+          "waters_common_boundary": true,
+          "jurisdiction_acquired_by_us": false
+        }
+      },
+      {
+        "location": {
+          "within_boundaries": true,
+          "waters_common_boundary": true,
+          "jurisdiction_acquired_by_us": false
+        }
+      }
+    ],
+    "variables": [
+      "location.within_boundaries",
+      "location.waters_common_boundary",
+      "location.jurisdiction_acquired_by_us"
+    ],
+    "consequences": [
+      "State has sovereignty and jurisdiction over the location."
+    ]
+  },
+  {
+    "id": "1.047",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.047",
+    "title": "1.047 CONDEMNATION PROCEEDINGS IN STATE COURTS BY UNITED STATES.",
+    "text": "When consent to the acquisition by the United States of any land or any right or interest in land by condemnation is given by sections 1.041 to 1.048, the United States may effect condemnation in the courts of this state in accordance with the laws of this state relating to eminent domain, or may effect condemnation in the courts of the United States as authorized by act of Congress. When consent by the Land Exchange Commission is required by section 1.041 the commission may specify which method of condemnation shall be used as a condition of its consent.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "and": [
+            {
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "boundary_type"
-                    },
-                    "common"
-                  ]
-                }
+                  "var": "consent_given_by_sections"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "consent_required_by_commission"
+                },
+                false
               ]
             }
           ]
@@ -114,27 +421,71 @@
             {
               "==": [
                 {
-                  "var": "jurisdiction"
+                  "var": "court"
                 },
                 "state"
               ]
             },
             {
+              "==": [
+                {
+                  "var": "court"
+                },
+                "federal"
+              ]
+            }
+          ]
+        },
+        {
+          "if": [
+            {
               "and": [
                 {
                   "==": [
                     {
-                      "var": "jurisdiction"
+                      "var": "consent_given_by_sections"
                     },
-                    "US"
+                    true
                   ]
                 },
                 {
                   "==": [
                     {
-                      "var": "jurisdiction_rights"
+                      "var": "consent_required_by_commission"
                     },
-                    "acquired"
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "or": [
+                    {
+                      "==": [
+                        {
+                          "var": "court"
+                        },
+                        "state"
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "court"
+                        },
+                        "federal"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "method_specified_by_commission"
+                    },
+                    true
                   ]
                 }
               ]
@@ -145,33 +496,63 @@
     },
     "examples": [
       {
-        "location_within_boundaries": "state",
-        "location_type": "land",
-        "boundary_type": "common",
-        "jurisdiction": "state",
-        "jurisdiction_rights": "none"
+        "consent_given_by_sections": true,
+        "consent_required_by_commission": false,
+        "court": "state"
       },
       {
-        "location_within_boundaries": "state",
-        "location_type": "water",
-        "boundary_type": "common",
-        "jurisdiction": "US",
-        "jurisdiction_rights": "acquired"
+        "consent_given_by_sections": true,
+        "consent_required_by_commission": false,
+        "court": "federal"
       },
       {
-        "location_within_boundaries": "state",
-        "location_type": "water",
-        "boundary_type": "common",
-        "jurisdiction": "state",
-        "jurisdiction_rights": "none"
+        "consent_given_by_sections": true,
+        "consent_required_by_commission": true,
+        "court": "state",
+        "method_specified_by_commission": true
       }
     ],
     "variables": [
-      "location_within_boundaries",
-      "location_type",
-      "boundary_type",
-      "jurisdiction",
-      "jurisdiction_rights"
+      "consent_given_by_sections",
+      "consent_required_by_commission",
+      "court",
+      "method_specified_by_commission"
+    ],
+    "consequences": [
+      "The United States may effect condemnation in the state or federal courts according to the laws of eminent domain.",
+      "The Land Exchange Commission may specify the method of condemnation as a condition of its consent."
+    ]
+  },
+  {
+    "id": "1.1499",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1499",
+    "title": "1.1499 STATE SPORT.",
+    "text": "Ice hockey is adopted as the official sport of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "==": [
+        {
+          "var": "state"
+        },
+        "Minnesota"
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota"
+      },
+      {
+        "state": "California"
+      },
+      {
+        "state": "Texas"
+      }
+    ],
+    "variables": [
+      "state"
+    ],
+    "consequences": [
+      "Ice hockey is the official sport"
     ]
   },
   {
@@ -181,58 +562,485 @@
     "text": "Pursuant to applicable federal and state law under which Minnesota was admitted to the union on equal footing with the original 13 states, navigable waters and their beds located within the exterior boundaries of the state are owned by the state. In a few limited circumstances, as in section 1.044, relating to the Upper Mississippi Wildlife and Fish Refuge, the state has expressly granted its consent and concurrent jurisdiction to the United States to acquire interests in water, as well as land, for a limited purpose and in the limited area described in its consent. Unlike section 1.044, the consent granted by the state in section 1.045 to acquisitions by the United States for the Superior National Forest is limited to land, only. The state has never ceded to the United States, either expressly or implicitly, its ownership of and jurisdiction over the navigable waters and their beds that are located within the exterior boundaries of the forest.\nPursuant to the Organic Act that created the territory of Minnesota (Act of Congress, March 3, 1849, 9 Stat. ch. 121, section 18), and the Enabling Act that authorized the people of the territory of Minnesota to establish the state of Minnesota (Act of Congress, February 26, 1857, 11 Stat. ch. 60, section 5, first paragraph), federal public domain lands located in sections 16 and 36 in every township at the time of statehood were granted to the state for the use of schools, together with equivalent land located in other sections if section 16 or 36 had been disposed of before statehood. In conformity with the terms of the federal grant, the citizens of Minnesota, by constitution, article XI, section 8, have dedicated the proceeds from the sale or other disposition of these school grant lands, and the proceeds from the sale or other disposition of lands subsequently received from the United States under swampland grants, to public school purposes. By constitution, article XI, sections 8 and 10, the disposition of school and swampland grant lands, frequently referred to as trust fund lands, is limited to sale at public auction or exchange. Roughly 100,000 acres of state-owned, mostly trust fund land, is located within that portion of the Superior National Forest that is described as the Boundary Waters Canoe Area Wilderness. Much of this state-owned trust fund land, as well as other state-owned land that is tax-forfeited and is held in trust for local taxing districts, is high-value lakeshore land. The state has not disposed of these lands to the United States and has not ceded jurisdiction over these lands, either expressly or implicitly, to the United States.\nIn the discharge of their official duties, the governor, attorney general, other constitutional officers, and other public officials, such as the commissioner of natural resources, shall vigorously assert and defend, in all forums, the state's ownership of and jurisdiction over the navigable waters and their beds, the state trust fund lands and lands held in trust for local taxing districts located in the Superior National Forest, the natural resources related to these lands, waters, and beds, and the associated rights of the state and its citizens arising from the state's ownership and jurisdictional interests in these lands, waters, and beds. In furtherance of their duties, the governor, attorney general, other constitutional officers, and other public officials shall, additionally, be especially cognizant of the free rights of travel afforded to citizens of Minnesota and others under the Webster-Ashburton Treaty (proclaimed November 10, 1842) and the Root-Bryce Treaty (proclaimed May 13, 1910) on international and associated boundary waters. Also, in furtherance of their duties, in any exchange or other disposition of state-owned land located within the Boundary Waters Canoe Area Wilderness, the governor, attorney general, state auditor, commissioner of natural resources, and any other public official involved in such matters shall be especially cognizant of the high value of the lakeshore and other state land located within the area.",
     "repealed": false,
     "rule": {
-      "if": [
+      "and": [
         {
-          "and": [
+          "==": [
             {
-              "===": [
-                {
-                  "var": "state"
-                },
-                true
-              ]
+              "var": "state"
             },
-            {
-              "===": [
-                {
-                  "var": "navigable_waters"
-                },
-                true
-              ]
-            }
+            true
           ]
         },
         {
-          "var": "state_ownership"
+          "==": [
+            {
+              "var": "navigable_waters_owned_by_state"
+            },
+            true
+          ]
         },
         {
-          "if": [
+          "==": [
             {
-              "===": [
-                {
-                  "var": "section"
-                },
-                1.044
-              ]
+              "var": "state_consent"
             },
+            false
+          ]
+        },
+        {
+          "==": [
             {
-              "var": "consent_granted"
+              "var": "trust_fund_lands_disposed"
             },
+            false
+          ]
+        },
+        {
+          "==": [
             {
-              "if": [
+              "var": "jurisdiction_ceded"
+            },
+            false
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": true,
+        "navigable_waters_owned_by_state": true,
+        "state_consent": false,
+        "trust_fund_lands_disposed": false,
+        "jurisdiction_ceded": false
+      },
+      {
+        "state": true,
+        "navigable_waters_owned_by_state": true,
+        "state_consent": true,
+        "trust_fund_lands_disposed": false,
+        "jurisdiction_ceded": false
+      },
+      {
+        "state": true,
+        "navigable_waters_owned_by_state": false,
+        "state_consent": false,
+        "trust_fund_lands_disposed": false,
+        "jurisdiction_ceded": false
+      }
+    ],
+    "variables": [
+      "state",
+      "navigable_waters_owned_by_state",
+      "state_consent",
+      "trust_fund_lands_disposed",
+      "jurisdiction_ceded"
+    ],
+    "consequences": [
+      "The state retains ownership and jurisdiction over navigable waters and trust fund lands."
+    ]
+  },
+  {
+    "id": "1.149",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.149",
+    "title": "1.149 STATE MUSHROOM.",
+    "text": "Morchella esculenta, commonly known as the morel, sponge mushroom, or honeycomb morel, is adopted as the official state mushroom of the state of Minnesota.\nA photograph of the morel, approved by the commissioner of natural resources, shall be preserved and may be displayed in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "===": [
+            {
+              "var": "state_mushroom"
+            },
+            "Morchella esculenta"
+          ]
+        },
+        {
+          "===": [
+            {
+              "var": "photograph_approved"
+            },
+            "yes"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state_mushroom": "Morchella esculenta",
+        "photograph_approved": "yes"
+      },
+      {
+        "state_mushroom": "Agaricus bisporus",
+        "photograph_approved": "yes"
+      },
+      {
+        "state_mushroom": "Morchella esculenta",
+        "photograph_approved": "no"
+      }
+    ],
+    "variables": [
+      "state_mushroom",
+      "photograph_approved"
+    ],
+    "consequences": [
+      "The morel is the official state mushroom of Minnesota and its photograph can be displayed in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.1485",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1485",
+    "title": "1.1485 STATE SOIL.",
+    "text": "Lester is designated as the official soil of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "==": [
+        {
+          "var": "state"
+        },
+        "Minnesota"
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "soil": "Lester"
+      },
+      {
+        "state": "Iowa",
+        "soil": "Tama"
+      },
+      {
+        "state": "Minnesota",
+        "soil": "Clayton"
+      }
+    ],
+    "variables": [
+      "state"
+    ],
+    "consequences": [
+      "Lester is the official soil"
+    ]
+  },
+  {
+    "id": "1.046",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.046",
+    "title": "1.046 EVIDENCE OF CONSENT.",
+    "text": "The consent of the state given under sections 1.041 to 1.048 to the acquisition by the United States of any land or right or interest in land in this state or to the exercise of jurisdiction over any place in this state shall be evidenced by the certificate of the governor, issued in duplicate, under the great seal of the state, upon application by an authorized officer of the United States and upon proof that title to the property has vested in the United States. The certificate shall set forth\n(a) a description of the property,\n(b) the authority for, purpose of, and method used in acquiring it, and\n(c) the conditions of the jurisdiction of the state and the United States over it,\nand shall declare the consent of the state under sections 1.041 to 1.048, as the case may require. When necessary for proper identification of the property a map may be attached to the certificate, and the applicant may be required to furnish it. One duplicate of the certificate shall be filed with the secretary of state. The other shall be delivered to the applicant, who shall record it in the office of the county recorder of each county in which the land or any part of it is situated.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "application_by_authorized_officer"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "title_vested_in_US"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "certificate_issued"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "certificate_filed_with_secretary_of_state"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "certificate_recorded_in_county"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "application_by_authorized_officer": true,
+        "title_vested_in_US": true,
+        "certificate_issued": true,
+        "certificate_filed_with_secretary_of_state": true,
+        "certificate_recorded_in_county": true
+      },
+      {
+        "application_by_authorized_officer": true,
+        "title_vested_in_US": false,
+        "certificate_issued": true,
+        "certificate_filed_with_secretary_of_state": true,
+        "certificate_recorded_in_county": true
+      },
+      {
+        "application_by_authorized_officer": true,
+        "title_vested_in_US": true,
+        "certificate_issued": false,
+        "certificate_filed_with_secretary_of_state": true,
+        "certificate_recorded_in_county": true
+      }
+    ],
+    "variables": [
+      "application_by_authorized_officer",
+      "title_vested_in_US",
+      "certificate_issued",
+      "certificate_filed_with_secretary_of_state",
+      "certificate_recorded_in_county"
+    ],
+    "consequences": [
+      "State consent is valid and recognized under sections 1.041 to 1.048."
+    ]
+  },
+  {
+    "id": "1.1498",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1498",
+    "title": "1.1498 STATE PHOTOGRAPH.",
+    "text": "The world-renowned photograph \"Grace,\" depicting an elderly man bowing his head and giving thanks, taken in Bovey, Minnesota, in 1918, by Eric Enstrom, is designated as the state photograph.\nA copy of the photograph \"Grace\" must be displayed in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "photograph_name"
+            },
+            "Grace"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "photographer"
+            },
+            "Eric Enstrom"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "year_taken"
+            },
+            1918
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "location"
+            },
+            "Bovey, Minnesota"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "photograph_name": "Grace",
+        "photographer": "Eric Enstrom",
+        "year_taken": 1918,
+        "location": "Bovey, Minnesota",
+        "office_displayed": "Secretary of State"
+      },
+      {
+        "photograph_name": "Grace",
+        "photographer": "Eric Enstrom",
+        "year_taken": 1918,
+        "location": "Bovey, Minnesota",
+        "office_displayed": "Governor's Office"
+      },
+      {
+        "photograph_name": "Sunset",
+        "photographer": "John Doe",
+        "year_taken": 1920,
+        "location": "New York",
+        "office_displayed": "Secretary of State"
+      }
+    ],
+    "variables": [
+      "photograph_name",
+      "photographer",
+      "year_taken",
+      "location",
+      "office_displayed"
+    ],
+    "consequences": [
+      "A copy of the photograph 'Grace' must be displayed in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.049",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.049",
+    "title": "1.049 ACQUISITION OF LANDS IN TAMARAC NATIONAL WILDLIFE REFUGE BY UNITED STATES.",
+    "text": "Consent of the State of Minnesota is given to the acquisition by the United States in any manner authorized by act of Congress of lands lying within the original boundaries of the Tamarac National Wildlife Refuge as established by Executive Order No. 7902 dated May 31, 1938, of the President of the United States for any purpose incident to the development or maintenance of that refuge, other acts notwithstanding.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "land_location"
+            },
+            "Tamarac National Wildlife Refuge"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "executive_order"
+            },
+            "7902"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "date"
+            },
+            1938
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "purpose"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "land_location": "Tamarac National Wildlife Refuge",
+        "executive_order": "7902",
+        "date": 1938,
+        "purpose": true
+      },
+      {
+        "state": "Minnesota",
+        "land_location": "Tamarac National Wildlife Refuge",
+        "executive_order": "7902",
+        "date": 1938,
+        "purpose": false
+      },
+      {
+        "state": "Minnesota",
+        "land_location": "Another Refuge",
+        "executive_order": "7902",
+        "date": 1938,
+        "purpose": true
+      }
+    ],
+    "variables": [
+      "state",
+      "land_location",
+      "executive_order",
+      "date",
+      "purpose"
+    ],
+    "consequences": [
+      "Consent is given for the acquisition of land by the United States for the development or maintenance of the Tamarac National Wildlife Refuge."
+    ]
+  },
+  {
+    "id": "1.21",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.21",
+    "title": "1.21 GREAT LAKES BASIN COMPACT.",
+    "text": "The Great Lakes Basin Compact is ratified, enacted into law, and entered into by this state as a party with any other state or province which, pursuant to article II of the compact, has legally joined in it in the form substantially as follows:\nThe party states solemnly agree:\nARTICLE I\nThe purposes of this compact are, through means of joint or cooperative action:\n1. To promote the orderly, integrated, and comprehensive development, use, and conservation of the water resources of the Great Lakes Basin (hereinafter called the Basin).\n2. To plan for the welfare and development of the water resources of the Basin as a whole as well as for those portions of the Basin which may have problems of special concern.\n3. To make it possible for the states of the Basin and their people to derive the maximum benefit from utilization of public works, in the form of navigational aids or otherwise, which may exist or which may be constructed from time to time.\n4. To advise in securing and maintaining a proper balance among industrial, commercial, agricultural, water supply, residential, recreational, and other legitimate uses of the water resources of the Basin.\n5. To establish and maintain an intergovernmental agency to the end that the purposes of this compact may be accomplished more effectively.\nARTICLE II\nA. This compact shall enter into force and become effective and binding when it has been enacted by the legislatures of any four of the States of Illinois, Indiana, Michigan, Minnesota, New York, Ohio, Pennsylvania, and Wisconsin and thereafter shall enter into force and become effective and binding as to any other of said states when enacted by the legislature thereof.\nB. The Province of Ontario and the Province of Quebec, or either of them, may become states party to this compact by taking such action as their laws and the laws of the Government of Canada may prescribe for adherence thereto. For the purpose of this compact the word \"state\" shall be construed to include a province of Canada.\nARTICLE III\nThe Great Lakes Commission created by Article IV of this compact shall exercise its powers and perform its functions in respect to the Basin which, for the purposes of this compact, shall consist of so much of the following as may be within the party states:\n1. Lakes Erie, Huron, Michigan, Ontario, St. Clair, Superior, and the St. Lawrence River, together with any and all natural or man-made water interconnections between or among them.\n2. All rivers, ponds, lakes, streams, and other watercourses which, in their natural state or in their prevailing condition, are tributary to Lakes Erie, Huron, Michigan, Ontario, St. Clair, and Superior or any of them or which comprise part of any watershed draining into any of said lakes.\nARTICLE IV\nA. There is hereby created an agency of the party states to be known as The Great Lakes Commission (hereinafter called the Commission). In that name the commission may sue and be sued, acquire, hold and convey real and personal property and any interest therein. The commission shall have a seal with the words \"The Great Lakes Commission\" and such other design as it may prescribe engraved thereon by which it shall authenticate its proceedings. Transactions involving real or personal property shall conform to the laws of the state in which the property is located, and the commissioner may by bylaws provide for the execution and acknowledgment of all instruments in its behalf.\nB. The commission shall be composed of not less than three commissioners nor more than five commissioners from each party state designated or appointed in accordance with the law of the state which they represent and serving and subject to removal in accordance with such law.\nC. Each state delegation shall be entitled to three votes in the commission. The presence of commissioners from a majority of the party states shall constitute a quorum for the transaction of business at any meeting of the commission. Actions of the commission shall be by a majority of the votes cast except that any recommendations made pursuant to Article VI of this compact shall require an affirmative vote of not less than a majority of the votes cast from each of a majority of the states present and voting.\nD. The commissioners of any two or more party states may meet separately to consider problems of particular interest to their states but no action taken at any such meeting shall be deemed an action of the commission unless and until the commission shall specifically approve the same.\nE. In the absence of any commissioner, his vote may be cast by another representative or commissioner of his state provided that said commissioner or other representative casting said vote shall have a written proxy in proper form as may be required by the commission.\nF. The commission shall elect annually from among its members a chairman and vice-chairman. The commission shall appoint an executive director who shall also act as secretary-treasurer, and who shall be bonded in such amount as the commission may require. The executive director shall serve at the pleasure of the commission and at such compensation and under such terms and conditions as may be fixed by it. The executive director shall be custodian of the records of the commission with authority to affix the commission's official seal and to attest to and certify such records or copies thereof.\nG. The executive director, subject to the approval of the commission in such cases as its bylaws may provide, shall appoint and remove or discharge such personnel as may be necessary for the performance of the commission's functions. Subject to the aforesaid approval, the executive director may fix their compensation, define their duties, and require bonds of such of them as the commission may designate.\nH. The executive director, on behalf of, as trustee for, and with the approval of the commission, may borrow, accept, or contract for the services of personnel from any state or government or any subdivision or agency thereof, from any intergovernmental agency, or from any institution, person, firm or corporation; and may accept for any of the commission's purposes and functions under this compact any and all donations, gifts, and grants of money, equipment, supplies, materials, and services from any state or government or any subdivision or agency thereof or intergovernmental agency or from any institution, person, firm or corporation and may receive and utilize the same.\nI. The commission may establish and maintain one or more offices for the transacting of its business and for such purposes the executive director, on behalf of, as trustee for, and with the approval of the commission, may acquire, hold and dispose of real and personal property necessary to the performance of its functions.\nJ. No tax levied or imposed by any party state or any political subdivision thereof shall be deemed to apply to property, transactions, or income of the commission.\nK. The commission may adopt, amend and rescind bylaws, rules and regulations for the conduct of its business.\nL. The organization meeting of the commission shall be held within six months from the effective date of this compact.\nM. The commission and its executive director shall make available to the party states any information within its possession and shall always provide free access to its records by duly authorized representatives of such party states.\nN. The commission shall keep a written record of its meetings and proceedings and shall annually make a report thereof to be submitted to the duly designated official of each party state.\nO. The commission shall make and transmit annually to the legislature and Governor of each party state a report covering the activities of the commission for the preceding year and embodying such recommendations as may have been adopted by the commission. The commission may issue such additional reports as it may deem desirable.\nARTICLE V\nA. The members of the commission shall serve without compensation, but the expenses of each commissioner shall be met by the state which he represents in accordance with the law of that state. All other expenses incurred by the commission in the course of exercising the powers conferred upon it by this compact, unless met in some other manner specifically provided by this compact, shall be paid by the commission out of its own funds.\nB. The commission shall submit to the executive head or designated officer of each party state a budget of its estimated expenditures for such period as may be required by the laws of that state for presentation to the legislature thereof.\nC. Each of the commission's budgets of estimated expenditures shall contain specific recommendations of the amount or amounts to be appropriated by each of the party states. Detailed commission budgets shall be recommended by a majority of the votes cast, and the costs shall be allocated equitably among the party states in accordance with their respective interests.\nD. The commission shall not pledge the credit of any party state. The commission may meet any of its obligations in whole or in part with funds available to it under Article IV (H) of this compact, provided that the commission takes specific action setting aside such funds prior to the incurring of any obligations to be met in whole or in part in this manner. Except where the commission makes use of funds available to it under Article IV (H) hereof, the commission shall not incur any obligations prior to the allotment of funds by the party states adequate to meet the same.\nE. The commission shall keep accurate accounts of all receipts and disbursements. The receipts and disbursements of the commission shall be subject to the audit and accounting procedures established under the bylaws. However, all receipts and disbursements of funds handled by the commission shall be audited yearly by a qualified public accountant and the report of the audit shall be included in and become a part of the annual report of the commission.\nF. The accounts of the commission shall be open at any reasonable time for inspection by such agency, representative or representatives of the party states as may be duly constituted for that purpose and by others who may be authorized by the commission.\nARTICLE VI\nThe commission shall have power to:\nA. Collect, correlate, interpret, and report on data relating to the water resources and the use thereof in the Basin or any portion thereof.\nB. Recommend methods for the orderly, efficient, and balanced development, use, and conservation of the water resources of the Basin or any portion thereof to the party states and to any other governments or agencies having interests in or jurisdiction over the Basin or any portion thereof.\nC. Consider the need for and desirability of public works and improvements relating to the water resources in the Basin or any portion thereof.\nD. Consider means of improving navigation and port facilities in the Basin or any portion thereof.\nE. Consider means of improving and maintaining the fisheries of the Basin or any portion thereof.\nF. Recommend policies relating to water resources including the institution and alteration of flood plain and other zoning laws, ordinances and regulations.\nG. Recommend uniform or other laws, ordinances, or regulations relating to the development, use and conservation of the Basin's water resources to the party states or any of them and to other governments, political subdivisions, agencies or intergovernmental bodies having interests in or jurisdiction sufficient to affect conditions in the Basin or any portion thereof.\nH. Consider and recommend amendments or agreements supplementary to this compact to the party states or any of them, and assist in the formulation and drafting of such amendments or supplementary agreements.\nI. Prepare and publish reports, bulletins, and publications appropriate to this work and fix reasonable sale prices therefor.\nJ. With respect to the water resources of the Basin or any portion thereof, recommend agreements between the governments of the United States and Canada.\nK. Recommend mutual arrangements expressed by concurrent or reciprocal legislation on the part of Congress and the Parliament of Canada including but not limited to such agreements and mutual arrangements as are provided for by Article XIII of the Treaty of 1909 Relating to Boundary Waters and Questions Arising Between the United States and Canada. (Treaty Series, No. 548.)\nL. Cooperate with the governments of the United States and of Canada, the party states and any public or private agencies or bodies having interests in or jurisdiction sufficient to affect the Basin or any portion thereof.\nM. At the request of the United States, or in the event that a province shall be a party state, at the request of the Government of Canada, assist in the negotiation and formulation of any treaty or other mutual arrangement or agreement between the United States and Canada with reference to the Basin or any portion thereof.\nN. Make any recommendation and do all things necessary and proper to carry out the powers conferred upon the commission by this compact, provided that no action of the commission shall have the force of law in, or be binding upon, any party state.\nARTICLE VII\nEach party state agrees to consider the action the commission recommends in respect to:\nA. Stabilization of lake levels.\nB. Measures for combating pollution, beach erosion, floods, and shore inundation.\nC. Uniformity in navigation regulations within the constitutional powers of the states.\nD. Proposed navigation aids and improvements.\nE. Uniformity or effective coordinating action in fishing laws and regulations and cooperative action to eradicate destructive and parasitical forces endangering the fisheries, wild life and other water resources.\nF. Suitable hydroelectric power developments.\nG. Cooperative programs for control of soil and bank erosion for the general improvement of the Basin.\nH. Diversion of waters from and into the Basin.\nI. Other measures the commission may recommend to the states pursuant to Article VI of this compact.\nARTICLE VIII\nThis compact shall continue in force and remain binding upon each party state until renounced by act of the legislature of such state, in such form and manner as it may choose and as may be valid and effective to repeal a statute of said state, provided that such renunciation shall not become effective until six months after notice of such action shall have been officially communicated in writing to the executive head of the other party states.\nARTICLE IX\nIt is intended that the provisions of this compact shall be reasonably and liberally construed to effectuate the purposes thereof. The provisions of this compact shall be severable and if any phrase, clause, sentence or provision of this compact is declared to be contrary to the constitution of any party state or of the United States, or in the case of a province, to the British North America Act of 1867 as amended, or the applicability thereof to any state, agency, person or circumstance is held invalid, the constitutionality of the remainder of this compact and the applicability thereof to any state, agency, person or circumstance shall not be affected thereby, provided further that if this compact shall be held contrary to the Constitution of the United States, or in the case of a province, to the British North America Act of 1867 as amended, or of any party state, the compact shall remain in full force and effect as to the remaining states and in full force and effect as to the state affected as to all severable matters.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "compact_status"
+            },
+            "ratified"
+          ]
+        },
+        {
+          "in": [
+            {
+              "var": "state"
+            },
+            [
+              "Illinois",
+              "Indiana",
+              "Michigan",
+              "Minnesota",
+              "New York",
+              "Ohio",
+              "Pennsylvania",
+              "Wisconsin"
+            ]
+          ]
+        },
+        {
+          "or": [
+            {
+              "and": [
                 {
-                  "===": [
+                  "==": [
                     {
-                      "var": "section"
+                      "var": "province_status"
                     },
-                    1.045
+                    "joined"
                   ]
                 },
                 {
-                  "var": "land_only"
+                  "in": [
+                    {
+                      "var": "province"
+                    },
+                    [
+                      "Ontario",
+                      "Quebec"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "state_legislature_count"
+                    },
+                    4
+                  ]
                 },
                 {
-                  "var": "no_consent"
+                  "==": [
+                    {
+                      "var": "state_legislature_status"
+                    },
+                    "enacted"
+                  ]
                 }
               ]
             }
@@ -242,25 +1050,40 @@
     },
     "examples": [
       {
-        "state": true,
-        "navigable_waters": true,
-        "section": 1.044
+        "compact_status": "ratified",
+        "state": "Illinois",
+        "province_status": "joined",
+        "province": "Ontario",
+        "state_legislature_count": 4,
+        "state_legislature_status": "enacted"
       },
       {
-        "state": true,
-        "navigable_waters": true,
-        "section": 1.045
+        "compact_status": "ratified",
+        "state": "New York",
+        "province_status": "not_joined",
+        "province": "Quebec",
+        "state_legislature_count": 4,
+        "state_legislature_status": "enacted"
       },
       {
-        "state": false,
-        "navigable_waters": false,
-        "section": 1.046
+        "compact_status": "not_ratified",
+        "state": "Ohio",
+        "province_status": "joined",
+        "province": "Ontario",
+        "state_legislature_count": 3,
+        "state_legislature_status": "not_enacted"
       }
     ],
     "variables": [
+      "compact_status",
       "state",
-      "navigable_waters",
-      "section"
+      "province_status",
+      "province",
+      "state_legislature_count",
+      "state_legislature_status"
+    ],
+    "consequences": [
+      "The Great Lakes Basin Compact is in effect for the state or province."
     ]
   },
   {
@@ -276,8 +1099,320 @@
             {
               "var": "county"
             },
+            [
+              "Big Stone Lake",
+              "Lake Traverse",
+              "Bois de Sioux River",
+              "Red River of the North"
+            ]
+          ]
+        },
+        {
+          "in": [
             {
-              "var": "bordering_counties"
+              "var": "state"
+            },
+            [
+              "State1",
+              "State2"
+            ]
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "county": "Big Stone Lake",
+        "state": "State1"
+      },
+      {
+        "county": "Lake Traverse",
+        "state": "State2"
+      },
+      {
+        "county": "Bois de Sioux River",
+        "state": "State3"
+      }
+    ],
+    "variables": [
+      "county",
+      "state"
+    ],
+    "consequences": [
+      "Courts and officers have jurisdiction in civil and criminal cases on these waters."
+    ]
+  },
+  {
+    "id": "1.1471",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1471",
+    "title": "1.1471 STATE FIRE MUSEUM.",
+    "text": "The Bill and Bonnie Daniels Firefighters Hall and Museum in the city of Minneapolis is designated as the official state fire museum.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "museum_name"
+            },
+            "Bill and Bonnie Daniels Firefighters Hall and Museum"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "city"
+            },
+            "Minneapolis"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
+        "city": "Minneapolis"
+      },
+      {
+        "museum_name": "Some Other Museum",
+        "city": "Minneapolis"
+      },
+      {
+        "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
+        "city": "Another City"
+      }
+    ],
+    "variables": [
+      "museum_name",
+      "city"
+    ],
+    "consequences": [
+      "The museum is designated as the official state fire museum."
+    ]
+  },
+  {
+    "id": "1.1465",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1465",
+    "title": "1.1465 STATE BEE.",
+    "text": "The rusty patched bumble bee, Bombus affinis, is the official bee of the state of Minnesota.\nA photograph of the rusty patched bumble bee must be preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "official_bee"
+            },
+            "Bombus affinis"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "photo_preserved"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "official_bee": "Bombus affinis",
+        "state": "Minnesota",
+        "photo_preserved": true
+      },
+      {
+        "official_bee": "Bombus affinis",
+        "state": "Minnesota",
+        "photo_preserved": false
+      },
+      {
+        "official_bee": "Apis mellifera",
+        "state": "Minnesota",
+        "photo_preserved": true
+      }
+    ],
+    "variables": [
+      "official_bee",
+      "state",
+      "photo_preserved"
+    ],
+    "consequences": [
+      "The rusty patched bumble bee is recognized as the official bee of Minnesota and its photograph is preserved in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.146",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.146",
+    "title": "1.146 STATE FISH.",
+    "text": "The walleye, Stizostedion v. vitreum, is the official fish of the state of Minnesota.\nA photograph of the walleye shall be preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "official_fish.state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "official_fish.name"
+            },
+            "walleye"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "official_fish.scientific_name"
+            },
+            "Stizostedion v. vitreum"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "official_fish": {
+          "state": "Minnesota",
+          "name": "walleye",
+          "scientific_name": "Stizostedion v. vitreum"
+        }
+      },
+      {
+        "official_fish": {
+          "state": "Minnesota",
+          "name": "bass",
+          "scientific_name": "Micropterus salmoides"
+        }
+      },
+      {
+        "official_fish": {
+          "state": "Wisconsin",
+          "name": "walleye",
+          "scientific_name": "Stizostedion v. vitreum"
+        }
+      }
+    ],
+    "variables": [
+      "official_fish.state",
+      "official_fish.name",
+      "official_fish.scientific_name"
+    ],
+    "consequences": [
+      "A photograph of the walleye shall be preserved in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.23",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.23",
+    "title": "1.23 STATE OFFICERS, DUTIES.",
+    "text": "All officers of this state shall do all things falling within their respective jurisdictions necessary to or incidental to carrying out the compact in every particular. It is the policy of this state to perform and carry out the compact and to accomplish its purposes. All officers, bureaus, departments and persons of the state government or administration shall, at reasonable times and upon request of the commission, furnish it with information and data possessed by them and aid it by loan of personnel or other means within their legal powers.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "officer_jurisdiction"
+            },
+            "state"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "policy"
+            },
+            "perform_compact"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "request_from_commission"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "officer_jurisdiction": "state",
+        "policy": "perform_compact",
+        "request_from_commission": true
+      },
+      {
+        "officer_jurisdiction": "state",
+        "policy": "perform_compact",
+        "request_from_commission": false
+      },
+      {
+        "officer_jurisdiction": "federal",
+        "policy": "perform_compact",
+        "request_from_commission": true
+      }
+    ],
+    "variables": [
+      "officer_jurisdiction",
+      "policy",
+      "request_from_commission"
+    ],
+    "consequences": [
+      "Officers and departments must provide information, data, and aid to the commission."
+    ]
+  },
+  {
+    "id": "1.048",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.048",
+    "title": "1.048 EFFECT OF REPEAL OF CERTAIN LAWS.",
+    "text": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1, are repealed, but their repeal shall not affect any case in which the consent of the state to the acquisition of property or the exercise of jurisdiction by the United States was given by any of them and the acquisition of the property was completed before the taking effect of Laws 1943, chapter 343, nor any case in which the consent of the state was given by Laws 1941, chapter 66, before the taking effect of Laws 1943, chapter 343.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "or": [
+            {
+              "<": [
+                {
+                  "var": "acquisition_date"
+                },
+                "1943-01-01"
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "consent_given_by"
+                    },
+                    "Laws 1941, chapter 66"
+                  ]
+                },
+                {
+                  "<": [
+                    {
+                      "var": "consent_date"
+                    },
+                    "1943-01-01"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -286,13 +1421,13 @@
             {
               "in": [
                 {
-                  "var": "water_body"
+                  "var": "statute_referenced"
                 },
                 [
-                  "Big Stone Lake",
-                  "Lake Traverse",
-                  "Bois de Sioux River",
-                  "Red River of the North"
+                  "Mason's Minnesota Statutes of 1927, sections 4 and 5",
+                  "Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6",
+                  "Mason's Supplement 1940, Section 6-1",
+                  "Laws 1941, chapter 66"
                 ]
               ]
             }
@@ -302,34 +1437,80 @@
     },
     "examples": [
       {
-        "county": "Traverse",
-        "bordering_counties": [
-          "Traverse",
-          "Grant"
-        ],
-        "water_body": "Big Stone Lake"
+        "acquisition_date": "1942-12-31",
+        "consent_given_by": "Laws 1941, chapter 66",
+        "consent_date": "1942-12-30",
+        "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
       },
       {
-        "county": "Wilkin",
-        "bordering_counties": [
-          "Wilkin",
-          "Clay"
-        ],
-        "water_body": "Red River of the North"
+        "acquisition_date": "1943-01-02",
+        "consent_given_by": "Laws 1941, chapter 66",
+        "consent_date": "1942-12-30",
+        "statute_referenced": "Laws 1941, chapter 66"
       },
       {
-        "county": "Stevens",
-        "bordering_counties": [
-          "Stevens",
-          "Pope"
-        ],
-        "water_body": "Lake Traverse"
+        "acquisition_date": "1942-12-31",
+        "consent_given_by": "Other Law",
+        "consent_date": "1942-12-30",
+        "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
       }
     ],
     "variables": [
-      "county",
-      "bordering_counties",
-      "water_body"
+      "acquisition_date",
+      "consent_given_by",
+      "consent_date",
+      "statute_referenced"
+    ],
+    "consequences": [
+      "The repeal does not affect the case."
+    ]
+  },
+  {
+    "id": "2.021",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.021",
+    "title": "2.021 NUMBER OF MEMBERS.",
+    "text": "For each legislature, until a new apportionment shall have been made, the senate is composed of 67 members and the house of representatives is composed of 134 members.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "senate_members"
+            },
+            67
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "house_members"
+            },
+            134
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "senate_members": 67,
+        "house_members": 134
+      },
+      {
+        "senate_members": 66,
+        "house_members": 134
+      },
+      {
+        "senate_members": 67,
+        "house_members": 133
+      }
+    ],
+    "variables": [
+      "senate_members",
+      "house_members"
+    ],
+    "consequences": [
+      "The legislature is correctly apportioned with 67 senate members and 134 house members."
     ]
   },
   {
@@ -342,14 +1523,6 @@
       "if": [
         {
           "and": [
-            {
-              "===": [
-                {
-                  "var": "state"
-                },
-                "Minnesota"
-              ]
-            },
             {
               "in": [
                 {
@@ -380,53 +1553,73 @@
                   "cantonments",
                   "storage places",
                   "target ranges",
-                  "military purpose",
-                  "naval purpose"
+                  "military purposes",
+                  "naval purposes"
                 ]
               ]
-            }
-          ]
-        },
-        {
-          "and": [
+            },
             {
-              "===": [
+              "==": [
+                {
+                  "var": "state"
+                },
+                "Minnesota"
+              ]
+            },
+            {
+              "==": [
                 {
                   "var": "jurisdiction_accepted"
                 },
                 true
               ]
-            },
+            }
+          ]
+        },
+        {
+          "and": [
             {
               "or": [
                 {
-                  "===": [
+                  "==": [
                     {
-                      "var": "navigable_waters"
+                      "var": "tax_type"
                     },
-                    false
+                    "income"
                   ]
                 },
                 {
-                  "and": [
+                  "==": [
                     {
-                      "===": [
-                        {
-                          "var": "navigable_waters"
-                        },
-                        true
-                      ]
+                      "var": "tax_type"
                     },
+                    "sales"
+                  ]
+                },
+                {
+                  "==": [
                     {
-                      "===": [
-                        {
-                          "var": "jurisdiction_includes_underwater_lands"
-                        },
-                        true
-                      ]
-                    }
+                      "var": "tax_type"
+                    },
+                    "use"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "tax_type"
+                    },
+                    "property"
                   ]
                 }
+              ]
+            },
+            {
+              "!=": [
+                {
+                  "var": "property_owner"
+                },
+                "United States"
               ]
             }
           ]
@@ -434,17 +1627,17 @@
         {
           "and": [
             {
-              "===": [
+              "==": [
                 {
-                  "var": "state_rights_reserved"
+                  "var": "location_type"
                 },
-                true
+                "navigable waters"
               ]
             },
             {
-              "===": [
+              "==": [
                 {
-                  "var": "taxes_imposed"
+                  "var": "jurisdiction_includes_underwater"
                 },
                 true
               ]
@@ -458,38 +1651,287 @@
         "state": "Minnesota",
         "purpose": "courthouses",
         "jurisdiction_accepted": true,
-        "navigable_waters": true,
-        "jurisdiction_includes_underwater_lands": true,
-        "state_rights_reserved": true,
-        "taxes_imposed": true
+        "tax_type": "income",
+        "property_owner": "private",
+        "location_type": "navigable waters",
+        "jurisdiction_includes_underwater": true
       },
       {
         "state": "Minnesota",
         "purpose": "military camps",
         "jurisdiction_accepted": true,
-        "navigable_waters": false,
-        "jurisdiction_includes_underwater_lands": false,
-        "state_rights_reserved": true,
-        "taxes_imposed": true
+        "tax_type": "sales",
+        "property_owner": "private",
+        "location_type": "land",
+        "jurisdiction_includes_underwater": false
       },
       {
         "state": "Minnesota",
         "purpose": "post offices",
         "jurisdiction_accepted": false,
-        "navigable_waters": false,
-        "jurisdiction_includes_underwater_lands": false,
-        "state_rights_reserved": false,
-        "taxes_imposed": false
+        "tax_type": "property",
+        "property_owner": "United States",
+        "location_type": "navigable waters",
+        "jurisdiction_includes_underwater": true
       }
     ],
     "variables": [
       "state",
       "purpose",
       "jurisdiction_accepted",
-      "navigable_waters",
-      "jurisdiction_includes_underwater_lands",
-      "state_rights_reserved",
-      "taxes_imposed"
+      "tax_type",
+      "property_owner",
+      "location_type",
+      "jurisdiction_includes_underwater"
+    ],
+    "consequences": [
+      "Jurisdiction is ceded to the United States with tax rights reserved for Minnesota."
+    ]
+  },
+  {
+    "id": "1.26",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.26",
+    "title": "1.26 ENEMY ATTACK, TEMPORARY RELOCATION OF SEATS OF GOVERNMENT.",
+    "text": "As used in this section, \"political subdivision\" includes counties, home rule charter and statutory cities, towns, townships, school districts, authorities, and other public corporations and entities whether organized and existing under charter or general law.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of state government in the city of St. Paul, Ramsey County, Minnesota, the governor shall, as often as the exigencies of the situation require, by proclamation, declare an emergency temporary location, or locations, for the seat of government at a place, or places, in or out of the state as the governor deems advisable under the circumstances, and shall take action and issue orders as necessary for an orderly transition of the affairs of state government to the emergency temporary location, or locations. The emergency temporary location, or locations, shall remain the seat of government until the legislature by law establishes a new location, or locations, or until the emergency is declared to be ended by the governor and the seat of government is returned to its normal location.\nWhile the seat of government remains at an emergency temporary location, or locations, all official acts required by law to be performed at the seat of government by any officer, agency, department or authority of this state, including the convening and meeting of the legislature in regular, extraordinary, or emergency session, shall be as valid and binding when performed at the emergency temporary location, or locations, as if performed at the normal location of the seat of government.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of local government at their regular or usual place or places, the governing body of each political subdivision of this state may meet at any place in or out of the territorial limits of the political subdivision on the call of the presiding officer or any two members of the governing body, and shall designate by ordinance, resolution or other manner, alternate or substitute places as the emergency temporary location, or locations, of government where all, or any part, of the public business may be conducted during the emergency situation. The places may be in or out of the territorial limits of the political subdivision and the state.\nWhile the public business is being conducted at the emergency temporary location, or locations, the governing body and other officers of a political subdivision shall exercise, at the location, or locations, all of the executive, legislative, and judicial powers and functions conferred upon it and its officers by its charter and the laws and constitution of this state. Acts of the governing body and officers shall be as valid and binding as if performed within the territorial limits of their political subdivision.\nThis section shall be supreme if it is employed notwithstanding any other statute, charter or ordinance.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "emergency_type"
+                },
+                "enemy_attack"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "emergency_type"
+                },
+                "threatened_enemy_attack"
+              ]
+            }
+          ]
+        },
+        {
+          "if": [
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "location"
+                    },
+                    "St. Paul"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "location"
+                    },
+                    "Ramsey County"
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "government_level"
+                    },
+                    "state"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "action"
+                    },
+                    "declare_emergency_location"
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "government_level"
+                    },
+                    "local"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "action"
+                    },
+                    "meet_outside_limits"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "emergency_type": "enemy_attack",
+        "location": "St. Paul",
+        "government_level": "state",
+        "action": "declare_emergency_location"
+      },
+      {
+        "emergency_type": "threatened_enemy_attack",
+        "location": "Ramsey County",
+        "government_level": "local",
+        "action": "meet_outside_limits"
+      },
+      {
+        "emergency_type": "enemy_attack",
+        "location": "Other",
+        "government_level": "state",
+        "action": "declare_emergency_location"
+      }
+    ],
+    "variables": [
+      "emergency_type",
+      "location",
+      "government_level",
+      "action"
+    ],
+    "consequences": [
+      "State government can declare an emergency location outside St. Paul or Ramsey County.",
+      "Local government can meet outside their usual limits.",
+      "State government can declare an emergency location anywhere."
+    ]
+  },
+  {
+    "id": "1.16",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.16",
+    "title": "1.16 MAPS ON FILE.",
+    "text": "The maps referred to in the compact in section 1.15 as Exhibits A, B, and C are the original maps on file with the report of the Michigan-Minnesota-Wisconsin boundary conference in the Office of the Secretary of State of Wisconsin, of which duplicate original maps are on file in the Office of the Secretary of State of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitA.location"
+            },
+            "Office of the Secretary of State of Wisconsin"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitB.location"
+            },
+            "Office of the Secretary of State of Wisconsin"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitC.location"
+            },
+            "Office of the Secretary of State of Wisconsin"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitA.duplicateLocation"
+            },
+            "Office of the Secretary of State of Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitB.duplicateLocation"
+            },
+            "Office of the Secretary of State of Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "maps.ExhibitC.duplicateLocation"
+            },
+            "Office of the Secretary of State of Minnesota"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "maps": {
+          "ExhibitA": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitB": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitC": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          }
+        }
+      },
+      {
+        "maps": {
+          "ExhibitA": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitB": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitC": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          }
+        }
+      },
+      {
+        "maps": {
+          "ExhibitA": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitB": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          },
+          "ExhibitC": {
+            "location": "Office of the Secretary of State of Wisconsin",
+            "duplicateLocation": "Office of the Secretary of State of Minnesota"
+          }
+        }
+      }
+    ],
+    "variables": [
+      "maps.ExhibitA.location",
+      "maps.ExhibitB.location",
+      "maps.ExhibitC.location",
+      "maps.ExhibitA.duplicateLocation",
+      "maps.ExhibitB.duplicateLocation",
+      "maps.ExhibitC.duplicateLocation"
+    ],
+    "consequences": [
+      "The maps are correctly filed in the respective offices as per the compact."
     ]
   },
   {
@@ -501,7 +1943,7 @@
     "rule": {
       "if": [
         {
-          "or": [
+          "and": [
             {
               "===": [
                 {
@@ -525,7 +1967,7 @@
             {
               "===": [
                 {
-                  "var": "acquisition_method"
+                  "var": "land_acquisition_method"
                 },
                 "purchase"
               ]
@@ -533,7 +1975,7 @@
             {
               "===": [
                 {
-                  "var": "state_consent"
+                  "var": "state_consent_obtained"
                 },
                 true
               ]
@@ -545,7 +1987,7 @@
             {
               "===": [
                 {
-                  "var": "acquisition_method"
+                  "var": "land_acquisition_method"
                 },
                 "condemnation"
               ]
@@ -553,7 +1995,7 @@
             {
               "===": [
                 {
-                  "var": "state_consent"
+                  "var": "state_consent_obtained"
                 },
                 true
               ]
@@ -566,23 +2008,102 @@
       {
         "jurisdiction": true,
         "state_consent": true,
-        "acquisition_method": "purchase"
-      },
-      {
-        "jurisdiction": false,
-        "state_consent": true,
-        "acquisition_method": "condemnation"
+        "land_acquisition_method": "purchase",
+        "state_consent_obtained": true
       },
       {
         "jurisdiction": true,
+        "state_consent": true,
+        "land_acquisition_method": "condemnation",
+        "state_consent_obtained": true
+      },
+      {
+        "jurisdiction": false,
         "state_consent": false,
-        "acquisition_method": "purchase"
+        "land_acquisition_method": "purchase",
+        "state_consent_obtained": false
       }
     ],
     "variables": [
       "jurisdiction",
       "state_consent",
-      "acquisition_method"
+      "land_acquisition_method",
+      "state_consent_obtained"
+    ],
+    "consequences": [
+      "The United States can exercise jurisdiction over the land with state consent."
+    ]
+  },
+  {
+    "id": "1.147",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.147",
+    "title": "1.147 STATE GEMSTONE.",
+    "text": "The Lake Superior agate is the official gemstone of the state of Minnesota.\nA photograph and a typical specimen of the Lake Superior agate shall be preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "official_gemstone"
+            },
+            "Lake Superior agate"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "preserved_photograph"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "preserved_specimen"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "official_gemstone": "Lake Superior agate",
+        "state": "Minnesota",
+        "preserved_photograph": true,
+        "preserved_specimen": true
+      },
+      {
+        "official_gemstone": "Lake Superior agate",
+        "state": "Minnesota",
+        "preserved_photograph": false,
+        "preserved_specimen": true
+      },
+      {
+        "official_gemstone": "Amethyst",
+        "state": "Minnesota",
+        "preserved_photograph": true,
+        "preserved_specimen": true
+      }
+    ],
+    "variables": [
+      "official_gemstone",
+      "state",
+      "preserved_photograph",
+      "preserved_specimen"
+    ],
+    "consequences": [
+      "The Lake Superior agate is recognized as the official gemstone of Minnesota and is preserved in the Office of the Secretary of State."
     ]
   },
   {
@@ -602,31 +2123,15 @@
           ]
         },
         {
-          "or": [
+          "in": [
             {
-              "==": [
-                {
-                  "var": "acquisition_method"
-                },
-                "purchase"
-              ]
+              "var": "acquisition_method"
             },
-            {
-              "==": [
-                {
-                  "var": "acquisition_method"
-                },
-                "gift"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "acquisition_method"
-                },
-                "lease"
-              ]
-            }
+            [
+              "purchase",
+              "gift",
+              "lease"
+            ]
           ]
         },
         {
@@ -672,6 +2177,101 @@
       "acquisition_method",
       "purpose",
       "act_of_congress"
+    ],
+    "consequences": [
+      "Consent is given to the United States for land acquisition in Minnesota for the refuge."
+    ]
+  },
+  {
+    "id": "1.27",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.27",
+    "title": "1.27 LOCAL INTERIM EMERGENCY SUCCESSION ACT.",
+    "text": "This section is the \"Local Interim Emergency Succession Act.\"\nBecause of the existing possibility of a nuclear attack or a natural disaster requiring the declaration of a state of emergency, it is found urgent and necessary to insure the continuity of duly elected and lawful leadership of the political subdivisions of the state.\nThe governing body of any county or municipality may enact ordinances or resolutions as necessary to provide for the continuity of its government and the emergency interim succession of its key government officials. The ordinances and resolutions shall provide a method for temporary emergency appointments to local public offices.\nAn \"interim emergency successor,\" when designated by the governing body of a political subdivision under subdivision 3 shall exercise that office until the duly elected or appointed officer resumes the office or a successor is designated as required by law.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "emergency_declared"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "nuclear_attack"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "natural_disaster"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "governing_body_action"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "emergency_appointments_made"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "emergency_declared": true,
+        "nuclear_attack": false,
+        "natural_disaster": false,
+        "governing_body_action": true,
+        "emergency_appointments_made": true
+      },
+      {
+        "emergency_declared": false,
+        "nuclear_attack": true,
+        "natural_disaster": false,
+        "governing_body_action": true,
+        "emergency_appointments_made": true
+      },
+      {
+        "emergency_declared": false,
+        "nuclear_attack": false,
+        "natural_disaster": true,
+        "governing_body_action": false,
+        "emergency_appointments_made": false
+      }
+    ],
+    "variables": [
+      "emergency_declared",
+      "nuclear_attack",
+      "natural_disaster",
+      "governing_body_action",
+      "emergency_appointments_made"
+    ],
+    "consequences": [
+      "Continuity of government is ensured through emergency appointments."
     ]
   },
   {
@@ -687,17 +2287,17 @@
             {
               "==": [
                 {
-                  "var": "title_acquired"
+                  "var": "US_title_acquired"
                 },
-                "yes"
+                true
               ]
             },
             {
               "==": [
                 {
-                  "var": "right_of_possession"
+                  "var": "US_right_of_possession"
                 },
-                "yes"
+                true
               ]
             }
           ]
@@ -705,39 +2305,39 @@
         {
           "or": [
             {
-              "==": [
+              "and": [
                 {
-                  "var": "ownership"
+                  "==": [
+                    {
+                      "var": "US_owns"
+                    },
+                    true
+                  ]
                 },
-                "yes"
+                {
+                  "==": [
+                    {
+                      "var": "purpose_matches"
+                    },
+                    true
+                  ]
+                }
               ]
             },
             {
               "==": [
                 {
-                  "var": "occupation"
+                  "var": "US_occupies"
                 },
-                "yes"
-              ]
-            }
-          ]
-        },
-        {
-          "or": [
-            {
-              "==": [
-                {
-                  "var": "purpose_matches"
-                },
-                "yes"
+                true
               ]
             },
             {
               "==": [
                 {
-                  "var": "jurisdiction_relinquished"
+                  "var": "US_relinquishes_jurisdiction"
                 },
-                "yes"
+                true
               ]
             }
           ]
@@ -746,37 +2346,502 @@
     },
     "examples": [
       {
-        "title_acquired": "yes",
-        "right_of_possession": "no",
-        "ownership": "yes",
-        "occupation": "no",
-        "purpose_matches": "yes",
-        "jurisdiction_relinquished": "no"
+        "US_title_acquired": true,
+        "US_right_of_possession": false,
+        "US_owns": true,
+        "purpose_matches": true,
+        "US_occupies": false,
+        "US_relinquishes_jurisdiction": false
       },
       {
-        "title_acquired": "no",
-        "right_of_possession": "yes",
-        "ownership": "no",
-        "occupation": "yes",
-        "purpose_matches": "no",
-        "jurisdiction_relinquished": "yes"
+        "US_title_acquired": false,
+        "US_right_of_possession": true,
+        "US_owns": false,
+        "purpose_matches": false,
+        "US_occupies": true,
+        "US_relinquishes_jurisdiction": false
       },
       {
-        "title_acquired": "no",
-        "right_of_possession": "no",
-        "ownership": "no",
-        "occupation": "no",
-        "purpose_matches": "no",
-        "jurisdiction_relinquished": "no"
+        "US_title_acquired": false,
+        "US_right_of_possession": false,
+        "US_owns": false,
+        "purpose_matches": false,
+        "US_occupies": false,
+        "US_relinquishes_jurisdiction": true
       }
     ],
     "variables": [
-      "title_acquired",
-      "right_of_possession",
-      "ownership",
-      "occupation",
+      "US_title_acquired",
+      "US_right_of_possession",
+      "US_owns",
       "purpose_matches",
-      "jurisdiction_relinquished"
+      "US_occupies",
+      "US_relinquishes_jurisdiction"
+    ],
+    "consequences": [
+      "Jurisdiction is vested and continues"
+    ]
+  },
+  {
+    "id": "2.01",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.01",
+    "title": "2.01 NAMES AND BOUNDARIES.",
+    "text": "The state is divided into the several counties named in the following schedule, the boundaries whereof, except as changed or established by vote of the people since the year 1892, are as fixed by the several laws referred to in the schedule after their respective names. The laws so referred to are hereby continued in force so far as they relate to the fixing of county lines at the respective dates of their passage.\nSCHEDULE\nAitkin (G.S. 1866 c. 8 s. 2; 1871 c. 96; Sp. L. 1872 c. 145; 1887 c. 117); Anoka (G.S. 1866 c. 8 s. 4; Id. s. 36; Const. art. 11, s. 7); Becker (G.S. 1866 c. 8 s. 5); Beltrami (1866 c. 46; 1879 c. 10 s. 1; 1889 c. 75 s. 1); (Lake of the Woods County formed therefrom 1922); Benton (G.S. 1866 c. 8 s. 6); Big Stone (G.S. 1866 c. 8 s. 7; Sp. L. 1876 c. 159); Blue Earth (G.S. 1866 c. 8 s. 8); Brown (1865 c. 71 s. 3; G.S. 1866 c. 8 s. 9); Carlton (G.S. 1866 c. 8 s. 10); Carver (G.S. 1866 c. 8 s. 11); Cass (G.S. 1866 c. 8 s. 12; 1883 c. 78 s. 1, 1887 c. 116 s. 1, c. 117 s. 1, c. 118 s. 1; 1889 c. 75 s. 2); Chippewa (G.S. 1866 c. 8 s. 13; 1868 c. 113 s. 1); Chisago (G.S. 1866 c. 8 s. 14); Clay (G.S. 1866 c. 8 s. 15); Clearwater (formed by popular vote); Cook (1874 c. 100 s. 1); Cottonwood (1865 c. 71 s. 2; G.S. 1866 c. 16); Crow Wing (G.S. 1866 c. 8 s. 17; 1887 c. 118 s. 2); Dakota (G.S. 1866 c. 8 s. 18; 1871 c. 97 s. 1; 1874 c. 101 s. 1); Dodge (G.S. 1866 c. 8 s. 19); Douglas (G.S. 1866 c. 8 s. 20); Faribault (G.S. 1866 c. 8 s. 21); Fillmore (G.S. 1866 c. 8 s. 22); Freeborn (G.S. 1866 c. 8 s. 23); Goodhue (G.S. 1866 c. 8 s. 24); Grant (1868 c. 109 s. 5); Hennepin (G.S. 1866 c. 8 s. 25); Houston (G.S. 1866 c. 8 s. 26); Hubbard (1883 c. 78 s. 1); Isanti (G.S. 1866 c. 8 s. 27); Itasca (G.S. 1866 c. 8 s. 28; 1871 c. 96; 1887 c. 116 s. 1); (Koochiching County formed therefrom 1906); Jackson (G.S. 1866 c. 8 s. 29); Kanabec (G.S. 1866 c. 8 s. 30); Kandiyohi (G.S. 1866 c. 8 ss. 31, 41; 1870 c. 92 s. 1); Kittson (G.S. 1866 c. 8 s. 49; 1878 c. 59 s. 1; 1879 c. 10 s. 2); Koochiching (formed by popular vote 1906); Lac qui Parle (1871 c. 100 s. 1); Lake (G.S. 1866 c. 8 s. 33; 1874 c. 100 s. 1; 1895 c. 248); Lake of the Woods (formed by popular vote 1922); Le Sueur (Sts. 1849-58 c. 1 s. 71; G.S. 1866 c. 8 s. 34); Lincoln (1873 c. 92 s. 1); Lyon (1868 c. 112 s. 1; 1869 c. 94 s. 1; 1873 c. 92 s. 1); McLeod (G.S. 1866 c. 8 s. 38); Mahnomen (formed by popular vote 1906); Marshall (1879 c. 10 s. 3; 1883 c. 81 s. 1); Martin (G.S. 1866 c. 8 s. 37); Meeker (G.S. 1866 c. 8 s. 39; 1870 c. 97 s. 1); Mille Lacs (G.S. 1866 c. 8 s. 40); Morrison (G.S. 1866 c. 8 s. 42; 1867 c. 116 s. 1; 1870 c. 98 s. 1); Mower (G.S. 1866 c. 8 s. 43); Murray (G.S. 1866 c. 8 s. 44); Nicollet (G.S. 1866 c. 8 s. 45); Nobles (G.S. 1866 c. 8 s. 46); Norman (1881 c. 92 s. 1); (Mahnomen County formed therefrom 1906); Olmsted (G.S. 1866 c. 8 s. 47); Otter Tail (G.S. 1866 c. 8 s. 48; 1872 c. 87 s. 1); Pennington (formed by popular vote 1910); Pine (G.S. 1866 c. 8 s. 50); Pipestone (G.S. 1866 c. 8 s. 51); Polk (G.S. 1866 c. 8 s. 52; 1866 c. 46 s. 1; 1881 c. 92 s. 1); Pope (G.S. 1866 c. 8 s. 53; 1866 c. 44 s. 1); Ramsey (G.S. 1866 c. 8 s. 54; 1874 c. 101 s. 1); Red Lake (formed by popular vote); (Pennington County formed therefrom 1910); Redwood (1865 c. 71 s. 1; G.S. 1866 c. 8 s. 55; 1869 c. 94 s. 1; 1871 c. 98 s. 1; 1871 c. 100 s. 1; 1873 c. 92 s. 1); Renville (G.S. 1866 c. 8 s. 56; 1866 c. 43 s. 1; 1868 c. 10 s. 1; 1870 c. 97 s. 1); Rice (G.S. 1866 c. 8 s. 57); Rock (G.S. 1866 c. 8 s. 58); Roseau (formed by popular vote); St. Louis (G.S. 1866 c. 8 s. 59; 1895 c. 248); Scott (G.S. 1866 c. 8 s. 60; 1871 c. 97 s. 1; Sp. L. 1870 c. 2 subd. 1; Sp. L. 1875 c. 6 subd. 1 s. 2); Sherburne (G.S. 1866 c. 8 s. 61); Sibley (G.S. 1866 c. 8 s. 62); Stearns (G.S. 1866 c. 8 s. 63; 1870 c. 98 s. 1; 1874 c. 102 s. 1); Steele (G.S. 1866 c. 8 s. 64); Stevens (G.S. 1866 c. 8 s. 55; 1868 c. 109 s. 1); Swift (1870 c. 90 s. 1); Todd (G.S. 1866 c. 8 s. 66; 1867 c. 116 s. 2; 1868 c. 114 s. 1; 1874 c. 102 s. 1); Traverse (1881 c. 130 s. 1); Wabasha (G.S. 1866 c. 8 s. 68); Wadena (G.S. 1866 c. 8 s. 69); Waseca (G.S. 1866 c. 8 s. 70); Washington (G.S. 1866 c. 8 s. 71); Watonwan (G.S. 1866 c. 8 s. 72); Wilkin (1872 c. 83 s. 1); Winona (G.S. 1866 c. 8 s. 73); Wright (G.S. 1866 c. 8 s. 74); Yellow Medicine (1871 c. 98 s. 1).",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "<=": [
+            {
+              "var": "year"
+            },
+            1892
+          ]
+        },
+        {
+          "in": [
+            {
+              "var": "county"
+            },
+            [
+              "Aitkin",
+              "Anoka",
+              "Becker",
+              "Beltrami",
+              "Benton",
+              "Big Stone",
+              "Blue Earth",
+              "Brown",
+              "Carlton",
+              "Carver",
+              "Cass",
+              "Chippewa",
+              "Chisago",
+              "Clay",
+              "Cook",
+              "Cottonwood",
+              "Crow Wing",
+              "Dakota",
+              "Dodge",
+              "Douglas",
+              "Faribault",
+              "Fillmore",
+              "Freeborn",
+              "Goodhue",
+              "Grant",
+              "Hennepin",
+              "Houston",
+              "Isanti",
+              "Itasca",
+              "Jackson",
+              "Kanabec",
+              "Kandiyohi",
+              "Kittson",
+              "Lac qui Parle",
+              "Lake",
+              "Le Sueur",
+              "Lincoln",
+              "Lyon",
+              "McLeod",
+              "Marshall",
+              "Martin",
+              "Meeker",
+              "Mille Lacs",
+              "Morrison",
+              "Mower",
+              "Murray",
+              "Nicollet",
+              "Nobles",
+              "Olmsted",
+              "Otter Tail",
+              "Pine",
+              "Pipestone",
+              "Polk",
+              "Pope",
+              "Ramsey",
+              "Redwood",
+              "Renville",
+              "Rice",
+              "Rock",
+              "Scott",
+              "Sherburne",
+              "Sibley",
+              "Stearns",
+              "Steele",
+              "Stevens",
+              "Swift",
+              "Todd",
+              "Traverse",
+              "Wabasha",
+              "Wadena",
+              "Waseca",
+              "Washington",
+              "Watonwan",
+              "Wilkin",
+              "Winona",
+              "Wright",
+              "Yellow Medicine"
+            ]
+          ]
+        },
+        "The county boundaries are fixed by the laws referred to in the schedule.",
+        "The county boundaries may have changed by vote of the people."
+      ]
+    },
+    "examples": [
+      {
+        "county": "Aitkin",
+        "year": 1880
+      },
+      {
+        "county": "Lake of the Woods",
+        "year": 1922
+      },
+      {
+        "county": "Mahnomen",
+        "year": 1906
+      }
+    ],
+    "variables": [
+      "county",
+      "year"
+    ],
+    "consequences": [
+      "The county boundaries are fixed by the laws referred to in the schedule.",
+      "The county boundaries may have changed by vote of the people."
+    ]
+  },
+  {
+    "id": "1.1497",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1497",
+    "title": "1.1497 STATE BUTTERFLY.",
+    "text": "The Monarch butterfly (Danaus plexippus) is the official butterfly of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "butterfly"
+            },
+            "Monarch butterfly"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "butterfly": "Monarch butterfly",
+        "state": "Minnesota"
+      },
+      {
+        "butterfly": "Viceroy butterfly",
+        "state": "Minnesota"
+      },
+      {
+        "butterfly": "Monarch butterfly",
+        "state": "California"
+      }
+    ],
+    "variables": [
+      "butterfly",
+      "state"
+    ],
+    "consequences": [
+      "The Monarch butterfly is the official butterfly of Minnesota."
+    ]
+  },
+  {
+    "id": "1.13",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.13",
+    "title": "1.13 MONEY RECEIVED CREDITED TO HIGHWAY FUND.",
+    "text": "Any payment so received for the granting of an easement shall be deposited in the trunk highway fund.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "==": [
+            {
+              "var": "payment_type"
+            },
+            "easement"
+          ]
+        },
+        {
+          "log": "Deposit in trunk highway fund"
+        },
+        "Do nothing"
+      ]
+    },
+    "examples": [
+      {
+        "payment_type": "easement",
+        "amount": 1000
+      },
+      {
+        "payment_type": "lease",
+        "amount": 500
+      },
+      {
+        "payment_type": "easement",
+        "amount": 2000
+      }
+    ],
+    "variables": [
+      "payment_type"
+    ],
+    "consequences": [
+      "Deposit in trunk highway fund"
+    ]
+  },
+  {
+    "id": "1.05",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.05",
+    "title": "1.05 WAIVER OF IMMUNITY FOR VIOLATIONS OF CERTAIN FEDERAL STATUTES.",
+    "text": "An employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Age Discrimination in Employment Act of 1967, United States Code, title 29, section 621, et seq., as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee of the state who is aggrieved by the state's violation of the Fair Labor Standards Act of 1938, United States Code, title 29, section 201, et seq., as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Family and Medical Leave Act, United States Code, title 29, sections 2601 to 2654, as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Americans with Disabilities Act of 1990, United States Code, title 42, section 12101, as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Uniformed Services Employment and Reemployment Rights Act, United States Code, title 38, sections 4301 to 4333, as amended, may bring a civil action against the state in federal court or another court of competent jurisdiction for legal or equitable relief that will effectuate the purposes of that act.",
+    "repealed": false,
+    "rule": {
+      "or": [
+        {
+          "and": [
+            {
+              "in": [
+                {
+                  "var": "role"
+                },
+                [
+                  "employee",
+                  "former_employee",
+                  "prospective_employee"
+                ]
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "violation"
+                },
+                "Age Discrimination in Employment Act of 1967"
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "role"
+                },
+                "employee"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "violation"
+                },
+                "Fair Labor Standards Act of 1938"
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "in": [
+                {
+                  "var": "role"
+                },
+                [
+                  "employee",
+                  "former_employee",
+                  "prospective_employee"
+                ]
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "violation"
+                },
+                "Family and Medical Leave Act"
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "in": [
+                {
+                  "var": "role"
+                },
+                [
+                  "employee",
+                  "former_employee",
+                  "prospective_employee"
+                ]
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "violation"
+                },
+                "Americans with Disabilities Act of 1990"
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "in": [
+                {
+                  "var": "role"
+                },
+                [
+                  "employee",
+                  "former_employee",
+                  "prospective_employee"
+                ]
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "violation"
+                },
+                "Uniformed Services Employment and Reemployment Rights Act"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "role": "employee",
+        "violation": "Age Discrimination in Employment Act of 1967"
+      },
+      {
+        "role": "former_employee",
+        "violation": "Family and Medical Leave Act"
+      },
+      {
+        "role": "prospective_employee",
+        "violation": "Americans with Disabilities Act of 1990"
+      }
+    ],
+    "variables": [
+      "role",
+      "violation"
+    ],
+    "consequences": [
+      "The individual may bring a civil action against the state in federal court or another court of competent jurisdiction for legal or equitable relief."
+    ]
+  },
+  {
+    "id": "1.51",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.51",
+    "title": "1.51 FLAGS FLOWN AT HALF-STAFF FOLLOWING PUBLIC SAFETY OFFICER DEATH.",
+    "text": "Each American flag and Minnesota flag flown on the grounds of the Capitol Area, as described in section 15B.02, must be flown at half-staff following the death of a public safety officer, as defined in section 299A.41, subdivision 4, killed in the line of duty in Minnesota, or the death of Minnesota military personnel killed in the line of duty. The flags must be flown at half-staff for a period of time determined by the governor.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "event.type"
+                },
+                "public_safety_officer_death"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "event.type"
+                },
+                "military_personnel_death"
+              ]
+            }
+          ]
+        },
+        {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "location"
+                },
+                "Minnesota"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "flag_location"
+                },
+                "Capitol Area"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "flag_type"
+                },
+                "American or Minnesota"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "event": {
+          "type": "public_safety_officer_death"
+        },
+        "location": "Minnesota",
+        "flag_location": "Capitol Area",
+        "flag_type": "American"
+      },
+      {
+        "event": {
+          "type": "military_personnel_death"
+        },
+        "location": "Minnesota",
+        "flag_location": "Capitol Area",
+        "flag_type": "Minnesota"
+      },
+      {
+        "event": {
+          "type": "public_safety_officer_death"
+        },
+        "location": "Minnesota",
+        "flag_location": "Capitol Area",
+        "flag_type": "Other"
+      }
+    ],
+    "variables": [
+      "event.type",
+      "location",
+      "flag_location",
+      "flag_type"
+    ],
+    "consequences": [
+      "Flags must be flown at half-staff for a period determined by the governor."
     ]
   },
   {
@@ -790,9 +2855,9 @@
         {
           "==": [
             {
-              "var": "offer_made"
+              "var": "offer_initiated"
             },
-            "yes"
+            true
           ]
         },
         {
@@ -800,7 +2865,7 @@
             {
               "var": "governor_accepted"
             },
-            "yes"
+            true
           ]
         },
         {
@@ -808,7 +2873,7 @@
             {
               "var": "certificate_filed"
             },
-            "yes"
+            true
           ]
         },
         {
@@ -816,36 +2881,995 @@
             {
               "var": "duplicate_recorded"
             },
-            "yes"
+            true
           ]
         }
       ]
     },
     "examples": [
       {
-        "offer_made": "yes",
-        "governor_accepted": "yes",
-        "certificate_filed": "yes",
-        "duplicate_recorded": "yes"
+        "offer_initiated": true,
+        "governor_accepted": true,
+        "certificate_filed": true,
+        "duplicate_recorded": true
       },
       {
-        "offer_made": "yes",
-        "governor_accepted": "no",
-        "certificate_filed": "yes",
-        "duplicate_recorded": "yes"
+        "offer_initiated": true,
+        "governor_accepted": false,
+        "certificate_filed": true,
+        "duplicate_recorded": true
       },
       {
-        "offer_made": "yes",
-        "governor_accepted": "yes",
-        "certificate_filed": "no",
-        "duplicate_recorded": "yes"
+        "offer_initiated": true,
+        "governor_accepted": true,
+        "certificate_filed": false,
+        "duplicate_recorded": true
       }
     ],
     "variables": [
-      "offer_made",
+      "offer_initiated",
       "governor_accepted",
       "certificate_filed",
       "duplicate_recorded"
+    ],
+    "consequences": [
+      "The state exercises jurisdiction over the federal lands."
+    ]
+  },
+  {
+    "id": "2.155",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.155",
+    "title": "2.155 FIFTEENTH DISTRICT.",
+    "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 15A consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\n(b) House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A, as described in paragraph (a).",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "===": [
+            {
+              "var": "district"
+            },
+            15
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "order"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "modification"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "district": 15,
+        "order": true,
+        "modification": true
+      },
+      {
+        "district": 15,
+        "order": false,
+        "modification": true
+      },
+      {
+        "district": 14,
+        "order": true,
+        "modification": true
+      }
+    ],
+    "variables": [
+      "district",
+      "order",
+      "modification"
+    ],
+    "consequences": [
+      "Senate District 15 and House Districts 15A and 15B are defined as per the modifications."
+    ]
+  },
+  {
+    "id": "1.15",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.15",
+    "title": "1.15 BOUNDARY COMPACT; MICHIGAN, WISCONSIN, MINNESOTA.",
+    "text": "The following compact is ratified and approved:\nA COMPACT\nEntered into by and between the state of Michigan, the state of Minnesota and the state of Wisconsin, states signatory hereto.\nThe contracting states solemnly agree:\n1. That the boundary between the state of Michigan and the state of Wisconsin in the center of Lake Michigan be and it hereby is finally fixed and established as the line marked A-B-C-D-E-F-G on the map, Exhibit A, annexed hereto, which line is more particularly described as follows:\nStarting at Point A, a point equidistant from either shore on the line which is the eastward continuation of the boundary line between Wisconsin and Illinois or latitude 42 degrees 29 minutes 37 seconds North;\nThence to Point B, a point equidistant from either shore on the line drawn through the Port Washington Fog Signal and Storm Signal and the White Lake Storm Signal, on a true azimuth of 354 degrees 12 minutes 00 seconds a distance of 61.55 statute miles;\nThence to Point C, a point equidistant from either shore on a line drawn through the Sheboygan Coast Guard Storm Signal, Fog Signal, Radio Beacon and Little Sable Point Light, on a true azimuth of 03 degrees 01 minute 15 seconds, a distance of 22.18 statute miles;\nThence to Point D, a point equidistant from either shore on a line drawn through the Twin River Point Light and Fog Signal and Big Sable Fog and Light Signal, on a true azimuth of 10 degrees 04 minutes 30 seconds, a distance of 30.33 statute miles;\nThence to Point E, a point equidistant from either shore on a line from Bailey's Harbor Inland Light and Point Betsie Fog Signal, Radio Beacon, and Distance Finding Station, on a true azimuth of 17 degrees 09 minutes 55 seconds, a distance of 54.20 statute miles;\nThence to Point F, a point equidistant from either shore on a line drawn through the Pilot Island Light and Fog Signal and Sleeping Bear Point Light, on a true azimuth of 33 degrees 29 minutes 10 seconds, a distance of 17.24 statute miles;\nThence to Point G, the point determined by the United States Supreme Court decree of March 12, 1936, which is a point 45,600 meters from the center of Rock Island Passage on a bearing of South 60 degrees East, on the true azimuth of 40 degrees 34 minutes 10 seconds, a distance of 15.66 statute miles. The latitude and longitude of the named control points is as follows:\n2. That the western boundary of the state of Michigan in the waters of Lake Superior and the eastern boundary in the waters of Lake Superior of the states of Minnesota and Wisconsin be and it hereby is finally fixed and established as the line marked M-N on the map, Exhibit B, annexed hereto, which line is more particularly described as follows:\nStarting at Point M, the point where the line through the middle of the main channel of the Montreal River enters Lake Superior,\nThence in a direct line to Point N, the point where a line drawn through the most easterly point of Pigeon Point and the most southerly point of Pine Point intersects the international boundary, on a true azimuth of 23 degrees 27 minutes 24 seconds and a distance of 108.86 statute miles.\nThe latitude and longitude of the named control points is:\n3. That the boundary between the state of Minnesota and the state of Wisconsin in the center of Lake Superior be and it hereby is finally fixed and established as the line marked A-B-C-D on the map, Exhibit B, annexed hereto, which line is more particularly described as follows:\nStarting at Point A which is the midpoint on the line M-N described in paragraph 2, supra;\nThence to Point B, the midpoint in a direct line between the mouth of Cross River, Minnesota and the Lighthouse on Outer Island in Wisconsin, on a true azimuth of 272 degrees 17 minutes 10 seconds, a distance of 33.15 statute miles;\nThence to Point C, the midpoint in a direct line between the Lighthouse on shore at Two Harbors, Minnesota and the light on the lakeward end of the government east pier at Port Wing, Wisconsin on a true azimuth of 235 degrees 27 minutes 40 seconds, a distance of 49.60 statute miles;\nThence to Point D, the midpoint in a direct line at right angles to the central axis of the Superior entry between the tops of the eastern ends of the pierheads at the lakeward ends of the United States government breakwaters at the Superior entry of Duluth Superior Harbor, on a true azimuth of 239 degrees 50 minutes 20 seconds, a distance of 26.43 statute miles;\nThe latitude and longitude of the named control points is as follows:\n4. All azimuths are measured clockwise from true north.\n5. That this compact shall become operative immediately upon its ratification by any state as between it and the other state or states so ratifying. Ratification shall be made by act of the legislature of the ratifying state.\n6. That immediately upon ratification of this compact by all three states, each state will appoint two members to a Joint Survey Commission to survey and mark the boundaries defined in this compact by establishing and perpetuating monuments at the reference points on shore by means of which the control points of said boundaries are located. The expense of marking the Lake Michigan Boundary shall be borne jointly by the states of Michigan and Wisconsin; the expense of marking the boundary line described in paragraph 2 above shall be borne equally by the states of Minnesota, Michigan and Wisconsin. The expense of marking the Lake Superior and Superior Bay boundary between Minnesota and Wisconsin shall be borne jointly by the states of Minnesota and Wisconsin.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "state1"
+            },
+            "Michigan"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state2"
+            },
+            "Wisconsin"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundaryLake"
+            },
+            "Lake Michigan"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundaryLine"
+            },
+            "A-B-C-D-E-F-G"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state3"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundarySuperior"
+            },
+            "Lake Superior"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundaryLineSuperior"
+            },
+            "M-N"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundarySuperiorCenter"
+            },
+            "A-B-C-D"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "azimuthsMeasured"
+            },
+            "true north"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "ratification"
+            },
+            "all three states"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "jointSurveyCommission"
+            },
+            "appointed"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state1": "Michigan",
+        "state2": "Wisconsin",
+        "boundaryLake": "Lake Michigan",
+        "boundaryLine": "A-B-C-D-E-F-G",
+        "state3": "Minnesota",
+        "boundarySuperior": "Lake Superior",
+        "boundaryLineSuperior": "M-N",
+        "boundarySuperiorCenter": "A-B-C-D",
+        "azimuthsMeasured": "true north",
+        "ratification": "all three states",
+        "jointSurveyCommission": "appointed"
+      },
+      {
+        "state1": "Michigan",
+        "state2": "Wisconsin",
+        "boundaryLake": "Lake Michigan",
+        "boundaryLine": "A-B-C-D-E-F-G",
+        "state3": "Minnesota",
+        "boundarySuperior": "Lake Superior",
+        "boundaryLineSuperior": "M-N",
+        "boundarySuperiorCenter": "A-B-C-D",
+        "azimuthsMeasured": "true north",
+        "ratification": "two states",
+        "jointSurveyCommission": "not appointed"
+      },
+      {
+        "state1": "Michigan",
+        "state2": "Wisconsin",
+        "boundaryLake": "Lake Michigan",
+        "boundaryLine": "A-B-C-D-E-F-G",
+        "state3": "Minnesota",
+        "boundarySuperior": "Lake Superior",
+        "boundaryLineSuperior": "M-N",
+        "boundarySuperiorCenter": "A-B-C-D",
+        "azimuthsMeasured": "true north",
+        "ratification": "all three states",
+        "jointSurveyCommission": "not appointed"
+      }
+    ],
+    "variables": [
+      "state1",
+      "state2",
+      "boundaryLake",
+      "boundaryLine",
+      "state3",
+      "boundarySuperior",
+      "boundaryLineSuperior",
+      "boundarySuperiorCenter",
+      "azimuthsMeasured",
+      "ratification",
+      "jointSurveyCommission"
+    ],
+    "consequences": [
+      "Boundaries are fixed and established as per the compact. Joint Survey Commission is appointed to mark boundaries."
+    ]
+  },
+  {
+    "id": "1.12",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.12",
+    "title": "1.12 FEDERAL FLOWAGE EASEMENTS OVER HIGHWAYS.",
+    "text": "When requested by the commissioner of transportation the governor, in behalf of the state, may grant, bargain, sell, and convey to the United States of America any easement for flowage in and upon any easement or fee owned by the state of Minnesota for trunk highway right-of-way purposes when it is required by the United States to aid a public improvement.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "requester"
+            },
+            "commissioner of transportation"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "required_by"
+            },
+            "United States"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "purpose"
+            },
+            "aid a public improvement"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "requester": "commissioner of transportation",
+        "state": "Minnesota",
+        "required_by": "United States",
+        "purpose": "aid a public improvement"
+      },
+      {
+        "requester": "commissioner of transportation",
+        "state": "Minnesota",
+        "required_by": "United States",
+        "purpose": "not for public improvement"
+      },
+      {
+        "requester": "someone else",
+        "state": "Minnesota",
+        "required_by": "United States",
+        "purpose": "aid a public improvement"
+      }
+    ],
+    "variables": [
+      "requester",
+      "state",
+      "required_by",
+      "purpose"
+    ],
+    "consequences": [
+      "The governor may grant, bargain, sell, and convey an easement for flowage to the United States."
+    ]
+  },
+  {
+    "id": "1.135",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.135",
+    "title": "1.135 STATE SEAL.",
+    "text": "This section prescribes the design and states the historical symbolism of the Great Seal of the State of Minnesota.\nThe seal described in subdivision 3a is the \"Great Seal of the State of Minnesota.\" When the seal, the impression of the seal, the scene within the seal, or its likeness is reproduced at state expense, it must conform to subdivision 3 and section 4.04. A seal, impression, scene, or likeness which does not conform to these provisions is not official.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nThe Great Seal of the State of Minnesota is the design as certified in the report of the State Emblems Redesign Commission, as established by Laws 2023, chapter 62, article 2, section 118.\nEvery effort shall be made to reproduce the seal with justification to the 12 o'clock position. This section does not prohibit the enlargement, proportioned reduction, or embossment of the seal for its use in unofficial acts.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nState agencies and departments using the seal, its impression, or its likeness shall make every effort to bring any seal, impression, or likeness currently fixed to a permanent object into accordance with this section and section 4.04. Expendable material to which the seal in effect prior to May 11, 2024, or any impression, scene, or likeness of that seal is currently affixed may be used until the supply is exhausted or until January 1, 2025, whichever occurs first. All unused dies and engravings of the Great Seal shall be given to the Minnesota Historical Society, along with all historical information available about the seal, to be retained in the society's permanent collection.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "seal_design"
+            },
+            {
+              "var": "certified_design"
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "seal_position"
+                },
+                "12 o'clock"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "seal_position"
+                },
+                "enlarged"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "seal_position"
+                },
+                "reduced"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "seal_position"
+                },
+                "embossed"
+              ]
+            }
+          ]
+        },
+        {
+          "or": [
+            {
+              "<=": [
+                {
+                  "var": "date"
+                },
+                "2025-01-01"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "material_type"
+                },
+                "expendable"
+              ]
+            }
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "unused_dies_destination"
+            },
+            "Minnesota Historical Society"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "seal_design": "certified_design",
+        "seal_position": "12 o'clock",
+        "date": "2024-12-31",
+        "material_type": "expendable",
+        "unused_dies_destination": "Minnesota Historical Society"
+      },
+      {
+        "seal_design": "certified_design",
+        "seal_position": "enlarged",
+        "date": "2025-01-02",
+        "material_type": "non-expendable",
+        "unused_dies_destination": "Minnesota Historical Society"
+      },
+      {
+        "seal_design": "non_certified_design",
+        "seal_position": "12 o'clock",
+        "date": "2024-12-31",
+        "material_type": "expendable",
+        "unused_dies_destination": "Minnesota Historical Society"
+      }
+    ],
+    "variables": [
+      "seal_design",
+      "certified_design",
+      "seal_position",
+      "date",
+      "material_type",
+      "unused_dies_destination"
+    ],
+    "consequences": [
+      "Seal is official and compliant with state law."
+    ]
+  },
+  {
+    "id": "1.50",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.50",
+    "title": "1.50 FREEDOM FROM VIOLENCE.",
+    "text": "The state of Minnesota hereby adopts a policy of zero tolerance of violence. It is state policy that every person in the state has a right to live free from violence.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "==": [
+            {
+              "var": "violence_occurred"
+            },
+            true
+          ]
+        },
+        {
+          "log": "Zero tolerance policy violated"
+        },
+        "No violence detected"
+      ]
+    },
+    "examples": [
+      {
+        "violence_occurred": true
+      },
+      {
+        "violence_occurred": false
+      },
+      {
+        "violence_occurred": true
+      }
+    ],
+    "variables": [
+      "violence_occurred"
+    ],
+    "consequences": [
+      "Zero tolerance policy violated"
+    ]
+  },
+  {
+    "id": "1.148",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.148",
+    "title": "1.148 STATE GRAIN.",
+    "text": "Zizania aquatica, commonly known as wild rice or manomin, is the official state grain of the state of Minnesota.\nA photograph of zizania aquatica, commonly known as wild rice or manomin, may be displayed in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "===": [
+            {
+              "var": "state_grain"
+            },
+            "Zizania aquatica"
+          ]
+        },
+        "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State",
+        ""
+      ]
+    },
+    "examples": [
+      {
+        "state_grain": "Zizania aquatica"
+      },
+      {
+        "state_grain": "Oryza sativa"
+      },
+      {
+        "state_grain": "Triticum aestivum"
+      }
+    ],
+    "variables": [
+      "state_grain"
+    ],
+    "consequences": [
+      "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State"
+    ]
+  },
+  {
+    "id": "1.141",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.141",
+    "title": "1.141 STATE FLAG.",
+    "text": "The design of the state flag as certified in the report of the State Emblems Redesign Commission, as established by Laws 2023, chapter 62, article 2, section 118, is adopted as the official state flag.\nThe secretary of state shall file a photograph of the state flag. The secretary shall also retain custodial control over the sample design flag of the commission for use by the public for copies.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nThe official state flag shall be flown on the State Capitol grounds at all times between sunrise and sunset.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nWhen folding the Minnesota State Flag for storage, the proper procedure is to fold and store the flag in the same manner as the national colors.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "flag_design_certified"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "secretary_of_state_filed_photograph"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "secretary_of_state_custodial_control"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "flag_flown_on_capitol_grounds"
+            },
+            true
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "flag_folded_properly"
+            },
+            true
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "flag_design_certified": true,
+        "secretary_of_state_filed_photograph": true,
+        "secretary_of_state_custodial_control": true,
+        "flag_flown_on_capitol_grounds": true,
+        "flag_folded_properly": true
+      },
+      {
+        "flag_design_certified": false,
+        "secretary_of_state_filed_photograph": true,
+        "secretary_of_state_custodial_control": true,
+        "flag_flown_on_capitol_grounds": true,
+        "flag_folded_properly": true
+      },
+      {
+        "flag_design_certified": true,
+        "secretary_of_state_filed_photograph": false,
+        "secretary_of_state_custodial_control": true,
+        "flag_flown_on_capitol_grounds": true,
+        "flag_folded_properly": true
+      }
+    ],
+    "variables": [
+      "flag_design_certified",
+      "secretary_of_state_filed_photograph",
+      "secretary_of_state_custodial_control",
+      "flag_flown_on_capitol_grounds",
+      "flag_folded_properly"
+    ],
+    "consequences": [
+      "The state flag is officially adopted and properly managed."
+    ]
+  },
+  {
+    "id": "1.1496",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1496",
+    "title": "1.1496 STATE MUFFIN.",
+    "text": "The blueberry muffin is adopted as the official muffin of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "==": [
+        {
+          "var": "state"
+        },
+        "Minnesota"
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota",
+        "muffin": "blueberry"
+      },
+      {
+        "state": "California",
+        "muffin": "banana"
+      },
+      {
+        "state": "Minnesota",
+        "muffin": "chocolate chip"
+      }
+    ],
+    "variables": [
+      "state"
+    ],
+    "consequences": [
+      "The blueberry muffin is the official muffin."
+    ]
+  },
+  {
+    "id": "1.22",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.22",
+    "title": "1.22 COMMISSIONERS.",
+    "text": "In pursuance of Article IV of the compact, there shall be five commissioners on the Great Lakes Commission from this state. Two shall be members of the house of representatives and two shall be members of the state senate. One member shall be appointed by and serve at the pleasure of the governor. The house of representatives members shall be appointed by the speaker of the house and the members of the senate shall be appointed by the Committee on Committees. The commissioners shall exercise all voting rights conferred by the compact on the commissioners from the party state as provided in Article IV, (B and C) of the compact.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "total_commissioners"
+            },
+            5
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "house_representatives"
+            },
+            2
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state_senate"
+            },
+            2
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "governor_appointed"
+            },
+            1
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "house_appointed_by"
+            },
+            "speaker_of_house"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "senate_appointed_by"
+            },
+            "committee_on_committees"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "total_commissioners": 5,
+        "house_representatives": 2,
+        "state_senate": 2,
+        "governor_appointed": 1,
+        "house_appointed_by": "speaker_of_house",
+        "senate_appointed_by": "committee_on_committees"
+      },
+      {
+        "total_commissioners": 5,
+        "house_representatives": 3,
+        "state_senate": 1,
+        "governor_appointed": 1,
+        "house_appointed_by": "speaker_of_house",
+        "senate_appointed_by": "committee_on_committees"
+      },
+      {
+        "total_commissioners": 5,
+        "house_representatives": 2,
+        "state_senate": 2,
+        "governor_appointed": 1,
+        "house_appointed_by": "speaker_of_house",
+        "senate_appointed_by": "wrong_committee"
+      }
+    ],
+    "variables": [
+      "total_commissioners",
+      "house_representatives",
+      "state_senate",
+      "governor_appointed",
+      "house_appointed_by",
+      "senate_appointed_by"
+    ],
+    "consequences": [
+      "The commissioners are correctly appointed as per Article IV of the compact."
+    ]
+  },
+  {
+    "id": "1.143",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.143",
+    "title": "1.143 STATE TREE.",
+    "text": "The Red pine (Pinus resinosa), more commonly known as Norway pine, is designated as the official state tree of the state of Minnesota.\nA photograph of the Red pine, to be obtained and approved by the commissioner of natural resources, shall be certified and preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "state_tree.name"
+            },
+            "Red pine"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state_tree.scientific_name"
+            },
+            "Pinus resinosa"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state_tree.common_name"
+            },
+            "Norway pine"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "photo.status"
+            },
+            "approved"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "photo.location"
+            },
+            "Office of the Secretary of State"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "state_tree": {
+          "name": "Red pine",
+          "scientific_name": "Pinus resinosa",
+          "common_name": "Norway pine"
+        },
+        "state": "Minnesota",
+        "photo": {
+          "status": "approved",
+          "location": "Office of the Secretary of State"
+        }
+      },
+      {
+        "state_tree": {
+          "name": "Red pine",
+          "scientific_name": "Pinus resinosa",
+          "common_name": "Norway pine"
+        },
+        "state": "Minnesota",
+        "photo": {
+          "status": "pending",
+          "location": "Office of the Secretary of State"
+        }
+      },
+      {
+        "state_tree": {
+          "name": "White pine",
+          "scientific_name": "Pinus strobus",
+          "common_name": "Eastern white pine"
+        },
+        "state": "Minnesota",
+        "photo": {
+          "status": "approved",
+          "location": "Office of the Secretary of State"
+        }
+      }
+    ],
+    "variables": [
+      "state_tree.name",
+      "state_tree.scientific_name",
+      "state_tree.common_name",
+      "state",
+      "photo.status",
+      "photo.location"
+    ],
+    "consequences": [
+      "The Red pine is the official state tree of Minnesota and its approved photograph is preserved in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "1.1495",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.1495",
+    "title": "1.1495 STATE DRINK.",
+    "text": "Milk is adopted as the official drink of the state of Minnesota.",
+    "repealed": false,
+    "rule": {
+      "==": [
+        {
+          "var": "state"
+        },
+        "Minnesota"
+      ]
+    },
+    "examples": [
+      {
+        "state": "Minnesota"
+      },
+      {
+        "state": "California"
+      },
+      {
+        "state": "Texas"
+      }
+    ],
+    "variables": [
+      "state"
+    ],
+    "consequences": [
+      "Milk is the official drink"
+    ]
+  },
+  {
+    "id": "1.145",
+    "url": "https://www.revisor.mn.gov/statutes/cite/1.145",
+    "title": "1.145 STATE BIRD.",
+    "text": "The loon, Gavia immer, is the official bird of the state of Minnesota.\nA photograph of the loon shall be preserved in the Office of the Secretary of State.",
+    "repealed": false,
+    "rule": {
+      "and": [
+        {
+          "==": [
+            {
+              "var": "bird_name"
+            },
+            "Gavia immer"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "state"
+            },
+            "Minnesota"
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "bird_name": "Gavia immer",
+        "state": "Minnesota"
+      },
+      {
+        "bird_name": "Gavia stellata",
+        "state": "Minnesota"
+      },
+      {
+        "bird_name": "Gavia immer",
+        "state": "Wisconsin"
+      }
+    ],
+    "variables": [
+      "bird_name",
+      "state"
+    ],
+    "consequences": [
+      "A photograph of the loon shall be preserved in the Office of the Secretary of State."
+    ]
+  },
+  {
+    "id": "2.125",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.125",
+    "title": "2.125 TWELFTH DISTRICT.",
+    "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 consists of the district as described in that order, with the modification contained in file L12B-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 12A consists of the district as described in that order.\n(b) House of Representatives District 12B consists of all territory of Senate District 12, as modified by subdivision 1, that is not included in House of Representatives District 12A.",
+    "repealed": false,
+    "rule": {
+      "if": [
+        {
+          "===": [
+            {
+              "var": "district"
+            },
+            12
+          ]
+        },
+        {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "order"
+                },
+                true
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "modification"
+                },
+                true
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "examples": [
+      {
+        "district": 12,
+        "order": true,
+        "modification": true
+      },
+      {
+        "district": 12,
+        "order": false,
+        "modification": true
+      },
+      {
+        "district": 11,
+        "order": true,
+        "modification": true
+      }
+    ],
+    "variables": [
+      "district",
+      "order",
+      "modification"
+    ],
+    "consequences": [
+      "Senate District 12 is modified and divided into House Districts 12A and 12B"
     ]
   },
   {
@@ -867,9 +3891,9 @@
         {
           "==": [
             {
-              "var": "entity_type"
+              "var": "area_type"
             },
-            "county"
+            "water"
           ]
         },
         {
@@ -877,7 +3901,15 @@
             {
               "var": "boundary_extension"
             },
-            "across_waters"
+            "produced"
+          ]
+        },
+        {
+          "==": [
+            {
+              "var": "boundary_extension_direction"
+            },
+            "towards_opposite_shore"
           ]
         }
       ]
@@ -885,24 +3917,31 @@
     "examples": [
       {
         "jurisdiction_type": "concurrent",
-        "entity_type": "county",
-        "boundary_extension": "across_waters"
+        "area_type": "water",
+        "boundary_extension": "produced",
+        "boundary_extension_direction": "towards_opposite_shore"
       },
       {
         "jurisdiction_type": "exclusive",
-        "entity_type": "state",
-        "boundary_extension": "across_waters"
+        "area_type": "land",
+        "boundary_extension": "not_produced",
+        "boundary_extension_direction": "away_from_shore"
       },
       {
         "jurisdiction_type": "concurrent",
-        "entity_type": "county",
-        "boundary_extension": "land_only"
+        "area_type": "water",
+        "boundary_extension": "not_produced",
+        "boundary_extension_direction": "towards_opposite_shore"
       }
     ],
     "variables": [
       "jurisdiction_type",
-      "entity_type",
-      "boundary_extension"
+      "area_type",
+      "boundary_extension",
+      "boundary_extension_direction"
+    ],
+    "consequences": [
+      "County and courts have jurisdiction over the extended water area."
     ]
   }
 ]

@@ -25,13 +25,18 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex h-screen bg-background">
-        <div className="w-1/3 p-4 bg-white shadow-md">
-          <Search statutes={statutes} setSelectedLaw={setSelectedLaw}></Search>
-        </div>
-        <div className="w-2/3 p-4 overflow-auto">
-          <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-          <JsonLogic data={selectedLaw.examples} rule={selectedLaw.rule} setRule={setRule} setData={setData}></JsonLogic>
+      <div className="h-screen bg-background">
+        <header className="bg-primary text-primary-foreground p-4">
+          <h1 className="text-2xl font-bold">Json-Lawgic</h1>
+        </header>
+        <div className="flex">
+          <div className="w-1/3 p-4 bg-white shadow-md">
+            <Search statutes={statutes} setSelectedLaw={setSelectedLaw}></Search>
+          </div>
+          <div className="w-2/3 p-4 overflow-auto">
+            <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
+            <JsonLogic data={selectedLaw.examples} rule={selectedLaw.rule} setRule={setRule} setData={setData}></JsonLogic>
+          </div>
         </div>
       </div>
     </>
