@@ -1,12 +1,12 @@
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { IStatuteData } from "./statutes"
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid"
+import { IStatuteData } from "./statutes"
 
 interface LawDisplayProps {
   selectedLaw: IStatuteData
 }
 
 export default function LawDisplay({ selectedLaw }: LawDisplayProps) {
+  console.log({ selectedLaw })
   return (
     <div className="p-4">
       <div className="flex gap-1">

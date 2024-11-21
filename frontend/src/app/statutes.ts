@@ -1,4 +1,5 @@
 import interpretedLaws from "../../public/interpreted-laws.json"
+import showcaseLaws from "../../public/showcase-laws.json"
 
 export interface IJsonLogicInterpretation {
   // The pure JSON logic rule expressed as a JSON object
@@ -7,6 +8,8 @@ export interface IJsonLogicInterpretation {
   examples: object[]
   // a list of variables referenced in the rule
   variables: string[]
+  // The consequences IF the rule evaluates to true, expressed as briefly as possible
+  consequences: string[]
 }
 
 export interface IStatuteData extends Partial<IJsonLogicInterpretation> {
@@ -18,6 +21,8 @@ export interface IStatuteData extends Partial<IJsonLogicInterpretation> {
 }
 
 export const statutes: IStatuteData[] = interpretedLaws
+
+export const showcase: IStatuteData[] = showcaseLaws
 
 // export async function fetchStatutes() {
 //   const response = await fetch("https://github.com/piers109uk/json-lawgic/blob/main/data/interpreted-laws.json")
