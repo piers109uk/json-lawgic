@@ -7,6 +7,7 @@ import { IStatuteData, showcase, statutes } from "./statutes"
 import LawDisplay from "./law-display"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScaleIcon } from "@heroicons/react/24/solid"
+import LawsList from "./laws-list"
 
 // TODO: reducer?
 // TODO: Move to provider
@@ -30,7 +31,7 @@ export default function Home() {
       <div className="h-screen bg-background">
         <header className="bg-primary text-primary-foreground p-4 flex gap-1 items-center">
           <ScaleIcon className="size-6" />
-          <h1 className="text-2xl font-bold">Json-Lawgic</h1>
+          <h1 className="text-2xl font-bold">JsonLawgic</h1>
         </header>
         <Tabs defaultValue="search" className="">
           <TabsList className="w-full justify-start">
@@ -40,7 +41,7 @@ export default function Home() {
           <TabsContent value="search" className="flex-grow flex">
             <div className="flex">
               <div className="w-1/3 p-4 bg-white shadow-md">
-                <Search statutes={statutes} setSelectedLaw={setSelectedLaw}></Search>
+                <Search statutes={statutes} onLawClick={setSelectedLaw}></Search>
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
@@ -51,7 +52,7 @@ export default function Home() {
           <TabsContent value="showcase" className="flex-grow flex">
             <div className="flex">
               <div className="w-1/3 p-4 bg-white shadow-md">
-                <Search statutes={showcase} setSelectedLaw={setSelectedLaw}></Search>
+                <LawsList laws={showcase} onLawClick={setSelectedLaw} />
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>

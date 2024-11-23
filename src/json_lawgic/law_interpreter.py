@@ -15,11 +15,11 @@ load_dotenv()
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 
-# class RuleVariable(BaseModel):
-#     """A variable used in the JSON logic rule."""
+class RuleVariable(BaseModel):
+    """A variable used in the JSON logic rule."""
 
-#     name: str = Field(description="The name of the variable referenced in the rule")
-#     description: str = Field(description="A description of what the variable represents")
+    name: str = Field(description="The name of the variable referenced in the rule")
+    description: str = Field(description="A description of what the variable represents")
 
 
 # Pydantic
@@ -28,7 +28,7 @@ class JsonLogicInterpretation(BaseModel):
 
     rule: object = Field(description="The pure JSON logic rule expressed as a JSON object")
     examples: list[object] = Field(description="Three examples of data that we could run the JsonLogic rule on")
-    variables: list[str] = Field(description="A list of variables referenced in the rule")
+    variables: list[RuleVariable] = Field(description="A list of variables referenced in the rule")
     consequences: list[str] = Field(
         description="The consequences IF the rule evaluates to true, expressed as briefly as possible"
     )
@@ -36,8 +36,6 @@ class JsonLogicInterpretation(BaseModel):
     # TODO:
     # Compliance, Obligation, Permission, Prohibition, Right, SuborderList, Violation
     # https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html#_Toc38017883
-
-    # TODO: generate variable descriptions
 
 
 prompt_str = """
@@ -57,9 +55,15 @@ rule: object
 // three examples of data that we could run the JsonLogic rule on
 examples: object[]
 // a list of variables referenced in the rule
-variables: string[]
+variables: RuleVariable[]
 // The consequences if the rule evaluates to true, expressed as briefly as possible
 consequences: string[]
+
+Where RuleVariable is defined as: 
+// The name of the variable referenced in the rule
+name: string
+// A description of what the variable represents
+description: string
 """
 
 prompt_template = PromptTemplate.from_template(prompt_str)

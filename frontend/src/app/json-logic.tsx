@@ -5,6 +5,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { IJsonLogicInterpretation } from "./statutes"
 
+/**
+ * TODO: fix input bug
+ */
+
 type JsonLogicResult = boolean | boolean[] | string
 
 export interface JsonLogicProps {
@@ -56,14 +60,14 @@ export default function JsonLogic({ interpretation, setRule, setData }: JsonLogi
     <>
       <h1 className="text-2xl font-bold mb-4">JSON Logic Evaluator</h1>
       <div className="mb-4">
-        <label htmlFor="rule" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="rule" className="block font-bold text-gray-700 mb-1">
           Rule
         </label>
         <Textarea id="rule" value={ruleString} onChange={(e) => onRuleChange(e.target.value)} rows={10} className="font-mono" />
       </div>
 
       <div className="mb-4">
-        <label htmlFor="examples" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="examples" className="block font-bold text-gray-700 mb-1">
           Consequences
         </label>
         {consequences?.map((c) => (
@@ -71,7 +75,7 @@ export default function JsonLogic({ interpretation, setRule, setData }: JsonLogi
         ))}
       </div>
       <div className="mb-4">
-        <label htmlFor="examples" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="examples" className="block font-bold text-gray-700 mb-1">
           Examples
         </label>
         <Textarea id="examples" value={dataString} onChange={(e) => onDataChange(e.target.value)} rows={10} className="font-mono" />
