@@ -1,5 +1,5 @@
 import jsonLogic from "json-logic-js"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { stringifyJson } from "./format-json"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
@@ -12,44 +12,24 @@ import { IJsonLogicInterpretation } from "./statutes"
 type JsonLogicResult = boolean | boolean[] | string
 
 export interface JsonLogicProps {
-  // rule?: object
-  // data?: object | object[]
-  // consequences?: string[]
   interpretation?: Partial<IJsonLogicInterpretation>
-  setRule: (rule: object) => void
-  setData: (data: object | object[]) => void
 }
 
 /**
  * TODO: input/output the rules & data
  */
 
-export default function JsonLogic({ interpretation, setRule, setData }: JsonLogicProps) {
+export default function JsonLogic({ interpretation }: JsonLogicProps) {
   const { rule, consequences, examples } = interpretation || {}
   const [result, setResult] = useState<JsonLogicResult | null>(null)
 
-  const ruleString = stringifyJson(rule)
-  const dataString = stringifyJson(examples)
+  const [ruleString, setRuleString] = useState(stringifyJson(rule))
+  const [dataString, setDataString] = useState(stringifyJson(examples))
 
-  const onRuleChange = (v: string) => {
-    console.log("onRuleChange", v)
-    try {
-      setRule(JSON.parse(v))
-    } catch (error: any) {
-      console.error(error)
-      setResult(`Invalid Rule: ${error.message}`)
-    }
-  }
-
-  const onDataChange = (v: string) => {
-    console.log("onDataChange", v)
-    try {
-      setData(JSON.parse(v))
-    } catch (error: any) {
-      console.error(error)
-      setResult(`Invalid Data: ${error.message}`)
-    }
-  }
+  useEffect(() => {
+    setRuleString(stringifyJson(rule))
+    setDataString(stringifyJson(examples))
+  }, [rule, examples])
 
   const handleApplyLogic = (rule: string, data: string) => {
     const result = calculateResult(rule, data)
@@ -63,7 +43,7 @@ export default function JsonLogic({ interpretation, setRule, setData }: JsonLogi
         <label htmlFor="rule" className="block font-bold text-gray-700 mb-1">
           Rule
         </label>
-        <Textarea id="rule" value={ruleString} onChange={(e) => onRuleChange(e.target.value)} rows={10} className="font-mono" />
+        <Textarea id="rule" value={ruleString} onChange={(e) => setRuleString(e.target.value)} rows={10} className="font-mono" />
       </div>
 
       <div className="mb-4">
@@ -78,7 +58,7 @@ export default function JsonLogic({ interpretation, setRule, setData }: JsonLogi
         <label htmlFor="examples" className="block font-bold text-gray-700 mb-1">
           Examples
         </label>
-        <Textarea id="examples" value={dataString} onChange={(e) => onDataChange(e.target.value)} rows={10} className="font-mono" />
+        <Textarea id="examples" value={dataString} onChange={(e) => setDataString(e.target.value)} rows={10} className="font-mono" />
       </div>
 
       <Button onClick={() => handleApplyLogic(ruleString, dataString)} className="rounded-full">

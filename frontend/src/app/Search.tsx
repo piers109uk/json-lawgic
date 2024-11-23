@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import MiniSearch, { SearchResult } from "minisearch"
 import { useEffect, useState } from "react"
-import { IStatuteData, statutes } from "./statutes"
 import LawsList from "./laws-list"
+import { IStatuteData, statutes } from "./statutes"
 
 // TODO: include text in search
 

@@ -15,17 +15,6 @@ import LawsList from "./laws-list"
 export default function Home() {
   const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
 
-  const setRule = (rule: object) => {
-    console.log("setRule", rule)
-    setSelectedLaw((prevState) => ({ ...prevState, rule }))
-  }
-
-  const setData = (data: object | object[]) => {
-    console.log("setData", data)
-    const examples = Array.isArray(data) ? data : [data]
-    setSelectedLaw((prevState) => ({ ...prevState, examples }))
-  }
-
   return (
     <>
       <div className="h-screen bg-background">
@@ -45,7 +34,7 @@ export default function Home() {
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic interpretation={selectedLaw} setRule={setRule} setData={setData}></JsonLogic>
+                <JsonLogic interpretation={selectedLaw}></JsonLogic>
               </div>
             </div>
           </TabsContent>
@@ -56,7 +45,7 @@ export default function Home() {
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic interpretation={selectedLaw} setRule={setRule} setData={setData}></JsonLogic>
+                <JsonLogic interpretation={selectedLaw}></JsonLogic>
               </div>
             </div>
           </TabsContent>
