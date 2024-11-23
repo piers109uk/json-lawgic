@@ -38,7 +38,7 @@ export default function Search({ statutes, setSelectedLaw }: SearchWidgetProps) 
     <div>
       <Input type="text" placeholder="Search laws.." value={query} onChange={(e) => setQuery(e.target.value)} className="w-full p-2 border rounded" />
 
-      <ScrollArea className="h-[calc(100vh-140px)]">
+      <ScrollArea className="h-[calc(100vh-200px)]">
         {results.map((law) => (
           <Button key={law.id} variant="ghost" className="w-full justify-start mb-2 text-left" onClick={() => setSelectedLaw(law)}>
             {law.title}

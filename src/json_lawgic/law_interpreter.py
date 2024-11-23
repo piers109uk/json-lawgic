@@ -15,6 +15,13 @@ load_dotenv()
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 
+# class RuleVariable(BaseModel):
+#     """A variable used in the JSON logic rule."""
+
+#     name: str = Field(description="The name of the variable referenced in the rule")
+#     description: str = Field(description="A description of what the variable represents")
+
+
 # Pydantic
 class JsonLogicInterpretation(BaseModel):
     """A JSON logic interpretation."""
@@ -29,6 +36,8 @@ class JsonLogicInterpretation(BaseModel):
     # TODO:
     # Compliance, Obligation, Permission, Prohibition, Right, SuborderList, Violation
     # https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html#_Toc38017883
+
+    # TODO: generate variable descriptions
 
 
 prompt_str = """
