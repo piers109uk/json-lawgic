@@ -11,6 +11,8 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "ruff",
     "langflow>=1.1.0",
+    "ipykernel>=6.29.5",
+    "cairosvg>=2.7.1",
 ]
 
 [tool.ruff]
