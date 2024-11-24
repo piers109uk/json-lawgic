@@ -46,6 +46,7 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
 
 - [ ] Support multiple rules for one law
 - [ ] Run on a larger body of laws
+- [ ] Classify laws into types using those referenced in [SALI](https://github.com/sali-legal)
 - [ ] Incorporate testing into the pipeline
   - [ ] Fix JsonLogic for Python
   - [ ] Build self-review capability
