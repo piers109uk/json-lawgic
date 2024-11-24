@@ -42,7 +42,7 @@ Then run the LLM on laws with `python src/json_lawgic/law_pipeline.py`
 
 To see how I fetched the data, see the [law scraper project](https://github.com/piers109uk/law-scraper)
 
-## TO DO
+# TO DO
 
 - [ ] Support multiple rules for one law
 - [ ] Run on a larger body of laws
@@ -53,6 +53,8 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
 - [x] Instrument with Langfuse
 - [x] Law search & selector
+- [ ] Support real-time translation of a law into json-logic upon request
+- [ ] Support users saving their own JsonLogic interpretations (e.g. making edits of the LLM interpretations)
 - [ ] Law interpretation versioning - when we update the interpretation, keep track of the old versions
 - [ ] Visual editor with Blockly just like https://github.com/katirasole/JSONLogic-Editor (see https://katirasole.github.io/JSONLogic-Editor/ )
 

@@ -5,9 +5,9 @@ from data_readers import read_json, read_text
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from pydantic import BaseModel, Field
-
+from langfuse_setup import langfuse_handler
 from logger import logger
+from pydantic import BaseModel, Field
 
 # Load environment variables from .env file
 load_dotenv()
@@ -80,7 +80,9 @@ class LawInterpreter:
         prompt = prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
         structured_llm = llm.with_structured_output(JsonLogicInterpretation)
 
-        response = cast(JsonLogicInterpretation, structured_llm.invoke(prompt))
+        response = cast(
+            JsonLogicInterpretation, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]})
+        )
 
         # example_results = self.validate_interpretation(response)
         res_dict = response.model_dump()
@@ -98,6 +100,9 @@ class LawInterpreter:
 if __name__ == "__main__":
     interpreter = LawInterpreter()
     law_object = read_json("data/default/000000001.json")
+
+    law_dict = interpreter.interpret_law(law_object)
+    pprint(law_dict)
 
     #  TODO fix json logic
     # rule = {
