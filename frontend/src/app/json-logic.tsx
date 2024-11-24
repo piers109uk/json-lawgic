@@ -20,7 +20,7 @@ export interface JsonLogicProps {
  */
 
 export default function JsonLogic({ interpretation }: JsonLogicProps) {
-  const { rule, consequences, examples } = interpretation || {}
+  const { rule, consequences, examples, variables } = interpretation || {}
   const [result, setResult] = useState<JsonLogicResult | null>(null)
 
   const [ruleString, setRuleString] = useState(stringifyJson(rule))
@@ -48,17 +48,32 @@ export default function JsonLogic({ interpretation }: JsonLogicProps) {
 
       <div className="mb-4">
         <label htmlFor="examples" className="block font-bold text-gray-700 mb-1">
-          Consequences
-        </label>
-        {consequences?.map((c) => (
-          <div key={c}>{c}</div>
-        ))}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="examples" className="block font-bold text-gray-700 mb-1">
           Examples
         </label>
         <Textarea id="examples" value={dataString} onChange={(e) => setDataString(e.target.value)} rows={10} className="font-mono" />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="variables" className="block font-bold text-gray-700 mb-1">
+          Variables
+        </label>
+        <ul id="variables" className="list-disc pl-5">
+          {variables?.map((v) => (
+            <li key={v.name}>
+              {v.name}: {v.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="consequences" className="block font-bold text-gray-700 mb-1">
+          Consequences
+        </label>
+        <ul id="consequences" className="list-disc pl-5">
+          {consequences?.map((c) => (
+            <li key={c}>{c}</li>
+          ))}
+        </ul>
       </div>
 
       <Button onClick={() => handleApplyLogic(ruleString, dataString)} className="rounded-full">
