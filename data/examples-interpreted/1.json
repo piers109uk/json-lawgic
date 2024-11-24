@@ -15,7 +15,7 @@
               {
                 "var": "action"
               },
-              "false_entry"
+              "make_false_entry"
             ]
           },
           {
@@ -49,7 +49,7 @@
   "examples": [
     {
       "intent_to_defraud": true,
-      "action": "false_entry"
+      "action": "make_false_entry"
     },
     {
       "intent_to_defraud": true,
@@ -60,6 +60,17 @@
       "action": "omit_true_entry"
     }
   ],
-  "variables": ["intent_to_defraud", "action"],
-  "consequences": ["Class A misdemeanor for falsifying business records in the second degree"]
+  "variables": [
+    {
+      "name": "intent_to_defraud",
+      "description": "Indicates if there is an intent to defraud."
+    },
+    {
+      "name": "action",
+      "description": "The action taken on the business records, such as making a false entry, altering a true entry, omitting a true entry, or preventing a true entry."
+    }
+  ],
+  "consequences": [
+    "Class A misdemeanor"
+  ]
 }

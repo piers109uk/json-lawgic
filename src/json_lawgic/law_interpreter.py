@@ -14,6 +14,8 @@ load_dotenv()
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
+# TODO: enable representing multiple rules with one law
+
 
 class RuleVariable(BaseModel):
     """A variable used in the JSON logic rule."""
