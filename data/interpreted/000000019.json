@@ -17,31 +17,7 @@
       {
         "==": [
           {
-            "var": "title_vested_in_US"
-          },
-          true
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "certificate_issued"
-          },
-          true
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "certificate_filed_with_secretary_of_state"
-          },
-          true
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "certificate_recorded_in_county"
+            "var": "title_vested_in_us"
           },
           true
         ]
@@ -51,34 +27,32 @@
   "examples": [
     {
       "application_by_authorized_officer": true,
-      "title_vested_in_US": true,
-      "certificate_issued": true,
-      "certificate_filed_with_secretary_of_state": true,
-      "certificate_recorded_in_county": true
+      "title_vested_in_us": true
+    },
+    {
+      "application_by_authorized_officer": false,
+      "title_vested_in_us": true
     },
     {
       "application_by_authorized_officer": true,
-      "title_vested_in_US": false,
-      "certificate_issued": true,
-      "certificate_filed_with_secretary_of_state": true,
-      "certificate_recorded_in_county": true
-    },
-    {
-      "application_by_authorized_officer": true,
-      "title_vested_in_US": true,
-      "certificate_issued": false,
-      "certificate_filed_with_secretary_of_state": true,
-      "certificate_recorded_in_county": true
+      "title_vested_in_us": false
     }
   ],
   "variables": [
-    "application_by_authorized_officer",
-    "title_vested_in_US",
-    "certificate_issued",
-    "certificate_filed_with_secretary_of_state",
-    "certificate_recorded_in_county"
+    {
+      "name": "application_by_authorized_officer",
+      "description": "Indicates if the application is made by an authorized officer of the United States."
+    },
+    {
+      "name": "title_vested_in_us",
+      "description": "Indicates if the title to the property has vested in the United States."
+    }
   ],
   "consequences": [
-    "State consent is valid and recognized under sections 1.041 to 1.048."
+    "The governor issues a certificate under the great seal of the state.",
+    "The certificate includes a description of the property, authority, purpose, and method of acquisition, and jurisdiction conditions.",
+    "A map may be attached for property identification.",
+    "One duplicate of the certificate is filed with the secretary of state.",
+    "The other duplicate is delivered to the applicant for recording in the county recorder's office."
   ]
 }

@@ -11,13 +11,13 @@
           {
             "var": "flag_design_certified"
           },
-          true
+          "State Emblems Redesign Commission"
         ]
       },
       {
         "==": [
           {
-            "var": "secretary_of_state_filed_photograph"
+            "var": "flag_photograph_filed"
           },
           true
         ]
@@ -25,7 +25,7 @@
       {
         "==": [
           {
-            "var": "secretary_of_state_custodial_control"
+            "var": "flag_custodial_control"
           },
           true
         ]
@@ -33,7 +33,7 @@
       {
         "==": [
           {
-            "var": "flag_flown_on_capitol_grounds"
+            "var": "flag_flown_times"
           },
           true
         ]
@@ -41,7 +41,7 @@
       {
         "==": [
           {
-            "var": "flag_folded_properly"
+            "var": "flag_folding_procedure"
           },
           true
         ]
@@ -50,35 +50,54 @@
   },
   "examples": [
     {
-      "flag_design_certified": true,
-      "secretary_of_state_filed_photograph": true,
-      "secretary_of_state_custodial_control": true,
-      "flag_flown_on_capitol_grounds": true,
-      "flag_folded_properly": true
+      "flag_design_certified": "State Emblems Redesign Commission",
+      "flag_photograph_filed": true,
+      "flag_custodial_control": true,
+      "flag_flown_times": true,
+      "flag_folding_procedure": true
     },
     {
-      "flag_design_certified": false,
-      "secretary_of_state_filed_photograph": true,
-      "secretary_of_state_custodial_control": true,
-      "flag_flown_on_capitol_grounds": true,
-      "flag_folded_properly": true
+      "flag_design_certified": "Other Commission",
+      "flag_photograph_filed": true,
+      "flag_custodial_control": true,
+      "flag_flown_times": true,
+      "flag_folding_procedure": true
     },
     {
-      "flag_design_certified": true,
-      "secretary_of_state_filed_photograph": false,
-      "secretary_of_state_custodial_control": true,
-      "flag_flown_on_capitol_grounds": true,
-      "flag_folded_properly": true
+      "flag_design_certified": "State Emblems Redesign Commission",
+      "flag_photograph_filed": false,
+      "flag_custodial_control": true,
+      "flag_flown_times": true,
+      "flag_folding_procedure": true
     }
   ],
   "variables": [
-    "flag_design_certified",
-    "secretary_of_state_filed_photograph",
-    "secretary_of_state_custodial_control",
-    "flag_flown_on_capitol_grounds",
-    "flag_folded_properly"
+    {
+      "name": "flag_design_certified",
+      "description": "The entity that certified the design of the state flag."
+    },
+    {
+      "name": "flag_photograph_filed",
+      "description": "Whether a photograph of the state flag has been filed by the secretary of state."
+    },
+    {
+      "name": "flag_custodial_control",
+      "description": "Whether the secretary of state retains custodial control over the sample design flag for public use."
+    },
+    {
+      "name": "flag_flown_times",
+      "description": "Whether the official state flag is flown on the State Capitol grounds at all times between sunrise and sunset."
+    },
+    {
+      "name": "flag_folding_procedure",
+      "description": "Whether the Minnesota State Flag is folded and stored in the same manner as the national colors."
+    }
   ],
   "consequences": [
-    "The state flag is officially adopted and properly managed."
+    "The design is adopted as the official state flag.",
+    "The flag photograph is filed.",
+    "The secretary retains custodial control over the sample design flag.",
+    "The flag is flown on the State Capitol grounds between sunrise and sunset.",
+    "The flag is folded and stored properly."
   ]
 }

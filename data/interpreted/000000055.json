@@ -39,10 +39,16 @@
     }
   ],
   "variables": [
-    "fruit",
-    "state"
+    {
+      "name": "fruit",
+      "description": "The type of fruit being referenced."
+    },
+    {
+      "name": "state",
+      "description": "The state being referenced."
+    }
   ],
   "consequences": [
-    "The Honeycrisp apple is the official fruit of Minnesota."
+    "The Honeycrisp apple is recognized as the official fruit of Minnesota."
   ]
 }

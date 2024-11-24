@@ -1,18 +1,23 @@
 import interpretedLaws from "../../public/interpreted-laws.json"
 import showcaseLaws from "../../public/showcase-laws.json"
 
-export interface IJsonLogicInterpretation {
+export interface RuleVariable {
+  name: string
+  description: string
+}
+
+export interface JsonLogicInterpretation {
   // The pure JSON logic rule expressed as a JSON object
   rule: object
   // three examples of data that we could run the JsonLogic rule on
   examples: object[]
   // a list of variables referenced in the rule
-  variables: string[]
+  variables: RuleVariable[]
   // The consequences IF the rule evaluates to true, expressed as briefly as possible
   consequences: string[]
 }
 
-export interface IStatuteData extends Partial<IJsonLogicInterpretation> {
+export interface IStatuteData extends Partial<JsonLogicInterpretation> {
   id: string
   url: string
   title: string | null

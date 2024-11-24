@@ -46,29 +46,51 @@
       "photographer": "Eric Enstrom",
       "year_taken": 1918,
       "location": "Bovey, Minnesota",
-      "office_displayed": "Secretary of State"
+      "office": "Secretary of State",
+      "displayed": true
     },
     {
       "photograph_name": "Grace",
       "photographer": "Eric Enstrom",
       "year_taken": 1918,
       "location": "Bovey, Minnesota",
-      "office_displayed": "Governor's Office"
+      "office": "Governor's Office",
+      "displayed": false
     },
     {
       "photograph_name": "Sunset",
       "photographer": "John Doe",
       "year_taken": 1920,
       "location": "New York",
-      "office_displayed": "Secretary of State"
+      "office": "Secretary of State",
+      "displayed": false
     }
   ],
   "variables": [
-    "photograph_name",
-    "photographer",
-    "year_taken",
-    "location",
-    "office_displayed"
+    {
+      "name": "photograph_name",
+      "description": "The name of the photograph."
+    },
+    {
+      "name": "photographer",
+      "description": "The photographer who took the photograph."
+    },
+    {
+      "name": "year_taken",
+      "description": "The year the photograph was taken."
+    },
+    {
+      "name": "location",
+      "description": "The location where the photograph was taken."
+    },
+    {
+      "name": "office",
+      "description": "The office where the photograph is displayed."
+    },
+    {
+      "name": "displayed",
+      "description": "Whether the photograph is displayed in the specified office."
+    }
   ],
   "consequences": [
     "A copy of the photograph 'Grace' must be displayed in the Office of the Secretary of State."

@@ -7,14 +7,6 @@
   "rule": {
     "and": [
       {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      {
         "in": [
           {
             "var": "acquisition_method"
@@ -24,6 +16,14 @@
             "gift",
             "lease"
           ]
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
         ]
       },
       {
@@ -39,38 +39,50 @@
           {
             "var": "act_of_congress"
           },
-          "June 7, 1924"
+          "Act of Congress approved June 7, 1924"
         ]
       }
     ]
   },
   "examples": [
     {
-      "state": "Minnesota",
       "acquisition_method": "purchase",
+      "state": "Minnesota",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-      "act_of_congress": "June 7, 1924"
+      "act_of_congress": "Act of Congress approved June 7, 1924"
     },
     {
-      "state": "Minnesota",
       "acquisition_method": "gift",
+      "state": "Minnesota",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-      "act_of_congress": "June 7, 1924"
+      "act_of_congress": "Act of Congress approved June 7, 1924"
     },
     {
-      "state": "Minnesota",
       "acquisition_method": "lease",
+      "state": "Minnesota",
       "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-      "act_of_congress": "June 7, 1924"
+      "act_of_congress": "Act of Congress approved June 7, 1924"
     }
   ],
   "variables": [
-    "state",
-    "acquisition_method",
-    "purpose",
-    "act_of_congress"
+    {
+      "name": "acquisition_method",
+      "description": "The method by which the United States acquires the land or water (purchase, gift, or lease)."
+    },
+    {
+      "name": "state",
+      "description": "The state where the land or water is located."
+    },
+    {
+      "name": "purpose",
+      "description": "The purpose for which the land or water is acquired."
+    },
+    {
+      "name": "act_of_congress",
+      "description": "The specific Act of Congress under which the acquisition is made."
+    }
   ],
   "consequences": [
-    "Consent is given to the United States for land acquisition in Minnesota for the refuge."
+    "Consent of the state of Minnesota is given for the acquisition."
   ]
 }

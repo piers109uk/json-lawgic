@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { stringifyJson } from "./format-json"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { IJsonLogicInterpretation } from "./statutes"
+import { JsonLogicInterpretation } from "./statutes"
 
 /**
  * TODO: fix input bug
@@ -12,7 +12,7 @@ import { IJsonLogicInterpretation } from "./statutes"
 type JsonLogicResult = boolean | boolean[] | string
 
 export interface JsonLogicProps {
-  interpretation?: Partial<IJsonLogicInterpretation>
+  interpretation?: Partial<JsonLogicInterpretation>
 }
 
 /**

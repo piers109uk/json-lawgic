@@ -50,11 +50,21 @@
     }
   ],
   "variables": [
-    "official_bee",
-    "state",
-    "photo_preserved"
+    {
+      "name": "official_bee",
+      "description": "The official bee of the state."
+    },
+    {
+      "name": "state",
+      "description": "The state in question."
+    },
+    {
+      "name": "photo_preserved",
+      "description": "Whether a photograph of the rusty patched bumble bee is preserved in the Office of the Secretary of State."
+    }
   ],
   "consequences": [
-    "The rusty patched bumble bee is recognized as the official bee of Minnesota and its photograph is preserved in the Office of the Secretary of State."
+    "The rusty patched bumble bee is recognized as the official bee of Minnesota.",
+    "A photograph of the rusty patched bumble bee is preserved in the Office of the Secretary of State."
   ]
 }

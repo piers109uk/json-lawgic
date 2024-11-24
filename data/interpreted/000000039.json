@@ -56,9 +56,18 @@
     }
   ],
   "variables": [
-    "official_fish.state",
-    "official_fish.name",
-    "official_fish.scientific_name"
+    {
+      "name": "official_fish.state",
+      "description": "The state for which the fish is the official fish."
+    },
+    {
+      "name": "official_fish.name",
+      "description": "The common name of the official fish."
+    },
+    {
+      "name": "official_fish.scientific_name",
+      "description": "The scientific name of the official fish."
+    }
   ],
   "consequences": [
     "A photograph of the walleye shall be preserved in the Office of the Secretary of State."

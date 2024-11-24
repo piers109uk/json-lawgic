@@ -9,9 +9,9 @@
       {
         "==": [
           {
-            "var": "offer_initiated"
+            "var": "offer_made"
           },
-          true
+          "yes"
         ]
       },
       {
@@ -19,7 +19,7 @@
           {
             "var": "governor_accepted"
           },
-          true
+          "yes"
         ]
       },
       {
@@ -27,7 +27,7 @@
           {
             "var": "certificate_filed"
           },
-          true
+          "yes"
         ]
       },
       {
@@ -35,38 +35,50 @@
           {
             "var": "duplicate_recorded"
           },
-          true
+          "yes"
         ]
       }
     ]
   },
   "examples": [
     {
-      "offer_initiated": true,
-      "governor_accepted": true,
-      "certificate_filed": true,
-      "duplicate_recorded": true
+      "offer_made": "yes",
+      "governor_accepted": "yes",
+      "certificate_filed": "yes",
+      "duplicate_recorded": "yes"
     },
     {
-      "offer_initiated": true,
-      "governor_accepted": false,
-      "certificate_filed": true,
-      "duplicate_recorded": true
+      "offer_made": "yes",
+      "governor_accepted": "no",
+      "certificate_filed": "yes",
+      "duplicate_recorded": "yes"
     },
     {
-      "offer_initiated": true,
-      "governor_accepted": true,
-      "certificate_filed": false,
-      "duplicate_recorded": true
+      "offer_made": "yes",
+      "governor_accepted": "yes",
+      "certificate_filed": "no",
+      "duplicate_recorded": "yes"
     }
   ],
   "variables": [
-    "offer_initiated",
-    "governor_accepted",
-    "certificate_filed",
-    "duplicate_recorded"
+    {
+      "name": "offer_made",
+      "description": "Indicates if a written offer for retrocession has been made by an authorized officer of the United States agency."
+    },
+    {
+      "name": "governor_accepted",
+      "description": "Indicates if the governor has accepted jurisdiction on behalf of the state after consulting with local governing bodies."
+    },
+    {
+      "name": "certificate_filed",
+      "description": "Indicates if a certificate evidencing acceptance has been filed with the secretary of state."
+    },
+    {
+      "name": "duplicate_recorded",
+      "description": "Indicates if a duplicate of the certificate has been recorded in the office of the county recorder of each county where the lands are situated."
+    }
   ],
   "consequences": [
-    "The state exercises jurisdiction over the federal lands."
+    "The jurisdiction is retroceded to the state and exercised by state and local authorities."
   ]
 }

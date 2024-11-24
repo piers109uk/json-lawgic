@@ -50,9 +50,18 @@
     }
   ],
   "variables": [
-    "flower_name",
-    "state",
-    "approved_by"
+    {
+      "name": "flower_name",
+      "description": "The name of the flower being considered."
+    },
+    {
+      "name": "state",
+      "description": "The state for which the flower is being considered as the official flower."
+    },
+    {
+      "name": "approved_by",
+      "description": "The authority who approved the photograph of the flower."
+    }
   ],
   "consequences": [
     "A photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."

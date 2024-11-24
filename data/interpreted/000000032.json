@@ -39,10 +39,16 @@
     }
   ],
   "variables": [
-    "senate_members",
-    "house_members"
+    {
+      "name": "senate_members",
+      "description": "The number of members in the senate for a given legislature."
+    },
+    {
+      "name": "house_members",
+      "description": "The number of members in the house of representatives for a given legislature."
+    }
   ],
   "consequences": [
-    "The legislature is correctly apportioned with 67 senate members and 134 house members."
+    "The composition of the legislature is correct."
   ]
 }

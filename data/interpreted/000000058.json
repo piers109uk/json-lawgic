@@ -7,29 +7,29 @@
   "rule": {
     "==": [
       {
-        "var": "state"
+        "var": "official_soil"
       },
-      "Minnesota"
+      "Lester"
     ]
   },
   "examples": [
     {
-      "state": "Minnesota",
-      "soil": "Lester"
+      "official_soil": "Lester"
     },
     {
-      "state": "Iowa",
-      "soil": "Tama"
+      "official_soil": "Clay"
     },
     {
-      "state": "Minnesota",
-      "soil": "Clayton"
+      "official_soil": "Sand"
     }
   ],
   "variables": [
-    "state"
+    {
+      "name": "official_soil",
+      "description": "The soil designated as the official soil of the state of Minnesota."
+    }
   ],
   "consequences": [
-    "Lester is the official soil"
+    "Lester is confirmed as the official soil of Minnesota."
   ]
 }

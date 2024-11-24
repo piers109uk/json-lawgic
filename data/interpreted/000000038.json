@@ -61,12 +61,25 @@
     }
   ],
   "variables": [
-    "senate_districts",
-    "house_districts",
-    "senators_per_district",
-    "representatives_per_district"
+    {
+      "name": "senate_districts",
+      "description": "The number of senate districts in the state."
+    },
+    {
+      "name": "house_districts",
+      "description": "The number of house of representatives districts in the state."
+    },
+    {
+      "name": "senators_per_district",
+      "description": "The number of senators each senate district is entitled to elect."
+    },
+    {
+      "name": "representatives_per_district",
+      "description": "The number of representatives each house district is entitled to elect."
+    }
   ],
   "consequences": [
-    "Each senate district elects one senator and each house district elects one representative."
+    "Each senate district elects one senator.",
+    "Each house district elects one representative."
   ]
 }

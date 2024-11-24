@@ -66,6 +66,7 @@ Where RuleVariable is defined as:
 name: string
 // A description of what the variable represents
 description: string
+
 """
 
 prompt_template = PromptTemplate.from_template(prompt_str)

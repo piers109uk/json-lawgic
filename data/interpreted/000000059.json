@@ -7,7 +7,7 @@
   "rule": {
     "and": [
       {
-        "===": [
+        "==": [
           {
             "var": "state_mushroom"
           },
@@ -15,11 +15,11 @@
         ]
       },
       {
-        "===": [
+        "==": [
           {
             "var": "photograph_approved"
           },
-          "yes"
+          true
         ]
       }
     ]
@@ -27,22 +27,29 @@
   "examples": [
     {
       "state_mushroom": "Morchella esculenta",
-      "photograph_approved": "yes"
+      "photograph_approved": true
     },
     {
       "state_mushroom": "Agaricus bisporus",
-      "photograph_approved": "yes"
+      "photograph_approved": true
     },
     {
       "state_mushroom": "Morchella esculenta",
-      "photograph_approved": "no"
+      "photograph_approved": false
     }
   ],
   "variables": [
-    "state_mushroom",
-    "photograph_approved"
+    {
+      "name": "state_mushroom",
+      "description": "The official state mushroom of Minnesota."
+    },
+    {
+      "name": "photograph_approved",
+      "description": "Indicates if the photograph of the morel is approved by the commissioner of natural resources."
+    }
   ],
   "consequences": [
-    "The morel is the official state mushroom of Minnesota and its photograph can be displayed in the Office of the Secretary of State."
+    "The morel is recognized as the official state mushroom of Minnesota.",
+    "A photograph of the morel may be displayed in the Office of the Secretary of State."
   ]
 }

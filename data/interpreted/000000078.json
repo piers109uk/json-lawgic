@@ -9,9 +9,9 @@
       {
         "==": [
           {
-            "var": "officer_jurisdiction"
+            "var": "officer_action"
           },
-          "state"
+          "carry_out_compact"
         ]
       },
       {
@@ -19,42 +19,69 @@
           {
             "var": "policy"
           },
-          "perform_compact"
+          "perform_and_accomplish"
         ]
       },
       {
         "==": [
           {
-            "var": "request_from_commission"
+            "var": "request_status"
           },
-          true
+          "upon_request"
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "aid_status"
+          },
+          "furnish_information_and_aid"
         ]
       }
     ]
   },
   "examples": [
     {
-      "officer_jurisdiction": "state",
-      "policy": "perform_compact",
-      "request_from_commission": true
+      "officer_action": "carry_out_compact",
+      "policy": "perform_and_accomplish",
+      "request_status": "upon_request",
+      "aid_status": "furnish_information_and_aid"
     },
     {
-      "officer_jurisdiction": "state",
-      "policy": "perform_compact",
-      "request_from_commission": false
+      "officer_action": "ignore_compact",
+      "policy": "perform_and_accomplish",
+      "request_status": "upon_request",
+      "aid_status": "furnish_information_and_aid"
     },
     {
-      "officer_jurisdiction": "federal",
-      "policy": "perform_compact",
-      "request_from_commission": true
+      "officer_action": "carry_out_compact",
+      "policy": "ignore_policy",
+      "request_status": "upon_request",
+      "aid_status": "furnish_information_and_aid"
     }
   ],
   "variables": [
-    "officer_jurisdiction",
-    "policy",
-    "request_from_commission"
+    {
+      "name": "officer_action",
+      "description": "The action taken by the officer regarding the compact."
+    },
+    {
+      "name": "policy",
+      "description": "The policy of the state regarding the compact."
+    },
+    {
+      "name": "request_status",
+      "description": "The status of the request made by the commission."
+    },
+    {
+      "name": "aid_status",
+      "description": "The status of furnishing information and aid by the state entities."
+    }
   ],
   "consequences": [
-    "Officers and departments must provide information, data, and aid to the commission."
+    "All officers are complying with the compact.",
+    "The state is performing and carrying out the compact.",
+    "The commission's requests are being fulfilled.",
+    "State entities are furnishing information and aiding the commission."
   ]
 }

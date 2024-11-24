@@ -38,9 +38,9 @@ def run_pipeline(input_folder: str, output_folder: str, limit: int = 50):
 
 
 if __name__ == "__main__":
-    input_folder = "data/examples"
-    output_folder = "data/examples-interpreted"
+    input_folder = "data/default"
+    output_folder = "data/interpreted"
 
     run_pipeline(input_folder, output_folder)
-    output_file = "data/showcase.json"
+    output_file = "data/interpreted-laws.json"
     merge_json_files(output_folder, output_file)

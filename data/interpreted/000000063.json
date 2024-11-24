@@ -24,9 +24,12 @@
     }
   ],
   "variables": [
-    "state"
+    {
+      "name": "state",
+      "description": "The name of the state being evaluated."
+    }
   ],
   "consequences": [
-    "Ice hockey is the official sport"
+    "Ice hockey is the official sport."
   ]
 }

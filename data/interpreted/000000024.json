@@ -9,11 +9,23 @@
       {
         "or": [
           {
-            "<": [
+            "and": [
               {
-                "var": "acquisition_date"
+                "==": [
+                  {
+                    "var": "consent_given_by"
+                  },
+                  "Mason's Minnesota Statutes of 1927, sections 4 and 5"
+                ]
               },
-              "1943-01-01"
+              {
+                "<": [
+                  {
+                    "var": "acquisition_date"
+                  },
+                  "1943-01-01"
+                ]
+              }
             ]
           },
           {
@@ -29,7 +41,7 @@
               {
                 "<": [
                   {
-                    "var": "consent_date"
+                    "var": "acquisition_date"
                   },
                   "1943-01-01"
                 ]
@@ -39,49 +51,45 @@
         ]
       },
       {
-        "or": [
+        "==": [
           {
-            "in": [
-              {
-                "var": "statute_referenced"
-              },
-              [
-                "Mason's Minnesota Statutes of 1927, sections 4 and 5",
-                "Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6",
-                "Mason's Supplement 1940, Section 6-1",
-                "Laws 1941, chapter 66"
-              ]
-            ]
-          }
+            "var": "acquisition_completed"
+          },
+          true
         ]
       }
     ]
   },
   "examples": [
     {
+      "consent_given_by": "Mason's Minnesota Statutes of 1927, sections 4 and 5",
       "acquisition_date": "1942-12-31",
-      "consent_given_by": "Laws 1941, chapter 66",
-      "consent_date": "1942-12-30",
-      "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
+      "acquisition_completed": true
     },
     {
+      "consent_given_by": "Laws 1941, chapter 66",
+      "acquisition_date": "1942-12-31",
+      "acquisition_completed": true
+    },
+    {
+      "consent_given_by": "Laws 1941, chapter 66",
       "acquisition_date": "1943-01-02",
-      "consent_given_by": "Laws 1941, chapter 66",
-      "consent_date": "1942-12-30",
-      "statute_referenced": "Laws 1941, chapter 66"
-    },
-    {
-      "acquisition_date": "1942-12-31",
-      "consent_given_by": "Other Law",
-      "consent_date": "1942-12-30",
-      "statute_referenced": "Mason's Minnesota Statutes of 1927, sections 4 and 5"
+      "acquisition_completed": false
     }
   ],
   "variables": [
-    "acquisition_date",
-    "consent_given_by",
-    "consent_date",
-    "statute_referenced"
+    {
+      "name": "consent_given_by",
+      "description": "The legal statute or law by which the state's consent was given for property acquisition or jurisdiction."
+    },
+    {
+      "name": "acquisition_date",
+      "description": "The date on which the property acquisition was completed."
+    },
+    {
+      "name": "acquisition_completed",
+      "description": "A boolean indicating whether the property acquisition was completed before the specified date."
+    }
   ],
   "consequences": [
     "The repeal does not affect the case."

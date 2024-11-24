@@ -11,113 +11,46 @@
           {
             "in": [
               {
-                "var": "role"
+                "var": "act"
               },
               [
-                "employee",
-                "former_employee",
-                "prospective_employee"
+                "Age Discrimination in Employment Act of 1967",
+                "Family and Medical Leave Act",
+                "Americans with Disabilities Act of 1990",
+                "Uniformed Services Employment and Reemployment Rights Act"
               ]
             ]
           },
           {
-            "==": [
+            "in": [
               {
-                "var": "violation"
+                "var": "role"
               },
-              "Age Discrimination in Employment Act of 1967"
+              [
+                "employee",
+                "former employee",
+                "prospective employee"
+              ]
             ]
           }
         ]
       },
       {
         "and": [
+          {
+            "==": [
+              {
+                "var": "act"
+              },
+              "Fair Labor Standards Act of 1938"
+            ]
+          },
           {
             "==": [
               {
                 "var": "role"
               },
               "employee"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "violation"
-              },
-              "Fair Labor Standards Act of 1938"
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "in": [
-              {
-                "var": "role"
-              },
-              [
-                "employee",
-                "former_employee",
-                "prospective_employee"
-              ]
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "violation"
-              },
-              "Family and Medical Leave Act"
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "in": [
-              {
-                "var": "role"
-              },
-              [
-                "employee",
-                "former_employee",
-                "prospective_employee"
-              ]
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "violation"
-              },
-              "Americans with Disabilities Act of 1990"
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "in": [
-              {
-                "var": "role"
-              },
-              [
-                "employee",
-                "former_employee",
-                "prospective_employee"
-              ]
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "violation"
-              },
-              "Uniformed Services Employment and Reemployment Rights Act"
             ]
           }
         ]
@@ -127,22 +60,28 @@
   "examples": [
     {
       "role": "employee",
-      "violation": "Age Discrimination in Employment Act of 1967"
+      "act": "Age Discrimination in Employment Act of 1967"
     },
     {
-      "role": "former_employee",
-      "violation": "Family and Medical Leave Act"
+      "role": "former employee",
+      "act": "Family and Medical Leave Act"
     },
     {
-      "role": "prospective_employee",
-      "violation": "Americans with Disabilities Act of 1990"
+      "role": "prospective employee",
+      "act": "Americans with Disabilities Act of 1990"
     }
   ],
   "variables": [
-    "role",
-    "violation"
+    {
+      "name": "role",
+      "description": "The role of the person (employee, former employee, or prospective employee) with respect to the state."
+    },
+    {
+      "name": "act",
+      "description": "The specific act that the state is alleged to have violated."
+    }
   ],
   "consequences": [
-    "The individual may bring a civil action against the state in federal court or another court of competent jurisdiction for legal or equitable relief."
+    "The individual may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
   ]
 }

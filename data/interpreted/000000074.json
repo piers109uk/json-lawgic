@@ -7,114 +7,67 @@
   "rule": {
     "and": [
       {
-        "==": [
-          {
-            "var": "compact_status"
-          },
-          "ratified"
-        ]
-      },
-      {
-        "in": [
-          {
-            "var": "state"
-          },
-          [
-            "Illinois",
-            "Indiana",
-            "Michigan",
-            "Minnesota",
-            "New York",
-            "Ohio",
-            "Pennsylvania",
-            "Wisconsin"
-          ]
-        ]
-      },
-      {
         "or": [
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "province_status"
-                  },
-                  "joined"
-                ]
+                "var": "state"
               },
-              {
-                "in": [
-                  {
-                    "var": "province"
-                  },
-                  [
-                    "Ontario",
-                    "Quebec"
-                  ]
-                ]
-              }
+              4
             ]
           },
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "state_legislature_count"
-                  },
-                  4
-                ]
+                "var": "province"
               },
-              {
-                "==": [
-                  {
-                    "var": "state_legislature_status"
-                  },
-                  "enacted"
-                ]
-              }
+              1
             ]
           }
+        ]
+      },
+      {
+        "==": [
+          {
+            "var": "ratified"
+          },
+          true
         ]
       }
     ]
   },
   "examples": [
     {
-      "compact_status": "ratified",
-      "state": "Illinois",
-      "province_status": "joined",
-      "province": "Ontario",
-      "state_legislature_count": 4,
-      "state_legislature_status": "enacted"
+      "state": 4,
+      "province": 0,
+      "ratified": true
     },
     {
-      "compact_status": "ratified",
-      "state": "New York",
-      "province_status": "not_joined",
-      "province": "Quebec",
-      "state_legislature_count": 4,
-      "state_legislature_status": "enacted"
+      "state": 3,
+      "province": 1,
+      "ratified": true
     },
     {
-      "compact_status": "not_ratified",
-      "state": "Ohio",
-      "province_status": "joined",
-      "province": "Ontario",
-      "state_legislature_count": 3,
-      "state_legislature_status": "not_enacted"
+      "state": 5,
+      "province": 0,
+      "ratified": false
     }
   ],
   "variables": [
-    "compact_status",
-    "state",
-    "province_status",
-    "province",
-    "state_legislature_count",
-    "state_legislature_status"
+    {
+      "name": "state",
+      "description": "Number of U.S. states that have enacted the compact."
+    },
+    {
+      "name": "province",
+      "description": "Number of Canadian provinces that have enacted the compact."
+    },
+    {
+      "name": "ratified",
+      "description": "Whether the compact has been ratified by the required number of states or provinces."
+    }
   ],
   "consequences": [
-    "The Great Lakes Basin Compact is in effect for the state or province."
+    "The Great Lakes Basin Compact is in effect."
   ]
 }

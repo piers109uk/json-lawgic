@@ -21,82 +21,31 @@
               {
                 "var": "consent_required_by_commission"
               },
-              false
+              true
             ]
           }
         ]
       },
       {
-        "or": [
-          {
-            "==": [
-              {
-                "var": "court"
-              },
-              "state"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "court"
-              },
-              "federal"
-            ]
-          }
-        ]
+        "var": "commission_specifies_method"
       },
       {
         "if": [
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "consent_given_by_sections"
-                  },
-                  true
-                ]
+                "var": "consent_given_by_sections"
               },
-              {
-                "==": [
-                  {
-                    "var": "consent_required_by_commission"
-                  },
-                  true
-                ]
-              }
+              true
             ]
           },
           {
-            "and": [
+            "or": [
               {
-                "or": [
-                  {
-                    "==": [
-                      {
-                        "var": "court"
-                      },
-                      "state"
-                    ]
-                  },
-                  {
-                    "==": [
-                      {
-                        "var": "court"
-                      },
-                      "federal"
-                    ]
-                  }
-                ]
+                "var": "condemnation_in_state_courts"
               },
               {
-                "==": [
-                  {
-                    "var": "method_specified_by_commission"
-                  },
-                  true
-                ]
+                "var": "condemnation_in_federal_courts"
               }
             ]
           }
@@ -107,29 +56,48 @@
   "examples": [
     {
       "consent_given_by_sections": true,
-      "consent_required_by_commission": false,
-      "court": "state"
-    },
-    {
-      "consent_given_by_sections": true,
-      "consent_required_by_commission": false,
-      "court": "federal"
-    },
-    {
-      "consent_given_by_sections": true,
       "consent_required_by_commission": true,
-      "court": "state",
-      "method_specified_by_commission": true
+      "commission_specifies_method": "state_courts",
+      "condemnation_in_state_courts": true,
+      "condemnation_in_federal_courts": false
+    },
+    {
+      "consent_given_by_sections": true,
+      "consent_required_by_commission": false,
+      "condemnation_in_state_courts": true,
+      "condemnation_in_federal_courts": true
+    },
+    {
+      "consent_given_by_sections": false,
+      "consent_required_by_commission": false,
+      "condemnation_in_state_courts": false,
+      "condemnation_in_federal_courts": false
     }
   ],
   "variables": [
-    "consent_given_by_sections",
-    "consent_required_by_commission",
-    "court",
-    "method_specified_by_commission"
+    {
+      "name": "consent_given_by_sections",
+      "description": "Indicates if consent is given by sections 1.041 to 1.048."
+    },
+    {
+      "name": "consent_required_by_commission",
+      "description": "Indicates if consent by the Land Exchange Commission is required."
+    },
+    {
+      "name": "commission_specifies_method",
+      "description": "The method of condemnation specified by the Land Exchange Commission."
+    },
+    {
+      "name": "condemnation_in_state_courts",
+      "description": "Indicates if condemnation is effected in the courts of the state."
+    },
+    {
+      "name": "condemnation_in_federal_courts",
+      "description": "Indicates if condemnation is effected in the courts of the United States."
+    }
   ],
   "consequences": [
-    "The United States may effect condemnation in the state or federal courts according to the laws of eminent domain.",
-    "The Land Exchange Commission may specify the method of condemnation as a condition of its consent."
+    "The United States may effect condemnation in the specified method by the commission.",
+    "The United States may effect condemnation in state or federal courts."
   ]
 }

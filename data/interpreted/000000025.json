@@ -15,115 +15,231 @@
         ]
       },
       {
-        "in": [
+        "and": [
           {
-            "var": "county"
+            "in": [
+              {
+                "var": "county"
+              },
+              [
+                "Aitkin",
+                "Anoka",
+                "Becker",
+                "Beltrami",
+                "Benton",
+                "Big Stone",
+                "Blue Earth",
+                "Brown",
+                "Carlton",
+                "Carver",
+                "Cass",
+                "Chippewa",
+                "Chisago",
+                "Clay",
+                "Cook",
+                "Cottonwood",
+                "Crow Wing",
+                "Dakota",
+                "Dodge",
+                "Douglas",
+                "Faribault",
+                "Fillmore",
+                "Freeborn",
+                "Goodhue",
+                "Grant",
+                "Hennepin",
+                "Houston",
+                "Isanti",
+                "Itasca",
+                "Jackson",
+                "Kanabec",
+                "Kandiyohi",
+                "Kittson",
+                "Lac qui Parle",
+                "Lake",
+                "Le Sueur",
+                "Lincoln",
+                "Lyon",
+                "McLeod",
+                "Marshall",
+                "Martin",
+                "Meeker",
+                "Mille Lacs",
+                "Morrison",
+                "Mower",
+                "Murray",
+                "Nicollet",
+                "Nobles",
+                "Olmsted",
+                "Otter Tail",
+                "Pine",
+                "Pipestone",
+                "Polk",
+                "Pope",
+                "Ramsey",
+                "Redwood",
+                "Renville",
+                "Rice",
+                "Rock",
+                "Scott",
+                "Sherburne",
+                "Sibley",
+                "Stearns",
+                "Steele",
+                "Stevens",
+                "Todd",
+                "Traverse",
+                "Wabasha",
+                "Wadena",
+                "Waseca",
+                "Washington",
+                "Watonwan",
+                "Winona",
+                "Wright",
+                "Yellow Medicine"
+              ]
+            ]
           },
-          [
-            "Aitkin",
-            "Anoka",
-            "Becker",
-            "Beltrami",
-            "Benton",
-            "Big Stone",
-            "Blue Earth",
-            "Brown",
-            "Carlton",
-            "Carver",
-            "Cass",
-            "Chippewa",
-            "Chisago",
-            "Clay",
-            "Cook",
-            "Cottonwood",
-            "Crow Wing",
-            "Dakota",
-            "Dodge",
-            "Douglas",
-            "Faribault",
-            "Fillmore",
-            "Freeborn",
-            "Goodhue",
-            "Grant",
-            "Hennepin",
-            "Houston",
-            "Isanti",
-            "Itasca",
-            "Jackson",
-            "Kanabec",
-            "Kandiyohi",
-            "Kittson",
-            "Lac qui Parle",
-            "Lake",
-            "Le Sueur",
-            "Lincoln",
-            "Lyon",
-            "McLeod",
-            "Marshall",
-            "Martin",
-            "Meeker",
-            "Mille Lacs",
-            "Morrison",
-            "Mower",
-            "Murray",
-            "Nicollet",
-            "Nobles",
-            "Olmsted",
-            "Otter Tail",
-            "Pine",
-            "Pipestone",
-            "Polk",
-            "Pope",
-            "Ramsey",
-            "Redwood",
-            "Renville",
-            "Rice",
-            "Rock",
-            "Scott",
-            "Sherburne",
-            "Sibley",
-            "Stearns",
-            "Steele",
-            "Stevens",
-            "Swift",
-            "Todd",
-            "Traverse",
-            "Wabasha",
-            "Wadena",
-            "Waseca",
-            "Washington",
-            "Watonwan",
-            "Wilkin",
-            "Winona",
-            "Wright",
-            "Yellow Medicine"
-          ]
+          {
+            "in": [
+              {
+                "var": "law_reference"
+              },
+              [
+                "G.S. 1866 c. 8 s. 2",
+                "G.S. 1866 c. 8 s. 4",
+                "G.S. 1866 c. 8 s. 5",
+                "1866 c. 46",
+                "G.S. 1866 c. 8 s. 6",
+                "G.S. 1866 c. 8 s. 7",
+                "G.S. 1866 c. 8 s. 8",
+                "1865 c. 71 s. 3",
+                "G.S. 1866 c. 8 s. 10",
+                "G.S. 1866 c. 8 s. 11",
+                "G.S. 1866 c. 8 s. 12",
+                "G.S. 1866 c. 8 s. 13",
+                "G.S. 1866 c. 8 s. 14",
+                "G.S. 1866 c. 8 s. 15",
+                "1874 c. 100 s. 1",
+                "1865 c. 71 s. 2",
+                "G.S. 1866 c. 8 s. 17",
+                "G.S. 1866 c. 8 s. 18",
+                "G.S. 1866 c. 8 s. 19",
+                "G.S. 1866 c. 8 s. 20",
+                "G.S. 1866 c. 8 s. 21",
+                "G.S. 1866 c. 8 s. 22",
+                "G.S. 1866 c. 8 s. 23",
+                "G.S. 1866 c. 8 s. 24",
+                "1868 c. 109 s. 5",
+                "G.S. 1866 c. 8 s. 25",
+                "G.S. 1866 c. 8 s. 26",
+                "G.S. 1866 c. 8 s. 27",
+                "G.S. 1866 c. 8 s. 28",
+                "G.S. 1866 c. 8 s. 29",
+                "G.S. 1866 c. 8 s. 30",
+                "G.S. 1866 c. 8 ss. 31, 41",
+                "G.S. 1866 c. 8 s. 49",
+                "1871 c. 100 s. 1",
+                "G.S. 1866 c. 8 s. 33",
+                "Sts. 1849-58 c. 1 s. 71",
+                "1873 c. 92 s. 1",
+                "1868 c. 112 s. 1",
+                "G.S. 1866 c. 8 s. 38",
+                "1879 c. 10 s. 3",
+                "G.S. 1866 c. 8 s. 37",
+                "G.S. 1866 c. 8 s. 39",
+                "G.S. 1866 c. 8 s. 40",
+                "G.S. 1866 c. 8 s. 42",
+                "G.S. 1866 c. 8 s. 43",
+                "G.S. 1866 c. 8 s. 44",
+                "G.S. 1866 c. 8 s. 45",
+                "G.S. 1866 c. 8 s. 46",
+                "G.S. 1866 c. 8 s. 47",
+                "G.S. 1866 c. 8 s. 48",
+                "G.S. 1866 c. 8 s. 50",
+                "G.S. 1866 c. 8 s. 51",
+                "G.S. 1866 c. 8 s. 52",
+                "G.S. 1866 c. 8 s. 53",
+                "G.S. 1866 c. 8 s. 54",
+                "1865 c. 71 s. 1",
+                "G.S. 1866 c. 8 s. 55",
+                "G.S. 1866 c. 8 s. 56",
+                "G.S. 1866 c. 8 s. 57",
+                "G.S. 1866 c. 8 s. 58",
+                "G.S. 1866 c. 8 s. 59",
+                "G.S. 1866 c. 8 s. 60",
+                "G.S. 1866 c. 8 s. 61",
+                "G.S. 1866 c. 8 s. 62",
+                "G.S. 1866 c. 8 s. 63",
+                "G.S. 1866 c. 8 s. 64",
+                "G.S. 1866 c. 8 s. 55",
+                "G.S. 1866 c. 8 s. 66",
+                "G.S. 1866 c. 8 s. 68",
+                "G.S. 1866 c. 8 s. 69",
+                "G.S. 1866 c. 8 s. 70",
+                "G.S. 1866 c. 8 s. 71",
+                "G.S. 1866 c. 8 s. 72",
+                "G.S. 1866 c. 8 s. 73",
+                "G.S. 1866 c. 8 s. 74",
+                "1871 c. 98 s. 1"
+              ]
+            ]
+          }
         ]
       },
-      "The county boundaries are fixed by the laws referred to in the schedule.",
-      "The county boundaries may have changed by vote of the people."
+      "or",
+      [
+        {
+          "in": [
+            {
+              "var": "county"
+            },
+            [
+              "Clearwater",
+              "Koochiching",
+              "Lake of the Woods",
+              "Mahnomen",
+              "Pennington",
+              "Red Lake",
+              "Roseau"
+            ]
+          ]
+        }
+      ]
     ]
   },
   "examples": [
     {
       "county": "Aitkin",
-      "year": 1880
+      "year": 1880,
+      "law_reference": "G.S. 1866 c. 8 s. 2"
     },
     {
-      "county": "Lake of the Woods",
-      "year": 1922
+      "county": "Clearwater",
+      "year": 1922,
+      "law_reference": "formed by popular vote"
     },
     {
-      "county": "Mahnomen",
-      "year": 1906
+      "county": "Koochiching",
+      "year": 1906,
+      "law_reference": "formed by popular vote"
     }
   ],
   "variables": [
-    "county",
-    "year"
+    {
+      "name": "county",
+      "description": "The name of the county being referenced."
+    },
+    {
+      "name": "year",
+      "description": "The year in which the county boundaries were established or changed."
+    },
+    {
+      "name": "law_reference",
+      "description": "The legal reference that established or changed the county boundaries."
+    }
   ],
   "consequences": [
-    "The county boundaries are fixed by the laws referred to in the schedule.",
-    "The county boundaries may have changed by vote of the people."
+    "The county boundaries are as fixed by the laws referred to in the schedule."
   ]
 }

@@ -31,7 +31,7 @@
           {
             "===": [
               {
-                "var": "land_acquisition_method"
+                "var": "acquisition_method"
               },
               "purchase"
             ]
@@ -39,7 +39,7 @@
           {
             "===": [
               {
-                "var": "state_consent_obtained"
+                "var": "state_consent"
               },
               true
             ]
@@ -51,7 +51,27 @@
           {
             "===": [
               {
-                "var": "land_acquisition_method"
+                "var": "acquisition_method"
+              },
+              "gift"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "state_consent"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "acquisition_method"
               },
               "condemnation"
             ]
@@ -59,7 +79,7 @@
           {
             "===": [
               {
-                "var": "state_consent_obtained"
+                "var": "state_consent"
               },
               true
             ]
@@ -72,29 +92,36 @@
     {
       "jurisdiction": true,
       "state_consent": true,
-      "land_acquisition_method": "purchase",
-      "state_consent_obtained": true
+      "acquisition_method": "purchase"
     },
     {
       "jurisdiction": true,
       "state_consent": true,
-      "land_acquisition_method": "condemnation",
-      "state_consent_obtained": true
+      "acquisition_method": "gift"
     },
     {
-      "jurisdiction": false,
-      "state_consent": false,
-      "land_acquisition_method": "purchase",
-      "state_consent_obtained": false
+      "jurisdiction": true,
+      "state_consent": true,
+      "acquisition_method": "condemnation"
     }
   ],
   "variables": [
-    "jurisdiction",
-    "state_consent",
-    "land_acquisition_method",
-    "state_consent_obtained"
+    {
+      "name": "jurisdiction",
+      "description": "Whether the jurisdiction of the United States is concurrent with the state."
+    },
+    {
+      "name": "state_consent",
+      "description": "Whether the state has given consent for the acquisition."
+    },
+    {
+      "name": "acquisition_method",
+      "description": "The method used for acquiring the land or property."
+    }
   ],
   "consequences": [
-    "The United States can exercise jurisdiction over the land with state consent."
+    "The United States can execute its jurisdiction over the land.",
+    "The state can execute its civil and criminal process on the land.",
+    "The acquisition method is consistent with the best interests of the state."
   ]
 }

@@ -39,8 +39,14 @@
     }
   ],
   "variables": [
-    "butterfly",
-    "state"
+    {
+      "name": "butterfly",
+      "description": "The name of the butterfly being referenced."
+    },
+    {
+      "name": "state",
+      "description": "The name of the state being referenced."
+    }
   ],
   "consequences": [
     "The Monarch butterfly is the official butterfly of Minnesota."
