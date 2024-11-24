@@ -33,7 +33,8 @@
             ]
           }
         ]
-      }
+      },
+      "District not applicable"
     ]
   },
   "examples": [
@@ -44,8 +45,8 @@
     },
     {
       "district": 12,
-      "order": false,
-      "modification": true
+      "order": true,
+      "modification": false
     },
     {
       "district": 11,
@@ -54,11 +55,22 @@
     }
   ],
   "variables": [
-    "district",
-    "order",
-    "modification"
+    {
+      "name": "district",
+      "description": "The Senate District number being evaluated."
+    },
+    {
+      "name": "order",
+      "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
+    },
+    {
+      "name": "modification",
+      "description": "Whether the district includes the modification contained in file L12B-1."
+    }
   ],
   "consequences": [
-    "Senate District 12 is modified and divided into House Districts 12A and 12B"
+    "Senate District 12 consists of the district as described in the order with the modification.",
+    "House of Representatives District 12A consists of the district as described in the order.",
+    "House of Representatives District 12B consists of all territory of Senate District 12, as modified, that is not included in House of Representatives District 12A."
   ]
 }

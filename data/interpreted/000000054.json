@@ -30,17 +30,23 @@
       "city": "Minneapolis"
     },
     {
-      "museum_name": "Some Other Museum",
-      "city": "Minneapolis"
+      "museum_name": "Minnesota History Center",
+      "city": "St. Paul"
     },
     {
       "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
-      "city": "Another City"
+      "city": "Duluth"
     }
   ],
   "variables": [
-    "museum_name",
-    "city"
+    {
+      "name": "museum_name",
+      "description": "The name of the museum being referenced."
+    },
+    {
+      "name": "city",
+      "description": "The city where the museum is located."
+    }
   ],
   "consequences": [
     "The museum is designated as the official state fire museum."

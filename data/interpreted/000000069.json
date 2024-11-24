@@ -9,112 +9,124 @@
       {
         "==": [
           {
-            "var": "maps.ExhibitA.location"
+            "var": "ExhibitA.location"
           },
-          "Office of the Secretary of State of Wisconsin"
+          "Wisconsin Secretary of State"
         ]
       },
       {
         "==": [
           {
-            "var": "maps.ExhibitB.location"
+            "var": "ExhibitB.location"
           },
-          "Office of the Secretary of State of Wisconsin"
+          "Wisconsin Secretary of State"
         ]
       },
       {
         "==": [
           {
-            "var": "maps.ExhibitC.location"
+            "var": "ExhibitC.location"
           },
-          "Office of the Secretary of State of Wisconsin"
+          "Wisconsin Secretary of State"
         ]
       },
       {
         "==": [
           {
-            "var": "maps.ExhibitA.duplicateLocation"
+            "var": "ExhibitA.duplicateLocation"
           },
-          "Office of the Secretary of State of Minnesota"
+          "Minnesota Secretary of State"
         ]
       },
       {
         "==": [
           {
-            "var": "maps.ExhibitB.duplicateLocation"
+            "var": "ExhibitB.duplicateLocation"
           },
-          "Office of the Secretary of State of Minnesota"
+          "Minnesota Secretary of State"
         ]
       },
       {
         "==": [
           {
-            "var": "maps.ExhibitC.duplicateLocation"
+            "var": "ExhibitC.duplicateLocation"
           },
-          "Office of the Secretary of State of Minnesota"
+          "Minnesota Secretary of State"
         ]
       }
     ]
   },
   "examples": [
     {
-      "maps": {
-        "ExhibitA": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitB": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitC": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        }
+      "ExhibitA": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitB": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitC": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
       }
     },
     {
-      "maps": {
-        "ExhibitA": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitB": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitC": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        }
+      "ExhibitA": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitB": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitC": {
+        "location": "Minnesota Secretary of State",
+        "duplicateLocation": "Wisconsin Secretary of State"
       }
     },
     {
-      "maps": {
-        "ExhibitA": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitB": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        },
-        "ExhibitC": {
-          "location": "Office of the Secretary of State of Wisconsin",
-          "duplicateLocation": "Office of the Secretary of State of Minnesota"
-        }
+      "ExhibitA": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitB": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
+      },
+      "ExhibitC": {
+        "location": "Wisconsin Secretary of State",
+        "duplicateLocation": "Minnesota Secretary of State"
       }
     }
   ],
   "variables": [
-    "maps.ExhibitA.location",
-    "maps.ExhibitB.location",
-    "maps.ExhibitC.location",
-    "maps.ExhibitA.duplicateLocation",
-    "maps.ExhibitB.duplicateLocation",
-    "maps.ExhibitC.duplicateLocation"
+    {
+      "name": "ExhibitA.location",
+      "description": "The location where Exhibit A is filed."
+    },
+    {
+      "name": "ExhibitB.location",
+      "description": "The location where Exhibit B is filed."
+    },
+    {
+      "name": "ExhibitC.location",
+      "description": "The location where Exhibit C is filed."
+    },
+    {
+      "name": "ExhibitA.duplicateLocation",
+      "description": "The location where the duplicate of Exhibit A is filed."
+    },
+    {
+      "name": "ExhibitB.duplicateLocation",
+      "description": "The location where the duplicate of Exhibit B is filed."
+    },
+    {
+      "name": "ExhibitC.duplicateLocation",
+      "description": "The location where the duplicate of Exhibit C is filed."
+    }
   ],
   "consequences": [
-    "The maps are correctly filed in the respective offices as per the compact."
+    "The maps are correctly filed according to the compact."
   ]
 }

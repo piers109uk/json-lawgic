@@ -27,7 +27,7 @@
           {
             "var": "preserved_photograph"
           },
-          true
+          "Lake Superior agate"
         ]
       },
       {
@@ -35,7 +35,7 @@
           {
             "var": "preserved_specimen"
           },
-          true
+          "Lake Superior agate"
         ]
       }
     ]
@@ -44,29 +44,43 @@
     {
       "official_gemstone": "Lake Superior agate",
       "state": "Minnesota",
-      "preserved_photograph": true,
-      "preserved_specimen": true
-    },
-    {
-      "official_gemstone": "Lake Superior agate",
-      "state": "Minnesota",
-      "preserved_photograph": false,
-      "preserved_specimen": true
+      "preserved_photograph": "Lake Superior agate",
+      "preserved_specimen": "Lake Superior agate"
     },
     {
       "official_gemstone": "Amethyst",
       "state": "Minnesota",
-      "preserved_photograph": true,
-      "preserved_specimen": true
+      "preserved_photograph": "Lake Superior agate",
+      "preserved_specimen": "Lake Superior agate"
+    },
+    {
+      "official_gemstone": "Lake Superior agate",
+      "state": "Wisconsin",
+      "preserved_photograph": "Lake Superior agate",
+      "preserved_specimen": "Lake Superior agate"
     }
   ],
   "variables": [
-    "official_gemstone",
-    "state",
-    "preserved_photograph",
-    "preserved_specimen"
+    {
+      "name": "official_gemstone",
+      "description": "The official gemstone of the state."
+    },
+    {
+      "name": "state",
+      "description": "The state in question."
+    },
+    {
+      "name": "preserved_photograph",
+      "description": "The photograph preserved in the Office of the Secretary of State."
+    },
+    {
+      "name": "preserved_specimen",
+      "description": "The specimen preserved in the Office of the Secretary of State."
+    }
   ],
   "consequences": [
-    "The Lake Superior agate is recognized as the official gemstone of Minnesota and is preserved in the Office of the Secretary of State."
+    "The Lake Superior agate is confirmed as the official gemstone of Minnesota.",
+    "A photograph of the Lake Superior agate is preserved in the Office of the Secretary of State.",
+    "A specimen of the Lake Superior agate is preserved in the Office of the Secretary of State."
   ]
 }

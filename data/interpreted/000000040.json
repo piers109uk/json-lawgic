@@ -39,8 +39,14 @@
     }
   ],
   "variables": [
-    "bird_name",
-    "state"
+    {
+      "name": "bird_name",
+      "description": "The scientific name of the bird being referenced."
+    },
+    {
+      "name": "state",
+      "description": "The name of the state being referenced."
+    }
   ],
   "consequences": [
     "A photograph of the loon shall be preserved in the Office of the Secretary of State."

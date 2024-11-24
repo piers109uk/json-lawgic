@@ -11,21 +11,21 @@
           {
             "var": "state"
           },
-          true
+          "Minnesota"
         ]
       },
       {
         "==": [
           {
-            "var": "navigable_waters_owned_by_state"
+            "var": "navigable_waters_ownership"
           },
-          true
+          "state"
         ]
       },
       {
         "==": [
           {
-            "var": "state_consent"
+            "var": "jurisdiction_granted"
           },
           false
         ]
@@ -33,7 +33,7 @@
       {
         "==": [
           {
-            "var": "trust_fund_lands_disposed"
+            "var": "trust_fund_land_disposed"
           },
           false
         ]
@@ -50,35 +50,53 @@
   },
   "examples": [
     {
-      "state": true,
-      "navigable_waters_owned_by_state": true,
-      "state_consent": false,
-      "trust_fund_lands_disposed": false,
+      "state": "Minnesota",
+      "navigable_waters_ownership": "state",
+      "jurisdiction_granted": false,
+      "trust_fund_land_disposed": false,
       "jurisdiction_ceded": false
     },
     {
-      "state": true,
-      "navigable_waters_owned_by_state": true,
-      "state_consent": true,
-      "trust_fund_lands_disposed": false,
+      "state": "Minnesota",
+      "navigable_waters_ownership": "federal",
+      "jurisdiction_granted": false,
+      "trust_fund_land_disposed": false,
       "jurisdiction_ceded": false
     },
     {
-      "state": true,
-      "navigable_waters_owned_by_state": false,
-      "state_consent": false,
-      "trust_fund_lands_disposed": false,
+      "state": "Minnesota",
+      "navigable_waters_ownership": "state",
+      "jurisdiction_granted": true,
+      "trust_fund_land_disposed": false,
       "jurisdiction_ceded": false
     }
   ],
   "variables": [
-    "state",
-    "navigable_waters_owned_by_state",
-    "state_consent",
-    "trust_fund_lands_disposed",
-    "jurisdiction_ceded"
+    {
+      "name": "state",
+      "description": "The state being referenced in the law."
+    },
+    {
+      "name": "navigable_waters_ownership",
+      "description": "The entity that owns the navigable waters and their beds within the state."
+    },
+    {
+      "name": "jurisdiction_granted",
+      "description": "Whether the state has granted jurisdiction to the United States over the navigable waters and their beds."
+    },
+    {
+      "name": "trust_fund_land_disposed",
+      "description": "Whether the state has disposed of trust fund lands to the United States."
+    },
+    {
+      "name": "jurisdiction_ceded",
+      "description": "Whether the state has ceded jurisdiction over lands to the United States."
+    }
   ],
   "consequences": [
-    "The state retains ownership and jurisdiction over navigable waters and trust fund lands."
+    "The state retains ownership and jurisdiction over navigable waters and their beds.",
+    "The state retains ownership of trust fund lands and lands held in trust for local taxing districts.",
+    "State officials must assert and defend the state's ownership and jurisdiction.",
+    "Officials must consider the high value of state lands in the Boundary Waters Canoe Area Wilderness."
   ]
 }

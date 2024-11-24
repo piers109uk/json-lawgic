@@ -14,25 +14,42 @@
           "Zizania aquatica"
         ]
       },
-      "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State",
-      ""
+      {
+        "===": [
+          {
+            "var": "state"
+          },
+          "Minnesota"
+        ]
+      },
+      false
     ]
   },
   "examples": [
     {
-      "state_grain": "Zizania aquatica"
+      "state_grain": "Zizania aquatica",
+      "state": "Minnesota"
     },
     {
-      "state_grain": "Oryza sativa"
+      "state_grain": "Zizania aquatica",
+      "state": "Wisconsin"
     },
     {
-      "state_grain": "Triticum aestivum"
+      "state_grain": "Oryza sativa",
+      "state": "Minnesota"
     }
   ],
   "variables": [
-    "state_grain"
+    {
+      "name": "state_grain",
+      "description": "The official state grain of a state."
+    },
+    {
+      "name": "state",
+      "description": "The name of the state."
+    }
   ],
   "consequences": [
-    "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State"
+    "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State."
   ]
 }

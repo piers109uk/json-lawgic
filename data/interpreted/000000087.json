@@ -47,7 +47,7 @@
           {
             "==": [
               {
-                "var": "emergency_appointments_made"
+                "var": "interim_successor_designated"
               },
               true
             ]
@@ -62,31 +62,46 @@
       "nuclear_attack": false,
       "natural_disaster": false,
       "governing_body_action": true,
-      "emergency_appointments_made": true
+      "interim_successor_designated": true
     },
     {
       "emergency_declared": false,
       "nuclear_attack": true,
       "natural_disaster": false,
       "governing_body_action": true,
-      "emergency_appointments_made": true
+      "interim_successor_designated": true
     },
     {
       "emergency_declared": false,
       "nuclear_attack": false,
       "natural_disaster": true,
       "governing_body_action": false,
-      "emergency_appointments_made": false
+      "interim_successor_designated": false
     }
   ],
   "variables": [
-    "emergency_declared",
-    "nuclear_attack",
-    "natural_disaster",
-    "governing_body_action",
-    "emergency_appointments_made"
+    {
+      "name": "emergency_declared",
+      "description": "Indicates if a state of emergency has been declared."
+    },
+    {
+      "name": "nuclear_attack",
+      "description": "Indicates if a nuclear attack has occurred."
+    },
+    {
+      "name": "natural_disaster",
+      "description": "Indicates if a natural disaster has occurred."
+    },
+    {
+      "name": "governing_body_action",
+      "description": "Indicates if the governing body has enacted necessary ordinances or resolutions."
+    },
+    {
+      "name": "interim_successor_designated",
+      "description": "Indicates if an interim emergency successor has been designated."
+    }
   ],
   "consequences": [
-    "Continuity of government is ensured through emergency appointments."
+    "Continuity of government is ensured through emergency interim succession."
   ]
 }

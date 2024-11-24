@@ -16,8 +16,7 @@
       },
       {
         "log": "Deposit in trunk highway fund"
-      },
-      "Do nothing"
+      }
     ]
   },
   "examples": [
@@ -35,7 +34,14 @@
     }
   ],
   "variables": [
-    "payment_type"
+    {
+      "name": "payment_type",
+      "description": "The type of payment received, e.g., easement, lease, etc."
+    },
+    {
+      "name": "amount",
+      "description": "The amount of money received for the payment."
+    }
   ],
   "consequences": [
     "Deposit in trunk highway fund"

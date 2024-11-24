@@ -27,15 +27,7 @@
           {
             "var": "boundary_extension"
           },
-          "produced"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "boundary_extension_direction"
-          },
-          "towards_opposite_shore"
+          "extended_to_opposite_shore"
         ]
       }
     ]
@@ -44,29 +36,34 @@
     {
       "jurisdiction_type": "concurrent",
       "area_type": "water",
-      "boundary_extension": "produced",
-      "boundary_extension_direction": "towards_opposite_shore"
+      "boundary_extension": "extended_to_opposite_shore"
     },
     {
       "jurisdiction_type": "exclusive",
       "area_type": "land",
-      "boundary_extension": "not_produced",
-      "boundary_extension_direction": "away_from_shore"
+      "boundary_extension": "not_extended"
     },
     {
       "jurisdiction_type": "concurrent",
       "area_type": "water",
-      "boundary_extension": "not_produced",
-      "boundary_extension_direction": "towards_opposite_shore"
+      "boundary_extension": "not_extended"
     }
   ],
   "variables": [
-    "jurisdiction_type",
-    "area_type",
-    "boundary_extension",
-    "boundary_extension_direction"
+    {
+      "name": "jurisdiction_type",
+      "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
+    },
+    {
+      "name": "area_type",
+      "description": "The type of area over which jurisdiction is being exercised (e.g., water, land)."
+    },
+    {
+      "name": "boundary_extension",
+      "description": "Whether the boundary lines are extended to the opposite shore."
+    }
   ],
   "consequences": [
-    "County and courts have jurisdiction over the extended water area."
+    "County and courts have jurisdiction over the water area."
   ]
 }

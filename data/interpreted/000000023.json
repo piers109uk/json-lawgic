@@ -43,7 +43,7 @@
           {
             "var": "purpose"
           },
-          true
+          "development or maintenance"
         ]
       }
     ]
@@ -54,31 +54,46 @@
       "land_location": "Tamarac National Wildlife Refuge",
       "executive_order": "7902",
       "date": 1938,
-      "purpose": true
+      "purpose": "development or maintenance"
     },
     {
       "state": "Minnesota",
       "land_location": "Tamarac National Wildlife Refuge",
       "executive_order": "7902",
       "date": 1938,
-      "purpose": false
+      "purpose": "research"
     },
     {
       "state": "Minnesota",
       "land_location": "Another Refuge",
       "executive_order": "7902",
       "date": 1938,
-      "purpose": true
+      "purpose": "development or maintenance"
     }
   ],
   "variables": [
-    "state",
-    "land_location",
-    "executive_order",
-    "date",
-    "purpose"
+    {
+      "name": "state",
+      "description": "The state where the land is located."
+    },
+    {
+      "name": "land_location",
+      "description": "The specific location of the land within the state."
+    },
+    {
+      "name": "executive_order",
+      "description": "The executive order number that established the boundaries."
+    },
+    {
+      "name": "date",
+      "description": "The year the executive order was issued."
+    },
+    {
+      "name": "purpose",
+      "description": "The purpose for which the land is being acquired."
+    }
   ],
   "consequences": [
-    "Consent is given for the acquisition of land by the United States for the development or maintenance of the Tamarac National Wildlife Refuge."
+    "Consent is given for the acquisition of land by the United States."
   ]
 }

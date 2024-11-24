@@ -54,11 +54,22 @@
     }
   ],
   "variables": [
-    "district",
-    "order",
-    "modification"
+    {
+      "name": "district",
+      "description": "The Senate District number being evaluated."
+    },
+    {
+      "name": "order",
+      "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
+    },
+    {
+      "name": "modification",
+      "description": "Whether the modification contained in file L15A-1 is applied."
+    }
   ],
   "consequences": [
-    "Senate District 15 and House Districts 15A and 15B are defined as per the modifications."
+    "Senate District 15 consists of the district as described in the order with the modification.",
+    "House of Representatives District 15A consists of the district as described in the order with the modification.",
+    "House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A."
   ]
 }

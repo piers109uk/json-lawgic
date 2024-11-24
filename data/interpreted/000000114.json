@@ -5,51 +5,107 @@
   "text": "Each American flag and Minnesota flag flown on the grounds of the Capitol Area, as described in section 15B.02, must be flown at half-staff following the death of a public safety officer, as defined in section 299A.41, subdivision 4, killed in the line of duty in Minnesota, or the death of Minnesota military personnel killed in the line of duty. The flags must be flown at half-staff for a period of time determined by the governor.",
   "repealed": false,
   "rule": {
-    "if": [
+    "and": [
       {
         "or": [
           {
             "==": [
               {
-                "var": "event.type"
+                "var": "flagType"
               },
-              "public_safety_officer_death"
+              "American"
             ]
           },
           {
             "==": [
               {
-                "var": "event.type"
+                "var": "flagType"
               },
-              "military_personnel_death"
+              "Minnesota"
             ]
           }
         ]
       },
       {
-        "and": [
+        "==": [
           {
-            "==": [
+            "var": "location"
+          },
+          "Capitol Area"
+        ]
+      },
+      {
+        "or": [
+          {
+            "and": [
               {
-                "var": "location"
+                "==": [
+                  {
+                    "var": "event"
+                  },
+                  "death"
+                ]
               },
-              "Minnesota"
+              {
+                "==": [
+                  {
+                    "var": "personType"
+                  },
+                  "public safety officer"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "state"
+                  },
+                  "Minnesota"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "dutyStatus"
+                  },
+                  "killed in the line of duty"
+                ]
+              }
             ]
           },
           {
-            "==": [
+            "and": [
               {
-                "var": "flag_location"
+                "==": [
+                  {
+                    "var": "event"
+                  },
+                  "death"
+                ]
               },
-              "Capitol Area"
-            ]
-          },
-          {
-            "==": [
               {
-                "var": "flag_type"
+                "==": [
+                  {
+                    "var": "personType"
+                  },
+                  "military personnel"
+                ]
               },
-              "American or Minnesota"
+              {
+                "==": [
+                  {
+                    "var": "state"
+                  },
+                  "Minnesota"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "dutyStatus"
+                  },
+                  "killed in the line of duty"
+                ]
+              }
             ]
           }
         ]
@@ -58,35 +114,55 @@
   },
   "examples": [
     {
-      "event": {
-        "type": "public_safety_officer_death"
-      },
-      "location": "Minnesota",
-      "flag_location": "Capitol Area",
-      "flag_type": "American"
+      "flagType": "American",
+      "location": "Capitol Area",
+      "event": "death",
+      "personType": "public safety officer",
+      "state": "Minnesota",
+      "dutyStatus": "killed in the line of duty"
     },
     {
-      "event": {
-        "type": "military_personnel_death"
-      },
-      "location": "Minnesota",
-      "flag_location": "Capitol Area",
-      "flag_type": "Minnesota"
+      "flagType": "Minnesota",
+      "location": "Capitol Area",
+      "event": "death",
+      "personType": "military personnel",
+      "state": "Minnesota",
+      "dutyStatus": "killed in the line of duty"
     },
     {
-      "event": {
-        "type": "public_safety_officer_death"
-      },
-      "location": "Minnesota",
-      "flag_location": "Capitol Area",
-      "flag_type": "Other"
+      "flagType": "American",
+      "location": "Capitol Area",
+      "event": "death",
+      "personType": "public safety officer",
+      "state": "Minnesota",
+      "dutyStatus": "not in the line of duty"
     }
   ],
   "variables": [
-    "event.type",
-    "location",
-    "flag_location",
-    "flag_type"
+    {
+      "name": "flagType",
+      "description": "The type of flag being flown, either American or Minnesota."
+    },
+    {
+      "name": "location",
+      "description": "The location where the flag is being flown, specifically the Capitol Area."
+    },
+    {
+      "name": "event",
+      "description": "The event triggering the action, specifically a death."
+    },
+    {
+      "name": "personType",
+      "description": "The type of person whose death triggers the action, either a public safety officer or military personnel."
+    },
+    {
+      "name": "state",
+      "description": "The state where the event occurred, specifically Minnesota."
+    },
+    {
+      "name": "dutyStatus",
+      "description": "The duty status of the person at the time of death, specifically if they were killed in the line of duty."
+    }
   ],
   "consequences": [
     "Flags must be flown at half-staff for a period determined by the governor."

@@ -7,29 +7,29 @@
   "rule": {
     "==": [
       {
-        "var": "state"
+        "var": "official_muffin"
       },
-      "Minnesota"
+      "blueberry muffin"
     ]
   },
   "examples": [
     {
-      "state": "Minnesota",
-      "muffin": "blueberry"
+      "official_muffin": "blueberry muffin"
     },
     {
-      "state": "California",
-      "muffin": "banana"
+      "official_muffin": "chocolate muffin"
     },
     {
-      "state": "Minnesota",
-      "muffin": "chocolate chip"
+      "official_muffin": "banana muffin"
     }
   ],
   "variables": [
-    "state"
+    {
+      "name": "official_muffin",
+      "description": "The muffin designated as the official muffin of the state of Minnesota"
+    }
   ],
   "consequences": [
-    "The blueberry muffin is the official muffin."
+    "The blueberry muffin is recognized as the official muffin of Minnesota."
   ]
 }

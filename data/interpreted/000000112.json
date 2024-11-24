@@ -5,36 +5,33 @@
   "text": "The state of Minnesota hereby adopts a policy of zero tolerance of violence. It is state policy that every person in the state has a right to live free from violence.",
   "repealed": false,
   "rule": {
-    "if": [
+    "==": [
       {
-        "==": [
-          {
-            "var": "violence_occurred"
-          },
-          true
-        ]
+        "var": "violence_occurred"
       },
-      {
-        "log": "Zero tolerance policy violated"
-      },
-      "No violence detected"
+      false
     ]
   },
   "examples": [
-    {
-      "violence_occurred": true
-    },
     {
       "violence_occurred": false
     },
     {
       "violence_occurred": true
+    },
+    {
+      "violence_occurred": false
     }
   ],
   "variables": [
-    "violence_occurred"
+    {
+      "name": "violence_occurred",
+      "description": "Indicates whether an act of violence has occurred"
+    }
   ],
   "consequences": [
-    "Zero tolerance policy violated"
+    "Ensure the right to live free from violence is upheld",
+    "Take action to prevent violence",
+    "Promote a safe and peaceful environment"
   ]
 }

@@ -51,22 +51,34 @@
       "requester": "commissioner of transportation",
       "state": "Minnesota",
       "required_by": "United States",
-      "purpose": "not for public improvement"
+      "purpose": "commercial use"
     },
     {
-      "requester": "someone else",
+      "requester": "mayor",
       "state": "Minnesota",
       "required_by": "United States",
       "purpose": "aid a public improvement"
     }
   ],
   "variables": [
-    "requester",
-    "state",
-    "required_by",
-    "purpose"
+    {
+      "name": "requester",
+      "description": "The entity requesting the easement."
+    },
+    {
+      "name": "state",
+      "description": "The state owning the easement or fee."
+    },
+    {
+      "name": "required_by",
+      "description": "The entity requiring the easement."
+    },
+    {
+      "name": "purpose",
+      "description": "The purpose for which the easement is required."
+    }
   ],
   "consequences": [
-    "The governor may grant, bargain, sell, and convey an easement for flowage to the United States."
+    "The governor may grant, bargain, sell, and convey an easement to the United States."
   ]
 }

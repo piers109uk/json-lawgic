@@ -24,9 +24,12 @@
     }
   ],
   "variables": [
-    "state"
+    {
+      "name": "state",
+      "description": "The name of the state being evaluated."
+    }
   ],
   "consequences": [
-    "Milk is the official drink"
+    "Milk is the official drink."
   ]
 }

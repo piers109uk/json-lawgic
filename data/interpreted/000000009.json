@@ -11,7 +11,7 @@
           {
             "==": [
               {
-                "var": "US_title_acquired"
+                "var": "us_title_acquired"
               },
               true
             ]
@@ -19,7 +19,7 @@
           {
             "==": [
               {
-                "var": "US_right_of_possession"
+                "var": "us_right_of_possession"
               },
               true
             ]
@@ -33,7 +33,27 @@
               {
                 "==": [
                   {
-                    "var": "US_owns"
+                    "var": "us_owns"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "purpose_matches"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "us_occupies"
                   },
                   true
                 ]
@@ -51,15 +71,7 @@
           {
             "==": [
               {
-                "var": "US_occupies"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "US_relinquishes_jurisdiction"
+                "var": "us_relinquishes_jurisdiction"
               },
               true
             ]
@@ -70,39 +82,57 @@
   },
   "examples": [
     {
-      "US_title_acquired": true,
-      "US_right_of_possession": false,
-      "US_owns": true,
+      "us_title_acquired": true,
+      "us_right_of_possession": false,
+      "us_owns": true,
+      "us_occupies": false,
       "purpose_matches": true,
-      "US_occupies": false,
-      "US_relinquishes_jurisdiction": false
+      "us_relinquishes_jurisdiction": false
     },
     {
-      "US_title_acquired": false,
-      "US_right_of_possession": true,
-      "US_owns": false,
-      "purpose_matches": false,
-      "US_occupies": true,
-      "US_relinquishes_jurisdiction": false
+      "us_title_acquired": false,
+      "us_right_of_possession": true,
+      "us_owns": false,
+      "us_occupies": true,
+      "purpose_matches": true,
+      "us_relinquishes_jurisdiction": false
     },
     {
-      "US_title_acquired": false,
-      "US_right_of_possession": false,
-      "US_owns": false,
+      "us_title_acquired": false,
+      "us_right_of_possession": false,
+      "us_owns": false,
+      "us_occupies": false,
       "purpose_matches": false,
-      "US_occupies": false,
-      "US_relinquishes_jurisdiction": true
+      "us_relinquishes_jurisdiction": true
     }
   ],
   "variables": [
-    "US_title_acquired",
-    "US_right_of_possession",
-    "US_owns",
-    "purpose_matches",
-    "US_occupies",
-    "US_relinquishes_jurisdiction"
+    {
+      "name": "us_title_acquired",
+      "description": "Indicates if the United States has acquired the title to the premises."
+    },
+    {
+      "name": "us_right_of_possession",
+      "description": "Indicates if the United States has acquired the right of possession of the premises."
+    },
+    {
+      "name": "us_owns",
+      "description": "Indicates if the United States currently owns the premises."
+    },
+    {
+      "name": "us_occupies",
+      "description": "Indicates if the United States currently occupies the premises."
+    },
+    {
+      "name": "purpose_matches",
+      "description": "Indicates if the premises are used for the purposes to which the jurisdiction appertains as specified in sections 1.041 or 1.042."
+    },
+    {
+      "name": "us_relinquishes_jurisdiction",
+      "description": "Indicates if the United States has relinquished full or partial jurisdiction to the state under section 1.0431."
+    }
   ],
   "consequences": [
-    "Jurisdiction is vested and continues"
+    "Jurisdiction is vested in the United States."
   ]
 }

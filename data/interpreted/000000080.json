@@ -15,50 +15,78 @@
         ]
       },
       {
-        "and": [
+        "merge": [
           {
-            "===": [
-              {
-                "var": "order"
-              },
-              true
-            ]
+            "var": "district_9_order"
           },
           {
-            "===": [
-              {
-                "var": "modification"
-              },
-              true
-            ]
+            "var": "L12B-1_modification"
           }
         ]
-      }
+      },
+      "Unknown District"
     ]
   },
   "examples": [
     {
       "district": 9,
-      "order": true,
-      "modification": true
+      "district_9_order": [
+        "Area1",
+        "Area2"
+      ],
+      "L12B-1_modification": [
+        "Area3"
+      ],
+      "result": [
+        "Area1",
+        "Area2",
+        "Area3"
+      ]
     },
     {
       "district": 9,
-      "order": false,
-      "modification": true
+      "district_9_order": [
+        "Area1"
+      ],
+      "L12B-1_modification": [
+        "Area2",
+        "Area3"
+      ],
+      "result": [
+        "Area1",
+        "Area2",
+        "Area3"
+      ]
     },
     {
-      "district": 8,
-      "order": true,
-      "modification": true
+      "district": 10,
+      "district_9_order": [
+        "Area1",
+        "Area2"
+      ],
+      "L12B-1_modification": [
+        "Area3"
+      ],
+      "result": "Unknown District"
     }
   ],
   "variables": [
-    "district",
-    "order",
-    "modification"
+    {
+      "name": "district",
+      "description": "The Senate district number being evaluated."
+    },
+    {
+      "name": "district_9_order",
+      "description": "The original description of Senate District 9 as per the order."
+    },
+    {
+      "name": "L12B-1_modification",
+      "description": "The modification to Senate District 9 as per file L12B-1."
+    }
   ],
   "consequences": [
-    "Senate District 9 is defined and divided into House Districts 9A and 9B as per the specified order and modification."
+    "Senate District 9 is modified as per file L12B-1.",
+    "House of Representatives District 9A consists of the original district 9 order.",
+    "House of Representatives District 9B consists of the modified areas not in District 9A."
   ]
 }

@@ -2,8 +2,8 @@ import json
 from pprint import pprint
 from data_readers import read_json
 from law_interpreter import LawInterpreter
+from json_merge import merge_json_files
 from pathlib import Path
-import os
 
 interpreter = LawInterpreter()
 # law_object = read_json("data/default/000000001.json")
@@ -16,12 +16,7 @@ def write_json(path: str | Path, data: dict):
         json.dump(data, f, indent=2)
 
 
-input_folder = "data/examples"
-output_folder = "data/examples-interpreted"
-
-
-def run_pipeline():
-    limit = 50
+def run_pipeline(input_folder: str, output_folder: str, limit: int = 50):
     p = Path(input_folder)
     files = sorted(p.glob("*.json"))
     for file in files:
@@ -43,4 +38,9 @@ def run_pipeline():
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    input_folder = "data/default"
+    output_folder = "data/interpreted"
+
+    run_pipeline(input_folder, output_folder)
+    output_file = "data/interpreted-laws.json"
+    merge_json_files(output_folder, output_file)

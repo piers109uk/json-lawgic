@@ -67,17 +67,9 @@
               {
                 "var": "material_type"
               },
-              "expendable"
+              "permanent"
             ]
           }
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "unused_dies_destination"
-          },
-          "Minnesota Historical Society"
         ]
       }
     ]
@@ -86,34 +78,45 @@
     {
       "seal_design": "certified_design",
       "seal_position": "12 o'clock",
-      "date": "2024-12-31",
-      "material_type": "expendable",
-      "unused_dies_destination": "Minnesota Historical Society"
+      "date": "2024-05-10",
+      "material_type": "permanent"
     },
     {
       "seal_design": "certified_design",
       "seal_position": "enlarged",
       "date": "2025-01-02",
-      "material_type": "non-expendable",
-      "unused_dies_destination": "Minnesota Historical Society"
+      "material_type": "expendable"
     },
     {
       "seal_design": "non_certified_design",
       "seal_position": "12 o'clock",
-      "date": "2024-12-31",
-      "material_type": "expendable",
-      "unused_dies_destination": "Minnesota Historical Society"
+      "date": "2024-05-10",
+      "material_type": "permanent"
     }
   ],
   "variables": [
-    "seal_design",
-    "certified_design",
-    "seal_position",
-    "date",
-    "material_type",
-    "unused_dies_destination"
+    {
+      "name": "seal_design",
+      "description": "The design of the seal being used or reproduced."
+    },
+    {
+      "name": "certified_design",
+      "description": "The design certified by the State Emblems Redesign Commission."
+    },
+    {
+      "name": "seal_position",
+      "description": "The position or modification of the seal (e.g., 12 o'clock, enlarged, reduced, embossed)."
+    },
+    {
+      "name": "date",
+      "description": "The current date or the date of use."
+    },
+    {
+      "name": "material_type",
+      "description": "The type of material the seal is affixed to (e.g., permanent, expendable)."
+    }
   ],
   "consequences": [
-    "Seal is official and compliant with state law."
+    "The seal is official and conforms to the legal requirements."
   ]
 }

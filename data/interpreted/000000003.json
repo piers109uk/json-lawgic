@@ -20,14 +20,11 @@
         ]
       },
       {
-        "in": [
+        "==": [
           {
-            "var": "state"
+            "var": "forms_common_boundary"
           },
-          [
-            "State1",
-            "State2"
-          ]
+          true
         ]
       }
     ]
@@ -35,22 +32,28 @@
   "examples": [
     {
       "county": "Big Stone Lake",
-      "state": "State1"
+      "forms_common_boundary": true
     },
     {
       "county": "Lake Traverse",
-      "state": "State2"
+      "forms_common_boundary": false
     },
     {
-      "county": "Bois de Sioux River",
-      "state": "State3"
+      "county": "Some Other Lake",
+      "forms_common_boundary": true
     }
   ],
   "variables": [
-    "county",
-    "state"
+    {
+      "name": "county",
+      "description": "The name of the county where the court or officer has jurisdiction."
+    },
+    {
+      "name": "forms_common_boundary",
+      "description": "A boolean indicating whether the water body forms a common boundary between this state and any other state."
+    }
   ],
   "consequences": [
-    "Courts and officers have jurisdiction in civil and criminal cases on these waters."
+    "Courts and officers have jurisdiction in civil and criminal cases on these waters concurrently with courts and officers of other states."
   ]
 }

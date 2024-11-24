@@ -9,7 +9,7 @@
       {
         "==": [
           {
-            "var": "location.within_boundaries"
+            "var": "location_within_state_boundaries"
           },
           true
         ]
@@ -19,7 +19,7 @@
           {
             "==": [
               {
-                "var": "location.waters_common_boundary"
+                "var": "location_in_common_boundary_waters"
               },
               true
             ]
@@ -27,9 +27,9 @@
           {
             "==": [
               {
-                "var": "location.jurisdiction_acquired_by_us"
+                "var": "us_jurisdiction_acquired"
               },
-              true
+              false
             ]
           }
         ]
@@ -38,33 +38,36 @@
   },
   "examples": [
     {
-      "location": {
-        "within_boundaries": true,
-        "waters_common_boundary": false,
-        "jurisdiction_acquired_by_us": false
-      }
+      "location_within_state_boundaries": true,
+      "location_in_common_boundary_waters": false,
+      "us_jurisdiction_acquired": false
     },
     {
-      "location": {
-        "within_boundaries": false,
-        "waters_common_boundary": true,
-        "jurisdiction_acquired_by_us": false
-      }
+      "location_within_state_boundaries": false,
+      "location_in_common_boundary_waters": true,
+      "us_jurisdiction_acquired": false
     },
     {
-      "location": {
-        "within_boundaries": true,
-        "waters_common_boundary": true,
-        "jurisdiction_acquired_by_us": false
-      }
+      "location_within_state_boundaries": true,
+      "location_in_common_boundary_waters": true,
+      "us_jurisdiction_acquired": true
     }
   ],
   "variables": [
-    "location.within_boundaries",
-    "location.waters_common_boundary",
-    "location.jurisdiction_acquired_by_us"
+    {
+      "name": "location_within_state_boundaries",
+      "description": "Indicates if the location is within the state's boundaries as defined in the constitution."
+    },
+    {
+      "name": "location_in_common_boundary_waters",
+      "description": "Indicates if the location is in the waters forming a common boundary between this and adjoining states."
+    },
+    {
+      "name": "us_jurisdiction_acquired",
+      "description": "Indicates if the United States has acquired jurisdiction over the location."
+    }
   ],
   "consequences": [
-    "State has sovereignty and jurisdiction over the location."
+    "The state has sovereignty and jurisdiction over the location."
   ]
 }

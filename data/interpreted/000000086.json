@@ -27,7 +27,7 @@
         ]
       },
       {
-        "if": [
+        "and": [
           {
             "or": [
               {
@@ -41,51 +41,19 @@
               {
                 "==": [
                   {
-                    "var": "location"
+                    "var": "location_type"
                   },
-                  "Ramsey County"
+                  "political_subdivision"
                 ]
               }
             ]
           },
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "government_level"
-                  },
-                  "state"
-                ]
+                "var": "action"
               },
-              {
-                "==": [
-                  {
-                    "var": "action"
-                  },
-                  "declare_emergency_location"
-                ]
-              }
-            ]
-          },
-          {
-            "and": [
-              {
-                "==": [
-                  {
-                    "var": "government_level"
-                  },
-                  "local"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "action"
-                  },
-                  "meet_outside_limits"
-                ]
-              }
+              "relocate_government"
             ]
           }
         ]
@@ -96,31 +64,43 @@
     {
       "emergency_type": "enemy_attack",
       "location": "St. Paul",
-      "government_level": "state",
-      "action": "declare_emergency_location"
+      "location_type": "state",
+      "action": "relocate_government"
     },
     {
       "emergency_type": "threatened_enemy_attack",
       "location": "Ramsey County",
-      "government_level": "local",
-      "action": "meet_outside_limits"
+      "location_type": "political_subdivision",
+      "action": "relocate_government"
     },
     {
-      "emergency_type": "enemy_attack",
-      "location": "Other",
-      "government_level": "state",
-      "action": "declare_emergency_location"
+      "emergency_type": "natural_disaster",
+      "location": "St. Paul",
+      "location_type": "state",
+      "action": "relocate_government"
     }
   ],
   "variables": [
-    "emergency_type",
-    "location",
-    "government_level",
-    "action"
+    {
+      "name": "emergency_type",
+      "description": "The type of emergency occurring, such as enemy attack or threatened enemy attack."
+    },
+    {
+      "name": "location",
+      "description": "The current location of the government seat, such as St. Paul or a political subdivision."
+    },
+    {
+      "name": "location_type",
+      "description": "The type of location, either state or political subdivision."
+    },
+    {
+      "name": "action",
+      "description": "The action to be taken, such as relocating the government."
+    }
   ],
   "consequences": [
-    "State government can declare an emergency location outside St. Paul or Ramsey County.",
-    "Local government can meet outside their usual limits.",
-    "State government can declare an emergency location anywhere."
+    "The government seat is temporarily relocated to an emergency location.",
+    "All official acts performed at the emergency location are valid.",
+    "Local governments can meet outside their usual locations."
   ]
 }
