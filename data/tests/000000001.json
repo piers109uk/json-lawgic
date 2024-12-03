@@ -1,4 +1,9 @@
 {
+  "id": "1.03",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.03",
+  "title": "1.03 WATERS INCLUDED.",
+  "text": "The concurrent jurisdiction of a county and of courts and officers exercising jurisdiction throughout it extends over the water area that would be included if the boundary lines of the county were produced in the direction of their approach and extended across the waters to the opposite shore.",
+  "repealed": false,
   "rules": [
     {
       "rule": {
@@ -14,7 +19,7 @@
           {
             "==": [
               {
-                "var": "entity_type"
+                "var": "boundary_type"
               },
               "county"
             ]
@@ -22,9 +27,9 @@
           {
             "==": [
               {
-                "var": "boundary_extension"
+                "var": "water_area_included"
               },
-              "across_waters"
+              true
             ]
           }
         ]
@@ -32,36 +37,36 @@
       "examples": [
         {
           "jurisdiction_type": "concurrent",
-          "entity_type": "county",
-          "boundary_extension": "across_waters"
+          "boundary_type": "county",
+          "water_area_included": true
         },
         {
           "jurisdiction_type": "exclusive",
-          "entity_type": "state",
-          "boundary_extension": "across_waters"
+          "boundary_type": "county",
+          "water_area_included": false
         },
         {
           "jurisdiction_type": "concurrent",
-          "entity_type": "county",
-          "boundary_extension": "land_only"
+          "boundary_type": "state",
+          "water_area_included": false
         }
       ],
       "variables": [
         {
           "name": "jurisdiction_type",
-          "description": "The type of jurisdiction being exercised, e.g., concurrent or exclusive."
+          "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
         },
         {
-          "name": "entity_type",
-          "description": "The type of entity exercising jurisdiction, e.g., county or state."
+          "name": "boundary_type",
+          "description": "The type of boundary being considered (e.g., county, state)."
         },
         {
-          "name": "boundary_extension",
-          "description": "The nature of the boundary extension, e.g., across waters or land only."
+          "name": "water_area_included",
+          "description": "A boolean indicating whether the water area is included within the jurisdiction."
         }
       ],
       "consequences": [
-        "The county and its courts have jurisdiction over the water area extending to the opposite shore."
+        "The jurisdiction extends over the water area to the opposite shore."
       ]
     }
   ]

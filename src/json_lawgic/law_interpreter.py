@@ -4,6 +4,7 @@ from typing import cast
 
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
+from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
 from logger import logger
 from pydantic import BaseModel, Field
@@ -14,6 +15,14 @@ from langfuse_setup import langfuse_handler
 # Load environment variables from .env file
 load_dotenv()
 
+llm = ChatAnthropic(
+    model_name="claude-3-5-sonnet-latest",
+    max_tokens_to_sample=8192,  #
+    temperature=0,
+    timeout=None,
+    max_retries=2,
+    stop=None,
+)
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 # TODO: Compare multi-agent with this approach - can one agent split the law up and another define the rules?
@@ -154,7 +163,8 @@ def _run_interpret(input_file: str, output_file: str):
     interpreter = LawInterpreter()
     law_object = read_json(input_file)
     law_dict = interpreter.interpret_law(law_object)
-    write_json(output_file, law_dict)
+    merged_dict = {**law_object, **law_dict}
+    write_json(output_file, merged_dict)
     pprint(law_dict)
 
 
@@ -169,7 +179,10 @@ def _simplify_interpretation(interpreted_file: str):
 
 if __name__ == "__main__":
     interpreter = LawInterpreter()
-    # _run_interpret("data/default/000000001.json", "data/tests/000000001.json")
+    file_name = "000000001.json"
+    input_file = f"data/default/{file_name}"
+    output_file = f"data/tests/{file_name}"
+    _run_interpret(input_file, output_file)
 
-    interpreted_file = "data/examples-interpreted/000049272.json"
-    _simplify_interpretation(interpreted_file)
+    # interpreted_file = "data/examples-interpreted/000049272.json"
+    # _simplify_interpretation(interpreted_file)

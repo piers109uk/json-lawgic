@@ -13,6 +13,7 @@ dependencies = [
     "langflow>=1.1.0",
     "ipykernel>=6.29.5",
     "cairosvg>=2.7.1",
+    "langchain-anthropic>=0.3.0",
 ]
 
 [tool.ruff]
