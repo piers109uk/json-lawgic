@@ -4,84 +4,119 @@
   "title": "1.23 STATE OFFICERS, DUTIES.",
   "text": "All officers of this state shall do all things falling within their respective jurisdictions necessary to or incidental to carrying out the compact in every particular. It is the policy of this state to perform and carry out the compact and to accomplish its purposes. All officers, bureaus, departments and persons of the state government or administration shall, at reasonable times and upon request of the commission, furnish it with information and data possessed by them and aid it by loan of personnel or other means within their legal powers.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
-          {
-            "var": "officer_action"
-          },
-          "carry_out_compact"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "policy"
-          },
-          "perform_and_accomplish"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "request_status"
-          },
-          "upon_request"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "aid_status"
-          },
-          "furnish_information_and_aid"
-        ]
-      }
-    ]
-  },
-  "examples": [
+  "rules": [
     {
-      "officer_action": "carry_out_compact",
-      "policy": "perform_and_accomplish",
-      "request_status": "upon_request",
-      "aid_status": "furnish_information_and_aid"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "officer_jurisdiction"
+              },
+              "state"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "action"
+              },
+              "carry_out_compact"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "officer_jurisdiction": "state",
+          "action": "carry_out_compact"
+        },
+        {
+          "officer_jurisdiction": "state",
+          "action": "incidental_to_compact"
+        },
+        {
+          "officer_jurisdiction": "state",
+          "action": "other"
+        }
+      ],
+      "variables": [
+        {
+          "name": "officer_jurisdiction",
+          "description": "The jurisdiction of the officer."
+        },
+        {
+          "name": "action",
+          "description": "The action being performed by the officer."
+        }
+      ],
+      "consequences": [
+        "Officers are fulfilling their duty to carry out the compact."
+      ]
     },
     {
-      "officer_action": "ignore_compact",
-      "policy": "perform_and_accomplish",
-      "request_status": "upon_request",
-      "aid_status": "furnish_information_and_aid"
-    },
-    {
-      "officer_action": "carry_out_compact",
-      "policy": "ignore_policy",
-      "request_status": "upon_request",
-      "aid_status": "furnish_information_and_aid"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "entity_type"
+              },
+              "state"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "request"
+              },
+              "commission"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "action"
+              },
+              "furnish_information"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "entity_type": "state",
+          "request": "commission",
+          "action": "furnish_information"
+        },
+        {
+          "entity_type": "state",
+          "request": "commission",
+          "action": "loan_personnel"
+        },
+        {
+          "entity_type": "state",
+          "request": "other",
+          "action": "furnish_information"
+        }
+      ],
+      "variables": [
+        {
+          "name": "entity_type",
+          "description": "The type of entity (e.g., state, federal)."
+        },
+        {
+          "name": "request",
+          "description": "The entity making the request."
+        },
+        {
+          "name": "action",
+          "description": "The action being performed by the entity."
+        }
+      ],
+      "consequences": [
+        "State entities are complying with the commission's request for information."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "officer_action",
-      "description": "The action taken by the officer regarding the compact."
-    },
-    {
-      "name": "policy",
-      "description": "The policy of the state regarding the compact."
-    },
-    {
-      "name": "request_status",
-      "description": "The status of the request made by the commission."
-    },
-    {
-      "name": "aid_status",
-      "description": "The status of furnishing information and aid by the state entities."
-    }
-  ],
-  "consequences": [
-    "All officers are complying with the compact.",
-    "The state is performing and carrying out the compact.",
-    "The commission's requests are being fulfilled.",
-    "State entities are furnishing information and aiding the commission."
   ]
 }

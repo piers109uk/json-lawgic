@@ -4,81 +4,85 @@
   "title": "1.22 COMMISSIONERS.",
   "text": "In pursuance of Article IV of the compact, there shall be five commissioners on the Great Lakes Commission from this state. Two shall be members of the house of representatives and two shall be members of the state senate. One member shall be appointed by and serve at the pleasure of the governor. The house of representatives members shall be appointed by the speaker of the house and the members of the senate shall be appointed by the Committee on Committees. The commissioners shall exercise all voting rights conferred by the compact on the commissioners from the party state as provided in Article IV, (B and C) of the compact.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "total_commissioners"
+            "==": [
+              {
+                "var": "total_commissioners"
+              },
+              5
+            ]
           },
-          5
+          {
+            "==": [
+              {
+                "var": "house_representatives"
+              },
+              2
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "state_senate"
+              },
+              2
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "governor_appointed"
+              },
+              1
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "house_representatives"
-          },
-          2
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "state_senate"
-          },
-          2
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "governor_appointed"
-          },
-          1
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "total_commissioners": 5,
-      "house_representatives": 2,
-      "state_senate": 2,
-      "governor_appointed": 1
-    },
-    {
-      "total_commissioners": 4,
-      "house_representatives": 2,
-      "state_senate": 2,
-      "governor_appointed": 0
-    },
-    {
-      "total_commissioners": 5,
-      "house_representatives": 1,
-      "state_senate": 2,
-      "governor_appointed": 2
+      "examples": [
+        {
+          "total_commissioners": 5,
+          "house_representatives": 2,
+          "state_senate": 2,
+          "governor_appointed": 1
+        },
+        {
+          "total_commissioners": 5,
+          "house_representatives": 1,
+          "state_senate": 2,
+          "governor_appointed": 2
+        },
+        {
+          "total_commissioners": 4,
+          "house_representatives": 2,
+          "state_senate": 2,
+          "governor_appointed": 1
+        }
+      ],
+      "variables": [
+        {
+          "name": "total_commissioners",
+          "description": "The total number of commissioners on the Great Lakes Commission from the state."
+        },
+        {
+          "name": "house_representatives",
+          "description": "The number of commissioners who are members of the house of representatives."
+        },
+        {
+          "name": "state_senate",
+          "description": "The number of commissioners who are members of the state senate."
+        },
+        {
+          "name": "governor_appointed",
+          "description": "The number of commissioners appointed by the governor."
+        }
+      ],
+      "consequences": [
+        "The composition of the Great Lakes Commission is correct according to Article IV of the compact."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "total_commissioners",
-      "description": "The total number of commissioners on the Great Lakes Commission from the state."
-    },
-    {
-      "name": "house_representatives",
-      "description": "The number of commissioners who are members of the house of representatives."
-    },
-    {
-      "name": "state_senate",
-      "description": "The number of commissioners who are members of the state senate."
-    },
-    {
-      "name": "governor_appointed",
-      "description": "The number of commissioners appointed by the governor."
-    }
-  ],
-  "consequences": [
-    "The composition of the Great Lakes Commission is valid as per Article IV of the compact."
   ]
 }

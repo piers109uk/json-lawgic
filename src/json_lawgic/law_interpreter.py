@@ -4,18 +4,19 @@ from typing import cast
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from json_lawgic.logger import logger
+from logger import logger
 from pydantic import BaseModel, Field
 
-from json_lawgic.data_io import read_json, read_text, write_json
-from json_lawgic.langfuse_setup import langfuse_handler
+from data_io import read_json, read_text, write_json
+from langfuse_setup import langfuse_handler
 
 # Load environment variables from .env file
 load_dotenv()
 
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
-# TODO: enable representing multiple rules with one law
+# TODO: Compare multi-agent with this approach - can one agent split the law up and another define the rules?
+# Is it effective to have a reviewer & simplifier agent?
 
 
 class RuleVariable(BaseModel):
@@ -82,6 +83,7 @@ class LawInterpreter:
     json_logic = read_text("markdown/json-logic.md")
 
     def interpret_law(self, law_object: dict) -> dict:
+        """Returns a dict containing rules"""
         law_text = law_object.get("text")
         prompt = prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
         structured_llm = llm.with_structured_output(JsonLogicRules)
@@ -89,6 +91,20 @@ class LawInterpreter:
         response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]}))
 
         res_dict = response.model_dump()
+        return {**res_dict}
+
+    async def ainterpret_law(self, law_object: dict) -> dict:
+        """Returns a dict containing rules"""
+        law_text = law_object.get("text")
+        prompt = await prompt_template.ainvoke({"json_logic": self.json_logic, "law": law_text})
+
+        structured_llm = llm.with_structured_output(JsonLogicRules)
+
+        response = await structured_llm.ainvoke(prompt, config={"callbacks": [langfuse_handler]})
+
+        rules = cast(JsonLogicRules, response)
+
+        res_dict = rules.model_dump()
         return {**res_dict}
 
     # def validate_interpretation(self, interpreted_law: JsonLogicInterpretation) -> list[bool]:
@@ -102,12 +118,12 @@ class LawInterpreter:
 
 if __name__ == "__main__":
     interpreter = LawInterpreter()
-    # law_object = read_json("data/default/000000001.json")
-    law_object = read_json("data/default/000049272.json")
+    law_object = read_json("data/default/000000001.json")
+    # law_object = read_json("data/default/000049272.json")
 
     law_dict = interpreter.interpret_law(law_object)
 
-    write_json("data/tests/000049272.json", law_dict)
+    write_json("data/tests/000000001.json", law_dict)
     pprint(law_dict)
 
     #  TODO fix json logic

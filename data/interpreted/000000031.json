@@ -4,20 +4,20 @@
   "title": "1.135 STATE SEAL.",
   "text": "This section prescribes the design and states the historical symbolism of the Great Seal of the State of Minnesota.\nThe seal described in subdivision 3a is the \"Great Seal of the State of Minnesota.\" When the seal, the impression of the seal, the scene within the seal, or its likeness is reproduced at state expense, it must conform to subdivision 3 and section 4.04. A seal, impression, scene, or likeness which does not conform to these provisions is not official.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nThe Great Seal of the State of Minnesota is the design as certified in the report of the State Emblems Redesign Commission, as established by Laws 2023, chapter 62, article 2, section 118.\nEvery effort shall be made to reproduce the seal with justification to the 12 o'clock position. This section does not prohibit the enlargement, proportioned reduction, or embossment of the seal for its use in unofficial acts.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nState agencies and departments using the seal, its impression, or its likeness shall make every effort to bring any seal, impression, or likeness currently fixed to a permanent object into accordance with this section and section 4.04. Expendable material to which the seal in effect prior to May 11, 2024, or any impression, scene, or likeness of that seal is currently affixed may be used until the supply is exhausted or until January 1, 2025, whichever occurs first. All unused dies and engravings of the Great Seal shall be given to the Minnesota Historical Society, along with all historical information available about the seal, to be retained in the society's permanent collection.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "seal_design"
+            "==": [
+              {
+                "var": "seal_design"
+              },
+              {
+                "var": "certified_design"
+              }
+            ]
           },
-          {
-            "var": "certified_design"
-          }
-        ]
-      },
-      {
-        "or": [
           {
             "==": [
               {
@@ -27,96 +27,201 @@
             ]
           },
           {
-            "==": [
+            "or": [
               {
-                "var": "seal_position"
+                "<=": [
+                  {
+                    "var": "current_date"
+                  },
+                  "2025-01-01"
+                ]
               },
-              "enlarged"
-            ]
-          },
-          {
-            "==": [
               {
-                "var": "seal_position"
-              },
-              "reduced"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "seal_position"
-              },
-              "embossed"
+                "==": [
+                  {
+                    "var": "material_type"
+                  },
+                  "permanent"
+                ]
+              }
             ]
           }
         ]
       },
-      {
-        "or": [
+      "examples": [
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock",
+          "current_date": "2024-05-10",
+          "material_type": "expendable"
+        },
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock",
+          "current_date": "2025-01-02",
+          "material_type": "permanent"
+        },
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock",
+          "current_date": "2023-11-15",
+          "material_type": "expendable"
+        }
+      ],
+      "variables": [
+        {
+          "name": "seal_design",
+          "description": "The design of the seal being used or reproduced."
+        },
+        {
+          "name": "certified_design",
+          "description": "The design certified by the State Emblems Redesign Commission."
+        },
+        {
+          "name": "seal_position",
+          "description": "The position of the seal when reproduced."
+        },
+        {
+          "name": "current_date",
+          "description": "The current date when the seal is being used or reproduced."
+        },
+        {
+          "name": "material_type",
+          "description": "The type of material to which the seal is affixed, either 'permanent' or 'expendable'."
+        }
+      ],
+      "consequences": [
+        "Seal is official and conforms to legal requirements."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "<=": [
+            "==": [
               {
-                "var": "date"
+                "var": "seal_design"
               },
-              "2025-01-01"
+              {
+                "var": "certified_design"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "<=": [
+                  {
+                    "var": "current_date"
+                  },
+                  "2025-01-01"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "material_type"
+                  },
+                  "permanent"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "seal_design": "certified_design",
+          "current_date": "2024-12-31",
+          "material_type": "expendable"
+        },
+        {
+          "seal_design": "certified_design",
+          "current_date": "2025-01-02",
+          "material_type": "permanent"
+        },
+        {
+          "seal_design": "certified_design",
+          "current_date": "2023-06-15",
+          "material_type": "expendable"
+        }
+      ],
+      "variables": [
+        {
+          "name": "seal_design",
+          "description": "The design of the seal being used or reproduced."
+        },
+        {
+          "name": "certified_design",
+          "description": "The design certified by the State Emblems Redesign Commission."
+        },
+        {
+          "name": "current_date",
+          "description": "The current date when the seal is being used or reproduced."
+        },
+        {
+          "name": "material_type",
+          "description": "The type of material to which the seal is affixed, either 'permanent' or 'expendable'."
+        }
+      ],
+      "consequences": [
+        "Seal can be used until the supply is exhausted or until January 1, 2025."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "seal_design"
+              },
+              {
+                "var": "certified_design"
+              }
             ]
           },
           {
             "==": [
               {
-                "var": "material_type"
+                "var": "seal_position"
               },
-              "permanent"
+              "12 o'clock"
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "seal_design": "certified_design",
-      "seal_position": "12 o'clock",
-      "date": "2024-05-10",
-      "material_type": "permanent"
-    },
-    {
-      "seal_design": "certified_design",
-      "seal_position": "enlarged",
-      "date": "2025-01-02",
-      "material_type": "expendable"
-    },
-    {
-      "seal_design": "non_certified_design",
-      "seal_position": "12 o'clock",
-      "date": "2024-05-10",
-      "material_type": "permanent"
+      },
+      "examples": [
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock"
+        },
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock"
+        },
+        {
+          "seal_design": "certified_design",
+          "seal_position": "12 o'clock"
+        }
+      ],
+      "variables": [
+        {
+          "name": "seal_design",
+          "description": "The design of the seal being used or reproduced."
+        },
+        {
+          "name": "certified_design",
+          "description": "The design certified by the State Emblems Redesign Commission."
+        },
+        {
+          "name": "seal_position",
+          "description": "The position of the seal when reproduced."
+        }
+      ],
+      "consequences": [
+        "Seal is reproduced with justification to the 12 o'clock position."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "seal_design",
-      "description": "The design of the seal being used or reproduced."
-    },
-    {
-      "name": "certified_design",
-      "description": "The design certified by the State Emblems Redesign Commission."
-    },
-    {
-      "name": "seal_position",
-      "description": "The position or modification of the seal (e.g., 12 o'clock, enlarged, reduced, embossed)."
-    },
-    {
-      "name": "date",
-      "description": "The current date or the date of use."
-    },
-    {
-      "name": "material_type",
-      "description": "The type of material the seal is affixed to (e.g., permanent, expendable)."
-    }
-  ],
-  "consequences": [
-    "The seal is official and conforms to the legal requirements."
   ]
 }

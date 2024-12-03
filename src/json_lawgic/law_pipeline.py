@@ -1,11 +1,10 @@
-import json
 from pathlib import Path
 from pprint import pprint
 
+from data_io import read_json, write_json
 from json_merge import merge_json_files
 from law_interpreter import LawInterpreter
-
-from json_lawgic.data_io import read_json, write_json
+from logger import logger
 
 interpreter = LawInterpreter()
 # law_object = read_json("data/default/000000001.json")
@@ -30,7 +29,8 @@ def run_pipeline(input_folder: str, output_folder: str, limit: int = 50):
 
         interpreted_law = {**law_object, **law_rules}
         new_path = f"{output_folder}/{file.name}"
-        print(new_path)
+        logger.info(f"Interpreted law written to {new_path}")
+
         write_json(new_path, interpreted_law)
 
 

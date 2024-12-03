@@ -4,81 +4,85 @@
   "title": "1.12 FEDERAL FLOWAGE EASEMENTS OVER HIGHWAYS.",
   "text": "When requested by the commissioner of transportation the governor, in behalf of the state, may grant, bargain, sell, and convey to the United States of America any easement for flowage in and upon any easement or fee owned by the state of Minnesota for trunk highway right-of-way purposes when it is required by the United States to aid a public improvement.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "requester"
+            "==": [
+              {
+                "var": "requester"
+              },
+              "commissioner of transportation"
+            ]
           },
-          "commissioner of transportation"
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "required_by"
+              },
+              "United States"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "purpose"
+              },
+              "public improvement"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "required_by"
-          },
-          "United States"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "purpose"
-          },
-          "aid a public improvement"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "requester": "commissioner of transportation",
-      "state": "Minnesota",
-      "required_by": "United States",
-      "purpose": "aid a public improvement"
-    },
-    {
-      "requester": "commissioner of transportation",
-      "state": "Minnesota",
-      "required_by": "United States",
-      "purpose": "commercial use"
-    },
-    {
-      "requester": "mayor",
-      "state": "Minnesota",
-      "required_by": "United States",
-      "purpose": "aid a public improvement"
+      "examples": [
+        {
+          "requester": "commissioner of transportation",
+          "state": "Minnesota",
+          "required_by": "United States",
+          "purpose": "public improvement"
+        },
+        {
+          "requester": "commissioner of transportation",
+          "state": "Minnesota",
+          "required_by": "United States",
+          "purpose": "private development"
+        },
+        {
+          "requester": "mayor",
+          "state": "Minnesota",
+          "required_by": "United States",
+          "purpose": "public improvement"
+        }
+      ],
+      "variables": [
+        {
+          "name": "requester",
+          "description": "The entity requesting the easement."
+        },
+        {
+          "name": "state",
+          "description": "The state owning the easement or fee."
+        },
+        {
+          "name": "required_by",
+          "description": "The entity requiring the easement."
+        },
+        {
+          "name": "purpose",
+          "description": "The purpose for which the easement is required."
+        }
+      ],
+      "consequences": [
+        "The governor may grant, bargain, sell, and convey the easement to the United States."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "requester",
-      "description": "The entity requesting the easement."
-    },
-    {
-      "name": "state",
-      "description": "The state owning the easement or fee."
-    },
-    {
-      "name": "required_by",
-      "description": "The entity requiring the easement."
-    },
-    {
-      "name": "purpose",
-      "description": "The purpose for which the easement is required."
-    }
-  ],
-  "consequences": [
-    "The governor may grant, bargain, sell, and convey an easement to the United States."
   ]
 }

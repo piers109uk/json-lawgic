@@ -4,95 +4,320 @@
   "title": "1.042 CONSENT OF STATE.",
   "text": "The consent of the State of Minnesota is given in accordance with the Constitution of the United States, Article I, Section 8, Clause 17, to the acquisition by the United States in any manner of any land or right or interest in land in this state required for sites for customs houses, courthouses, hospitals, sanitariums, post offices, prisons, reformatories, jails, forestry depots, supply houses, or offices, aviation fields or stations, radio stations, military or naval camps, bases, stations, arsenals, depots, terminals, cantonments, storage places, target ranges, or any other military or naval purpose of the United States.\nSo far as jurisdiction, exclusive or partial, in or over any land or place in Minnesota acquired by the United States for any purpose specified in subdivision 1 is accepted by the head or other authorized officer of any department or independent establishment or agency of the United States as provided by the laws of the United States, the jurisdiction is ceded to the United States, subject to the conditions and reservations of subdivision 3. When the premises abut upon the navigable waters of Minnesota, the jurisdiction shall include the underwater lands adjacent to them lying between the line of low-water mark and the bulkhead or pierhead line as now or hereafter established.\nThe right of the state to cause its civil and criminal process to be executed in any ceded land or place is reserved to the state. The state also reserves the right to impose the following taxes:\n(A) an income tax on persons residing in the land or place or receiving income from transactions occurring or services performed there;\n(B) a sales or use tax levied on or measured by sales, receipts from sales, purchases, storage, or use of tangible personal property in the land or place;\n(C) a tax on personal property situated in the land or place, or on the use of personal property by a private individual, association, or corporation there, except personal property owned by the United States or by law exempt from taxation; and\n(D) a tax on the use of real property within the land or place by a private individual, association, or corporation.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state"
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
           },
-          "Minnesota"
+          {
+            "in": [
+              {
+                "var": "purpose"
+              },
+              [
+                "customs houses",
+                "courthouses",
+                "hospitals",
+                "sanitariums",
+                "post offices",
+                "prisons",
+                "reformatories",
+                "jails",
+                "forestry depots",
+                "supply houses",
+                "offices",
+                "aviation fields",
+                "stations",
+                "radio stations",
+                "military camps",
+                "naval camps",
+                "bases",
+                "stations",
+                "arsenals",
+                "depots",
+                "terminals",
+                "cantonments",
+                "storage places",
+                "target ranges",
+                "military purpose",
+                "naval purpose"
+              ]
+            ]
+          }
         ]
       },
-      {
-        "==": [
+      "examples": [
+        {
+          "state": "Minnesota",
+          "purpose": "courthouses"
+        },
+        {
+          "state": "Minnesota",
+          "purpose": "military camps"
+        },
+        {
+          "state": "Minnesota",
+          "purpose": "post offices"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "purpose",
+          "description": "The purpose for which the land is acquired."
+        }
+      ],
+      "consequences": [
+        "Consent is given for the acquisition of land by the United States."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "jurisdiction_accepted"
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
           },
-          true
+          {
+            "in": [
+              {
+                "var": "jurisdiction"
+              },
+              [
+                "exclusive",
+                "partial"
+              ]
+            ]
+          },
+          {
+            "var": "acceptedByUS"
+          }
         ]
       },
-      {
-        "in": [
+      "examples": [
+        {
+          "state": "Minnesota",
+          "jurisdiction": "exclusive",
+          "acceptedByUS": true
+        },
+        {
+          "state": "Minnesota",
+          "jurisdiction": "partial",
+          "acceptedByUS": true
+        },
+        {
+          "state": "Minnesota",
+          "jurisdiction": "exclusive",
+          "acceptedByUS": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "jurisdiction",
+          "description": "The type of jurisdiction accepted by the United States."
+        },
+        {
+          "name": "acceptedByUS",
+          "description": "Whether the jurisdiction is accepted by the United States."
+        }
+      ],
+      "consequences": [
+        "Jurisdiction is ceded to the United States."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "purpose"
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
           },
-          [
-            "customs houses",
-            "courthouses",
-            "hospitals",
-            "sanitariums",
-            "post offices",
-            "prisons",
-            "reformatories",
-            "jails",
-            "forestry depots",
-            "supply houses",
-            "offices",
-            "aviation fields",
-            "stations",
-            "radio stations",
-            "military camps",
-            "naval camps",
-            "bases",
-            "stations",
-            "arsenals",
-            "depots",
-            "terminals",
-            "cantonments",
-            "storage places",
-            "target ranges",
-            "military purpose",
-            "naval purpose"
-          ]
+          {
+            "var": "abutsNavigableWaters"
+          }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "state": "Minnesota",
-      "jurisdiction_accepted": true,
-      "purpose": "courthouses"
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "abutsNavigableWaters": true
+        },
+        {
+          "state": "Minnesota",
+          "abutsNavigableWaters": false
+        },
+        {
+          "state": "Minnesota",
+          "abutsNavigableWaters": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "abutsNavigableWaters",
+          "description": "Whether the land abuts navigable waters."
+        }
+      ],
+      "consequences": [
+        "Jurisdiction includes underwater lands adjacent to the premises."
+      ]
     },
     {
-      "state": "Minnesota",
-      "jurisdiction_accepted": true,
-      "purpose": "military camps"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "var": "cededLand"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "cededLand": true
+        },
+        {
+          "state": "Minnesota",
+          "cededLand": false
+        },
+        {
+          "state": "Minnesota",
+          "cededLand": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "cededLand",
+          "description": "Whether the land is ceded to the United States."
+        }
+      ],
+      "consequences": [
+        "State can execute civil and criminal process in ceded land."
+      ]
     },
     {
-      "state": "Minnesota",
-      "jurisdiction_accepted": false,
-      "purpose": "prisons"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "var": "cededLand"
+          },
+          {
+            "or": [
+              {
+                "var": "incomeTax"
+              },
+              {
+                "var": "salesTax"
+              },
+              {
+                "var": "propertyTax"
+              },
+              {
+                "var": "realPropertyTax"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "cededLand": true,
+          "incomeTax": true,
+          "salesTax": false,
+          "propertyTax": false,
+          "realPropertyTax": false
+        },
+        {
+          "state": "Minnesota",
+          "cededLand": true,
+          "incomeTax": false,
+          "salesTax": true,
+          "propertyTax": false,
+          "realPropertyTax": false
+        },
+        {
+          "state": "Minnesota",
+          "cededLand": true,
+          "incomeTax": false,
+          "salesTax": false,
+          "propertyTax": true,
+          "realPropertyTax": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "cededLand",
+          "description": "Whether the land is ceded to the United States."
+        },
+        {
+          "name": "incomeTax",
+          "description": "Whether an income tax is imposed."
+        },
+        {
+          "name": "salesTax",
+          "description": "Whether a sales or use tax is imposed."
+        },
+        {
+          "name": "propertyTax",
+          "description": "Whether a tax on personal property is imposed."
+        },
+        {
+          "name": "realPropertyTax",
+          "description": "Whether a tax on the use of real property is imposed."
+        }
+      ],
+      "consequences": [
+        "State reserves the right to impose taxes on income, sales, personal property, or real property."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state",
-      "description": "The state where the land is located."
-    },
-    {
-      "name": "jurisdiction_accepted",
-      "description": "Whether the jurisdiction is accepted by the United States."
-    },
-    {
-      "name": "purpose",
-      "description": "The purpose for which the land is acquired."
-    }
-  ],
-  "consequences": [
-    "Jurisdiction is ceded to the United States.",
-    "State reserves the right to execute civil and criminal process.",
-    "State reserves the right to impose certain taxes."
   ]
 }

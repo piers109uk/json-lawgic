@@ -4,83 +4,55 @@
   "title": "1.147 STATE GEMSTONE.",
   "text": "The Lake Superior agate is the official gemstone of the state of Minnesota.\nA photograph and a typical specimen of the Lake Superior agate shall be preserved in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "official_gemstone"
+            "==": [
+              {
+                "var": "official_gemstone"
+              },
+              true
+            ]
           },
-          "Lake Superior agate"
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "preserved_photograph"
-          },
-          "Lake Superior agate"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "preserved_specimen"
-          },
-          "Lake Superior agate"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "official_gemstone": "Lake Superior agate",
-      "state": "Minnesota",
-      "preserved_photograph": "Lake Superior agate",
-      "preserved_specimen": "Lake Superior agate"
-    },
-    {
-      "official_gemstone": "Amethyst",
-      "state": "Minnesota",
-      "preserved_photograph": "Lake Superior agate",
-      "preserved_specimen": "Lake Superior agate"
-    },
-    {
-      "official_gemstone": "Lake Superior agate",
-      "state": "Wisconsin",
-      "preserved_photograph": "Lake Superior agate",
-      "preserved_specimen": "Lake Superior agate"
+      "examples": [
+        {
+          "official_gemstone": true,
+          "state": true
+        },
+        {
+          "official_gemstone": true,
+          "state": false
+        },
+        {
+          "official_gemstone": false,
+          "state": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "official_gemstone",
+          "description": "Indicates if the Lake Superior agate is recognized as the official gemstone."
+        },
+        {
+          "name": "state",
+          "description": "Indicates if the state in question is Minnesota."
+        }
+      ],
+      "consequences": [
+        "A photograph and a typical specimen of the Lake Superior agate shall be preserved in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "official_gemstone",
-      "description": "The official gemstone of the state."
-    },
-    {
-      "name": "state",
-      "description": "The state in question."
-    },
-    {
-      "name": "preserved_photograph",
-      "description": "The photograph preserved in the Office of the Secretary of State."
-    },
-    {
-      "name": "preserved_specimen",
-      "description": "The specimen preserved in the Office of the Secretary of State."
-    }
-  ],
-  "consequences": [
-    "The Lake Superior agate is confirmed as the official gemstone of Minnesota.",
-    "A photograph of the Lake Superior agate is preserved in the Office of the Secretary of State.",
-    "A specimen of the Lake Superior agate is preserved in the Office of the Secretary of State."
   ]
 }

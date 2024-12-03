@@ -4,51 +4,55 @@
   "title": "2.021 NUMBER OF MEMBERS.",
   "text": "For each legislature, until a new apportionment shall have been made, the senate is composed of 67 members and the house of representatives is composed of 134 members.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "senate_members"
+            "==": [
+              {
+                "var": "senate_members"
+              },
+              67
+            ]
           },
-          67
+          {
+            "==": [
+              {
+                "var": "house_members"
+              },
+              134
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "house_members"
-          },
-          134
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "senate_members": 67,
-      "house_members": 134
-    },
-    {
-      "senate_members": 66,
-      "house_members": 134
-    },
-    {
-      "senate_members": 67,
-      "house_members": 133
+      "examples": [
+        {
+          "senate_members": 67,
+          "house_members": 134
+        },
+        {
+          "senate_members": 66,
+          "house_members": 134
+        },
+        {
+          "senate_members": 67,
+          "house_members": 133
+        }
+      ],
+      "variables": [
+        {
+          "name": "senate_members",
+          "description": "The number of members in the senate."
+        },
+        {
+          "name": "house_members",
+          "description": "The number of members in the house of representatives."
+        }
+      ],
+      "consequences": [
+        "The composition of the legislature is correct."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "senate_members",
-      "description": "The number of members in the senate for a given legislature."
-    },
-    {
-      "name": "house_members",
-      "description": "The number of members in the house of representatives for a given legislature."
-    }
-  ],
-  "consequences": [
-    "The composition of the legislature is correct."
   ]
 }

@@ -4,32 +4,55 @@
   "title": "1.1485 STATE SOIL.",
   "text": "Lester is designated as the official soil of the state of Minnesota.",
   "repealed": false,
-  "rule": {
-    "==": [
-      {
-        "var": "official_soil"
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "official_soil"
+              },
+              "Lester"
+            ]
+          }
+        ]
       },
-      "Lester"
-    ]
-  },
-  "examples": [
-    {
-      "official_soil": "Lester"
-    },
-    {
-      "official_soil": "Clay"
-    },
-    {
-      "official_soil": "Sand"
+      "examples": [
+        {
+          "state": "Minnesota",
+          "official_soil": "Lester"
+        },
+        {
+          "state": "Minnesota",
+          "official_soil": "Clay"
+        },
+        {
+          "state": "Iowa",
+          "official_soil": "Lester"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The name of the state being referenced."
+        },
+        {
+          "name": "official_soil",
+          "description": "The name of the official soil of the state."
+        }
+      ],
+      "consequences": [
+        "Lester is confirmed as the official soil of Minnesota."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "official_soil",
-      "description": "The soil designated as the official soil of the state of Minnesota."
-    }
-  ],
-  "consequences": [
-    "Lester is confirmed as the official soil of Minnesota."
   ]
 }

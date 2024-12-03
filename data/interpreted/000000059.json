@@ -4,52 +4,71 @@
   "title": "1.149 STATE MUSHROOM.",
   "text": "Morchella esculenta, commonly known as the morel, sponge mushroom, or honeycomb morel, is adopted as the official state mushroom of the state of Minnesota.\nA photograph of the morel, approved by the commissioner of natural resources, shall be preserved and may be displayed in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state_mushroom"
+            "===": [
+              {
+                "var": "state_mushroom"
+              },
+              "Morchella esculenta"
+            ]
           },
-          "Morchella esculenta"
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "photo_approved"
+              },
+              "yes"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "photograph_approved"
-          },
-          true
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "state_mushroom": "Morchella esculenta",
-      "photograph_approved": true
-    },
-    {
-      "state_mushroom": "Agaricus bisporus",
-      "photograph_approved": true
-    },
-    {
-      "state_mushroom": "Morchella esculenta",
-      "photograph_approved": false
+      "examples": [
+        {
+          "state_mushroom": "Morchella esculenta",
+          "state": "Minnesota",
+          "photo_approved": "yes"
+        },
+        {
+          "state_mushroom": "Agaricus bisporus",
+          "state": "Minnesota",
+          "photo_approved": "yes"
+        },
+        {
+          "state_mushroom": "Morchella esculenta",
+          "state": "Wisconsin",
+          "photo_approved": "no"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_mushroom",
+          "description": "The official state mushroom of a state."
+        },
+        {
+          "name": "state",
+          "description": "The name of the state."
+        },
+        {
+          "name": "photo_approved",
+          "description": "Indicates if the photograph of the morel is approved by the commissioner of natural resources."
+        }
+      ],
+      "consequences": [
+        "Morchella esculenta is the official state mushroom of Minnesota.",
+        "A photograph of the morel is approved and may be displayed in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state_mushroom",
-      "description": "The official state mushroom of Minnesota."
-    },
-    {
-      "name": "photograph_approved",
-      "description": "Indicates if the photograph of the morel is approved by the commissioner of natural resources."
-    }
-  ],
-  "consequences": [
-    "The morel is recognized as the official state mushroom of Minnesota.",
-    "A photograph of the morel may be displayed in the Office of the Secretary of State."
   ]
 }

@@ -4,129 +4,151 @@
   "title": "1.16 MAPS ON FILE.",
   "text": "The maps referred to in the compact in section 1.15 as Exhibits A, B, and C are the original maps on file with the report of the Michigan-Minnesota-Wisconsin boundary conference in the Office of the Secretary of State of Wisconsin, of which duplicate original maps are on file in the Office of the Secretary of State of Minnesota.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
-          {
-            "var": "ExhibitA.location"
-          },
-          "Wisconsin Secretary of State"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "ExhibitB.location"
-          },
-          "Wisconsin Secretary of State"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "ExhibitC.location"
-          },
-          "Wisconsin Secretary of State"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "ExhibitA.duplicateLocation"
-          },
-          "Minnesota Secretary of State"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "ExhibitB.duplicateLocation"
-          },
-          "Minnesota Secretary of State"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "ExhibitC.duplicateLocation"
-          },
-          "Minnesota Secretary of State"
-        ]
-      }
-    ]
-  },
-  "examples": [
+  "rules": [
     {
-      "ExhibitA": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "exhibitA.location"
+              },
+              "Wisconsin Secretary of State"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "exhibitB.location"
+              },
+              "Wisconsin Secretary of State"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "exhibitC.location"
+              },
+              "Wisconsin Secretary of State"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "duplicateExhibitA.location"
+              },
+              "Minnesota Secretary of State"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "duplicateExhibitB.location"
+              },
+              "Minnesota Secretary of State"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "duplicateExhibitC.location"
+              },
+              "Minnesota Secretary of State"
+            ]
+          }
+        ]
       },
-      "ExhibitB": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      },
-      "ExhibitC": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      }
-    },
-    {
-      "ExhibitA": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      },
-      "ExhibitB": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      },
-      "ExhibitC": {
-        "location": "Minnesota Secretary of State",
-        "duplicateLocation": "Wisconsin Secretary of State"
-      }
-    },
-    {
-      "ExhibitA": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      },
-      "ExhibitB": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      },
-      "ExhibitC": {
-        "location": "Wisconsin Secretary of State",
-        "duplicateLocation": "Minnesota Secretary of State"
-      }
+      "examples": [
+        {
+          "exhibitA": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitB": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitC": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "duplicateExhibitA": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitB": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitC": {
+            "location": "Minnesota Secretary of State"
+          }
+        },
+        {
+          "exhibitA": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitB": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitC": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "duplicateExhibitA": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitB": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitC": {
+            "location": "Iowa Secretary of State"
+          }
+        },
+        {
+          "exhibitA": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitB": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "exhibitC": {
+            "location": "Wisconsin Secretary of State"
+          },
+          "duplicateExhibitA": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitB": {
+            "location": "Minnesota Secretary of State"
+          },
+          "duplicateExhibitC": {
+            "location": "Minnesota Secretary of State"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "exhibitA.location",
+          "description": "The location where Exhibit A is filed."
+        },
+        {
+          "name": "exhibitB.location",
+          "description": "The location where Exhibit B is filed."
+        },
+        {
+          "name": "exhibitC.location",
+          "description": "The location where Exhibit C is filed."
+        },
+        {
+          "name": "duplicateExhibitA.location",
+          "description": "The location where the duplicate of Exhibit A is filed."
+        },
+        {
+          "name": "duplicateExhibitB.location",
+          "description": "The location where the duplicate of Exhibit B is filed."
+        },
+        {
+          "name": "duplicateExhibitC.location",
+          "description": "The location where the duplicate of Exhibit C is filed."
+        }
+      ],
+      "consequences": [
+        "The maps are correctly filed according to the compact."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "ExhibitA.location",
-      "description": "The location where Exhibit A is filed."
-    },
-    {
-      "name": "ExhibitB.location",
-      "description": "The location where Exhibit B is filed."
-    },
-    {
-      "name": "ExhibitC.location",
-      "description": "The location where Exhibit C is filed."
-    },
-    {
-      "name": "ExhibitA.duplicateLocation",
-      "description": "The location where the duplicate of Exhibit A is filed."
-    },
-    {
-      "name": "ExhibitB.duplicateLocation",
-      "description": "The location where the duplicate of Exhibit B is filed."
-    },
-    {
-      "name": "ExhibitC.duplicateLocation",
-      "description": "The location where the duplicate of Exhibit C is filed."
-    }
-  ],
-  "consequences": [
-    "The maps are correctly filed according to the compact."
   ]
 }

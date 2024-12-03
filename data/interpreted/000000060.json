@@ -4,32 +4,55 @@
   "title": "1.1495 STATE DRINK.",
   "text": "Milk is adopted as the official drink of the state of Minnesota.",
   "repealed": false,
-  "rule": {
-    "==": [
-      {
-        "var": "state"
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "official_drink"
+              },
+              "Milk"
+            ]
+          }
+        ]
       },
-      "Minnesota"
-    ]
-  },
-  "examples": [
-    {
-      "state": "Minnesota"
-    },
-    {
-      "state": "California"
-    },
-    {
-      "state": "Texas"
+      "examples": [
+        {
+          "state": "Minnesota",
+          "official_drink": "Milk"
+        },
+        {
+          "state": "Minnesota",
+          "official_drink": "Water"
+        },
+        {
+          "state": "California",
+          "official_drink": "Milk"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The name of the state being evaluated."
+        },
+        {
+          "name": "official_drink",
+          "description": "The official drink of the state being evaluated."
+        }
+      ],
+      "consequences": [
+        "Milk is confirmed as the official drink of Minnesota."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state",
-      "description": "The name of the state being evaluated."
-    }
-  ],
-  "consequences": [
-    "Milk is the official drink."
   ]
 }

@@ -4,51 +4,56 @@
   "title": "1.145 STATE BIRD.",
   "text": "The loon, Gavia immer, is the official bird of the state of Minnesota.\nA photograph of the loon shall be preserved in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "bird_name"
+            "==": [
+              {
+                "var": "bird_name"
+              },
+              "Gavia immer"
+            ]
           },
-          "Gavia immer"
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "bird_name": "Gavia immer",
-      "state": "Minnesota"
-    },
-    {
-      "bird_name": "Gavia stellata",
-      "state": "Minnesota"
-    },
-    {
-      "bird_name": "Gavia immer",
-      "state": "Wisconsin"
+      "examples": [
+        {
+          "bird_name": "Gavia immer",
+          "state": "Minnesota"
+        },
+        {
+          "bird_name": "Gavia stellata",
+          "state": "Minnesota"
+        },
+        {
+          "bird_name": "Gavia immer",
+          "state": "Wisconsin"
+        }
+      ],
+      "variables": [
+        {
+          "name": "bird_name",
+          "description": "The scientific name of the bird."
+        },
+        {
+          "name": "state",
+          "description": "The name of the state."
+        }
+      ],
+      "consequences": [
+        "The loon is the official bird of Minnesota.",
+        "A photograph of the loon shall be preserved in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "bird_name",
-      "description": "The scientific name of the bird being referenced."
-    },
-    {
-      "name": "state",
-      "description": "The name of the state being referenced."
-    }
-  ],
-  "consequences": [
-    "A photograph of the loon shall be preserved in the Office of the Secretary of State."
   ]
 }

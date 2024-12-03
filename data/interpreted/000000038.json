@@ -4,82 +4,85 @@
   "title": "2.031 APPORTIONMENT.",
   "text": "The representatives in the senate and house of representatives are apportioned throughout the state in 67 senate districts and 134 house of representatives districts. Each senate district is entitled to elect one senator and each house of representatives district is entitled to elect one representative.\n[Repealed, 2013 c 125 art 1 s 108]",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "senate_districts"
+            "==": [
+              {
+                "var": "senate_districts"
+              },
+              67
+            ]
           },
-          67
+          {
+            "==": [
+              {
+                "var": "house_districts"
+              },
+              134
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "senators_per_district"
+              },
+              1
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "representatives_per_district"
+              },
+              1
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "house_districts"
-          },
-          134
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "senators_per_district"
-          },
-          1
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "representatives_per_district"
-          },
-          1
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "senate_districts": 67,
-      "house_districts": 134,
-      "senators_per_district": 1,
-      "representatives_per_district": 1
-    },
-    {
-      "senate_districts": 66,
-      "house_districts": 134,
-      "senators_per_district": 1,
-      "representatives_per_district": 1
-    },
-    {
-      "senate_districts": 67,
-      "house_districts": 133,
-      "senators_per_district": 1,
-      "representatives_per_district": 1
+      "examples": [
+        {
+          "senate_districts": 67,
+          "house_districts": 134,
+          "senators_per_district": 1,
+          "representatives_per_district": 1
+        },
+        {
+          "senate_districts": 66,
+          "house_districts": 134,
+          "senators_per_district": 1,
+          "representatives_per_district": 1
+        },
+        {
+          "senate_districts": 67,
+          "house_districts": 133,
+          "senators_per_district": 1,
+          "representatives_per_district": 1
+        }
+      ],
+      "variables": [
+        {
+          "name": "senate_districts",
+          "description": "The number of senate districts in the state."
+        },
+        {
+          "name": "house_districts",
+          "description": "The number of house of representatives districts in the state."
+        },
+        {
+          "name": "senators_per_district",
+          "description": "The number of senators each senate district is entitled to elect."
+        },
+        {
+          "name": "representatives_per_district",
+          "description": "The number of representatives each house district is entitled to elect."
+        }
+      ],
+      "consequences": [
+        "The apportionment of representatives in the senate and house is correct."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "senate_districts",
-      "description": "The number of senate districts in the state."
-    },
-    {
-      "name": "house_districts",
-      "description": "The number of house of representatives districts in the state."
-    },
-    {
-      "name": "senators_per_district",
-      "description": "The number of senators each senate district is entitled to elect."
-    },
-    {
-      "name": "representatives_per_district",
-      "description": "The number of representatives each house district is entitled to elect."
-    }
-  ],
-  "consequences": [
-    "Each senate district elects one senator.",
-    "Each house district elects one representative."
   ]
 }

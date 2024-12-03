@@ -4,96 +4,103 @@
   "title": "1.049 ACQUISITION OF LANDS IN TAMARAC NATIONAL WILDLIFE REFUGE BY UNITED STATES.",
   "text": "Consent of the State of Minnesota is given to the acquisition by the United States in any manner authorized by act of Congress of lands lying within the original boundaries of the Tamarac National Wildlife Refuge as established by Executive Order No. 7902 dated May 31, 1938, of the President of the United States for any purpose incident to the development or maintenance of that refuge, other acts notwithstanding.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "land_location"
-          },
-          "Tamarac National Wildlife Refuge"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "executive_order"
-          },
-          "7902"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "date"
-          },
-          1938
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "purpose"
-          },
-          "development or maintenance"
-        ]
-      }
-    ]
-  },
-  "examples": [
+  "rules": [
     {
-      "state": "Minnesota",
-      "land_location": "Tamarac National Wildlife Refuge",
-      "executive_order": "7902",
-      "date": 1938,
-      "purpose": "development or maintenance"
-    },
-    {
-      "state": "Minnesota",
-      "land_location": "Tamarac National Wildlife Refuge",
-      "executive_order": "7902",
-      "date": 1938,
-      "purpose": "research"
-    },
-    {
-      "state": "Minnesota",
-      "land_location": "Another Refuge",
-      "executive_order": "7902",
-      "date": 1938,
-      "purpose": "development or maintenance"
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "land_location"
+              },
+              "Tamarac National Wildlife Refuge"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "executive_order"
+              },
+              "7902"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "date_of_order"
+              },
+              "1938-05-31"
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "purpose"
+              },
+              [
+                "development",
+                "maintenance"
+              ]
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "land_location": "Tamarac National Wildlife Refuge",
+          "executive_order": "7902",
+          "date_of_order": "1938-05-31",
+          "purpose": "development"
+        },
+        {
+          "state": "Minnesota",
+          "land_location": "Tamarac National Wildlife Refuge",
+          "executive_order": "7902",
+          "date_of_order": "1938-05-31",
+          "purpose": "maintenance"
+        },
+        {
+          "state": "Minnesota",
+          "land_location": "Tamarac National Wildlife Refuge",
+          "executive_order": "7902",
+          "date_of_order": "1938-05-31",
+          "purpose": "research"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state where the land is located."
+        },
+        {
+          "name": "land_location",
+          "description": "The specific location of the land within the state."
+        },
+        {
+          "name": "executive_order",
+          "description": "The executive order number that established the boundaries."
+        },
+        {
+          "name": "date_of_order",
+          "description": "The date when the executive order was issued."
+        },
+        {
+          "name": "purpose",
+          "description": "The purpose for which the land is being acquired."
+        }
+      ],
+      "consequences": [
+        "Consent is given for the acquisition of land by the United States."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state",
-      "description": "The state where the land is located."
-    },
-    {
-      "name": "land_location",
-      "description": "The specific location of the land within the state."
-    },
-    {
-      "name": "executive_order",
-      "description": "The executive order number that established the boundaries."
-    },
-    {
-      "name": "date",
-      "description": "The year the executive order was issued."
-    },
-    {
-      "name": "purpose",
-      "description": "The purpose for which the land is being acquired."
-    }
-  ],
-  "consequences": [
-    "Consent is given for the acquisition of land by the United States."
   ]
 }

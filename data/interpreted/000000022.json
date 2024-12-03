@@ -4,100 +4,123 @@
   "title": "1.047 CONDEMNATION PROCEEDINGS IN STATE COURTS BY UNITED STATES.",
   "text": "When consent to the acquisition by the United States of any land or any right or interest in land by condemnation is given by sections 1.041 to 1.048, the United States may effect condemnation in the courts of this state in accordance with the laws of this state relating to eminent domain, or may effect condemnation in the courts of the United States as authorized by act of Congress. When consent by the Land Exchange Commission is required by section 1.041 the commission may specify which method of condemnation shall be used as a condition of its consent.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "consent_given_by_sections"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "consent_required_by_commission"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      {
-        "var": "commission_specifies_method"
-      },
-      {
+  "rules": [
+    {
+      "rule": {
         "if": [
           {
-            "==": [
+            "and": [
               {
-                "var": "consent_given_by_sections"
+                "==": [
+                  {
+                    "var": "consent_given_by_sections_1.041_to_1.048"
+                  },
+                  true
+                ]
               },
-              true
+              {
+                "==": [
+                  {
+                    "var": "consent_required_by_land_exchange_commission"
+                  },
+                  false
+                ]
+              }
             ]
           },
           {
             "or": [
               {
-                "var": "condemnation_in_state_courts"
+                "==": [
+                  {
+                    "var": "court"
+                  },
+                  "state"
+                ]
               },
               {
-                "var": "condemnation_in_federal_courts"
+                "==": [
+                  {
+                    "var": "court"
+                  },
+                  "federal"
+                ]
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "consent_given_by_sections_1.041_to_1.048"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "consent_required_by_land_exchange_commission"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "method_specified_by_commission"
+                  },
+                  true
+                ]
               }
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "consent_given_by_sections": true,
-      "consent_required_by_commission": true,
-      "commission_specifies_method": "state_courts",
-      "condemnation_in_state_courts": true,
-      "condemnation_in_federal_courts": false
-    },
-    {
-      "consent_given_by_sections": true,
-      "consent_required_by_commission": false,
-      "condemnation_in_state_courts": true,
-      "condemnation_in_federal_courts": true
-    },
-    {
-      "consent_given_by_sections": false,
-      "consent_required_by_commission": false,
-      "condemnation_in_state_courts": false,
-      "condemnation_in_federal_courts": false
+      },
+      "examples": [
+        {
+          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_required_by_land_exchange_commission": false,
+          "court": "state"
+        },
+        {
+          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_required_by_land_exchange_commission": false,
+          "court": "federal"
+        },
+        {
+          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_required_by_land_exchange_commission": true,
+          "method_specified_by_commission": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "consent_given_by_sections_1.041_to_1.048",
+          "description": "Indicates if consent is given by sections 1.041 to 1.048 for land acquisition by condemnation."
+        },
+        {
+          "name": "consent_required_by_land_exchange_commission",
+          "description": "Indicates if consent by the Land Exchange Commission is required."
+        },
+        {
+          "name": "court",
+          "description": "The court where condemnation is effected, either 'state' or 'federal'."
+        },
+        {
+          "name": "method_specified_by_commission",
+          "description": "Indicates if the Land Exchange Commission has specified the method of condemnation."
+        }
+      ],
+      "consequences": [
+        "The United States may effect condemnation in the specified court.",
+        "The Land Exchange Commission specifies the method of condemnation."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "consent_given_by_sections",
-      "description": "Indicates if consent is given by sections 1.041 to 1.048."
-    },
-    {
-      "name": "consent_required_by_commission",
-      "description": "Indicates if consent by the Land Exchange Commission is required."
-    },
-    {
-      "name": "commission_specifies_method",
-      "description": "The method of condemnation specified by the Land Exchange Commission."
-    },
-    {
-      "name": "condemnation_in_state_courts",
-      "description": "Indicates if condemnation is effected in the courts of the state."
-    },
-    {
-      "name": "condemnation_in_federal_courts",
-      "description": "Indicates if condemnation is effected in the courts of the United States."
-    }
-  ],
-  "consequences": [
-    "The United States may effect condemnation in the specified method by the commission.",
-    "The United States may effect condemnation in state or federal courts."
   ]
 }

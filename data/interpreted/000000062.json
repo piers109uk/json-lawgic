@@ -4,95 +4,121 @@
   "title": "1.1498 STATE PHOTOGRAPH.",
   "text": "The world-renowned photograph \"Grace,\" depicting an elderly man bowing his head and giving thanks, taken in Bovey, Minnesota, in 1918, by Eric Enstrom, is designated as the state photograph.\nA copy of the photograph \"Grace\" must be displayed in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "photograph_name"
+            "==": [
+              {
+                "var": "photograph_name"
+              },
+              "Grace"
+            ]
           },
-          "Grace"
+          {
+            "==": [
+              {
+                "var": "photographer"
+              },
+              "Eric Enstrom"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "year_taken"
+              },
+              1918
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "location"
+              },
+              "Bovey, Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "state_designation"
+              },
+              "state photograph"
+            ]
+          },
+          {
+            "in": [
+              "Grace",
+              {
+                "var": "office_display"
+              }
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "photographer"
-          },
-          "Eric Enstrom"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "year_taken"
-          },
-          1918
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "location"
-          },
-          "Bovey, Minnesota"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "photograph_name": "Grace",
-      "photographer": "Eric Enstrom",
-      "year_taken": 1918,
-      "location": "Bovey, Minnesota",
-      "office": "Secretary of State",
-      "displayed": true
-    },
-    {
-      "photograph_name": "Grace",
-      "photographer": "Eric Enstrom",
-      "year_taken": 1918,
-      "location": "Bovey, Minnesota",
-      "office": "Governor's Office",
-      "displayed": false
-    },
-    {
-      "photograph_name": "Sunset",
-      "photographer": "John Doe",
-      "year_taken": 1920,
-      "location": "New York",
-      "office": "Secretary of State",
-      "displayed": false
+      "examples": [
+        {
+          "photograph_name": "Grace",
+          "photographer": "Eric Enstrom",
+          "year_taken": 1918,
+          "location": "Bovey, Minnesota",
+          "state_designation": "state photograph",
+          "office_display": [
+            "Grace"
+          ]
+        },
+        {
+          "photograph_name": "Grace",
+          "photographer": "Eric Enstrom",
+          "year_taken": 1918,
+          "location": "Bovey, Minnesota",
+          "state_designation": "state photograph",
+          "office_display": [
+            "Grace",
+            "Other Photo"
+          ]
+        },
+        {
+          "photograph_name": "Grace",
+          "photographer": "Eric Enstrom",
+          "year_taken": 1918,
+          "location": "Bovey, Minnesota",
+          "state_designation": "state photograph",
+          "office_display": []
+        }
+      ],
+      "variables": [
+        {
+          "name": "photograph_name",
+          "description": "The name of the photograph."
+        },
+        {
+          "name": "photographer",
+          "description": "The photographer who took the photograph."
+        },
+        {
+          "name": "year_taken",
+          "description": "The year the photograph was taken."
+        },
+        {
+          "name": "location",
+          "description": "The location where the photograph was taken."
+        },
+        {
+          "name": "state_designation",
+          "description": "The designation of the photograph by the state."
+        },
+        {
+          "name": "office_display",
+          "description": "The list of photographs displayed in the Office of the Secretary of State."
+        }
+      ],
+      "consequences": [
+        "The photograph 'Grace' is confirmed as the state photograph.",
+        "A copy of 'Grace' is displayed in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "photograph_name",
-      "description": "The name of the photograph."
-    },
-    {
-      "name": "photographer",
-      "description": "The photographer who took the photograph."
-    },
-    {
-      "name": "year_taken",
-      "description": "The year the photograph was taken."
-    },
-    {
-      "name": "location",
-      "description": "The location where the photograph was taken."
-    },
-    {
-      "name": "office",
-      "description": "The office where the photograph is displayed."
-    },
-    {
-      "name": "displayed",
-      "description": "Whether the photograph is displayed in the specified office."
-    }
-  ],
-  "consequences": [
-    "A copy of the photograph 'Grace' must be displayed in the Office of the Secretary of State."
   ]
 }

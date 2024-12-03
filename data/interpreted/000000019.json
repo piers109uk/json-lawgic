@@ -4,55 +4,119 @@
   "title": "1.046 EVIDENCE OF CONSENT.",
   "text": "The consent of the state given under sections 1.041 to 1.048 to the acquisition by the United States of any land or right or interest in land in this state or to the exercise of jurisdiction over any place in this state shall be evidenced by the certificate of the governor, issued in duplicate, under the great seal of the state, upon application by an authorized officer of the United States and upon proof that title to the property has vested in the United States. The certificate shall set forth\n(a) a description of the property,\n(b) the authority for, purpose of, and method used in acquiring it, and\n(c) the conditions of the jurisdiction of the state and the United States over it,\nand shall declare the consent of the state under sections 1.041 to 1.048, as the case may require. When necessary for proper identification of the property a map may be attached to the certificate, and the applicant may be required to furnish it. One duplicate of the certificate shall be filed with the secretary of state. The other shall be delivered to the applicant, who shall record it in the office of the county recorder of each county in which the land or any part of it is situated.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "application_by_authorized_officer"
+            "==": [
+              {
+                "var": "application_by_authorized_officer"
+              },
+              true
+            ]
           },
-          true
+          {
+            "==": [
+              {
+                "var": "title_vested_in_us"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
+      "examples": [
+        {
+          "application_by_authorized_officer": true,
+          "title_vested_in_us": true
+        },
+        {
+          "application_by_authorized_officer": true,
+          "title_vested_in_us": false
+        },
+        {
+          "application_by_authorized_officer": false,
+          "title_vested_in_us": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "application_by_authorized_officer",
+          "description": "Indicates if the application is made by an authorized officer of the United States."
+        },
+        {
+          "name": "title_vested_in_us",
+          "description": "Indicates if the title to the property has vested in the United States."
+        }
+      ],
+      "consequences": [
+        "The governor issues a certificate under the great seal of the state."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "title_vested_in_us"
+            "==": [
+              {
+                "var": "certificate_issued"
+              },
+              true
+            ]
           },
-          true
+          {
+            "==": [
+              {
+                "var": "certificate_filed_with_secretary_of_state"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "certificate_recorded_in_county"
+              },
+              true
+            ]
+          }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "application_by_authorized_officer": true,
-      "title_vested_in_us": true
-    },
-    {
-      "application_by_authorized_officer": false,
-      "title_vested_in_us": true
-    },
-    {
-      "application_by_authorized_officer": true,
-      "title_vested_in_us": false
+      },
+      "examples": [
+        {
+          "certificate_issued": true,
+          "certificate_filed_with_secretary_of_state": true,
+          "certificate_recorded_in_county": true
+        },
+        {
+          "certificate_issued": true,
+          "certificate_filed_with_secretary_of_state": false,
+          "certificate_recorded_in_county": true
+        },
+        {
+          "certificate_issued": false,
+          "certificate_filed_with_secretary_of_state": true,
+          "certificate_recorded_in_county": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "certificate_issued",
+          "description": "Indicates if the certificate has been issued by the governor."
+        },
+        {
+          "name": "certificate_filed_with_secretary_of_state",
+          "description": "Indicates if one duplicate of the certificate is filed with the secretary of state."
+        },
+        {
+          "name": "certificate_recorded_in_county",
+          "description": "Indicates if the certificate is recorded in the office of the county recorder of each county where the land is situated."
+        }
+      ],
+      "consequences": [
+        "The consent of the state is declared under sections 1.041 to 1.048."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "application_by_authorized_officer",
-      "description": "Indicates if the application is made by an authorized officer of the United States."
-    },
-    {
-      "name": "title_vested_in_us",
-      "description": "Indicates if the title to the property has vested in the United States."
-    }
-  ],
-  "consequences": [
-    "The governor issues a certificate under the great seal of the state.",
-    "The certificate includes a description of the property, authority, purpose, and method of acquisition, and jurisdiction conditions.",
-    "A map may be attached for property identification.",
-    "One duplicate of the certificate is filed with the secretary of state.",
-    "The other duplicate is delivered to the applicant for recording in the county recorder's office."
   ]
 }

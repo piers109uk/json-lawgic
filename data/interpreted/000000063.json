@@ -4,32 +4,55 @@
   "title": "1.1499 STATE SPORT.",
   "text": "Ice hockey is adopted as the official sport of the state of Minnesota.",
   "repealed": false,
-  "rule": {
-    "==": [
-      {
-        "var": "state"
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "official_sport"
+              },
+              "Ice Hockey"
+            ]
+          }
+        ]
       },
-      "Minnesota"
-    ]
-  },
-  "examples": [
-    {
-      "state": "Minnesota"
-    },
-    {
-      "state": "California"
-    },
-    {
-      "state": "Texas"
+      "examples": [
+        {
+          "state": "Minnesota",
+          "official_sport": "Ice Hockey"
+        },
+        {
+          "state": "Minnesota",
+          "official_sport": "Basketball"
+        },
+        {
+          "state": "California",
+          "official_sport": "Ice Hockey"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The name of the state being evaluated."
+        },
+        {
+          "name": "official_sport",
+          "description": "The sport being evaluated as the official sport of the state."
+        }
+      ],
+      "consequences": [
+        "Ice hockey is the official sport of Minnesota."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state",
-      "description": "The name of the state being evaluated."
-    }
-  ],
-  "consequences": [
-    "Ice hockey is the official sport."
   ]
 }
