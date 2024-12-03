@@ -11,7 +11,59 @@
           {
             "==": [
               {
-                "var": "states_ratifed"
+                "var": "state_legislatures_enacted"
+              },
+              4
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "province"
+              },
+              [
+                "Ontario",
+                "Quebec"
+              ]
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state_legislatures_enacted": 4,
+          "province": "Ontario"
+        },
+        {
+          "state_legislatures_enacted": 5,
+          "province": "Quebec"
+        },
+        {
+          "state_legislatures_enacted": 4,
+          "province": "Quebec"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_legislatures_enacted",
+          "description": "The number of state legislatures that have enacted the compact."
+        },
+        {
+          "name": "province",
+          "description": "The province considering joining the compact."
+        }
+      ],
+      "consequences": [
+        "The compact becomes effective and binding for the province."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "state_legislatures_enacted"
               },
               4
             ]
@@ -37,26 +89,26 @@
       },
       "examples": [
         {
-          "states_ratifed": 4,
+          "state_legislatures_enacted": 4,
           "state": "Illinois"
         },
         {
-          "states_ratifed": 5,
+          "state_legislatures_enacted": 5,
           "state": "Ohio"
         },
         {
-          "states_ratifed": 3,
-          "state": "New York"
+          "state_legislatures_enacted": 3,
+          "state": "Wisconsin"
         }
       ],
       "variables": [
         {
-          "name": "states_ratifed",
-          "description": "The number of states that have ratified the compact."
+          "name": "state_legislatures_enacted",
+          "description": "The number of state legislatures that have enacted the compact."
         },
         {
           "name": "state",
-          "description": "The state in question for joining the compact."
+          "description": "The state considering joining the compact."
         }
       ],
       "consequences": [
@@ -67,158 +119,147 @@
       "rule": {
         "and": [
           {
-            "in": [
-              {
-                "var": "province"
-              },
-              [
-                "Ontario",
-                "Quebec"
-              ]
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "canada_law_adherence"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "province": "Ontario",
-          "canada_law_adherence": true
-        },
-        {
-          "province": "Quebec",
-          "canada_law_adherence": false
-        },
-        {
-          "province": "Ontario",
-          "canada_law_adherence": false
-        }
-      ],
-      "variables": [
-        {
-          "name": "province",
-          "description": "The province in question for joining the compact."
-        },
-        {
-          "name": "canada_law_adherence",
-          "description": "Whether the province adheres to Canadian laws for joining the compact."
-        }
-      ],
-      "consequences": [
-        "The province becomes a party to the compact."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "in": [
-              {
-                "var": "water_body"
-              },
-              [
-                "Erie",
-                "Huron",
-                "Michigan",
-                "Ontario",
-                "St. Clair",
-                "Superior",
-                "St. Lawrence River"
-              ]
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "within_party_states"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "water_body": "Erie",
-          "within_party_states": true
-        },
-        {
-          "water_body": "Mississippi",
-          "within_party_states": false
-        },
-        {
-          "water_body": "Ontario",
-          "within_party_states": true
-        }
-      ],
-      "variables": [
-        {
-          "name": "water_body",
-          "description": "The water body in question."
-        },
-        {
-          "name": "within_party_states",
-          "description": "Whether the water body is within the party states."
-        }
-      ],
-      "consequences": [
-        "The water body is under the jurisdiction of the Great Lakes Commission."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
             "==": [
               {
                 "var": "commissioners_present"
               },
-              true
+              3
             ]
           },
           {
             "==": [
               {
-                "var": "majority_votes"
+                "var": "states_present"
               },
-              true
+              4
             ]
           }
         ]
       },
       "examples": [
         {
-          "commissioners_present": true,
-          "majority_votes": true
+          "commissioners_present": 3,
+          "states_present": 4
         },
         {
-          "commissioners_present": false,
-          "majority_votes": true
+          "commissioners_present": 3,
+          "states_present": 5
         },
         {
-          "commissioners_present": true,
-          "majority_votes": false
+          "commissioners_present": 2,
+          "states_present": 4
         }
       ],
       "variables": [
         {
           "name": "commissioners_present",
-          "description": "Whether commissioners from a majority of the party states are present."
+          "description": "The number of commissioners present at the meeting."
         },
         {
-          "name": "majority_votes",
-          "description": "Whether a majority of the votes cast are affirmative."
+          "name": "states_present",
+          "description": "The number of states present at the meeting."
         }
       ],
       "consequences": [
-        "The commission's action is approved."
+        "A quorum is established for the transaction of business."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "votes_cast"
+              },
+              3
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "states_voting"
+              },
+              4
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "votes_cast": 3,
+          "states_voting": 4
+        },
+        {
+          "votes_cast": 3,
+          "states_voting": 5
+        },
+        {
+          "votes_cast": 2,
+          "states_voting": 4
+        }
+      ],
+      "variables": [
+        {
+          "name": "votes_cast",
+          "description": "The number of votes cast at the meeting."
+        },
+        {
+          "name": "states_voting",
+          "description": "The number of states voting at the meeting."
+        }
+      ],
+      "consequences": [
+        "Actions of the commission are valid."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "renunciation_notice_period"
+              },
+              6
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "renunciation_notice_given"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "renunciation_notice_period": 6,
+          "renunciation_notice_given": true
+        },
+        {
+          "renunciation_notice_period": 5,
+          "renunciation_notice_given": true
+        },
+        {
+          "renunciation_notice_period": 6,
+          "renunciation_notice_given": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "renunciation_notice_period",
+          "description": "The notice period for renunciation in months."
+        },
+        {
+          "name": "renunciation_notice_given",
+          "description": "Whether the renunciation notice has been given."
+        }
+      ],
+      "consequences": [
+        "The compact is renounced by the state."
       ]
     }
   ]

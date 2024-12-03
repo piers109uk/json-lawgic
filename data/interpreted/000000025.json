@@ -104,19 +104,23 @@
             ]
           },
           {
-            "in": [
+            "or": [
               {
-                "var": "county"
-              },
-              [
-                "Clearwater",
-                "Koochiching",
-                "Lake of the Woods",
-                "Mahnomen",
-                "Pennington",
-                "Red Lake",
-                "Roseau"
-              ]
+                "in": [
+                  {
+                    "var": "county"
+                  },
+                  [
+                    "Clearwater",
+                    "Koochiching",
+                    "Lake of the Woods",
+                    "Mahnomen",
+                    "Pennington",
+                    "Red Lake",
+                    "Roseau"
+                  ]
+                ]
+              }
             ]
           }
         ]
@@ -142,11 +146,11 @@
         },
         {
           "name": "year",
-          "description": "The year in which the county's boundary is being checked."
+          "description": "The year in which the county's boundaries are being checked."
         }
       ],
       "consequences": [
-        "The county boundaries are as fixed by the laws referred to in the schedule.",
+        "The county's boundaries are fixed by laws passed before 1892.",
         "The county was formed by popular vote after 1892."
       ]
     }

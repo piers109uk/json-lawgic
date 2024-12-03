@@ -13,7 +13,7 @@
               {
                 "==": [
                   {
-                    "var": "consent_given_by_sections_1.041_to_1.048"
+                    "var": "consent_given_by_sections_1_041_to_1_048"
                   },
                   true
                 ]
@@ -33,7 +33,7 @@
               {
                 "==": [
                   {
-                    "var": "court"
+                    "var": "court_type"
                   },
                   "state"
                 ]
@@ -41,7 +41,7 @@
               {
                 "==": [
                   {
-                    "var": "court"
+                    "var": "court_type"
                   },
                   "federal"
                 ]
@@ -55,7 +55,7 @@
                   {
                     "==": [
                       {
-                        "var": "consent_given_by_sections_1.041_to_1.048"
+                        "var": "consent_given_by_sections_1_041_to_1_048"
                       },
                       true
                     ]
@@ -75,51 +75,54 @@
                   {
                     "var": "method_specified_by_commission"
                   },
-                  true
+                  {
+                    "var": "court_type"
+                  }
                 ]
-              }
+              },
+              "Invalid"
             ]
           }
         ]
       },
       "examples": [
         {
-          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_given_by_sections_1_041_to_1_048": true,
           "consent_required_by_land_exchange_commission": false,
-          "court": "state"
+          "court_type": "state"
         },
         {
-          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_given_by_sections_1_041_to_1_048": true,
           "consent_required_by_land_exchange_commission": false,
-          "court": "federal"
+          "court_type": "federal"
         },
         {
-          "consent_given_by_sections_1.041_to_1.048": true,
+          "consent_given_by_sections_1_041_to_1_048": true,
           "consent_required_by_land_exchange_commission": true,
-          "method_specified_by_commission": true
+          "method_specified_by_commission": "state",
+          "court_type": "state"
         }
       ],
       "variables": [
         {
-          "name": "consent_given_by_sections_1.041_to_1.048",
-          "description": "Indicates if consent is given by sections 1.041 to 1.048 for land acquisition by the United States."
+          "name": "consent_given_by_sections_1_041_to_1_048",
+          "description": "Indicates if consent is given by sections 1.041 to 1.048."
         },
         {
           "name": "consent_required_by_land_exchange_commission",
           "description": "Indicates if consent by the Land Exchange Commission is required."
         },
         {
-          "name": "court",
-          "description": "The court where the condemnation is to be effected, either 'state' or 'federal'."
+          "name": "court_type",
+          "description": "The type of court where condemnation is effected, either 'state' or 'federal'."
         },
         {
           "name": "method_specified_by_commission",
-          "description": "Indicates if the Land Exchange Commission has specified the method of condemnation."
+          "description": "The method of condemnation specified by the Land Exchange Commission, if applicable."
         }
       ],
       "consequences": [
-        "The United States may effect condemnation in the state or federal courts.",
-        "The Land Exchange Commission specifies the method of condemnation as a condition of its consent."
+        "The United States may effect condemnation in the specified court type."
       ]
     }
   ]

@@ -19,7 +19,7 @@ async def _process_file(file: Path, output_folder: str):
     if law_object.get("text") is None:
         return
     print(file)
-    pprint(law_object)
+    # pprint(law_object)
     try:
         law_rules = await interpreter.ainterpret_law(law_object)
         interpreted_law = {**law_object, **law_rules}
@@ -32,7 +32,7 @@ async def _process_file(file: Path, output_folder: str):
         logger.error(e)
 
 
-async def run_pipeline(input_folder: str, output_folder: str, limit: int = 100):
+async def run_pipeline(input_folder: str, output_folder: str, limit: int = 150):
     p = Path(input_folder)
     files = sorted(p.glob("*.json"))
 
@@ -48,4 +48,4 @@ if __name__ == "__main__":
     output_file = "data/interpreted-laws.json"
     combined = merge_json_files(output_folder, output_file)
     for law in combined:
-        print(f"{law["title"]} {len(law["rules"])}")
+        print(f"{law["title"]} {law["url"]} {len(law["rules"])}")

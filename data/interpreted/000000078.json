@@ -37,7 +37,7 @@
         },
         {
           "officer_jurisdiction": "state",
-          "action": "other"
+          "action": "necessary_for_compact"
         }
       ],
       "variables": [
@@ -62,60 +62,60 @@
               {
                 "var": "entity_type"
               },
-              "state"
+              "state_government"
             ]
           },
           {
             "==": [
               {
-                "var": "request"
+                "var": "request_made"
               },
-              "commission"
+              "true"
             ]
           },
           {
             "==": [
               {
-                "var": "action"
+                "var": "information_furnished"
               },
-              "furnish_information"
+              "true"
             ]
           }
         ]
       },
       "examples": [
         {
-          "entity_type": "state",
-          "request": "commission",
-          "action": "furnish_information"
+          "entity_type": "state_government",
+          "request_made": true,
+          "information_furnished": true
         },
         {
-          "entity_type": "state",
-          "request": "commission",
-          "action": "loan_personnel"
+          "entity_type": "state_government",
+          "request_made": true,
+          "information_furnished": false
         },
         {
-          "entity_type": "state",
-          "request": "other",
-          "action": "furnish_information"
+          "entity_type": "state_government",
+          "request_made": false,
+          "information_furnished": false
         }
       ],
       "variables": [
         {
           "name": "entity_type",
-          "description": "The type of entity (e.g., state, federal)."
+          "description": "The type of entity within the state."
         },
         {
-          "name": "request",
-          "description": "The entity making the request."
+          "name": "request_made",
+          "description": "Whether a request has been made by the commission."
         },
         {
-          "name": "action",
-          "description": "The action being performed by the entity."
+          "name": "information_furnished",
+          "description": "Whether the information has been furnished to the commission."
         }
       ],
       "consequences": [
-        "State entities are complying with the commission's request for information."
+        "State entities are complying with requests for information."
       ]
     }
   ]

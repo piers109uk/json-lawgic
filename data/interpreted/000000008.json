@@ -95,7 +95,7 @@
           {
             "in": [
               {
-                "var": "jurisdiction"
+                "var": "jurisdiction_type"
               },
               [
                 "exclusive",
@@ -104,25 +104,25 @@
             ]
           },
           {
-            "var": "acceptedByUS"
+            "var": "accepted_by_us"
           }
         ]
       },
       "examples": [
         {
           "state": "Minnesota",
-          "jurisdiction": "exclusive",
-          "acceptedByUS": true
+          "jurisdiction_type": "exclusive",
+          "accepted_by_us": true
         },
         {
           "state": "Minnesota",
-          "jurisdiction": "partial",
-          "acceptedByUS": true
+          "jurisdiction_type": "partial",
+          "accepted_by_us": true
         },
         {
           "state": "Minnesota",
-          "jurisdiction": "exclusive",
-          "acceptedByUS": false
+          "jurisdiction_type": "exclusive",
+          "accepted_by_us": false
         }
       ],
       "variables": [
@@ -131,11 +131,11 @@
           "description": "The state where the land is located."
         },
         {
-          "name": "jurisdiction",
-          "description": "The type of jurisdiction over the land."
+          "name": "jurisdiction_type",
+          "description": "The type of jurisdiction accepted by the United States."
         },
         {
-          "name": "acceptedByUS",
+          "name": "accepted_by_us",
           "description": "Whether the jurisdiction is accepted by the United States."
         }
       ],
@@ -155,22 +155,22 @@
             ]
           },
           {
-            "var": "abutsNavigableWaters"
+            "var": "abuts_navigable_waters"
           }
         ]
       },
       "examples": [
         {
           "state": "Minnesota",
-          "abutsNavigableWaters": true
+          "abuts_navigable_waters": true
         },
         {
           "state": "Minnesota",
-          "abutsNavigableWaters": false
+          "abuts_navigable_waters": false
         },
         {
           "state": "Minnesota",
-          "abutsNavigableWaters": true
+          "abuts_navigable_waters": true
         }
       ],
       "variables": [
@@ -179,7 +179,7 @@
           "description": "The state where the land is located."
         },
         {
-          "name": "abutsNavigableWaters",
+          "name": "abuts_navigable_waters",
           "description": "Whether the land abuts navigable waters."
         }
       ],
@@ -199,22 +199,22 @@
             ]
           },
           {
-            "var": "cededLand"
+            "var": "ceded_land"
           }
         ]
       },
       "examples": [
         {
           "state": "Minnesota",
-          "cededLand": true
+          "ceded_land": true
         },
         {
           "state": "Minnesota",
-          "cededLand": false
+          "ceded_land": false
         },
         {
           "state": "Minnesota",
-          "cededLand": true
+          "ceded_land": true
         }
       ],
       "variables": [
@@ -223,7 +223,7 @@
           "description": "The state where the land is located."
         },
         {
-          "name": "cededLand",
+          "name": "ceded_land",
           "description": "Whether the land is ceded to the United States."
         }
       ],
@@ -243,22 +243,20 @@
             ]
           },
           {
-            "var": "cededLand"
+            "var": "ceded_land"
           },
           {
-            "or": [
+            "in": [
               {
-                "var": "incomeTax"
+                "var": "tax_type"
               },
-              {
-                "var": "salesTax"
-              },
-              {
-                "var": "propertyTax"
-              },
-              {
-                "var": "realPropertyTax"
-              }
+              [
+                "income",
+                "sales",
+                "use",
+                "personal property",
+                "real property"
+              ]
             ]
           }
         ]
@@ -266,27 +264,18 @@
       "examples": [
         {
           "state": "Minnesota",
-          "cededLand": true,
-          "incomeTax": true,
-          "salesTax": false,
-          "propertyTax": false,
-          "realPropertyTax": false
+          "ceded_land": true,
+          "tax_type": "income"
         },
         {
           "state": "Minnesota",
-          "cededLand": true,
-          "incomeTax": false,
-          "salesTax": true,
-          "propertyTax": false,
-          "realPropertyTax": false
+          "ceded_land": true,
+          "tax_type": "sales"
         },
         {
           "state": "Minnesota",
-          "cededLand": true,
-          "incomeTax": false,
-          "salesTax": false,
-          "propertyTax": true,
-          "realPropertyTax": false
+          "ceded_land": true,
+          "tax_type": "real property"
         }
       ],
       "variables": [
@@ -295,28 +284,16 @@
           "description": "The state where the land is located."
         },
         {
-          "name": "cededLand",
+          "name": "ceded_land",
           "description": "Whether the land is ceded to the United States."
         },
         {
-          "name": "incomeTax",
-          "description": "Whether an income tax is imposed."
-        },
-        {
-          "name": "salesTax",
-          "description": "Whether a sales or use tax is imposed."
-        },
-        {
-          "name": "propertyTax",
-          "description": "Whether a tax on personal property is imposed."
-        },
-        {
-          "name": "realPropertyTax",
-          "description": "Whether a tax on the use of real property is imposed."
+          "name": "tax_type",
+          "description": "The type of tax imposed by the state."
         }
       ],
       "consequences": [
-        "The state reserves the right to impose taxes."
+        "The state reserves the right to impose taxes on the specified type."
       ]
     }
   ]

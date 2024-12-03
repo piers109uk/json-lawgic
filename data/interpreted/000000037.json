@@ -43,15 +43,23 @@
           {
             "===": [
               {
-                "var": "photo.status"
+                "var": "photo.approved_by"
               },
-              "approved"
+              "commissioner of natural resources"
             ]
           },
           {
             "===": [
               {
-                "var": "photo.location"
+                "var": "photo.certified"
+              },
+              "true"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "photo.preserved_in"
               },
               "Office of the Secretary of State"
             ]
@@ -67,8 +75,9 @@
           },
           "state": "Minnesota",
           "photo": {
-            "status": "approved",
-            "location": "Office of the Secretary of State"
+            "approved_by": "commissioner of natural resources",
+            "certified": "true",
+            "preserved_in": "Office of the Secretary of State"
           }
         },
         {
@@ -79,8 +88,9 @@
           },
           "state": "Minnesota",
           "photo": {
-            "status": "pending",
-            "location": "Office of the Secretary of State"
+            "approved_by": "commissioner of natural resources",
+            "certified": "false",
+            "preserved_in": "Office of the Secretary of State"
           }
         },
         {
@@ -91,8 +101,9 @@
           },
           "state": "Minnesota",
           "photo": {
-            "status": "approved",
-            "location": "Department of Natural Resources"
+            "approved_by": "commissioner of natural resources",
+            "certified": "true",
+            "preserved_in": "Office of the Secretary of State"
           }
         }
       ],
@@ -114,16 +125,22 @@
           "description": "The state in question."
         },
         {
-          "name": "photo.status",
-          "description": "The approval status of the photograph."
+          "name": "photo.approved_by",
+          "description": "The authority who approved the photograph."
         },
         {
-          "name": "photo.location",
-          "description": "The location where the photograph is preserved."
+          "name": "photo.certified",
+          "description": "Whether the photograph is certified."
+        },
+        {
+          "name": "photo.preserved_in",
+          "description": "Where the photograph is preserved."
         }
       ],
       "consequences": [
-        "The Red pine is confirmed as the state tree of Minnesota and its photograph is approved and preserved."
+        "The Red pine is confirmed as the state tree of Minnesota.",
+        "The photograph of the Red pine is approved and certified.",
+        "The photograph is preserved in the Office of the Secretary of State."
       ]
     }
   ]

@@ -7,53 +7,21 @@
   "rules": [
     {
       "rule": {
-        "if": [
+        "and": [
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "flag_design_certified"
-                  },
-                  true
-                ]
+                "var": "flag_design_certified"
               },
-              {
-                "==": [
-                  {
-                    "var": "secretary_of_state_filed_photo"
-                  },
-                  true
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "secretary_of_state_custodial_control"
-                  },
-                  true
-                ]
-              }
+              true
             ]
           },
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "flag_flown_sunrise_to_sunset"
-                  },
-                  true
-                ]
+                "var": "flag_adopted"
               },
-              {
-                "==": [
-                  {
-                    "var": "flag_folded_properly"
-                  },
-                  true
-                ]
-              }
+              true
             ]
           }
         ]
@@ -61,50 +29,157 @@
       "examples": [
         {
           "flag_design_certified": true,
-          "secretary_of_state_filed_photo": true,
-          "secretary_of_state_custodial_control": true,
-          "flag_flown_sunrise_to_sunset": true,
-          "flag_folded_properly": true
+          "flag_adopted": true
+        },
+        {
+          "flag_design_certified": false,
+          "flag_adopted": true
         },
         {
           "flag_design_certified": true,
-          "secretary_of_state_filed_photo": false,
-          "secretary_of_state_custodial_control": true,
-          "flag_flown_sunrise_to_sunset": true,
-          "flag_folded_properly": true
-        },
-        {
-          "flag_design_certified": true,
-          "secretary_of_state_filed_photo": true,
-          "secretary_of_state_custodial_control": true,
-          "flag_flown_sunrise_to_sunset": false,
-          "flag_folded_properly": false
+          "flag_adopted": false
         }
       ],
       "variables": [
         {
           "name": "flag_design_certified",
-          "description": "Indicates if the state flag design is certified by the commission."
+          "description": "Indicates if the flag design is certified by the State Emblems Redesign Commission."
         },
         {
-          "name": "secretary_of_state_filed_photo",
+          "name": "flag_adopted",
+          "description": "Indicates if the certified flag design is adopted as the official state flag."
+        }
+      ],
+      "consequences": [
+        "The design is adopted as the official state flag."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "secretary_of_state_photograph_filed"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "secretary_of_state_custodial_control"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "secretary_of_state_photograph_filed": true,
+          "secretary_of_state_custodial_control": true
+        },
+        {
+          "secretary_of_state_photograph_filed": false,
+          "secretary_of_state_custodial_control": true
+        },
+        {
+          "secretary_of_state_photograph_filed": true,
+          "secretary_of_state_custodial_control": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "secretary_of_state_photograph_filed",
           "description": "Indicates if the secretary of state has filed a photograph of the state flag."
         },
         {
           "name": "secretary_of_state_custodial_control",
           "description": "Indicates if the secretary of state retains custodial control over the sample design flag."
-        },
-        {
-          "name": "flag_flown_sunrise_to_sunset",
-          "description": "Indicates if the official state flag is flown on the State Capitol grounds between sunrise and sunset."
-        },
-        {
-          "name": "flag_folded_properly",
-          "description": "Indicates if the Minnesota State Flag is folded and stored properly."
         }
       ],
       "consequences": [
-        "The state flag is officially adopted and managed according to the law."
+        "The secretary of state manages the official state flag records and samples."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "flag_flown_at_capitol"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "time_of_day"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "flag_flown_at_capitol": true,
+          "time_of_day": true
+        },
+        {
+          "flag_flown_at_capitol": false,
+          "time_of_day": true
+        },
+        {
+          "flag_flown_at_capitol": true,
+          "time_of_day": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "flag_flown_at_capitol",
+          "description": "Indicates if the official state flag is flown on the State Capitol grounds."
+        },
+        {
+          "name": "time_of_day",
+          "description": "Indicates if the time is between sunrise and sunset."
+        }
+      ],
+      "consequences": [
+        "The official state flag is flown on the State Capitol grounds during the specified times."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "flag_folding_procedure"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "flag_folding_procedure": true
+        },
+        {
+          "flag_folding_procedure": false
+        },
+        {
+          "flag_folding_procedure": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "flag_folding_procedure",
+          "description": "Indicates if the Minnesota State Flag is folded and stored in the same manner as the national colors."
+        }
+      ],
+      "consequences": [
+        "The Minnesota State Flag is folded and stored properly."
       ]
     }
   ]

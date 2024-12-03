@@ -43,15 +43,15 @@
       "variables": [
         {
           "name": "state",
-          "description": "The name of the state being evaluated."
+          "description": "The name of the state being referenced."
         },
         {
           "name": "official_drink",
-          "description": "The official drink of the state being evaluated."
+          "description": "The official drink of the state."
         }
       ],
       "consequences": [
-        "Milk is confirmed as the official drink of Minnesota."
+        "Milk is the official drink of Minnesota."
       ]
     }
   ]

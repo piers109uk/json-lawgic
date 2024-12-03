@@ -4,72 +4,83 @@
   "title": "2.155 FIFTEENTH DISTRICT.",
   "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 15A consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\n(b) House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A, as described in paragraph (a).",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "===": [
+  "rules": [
+    {
+      "rule": {
+        "if": [
           {
-            "var": "district"
+            "===": [
+              {
+                "var": "district"
+              },
+              15
+            ]
           },
-          15
+          {
+            "merge": [
+              {
+                "var": "L15A-1"
+              },
+              {
+                "var": "L15B"
+              }
+            ]
+          },
+          "District not applicable"
         ]
       },
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "var": "order"
-              },
-              true
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "modification"
-              },
-              true
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "district": 15,
-      "order": true,
-      "modification": true
-    },
-    {
-      "district": 15,
-      "order": false,
-      "modification": true
-    },
-    {
-      "district": 14,
-      "order": true,
-      "modification": true
+      "examples": [
+        {
+          "district": 15,
+          "L15A-1": [
+            "Area1",
+            "Area2"
+          ],
+          "L15B": [
+            "Area3",
+            "Area4"
+          ]
+        },
+        {
+          "district": 15,
+          "L15A-1": [
+            "Area1"
+          ],
+          "L15B": [
+            "Area2",
+            "Area3",
+            "Area4"
+          ]
+        },
+        {
+          "district": 14,
+          "L15A-1": [
+            "Area1",
+            "Area2"
+          ],
+          "L15B": [
+            "Area3",
+            "Area4"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "L15A-1",
+          "description": "The modification file for House of Representatives District 15A."
+        },
+        {
+          "name": "L15B",
+          "description": "The remaining areas of Senate District 15 not included in 15A."
+        }
+      ],
+      "consequences": [
+        "Senate District 15 is divided into House Districts 15A and 15B as per the modifications."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "district",
-      "description": "The Senate District number being evaluated."
-    },
-    {
-      "name": "order",
-      "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
-    },
-    {
-      "name": "modification",
-      "description": "Whether the modification contained in file L15A-1 is applied."
-    }
-  ],
-  "consequences": [
-    "Senate District 15 consists of the district as described in the order with the modification.",
-    "House of Representatives District 15A consists of the district as described in the order with the modification.",
-    "House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A."
   ]
 }

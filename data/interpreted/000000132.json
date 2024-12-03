@@ -1,0 +1,164 @@
+{
+  "id": "2.165",
+  "url": "https://www.revisor.mn.gov/statutes/cite/2.165",
+  "title": "2.165 SIXTEENTH DISTRICT.",
+  "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 16 consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 16 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 16A consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\n(b) House of Representatives District 16B consists of all territory of Senate District 16 not included in House of Representatives District 16A, as described in paragraph (a).",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "district"
+              },
+              16
+            ]
+          },
+          {
+            "merge": [
+              {
+                "var": "district_16_order"
+              },
+              {
+                "var": "L15A_1_modification"
+              }
+            ]
+          },
+          "Unknown District"
+        ]
+      },
+      "examples": [
+        {
+          "district": 16,
+          "district_16_order": [
+            "Area1",
+            "Area2"
+          ],
+          "L15A_1_modification": [
+            "Area3"
+          ]
+        },
+        {
+          "district": 15,
+          "district_16_order": [
+            "Area1",
+            "Area2"
+          ],
+          "L15A_1_modification": [
+            "Area3"
+          ]
+        },
+        {
+          "district": 16,
+          "district_16_order": [
+            "Area1"
+          ],
+          "L15A_1_modification": [
+            "Area2",
+            "Area3"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "district_16_order",
+          "description": "The original description of Senate District 16 as per the order."
+        },
+        {
+          "name": "L15A_1_modification",
+          "description": "The modification to Senate District 16 as per file L15A-1."
+        }
+      ],
+      "consequences": [
+        "Senate District 16 consists of the original order with modifications from L15A-1."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "district"
+              },
+              16
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "house_district"
+                  },
+                  16
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "===": [
+                      {
+                        "var": "sub_district"
+                      },
+                      16.1
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "sub_district"
+                      },
+                      16.2
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "Unknown House District"
+        ]
+      },
+      "examples": [
+        {
+          "district": 16,
+          "house_district": 16,
+          "sub_district": 16.1
+        },
+        {
+          "district": 16,
+          "house_district": 16,
+          "sub_district": 16.2
+        },
+        {
+          "district": 15,
+          "house_district": 15,
+          "sub_district": 15.1
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "house_district",
+          "description": "The House district number being evaluated."
+        },
+        {
+          "name": "sub_district",
+          "description": "The sub-district number within the House district."
+        }
+      ],
+      "consequences": [
+        "House District 16A or 16B is correctly identified within Senate District 16."
+      ]
+    }
+  ]
+}

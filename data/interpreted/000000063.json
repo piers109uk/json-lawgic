@@ -19,9 +19,9 @@
           {
             "==": [
               {
-                "var": "official_sport"
+                "var": "sport"
               },
-              "Ice Hockey"
+              "Ice hockey"
             ]
           }
         ]
@@ -29,25 +29,25 @@
       "examples": [
         {
           "state": "Minnesota",
-          "official_sport": "Ice Hockey"
+          "sport": "Ice hockey"
         },
         {
           "state": "Minnesota",
-          "official_sport": "Basketball"
+          "sport": "Basketball"
         },
         {
           "state": "California",
-          "official_sport": "Ice Hockey"
+          "sport": "Ice hockey"
         }
       ],
       "variables": [
         {
           "name": "state",
-          "description": "The name of the state being evaluated."
+          "description": "The name of the state being referenced."
         },
         {
-          "name": "official_sport",
-          "description": "The sport being evaluated as the official sport of the state."
+          "name": "sport",
+          "description": "The sport being referenced."
         }
       ],
       "consequences": [

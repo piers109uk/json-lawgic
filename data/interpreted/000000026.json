@@ -13,7 +13,7 @@
               {
                 "==": [
                   {
-                    "var": "employee_status"
+                    "var": "role"
                   },
                   "employee"
                 ]
@@ -21,7 +21,7 @@
               {
                 "==": [
                   {
-                    "var": "employee_status"
+                    "var": "role"
                   },
                   "former_employee"
                 ]
@@ -29,7 +29,7 @@
               {
                 "==": [
                   {
-                    "var": "employee_status"
+                    "var": "role"
                   },
                   "prospective_employee"
                 ]
@@ -41,7 +41,7 @@
               {
                 "==": [
                   {
-                    "var": "law_violated"
+                    "var": "law"
                   },
                   "Age Discrimination in Employment Act"
                 ]
@@ -49,7 +49,15 @@
               {
                 "==": [
                   {
-                    "var": "law_violated"
+                    "var": "law"
+                  },
+                  "Fair Labor Standards Act"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "law"
                   },
                   "Family and Medical Leave Act"
                 ]
@@ -57,7 +65,7 @@
               {
                 "==": [
                   {
-                    "var": "law_violated"
+                    "var": "law"
                   },
                   "Americans with Disabilities Act"
                 ]
@@ -65,7 +73,7 @@
               {
                 "==": [
                   {
-                    "var": "law_violated"
+                    "var": "law"
                   },
                   "Uniformed Services Employment and Reemployment Rights Act"
                 ]
@@ -84,101 +92,37 @@
       },
       "examples": [
         {
-          "employee_status": "employee",
-          "law_violated": "Age Discrimination in Employment Act",
+          "role": "employee",
+          "law": "Age Discrimination in Employment Act",
           "aggrieved": "true"
         },
         {
-          "employee_status": "former_employee",
-          "law_violated": "Family and Medical Leave Act",
+          "role": "former_employee",
+          "law": "Family and Medical Leave Act",
           "aggrieved": "true"
         },
         {
-          "employee_status": "prospective_employee",
-          "law_violated": "Americans with Disabilities Act",
-          "aggrieved": "true"
+          "role": "prospective_employee",
+          "law": "Americans with Disabilities Act",
+          "aggrieved": "false"
         }
       ],
       "variables": [
         {
-          "name": "employee_status",
-          "description": "The status of the person as an employee, former employee, or prospective employee of the state."
+          "name": "role",
+          "description": "The role of the person (employee, former employee, or prospective employee)"
         },
         {
-          "name": "law_violated",
-          "description": "The specific law that was violated by the state."
-        },
-        {
-          "name": "aggrieved",
-          "description": "Indicates whether the person is aggrieved by the state's violation of the law."
-        }
-      ],
-      "consequences": [
-        "The individual may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "employee_status"
-              },
-              "employee"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "law_violated"
-              },
-              "Fair Labor Standards Act"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "aggrieved"
-              },
-              "true"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "employee_status": "employee",
-          "law_violated": "Fair Labor Standards Act",
-          "aggrieved": "true"
-        },
-        {
-          "employee_status": "employee",
-          "law_violated": "Fair Labor Standards Act",
-          "aggrieved": "true"
-        },
-        {
-          "employee_status": "employee",
-          "law_violated": "Fair Labor Standards Act",
-          "aggrieved": "true"
-        }
-      ],
-      "variables": [
-        {
-          "name": "employee_status",
-          "description": "The status of the person as an employee of the state."
-        },
-        {
-          "name": "law_violated",
-          "description": "The specific law that was violated by the state."
+          "name": "law",
+          "description": "The specific law that is alleged to have been violated"
         },
         {
           "name": "aggrieved",
-          "description": "Indicates whether the person is aggrieved by the state's violation of the law."
+          "description": "Whether the person is aggrieved by the state's violation"
         }
       ],
       "consequences": [
-        "The employee may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
+        "The person may bring a civil action against the state in federal court or in any other court of competent jurisdiction for legal or equitable relief."
       ]
     }
   ]

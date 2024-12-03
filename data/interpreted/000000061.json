@@ -7,73 +7,15 @@
   "rules": [
     {
       "rule": {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      "examples": [
-        {
-          "state": "Minnesota",
-          "muffin": "blueberry"
-        },
-        {
-          "state": "California",
-          "muffin": "banana"
-        },
-        {
-          "state": "Minnesota",
-          "muffin": "chocolate"
-        }
-      ],
-      "variables": [
-        {
-          "name": "state",
-          "description": "The state for which the muffin is being checked."
-        }
-      ],
-      "consequences": [
-        "The blueberry muffin is the official muffin."
-      ]
-    },
-    {
-      "rule": {
-        "==": [
-          {
-            "var": "muffin"
-          },
-          "blueberry"
-        ]
-      },
-      "examples": [
-        {
-          "state": "Minnesota",
-          "muffin": "blueberry"
-        },
-        {
-          "state": "California",
-          "muffin": "banana"
-        },
-        {
-          "state": "Minnesota",
-          "muffin": "chocolate"
-        }
-      ],
-      "variables": [
-        {
-          "name": "muffin",
-          "description": "The type of muffin being checked."
-        }
-      ],
-      "consequences": [
-        "The muffin is blueberry."
-      ]
-    },
-    {
-      "rule": {
         "and": [
+          {
+            "==": [
+              {
+                "var": "item"
+              },
+              "blueberry muffin"
+            ]
+          },
           {
             "==": [
               {
@@ -81,39 +23,31 @@
               },
               "Minnesota"
             ]
-          },
-          {
-            "==": [
-              {
-                "var": "muffin"
-              },
-              "blueberry"
-            ]
           }
         ]
       },
       "examples": [
         {
-          "state": "Minnesota",
-          "muffin": "blueberry"
+          "item": "blueberry muffin",
+          "state": "Minnesota"
         },
         {
-          "state": "California",
-          "muffin": "banana"
+          "item": "chocolate muffin",
+          "state": "Minnesota"
         },
         {
-          "state": "Minnesota",
-          "muffin": "chocolate"
+          "item": "blueberry muffin",
+          "state": "California"
         }
       ],
       "variables": [
         {
-          "name": "state",
-          "description": "The state for which the muffin is being checked."
+          "name": "item",
+          "description": "The type of muffin being considered."
         },
         {
-          "name": "muffin",
-          "description": "The type of muffin being checked."
+          "name": "state",
+          "description": "The state for which the official muffin is being determined."
         }
       ],
       "consequences": [

@@ -60,7 +60,7 @@
           {
             "===": [
               {
-                "var": "photograph_subject"
+                "var": "photo_subject"
               },
               "Zizania aquatica"
             ]
@@ -77,21 +77,21 @@
       },
       "examples": [
         {
-          "photograph_subject": "Zizania aquatica",
+          "photo_subject": "Zizania aquatica",
           "location": "Office of the Secretary of State"
         },
         {
-          "photograph_subject": "Oryza sativa",
+          "photo_subject": "Oryza sativa",
           "location": "Office of the Secretary of State"
         },
         {
-          "photograph_subject": "Zizania aquatica",
+          "photo_subject": "Zizania aquatica",
           "location": "Governor's Office"
         }
       ],
       "variables": [
         {
-          "name": "photograph_subject",
+          "name": "photo_subject",
           "description": "The subject of the photograph."
         },
         {

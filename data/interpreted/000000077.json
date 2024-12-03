@@ -39,6 +39,22 @@
               },
               1
             ]
+          },
+          {
+            "==": [
+              {
+                "var": "house_appointed_by"
+              },
+              "speaker_of_the_house"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "senate_appointed_by"
+              },
+              "committee_on_committees"
+            ]
           }
         ]
       },
@@ -47,19 +63,25 @@
           "total_commissioners": 5,
           "house_representatives": 2,
           "state_senate": 2,
-          "governor_appointed": 1
+          "governor_appointed": 1,
+          "house_appointed_by": "speaker_of_the_house",
+          "senate_appointed_by": "committee_on_committees"
         },
         {
           "total_commissioners": 5,
-          "house_representatives": 1,
+          "house_representatives": 2,
           "state_senate": 2,
-          "governor_appointed": 2
+          "governor_appointed": 1,
+          "house_appointed_by": "speaker_of_the_house",
+          "senate_appointed_by": "wrong_committee"
         },
         {
           "total_commissioners": 4,
           "house_representatives": 2,
           "state_senate": 2,
-          "governor_appointed": 1
+          "governor_appointed": 1,
+          "house_appointed_by": "speaker_of_the_house",
+          "senate_appointed_by": "committee_on_committees"
         }
       ],
       "variables": [
@@ -78,10 +100,18 @@
         {
           "name": "governor_appointed",
           "description": "The number of commissioners appointed by the governor."
+        },
+        {
+          "name": "house_appointed_by",
+          "description": "The authority who appoints the house of representatives members."
+        },
+        {
+          "name": "senate_appointed_by",
+          "description": "The authority who appoints the state senate members."
         }
       ],
       "consequences": [
-        "The composition of the Great Lakes Commission is correct according to Article IV of the compact."
+        "The composition of the Great Lakes Commission from the state is valid as per Article IV of the compact."
       ]
     }
   ]

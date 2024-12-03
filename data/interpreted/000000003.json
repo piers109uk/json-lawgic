@@ -13,19 +13,12 @@
               {
                 "var": "county"
               },
-              {
-                "var": "bordering_counties"
-              }
-            ]
-          },
-          {
-            "in": [
-              {
-                "var": "water_body"
-              },
-              {
-                "var": "bordering_waters"
-              }
+              [
+                "Big Stone Lake",
+                "Lake Traverse",
+                "Bois de Sioux River",
+                "Red River of the North"
+              ]
             ]
           },
           {
@@ -40,67 +33,30 @@
       },
       "examples": [
         {
-          "county": "Traverse County",
-          "water_body": "Big Stone Lake",
-          "forms_common_boundary": true,
-          "bordering_counties": [
-            "Traverse County",
-            "Wilkin County"
-          ],
-          "bordering_waters": [
-            "Big Stone Lake",
-            "Lake Traverse"
-          ]
+          "county": "Big Stone Lake",
+          "forms_common_boundary": true
         },
         {
-          "county": "Wilkin County",
-          "water_body": "Red River of the North",
-          "forms_common_boundary": true,
-          "bordering_counties": [
-            "Traverse County",
-            "Wilkin County"
-          ],
-          "bordering_waters": [
-            "Red River of the North"
-          ]
+          "county": "Lake Traverse",
+          "forms_common_boundary": true
         },
         {
-          "county": "Otter Tail County",
-          "water_body": "Bois de Sioux River",
-          "forms_common_boundary": false,
-          "bordering_counties": [
-            "Traverse County",
-            "Wilkin County"
-          ],
-          "bordering_waters": [
-            "Bois de Sioux River"
-          ]
+          "county": "Some Other Lake",
+          "forms_common_boundary": false
         }
       ],
       "variables": [
         {
           "name": "county",
-          "description": "The county where the court or officer has jurisdiction."
-        },
-        {
-          "name": "water_body",
-          "description": "The body of water in question."
+          "description": "The name of the county in question."
         },
         {
           "name": "forms_common_boundary",
-          "description": "Indicates if the water body forms a common boundary with another state."
-        },
-        {
-          "name": "bordering_counties",
-          "description": "List of counties bordering the specified water bodies."
-        },
-        {
-          "name": "bordering_waters",
-          "description": "List of water bodies that form a common boundary with another state."
+          "description": "Indicates if the water body forms a common boundary between this state and any other state."
         }
       ],
       "consequences": [
-        "The court or officer has jurisdiction in civil and criminal cases on the specified waters."
+        "Courts and officers have jurisdiction in civil and criminal cases upon these waters."
       ]
     }
   ]

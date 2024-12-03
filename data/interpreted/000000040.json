@@ -32,12 +32,12 @@
           "state": "Minnesota"
         },
         {
-          "bird_name": "Gavia stellata",
-          "state": "Minnesota"
-        },
-        {
           "bird_name": "Gavia immer",
           "state": "Wisconsin"
+        },
+        {
+          "bird_name": "Anas platyrhynchos",
+          "state": "Minnesota"
         }
       ],
       "variables": [

@@ -4,46 +4,58 @@
   "title": "1.26 ENEMY ATTACK, TEMPORARY RELOCATION OF SEATS OF GOVERNMENT.",
   "text": "As used in this section, \"political subdivision\" includes counties, home rule charter and statutory cities, towns, townships, school districts, authorities, and other public corporations and entities whether organized and existing under charter or general law.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of state government in the city of St. Paul, Ramsey County, Minnesota, the governor shall, as often as the exigencies of the situation require, by proclamation, declare an emergency temporary location, or locations, for the seat of government at a place, or places, in or out of the state as the governor deems advisable under the circumstances, and shall take action and issue orders as necessary for an orderly transition of the affairs of state government to the emergency temporary location, or locations. The emergency temporary location, or locations, shall remain the seat of government until the legislature by law establishes a new location, or locations, or until the emergency is declared to be ended by the governor and the seat of government is returned to its normal location.\nWhile the seat of government remains at an emergency temporary location, or locations, all official acts required by law to be performed at the seat of government by any officer, agency, department or authority of this state, including the convening and meeting of the legislature in regular, extraordinary, or emergency session, shall be as valid and binding when performed at the emergency temporary location, or locations, as if performed at the normal location of the seat of government.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of local government at their regular or usual place or places, the governing body of each political subdivision of this state may meet at any place in or out of the territorial limits of the political subdivision on the call of the presiding officer or any two members of the governing body, and shall designate by ordinance, resolution or other manner, alternate or substitute places as the emergency temporary location, or locations, of government where all, or any part, of the public business may be conducted during the emergency situation. The places may be in or out of the territorial limits of the political subdivision and the state.\nWhile the public business is being conducted at the emergency temporary location, or locations, the governing body and other officers of a political subdivision shall exercise, at the location, or locations, all of the executive, legislative, and judicial powers and functions conferred upon it and its officers by its charter and the laws and constitution of this state. Acts of the governing body and officers shall be as valid and binding as if performed within the territorial limits of their political subdivision.\nThis section shall be supreme if it is employed notwithstanding any other statute, charter or ordinance.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "or": [
-          {
-            "==": [
-              {
-                "var": "emergency_type"
-              },
-              "enemy_attack"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "emergency_type"
-              },
-              "threatened_enemy_attack"
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
+  "rules": [
+    {
+      "rule": {
+        "if": [
           {
             "or": [
               {
                 "==": [
                   {
-                    "var": "location"
+                    "var": "emergency_type"
                   },
-                  "St. Paul"
+                  "enemy_attack"
                 ]
               },
               {
                 "==": [
                   {
-                    "var": "location_type"
+                    "var": "emergency_type"
                   },
-                  "political_subdivision"
+                  "threatened_enemy_attack"
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "or": [
+                  {
+                    "==": [
+                      {
+                        "var": "location"
+                      },
+                      "St. Paul"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "location"
+                      },
+                      "Ramsey County"
+                    ]
+                  }
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "state"
+                  },
+                  "Minnesota"
                 ]
               }
             ]
@@ -51,56 +63,65 @@
           {
             "==": [
               {
-                "var": "action"
+                "var": "government_level"
               },
-              "relocate_government"
+              "state"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "government_level"
+              },
+              "local"
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "emergency_type": "enemy_attack",
-      "location": "St. Paul",
-      "location_type": "state",
-      "action": "relocate_government"
-    },
-    {
-      "emergency_type": "threatened_enemy_attack",
-      "location": "Ramsey County",
-      "location_type": "political_subdivision",
-      "action": "relocate_government"
-    },
-    {
-      "emergency_type": "natural_disaster",
-      "location": "St. Paul",
-      "location_type": "state",
-      "action": "relocate_government"
+      },
+      "examples": [
+        {
+          "emergency_type": "enemy_attack",
+          "location": "St. Paul",
+          "state": "Minnesota",
+          "government_level": "state"
+        },
+        {
+          "emergency_type": "threatened_enemy_attack",
+          "location": "Ramsey County",
+          "state": "Minnesota",
+          "government_level": "state"
+        },
+        {
+          "emergency_type": "enemy_attack",
+          "location": "Hennepin County",
+          "state": "Minnesota",
+          "government_level": "local"
+        }
+      ],
+      "variables": [
+        {
+          "name": "emergency_type",
+          "description": "The type of emergency occurring, such as enemy attack or threatened enemy attack."
+        },
+        {
+          "name": "location",
+          "description": "The current location of the government seat or political subdivision."
+        },
+        {
+          "name": "state",
+          "description": "The state in which the government seat or political subdivision is located."
+        },
+        {
+          "name": "government_level",
+          "description": "The level of government, either state or local."
+        }
+      ],
+      "consequences": [
+        "Declare an emergency temporary location for the state government.",
+        "Conduct state government affairs at the emergency location.",
+        "Local government may meet at alternate locations.",
+        "Acts performed at emergency locations are valid."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "emergency_type",
-      "description": "The type of emergency occurring, such as enemy attack or threatened enemy attack."
-    },
-    {
-      "name": "location",
-      "description": "The current location of the government seat, such as St. Paul or a political subdivision."
-    },
-    {
-      "name": "location_type",
-      "description": "The type of location, either state or political subdivision."
-    },
-    {
-      "name": "action",
-      "description": "The action to be taken, such as relocating the government."
-    }
-  ],
-  "consequences": [
-    "The government seat is temporarily relocated to an emergency location.",
-    "All official acts performed at the emergency location are valid.",
-    "Local governments can meet outside their usual locations."
   ]
 }

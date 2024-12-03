@@ -9,7 +9,7 @@
       "rule": {
         "and": [
           {
-            "==": [
+            "===": [
               {
                 "var": "state"
               },
@@ -21,7 +21,7 @@
             ]
           },
           {
-            "==": [
+            "===": [
               {
                 "var": "ratified"
               },
@@ -62,7 +62,103 @@
       "rule": {
         "and": [
           {
-            "==": [
+            "===": [
+              {
+                "var": "state"
+              },
+              [
+                "Michigan",
+                "Wisconsin"
+              ]
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "boundary"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Michigan",
+          "boundary": true
+        },
+        {
+          "state": "Wisconsin",
+          "boundary": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state involved in the boundary agreement."
+        },
+        {
+          "name": "boundary",
+          "description": "Indicates whether the boundary is established."
+        }
+      ],
+      "consequences": [
+        "The boundary in Lake Michigan is fixed and established."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              [
+                "Minnesota",
+                "Wisconsin"
+              ]
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "boundary"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "boundary": true
+        },
+        {
+          "state": "Wisconsin",
+          "boundary": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state involved in the boundary agreement."
+        },
+        {
+          "name": "boundary",
+          "description": "Indicates whether the boundary is established."
+        }
+      ],
+      "consequences": [
+        "The boundary in Lake Superior is fixed and established."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
               {
                 "var": "state"
               },
@@ -74,9 +170,9 @@
             ]
           },
           {
-            "==": [
+            "===": [
               {
-                "var": "ratified_by_all"
+                "var": "joint_survey_commission"
               },
               true
             ]
@@ -86,15 +182,15 @@
       "examples": [
         {
           "state": "Michigan",
-          "ratified_by_all": true
+          "joint_survey_commission": true
         },
         {
           "state": "Minnesota",
-          "ratified_by_all": true
+          "joint_survey_commission": true
         },
         {
           "state": "Wisconsin",
-          "ratified_by_all": true
+          "joint_survey_commission": true
         }
       ],
       "variables": [
@@ -103,61 +199,12 @@
           "description": "The state that is part of the compact."
         },
         {
-          "name": "ratified_by_all",
-          "description": "Indicates whether all states have ratified the compact."
+          "name": "joint_survey_commission",
+          "description": "Indicates whether the state has appointed members to the Joint Survey Commission."
         }
       ],
       "consequences": [
-        "Each state appoints two members to a Joint Survey Commission."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "boundary"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "expense_sharing"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "boundary": true,
-          "expense_sharing": true
-        },
-        {
-          "boundary": true,
-          "expense_sharing": true
-        },
-        {
-          "boundary": true,
-          "expense_sharing": true
-        }
-      ],
-      "variables": [
-        {
-          "name": "boundary",
-          "description": "Indicates whether the boundary is being marked."
-        },
-        {
-          "name": "expense_sharing",
-          "description": "Indicates whether the expense sharing agreement is in place."
-        }
-      ],
-      "consequences": [
-        "Expenses for marking boundaries are shared as per the agreement."
+        "The Joint Survey Commission is established to survey and mark the boundaries."
       ]
     }
   ]

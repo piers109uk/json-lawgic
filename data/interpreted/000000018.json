@@ -54,7 +54,7 @@
       "variables": [
         {
           "name": "state",
-          "description": "The state being referenced."
+          "description": "The state in question."
         },
         {
           "name": "navigable_waters_ownership",
@@ -118,11 +118,11 @@
       "variables": [
         {
           "name": "state",
-          "description": "The state being referenced."
+          "description": "The state in question."
         },
         {
           "name": "land_type",
-          "description": "The type of land being referenced."
+          "description": "The type of land in question."
         },
         {
           "name": "land_disposition",
@@ -147,17 +147,17 @@
           {
             "===": [
               {
-                "var": "land_location"
+                "var": "official_duty"
               },
-              "Boundary Waters Canoe Area Wilderness"
+              "assert_ownership"
             ]
           },
           {
             "===": [
               {
-                "var": "land_value"
+                "var": "resource_type"
               },
-              "high"
+              "navigable_waters"
             ]
           }
         ]
@@ -165,36 +165,36 @@
       "examples": [
         {
           "state": "Minnesota",
-          "land_location": "Boundary Waters Canoe Area Wilderness",
-          "land_value": "high"
+          "official_duty": "assert_ownership",
+          "resource_type": "navigable_waters"
         },
         {
           "state": "Minnesota",
-          "land_location": "Boundary Waters Canoe Area Wilderness",
-          "land_value": "low"
+          "official_duty": "assert_ownership",
+          "resource_type": "land"
         },
         {
           "state": "Minnesota",
-          "land_location": "Other",
-          "land_value": "high"
+          "official_duty": "not_assert_ownership",
+          "resource_type": "navigable_waters"
         }
       ],
       "variables": [
         {
           "name": "state",
-          "description": "The state being referenced."
+          "description": "The state in question."
         },
         {
-          "name": "land_location",
-          "description": "The location of the land being referenced."
+          "name": "official_duty",
+          "description": "The duty of the state officials."
         },
         {
-          "name": "land_value",
-          "description": "The value of the land being referenced."
+          "name": "resource_type",
+          "description": "The type of resource in question."
         }
       ],
       "consequences": [
-        "The state should be especially cognizant of the high value of the lakeshore and other state land located within the area."
+        "State officials must assert and defend the state's ownership and jurisdiction over navigable waters."
       ]
     }
   ]

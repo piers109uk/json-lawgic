@@ -27,17 +27,17 @@
           {
             "==": [
               {
-                "var": "senators_per_district"
+                "var": "senators_elected"
               },
-              1
+              67
             ]
           },
           {
             "==": [
               {
-                "var": "representatives_per_district"
+                "var": "representatives_elected"
               },
-              1
+              134
             ]
           }
         ]
@@ -46,20 +46,20 @@
         {
           "senate_districts": 67,
           "house_districts": 134,
-          "senators_per_district": 1,
-          "representatives_per_district": 1
+          "senators_elected": 67,
+          "representatives_elected": 134
         },
         {
           "senate_districts": 66,
           "house_districts": 134,
-          "senators_per_district": 1,
-          "representatives_per_district": 1
+          "senators_elected": 67,
+          "representatives_elected": 134
         },
         {
           "senate_districts": 67,
-          "house_districts": 133,
-          "senators_per_district": 1,
-          "representatives_per_district": 1
+          "house_districts": 134,
+          "senators_elected": 66,
+          "representatives_elected": 134
         }
       ],
       "variables": [
@@ -72,16 +72,16 @@
           "description": "The number of house of representatives districts in the state."
         },
         {
-          "name": "senators_per_district",
-          "description": "The number of senators each senate district is entitled to elect."
+          "name": "senators_elected",
+          "description": "The number of senators elected in the state."
         },
         {
-          "name": "representatives_per_district",
-          "description": "The number of representatives each house district is entitled to elect."
+          "name": "representatives_elected",
+          "description": "The number of representatives elected in the state."
         }
       ],
       "consequences": [
-        "The apportionment of representatives in the senate and house is correct."
+        "The apportionment of representatives in the senate and house of representatives is correct."
       ]
     }
   ]

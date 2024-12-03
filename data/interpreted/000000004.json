@@ -29,11 +29,31 @@
             ]
           },
           {
-            "===": [
+            "and": [
               {
-                "var": "us_acquisition"
+                "===": [
+                  {
+                    "var": "land_acquisition"
+                  },
+                  true
+                ]
               },
-              true
+              {
+                "===": [
+                  {
+                    "var": "best_interests"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "application_made"
+                  },
+                  true
+                ]
+              }
             ]
           }
         ]
@@ -42,17 +62,23 @@
         {
           "jurisdiction": true,
           "state_consent": true,
-          "us_acquisition": true
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
         },
         {
           "jurisdiction": true,
           "state_consent": false,
-          "us_acquisition": false
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
         },
         {
           "jurisdiction": false,
           "state_consent": true,
-          "us_acquisition": false
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
         }
       ],
       "variables": [
@@ -62,15 +88,23 @@
         },
         {
           "name": "state_consent",
-          "description": "Whether the state has given consent for the acquisition."
+          "description": "Whether the state has given consent for land acquisition."
         },
         {
-          "name": "us_acquisition",
-          "description": "Whether the United States is acquiring land or property."
+          "name": "land_acquisition",
+          "description": "Whether the land is being acquired for national purposes."
+        },
+        {
+          "name": "best_interests",
+          "description": "Whether the acquisition is consistent with the best interests of the state."
+        },
+        {
+          "name": "application_made",
+          "description": "Whether an application for the state's consent has been made by an authorized officer of the United States."
         }
       ],
       "consequences": [
-        "The United States can acquire land or property with concurrent jurisdiction."
+        "The United States can acquire land with concurrent jurisdiction."
       ]
     },
     {
@@ -81,7 +115,7 @@
               {
                 "===": [
                   {
-                    "var": "acquisition_method"
+                    "var": "method_of_acquisition"
                   },
                   "purchase"
                 ]
@@ -99,7 +133,7 @@
           {
             "===": [
               {
-                "var": "transaction_allowed"
+                "var": "execution"
               },
               false
             ]
@@ -108,37 +142,37 @@
       },
       "examples": [
         {
-          "acquisition_method": "purchase",
+          "method_of_acquisition": "purchase",
           "state_consent": false,
-          "transaction_allowed": false
+          "execution": false
         },
         {
-          "acquisition_method": "purchase",
+          "method_of_acquisition": "purchase",
           "state_consent": true,
-          "transaction_allowed": true
+          "execution": true
         },
         {
-          "acquisition_method": "condemnation",
+          "method_of_acquisition": "condemnation",
           "state_consent": false,
-          "transaction_allowed": true
+          "execution": true
         }
       ],
       "variables": [
         {
-          "name": "acquisition_method",
-          "description": "The method used for acquiring land or property."
+          "name": "method_of_acquisition",
+          "description": "The method used for acquiring the land."
         },
         {
           "name": "state_consent",
-          "description": "Whether the state has given consent for the acquisition."
+          "description": "Whether the state has given consent for land acquisition."
         },
         {
-          "name": "transaction_allowed",
-          "description": "Whether the transaction is allowed to proceed."
+          "name": "execution",
+          "description": "Whether the execution of the land conveyance has occurred."
         }
       ],
       "consequences": [
-        "The transaction cannot proceed without state consent if the acquisition method is purchase."
+        "Execution of land conveyance cannot occur without state consent."
       ]
     },
     {
@@ -149,7 +183,7 @@
               {
                 "===": [
                   {
-                    "var": "acquisition_method"
+                    "var": "method_of_acquisition"
                   },
                   "condemnation"
                 ]
@@ -167,7 +201,7 @@
           {
             "===": [
               {
-                "var": "proceeding_allowed"
+                "var": "condemnation_proceeding"
               },
               false
             ]
@@ -176,37 +210,37 @@
       },
       "examples": [
         {
-          "acquisition_method": "condemnation",
+          "method_of_acquisition": "condemnation",
           "state_consent": false,
-          "proceeding_allowed": false
+          "condemnation_proceeding": false
         },
         {
-          "acquisition_method": "condemnation",
+          "method_of_acquisition": "condemnation",
           "state_consent": true,
-          "proceeding_allowed": true
+          "condemnation_proceeding": true
         },
         {
-          "acquisition_method": "purchase",
+          "method_of_acquisition": "purchase",
           "state_consent": false,
-          "proceeding_allowed": true
+          "condemnation_proceeding": true
         }
       ],
       "variables": [
         {
-          "name": "acquisition_method",
-          "description": "The method used for acquiring land or property."
+          "name": "method_of_acquisition",
+          "description": "The method used for acquiring the land."
         },
         {
           "name": "state_consent",
-          "description": "Whether the state has given consent for the acquisition."
+          "description": "Whether the state has given consent for land acquisition."
         },
         {
-          "name": "proceeding_allowed",
-          "description": "Whether the condemnation proceeding is allowed to commence."
+          "name": "condemnation_proceeding",
+          "description": "Whether the condemnation proceeding has commenced."
         }
       ],
       "consequences": [
-        "The condemnation proceeding cannot commence without state consent."
+        "Condemnation proceedings cannot commence without state consent."
       ]
     }
   ]

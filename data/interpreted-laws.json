@@ -28,17 +28,17 @@
             {
               "==": [
                 {
-                  "var": "senators_per_district"
+                  "var": "senators_elected"
                 },
-                1
+                67
               ]
             },
             {
               "==": [
                 {
-                  "var": "representatives_per_district"
+                  "var": "representatives_elected"
                 },
-                1
+                134
               ]
             }
           ]
@@ -47,20 +47,20 @@
           {
             "senate_districts": 67,
             "house_districts": 134,
-            "senators_per_district": 1,
-            "representatives_per_district": 1
+            "senators_elected": 67,
+            "representatives_elected": 134
           },
           {
             "senate_districts": 66,
             "house_districts": 134,
-            "senators_per_district": 1,
-            "representatives_per_district": 1
+            "senators_elected": 67,
+            "representatives_elected": 134
           },
           {
             "senate_districts": 67,
-            "house_districts": 133,
-            "senators_per_district": 1,
-            "representatives_per_district": 1
+            "house_districts": 134,
+            "senators_elected": 66,
+            "representatives_elected": 134
           }
         ],
         "variables": [
@@ -73,16 +73,16 @@
             "description": "The number of house of representatives districts in the state."
           },
           {
-            "name": "senators_per_district",
-            "description": "The number of senators each senate district is entitled to elect."
+            "name": "senators_elected",
+            "description": "The number of senators elected in the state."
           },
           {
-            "name": "representatives_per_district",
-            "description": "The number of representatives each house district is entitled to elect."
+            "name": "representatives_elected",
+            "description": "The number of representatives elected in the state."
           }
         ],
         "consequences": [
-          "The apportionment of representatives in the senate and house is correct."
+          "The apportionment of representatives in the senate and house of representatives is correct."
         ]
       }
     ]
@@ -108,47 +108,45 @@
             {
               "merge": [
                 {
-                  "var": "district_description"
+                  "var": "district_as_described"
                 },
                 {
                   "var": "modification_L12B_1"
                 }
               ]
             },
-            {
-              "var": "district_description"
-            }
+            "Unknown District"
           ]
         },
         "examples": [
           {
             "district_name": "Senate District 9",
-            "district_description": [
-              "Area 1",
-              "Area 2"
+            "district_as_described": [
+              "Area1",
+              "Area2"
             ],
             "modification_L12B_1": [
-              "Area 3"
+              "Area3"
             ]
           },
           {
-            "district_name": "Senate District 10",
-            "district_description": [
-              "Area 4",
-              "Area 5"
+            "district_name": "Senate District 8",
+            "district_as_described": [
+              "Area1",
+              "Area2"
             ],
             "modification_L12B_1": [
-              "Area 6"
+              "Area3"
             ]
           },
           {
             "district_name": "Senate District 9",
-            "district_description": [
-              "Area 7",
-              "Area 8"
+            "district_as_described": [
+              "Area4",
+              "Area5"
             ],
             "modification_L12B_1": [
-              "Area 9"
+              "Area6"
             ]
           }
         ],
@@ -158,16 +156,16 @@
             "description": "The name of the district being evaluated."
           },
           {
-            "name": "district_description",
-            "description": "The original description of the district as per the order."
+            "name": "district_as_described",
+            "description": "The areas described in the original order for the district."
           },
           {
             "name": "modification_L12B_1",
-            "description": "The modification to be applied to Senate District 9."
+            "description": "The modification to the district as per file L12B-1."
           }
         ],
         "consequences": [
-          "Senate District 9 is modified with L12B-1."
+          "Senate District 9 consists of the described areas with modifications."
         ]
       },
       {
@@ -182,90 +180,31 @@
               ]
             },
             {
-              "var": "district_description"
+              "var": "district_as_described"
             },
-            {
-              "if": [
-                {
-                  "===": [
-                    {
-                      "var": "district_name"
-                    },
-                    "House of Representatives District 9B"
-                  ]
-                },
-                {
-                  "filter": [
-                    {
-                      "var": "senate_district_9_modified"
-                    },
-                    {
-                      "!": {
-                        "in": [
-                          {
-                            "var": ""
-                          },
-                          {
-                            "var": "house_district_9A"
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "var": "district_description"
-                }
-              ]
-            }
+            "Unknown District"
           ]
         },
         "examples": [
           {
             "district_name": "House of Representatives District 9A",
-            "district_description": [
-              "Area 1",
-              "Area 2"
-            ],
-            "senate_district_9_modified": [
-              "Area 1",
-              "Area 2",
-              "Area 3"
-            ],
-            "house_district_9A": [
-              "Area 1",
-              "Area 2"
+            "district_as_described": [
+              "Area1",
+              "Area2"
             ]
           },
           {
             "district_name": "House of Representatives District 9B",
-            "district_description": [
-              "Area 3"
-            ],
-            "senate_district_9_modified": [
-              "Area 1",
-              "Area 2",
-              "Area 3"
-            ],
-            "house_district_9A": [
-              "Area 1",
-              "Area 2"
+            "district_as_described": [
+              "Area1",
+              "Area2"
             ]
           },
           {
-            "district_name": "House of Representatives District 10A",
-            "district_description": [
-              "Area 4",
-              "Area 5"
-            ],
-            "senate_district_9_modified": [
-              "Area 1",
-              "Area 2",
-              "Area 3"
-            ],
-            "house_district_9A": [
-              "Area 1",
-              "Area 2"
+            "district_name": "House of Representatives District 9A",
+            "district_as_described": [
+              "Area4",
+              "Area5"
             ]
           }
         ],
@@ -275,21 +214,100 @@
             "description": "The name of the district being evaluated."
           },
           {
-            "name": "district_description",
-            "description": "The original description of the district as per the order."
-          },
-          {
-            "name": "senate_district_9_modified",
-            "description": "The modified description of Senate District 9."
-          },
-          {
-            "name": "house_district_9A",
-            "description": "The description of House of Representatives District 9A."
+            "name": "district_as_described",
+            "description": "The areas described in the original order for the district."
           }
         ],
         "consequences": [
-          "House of Representatives District 9A is as described in the order.",
-          "House of Representatives District 9B is the remainder of Senate District 9 not in 9A."
+          "House of Representatives District 9A consists of the described areas."
+        ]
+      },
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "district_name"
+                },
+                "House of Representatives District 9B"
+              ]
+            },
+            {
+              "filter": [
+                {
+                  "var": "senate_district_9_modified"
+                },
+                {
+                  "!": {
+                    "in": [
+                      {
+                        "var": ""
+                      },
+                      {
+                        "var": "house_district_9A"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Unknown District"
+          ]
+        },
+        "examples": [
+          {
+            "district_name": "House of Representatives District 9B",
+            "senate_district_9_modified": [
+              "Area1",
+              "Area2",
+              "Area3"
+            ],
+            "house_district_9A": [
+              "Area1",
+              "Area2"
+            ]
+          },
+          {
+            "district_name": "House of Representatives District 9A",
+            "senate_district_9_modified": [
+              "Area1",
+              "Area2",
+              "Area3"
+            ],
+            "house_district_9A": [
+              "Area1",
+              "Area2"
+            ]
+          },
+          {
+            "district_name": "House of Representatives District 9B",
+            "senate_district_9_modified": [
+              "Area4",
+              "Area5",
+              "Area6"
+            ],
+            "house_district_9A": [
+              "Area4"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "name": "district_name",
+            "description": "The name of the district being evaluated."
+          },
+          {
+            "name": "senate_district_9_modified",
+            "description": "The modified areas of Senate District 9."
+          },
+          {
+            "name": "house_district_9A",
+            "description": "The areas included in House of Representatives District 9A."
+          }
+        ],
+        "consequences": [
+          "House of Representatives District 9B consists of all modified areas not in District 9A."
         ]
       }
     ]
@@ -307,28 +325,25 @@
             {
               "==": [
                 {
-                  "var": "state"
+                  "var": "state_consent"
                 },
                 "Minnesota"
               ]
             },
             {
-              "in": [
+              "==": [
                 {
                   "var": "land_location"
                 },
-                [
-                  "Chippewa National Forest",
-                  "Superior National Forest"
-                ]
+                "Chippewa National Forest"
               ]
             },
             {
               "==": [
                 {
-                  "var": "acquisition_authority"
+                  "var": "land_location"
                 },
-                "act of Congress"
+                "Superior National Forest"
               ]
             },
             {
@@ -343,44 +358,37 @@
         },
         "examples": [
           {
-            "state": "Minnesota",
+            "state_consent": "Minnesota",
             "land_location": "Chippewa National Forest",
-            "acquisition_authority": "act of Congress",
             "jurisdiction": "concurrent"
           },
           {
-            "state": "Minnesota",
+            "state_consent": "Minnesota",
             "land_location": "Superior National Forest",
-            "acquisition_authority": "act of Congress",
             "jurisdiction": "concurrent"
           },
           {
-            "state": "Minnesota",
+            "state_consent": "Minnesota",
             "land_location": "Chippewa National Forest",
-            "acquisition_authority": "act of Congress",
-            "jurisdiction": "concurrent"
+            "jurisdiction": "exclusive"
           }
         ],
         "variables": [
           {
-            "name": "state",
-            "description": "The state where the land is located."
+            "name": "state_consent",
+            "description": "The consent of the state involved in the land acquisition."
           },
           {
             "name": "land_location",
-            "description": "The specific forest where the land is located."
-          },
-          {
-            "name": "acquisition_authority",
-            "description": "The authority under which the land is acquired."
+            "description": "The location of the land being acquired, either in Chippewa National Forest or Superior National Forest."
           },
           {
             "name": "jurisdiction",
-            "description": "The type of jurisdiction applicable to the land."
+            "description": "The type of jurisdiction applied, either concurrent or exclusive."
           }
         ],
         "consequences": [
-          "Consent is given for the acquisition of the land by the United States."
+          "The United States can acquire the land for forest development or maintenance."
         ]
       }
     ]
@@ -396,7 +404,7 @@
         "rule": {
           "and": [
             {
-              "===": [
+              "==": [
                 {
                   "var": "flower_name"
                 },
@@ -404,7 +412,7 @@
               ]
             },
             {
-              "===": [
+              "==": [
                 {
                   "var": "state"
                 },
@@ -412,9 +420,17 @@
               ]
             },
             {
-              "===": [
+              "==": [
                 {
-                  "var": "commissioner_approval"
+                  "var": "flower_status"
+                },
+                "official"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "photo_approved"
                 },
                 true
               ]
@@ -425,35 +441,42 @@
           {
             "flower_name": "Cypripedium reginae",
             "state": "Minnesota",
-            "commissioner_approval": true
+            "flower_status": "official",
+            "photo_approved": true
           },
           {
             "flower_name": "Cypripedium reginae",
             "state": "Minnesota",
-            "commissioner_approval": false
+            "flower_status": "official",
+            "photo_approved": false
           },
           {
-            "flower_name": "Another Flower",
-            "state": "Minnesota",
-            "commissioner_approval": true
+            "flower_name": "Cypripedium reginae",
+            "state": "Wisconsin",
+            "flower_status": "official",
+            "photo_approved": true
           }
         ],
         "variables": [
           {
             "name": "flower_name",
-            "description": "The name of the flower being considered."
+            "description": "The name of the flower being referenced."
           },
           {
             "name": "state",
-            "description": "The state where the flower is being considered as the official flower."
+            "description": "The state in which the flower is being considered official."
           },
           {
-            "name": "commissioner_approval",
+            "name": "flower_status",
+            "description": "The status of the flower as official or not."
+          },
+          {
+            "name": "photo_approved",
             "description": "Whether the photograph of the flower has been approved by the commissioner of natural resources."
           }
         ],
         "consequences": [
-          "A photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
+          "The photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
         ]
       }
     ]
@@ -511,7 +534,7 @@
           }
         ],
         "consequences": [
-          "The Honeycrisp apple is the official fruit of Minnesota."
+          "The Honeycrisp apple is the official fruit of the state of Minnesota."
         ]
       }
     ]
@@ -666,7 +689,7 @@
                 {
                   "==": [
                     {
-                      "var": "consent_given_by_sections_1.041_to_1.048"
+                      "var": "consent_given_by_sections_1_041_to_1_048"
                     },
                     true
                   ]
@@ -686,7 +709,7 @@
                 {
                   "==": [
                     {
-                      "var": "court"
+                      "var": "court_type"
                     },
                     "state"
                   ]
@@ -694,7 +717,7 @@
                 {
                   "==": [
                     {
-                      "var": "court"
+                      "var": "court_type"
                     },
                     "federal"
                   ]
@@ -708,7 +731,7 @@
                     {
                       "==": [
                         {
-                          "var": "consent_given_by_sections_1.041_to_1.048"
+                          "var": "consent_given_by_sections_1_041_to_1_048"
                         },
                         true
                       ]
@@ -728,51 +751,54 @@
                     {
                       "var": "method_specified_by_commission"
                     },
-                    true
+                    {
+                      "var": "court_type"
+                    }
                   ]
-                }
+                },
+                "Invalid"
               ]
             }
           ]
         },
         "examples": [
           {
-            "consent_given_by_sections_1.041_to_1.048": true,
+            "consent_given_by_sections_1_041_to_1_048": true,
             "consent_required_by_land_exchange_commission": false,
-            "court": "state"
+            "court_type": "state"
           },
           {
-            "consent_given_by_sections_1.041_to_1.048": true,
+            "consent_given_by_sections_1_041_to_1_048": true,
             "consent_required_by_land_exchange_commission": false,
-            "court": "federal"
+            "court_type": "federal"
           },
           {
-            "consent_given_by_sections_1.041_to_1.048": true,
+            "consent_given_by_sections_1_041_to_1_048": true,
             "consent_required_by_land_exchange_commission": true,
-            "method_specified_by_commission": true
+            "method_specified_by_commission": "state",
+            "court_type": "state"
           }
         ],
         "variables": [
           {
-            "name": "consent_given_by_sections_1.041_to_1.048",
-            "description": "Indicates if consent is given by sections 1.041 to 1.048 for land acquisition by the United States."
+            "name": "consent_given_by_sections_1_041_to_1_048",
+            "description": "Indicates if consent is given by sections 1.041 to 1.048."
           },
           {
             "name": "consent_required_by_land_exchange_commission",
             "description": "Indicates if consent by the Land Exchange Commission is required."
           },
           {
-            "name": "court",
-            "description": "The court where the condemnation is to be effected, either 'state' or 'federal'."
+            "name": "court_type",
+            "description": "The type of court where condemnation is effected, either 'state' or 'federal'."
           },
           {
             "name": "method_specified_by_commission",
-            "description": "Indicates if the Land Exchange Commission has specified the method of condemnation."
+            "description": "The method of condemnation specified by the Land Exchange Commission, if applicable."
           }
         ],
         "consequences": [
-          "The United States may effect condemnation in the state or federal courts.",
-          "The Land Exchange Commission specifies the method of condemnation as a condition of its consent."
+          "The United States may effect condemnation in the specified court type."
         ]
       }
     ]
@@ -798,9 +824,9 @@
             {
               "==": [
                 {
-                  "var": "official_sport"
+                  "var": "sport"
                 },
-                "Ice Hockey"
+                "Ice hockey"
               ]
             }
           ]
@@ -808,25 +834,25 @@
         "examples": [
           {
             "state": "Minnesota",
-            "official_sport": "Ice Hockey"
+            "sport": "Ice hockey"
           },
           {
             "state": "Minnesota",
-            "official_sport": "Basketball"
+            "sport": "Basketball"
           },
           {
             "state": "California",
-            "official_sport": "Ice Hockey"
+            "sport": "Ice hockey"
           }
         ],
         "variables": [
           {
             "name": "state",
-            "description": "The name of the state being evaluated."
+            "description": "The name of the state being referenced."
           },
           {
-            "name": "official_sport",
-            "description": "The sport being evaluated as the official sport of the state."
+            "name": "sport",
+            "description": "The sport being referenced."
           }
         ],
         "consequences": [
@@ -891,7 +917,7 @@
         "variables": [
           {
             "name": "state",
-            "description": "The state being referenced."
+            "description": "The state in question."
           },
           {
             "name": "navigable_waters_ownership",
@@ -955,11 +981,11 @@
         "variables": [
           {
             "name": "state",
-            "description": "The state being referenced."
+            "description": "The state in question."
           },
           {
             "name": "land_type",
-            "description": "The type of land being referenced."
+            "description": "The type of land in question."
           },
           {
             "name": "land_disposition",
@@ -984,17 +1010,17 @@
             {
               "===": [
                 {
-                  "var": "land_location"
+                  "var": "official_duty"
                 },
-                "Boundary Waters Canoe Area Wilderness"
+                "assert_ownership"
               ]
             },
             {
               "===": [
                 {
-                  "var": "land_value"
+                  "var": "resource_type"
                 },
-                "high"
+                "navigable_waters"
               ]
             }
           ]
@@ -1002,36 +1028,36 @@
         "examples": [
           {
             "state": "Minnesota",
-            "land_location": "Boundary Waters Canoe Area Wilderness",
-            "land_value": "high"
+            "official_duty": "assert_ownership",
+            "resource_type": "navigable_waters"
           },
           {
             "state": "Minnesota",
-            "land_location": "Boundary Waters Canoe Area Wilderness",
-            "land_value": "low"
+            "official_duty": "assert_ownership",
+            "resource_type": "land"
           },
           {
             "state": "Minnesota",
-            "land_location": "Other",
-            "land_value": "high"
+            "official_duty": "not_assert_ownership",
+            "resource_type": "navigable_waters"
           }
         ],
         "variables": [
           {
             "name": "state",
-            "description": "The state being referenced."
+            "description": "The state in question."
           },
           {
-            "name": "land_location",
-            "description": "The location of the land being referenced."
+            "name": "official_duty",
+            "description": "The duty of the state officials."
           },
           {
-            "name": "land_value",
-            "description": "The value of the land being referenced."
+            "name": "resource_type",
+            "description": "The type of resource in question."
           }
         ],
         "consequences": [
-          "The state should be especially cognizant of the high value of the lakeshore and other state land located within the area."
+          "State officials must assert and defend the state's ownership and jurisdiction over navigable waters."
         ]
       }
     ]
@@ -1105,7 +1131,7 @@
         ],
         "consequences": [
           "Morchella esculenta is the official state mushroom of Minnesota.",
-          "A photograph of the morel is approved and may be displayed in the Office of the Secretary of State."
+          "A photograph of the morel is approved and can be displayed in the Office of the Secretary of State."
         ]
       }
     ]
@@ -1202,12 +1228,12 @@
             "title_vested_in_us": true
           },
           {
-            "application_by_authorized_officer": true,
-            "title_vested_in_us": false
-          },
-          {
             "application_by_authorized_officer": false,
             "title_vested_in_us": true
+          },
+          {
+            "application_by_authorized_officer": true,
+            "title_vested_in_us": false
           }
         ],
         "variables": [
@@ -1238,86 +1264,7 @@
             {
               "==": [
                 {
-                  "var": "certificate_contains_description"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "certificate_contains_authority_purpose_method"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "certificate_contains_conditions"
-                },
-                true
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "certificate_issued": true,
-            "certificate_contains_description": true,
-            "certificate_contains_authority_purpose_method": true,
-            "certificate_contains_conditions": true
-          },
-          {
-            "certificate_issued": true,
-            "certificate_contains_description": false,
-            "certificate_contains_authority_purpose_method": true,
-            "certificate_contains_conditions": true
-          },
-          {
-            "certificate_issued": false,
-            "certificate_contains_description": true,
-            "certificate_contains_authority_purpose_method": true,
-            "certificate_contains_conditions": true
-          }
-        ],
-        "variables": [
-          {
-            "name": "certificate_issued",
-            "description": "Indicates if the certificate has been issued by the governor."
-          },
-          {
-            "name": "certificate_contains_description",
-            "description": "Indicates if the certificate contains a description of the property."
-          },
-          {
-            "name": "certificate_contains_authority_purpose_method",
-            "description": "Indicates if the certificate contains the authority for, purpose of, and method used in acquiring the property."
-          },
-          {
-            "name": "certificate_contains_conditions",
-            "description": "Indicates if the certificate contains the conditions of the jurisdiction of the state and the United States over the property."
-          }
-        ],
-        "consequences": [
-          "The certificate declares the consent of the state under sections 1.041 to 1.048."
-        ]
-      },
-      {
-        "rule": {
-          "and": [
-            {
-              "==": [
-                {
                   "var": "certificate_filed_with_secretary_of_state"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "certificate_delivered_to_applicant"
                 },
                 true
               ]
@@ -1334,37 +1281,37 @@
         },
         "examples": [
           {
+            "certificate_issued": true,
             "certificate_filed_with_secretary_of_state": true,
-            "certificate_delivered_to_applicant": true,
             "certificate_recorded_in_county": true
           },
           {
-            "certificate_filed_with_secretary_of_state": true,
-            "certificate_delivered_to_applicant": false,
-            "certificate_recorded_in_county": true
-          },
-          {
+            "certificate_issued": true,
             "certificate_filed_with_secretary_of_state": false,
-            "certificate_delivered_to_applicant": true,
+            "certificate_recorded_in_county": true
+          },
+          {
+            "certificate_issued": false,
+            "certificate_filed_with_secretary_of_state": true,
             "certificate_recorded_in_county": true
           }
         ],
         "variables": [
           {
+            "name": "certificate_issued",
+            "description": "Indicates if the certificate has been issued by the governor."
+          },
+          {
             "name": "certificate_filed_with_secretary_of_state",
             "description": "Indicates if one duplicate of the certificate is filed with the secretary of state."
           },
           {
-            "name": "certificate_delivered_to_applicant",
-            "description": "Indicates if the other duplicate of the certificate is delivered to the applicant."
-          },
-          {
             "name": "certificate_recorded_in_county",
-            "description": "Indicates if the certificate is recorded in the office of the county recorder of each county in which the land or any part of it is situated."
+            "description": "Indicates if the certificate is recorded in the office of the county recorder of each county where the land is situated."
           }
         ],
         "consequences": [
-          "The certificate process is completed as required by law."
+          "The consent of the state is declared under sections 1.041 to 1.048."
         ]
       }
     ]
@@ -1380,7 +1327,7 @@
         "rule": {
           "and": [
             {
-              "==": [
+              "===": [
                 {
                   "var": "photograph_name"
                 },
@@ -1388,7 +1335,7 @@
               ]
             },
             {
-              "==": [
+              "===": [
                 {
                   "var": "photographer"
                 },
@@ -1396,7 +1343,7 @@
               ]
             },
             {
-              "==": [
+              "===": [
                 {
                   "var": "year_taken"
                 },
@@ -1404,27 +1351,11 @@
               ]
             },
             {
-              "==": [
+              "===": [
                 {
                   "var": "location"
                 },
                 "Bovey, Minnesota"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "state_designation"
-                },
-                "state photograph"
-              ]
-            },
-            {
-              "in": [
-                "Grace",
-                {
-                  "var": "office_display"
-                }
               ]
             }
           ]
@@ -1434,30 +1365,19 @@
             "photograph_name": "Grace",
             "photographer": "Eric Enstrom",
             "year_taken": 1918,
-            "location": "Bovey, Minnesota",
-            "state_designation": "state photograph",
-            "office_display": [
-              "Grace"
-            ]
+            "location": "Bovey, Minnesota"
           },
           {
             "photograph_name": "Grace",
             "photographer": "Eric Enstrom",
             "year_taken": 1918,
-            "location": "Bovey, Minnesota",
-            "state_designation": "state photograph",
-            "office_display": [
-              "Grace",
-              "Other Photo"
-            ]
+            "location": "New York"
           },
           {
-            "photograph_name": "Grace",
+            "photograph_name": "Sunset",
             "photographer": "Eric Enstrom",
             "year_taken": 1918,
-            "location": "Bovey, Minnesota",
-            "state_designation": "state photograph",
-            "office_display": []
+            "location": "Bovey, Minnesota"
           }
         ],
         "variables": [
@@ -1476,19 +1396,59 @@
           {
             "name": "location",
             "description": "The location where the photograph was taken."
-          },
-          {
-            "name": "state_designation",
-            "description": "The designation of the photograph by the state."
-          },
-          {
-            "name": "office_display",
-            "description": "The list of photographs displayed in the Office of the Secretary of State."
           }
         ],
         "consequences": [
-          "The photograph 'Grace' is confirmed as the state photograph.",
-          "A copy of 'Grace' is displayed in the Office of the Secretary of State."
+          "The photograph is designated as the state photograph."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "photograph_name"
+                },
+                "Grace"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "display_location"
+                },
+                "Office of the Secretary of State"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "photograph_name": "Grace",
+            "display_location": "Office of the Secretary of State"
+          },
+          {
+            "photograph_name": "Grace",
+            "display_location": "Governor's Office"
+          },
+          {
+            "photograph_name": "Sunset",
+            "display_location": "Office of the Secretary of State"
+          }
+        ],
+        "variables": [
+          {
+            "name": "photograph_name",
+            "description": "The name of the photograph."
+          },
+          {
+            "name": "display_location",
+            "description": "The location where the photograph is displayed."
+          }
+        ],
+        "consequences": [
+          "A copy of the photograph must be displayed in the Office of the Secretary of State."
         ]
       }
     ]
@@ -1540,7 +1500,7 @@
                 {
                   "var": "purpose"
                 },
-                "development or maintenance"
+                "development or maintenance of the refuge"
               ]
             }
           ]
@@ -1551,21 +1511,21 @@
             "land_location": "Tamarac National Wildlife Refuge",
             "executive_order": "7902",
             "date_of_order": "1938-05-31",
-            "purpose": "development or maintenance"
+            "purpose": "development or maintenance of the refuge"
           },
           {
             "state": "Minnesota",
             "land_location": "Tamarac National Wildlife Refuge",
             "executive_order": "7902",
             "date_of_order": "1938-05-31",
-            "purpose": "research"
+            "purpose": "development of the refuge"
           },
           {
             "state": "Minnesota",
-            "land_location": "Another Refuge",
+            "land_location": "Tamarac National Wildlife Refuge",
             "executive_order": "7902",
             "date_of_order": "1938-05-31",
-            "purpose": "development or maintenance"
+            "purpose": "maintenance of the refuge"
           }
         ],
         "variables": [
@@ -1579,11 +1539,11 @@
           },
           {
             "name": "executive_order",
-            "description": "The executive order number related to the land acquisition."
+            "description": "The executive order number that established the boundaries."
           },
           {
             "name": "date_of_order",
-            "description": "The date of the executive order."
+            "description": "The date when the executive order was issued."
           },
           {
             "name": "purpose",
@@ -1591,7 +1551,7 @@
           }
         ],
         "consequences": [
-          "Consent is given for land acquisition by the United States."
+          "Consent is given for the acquisition of the land by the United States."
         ]
       }
     ]
@@ -1609,7 +1569,59 @@
             {
               "==": [
                 {
-                  "var": "states_ratifed"
+                  "var": "state_legislatures_enacted"
+                },
+                4
+              ]
+            },
+            {
+              "in": [
+                {
+                  "var": "province"
+                },
+                [
+                  "Ontario",
+                  "Quebec"
+                ]
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "state_legislatures_enacted": 4,
+            "province": "Ontario"
+          },
+          {
+            "state_legislatures_enacted": 5,
+            "province": "Quebec"
+          },
+          {
+            "state_legislatures_enacted": 4,
+            "province": "Quebec"
+          }
+        ],
+        "variables": [
+          {
+            "name": "state_legislatures_enacted",
+            "description": "The number of state legislatures that have enacted the compact."
+          },
+          {
+            "name": "province",
+            "description": "The province considering joining the compact."
+          }
+        ],
+        "consequences": [
+          "The compact becomes effective and binding for the province."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "state_legislatures_enacted"
                 },
                 4
               ]
@@ -1635,26 +1647,26 @@
         },
         "examples": [
           {
-            "states_ratifed": 4,
+            "state_legislatures_enacted": 4,
             "state": "Illinois"
           },
           {
-            "states_ratifed": 5,
+            "state_legislatures_enacted": 5,
             "state": "Ohio"
           },
           {
-            "states_ratifed": 3,
-            "state": "New York"
+            "state_legislatures_enacted": 3,
+            "state": "Wisconsin"
           }
         ],
         "variables": [
           {
-            "name": "states_ratifed",
-            "description": "The number of states that have ratified the compact."
+            "name": "state_legislatures_enacted",
+            "description": "The number of state legislatures that have enacted the compact."
           },
           {
             "name": "state",
-            "description": "The state in question for joining the compact."
+            "description": "The state considering joining the compact."
           }
         ],
         "consequences": [
@@ -1665,158 +1677,147 @@
         "rule": {
           "and": [
             {
-              "in": [
-                {
-                  "var": "province"
-                },
-                [
-                  "Ontario",
-                  "Quebec"
-                ]
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "canada_law_adherence"
-                },
-                true
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "province": "Ontario",
-            "canada_law_adherence": true
-          },
-          {
-            "province": "Quebec",
-            "canada_law_adherence": false
-          },
-          {
-            "province": "Ontario",
-            "canada_law_adherence": false
-          }
-        ],
-        "variables": [
-          {
-            "name": "province",
-            "description": "The province in question for joining the compact."
-          },
-          {
-            "name": "canada_law_adherence",
-            "description": "Whether the province adheres to Canadian laws for joining the compact."
-          }
-        ],
-        "consequences": [
-          "The province becomes a party to the compact."
-        ]
-      },
-      {
-        "rule": {
-          "and": [
-            {
-              "in": [
-                {
-                  "var": "water_body"
-                },
-                [
-                  "Erie",
-                  "Huron",
-                  "Michigan",
-                  "Ontario",
-                  "St. Clair",
-                  "Superior",
-                  "St. Lawrence River"
-                ]
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "within_party_states"
-                },
-                true
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "water_body": "Erie",
-            "within_party_states": true
-          },
-          {
-            "water_body": "Mississippi",
-            "within_party_states": false
-          },
-          {
-            "water_body": "Ontario",
-            "within_party_states": true
-          }
-        ],
-        "variables": [
-          {
-            "name": "water_body",
-            "description": "The water body in question."
-          },
-          {
-            "name": "within_party_states",
-            "description": "Whether the water body is within the party states."
-          }
-        ],
-        "consequences": [
-          "The water body is under the jurisdiction of the Great Lakes Commission."
-        ]
-      },
-      {
-        "rule": {
-          "and": [
-            {
               "==": [
                 {
                   "var": "commissioners_present"
                 },
-                true
+                3
               ]
             },
             {
               "==": [
                 {
-                  "var": "majority_votes"
+                  "var": "states_present"
                 },
-                true
+                4
               ]
             }
           ]
         },
         "examples": [
           {
-            "commissioners_present": true,
-            "majority_votes": true
+            "commissioners_present": 3,
+            "states_present": 4
           },
           {
-            "commissioners_present": false,
-            "majority_votes": true
+            "commissioners_present": 3,
+            "states_present": 5
           },
           {
-            "commissioners_present": true,
-            "majority_votes": false
+            "commissioners_present": 2,
+            "states_present": 4
           }
         ],
         "variables": [
           {
             "name": "commissioners_present",
-            "description": "Whether commissioners from a majority of the party states are present."
+            "description": "The number of commissioners present at the meeting."
           },
           {
-            "name": "majority_votes",
-            "description": "Whether a majority of the votes cast are affirmative."
+            "name": "states_present",
+            "description": "The number of states present at the meeting."
           }
         ],
         "consequences": [
-          "The commission's action is approved."
+          "A quorum is established for the transaction of business."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "votes_cast"
+                },
+                3
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "states_voting"
+                },
+                4
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "votes_cast": 3,
+            "states_voting": 4
+          },
+          {
+            "votes_cast": 3,
+            "states_voting": 5
+          },
+          {
+            "votes_cast": 2,
+            "states_voting": 4
+          }
+        ],
+        "variables": [
+          {
+            "name": "votes_cast",
+            "description": "The number of votes cast at the meeting."
+          },
+          {
+            "name": "states_voting",
+            "description": "The number of states voting at the meeting."
+          }
+        ],
+        "consequences": [
+          "Actions of the commission are valid."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "renunciation_notice_period"
+                },
+                6
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "renunciation_notice_given"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "renunciation_notice_period": 6,
+            "renunciation_notice_given": true
+          },
+          {
+            "renunciation_notice_period": 5,
+            "renunciation_notice_given": true
+          },
+          {
+            "renunciation_notice_period": 6,
+            "renunciation_notice_given": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "renunciation_notice_period",
+            "description": "The notice period for renunciation in months."
+          },
+          {
+            "name": "renunciation_notice_given",
+            "description": "Whether the renunciation notice has been given."
+          }
+        ],
+        "consequences": [
+          "The compact is renounced by the state."
         ]
       }
     ]
@@ -1836,19 +1837,12 @@
                 {
                   "var": "county"
                 },
-                {
-                  "var": "bordering_counties"
-                }
-              ]
-            },
-            {
-              "in": [
-                {
-                  "var": "water_body"
-                },
-                {
-                  "var": "bordering_waters"
-                }
+                [
+                  "Big Stone Lake",
+                  "Lake Traverse",
+                  "Bois de Sioux River",
+                  "Red River of the North"
+                ]
               ]
             },
             {
@@ -1863,67 +1857,30 @@
         },
         "examples": [
           {
-            "county": "Traverse County",
-            "water_body": "Big Stone Lake",
-            "forms_common_boundary": true,
-            "bordering_counties": [
-              "Traverse County",
-              "Wilkin County"
-            ],
-            "bordering_waters": [
-              "Big Stone Lake",
-              "Lake Traverse"
-            ]
+            "county": "Big Stone Lake",
+            "forms_common_boundary": true
           },
           {
-            "county": "Wilkin County",
-            "water_body": "Red River of the North",
-            "forms_common_boundary": true,
-            "bordering_counties": [
-              "Traverse County",
-              "Wilkin County"
-            ],
-            "bordering_waters": [
-              "Red River of the North"
-            ]
+            "county": "Lake Traverse",
+            "forms_common_boundary": true
           },
           {
-            "county": "Otter Tail County",
-            "water_body": "Bois de Sioux River",
-            "forms_common_boundary": false,
-            "bordering_counties": [
-              "Traverse County",
-              "Wilkin County"
-            ],
-            "bordering_waters": [
-              "Bois de Sioux River"
-            ]
+            "county": "Some Other Lake",
+            "forms_common_boundary": false
           }
         ],
         "variables": [
           {
             "name": "county",
-            "description": "The county where the court or officer has jurisdiction."
-          },
-          {
-            "name": "water_body",
-            "description": "The body of water in question."
+            "description": "The name of the county in question."
           },
           {
             "name": "forms_common_boundary",
-            "description": "Indicates if the water body forms a common boundary with another state."
-          },
-          {
-            "name": "bordering_counties",
-            "description": "List of counties bordering the specified water bodies."
-          },
-          {
-            "name": "bordering_waters",
-            "description": "List of water bodies that form a common boundary with another state."
+            "description": "Indicates if the water body forms a common boundary between this state and any other state."
           }
         ],
         "consequences": [
-          "The court or officer has jurisdiction in civil and criminal cases on the specified waters."
+          "Courts and officers have jurisdiction in civil and criminal cases upon these waters."
         ]
       }
     ]
@@ -2011,36 +1968,65 @@
                 },
                 "Minnesota"
               ]
+            },
+            {
+              "==": [
+                {
+                  "var": "official_status"
+                },
+                "official bee"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "photo_location"
+                },
+                "Office of the Secretary of State"
+              ]
             }
           ]
         },
         "examples": [
           {
             "bee_name": "Bombus affinis",
-            "state": "Minnesota"
+            "state": "Minnesota",
+            "official_status": "official bee",
+            "photo_location": "Office of the Secretary of State"
           },
           {
             "bee_name": "Bombus affinis",
-            "state": "Wisconsin"
+            "state": "Minnesota",
+            "official_status": "official bee",
+            "photo_location": "State Library"
           },
           {
-            "bee_name": "Apis mellifera",
-            "state": "Minnesota"
+            "bee_name": "Bombus affinis",
+            "state": "Wisconsin",
+            "official_status": "official bee",
+            "photo_location": "Office of the Secretary of State"
           }
         ],
         "variables": [
           {
             "name": "bee_name",
-            "description": "The scientific name of the bee being referenced."
+            "description": "The name of the bee species."
           },
           {
             "name": "state",
-            "description": "The state in which the bee is being referenced."
+            "description": "The state in which the bee is recognized."
+          },
+          {
+            "name": "official_status",
+            "description": "The official status of the bee in the state."
+          },
+          {
+            "name": "photo_location",
+            "description": "The location where the photograph of the bee is preserved."
           }
         ],
         "consequences": [
-          "The rusty patched bumble bee is the official bee of Minnesota.",
-          "A photograph of the rusty patched bumble bee must be preserved in the Office of the Secretary of State."
+          "The rusty patched bumble bee is recognized as the official bee of Minnesota and its photograph is preserved in the Office of the Secretary of State."
         ]
       }
     ]
@@ -2058,7 +2044,7 @@
             {
               "==": [
                 {
-                  "var": "state"
+                  "var": "official_fish.state"
                 },
                 "Minnesota"
               ]
@@ -2066,39 +2052,84 @@
             {
               "==": [
                 {
-                  "var": "official_fish"
+                  "var": "official_fish.name"
                 },
                 "walleye"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "official_fish.scientific_name"
+                },
+                "Stizostedion v. vitreum"
+              ]
+            },
+            {
+              "in": [
+                "walleye",
+                {
+                  "var": "photographs"
+                }
               ]
             }
           ]
         },
         "examples": [
           {
-            "state": "Minnesota",
-            "official_fish": "walleye"
+            "official_fish": {
+              "state": "Minnesota",
+              "name": "walleye",
+              "scientific_name": "Stizostedion v. vitreum"
+            },
+            "photographs": [
+              "walleye",
+              "bass"
+            ]
           },
           {
-            "state": "Minnesota",
-            "official_fish": "bass"
+            "official_fish": {
+              "state": "Minnesota",
+              "name": "walleye",
+              "scientific_name": "Stizostedion v. vitreum"
+            },
+            "photographs": [
+              "trout",
+              "walleye"
+            ]
           },
           {
-            "state": "Wisconsin",
-            "official_fish": "walleye"
+            "official_fish": {
+              "state": "Minnesota",
+              "name": "walleye",
+              "scientific_name": "Stizostedion v. vitreum"
+            },
+            "photographs": [
+              "walleye"
+            ]
           }
         ],
         "variables": [
           {
-            "name": "state",
-            "description": "The state being referenced."
+            "name": "official_fish.state",
+            "description": "The state for which the fish is the official fish."
           },
           {
-            "name": "official_fish",
-            "description": "The official fish of the state."
+            "name": "official_fish.name",
+            "description": "The common name of the official fish."
+          },
+          {
+            "name": "official_fish.scientific_name",
+            "description": "The scientific name of the official fish."
+          },
+          {
+            "name": "photographs",
+            "description": "A list of photographs preserved in the Office of the Secretary of State."
           }
         ],
         "consequences": [
-          "A photograph of the walleye shall be preserved in the Office of the Secretary of State."
+          "The walleye is confirmed as the official fish of Minnesota.",
+          "A photograph of the walleye is preserved in the Office of the Secretary of State."
         ]
       }
     ]
@@ -2142,7 +2173,7 @@
           },
           {
             "officer_jurisdiction": "state",
-            "action": "other"
+            "action": "necessary_for_compact"
           }
         ],
         "variables": [
@@ -2167,60 +2198,60 @@
                 {
                   "var": "entity_type"
                 },
-                "state"
+                "state_government"
               ]
             },
             {
               "==": [
                 {
-                  "var": "request"
+                  "var": "request_made"
                 },
-                "commission"
+                "true"
               ]
             },
             {
               "==": [
                 {
-                  "var": "action"
+                  "var": "information_furnished"
                 },
-                "furnish_information"
+                "true"
               ]
             }
           ]
         },
         "examples": [
           {
-            "entity_type": "state",
-            "request": "commission",
-            "action": "furnish_information"
+            "entity_type": "state_government",
+            "request_made": true,
+            "information_furnished": true
           },
           {
-            "entity_type": "state",
-            "request": "commission",
-            "action": "loan_personnel"
+            "entity_type": "state_government",
+            "request_made": true,
+            "information_furnished": false
           },
           {
-            "entity_type": "state",
-            "request": "other",
-            "action": "furnish_information"
+            "entity_type": "state_government",
+            "request_made": false,
+            "information_furnished": false
           }
         ],
         "variables": [
           {
             "name": "entity_type",
-            "description": "The type of entity (e.g., state, federal)."
+            "description": "The type of entity within the state."
           },
           {
-            "name": "request",
-            "description": "The entity making the request."
+            "name": "request_made",
+            "description": "Whether a request has been made by the commission."
           },
           {
-            "name": "action",
-            "description": "The action being performed by the entity."
+            "name": "information_furnished",
+            "description": "Whether the information has been furnished to the commission."
           }
         ],
         "consequences": [
-          "State entities are complying with the commission's request for information."
+          "State entities are complying with requests for information."
         ]
       }
     ]
@@ -2235,6 +2266,14 @@
       {
         "rule": {
           "and": [
+            {
+              "==": [
+                {
+                  "var": "law_repealed"
+                },
+                "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1"
+              ]
+            },
             {
               "or": [
                 {
@@ -2278,50 +2317,42 @@
                   ]
                 }
               ]
-            },
-            {
-              "==": [
-                {
-                  "var": "acquisition_completed"
-                },
-                true
-              ]
             }
           ]
         },
         "examples": [
           {
+            "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
             "consent_given_by": "Mason's Minnesota Statutes of 1927",
-            "acquisition_date": "1942-12-31",
-            "acquisition_completed": true
+            "acquisition_date": "1942-12-31"
           },
           {
+            "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
             "consent_given_by": "Laws 1941, chapter 66",
-            "acquisition_date": "1942-12-31",
-            "acquisition_completed": true
+            "acquisition_date": "1942-12-31"
           },
           {
-            "consent_given_by": "Mason's Minnesota Statutes of 1927",
-            "acquisition_date": "1943-01-02",
-            "acquisition_completed": false
+            "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
+            "consent_given_by": "Laws 1941, chapter 66",
+            "acquisition_date": "1943-01-02"
           }
         ],
         "variables": [
           {
+            "name": "law_repealed",
+            "description": "The specific law or statute that has been repealed."
+          },
+          {
             "name": "consent_given_by",
-            "description": "The law by which the state's consent was given for property acquisition or jurisdiction."
+            "description": "The law or statute under which the state's consent was given for property acquisition or jurisdiction."
           },
           {
             "name": "acquisition_date",
-            "description": "The date on which the property acquisition was completed."
-          },
-          {
-            "name": "acquisition_completed",
-            "description": "A boolean indicating whether the property acquisition was completed."
+            "description": "The date on which the acquisition of property was completed."
           }
         ],
         "consequences": [
-          "The repeal does not affect this case."
+          "The repeal does not affect the case."
         ]
       }
     ]
@@ -2481,7 +2512,7 @@
             {
               "in": [
                 {
-                  "var": "jurisdiction"
+                  "var": "jurisdiction_type"
                 },
                 [
                   "exclusive",
@@ -2490,25 +2521,25 @@
               ]
             },
             {
-              "var": "acceptedByUS"
+              "var": "accepted_by_us"
             }
           ]
         },
         "examples": [
           {
             "state": "Minnesota",
-            "jurisdiction": "exclusive",
-            "acceptedByUS": true
+            "jurisdiction_type": "exclusive",
+            "accepted_by_us": true
           },
           {
             "state": "Minnesota",
-            "jurisdiction": "partial",
-            "acceptedByUS": true
+            "jurisdiction_type": "partial",
+            "accepted_by_us": true
           },
           {
             "state": "Minnesota",
-            "jurisdiction": "exclusive",
-            "acceptedByUS": false
+            "jurisdiction_type": "exclusive",
+            "accepted_by_us": false
           }
         ],
         "variables": [
@@ -2517,11 +2548,11 @@
             "description": "The state where the land is located."
           },
           {
-            "name": "jurisdiction",
-            "description": "The type of jurisdiction over the land."
+            "name": "jurisdiction_type",
+            "description": "The type of jurisdiction accepted by the United States."
           },
           {
-            "name": "acceptedByUS",
+            "name": "accepted_by_us",
             "description": "Whether the jurisdiction is accepted by the United States."
           }
         ],
@@ -2541,22 +2572,22 @@
               ]
             },
             {
-              "var": "abutsNavigableWaters"
+              "var": "abuts_navigable_waters"
             }
           ]
         },
         "examples": [
           {
             "state": "Minnesota",
-            "abutsNavigableWaters": true
+            "abuts_navigable_waters": true
           },
           {
             "state": "Minnesota",
-            "abutsNavigableWaters": false
+            "abuts_navigable_waters": false
           },
           {
             "state": "Minnesota",
-            "abutsNavigableWaters": true
+            "abuts_navigable_waters": true
           }
         ],
         "variables": [
@@ -2565,7 +2596,7 @@
             "description": "The state where the land is located."
           },
           {
-            "name": "abutsNavigableWaters",
+            "name": "abuts_navigable_waters",
             "description": "Whether the land abuts navigable waters."
           }
         ],
@@ -2585,22 +2616,22 @@
               ]
             },
             {
-              "var": "cededLand"
+              "var": "ceded_land"
             }
           ]
         },
         "examples": [
           {
             "state": "Minnesota",
-            "cededLand": true
+            "ceded_land": true
           },
           {
             "state": "Minnesota",
-            "cededLand": false
+            "ceded_land": false
           },
           {
             "state": "Minnesota",
-            "cededLand": true
+            "ceded_land": true
           }
         ],
         "variables": [
@@ -2609,7 +2640,7 @@
             "description": "The state where the land is located."
           },
           {
-            "name": "cededLand",
+            "name": "ceded_land",
             "description": "Whether the land is ceded to the United States."
           }
         ],
@@ -2629,22 +2660,20 @@
               ]
             },
             {
-              "var": "cededLand"
+              "var": "ceded_land"
             },
             {
-              "or": [
+              "in": [
                 {
-                  "var": "incomeTax"
+                  "var": "tax_type"
                 },
-                {
-                  "var": "salesTax"
-                },
-                {
-                  "var": "propertyTax"
-                },
-                {
-                  "var": "realPropertyTax"
-                }
+                [
+                  "income",
+                  "sales",
+                  "use",
+                  "personal property",
+                  "real property"
+                ]
               ]
             }
           ]
@@ -2652,27 +2681,18 @@
         "examples": [
           {
             "state": "Minnesota",
-            "cededLand": true,
-            "incomeTax": true,
-            "salesTax": false,
-            "propertyTax": false,
-            "realPropertyTax": false
+            "ceded_land": true,
+            "tax_type": "income"
           },
           {
             "state": "Minnesota",
-            "cededLand": true,
-            "incomeTax": false,
-            "salesTax": true,
-            "propertyTax": false,
-            "realPropertyTax": false
+            "ceded_land": true,
+            "tax_type": "sales"
           },
           {
             "state": "Minnesota",
-            "cededLand": true,
-            "incomeTax": false,
-            "salesTax": false,
-            "propertyTax": true,
-            "realPropertyTax": false
+            "ceded_land": true,
+            "tax_type": "real property"
           }
         ],
         "variables": [
@@ -2681,28 +2701,16 @@
             "description": "The state where the land is located."
           },
           {
-            "name": "cededLand",
+            "name": "ceded_land",
             "description": "Whether the land is ceded to the United States."
           },
           {
-            "name": "incomeTax",
-            "description": "Whether an income tax is imposed."
-          },
-          {
-            "name": "salesTax",
-            "description": "Whether a sales or use tax is imposed."
-          },
-          {
-            "name": "propertyTax",
-            "description": "Whether a tax on personal property is imposed."
-          },
-          {
-            "name": "realPropertyTax",
-            "description": "Whether a tax on the use of real property is imposed."
+            "name": "tax_type",
+            "description": "The type of tax imposed by the state."
           }
         ],
         "consequences": [
-          "The state reserves the right to impose taxes."
+          "The state reserves the right to impose taxes on the specified type."
         ]
       }
     ]
@@ -2713,46 +2721,58 @@
     "title": "1.26 ENEMY ATTACK, TEMPORARY RELOCATION OF SEATS OF GOVERNMENT.",
     "text": "As used in this section, \"political subdivision\" includes counties, home rule charter and statutory cities, towns, townships, school districts, authorities, and other public corporations and entities whether organized and existing under charter or general law.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of state government in the city of St. Paul, Ramsey County, Minnesota, the governor shall, as often as the exigencies of the situation require, by proclamation, declare an emergency temporary location, or locations, for the seat of government at a place, or places, in or out of the state as the governor deems advisable under the circumstances, and shall take action and issue orders as necessary for an orderly transition of the affairs of state government to the emergency temporary location, or locations. The emergency temporary location, or locations, shall remain the seat of government until the legislature by law establishes a new location, or locations, or until the emergency is declared to be ended by the governor and the seat of government is returned to its normal location.\nWhile the seat of government remains at an emergency temporary location, or locations, all official acts required by law to be performed at the seat of government by any officer, agency, department or authority of this state, including the convening and meeting of the legislature in regular, extraordinary, or emergency session, shall be as valid and binding when performed at the emergency temporary location, or locations, as if performed at the normal location of the seat of government.\nWhen, due to an emergency resulting from the effects of enemy attack, or the anticipated effects of a threatened enemy attack, it becomes imprudent, inexpedient or impossible to conduct the affairs of local government at their regular or usual place or places, the governing body of each political subdivision of this state may meet at any place in or out of the territorial limits of the political subdivision on the call of the presiding officer or any two members of the governing body, and shall designate by ordinance, resolution or other manner, alternate or substitute places as the emergency temporary location, or locations, of government where all, or any part, of the public business may be conducted during the emergency situation. The places may be in or out of the territorial limits of the political subdivision and the state.\nWhile the public business is being conducted at the emergency temporary location, or locations, the governing body and other officers of a political subdivision shall exercise, at the location, or locations, all of the executive, legislative, and judicial powers and functions conferred upon it and its officers by its charter and the laws and constitution of this state. Acts of the governing body and officers shall be as valid and binding as if performed within the territorial limits of their political subdivision.\nThis section shall be supreme if it is employed notwithstanding any other statute, charter or ordinance.",
     "repealed": false,
-    "rule": {
-      "if": [
-        {
-          "or": [
-            {
-              "==": [
-                {
-                  "var": "emergency_type"
-                },
-                "enemy_attack"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "emergency_type"
-                },
-                "threatened_enemy_attack"
-              ]
-            }
-          ]
-        },
-        {
-          "and": [
+    "rules": [
+      {
+        "rule": {
+          "if": [
             {
               "or": [
                 {
                   "==": [
                     {
-                      "var": "location"
+                      "var": "emergency_type"
                     },
-                    "St. Paul"
+                    "enemy_attack"
                   ]
                 },
                 {
                   "==": [
                     {
-                      "var": "location_type"
+                      "var": "emergency_type"
                     },
-                    "political_subdivision"
+                    "threatened_enemy_attack"
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "or": [
+                    {
+                      "==": [
+                        {
+                          "var": "location"
+                        },
+                        "St. Paul"
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "location"
+                        },
+                        "Ramsey County"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "state"
+                    },
+                    "Minnesota"
                   ]
                 }
               ]
@@ -2760,57 +2780,66 @@
             {
               "==": [
                 {
-                  "var": "action"
+                  "var": "government_level"
                 },
-                "relocate_government"
+                "state"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "government_level"
+                },
+                "local"
               ]
             }
           ]
-        }
-      ]
-    },
-    "examples": [
-      {
-        "emergency_type": "enemy_attack",
-        "location": "St. Paul",
-        "location_type": "state",
-        "action": "relocate_government"
-      },
-      {
-        "emergency_type": "threatened_enemy_attack",
-        "location": "Ramsey County",
-        "location_type": "political_subdivision",
-        "action": "relocate_government"
-      },
-      {
-        "emergency_type": "natural_disaster",
-        "location": "St. Paul",
-        "location_type": "state",
-        "action": "relocate_government"
+        },
+        "examples": [
+          {
+            "emergency_type": "enemy_attack",
+            "location": "St. Paul",
+            "state": "Minnesota",
+            "government_level": "state"
+          },
+          {
+            "emergency_type": "threatened_enemy_attack",
+            "location": "Ramsey County",
+            "state": "Minnesota",
+            "government_level": "state"
+          },
+          {
+            "emergency_type": "enemy_attack",
+            "location": "Hennepin County",
+            "state": "Minnesota",
+            "government_level": "local"
+          }
+        ],
+        "variables": [
+          {
+            "name": "emergency_type",
+            "description": "The type of emergency occurring, such as enemy attack or threatened enemy attack."
+          },
+          {
+            "name": "location",
+            "description": "The current location of the government seat or political subdivision."
+          },
+          {
+            "name": "state",
+            "description": "The state in which the government seat or political subdivision is located."
+          },
+          {
+            "name": "government_level",
+            "description": "The level of government, either state or local."
+          }
+        ],
+        "consequences": [
+          "Declare an emergency temporary location for the state government.",
+          "Conduct state government affairs at the emergency location.",
+          "Local government may meet at alternate locations.",
+          "Acts performed at emergency locations are valid."
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "emergency_type",
-        "description": "The type of emergency occurring, such as enemy attack or threatened enemy attack."
-      },
-      {
-        "name": "location",
-        "description": "The current location of the government seat, such as St. Paul or a political subdivision."
-      },
-      {
-        "name": "location_type",
-        "description": "The type of location, either state or political subdivision."
-      },
-      {
-        "name": "action",
-        "description": "The action to be taken, such as relocating the government."
-      }
-    ],
-    "consequences": [
-      "The government seat is temporarily relocated to an emergency location.",
-      "All official acts performed at the emergency location are valid.",
-      "Local governments can meet outside their usual locations."
     ]
   },
   {
@@ -2911,7 +2940,7 @@
               "location": "Minnesota Secretary of State"
             },
             "duplicateExhibitC": {
-              "location": "Iowa Secretary of State"
+              "location": "Minnesota Secretary of State"
             }
           },
           {
@@ -2998,11 +3027,31 @@
               ]
             },
             {
-              "===": [
+              "and": [
                 {
-                  "var": "us_acquisition"
+                  "===": [
+                    {
+                      "var": "land_acquisition"
+                    },
+                    true
+                  ]
                 },
-                true
+                {
+                  "===": [
+                    {
+                      "var": "best_interests"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "application_made"
+                    },
+                    true
+                  ]
+                }
               ]
             }
           ]
@@ -3011,17 +3060,23 @@
           {
             "jurisdiction": true,
             "state_consent": true,
-            "us_acquisition": true
+            "land_acquisition": true,
+            "best_interests": true,
+            "application_made": true
           },
           {
             "jurisdiction": true,
             "state_consent": false,
-            "us_acquisition": false
+            "land_acquisition": true,
+            "best_interests": true,
+            "application_made": true
           },
           {
             "jurisdiction": false,
             "state_consent": true,
-            "us_acquisition": false
+            "land_acquisition": true,
+            "best_interests": true,
+            "application_made": true
           }
         ],
         "variables": [
@@ -3031,15 +3086,23 @@
           },
           {
             "name": "state_consent",
-            "description": "Whether the state has given consent for the acquisition."
+            "description": "Whether the state has given consent for land acquisition."
           },
           {
-            "name": "us_acquisition",
-            "description": "Whether the United States is acquiring land or property."
+            "name": "land_acquisition",
+            "description": "Whether the land is being acquired for national purposes."
+          },
+          {
+            "name": "best_interests",
+            "description": "Whether the acquisition is consistent with the best interests of the state."
+          },
+          {
+            "name": "application_made",
+            "description": "Whether an application for the state's consent has been made by an authorized officer of the United States."
           }
         ],
         "consequences": [
-          "The United States can acquire land or property with concurrent jurisdiction."
+          "The United States can acquire land with concurrent jurisdiction."
         ]
       },
       {
@@ -3050,7 +3113,7 @@
                 {
                   "===": [
                     {
-                      "var": "acquisition_method"
+                      "var": "method_of_acquisition"
                     },
                     "purchase"
                   ]
@@ -3068,7 +3131,7 @@
             {
               "===": [
                 {
-                  "var": "transaction_allowed"
+                  "var": "execution"
                 },
                 false
               ]
@@ -3077,37 +3140,37 @@
         },
         "examples": [
           {
-            "acquisition_method": "purchase",
+            "method_of_acquisition": "purchase",
             "state_consent": false,
-            "transaction_allowed": false
+            "execution": false
           },
           {
-            "acquisition_method": "purchase",
+            "method_of_acquisition": "purchase",
             "state_consent": true,
-            "transaction_allowed": true
+            "execution": true
           },
           {
-            "acquisition_method": "condemnation",
+            "method_of_acquisition": "condemnation",
             "state_consent": false,
-            "transaction_allowed": true
+            "execution": true
           }
         ],
         "variables": [
           {
-            "name": "acquisition_method",
-            "description": "The method used for acquiring land or property."
+            "name": "method_of_acquisition",
+            "description": "The method used for acquiring the land."
           },
           {
             "name": "state_consent",
-            "description": "Whether the state has given consent for the acquisition."
+            "description": "Whether the state has given consent for land acquisition."
           },
           {
-            "name": "transaction_allowed",
-            "description": "Whether the transaction is allowed to proceed."
+            "name": "execution",
+            "description": "Whether the execution of the land conveyance has occurred."
           }
         ],
         "consequences": [
-          "The transaction cannot proceed without state consent if the acquisition method is purchase."
+          "Execution of land conveyance cannot occur without state consent."
         ]
       },
       {
@@ -3118,7 +3181,7 @@
                 {
                   "===": [
                     {
-                      "var": "acquisition_method"
+                      "var": "method_of_acquisition"
                     },
                     "condemnation"
                   ]
@@ -3136,7 +3199,7 @@
             {
               "===": [
                 {
-                  "var": "proceeding_allowed"
+                  "var": "condemnation_proceeding"
                 },
                 false
               ]
@@ -3145,37 +3208,37 @@
         },
         "examples": [
           {
-            "acquisition_method": "condemnation",
+            "method_of_acquisition": "condemnation",
             "state_consent": false,
-            "proceeding_allowed": false
+            "condemnation_proceeding": false
           },
           {
-            "acquisition_method": "condemnation",
+            "method_of_acquisition": "condemnation",
             "state_consent": true,
-            "proceeding_allowed": true
+            "condemnation_proceeding": true
           },
           {
-            "acquisition_method": "purchase",
+            "method_of_acquisition": "purchase",
             "state_consent": false,
-            "proceeding_allowed": true
+            "condemnation_proceeding": true
           }
         ],
         "variables": [
           {
-            "name": "acquisition_method",
-            "description": "The method used for acquiring land or property."
+            "name": "method_of_acquisition",
+            "description": "The method used for acquiring the land."
           },
           {
             "name": "state_consent",
-            "description": "Whether the state has given consent for the acquisition."
+            "description": "Whether the state has given consent for land acquisition."
           },
           {
-            "name": "proceeding_allowed",
-            "description": "Whether the condemnation proceeding is allowed to commence."
+            "name": "condemnation_proceeding",
+            "description": "Whether the condemnation proceeding has commenced."
           }
         ],
         "consequences": [
-          "The condemnation proceeding cannot commence without state consent."
+          "Condemnation proceedings cannot commence without state consent."
         ]
       }
     ]
@@ -3221,6 +3284,14 @@
                   "var": "preserved_items"
                 }
               ]
+            },
+            {
+              "==": [
+                {
+                  "var": "office"
+                },
+                "Office of the Secretary of State"
+              ]
             }
           ]
         },
@@ -3231,22 +3302,27 @@
             "preserved_items": [
               "photograph",
               "typical specimen"
-            ]
+            ],
+            "office": "Office of the Secretary of State"
           },
           {
             "official_gemstone": "Lake Superior agate",
             "state": "Minnesota",
             "preserved_items": [
-              "typical specimen"
-            ]
+              "typical specimen",
+              "photograph"
+            ],
+            "office": "Office of the Secretary of State"
           },
           {
-            "official_gemstone": "Amethyst",
+            "official_gemstone": "Lake Superior agate",
             "state": "Minnesota",
             "preserved_items": [
               "photograph",
-              "typical specimen"
-            ]
+              "typical specimen",
+              "other item"
+            ],
+            "office": "Office of the Secretary of State"
           }
         ],
         "variables": [
@@ -3256,11 +3332,15 @@
           },
           {
             "name": "state",
-            "description": "The name of the state."
+            "description": "The state in question."
           },
           {
             "name": "preserved_items",
-            "description": "Items preserved in the Office of the Secretary of State."
+            "description": "Items preserved in the office."
+          },
+          {
+            "name": "office",
+            "description": "The office where items are preserved."
           }
         ],
         "consequences": [
@@ -3313,7 +3393,7 @@
                 {
                   "var": "act_of_congress"
                 },
-                "June 7, 1924"
+                "Act of Congress approved June 7, 1924"
               ]
             }
           ]
@@ -3323,19 +3403,19 @@
             "state": "Minnesota",
             "acquisition_method": "purchase",
             "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-            "act_of_congress": "June 7, 1924"
+            "act_of_congress": "Act of Congress approved June 7, 1924"
           },
           {
             "state": "Minnesota",
             "acquisition_method": "gift",
             "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-            "act_of_congress": "June 7, 1924"
+            "act_of_congress": "Act of Congress approved June 7, 1924"
           },
           {
             "state": "Minnesota",
             "acquisition_method": "lease",
             "purpose": "Upper Mississippi River Wild Life and Fish Refuge",
-            "act_of_congress": "June 7, 1924"
+            "act_of_congress": "Act of Congress approved June 7, 1924"
           }
         ],
         "variables": [
@@ -3368,38 +3448,38 @@
     "title": "1.27 LOCAL INTERIM EMERGENCY SUCCESSION ACT.",
     "text": "This section is the \"Local Interim Emergency Succession Act.\"\nBecause of the existing possibility of a nuclear attack or a natural disaster requiring the declaration of a state of emergency, it is found urgent and necessary to insure the continuity of duly elected and lawful leadership of the political subdivisions of the state.\nThe governing body of any county or municipality may enact ordinances or resolutions as necessary to provide for the continuity of its government and the emergency interim succession of its key government officials. The ordinances and resolutions shall provide a method for temporary emergency appointments to local public offices.\nAn \"interim emergency successor,\" when designated by the governing body of a political subdivision under subdivision 3 shall exercise that office until the duly elected or appointed officer resumes the office or a successor is designated as required by law.",
     "repealed": false,
-    "rule": {
-      "if": [
-        {
-          "or": [
-            {
-              "==": [
-                {
-                  "var": "emergency_declared"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "nuclear_attack"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "natural_disaster"
-                },
-                true
-              ]
-            }
-          ]
-        },
-        {
+    "rules": [
+      {
+        "rule": {
           "and": [
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "emergency_type"
+                    },
+                    "nuclear_attack"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "emergency_type"
+                    },
+                    "natural_disaster"
+                  ]
+                }
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "state_of_emergency_declared"
+                },
+                true
+              ]
+            },
             {
               "==": [
                 {
@@ -3407,66 +3487,112 @@
                 },
                 true
               ]
-            },
+            }
+          ]
+        },
+        "examples": [
+          {
+            "emergency_type": "nuclear_attack",
+            "state_of_emergency_declared": true,
+            "governing_body_action": true
+          },
+          {
+            "emergency_type": "natural_disaster",
+            "state_of_emergency_declared": true,
+            "governing_body_action": true
+          },
+          {
+            "emergency_type": "flood",
+            "state_of_emergency_declared": false,
+            "governing_body_action": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "emergency_type",
+            "description": "The type of emergency occurring, e.g., nuclear attack or natural disaster."
+          },
+          {
+            "name": "state_of_emergency_declared",
+            "description": "A boolean indicating if a state of emergency has been declared."
+          },
+          {
+            "name": "governing_body_action",
+            "description": "A boolean indicating if the governing body has enacted necessary ordinances or resolutions."
+          }
+        ],
+        "consequences": [
+          "Continuity of government is ensured through emergency interim succession."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
             {
               "==": [
                 {
-                  "var": "interim_successor_designated"
+                  "var": "interim_emergency_successor_designated"
                 },
                 true
               ]
+            },
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "officer_status"
+                    },
+                    "resumed"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "successor_designated"
+                    },
+                    true
+                  ]
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    "examples": [
-      {
-        "emergency_declared": true,
-        "nuclear_attack": false,
-        "natural_disaster": false,
-        "governing_body_action": true,
-        "interim_successor_designated": true
-      },
-      {
-        "emergency_declared": false,
-        "nuclear_attack": true,
-        "natural_disaster": false,
-        "governing_body_action": true,
-        "interim_successor_designated": true
-      },
-      {
-        "emergency_declared": false,
-        "nuclear_attack": false,
-        "natural_disaster": true,
-        "governing_body_action": false,
-        "interim_successor_designated": false
+        },
+        "examples": [
+          {
+            "interim_emergency_successor_designated": true,
+            "officer_status": "resumed",
+            "successor_designated": false
+          },
+          {
+            "interim_emergency_successor_designated": true,
+            "officer_status": "vacant",
+            "successor_designated": true
+          },
+          {
+            "interim_emergency_successor_designated": false,
+            "officer_status": "vacant",
+            "successor_designated": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "interim_emergency_successor_designated",
+            "description": "A boolean indicating if an interim emergency successor has been designated."
+          },
+          {
+            "name": "officer_status",
+            "description": "The status of the original officer, e.g., resumed or vacant."
+          },
+          {
+            "name": "successor_designated",
+            "description": "A boolean indicating if a new successor has been designated as required by law."
+          }
+        ],
+        "consequences": [
+          "Interim emergency successor exercises office until the original officer resumes or a new successor is designated."
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "emergency_declared",
-        "description": "Indicates if a state of emergency has been declared."
-      },
-      {
-        "name": "nuclear_attack",
-        "description": "Indicates if a nuclear attack has occurred."
-      },
-      {
-        "name": "natural_disaster",
-        "description": "Indicates if a natural disaster has occurred."
-      },
-      {
-        "name": "governing_body_action",
-        "description": "Indicates if the governing body has enacted necessary ordinances or resolutions."
-      },
-      {
-        "name": "interim_successor_designated",
-        "description": "Indicates if an interim emergency successor has been designated."
-      }
-    ],
-    "consequences": [
-      "Continuity of government is ensured through emergency interim succession."
     ]
   },
   {
@@ -3522,33 +3648,21 @@
                   ]
                 },
                 {
-                  "and": [
-                    {
-                      "==": [
-                        {
-                          "var": "us_occupies"
-                        },
-                        true
-                      ]
-                    },
-                    {
-                      "==": [
-                        {
-                          "var": "purpose_matches"
-                        },
-                        true
-                      ]
-                    }
-                  ]
-                },
-                {
                   "==": [
                     {
-                      "var": "us_relinquishes_jurisdiction"
+                      "var": "us_occupies"
                     },
-                    false
+                    true
                   ]
                 }
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "us_relinquishes"
+                },
+                false
               ]
             }
           ]
@@ -3559,21 +3673,24 @@
             "us_right_of_possession": false,
             "us_owns": true,
             "purpose_matches": true,
-            "us_relinquishes_jurisdiction": false
+            "us_occupies": false,
+            "us_relinquishes": false
           },
           {
             "us_title_acquired": false,
             "us_right_of_possession": true,
+            "us_owns": false,
+            "purpose_matches": false,
             "us_occupies": true,
-            "purpose_matches": true,
-            "us_relinquishes_jurisdiction": false
+            "us_relinquishes": false
           },
           {
             "us_title_acquired": true,
             "us_right_of_possession": false,
             "us_owns": false,
             "purpose_matches": false,
-            "us_relinquishes_jurisdiction": true
+            "us_occupies": false,
+            "us_relinquishes": true
           }
         ],
         "variables": [
@@ -3583,23 +3700,23 @@
           },
           {
             "name": "us_right_of_possession",
-            "description": "Indicates if the United States has the right of possession of the premises."
+            "description": "Indicates if the United States has acquired the right of possession of the premises."
           },
           {
             "name": "us_owns",
             "description": "Indicates if the United States owns the premises."
           },
           {
+            "name": "purpose_matches",
+            "description": "Indicates if the premises are used for the purposes to which the jurisdiction appertains."
+          },
+          {
             "name": "us_occupies",
             "description": "Indicates if the United States occupies the premises."
           },
           {
-            "name": "purpose_matches",
-            "description": "Indicates if the premises are used for the purposes to which the jurisdiction appertains as specified in sections 1.041 or 1.042."
-          },
-          {
-            "name": "us_relinquishes_jurisdiction",
-            "description": "Indicates if the United States has relinquished full or partial jurisdiction to the state under section 1.0431."
+            "name": "us_relinquishes",
+            "description": "Indicates if the United States has relinquished jurisdiction to the state."
           }
         ],
         "consequences": [
@@ -3714,19 +3831,23 @@
               ]
             },
             {
-              "in": [
+              "or": [
                 {
-                  "var": "county"
-                },
-                [
-                  "Clearwater",
-                  "Koochiching",
-                  "Lake of the Woods",
-                  "Mahnomen",
-                  "Pennington",
-                  "Red Lake",
-                  "Roseau"
-                ]
+                  "in": [
+                    {
+                      "var": "county"
+                    },
+                    [
+                      "Clearwater",
+                      "Koochiching",
+                      "Lake of the Woods",
+                      "Mahnomen",
+                      "Pennington",
+                      "Red Lake",
+                      "Roseau"
+                    ]
+                  ]
+                }
               ]
             }
           ]
@@ -3752,11 +3873,11 @@
           },
           {
             "name": "year",
-            "description": "The year in which the county's boundary is being checked."
+            "description": "The year in which the county's boundaries are being checked."
           }
         ],
         "consequences": [
-          "The county boundaries are as fixed by the laws referred to in the schedule.",
+          "The county's boundaries are fixed by laws passed before 1892.",
           "The county was formed by popular vote after 1892."
         ]
       }
@@ -3773,7 +3894,7 @@
         "rule": {
           "and": [
             {
-              "===": [
+              "==": [
                 {
                   "var": "butterfly_name"
                 },
@@ -3781,7 +3902,7 @@
               ]
             },
             {
-              "===": [
+              "==": [
                 {
                   "var": "state"
                 },
@@ -3839,37 +3960,32 @@
               ]
             },
             {
-              "var": "deposit_to_trunk_highway_fund"
-            },
-            false
+              "log": "Deposit in trunk highway fund"
+            }
           ]
         },
         "examples": [
           {
             "payment_type": "easement",
-            "deposit_to_trunk_highway_fund": true
+            "amount": 1000
           },
           {
             "payment_type": "lease",
-            "deposit_to_trunk_highway_fund": false
+            "amount": 500
           },
           {
             "payment_type": "easement",
-            "deposit_to_trunk_highway_fund": true
+            "amount": 2000
           }
         ],
         "variables": [
           {
             "name": "payment_type",
             "description": "The type of payment received, e.g., easement, lease, etc."
-          },
-          {
-            "name": "deposit_to_trunk_highway_fund",
-            "description": "Boolean indicating if the payment is deposited in the trunk highway fund"
           }
         ],
         "consequences": [
-          "Deposit the payment in the trunk highway fund"
+          "Deposit in trunk highway fund"
         ]
       }
     ]
@@ -3889,7 +4005,7 @@
                 {
                   "==": [
                     {
-                      "var": "employee_status"
+                      "var": "role"
                     },
                     "employee"
                   ]
@@ -3897,7 +4013,7 @@
                 {
                   "==": [
                     {
-                      "var": "employee_status"
+                      "var": "role"
                     },
                     "former_employee"
                   ]
@@ -3905,7 +4021,7 @@
                 {
                   "==": [
                     {
-                      "var": "employee_status"
+                      "var": "role"
                     },
                     "prospective_employee"
                   ]
@@ -3917,7 +4033,7 @@
                 {
                   "==": [
                     {
-                      "var": "law_violated"
+                      "var": "law"
                     },
                     "Age Discrimination in Employment Act"
                   ]
@@ -3925,7 +4041,15 @@
                 {
                   "==": [
                     {
-                      "var": "law_violated"
+                      "var": "law"
+                    },
+                    "Fair Labor Standards Act"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "law"
                     },
                     "Family and Medical Leave Act"
                   ]
@@ -3933,7 +4057,7 @@
                 {
                   "==": [
                     {
-                      "var": "law_violated"
+                      "var": "law"
                     },
                     "Americans with Disabilities Act"
                   ]
@@ -3941,7 +4065,7 @@
                 {
                   "==": [
                     {
-                      "var": "law_violated"
+                      "var": "law"
                     },
                     "Uniformed Services Employment and Reemployment Rights Act"
                   ]
@@ -3960,101 +4084,37 @@
         },
         "examples": [
           {
-            "employee_status": "employee",
-            "law_violated": "Age Discrimination in Employment Act",
+            "role": "employee",
+            "law": "Age Discrimination in Employment Act",
             "aggrieved": "true"
           },
           {
-            "employee_status": "former_employee",
-            "law_violated": "Family and Medical Leave Act",
+            "role": "former_employee",
+            "law": "Family and Medical Leave Act",
             "aggrieved": "true"
           },
           {
-            "employee_status": "prospective_employee",
-            "law_violated": "Americans with Disabilities Act",
-            "aggrieved": "true"
+            "role": "prospective_employee",
+            "law": "Americans with Disabilities Act",
+            "aggrieved": "false"
           }
         ],
         "variables": [
           {
-            "name": "employee_status",
-            "description": "The status of the person as an employee, former employee, or prospective employee of the state."
+            "name": "role",
+            "description": "The role of the person (employee, former employee, or prospective employee)"
           },
           {
-            "name": "law_violated",
-            "description": "The specific law that was violated by the state."
-          },
-          {
-            "name": "aggrieved",
-            "description": "Indicates whether the person is aggrieved by the state's violation of the law."
-          }
-        ],
-        "consequences": [
-          "The individual may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
-        ]
-      },
-      {
-        "rule": {
-          "and": [
-            {
-              "==": [
-                {
-                  "var": "employee_status"
-                },
-                "employee"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "law_violated"
-                },
-                "Fair Labor Standards Act"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "aggrieved"
-                },
-                "true"
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "employee_status": "employee",
-            "law_violated": "Fair Labor Standards Act",
-            "aggrieved": "true"
-          },
-          {
-            "employee_status": "employee",
-            "law_violated": "Fair Labor Standards Act",
-            "aggrieved": "true"
-          },
-          {
-            "employee_status": "employee",
-            "law_violated": "Fair Labor Standards Act",
-            "aggrieved": "true"
-          }
-        ],
-        "variables": [
-          {
-            "name": "employee_status",
-            "description": "The status of the person as an employee of the state."
-          },
-          {
-            "name": "law_violated",
-            "description": "The specific law that was violated by the state."
+            "name": "law",
+            "description": "The specific law that is alleged to have been violated"
           },
           {
             "name": "aggrieved",
-            "description": "Indicates whether the person is aggrieved by the state's violation of the law."
+            "description": "Whether the person is aggrieved by the state's violation"
           }
         ],
         "consequences": [
-          "The employee may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
+          "The person may bring a civil action against the state in federal court or in any other court of competent jurisdiction for legal or equitable relief."
         ]
       }
     ]
@@ -4065,52 +4125,16 @@
     "title": "1.51 FLAGS FLOWN AT HALF-STAFF FOLLOWING PUBLIC SAFETY OFFICER DEATH.",
     "text": "Each American flag and Minnesota flag flown on the grounds of the Capitol Area, as described in section 15B.02, must be flown at half-staff following the death of a public safety officer, as defined in section 299A.41, subdivision 4, killed in the line of duty in Minnesota, or the death of Minnesota military personnel killed in the line of duty. The flags must be flown at half-staff for a period of time determined by the governor.",
     "repealed": false,
-    "rule": {
-      "and": [
-        {
-          "or": [
+    "rules": [
+      {
+        "rule": {
+          "and": [
             {
-              "==": [
-                {
-                  "var": "flagType"
-                },
-                "American"
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "flagType"
-                },
-                "Minnesota"
-              ]
-            }
-          ]
-        },
-        {
-          "==": [
-            {
-              "var": "location"
-            },
-            "Capitol Area"
-          ]
-        },
-        {
-          "or": [
-            {
-              "and": [
+              "or": [
                 {
                   "==": [
                     {
-                      "var": "event"
-                    },
-                    "death"
-                  ]
-                },
-                {
-                  "==": [
-                    {
-                      "var": "personType"
+                      "var": "deceased_role"
                     },
                     "public safety officer"
                   ]
@@ -4118,115 +4142,66 @@
                 {
                   "==": [
                     {
-                      "var": "state"
+                      "var": "deceased_role"
                     },
-                    "Minnesota"
-                  ]
-                },
-                {
-                  "==": [
-                    {
-                      "var": "dutyStatus"
-                    },
-                    "killed in the line of duty"
+                    "military personnel"
                   ]
                 }
               ]
             },
             {
-              "and": [
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "event"
-                    },
-                    "death"
-                  ]
+                  "var": "deceased_location"
                 },
+                "Minnesota"
+              ]
+            },
+            {
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "personType"
-                    },
-                    "military personnel"
-                  ]
+                  "var": "flag_location"
                 },
-                {
-                  "==": [
-                    {
-                      "var": "state"
-                    },
-                    "Minnesota"
-                  ]
-                },
-                {
-                  "==": [
-                    {
-                      "var": "dutyStatus"
-                    },
-                    "killed in the line of duty"
-                  ]
-                }
+                "Capitol Area"
               ]
             }
           ]
-        }
-      ]
-    },
-    "examples": [
-      {
-        "flagType": "American",
-        "location": "Capitol Area",
-        "event": "death",
-        "personType": "public safety officer",
-        "state": "Minnesota",
-        "dutyStatus": "killed in the line of duty"
-      },
-      {
-        "flagType": "Minnesota",
-        "location": "Capitol Area",
-        "event": "death",
-        "personType": "military personnel",
-        "state": "Minnesota",
-        "dutyStatus": "killed in the line of duty"
-      },
-      {
-        "flagType": "American",
-        "location": "Capitol Area",
-        "event": "death",
-        "personType": "public safety officer",
-        "state": "Minnesota",
-        "dutyStatus": "not in the line of duty"
+        },
+        "examples": [
+          {
+            "deceased_role": "public safety officer",
+            "deceased_location": "Minnesota",
+            "flag_location": "Capitol Area"
+          },
+          {
+            "deceased_role": "military personnel",
+            "deceased_location": "Minnesota",
+            "flag_location": "Capitol Area"
+          },
+          {
+            "deceased_role": "public safety officer",
+            "deceased_location": "Minnesota",
+            "flag_location": "Other Area"
+          }
+        ],
+        "variables": [
+          {
+            "name": "deceased_role",
+            "description": "The role of the deceased individual, either 'public safety officer' or 'military personnel'."
+          },
+          {
+            "name": "deceased_location",
+            "description": "The location where the individual was killed in the line of duty."
+          },
+          {
+            "name": "flag_location",
+            "description": "The location where the flag is flown, specifically the 'Capitol Area'."
+          }
+        ],
+        "consequences": [
+          "Flags must be flown at half-staff for a period determined by the governor."
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "flagType",
-        "description": "The type of flag being flown, either American or Minnesota."
-      },
-      {
-        "name": "location",
-        "description": "The location where the flag is being flown, specifically the Capitol Area."
-      },
-      {
-        "name": "event",
-        "description": "The event triggering the action, specifically a death."
-      },
-      {
-        "name": "personType",
-        "description": "The type of person whose death triggers the action, either a public safety officer or military personnel."
-      },
-      {
-        "name": "state",
-        "description": "The state where the event occurred, specifically Minnesota."
-      },
-      {
-        "name": "dutyStatus",
-        "description": "The duty status of the person at the time of death, specifically if they were killed in the line of duty."
-      }
-    ],
-    "consequences": [
-      "Flags must be flown at half-staff for a period determined by the governor."
     ]
   },
   {
@@ -4323,73 +4298,84 @@
     "title": "2.155 FIFTEENTH DISTRICT.",
     "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 15 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 15A consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\n(b) House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A, as described in paragraph (a).",
     "repealed": false,
-    "rule": {
-      "if": [
-        {
-          "===": [
+    "rules": [
+      {
+        "rule": {
+          "if": [
             {
-              "var": "district"
+              "===": [
+                {
+                  "var": "district"
+                },
+                15
+              ]
             },
-            15
+            {
+              "merge": [
+                {
+                  "var": "L15A-1"
+                },
+                {
+                  "var": "L15B"
+                }
+              ]
+            },
+            "District not applicable"
           ]
         },
-        {
-          "and": [
-            {
-              "===": [
-                {
-                  "var": "order"
-                },
-                true
-              ]
-            },
-            {
-              "===": [
-                {
-                  "var": "modification"
-                },
-                true
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "examples": [
-      {
-        "district": 15,
-        "order": true,
-        "modification": true
-      },
-      {
-        "district": 15,
-        "order": false,
-        "modification": true
-      },
-      {
-        "district": 14,
-        "order": true,
-        "modification": true
+        "examples": [
+          {
+            "district": 15,
+            "L15A-1": [
+              "Area1",
+              "Area2"
+            ],
+            "L15B": [
+              "Area3",
+              "Area4"
+            ]
+          },
+          {
+            "district": 15,
+            "L15A-1": [
+              "Area1"
+            ],
+            "L15B": [
+              "Area2",
+              "Area3",
+              "Area4"
+            ]
+          },
+          {
+            "district": 14,
+            "L15A-1": [
+              "Area1",
+              "Area2"
+            ],
+            "L15B": [
+              "Area3",
+              "Area4"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "L15A-1",
+            "description": "The modification file for House of Representatives District 15A."
+          },
+          {
+            "name": "L15B",
+            "description": "The remaining areas of Senate District 15 not included in 15A."
+          }
+        ],
+        "consequences": [
+          "Senate District 15 is divided into House Districts 15A and 15B as per the modifications."
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "district",
-        "description": "The Senate District number being evaluated."
-      },
-      {
-        "name": "order",
-        "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
-      },
-      {
-        "name": "modification",
-        "description": "Whether the modification contained in file L15A-1 is applied."
-      }
-    ],
-    "consequences": [
-      "Senate District 15 consists of the district as described in the order with the modification.",
-      "House of Representatives District 15A consists of the district as described in the order with the modification.",
-      "House of Representatives District 15B consists of all territory of Senate District 15 not included in House of Representatives District 15A."
     ]
   },
   {
@@ -4403,7 +4389,7 @@
         "rule": {
           "and": [
             {
-              "==": [
+              "===": [
                 {
                   "var": "state"
                 },
@@ -4415,7 +4401,7 @@
               ]
             },
             {
-              "==": [
+              "===": [
                 {
                   "var": "ratified"
                 },
@@ -4456,7 +4442,103 @@
         "rule": {
           "and": [
             {
-              "==": [
+              "===": [
+                {
+                  "var": "state"
+                },
+                [
+                  "Michigan",
+                  "Wisconsin"
+                ]
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "boundary"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "state": "Michigan",
+            "boundary": true
+          },
+          {
+            "state": "Wisconsin",
+            "boundary": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "state",
+            "description": "The state involved in the boundary agreement."
+          },
+          {
+            "name": "boundary",
+            "description": "Indicates whether the boundary is established."
+          }
+        ],
+        "consequences": [
+          "The boundary in Lake Michigan is fixed and established."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "===": [
+                {
+                  "var": "state"
+                },
+                [
+                  "Minnesota",
+                  "Wisconsin"
+                ]
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "boundary"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "state": "Minnesota",
+            "boundary": true
+          },
+          {
+            "state": "Wisconsin",
+            "boundary": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "state",
+            "description": "The state involved in the boundary agreement."
+          },
+          {
+            "name": "boundary",
+            "description": "Indicates whether the boundary is established."
+          }
+        ],
+        "consequences": [
+          "The boundary in Lake Superior is fixed and established."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "===": [
                 {
                   "var": "state"
                 },
@@ -4468,9 +4550,9 @@
               ]
             },
             {
-              "==": [
+              "===": [
                 {
-                  "var": "ratified_by_all"
+                  "var": "joint_survey_commission"
                 },
                 true
               ]
@@ -4480,15 +4562,15 @@
         "examples": [
           {
             "state": "Michigan",
-            "ratified_by_all": true
+            "joint_survey_commission": true
           },
           {
             "state": "Minnesota",
-            "ratified_by_all": true
+            "joint_survey_commission": true
           },
           {
             "state": "Wisconsin",
-            "ratified_by_all": true
+            "joint_survey_commission": true
           }
         ],
         "variables": [
@@ -4497,61 +4579,12 @@
             "description": "The state that is part of the compact."
           },
           {
-            "name": "ratified_by_all",
-            "description": "Indicates whether all states have ratified the compact."
+            "name": "joint_survey_commission",
+            "description": "Indicates whether the state has appointed members to the Joint Survey Commission."
           }
         ],
         "consequences": [
-          "Each state appoints two members to a Joint Survey Commission."
-        ]
-      },
-      {
-        "rule": {
-          "and": [
-            {
-              "==": [
-                {
-                  "var": "boundary"
-                },
-                true
-              ]
-            },
-            {
-              "==": [
-                {
-                  "var": "expense_sharing"
-                },
-                true
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "boundary": true,
-            "expense_sharing": true
-          },
-          {
-            "boundary": true,
-            "expense_sharing": true
-          },
-          {
-            "boundary": true,
-            "expense_sharing": true
-          }
-        ],
-        "variables": [
-          {
-            "name": "boundary",
-            "description": "Indicates whether the boundary is being marked."
-          },
-          {
-            "name": "expense_sharing",
-            "description": "Indicates whether the expense sharing agreement is in place."
-          }
-        ],
-        "consequences": [
-          "Expenses for marking boundaries are shared as per the agreement."
+          "The Joint Survey Commission is established to survey and mark the boundaries."
         ]
       }
     ]
@@ -4627,11 +4660,11 @@
           },
           {
             "name": "state",
-            "description": "The state owning the easement or fee."
+            "description": "The state where the easement is located."
           },
           {
             "name": "required_by",
-            "description": "The entity requiring the easement for public improvement."
+            "description": "The entity requiring the easement."
           },
           {
             "name": "purpose",
@@ -4727,18 +4760,18 @@
             "seal_design": "certified_design",
             "seal_position": "12 o'clock",
             "use_date": "2024-12-31",
-            "material_type": "expendable"
-          },
-          {
-            "seal_design": "certified_design",
-            "seal_position": "enlarged",
-            "use_date": "2025-01-02",
             "material_type": "permanent"
           },
           {
             "seal_design": "certified_design",
-            "seal_position": "embossed",
+            "seal_position": "enlarged",
             "use_date": "2023-06-15",
+            "material_type": "expendable"
+          },
+          {
+            "seal_design": "certified_design",
+            "seal_position": "embossed",
+            "use_date": "2025-01-01",
             "material_type": "expendable"
           }
         ],
@@ -4749,7 +4782,7 @@
           },
           {
             "name": "certified_design",
-            "description": "The official certified design of the Great Seal as per the State Emblems Redesign Commission."
+            "description": "The official certified design of the Great Seal of the State of Minnesota."
           },
           {
             "name": "seal_position",
@@ -4765,7 +4798,7 @@
           }
         ],
         "consequences": [
-          "The seal is official and conforms to the legal requirements."
+          "The seal is considered official and compliant with the law."
         ]
       }
     ]
@@ -4776,35 +4809,38 @@
     "title": "1.50 FREEDOM FROM VIOLENCE.",
     "text": "The state of Minnesota hereby adopts a policy of zero tolerance of violence. It is state policy that every person in the state has a right to live free from violence.",
     "repealed": false,
-    "rule": {
-      "==": [
-        {
-          "var": "violence_occurred"
+    "rules": [
+      {
+        "rule": {
+          "==": [
+            {
+              "var": "violence_occurred"
+            },
+            false
+          ]
         },
-        false
-      ]
-    },
-    "examples": [
-      {
-        "violence_occurred": false
-      },
-      {
-        "violence_occurred": true
-      },
-      {
-        "violence_occurred": false
+        "examples": [
+          {
+            "violence_occurred": false
+          },
+          {
+            "violence_occurred": false
+          },
+          {
+            "violence_occurred": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "violence_occurred",
+            "description": "Indicates whether an act of violence has occurred"
+          }
+        ],
+        "consequences": [
+          "Every person in the state lives free from violence",
+          "Zero tolerance policy is upheld"
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "violence_occurred",
-        "description": "Indicates whether an act of violence has occurred"
-      }
-    ],
-    "consequences": [
-      "Ensure the right to live free from violence is upheld",
-      "Take action to prevent violence",
-      "Promote a safe and peaceful environment"
     ]
   },
   {
@@ -4869,7 +4905,7 @@
             {
               "===": [
                 {
-                  "var": "photograph_subject"
+                  "var": "photo_subject"
                 },
                 "Zizania aquatica"
               ]
@@ -4886,21 +4922,21 @@
         },
         "examples": [
           {
-            "photograph_subject": "Zizania aquatica",
+            "photo_subject": "Zizania aquatica",
             "location": "Office of the Secretary of State"
           },
           {
-            "photograph_subject": "Oryza sativa",
+            "photo_subject": "Oryza sativa",
             "location": "Office of the Secretary of State"
           },
           {
-            "photograph_subject": "Zizania aquatica",
+            "photo_subject": "Zizania aquatica",
             "location": "Governor's Office"
           }
         ],
         "variables": [
           {
-            "name": "photograph_subject",
+            "name": "photo_subject",
             "description": "The subject of the photograph."
           },
           {
@@ -4923,53 +4959,21 @@
     "rules": [
       {
         "rule": {
-          "if": [
+          "and": [
             {
-              "and": [
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "flag_design_certified"
-                    },
-                    true
-                  ]
+                  "var": "flag_design_certified"
                 },
-                {
-                  "==": [
-                    {
-                      "var": "secretary_of_state_filed_photo"
-                    },
-                    true
-                  ]
-                },
-                {
-                  "==": [
-                    {
-                      "var": "secretary_of_state_custodial_control"
-                    },
-                    true
-                  ]
-                }
+                true
               ]
             },
             {
-              "and": [
+              "==": [
                 {
-                  "==": [
-                    {
-                      "var": "flag_flown_sunrise_to_sunset"
-                    },
-                    true
-                  ]
+                  "var": "flag_adopted"
                 },
-                {
-                  "==": [
-                    {
-                      "var": "flag_folded_properly"
-                    },
-                    true
-                  ]
-                }
+                true
               ]
             }
           ]
@@ -4977,50 +4981,157 @@
         "examples": [
           {
             "flag_design_certified": true,
-            "secretary_of_state_filed_photo": true,
-            "secretary_of_state_custodial_control": true,
-            "flag_flown_sunrise_to_sunset": true,
-            "flag_folded_properly": true
+            "flag_adopted": true
+          },
+          {
+            "flag_design_certified": false,
+            "flag_adopted": true
           },
           {
             "flag_design_certified": true,
-            "secretary_of_state_filed_photo": false,
-            "secretary_of_state_custodial_control": true,
-            "flag_flown_sunrise_to_sunset": true,
-            "flag_folded_properly": true
-          },
-          {
-            "flag_design_certified": true,
-            "secretary_of_state_filed_photo": true,
-            "secretary_of_state_custodial_control": true,
-            "flag_flown_sunrise_to_sunset": false,
-            "flag_folded_properly": false
+            "flag_adopted": false
           }
         ],
         "variables": [
           {
             "name": "flag_design_certified",
-            "description": "Indicates if the state flag design is certified by the commission."
+            "description": "Indicates if the flag design is certified by the State Emblems Redesign Commission."
           },
           {
-            "name": "secretary_of_state_filed_photo",
+            "name": "flag_adopted",
+            "description": "Indicates if the certified flag design is adopted as the official state flag."
+          }
+        ],
+        "consequences": [
+          "The design is adopted as the official state flag."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "secretary_of_state_photograph_filed"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "secretary_of_state_custodial_control"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "secretary_of_state_photograph_filed": true,
+            "secretary_of_state_custodial_control": true
+          },
+          {
+            "secretary_of_state_photograph_filed": false,
+            "secretary_of_state_custodial_control": true
+          },
+          {
+            "secretary_of_state_photograph_filed": true,
+            "secretary_of_state_custodial_control": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "secretary_of_state_photograph_filed",
             "description": "Indicates if the secretary of state has filed a photograph of the state flag."
           },
           {
             "name": "secretary_of_state_custodial_control",
             "description": "Indicates if the secretary of state retains custodial control over the sample design flag."
-          },
-          {
-            "name": "flag_flown_sunrise_to_sunset",
-            "description": "Indicates if the official state flag is flown on the State Capitol grounds between sunrise and sunset."
-          },
-          {
-            "name": "flag_folded_properly",
-            "description": "Indicates if the Minnesota State Flag is folded and stored properly."
           }
         ],
         "consequences": [
-          "The state flag is officially adopted and managed according to the law."
+          "The secretary of state manages the official state flag records and samples."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "flag_flown_at_capitol"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "time_of_day"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "flag_flown_at_capitol": true,
+            "time_of_day": true
+          },
+          {
+            "flag_flown_at_capitol": false,
+            "time_of_day": true
+          },
+          {
+            "flag_flown_at_capitol": true,
+            "time_of_day": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "flag_flown_at_capitol",
+            "description": "Indicates if the official state flag is flown on the State Capitol grounds."
+          },
+          {
+            "name": "time_of_day",
+            "description": "Indicates if the time is between sunrise and sunset."
+          }
+        ],
+        "consequences": [
+          "The official state flag is flown on the State Capitol grounds during the specified times."
+        ]
+      },
+      {
+        "rule": {
+          "==": [
+            {
+              "var": "flag_folding_procedure"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "flag_folding_procedure": true
+          },
+          {
+            "flag_folding_procedure": false
+          },
+          {
+            "flag_folding_procedure": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "flag_folding_procedure",
+            "description": "Indicates if the Minnesota State Flag is folded and stored in the same manner as the national colors."
+          }
+        ],
+        "consequences": [
+          "The Minnesota State Flag is folded and stored properly."
         ]
       }
     ]
@@ -5034,73 +5145,15 @@
     "rules": [
       {
         "rule": {
-          "==": [
-            {
-              "var": "state"
-            },
-            "Minnesota"
-          ]
-        },
-        "examples": [
-          {
-            "state": "Minnesota",
-            "muffin": "blueberry"
-          },
-          {
-            "state": "California",
-            "muffin": "banana"
-          },
-          {
-            "state": "Minnesota",
-            "muffin": "chocolate"
-          }
-        ],
-        "variables": [
-          {
-            "name": "state",
-            "description": "The state for which the muffin is being checked."
-          }
-        ],
-        "consequences": [
-          "The blueberry muffin is the official muffin."
-        ]
-      },
-      {
-        "rule": {
-          "==": [
-            {
-              "var": "muffin"
-            },
-            "blueberry"
-          ]
-        },
-        "examples": [
-          {
-            "state": "Minnesota",
-            "muffin": "blueberry"
-          },
-          {
-            "state": "California",
-            "muffin": "banana"
-          },
-          {
-            "state": "Minnesota",
-            "muffin": "chocolate"
-          }
-        ],
-        "variables": [
-          {
-            "name": "muffin",
-            "description": "The type of muffin being checked."
-          }
-        ],
-        "consequences": [
-          "The muffin is blueberry."
-        ]
-      },
-      {
-        "rule": {
           "and": [
+            {
+              "==": [
+                {
+                  "var": "item"
+                },
+                "blueberry muffin"
+              ]
+            },
             {
               "==": [
                 {
@@ -5108,39 +5161,31 @@
                 },
                 "Minnesota"
               ]
-            },
-            {
-              "==": [
-                {
-                  "var": "muffin"
-                },
-                "blueberry"
-              ]
             }
           ]
         },
         "examples": [
           {
-            "state": "Minnesota",
-            "muffin": "blueberry"
+            "item": "blueberry muffin",
+            "state": "Minnesota"
           },
           {
-            "state": "California",
-            "muffin": "banana"
+            "item": "chocolate muffin",
+            "state": "Minnesota"
           },
           {
-            "state": "Minnesota",
-            "muffin": "chocolate"
+            "item": "blueberry muffin",
+            "state": "California"
           }
         ],
         "variables": [
           {
-            "name": "state",
-            "description": "The state for which the muffin is being checked."
+            "name": "item",
+            "description": "The type of muffin being considered."
           },
           {
-            "name": "muffin",
-            "description": "The type of muffin being checked."
+            "name": "state",
+            "description": "The state for which the official muffin is being determined."
           }
         ],
         "consequences": [
@@ -5190,6 +5235,22 @@
                 },
                 1
               ]
+            },
+            {
+              "==": [
+                {
+                  "var": "house_appointed_by"
+                },
+                "speaker_of_the_house"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "senate_appointed_by"
+                },
+                "committee_on_committees"
+              ]
             }
           ]
         },
@@ -5198,19 +5259,25 @@
             "total_commissioners": 5,
             "house_representatives": 2,
             "state_senate": 2,
-            "governor_appointed": 1
+            "governor_appointed": 1,
+            "house_appointed_by": "speaker_of_the_house",
+            "senate_appointed_by": "committee_on_committees"
           },
           {
             "total_commissioners": 5,
-            "house_representatives": 1,
+            "house_representatives": 2,
             "state_senate": 2,
-            "governor_appointed": 2
+            "governor_appointed": 1,
+            "house_appointed_by": "speaker_of_the_house",
+            "senate_appointed_by": "wrong_committee"
           },
           {
             "total_commissioners": 4,
             "house_representatives": 2,
             "state_senate": 2,
-            "governor_appointed": 1
+            "governor_appointed": 1,
+            "house_appointed_by": "speaker_of_the_house",
+            "senate_appointed_by": "committee_on_committees"
           }
         ],
         "variables": [
@@ -5229,10 +5296,260 @@
           {
             "name": "governor_appointed",
             "description": "The number of commissioners appointed by the governor."
+          },
+          {
+            "name": "house_appointed_by",
+            "description": "The authority who appoints the house of representatives members."
+          },
+          {
+            "name": "senate_appointed_by",
+            "description": "The authority who appoints the state senate members."
           }
         ],
         "consequences": [
-          "The composition of the Great Lakes Commission is correct according to Article IV of the compact."
+          "The composition of the Great Lakes Commission from the state is valid as per Article IV of the compact."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2.165",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.165",
+    "title": "2.165 SIXTEENTH DISTRICT.",
+    "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 16 consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 16 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 16A consists of the district as described in that order, with the modification contained in file L15A-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\n(b) House of Representatives District 16B consists of all territory of Senate District 16 not included in House of Representatives District 16A, as described in paragraph (a).",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "district"
+                },
+                16
+              ]
+            },
+            {
+              "merge": [
+                {
+                  "var": "district_16_order"
+                },
+                {
+                  "var": "L15A_1_modification"
+                }
+              ]
+            },
+            "Unknown District"
+          ]
+        },
+        "examples": [
+          {
+            "district": 16,
+            "district_16_order": [
+              "Area1",
+              "Area2"
+            ],
+            "L15A_1_modification": [
+              "Area3"
+            ]
+          },
+          {
+            "district": 15,
+            "district_16_order": [
+              "Area1",
+              "Area2"
+            ],
+            "L15A_1_modification": [
+              "Area3"
+            ]
+          },
+          {
+            "district": 16,
+            "district_16_order": [
+              "Area1"
+            ],
+            "L15A_1_modification": [
+              "Area2",
+              "Area3"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "district_16_order",
+            "description": "The original description of Senate District 16 as per the order."
+          },
+          {
+            "name": "L15A_1_modification",
+            "description": "The modification to Senate District 16 as per file L15A-1."
+          }
+        ],
+        "consequences": [
+          "Senate District 16 consists of the original order with modifications from L15A-1."
+        ]
+      },
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "district"
+                },
+                16
+              ]
+            },
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    16
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "===": [
+                        {
+                          "var": "sub_district"
+                        },
+                        16.1
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "sub_district"
+                        },
+                        16.2
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Unknown House District"
+          ]
+        },
+        "examples": [
+          {
+            "district": 16,
+            "house_district": 16,
+            "sub_district": 16.1
+          },
+          {
+            "district": 16,
+            "house_district": 16,
+            "sub_district": 16.2
+          },
+          {
+            "district": 15,
+            "house_district": 15,
+            "sub_district": 15.1
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "house_district",
+            "description": "The House district number being evaluated."
+          },
+          {
+            "name": "sub_district",
+            "description": "The sub-district number within the House district."
+          }
+        ],
+        "consequences": [
+          "House District 16A or 16B is correctly identified within Senate District 16."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2.175",
+    "url": "https://www.revisor.mn.gov/statutes/cite/2.175",
+    "title": "2.175 SEVENTEENTH DISTRICT.",
+    "text": "Senate District 17 consists of the district as described in the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022).\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 17 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 17A consists of the district as described in that order, with the modification contained in file L17A-2, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on May 10, 2023.\n(b) House of Representatives District 17B consists of all territory of Senate District 17 not included in House of Representatives District 17A, as described in paragraph (a).",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "district"
+                },
+                17
+              ]
+            },
+            {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    17
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    17.1
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    17.2
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "district": 17,
+            "house_district": 17
+          },
+          {
+            "district": 17,
+            "house_district": 17.1
+          },
+          {
+            "district": 17,
+            "house_district": 17.2
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number."
+          },
+          {
+            "name": "house_district",
+            "description": "The House of Representatives district number."
+          }
+        ],
+        "consequences": [
+          "The area is part of Senate District 17 and either House District 17A or 17B."
         ]
       }
     ]
@@ -5282,15 +5599,23 @@
             {
               "===": [
                 {
-                  "var": "photo.status"
+                  "var": "photo.approved_by"
                 },
-                "approved"
+                "commissioner of natural resources"
               ]
             },
             {
               "===": [
                 {
-                  "var": "photo.location"
+                  "var": "photo.certified"
+                },
+                "true"
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "photo.preserved_in"
                 },
                 "Office of the Secretary of State"
               ]
@@ -5306,8 +5631,9 @@
             },
             "state": "Minnesota",
             "photo": {
-              "status": "approved",
-              "location": "Office of the Secretary of State"
+              "approved_by": "commissioner of natural resources",
+              "certified": "true",
+              "preserved_in": "Office of the Secretary of State"
             }
           },
           {
@@ -5318,8 +5644,9 @@
             },
             "state": "Minnesota",
             "photo": {
-              "status": "pending",
-              "location": "Office of the Secretary of State"
+              "approved_by": "commissioner of natural resources",
+              "certified": "false",
+              "preserved_in": "Office of the Secretary of State"
             }
           },
           {
@@ -5330,8 +5657,9 @@
             },
             "state": "Minnesota",
             "photo": {
-              "status": "approved",
-              "location": "Department of Natural Resources"
+              "approved_by": "commissioner of natural resources",
+              "certified": "true",
+              "preserved_in": "Office of the Secretary of State"
             }
           }
         ],
@@ -5353,16 +5681,22 @@
             "description": "The state in question."
           },
           {
-            "name": "photo.status",
-            "description": "The approval status of the photograph."
+            "name": "photo.approved_by",
+            "description": "The authority who approved the photograph."
           },
           {
-            "name": "photo.location",
-            "description": "The location where the photograph is preserved."
+            "name": "photo.certified",
+            "description": "Whether the photograph is certified."
+          },
+          {
+            "name": "photo.preserved_in",
+            "description": "Where the photograph is preserved."
           }
         ],
         "consequences": [
-          "The Red pine is confirmed as the state tree of Minnesota and its photograph is approved and preserved."
+          "The Red pine is confirmed as the state tree of Minnesota.",
+          "The photograph of the Red pine is approved and certified.",
+          "The photograph is preserved in the Office of the Secretary of State."
         ]
       }
     ]
@@ -5412,15 +5746,15 @@
         "variables": [
           {
             "name": "state",
-            "description": "The name of the state being evaluated."
+            "description": "The name of the state being referenced."
           },
           {
             "name": "official_drink",
-            "description": "The official drink of the state being evaluated."
+            "description": "The official drink of the state."
           }
         ],
         "consequences": [
-          "Milk is confirmed as the official drink of Minnesota."
+          "Milk is the official drink of Minnesota."
         ]
       }
     ]
@@ -5459,12 +5793,12 @@
             "state": "Minnesota"
           },
           {
-            "bird_name": "Gavia stellata",
-            "state": "Minnesota"
-          },
-          {
             "bird_name": "Gavia immer",
             "state": "Wisconsin"
+          },
+          {
+            "bird_name": "Anas platyrhynchos",
+            "state": "Minnesota"
           }
         ],
         "variables": [
@@ -5490,74 +5824,293 @@
     "title": "2.125 TWELFTH DISTRICT.",
     "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 consists of the district as described in that order, with the modification contained in file L12B-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 12A consists of the district as described in that order.\n(b) House of Representatives District 12B consists of all territory of Senate District 12, as modified by subdivision 1, that is not included in House of Representatives District 12A.",
     "repealed": false,
-    "rule": {
-      "if": [
-        {
-          "===": [
-            {
-              "var": "district"
-            },
-            12
-          ]
-        },
-        {
-          "and": [
+    "rules": [
+      {
+        "rule": {
+          "if": [
             {
               "===": [
                 {
-                  "var": "order"
+                  "var": "district"
                 },
-                true
+                12
               ]
             },
             {
-              "===": [
+              "merge": [
                 {
-                  "var": "modification"
+                  "var": "district_12_order"
                 },
-                true
+                {
+                  "var": "L12B_1_modification"
+                }
               ]
-            }
+            },
+            "Unknown District"
           ]
         },
-        "District not applicable"
-      ]
-    },
-    "examples": [
-      {
-        "district": 12,
-        "order": true,
-        "modification": true
+        "examples": [
+          {
+            "district": 12,
+            "district_12_order": [
+              "Area1",
+              "Area2"
+            ],
+            "L12B_1_modification": [
+              "Area3"
+            ],
+            "result": [
+              "Area1",
+              "Area2",
+              "Area3"
+            ]
+          },
+          {
+            "district": 12,
+            "district_12_order": [
+              "AreaA",
+              "AreaB"
+            ],
+            "L12B_1_modification": [
+              "AreaC"
+            ],
+            "result": [
+              "AreaA",
+              "AreaB",
+              "AreaC"
+            ]
+          },
+          {
+            "district": 13,
+            "district_12_order": [
+              "AreaX",
+              "AreaY"
+            ],
+            "L12B_1_modification": [
+              "AreaZ"
+            ],
+            "result": "Unknown District"
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "district_12_order",
+            "description": "The original description of Senate District 12 as per the order."
+          },
+          {
+            "name": "L12B_1_modification",
+            "description": "The modification to Senate District 12 as per file L12B-1."
+          }
+        ],
+        "consequences": [
+          "Senate District 12 consists of the original district with modifications from L12B-1."
+        ]
       },
       {
-        "district": 12,
-        "order": true,
-        "modification": false
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "district"
+                },
+                12
+              ]
+            },
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "subdivision"
+                    },
+                    1
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    12
+                  ]
+                }
+              ]
+            },
+            "Unknown District"
+          ]
+        },
+        "examples": [
+          {
+            "district": 12,
+            "subdivision": 1,
+            "house_district": 12,
+            "result": true
+          },
+          {
+            "district": 12,
+            "subdivision": 2,
+            "house_district": 12,
+            "result": false
+          },
+          {
+            "district": 13,
+            "subdivision": 1,
+            "house_district": 12,
+            "result": "Unknown District"
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "subdivision",
+            "description": "The subdivision number for modifications."
+          },
+          {
+            "name": "house_district",
+            "description": "The House of Representatives district number being evaluated."
+          }
+        ],
+        "consequences": [
+          "House of Representatives District 12A consists of the district as described in the order."
+        ]
       },
       {
-        "district": 11,
-        "order": true,
-        "modification": true
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "district"
+                    },
+                    12
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "subdivision"
+                    },
+                    1
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "house_district"
+                    },
+                    12
+                  ]
+                }
+              ]
+            },
+            {
+              "filter": [
+                {
+                  "var": "senate_district_12_modified"
+                },
+                {
+                  "!": {
+                    "in": [
+                      {
+                        "var": ""
+                      },
+                      {
+                        "var": "house_district_12A"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Unknown District"
+          ]
+        },
+        "examples": [
+          {
+            "district": 12,
+            "subdivision": 1,
+            "house_district": 12,
+            "senate_district_12_modified": [
+              "Area1",
+              "Area2",
+              "Area3"
+            ],
+            "house_district_12A": [
+              "Area1",
+              "Area2"
+            ],
+            "result": [
+              "Area3"
+            ]
+          },
+          {
+            "district": 12,
+            "subdivision": 1,
+            "house_district": 12,
+            "senate_district_12_modified": [
+              "AreaA",
+              "AreaB",
+              "AreaC"
+            ],
+            "house_district_12A": [
+              "AreaA"
+            ],
+            "result": [
+              "AreaB",
+              "AreaC"
+            ]
+          },
+          {
+            "district": 13,
+            "subdivision": 1,
+            "house_district": 12,
+            "senate_district_12_modified": [
+              "AreaX",
+              "AreaY",
+              "AreaZ"
+            ],
+            "house_district_12A": [
+              "AreaX"
+            ],
+            "result": "Unknown District"
+          }
+        ],
+        "variables": [
+          {
+            "name": "district",
+            "description": "The Senate district number being evaluated."
+          },
+          {
+            "name": "subdivision",
+            "description": "The subdivision number for modifications."
+          },
+          {
+            "name": "house_district",
+            "description": "The House of Representatives district number being evaluated."
+          },
+          {
+            "name": "senate_district_12_modified",
+            "description": "The modified Senate District 12 including all areas."
+          },
+          {
+            "name": "house_district_12A",
+            "description": "The areas included in House of Representatives District 12A."
+          }
+        ],
+        "consequences": [
+          "House of Representatives District 12B consists of all territory of Senate District 12, as modified, that is not included in House of Representatives District 12A."
+        ]
       }
-    ],
-    "variables": [
-      {
-        "name": "district",
-        "description": "The Senate District number being evaluated."
-      },
-      {
-        "name": "order",
-        "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
-      },
-      {
-        "name": "modification",
-        "description": "Whether the district includes the modification contained in file L12B-1."
-      }
-    ],
-    "consequences": [
-      "Senate District 12 consists of the district as described in the order with the modification.",
-      "House of Representatives District 12A consists of the district as described in the order.",
-      "House of Representatives District 12B consists of all territory of Senate District 12, as modified, that is not included in House of Representatives District 12A."
     ]
   },
   {
@@ -5603,32 +6156,32 @@
             "boundary_extension": "across_waters"
           },
           {
-            "jurisdiction_type": "concurrent",
-            "entity_type": "county",
+            "jurisdiction_type": "exclusive",
+            "entity_type": "state",
             "boundary_extension": "across_waters"
           },
           {
             "jurisdiction_type": "concurrent",
             "entity_type": "county",
-            "boundary_extension": "across_waters"
+            "boundary_extension": "land_only"
           }
         ],
         "variables": [
           {
             "name": "jurisdiction_type",
-            "description": "The type of jurisdiction being exercised."
+            "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
           },
           {
             "name": "entity_type",
-            "description": "The type of entity exercising jurisdiction."
+            "description": "The type of entity exercising jurisdiction (e.g., county, state)."
           },
           {
             "name": "boundary_extension",
-            "description": "The manner in which the boundary is extended."
+            "description": "The manner in which the boundary lines are extended (e.g., across waters, land only)."
           }
         ],
         "consequences": [
-          "The jurisdiction extends over the water area to the opposite shore."
+          "The county and courts have jurisdiction over the water area extending to the opposite shore."
         ]
       }
     ]

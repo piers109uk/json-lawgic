@@ -69,11 +69,11 @@
         },
         {
           "name": "state",
-          "description": "The state owning the easement or fee."
+          "description": "The state where the easement is located."
         },
         {
           "name": "required_by",
-          "description": "The entity requiring the easement for public improvement."
+          "description": "The entity requiring the easement."
         },
         {
           "name": "purpose",

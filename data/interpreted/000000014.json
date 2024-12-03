@@ -11,28 +11,25 @@
           {
             "==": [
               {
-                "var": "state"
+                "var": "state_consent"
               },
               "Minnesota"
             ]
           },
           {
-            "in": [
+            "==": [
               {
                 "var": "land_location"
               },
-              [
-                "Chippewa National Forest",
-                "Superior National Forest"
-              ]
+              "Chippewa National Forest"
             ]
           },
           {
             "==": [
               {
-                "var": "acquisition_authority"
+                "var": "land_location"
               },
-              "act of Congress"
+              "Superior National Forest"
             ]
           },
           {
@@ -47,44 +44,37 @@
       },
       "examples": [
         {
-          "state": "Minnesota",
+          "state_consent": "Minnesota",
           "land_location": "Chippewa National Forest",
-          "acquisition_authority": "act of Congress",
           "jurisdiction": "concurrent"
         },
         {
-          "state": "Minnesota",
+          "state_consent": "Minnesota",
           "land_location": "Superior National Forest",
-          "acquisition_authority": "act of Congress",
           "jurisdiction": "concurrent"
         },
         {
-          "state": "Minnesota",
+          "state_consent": "Minnesota",
           "land_location": "Chippewa National Forest",
-          "acquisition_authority": "act of Congress",
-          "jurisdiction": "concurrent"
+          "jurisdiction": "exclusive"
         }
       ],
       "variables": [
         {
-          "name": "state",
-          "description": "The state where the land is located."
+          "name": "state_consent",
+          "description": "The consent of the state involved in the land acquisition."
         },
         {
           "name": "land_location",
-          "description": "The specific forest where the land is located."
-        },
-        {
-          "name": "acquisition_authority",
-          "description": "The authority under which the land is acquired."
+          "description": "The location of the land being acquired, either in Chippewa National Forest or Superior National Forest."
         },
         {
           "name": "jurisdiction",
-          "description": "The type of jurisdiction applicable to the land."
+          "description": "The type of jurisdiction applied, either concurrent or exclusive."
         }
       ],
       "consequences": [
-        "Consent is given for the acquisition of the land by the United States."
+        "The United States can acquire the land for forest development or maintenance."
       ]
     }
   ]

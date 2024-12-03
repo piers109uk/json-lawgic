@@ -23,36 +23,65 @@
               },
               "Minnesota"
             ]
+          },
+          {
+            "==": [
+              {
+                "var": "official_status"
+              },
+              "official bee"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "photo_location"
+              },
+              "Office of the Secretary of State"
+            ]
           }
         ]
       },
       "examples": [
         {
           "bee_name": "Bombus affinis",
-          "state": "Minnesota"
+          "state": "Minnesota",
+          "official_status": "official bee",
+          "photo_location": "Office of the Secretary of State"
         },
         {
           "bee_name": "Bombus affinis",
-          "state": "Wisconsin"
+          "state": "Minnesota",
+          "official_status": "official bee",
+          "photo_location": "State Library"
         },
         {
-          "bee_name": "Apis mellifera",
-          "state": "Minnesota"
+          "bee_name": "Bombus affinis",
+          "state": "Wisconsin",
+          "official_status": "official bee",
+          "photo_location": "Office of the Secretary of State"
         }
       ],
       "variables": [
         {
           "name": "bee_name",
-          "description": "The scientific name of the bee being referenced."
+          "description": "The name of the bee species."
         },
         {
           "name": "state",
-          "description": "The state in which the bee is being referenced."
+          "description": "The state in which the bee is recognized."
+        },
+        {
+          "name": "official_status",
+          "description": "The official status of the bee in the state."
+        },
+        {
+          "name": "photo_location",
+          "description": "The location where the photograph of the bee is preserved."
         }
       ],
       "consequences": [
-        "The rusty patched bumble bee is the official bee of Minnesota.",
-        "A photograph of the rusty patched bumble bee must be preserved in the Office of the Secretary of State."
+        "The rusty patched bumble bee is recognized as the official bee of Minnesota and its photograph is preserved in the Office of the Secretary of State."
       ]
     }
   ]

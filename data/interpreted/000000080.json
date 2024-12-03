@@ -19,47 +19,45 @@
           {
             "merge": [
               {
-                "var": "district_description"
+                "var": "district_as_described"
               },
               {
                 "var": "modification_L12B_1"
               }
             ]
           },
-          {
-            "var": "district_description"
-          }
+          "Unknown District"
         ]
       },
       "examples": [
         {
           "district_name": "Senate District 9",
-          "district_description": [
-            "Area 1",
-            "Area 2"
+          "district_as_described": [
+            "Area1",
+            "Area2"
           ],
           "modification_L12B_1": [
-            "Area 3"
+            "Area3"
           ]
         },
         {
-          "district_name": "Senate District 10",
-          "district_description": [
-            "Area 4",
-            "Area 5"
+          "district_name": "Senate District 8",
+          "district_as_described": [
+            "Area1",
+            "Area2"
           ],
           "modification_L12B_1": [
-            "Area 6"
+            "Area3"
           ]
         },
         {
           "district_name": "Senate District 9",
-          "district_description": [
-            "Area 7",
-            "Area 8"
+          "district_as_described": [
+            "Area4",
+            "Area5"
           ],
           "modification_L12B_1": [
-            "Area 9"
+            "Area6"
           ]
         }
       ],
@@ -69,16 +67,16 @@
           "description": "The name of the district being evaluated."
         },
         {
-          "name": "district_description",
-          "description": "The original description of the district as per the order."
+          "name": "district_as_described",
+          "description": "The areas described in the original order for the district."
         },
         {
           "name": "modification_L12B_1",
-          "description": "The modification to be applied to Senate District 9."
+          "description": "The modification to the district as per file L12B-1."
         }
       ],
       "consequences": [
-        "Senate District 9 is modified with L12B-1."
+        "Senate District 9 consists of the described areas with modifications."
       ]
     },
     {
@@ -93,90 +91,31 @@
             ]
           },
           {
-            "var": "district_description"
+            "var": "district_as_described"
           },
-          {
-            "if": [
-              {
-                "===": [
-                  {
-                    "var": "district_name"
-                  },
-                  "House of Representatives District 9B"
-                ]
-              },
-              {
-                "filter": [
-                  {
-                    "var": "senate_district_9_modified"
-                  },
-                  {
-                    "!": {
-                      "in": [
-                        {
-                          "var": ""
-                        },
-                        {
-                          "var": "house_district_9A"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "var": "district_description"
-              }
-            ]
-          }
+          "Unknown District"
         ]
       },
       "examples": [
         {
           "district_name": "House of Representatives District 9A",
-          "district_description": [
-            "Area 1",
-            "Area 2"
-          ],
-          "senate_district_9_modified": [
-            "Area 1",
-            "Area 2",
-            "Area 3"
-          ],
-          "house_district_9A": [
-            "Area 1",
-            "Area 2"
+          "district_as_described": [
+            "Area1",
+            "Area2"
           ]
         },
         {
           "district_name": "House of Representatives District 9B",
-          "district_description": [
-            "Area 3"
-          ],
-          "senate_district_9_modified": [
-            "Area 1",
-            "Area 2",
-            "Area 3"
-          ],
-          "house_district_9A": [
-            "Area 1",
-            "Area 2"
+          "district_as_described": [
+            "Area1",
+            "Area2"
           ]
         },
         {
-          "district_name": "House of Representatives District 10A",
-          "district_description": [
-            "Area 4",
-            "Area 5"
-          ],
-          "senate_district_9_modified": [
-            "Area 1",
-            "Area 2",
-            "Area 3"
-          ],
-          "house_district_9A": [
-            "Area 1",
-            "Area 2"
+          "district_name": "House of Representatives District 9A",
+          "district_as_described": [
+            "Area4",
+            "Area5"
           ]
         }
       ],
@@ -186,21 +125,100 @@
           "description": "The name of the district being evaluated."
         },
         {
-          "name": "district_description",
-          "description": "The original description of the district as per the order."
-        },
-        {
-          "name": "senate_district_9_modified",
-          "description": "The modified description of Senate District 9."
-        },
-        {
-          "name": "house_district_9A",
-          "description": "The description of House of Representatives District 9A."
+          "name": "district_as_described",
+          "description": "The areas described in the original order for the district."
         }
       ],
       "consequences": [
-        "House of Representatives District 9A is as described in the order.",
-        "House of Representatives District 9B is the remainder of Senate District 9 not in 9A."
+        "House of Representatives District 9A consists of the described areas."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "district_name"
+              },
+              "House of Representatives District 9B"
+            ]
+          },
+          {
+            "filter": [
+              {
+                "var": "senate_district_9_modified"
+              },
+              {
+                "!": {
+                  "in": [
+                    {
+                      "var": ""
+                    },
+                    {
+                      "var": "house_district_9A"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Unknown District"
+        ]
+      },
+      "examples": [
+        {
+          "district_name": "House of Representatives District 9B",
+          "senate_district_9_modified": [
+            "Area1",
+            "Area2",
+            "Area3"
+          ],
+          "house_district_9A": [
+            "Area1",
+            "Area2"
+          ]
+        },
+        {
+          "district_name": "House of Representatives District 9A",
+          "senate_district_9_modified": [
+            "Area1",
+            "Area2",
+            "Area3"
+          ],
+          "house_district_9A": [
+            "Area1",
+            "Area2"
+          ]
+        },
+        {
+          "district_name": "House of Representatives District 9B",
+          "senate_district_9_modified": [
+            "Area4",
+            "Area5",
+            "Area6"
+          ],
+          "house_district_9A": [
+            "Area4"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "district_name",
+          "description": "The name of the district being evaluated."
+        },
+        {
+          "name": "senate_district_9_modified",
+          "description": "The modified areas of Senate District 9."
+        },
+        {
+          "name": "house_district_9A",
+          "description": "The areas included in House of Representatives District 9A."
+        }
+      ],
+      "consequences": [
+        "House of Representatives District 9B consists of all modified areas not in District 9A."
       ]
     }
   ]

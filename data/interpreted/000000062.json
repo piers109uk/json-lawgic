@@ -9,7 +9,7 @@
       "rule": {
         "and": [
           {
-            "==": [
+            "===": [
               {
                 "var": "photograph_name"
               },
@@ -17,7 +17,7 @@
             ]
           },
           {
-            "==": [
+            "===": [
               {
                 "var": "photographer"
               },
@@ -25,7 +25,7 @@
             ]
           },
           {
-            "==": [
+            "===": [
               {
                 "var": "year_taken"
               },
@@ -33,27 +33,11 @@
             ]
           },
           {
-            "==": [
+            "===": [
               {
                 "var": "location"
               },
               "Bovey, Minnesota"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "state_designation"
-              },
-              "state photograph"
-            ]
-          },
-          {
-            "in": [
-              "Grace",
-              {
-                "var": "office_display"
-              }
             ]
           }
         ]
@@ -63,30 +47,19 @@
           "photograph_name": "Grace",
           "photographer": "Eric Enstrom",
           "year_taken": 1918,
-          "location": "Bovey, Minnesota",
-          "state_designation": "state photograph",
-          "office_display": [
-            "Grace"
-          ]
+          "location": "Bovey, Minnesota"
         },
         {
           "photograph_name": "Grace",
           "photographer": "Eric Enstrom",
           "year_taken": 1918,
-          "location": "Bovey, Minnesota",
-          "state_designation": "state photograph",
-          "office_display": [
-            "Grace",
-            "Other Photo"
-          ]
+          "location": "New York"
         },
         {
-          "photograph_name": "Grace",
+          "photograph_name": "Sunset",
           "photographer": "Eric Enstrom",
           "year_taken": 1918,
-          "location": "Bovey, Minnesota",
-          "state_designation": "state photograph",
-          "office_display": []
+          "location": "Bovey, Minnesota"
         }
       ],
       "variables": [
@@ -105,19 +78,59 @@
         {
           "name": "location",
           "description": "The location where the photograph was taken."
-        },
-        {
-          "name": "state_designation",
-          "description": "The designation of the photograph by the state."
-        },
-        {
-          "name": "office_display",
-          "description": "The list of photographs displayed in the Office of the Secretary of State."
         }
       ],
       "consequences": [
-        "The photograph 'Grace' is confirmed as the state photograph.",
-        "A copy of 'Grace' is displayed in the Office of the Secretary of State."
+        "The photograph is designated as the state photograph."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "photograph_name"
+              },
+              "Grace"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "display_location"
+              },
+              "Office of the Secretary of State"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "photograph_name": "Grace",
+          "display_location": "Office of the Secretary of State"
+        },
+        {
+          "photograph_name": "Grace",
+          "display_location": "Governor's Office"
+        },
+        {
+          "photograph_name": "Sunset",
+          "display_location": "Office of the Secretary of State"
+        }
+      ],
+      "variables": [
+        {
+          "name": "photograph_name",
+          "description": "The name of the photograph."
+        },
+        {
+          "name": "display_location",
+          "description": "The location where the photograph is displayed."
+        }
+      ],
+      "consequences": [
+        "A copy of the photograph must be displayed in the Office of the Secretary of State."
       ]
     }
   ]
