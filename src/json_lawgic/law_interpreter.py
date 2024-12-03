@@ -1,13 +1,14 @@
 from pprint import pprint
 from typing import cast
 
-from data_readers import read_json, read_text
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from langfuse_setup import langfuse_handler
-from logger import logger
+from json_lawgic.logger import logger
 from pydantic import BaseModel, Field
+
+from json_lawgic.data_io import read_json, read_text, write_json
+from json_lawgic.langfuse_setup import langfuse_handler
 
 # Load environment variables from .env file
 load_dotenv()
@@ -24,7 +25,6 @@ class RuleVariable(BaseModel):
     description: str = Field(description="A description of what the variable represents")
 
 
-# Pydantic
 class JsonLogicInterpretation(BaseModel):
     """A JSON logic interpretation."""
 
@@ -40,6 +40,12 @@ class JsonLogicInterpretation(BaseModel):
     # https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html#_Toc38017883
 
 
+class JsonLogicRules(BaseModel):
+    """A collection of JsonLogic rules."""
+
+    rules: list[JsonLogicInterpretation] = Field(description="A collection of JsonLogic rules")
+
+
 prompt_str = """
 I am looking to express laws as JsonLogic.
 
@@ -48,7 +54,7 @@ Here is some info on how JSON logic works:
 {json_logic}
 ---
 
-Please express the following law as JSON logic:
+Please express the following law as one or more JSON logic rules:
 {law}
 
 Provide your response as JSON in the following form:
@@ -78,13 +84,10 @@ class LawInterpreter:
     def interpret_law(self, law_object: dict) -> dict:
         law_text = law_object.get("text")
         prompt = prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
-        structured_llm = llm.with_structured_output(JsonLogicInterpretation)
+        structured_llm = llm.with_structured_output(JsonLogicRules)
 
-        response = cast(
-            JsonLogicInterpretation, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]})
-        )
+        response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]}))
 
-        # example_results = self.validate_interpretation(response)
         res_dict = response.model_dump()
         return {**res_dict}
 
@@ -99,9 +102,12 @@ class LawInterpreter:
 
 if __name__ == "__main__":
     interpreter = LawInterpreter()
-    law_object = read_json("data/default/000000001.json")
+    # law_object = read_json("data/default/000000001.json")
+    law_object = read_json("data/default/000049272.json")
 
     law_dict = interpreter.interpret_law(law_object)
+
+    write_json("data/tests/000049272.json", law_dict)
     pprint(law_dict)
 
     #  TODO fix json logic

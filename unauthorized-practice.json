@@ -1,0 +1,106 @@
+[
+  {
+    "consequences": ["Unlawful to perform legal actions without being a licensed attorney or attorney's professional firm."],
+    "examples": [
+      { "action": "appear as attorney", "person_type": "individual" },
+      { "action": "give legal advice", "person_type": "corporation" },
+      { "action": "prepare legal documents", "person_type": "association" }
+    ],
+    "rule": {
+      "and": [
+        {
+          "!": {
+            "in": [{ "var": "person_type" }, ["licensed attorney", "attorney's professional firm"]]
+          }
+        },
+        {
+          "in": [
+            { "var": "action" },
+            [
+              "appear as attorney",
+              "give legal advice",
+              "prepare legal documents",
+              "hold out as qualified to give legal advice",
+              "furnish services of a lawyer",
+              "prepare will or testamentary disposition",
+              "prepare legal document"
+            ]
+          ]
+        }
+      ]
+    },
+    "variables": [
+      {
+        "description": "The type of person or entity performing the action (e.g., individual, corporation, association).",
+        "name": "person_type"
+      },
+      {
+        "description": "The action being performed (e.g., appear as attorney, give legal advice, prepare legal documents).",
+        "name": "action"
+      }
+    ]
+  },
+  {
+    "consequences": ["Unlawful for corporations, except attorney's professional firms, to perform legal actions."],
+    "examples": [
+      { "action": "maintain action in court", "corporation_type": "for-profit", "person_type": "corporation" },
+      { "action": "give legal advice", "corporation_type": "non-profit", "person_type": "corporation" },
+      { "action": "prepare legal document", "corporation_type": "for-profit", "person_type": "corporation" }
+    ],
+    "rule": {
+      "and": [
+        { "===": [{ "var": "person_type" }, "corporation"] },
+        { "!": { "===": [{ "var": "corporation_type" }, "attorney's professional firm"] } },
+        {
+          "in": [
+            { "var": "action" },
+            ["maintain action in court", "give legal advice", "prepare will or testamentary disposition", "prepare legal document"]
+          ]
+        }
+      ]
+    },
+    "variables": [
+      {
+        "description": "The type of person or entity performing the action (e.g., individual, corporation, association).",
+        "name": "person_type"
+      },
+      {
+        "description": "The type of corporation (e.g., for-profit, attorney's professional firm).",
+        "name": "corporation_type"
+      },
+      {
+        "description": "The action being performed (e.g., maintain action in court, give legal advice, prepare legal document).",
+        "name": "action"
+      }
+    ]
+  },
+  {
+    "consequences": ["Unlawful to charge attorney's fee without being a licensed attorney in Minnesota."],
+    "examples": [
+      { "action": "charge attorney's fee", "licensed_status": "not licensed", "person_type": "individual" },
+      { "action": "charge attorney's fee", "licensed_status": "licensed attorney", "person_type": "individual" },
+      { "action": "charge attorney's fee", "licensed_status": "licensed attorney in another state", "person_type": "individual" }
+    ],
+    "rule": {
+      "and": [
+        { "===": [{ "var": "person_type" }, "individual"] },
+        { "===": [{ "var": "action" }, "charge attorney's fee"] },
+        { "!": { "===": [{ "var": "licensed_status" }, "licensed attorney"] } }
+      ]
+    },
+    "variables": [
+      {
+        "description": "The type of person or entity performing the action (e.g., individual, corporation, association).",
+        "name": "person_type"
+      },
+      {
+        "description": "The action being performed (e.g., charge attorney's fee).",
+        "name": "action"
+      },
+      {
+        "description": "The licensing status of the individual (e.g., licensed attorney, not licensed).",
+        "name": "licensed_status"
+      }
+    ]
+  }
+]

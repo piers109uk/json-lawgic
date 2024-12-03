@@ -1,0 +1,240 @@
+{
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "person.isLicensedAttorney"
+              },
+              {
+                "var": "true"
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "person.state"
+              },
+              {
+                "var": "Minnesota"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "person": {
+            "isLicensedAttorney": true,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "person": {
+            "isLicensedAttorney": false,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "person": {
+            "isLicensedAttorney": true,
+            "state": "Wisconsin"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "person.isLicensedAttorney",
+          "description": "Indicates if the person is a licensed attorney."
+        },
+        {
+          "name": "person.state",
+          "description": "The state where the person is practicing law."
+        }
+      ],
+      "consequences": [
+        "The person can legally appear as an attorney in Minnesota."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "corporation.isProfessionalFirm"
+              },
+              {
+                "var": "true"
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "corporation.state"
+              },
+              {
+                "var": "Minnesota"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "corporation": {
+            "isProfessionalFirm": true,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "corporation": {
+            "isProfessionalFirm": false,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "corporation": {
+            "isProfessionalFirm": true,
+            "state": "Iowa"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "corporation.isProfessionalFirm",
+          "description": "Indicates if the corporation is a professional firm."
+        },
+        {
+          "name": "corporation.state",
+          "description": "The state where the corporation is operating."
+        }
+      ],
+      "consequences": [
+        "The corporation can legally provide legal services in Minnesota."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "person.isLicensedAttorney"
+              },
+              {
+                "var": "false"
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "person.state"
+              },
+              {
+                "var": "Minnesota"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "person": {
+            "isLicensedAttorney": false,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "person": {
+            "isLicensedAttorney": true,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "person": {
+            "isLicensedAttorney": false,
+            "state": "Iowa"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "person.isLicensedAttorney",
+          "description": "Indicates if the person is a licensed attorney."
+        },
+        {
+          "name": "person.state",
+          "description": "The state where the person is practicing law."
+        }
+      ],
+      "consequences": [
+        "The person cannot legally appear as an attorney in Minnesota."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "corporation.isProfessionalFirm"
+              },
+              {
+                "var": "false"
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "corporation.state"
+              },
+              {
+                "var": "Minnesota"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "corporation": {
+            "isProfessionalFirm": false,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "corporation": {
+            "isProfessionalFirm": true,
+            "state": "Minnesota"
+          }
+        },
+        {
+          "corporation": {
+            "isProfessionalFirm": false,
+            "state": "Iowa"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "corporation.isProfessionalFirm",
+          "description": "Indicates if the corporation is a professional firm."
+        },
+        {
+          "name": "corporation.state",
+          "description": "The state where the corporation is operating."
+        }
+      ],
+      "consequences": [
+        "The corporation cannot legally provide legal services in Minnesota."
+      ]
+    }
+  ]
+}
