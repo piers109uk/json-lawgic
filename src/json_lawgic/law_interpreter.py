@@ -162,7 +162,9 @@ if __name__ == "__main__":
 
     # law_object = read_json("data/default/000000001.json")
 
-    law_interpretation = read_json("data/examples-interpreted/1.json")
+    interpreted_file = "data/examples-interpreted/1.json"
+    law_interpretation = read_json(interpreted_file)
     simplified = asyncio.run(interpreter.asimplify_interpretation(law_interpretation, law_interpretation["rules"]))
-    write_json("data/examples-interpreted/1.json", simplified)
-    pprint(simplified)
+    simplified_law = {**law_interpretation, **simplified}
+    write_json(interpreted_file, simplified_law)
+    pprint(simplified_law)

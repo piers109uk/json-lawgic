@@ -18,35 +18,16 @@
           {
             "or": [
               {
-                "==": [
+                "in": [
                   {
                     "var": "action"
                   },
-                  "false_entry"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "action"
-                  },
-                  "alter_entry"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "action"
-                  },
-                  "omit_entry"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "action"
-                  },
-                  "prevent_entry"
+                  [
+                    "false_entry",
+                    "alter_entry",
+                    "omit_entry",
+                    "prevent_entry"
+                  ]
                 ]
               }
             ]
