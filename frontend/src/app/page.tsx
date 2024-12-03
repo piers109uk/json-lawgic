@@ -1,19 +1,21 @@
 "use client"
 
-import { useState } from "react"
-import JsonLogic from "./json-logic"
-import Search from "./Search"
-import { IStatuteData, showcase, statutes } from "./statutes"
-import LawDisplay from "./law-display"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScaleIcon } from "@heroicons/react/24/solid"
+import { useState } from "react"
+import LawDisplay from "./law-display"
+import LawRules from "./law-rules"
 import LawsList from "./laws-list"
+import Search from "./Search"
+import { IStatuteData, showcase, statutes } from "./statutes"
 
 // TODO: reducer?
 // TODO: Move to provider
 
 export default function Home() {
   const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
+
+  // TODO: determine how to display multiple rules
 
   return (
     <>
@@ -34,7 +36,7 @@ export default function Home() {
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic interpretation={selectedLaw}></JsonLogic>
+                <LawRules rules={selectedLaw.rules}></LawRules>
               </div>
             </div>
           </TabsContent>
@@ -45,7 +47,7 @@ export default function Home() {
               </div>
               <div className="w-2/3 p-4 overflow-auto">
                 <LawDisplay selectedLaw={selectedLaw}></LawDisplay>
-                <JsonLogic interpretation={selectedLaw}></JsonLogic>
+                <LawRules rules={selectedLaw.rules}></LawRules>
               </div>
             </div>
           </TabsContent>

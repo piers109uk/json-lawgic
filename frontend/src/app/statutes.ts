@@ -17,14 +17,14 @@ export interface JsonLogicInterpretation {
   consequences: string[]
 }
 
-export interface IStatuteData extends Partial<JsonLogicInterpretation> {
+export interface IStatuteData {
   id: string
   url: string
   title: string | null
   /** section content */
   text: string | null
 
-  // rules: JsonLogicInterpretation[]
+  rules: JsonLogicInterpretation[]
 }
 
 export const statutes: IStatuteData[] = interpretedLaws
