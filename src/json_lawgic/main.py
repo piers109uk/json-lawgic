@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from data_readers import read_json
+from json_lawgic.data_io import read_json
 
 # https://openai.com/api/pricing/
 
