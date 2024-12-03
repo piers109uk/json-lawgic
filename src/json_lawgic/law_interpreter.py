@@ -1,3 +1,4 @@
+import asyncio
 from pprint import pprint
 from typing import cast
 
@@ -30,7 +31,9 @@ class JsonLogicInterpretation(BaseModel):
     """A JSON logic interpretation."""
 
     rule: object = Field(description="The pure JSON logic rule expressed as a JSON object")
-    examples: list[object] = Field(description="Three examples of data that we could run the JsonLogic rule on")
+    examples: list[object] = Field(
+        description="Three examples of data that we could run the JsonLogic rule on. Aim to make some that evaluate to true and some to false."
+    )
     variables: list[RuleVariable] = Field(description="A list of variables referenced in the rule")
     consequences: list[str] = Field(
         description="The consequences IF the rule evaluates to true, expressed as briefly as possible"
@@ -47,7 +50,7 @@ class JsonLogicRules(BaseModel):
     rules: list[JsonLogicInterpretation] = Field(description="A collection of JsonLogic rules")
 
 
-prompt_str = """
+interpret_prompt = """
 I am looking to express laws as JsonLogic.
 
 Here is some info on how JSON logic works:
@@ -61,7 +64,7 @@ Please express the following law as one or more JSON logic rules:
 Provide your response as JSON in the following form:
 // The pure JSON logic rule expressed as a JSON object
 rule: object
-// three examples of data that we could run the JsonLogic rule on
+// Three examples of data that we could run the JsonLogic rule on. Aim to make some that evaluate to true and some to false.
 examples: object[]
 // a list of variables referenced in the rule
 variables: RuleVariable[]
@@ -76,7 +79,31 @@ description: string
 
 """
 
-prompt_template = PromptTemplate.from_template(prompt_str)
+simplify_prompt = """
+Please review the following JsonLogic interpretation of this law.
+If the JsonLogic Rules can be simplified, please return the interpretation with the rules simplified.
+If the interpretations are incomplete or incorrect, please update them to fix this.
+If the JsonLogic Rules cannot be simplified and are complete and correct, please return the original interpretation.
+
+Here is some info on how JSON logic works:
+---
+{json_logic}
+---
+
+Here is the law:
+---
+{law}
+---
+
+And here are the corresponding rules interpreted from the law:
+---
+{interpretation}
+---
+
+"""
+
+interpret_prompt_template = PromptTemplate.from_template(interpret_prompt)
+simplify_prompt_template = PromptTemplate.from_template(simplify_prompt)
 
 
 class LawInterpreter:
@@ -85,7 +112,7 @@ class LawInterpreter:
     def interpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
         law_text = law_object.get("text")
-        prompt = prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
+        prompt = interpret_prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
         structured_llm = llm.with_structured_output(JsonLogicRules)
 
         response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]}))
@@ -96,8 +123,23 @@ class LawInterpreter:
     async def ainterpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
         law_text = law_object.get("text")
-        prompt = await prompt_template.ainvoke({"json_logic": self.json_logic, "law": law_text})
+        prompt = await interpret_prompt_template.ainvoke({"json_logic": self.json_logic, "law": law_text})
 
+        structured_llm = llm.with_structured_output(JsonLogicRules)
+
+        response = await structured_llm.ainvoke(prompt, config={"callbacks": [langfuse_handler]})
+
+        rules = cast(JsonLogicRules, response)
+
+        res_dict = rules.model_dump()
+        return {**res_dict}
+
+    async def asimplify_interpretation(self, law_object: dict, interpretation: dict) -> dict:
+        """Returns a dict containing rules"""
+        law_text = law_object.get("text")
+        prompt = simplify_prompt_template.invoke(
+            {"json_logic": self.json_logic, "law": law_text, "interpretation": interpretation}
+        )
         structured_llm = llm.with_structured_output(JsonLogicRules)
 
         response = await structured_llm.ainvoke(prompt, config={"callbacks": [langfuse_handler]})
@@ -110,10 +152,17 @@ class LawInterpreter:
 
 if __name__ == "__main__":
     interpreter = LawInterpreter()
-    law_object = read_json("data/default/000000001.json")
-    # law_object = read_json("data/default/000049272.json")
+    # law_object = read_json("data/default/000000001.json")
+    # # law_object = read_json("data/default/000049272.json")
 
-    law_dict = interpreter.interpret_law(law_object)
+    # law_dict = interpreter.interpret_law(law_object)
 
-    write_json("data/tests/000000001.json", law_dict)
-    pprint(law_dict)
+    # write_json("data/tests/000000001.json", law_dict)
+    # pprint(law_dict)
+
+    # law_object = read_json("data/default/000000001.json")
+
+    law_interpretation = read_json("data/examples-interpreted/1.json")
+    simplified = asyncio.run(interpreter.asimplify_interpretation(law_interpretation, law_interpretation["rules"]))
+    write_json("data/examples-interpreted/1.json", simplified)
+    pprint(simplified)
