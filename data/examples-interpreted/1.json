@@ -3,74 +3,84 @@
   "url": "https://www.nysenate.gov/legislation/laws/PEN/175.05",
   "title": "Falsifying business records in the second degree",
   "text": "\u00a7 175.05 Falsifying business records in the second degree.\n\nA person is guilty of falsifying business records in the second degree\nwhen, with intent to defraud, he:\n\n1. Makes or causes a false entry in the business records of an\nenterprise; or\n\n2. Alters, erases, obliterates, deletes, removes or destroys a true\nentry in the business records of an enterprise; or\n\n3. Omits to make a true entry in the business records of an enterprise\nin violation of a duty to do so which he knows to be imposed upon him by\nlaw or by the nature of his position; or\n\n4. Prevents the making of a true entry or causes the omission thereof\nin the business records of an enterprise.\n\nFalsifying business records in the second degree is a class A\nmisdemeanor.\n",
-  "rule": {
-    "and": [
-      {
-        "var": "intent_to_defraud"
-      },
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
             "==": [
               {
-                "var": "action"
+                "var": "intent"
               },
-              "make_false_entry"
+              true
             ]
           },
           {
-            "==": [
+            "or": [
               {
-                "var": "action"
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "false_entry"
+                ]
               },
-              "alter_true_entry"
-            ]
-          },
-          {
-            "==": [
               {
-                "var": "action"
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "alter_entry"
+                ]
               },
-              "omit_true_entry"
-            ]
-          },
-          {
-            "==": [
               {
-                "var": "action"
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "omit_entry"
+                ]
               },
-              "prevent_true_entry"
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "prevent_entry"
+                ]
+              }
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "intent_to_defraud": true,
-      "action": "make_false_entry"
-    },
-    {
-      "intent_to_defraud": true,
-      "action": "alter_true_entry"
-    },
-    {
-      "intent_to_defraud": false,
-      "action": "omit_true_entry"
+      },
+      "examples": [
+        {
+          "intent": true,
+          "action": "false_entry"
+        },
+        {
+          "intent": true,
+          "action": "alter_entry"
+        },
+        {
+          "intent": false,
+          "action": "omit_entry"
+        }
+      ],
+      "variables": [
+        {
+          "name": "intent",
+          "description": "The intent to defraud"
+        },
+        {
+          "name": "action",
+          "description": "The action taken on the business records"
+        }
+      ],
+      "consequences": [
+        "Guilty of falsifying business records in the second degree",
+        "Class A misdemeanor"
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "intent_to_defraud",
-      "description": "Indicates if there is an intent to defraud."
-    },
-    {
-      "name": "action",
-      "description": "The action taken on the business records, such as making a false entry, altering a true entry, omitting a true entry, or preventing a true entry."
-    }
-  ],
-  "consequences": [
-    "Class A misdemeanor"
   ]
 }

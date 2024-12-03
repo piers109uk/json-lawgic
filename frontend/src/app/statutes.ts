@@ -23,6 +23,8 @@ export interface IStatuteData extends Partial<JsonLogicInterpretation> {
   title: string | null
   /** section content */
   text: string | null
+
+  // rules: JsonLogicInterpretation[]
 }
 
 export const statutes: IStatuteData[] = interpretedLaws
