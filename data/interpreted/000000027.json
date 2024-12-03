@@ -73,7 +73,7 @@
         },
         {
           "name": "required_by",
-          "description": "The entity requiring the easement."
+          "description": "The entity requiring the easement for public improvement."
         },
         {
           "name": "purpose",

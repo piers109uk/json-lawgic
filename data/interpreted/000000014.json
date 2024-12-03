@@ -17,29 +17,30 @@
             ]
           },
           {
-            "==": [
+            "in": [
               {
                 "var": "land_location"
               },
-              "Chippewa National Forest"
+              [
+                "Chippewa National Forest",
+                "Superior National Forest"
+              ]
             ]
           },
           {
             "==": [
               {
-                "var": "land_location"
+                "var": "acquisition_authority"
               },
-              "Superior National Forest"
+              "act of Congress"
             ]
           },
           {
             "==": [
               {
-                "var": "acquisition_method"
+                "var": "jurisdiction"
               },
-              {
-                "var": "authorized_by_congress"
-              }
+              "concurrent"
             ]
           }
         ]
@@ -48,20 +49,20 @@
         {
           "state": "Minnesota",
           "land_location": "Chippewa National Forest",
-          "acquisition_method": "purchase",
-          "authorized_by_congress": "purchase"
+          "acquisition_authority": "act of Congress",
+          "jurisdiction": "concurrent"
         },
         {
           "state": "Minnesota",
           "land_location": "Superior National Forest",
-          "acquisition_method": "exchange",
-          "authorized_by_congress": "exchange"
+          "acquisition_authority": "act of Congress",
+          "jurisdiction": "concurrent"
         },
         {
           "state": "Minnesota",
           "land_location": "Chippewa National Forest",
-          "acquisition_method": "donation",
-          "authorized_by_congress": "donation"
+          "acquisition_authority": "act of Congress",
+          "jurisdiction": "concurrent"
         }
       ],
       "variables": [
@@ -71,19 +72,19 @@
         },
         {
           "name": "land_location",
-          "description": "The specific location of the land within the national forests."
+          "description": "The specific forest where the land is located."
         },
         {
-          "name": "acquisition_method",
-          "description": "The method by which the land is acquired."
+          "name": "acquisition_authority",
+          "description": "The authority under which the land is acquired."
         },
         {
-          "name": "authorized_by_congress",
-          "description": "The method of acquisition authorized by Congress."
+          "name": "jurisdiction",
+          "description": "The type of jurisdiction applicable to the land."
         }
       ],
       "consequences": [
-        "Consent is given for the acquisition of land by the United States."
+        "Consent is given for the acquisition of the land by the United States."
       ]
     }
   ]

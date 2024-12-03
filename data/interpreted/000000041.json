@@ -9,19 +9,11 @@
       "rule": {
         "if": [
           {
-            "==": [
-              {
-                "var": "flag_design_certified"
-              },
-              true
-            ]
-          },
-          {
             "and": [
               {
                 "==": [
                   {
-                    "var": "state_flag_adopted"
+                    "var": "flag_design_certified"
                   },
                   true
                 ]
@@ -29,7 +21,7 @@
               {
                 "==": [
                   {
-                    "var": "secretary_of_state_filed_photograph"
+                    "var": "secretary_of_state_filed_photo"
                   },
                   true
                 ]
@@ -41,11 +33,15 @@
                   },
                   true
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "and": [
               {
                 "==": [
                   {
-                    "var": "state_flag_flown"
+                    "var": "flag_flown_sunrise_to_sunset"
                   },
                   true
                 ]
@@ -59,60 +55,52 @@
                 ]
               }
             ]
-          },
-          "false"
+          }
         ]
       },
       "examples": [
         {
           "flag_design_certified": true,
-          "state_flag_adopted": true,
-          "secretary_of_state_filed_photograph": true,
+          "secretary_of_state_filed_photo": true,
           "secretary_of_state_custodial_control": true,
-          "state_flag_flown": true,
+          "flag_flown_sunrise_to_sunset": true,
           "flag_folded_properly": true
         },
         {
           "flag_design_certified": true,
-          "state_flag_adopted": false,
-          "secretary_of_state_filed_photograph": true,
+          "secretary_of_state_filed_photo": false,
           "secretary_of_state_custodial_control": true,
-          "state_flag_flown": true,
+          "flag_flown_sunrise_to_sunset": true,
           "flag_folded_properly": true
         },
         {
-          "flag_design_certified": false,
-          "state_flag_adopted": false,
-          "secretary_of_state_filed_photograph": false,
-          "secretary_of_state_custodial_control": false,
-          "state_flag_flown": false,
+          "flag_design_certified": true,
+          "secretary_of_state_filed_photo": true,
+          "secretary_of_state_custodial_control": true,
+          "flag_flown_sunrise_to_sunset": false,
           "flag_folded_properly": false
         }
       ],
       "variables": [
         {
           "name": "flag_design_certified",
-          "description": "Indicates if the flag design is certified by the State Emblems Redesign Commission."
+          "description": "Indicates if the state flag design is certified by the commission."
         },
         {
-          "name": "state_flag_adopted",
-          "description": "Indicates if the state flag is officially adopted."
-        },
-        {
-          "name": "secretary_of_state_filed_photograph",
-          "description": "Indicates if the Secretary of State has filed a photograph of the state flag."
+          "name": "secretary_of_state_filed_photo",
+          "description": "Indicates if the secretary of state has filed a photograph of the state flag."
         },
         {
           "name": "secretary_of_state_custodial_control",
-          "description": "Indicates if the Secretary of State retains custodial control over the sample design flag."
+          "description": "Indicates if the secretary of state retains custodial control over the sample design flag."
         },
         {
-          "name": "state_flag_flown",
+          "name": "flag_flown_sunrise_to_sunset",
           "description": "Indicates if the official state flag is flown on the State Capitol grounds between sunrise and sunset."
         },
         {
           "name": "flag_folded_properly",
-          "description": "Indicates if the Minnesota State Flag is folded and stored properly for storage."
+          "description": "Indicates if the Minnesota State Flag is folded and stored properly."
         }
       ],
       "consequences": [

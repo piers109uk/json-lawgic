@@ -17,23 +17,23 @@
             ]
           },
           {
-            "log": "Deposit in trunk highway fund"
+            "var": "deposit_to_trunk_highway_fund"
           },
-          "Do nothing"
+          false
         ]
       },
       "examples": [
         {
           "payment_type": "easement",
-          "amount": 1000
+          "deposit_to_trunk_highway_fund": true
         },
         {
           "payment_type": "lease",
-          "amount": 500
+          "deposit_to_trunk_highway_fund": false
         },
         {
           "payment_type": "easement",
-          "amount": 2000
+          "deposit_to_trunk_highway_fund": true
         }
       ],
       "variables": [
@@ -42,12 +42,12 @@
           "description": "The type of payment received, e.g., easement, lease, etc."
         },
         {
-          "name": "amount",
-          "description": "The amount of money received for the payment."
+          "name": "deposit_to_trunk_highway_fund",
+          "description": "Boolean indicating if the payment is deposited in the trunk highway fund"
         }
       ],
       "consequences": [
-        "Deposit the payment in the trunk highway fund if the payment type is 'easement'."
+        "Deposit the payment in the trunk highway fund"
       ]
     }
   ]

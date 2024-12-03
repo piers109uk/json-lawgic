@@ -71,9 +71,9 @@
                   {
                     "==": [
                       {
-                        "var": "jurisdiction_rights"
+                        "var": "jurisdiction_acquired"
                       },
-                      "acquired"
+                      "true"
                     ]
                   }
                 ]
@@ -88,27 +88,27 @@
           "location_type": "land",
           "boundary_type": "common",
           "jurisdiction": "state",
-          "jurisdiction_rights": "none"
+          "jurisdiction_acquired": "false"
         },
         {
           "location_within_boundaries": "state",
           "location_type": "water",
           "boundary_type": "common",
           "jurisdiction": "US",
-          "jurisdiction_rights": "acquired"
+          "jurisdiction_acquired": "true"
         },
         {
           "location_within_boundaries": "state",
           "location_type": "water",
           "boundary_type": "common",
           "jurisdiction": "state",
-          "jurisdiction_rights": "none"
+          "jurisdiction_acquired": "false"
         }
       ],
       "variables": [
         {
           "name": "location_within_boundaries",
-          "description": "Indicates if the location is within the state's boundaries as defined in the constitution."
+          "description": "Indicates if the location is within the state's boundaries."
         },
         {
           "name": "location_type",
@@ -116,15 +116,15 @@
         },
         {
           "name": "boundary_type",
-          "description": "Indicates if the water forms a common boundary with adjoining states."
+          "description": "The type of boundary, either common or not."
         },
         {
           "name": "jurisdiction",
-          "description": "The entity that has jurisdiction over the location, either the state or the US."
+          "description": "The jurisdiction over the location, either state or US."
         },
         {
-          "name": "jurisdiction_rights",
-          "description": "Indicates if the US has acquired jurisdiction rights over the location."
+          "name": "jurisdiction_acquired",
+          "description": "Indicates if the US has acquired jurisdiction over the location."
         }
       ],
       "consequences": [

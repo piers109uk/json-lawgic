@@ -1,3 +1,4 @@
+import asyncio
 from pathlib import Path
 from pprint import pprint
 
@@ -12,32 +13,39 @@ interpreter = LawInterpreter()
 # pprint(law_dict)
 
 
-def run_pipeline(input_folder: str, output_folder: str, limit: int = 50):
-    p = Path(input_folder)
-    files = sorted(p.glob("*.json"))
-    for file in files:
-        law_object = read_json(file)
-        if limit == 0:
-            break
-        if law_object.get("text") is None:
-            continue
+async def _process_file(file: Path, output_folder: str):
+    law_object = read_json(file)
 
-        print(file)
-        pprint(law_object)
-        limit -= 1
-        law_rules = interpreter.interpret_law(law_object)
-
+    if law_object.get("text") is None:
+        return
+    print(file)
+    pprint(law_object)
+    try:
+        law_rules = await interpreter.ainterpret_law(law_object)
         interpreted_law = {**law_object, **law_rules}
         new_path = f"{output_folder}/{file.name}"
         logger.info(f"Interpreted law written to {new_path}")
 
         write_json(new_path, interpreted_law)
+    except Exception as e:
+        logger.error(f"Error interpreting law: {file.name}")
+        logger.error(e)
+
+
+async def run_pipeline(input_folder: str, output_folder: str, limit: int = 100):
+    p = Path(input_folder)
+    files = sorted(p.glob("*.json"))
+
+    tasks = [_process_file(file, output_folder) for file in files[:limit]]
+    await asyncio.gather(*tasks)
 
 
 if __name__ == "__main__":
     input_folder = "data/default"
     output_folder = "data/interpreted"
 
-    run_pipeline(input_folder, output_folder)
+    asyncio.run(run_pipeline(input_folder, output_folder))
     output_file = "data/interpreted-laws.json"
-    merge_json_files(output_folder, output_file)
+    combined = merge_json_files(output_folder, output_file)
+    for law in combined:
+        print(f"{law["title"]} {len(law["rules"])}")

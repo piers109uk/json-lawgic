@@ -41,14 +41,11 @@
             ]
           },
           {
-            "in": [
+            "==": [
               {
                 "var": "purpose"
               },
-              [
-                "development",
-                "maintenance"
-              ]
+              "development or maintenance"
             ]
           }
         ]
@@ -59,14 +56,7 @@
           "land_location": "Tamarac National Wildlife Refuge",
           "executive_order": "7902",
           "date_of_order": "1938-05-31",
-          "purpose": "development"
-        },
-        {
-          "state": "Minnesota",
-          "land_location": "Tamarac National Wildlife Refuge",
-          "executive_order": "7902",
-          "date_of_order": "1938-05-31",
-          "purpose": "maintenance"
+          "purpose": "development or maintenance"
         },
         {
           "state": "Minnesota",
@@ -74,6 +64,13 @@
           "executive_order": "7902",
           "date_of_order": "1938-05-31",
           "purpose": "research"
+        },
+        {
+          "state": "Minnesota",
+          "land_location": "Another Refuge",
+          "executive_order": "7902",
+          "date_of_order": "1938-05-31",
+          "purpose": "development or maintenance"
         }
       ],
       "variables": [
@@ -87,11 +84,11 @@
         },
         {
           "name": "executive_order",
-          "description": "The executive order number that established the boundaries."
+          "description": "The executive order number related to the land acquisition."
         },
         {
           "name": "date_of_order",
-          "description": "The date when the executive order was issued."
+          "description": "The date of the executive order."
         },
         {
           "name": "purpose",
@@ -99,7 +96,7 @@
         }
       ],
       "consequences": [
-        "Consent is given for the acquisition of land by the United States."
+        "Consent is given for land acquisition by the United States."
       ]
     }
   ]

@@ -68,7 +68,86 @@
           {
             "==": [
               {
+                "var": "certificate_contains_description"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "certificate_contains_authority_purpose_method"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "certificate_contains_conditions"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "certificate_issued": true,
+          "certificate_contains_description": true,
+          "certificate_contains_authority_purpose_method": true,
+          "certificate_contains_conditions": true
+        },
+        {
+          "certificate_issued": true,
+          "certificate_contains_description": false,
+          "certificate_contains_authority_purpose_method": true,
+          "certificate_contains_conditions": true
+        },
+        {
+          "certificate_issued": false,
+          "certificate_contains_description": true,
+          "certificate_contains_authority_purpose_method": true,
+          "certificate_contains_conditions": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "certificate_issued",
+          "description": "Indicates if the certificate has been issued by the governor."
+        },
+        {
+          "name": "certificate_contains_description",
+          "description": "Indicates if the certificate contains a description of the property."
+        },
+        {
+          "name": "certificate_contains_authority_purpose_method",
+          "description": "Indicates if the certificate contains the authority for, purpose of, and method used in acquiring the property."
+        },
+        {
+          "name": "certificate_contains_conditions",
+          "description": "Indicates if the certificate contains the conditions of the jurisdiction of the state and the United States over the property."
+        }
+      ],
+      "consequences": [
+        "The certificate declares the consent of the state under sections 1.041 to 1.048."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
                 "var": "certificate_filed_with_secretary_of_state"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "certificate_delivered_to_applicant"
               },
               true
             ]
@@ -85,37 +164,37 @@
       },
       "examples": [
         {
-          "certificate_issued": true,
           "certificate_filed_with_secretary_of_state": true,
+          "certificate_delivered_to_applicant": true,
           "certificate_recorded_in_county": true
         },
         {
-          "certificate_issued": true,
+          "certificate_filed_with_secretary_of_state": true,
+          "certificate_delivered_to_applicant": false,
+          "certificate_recorded_in_county": true
+        },
+        {
           "certificate_filed_with_secretary_of_state": false,
-          "certificate_recorded_in_county": true
-        },
-        {
-          "certificate_issued": false,
-          "certificate_filed_with_secretary_of_state": true,
+          "certificate_delivered_to_applicant": true,
           "certificate_recorded_in_county": true
         }
       ],
       "variables": [
         {
-          "name": "certificate_issued",
-          "description": "Indicates if the certificate has been issued by the governor."
-        },
-        {
           "name": "certificate_filed_with_secretary_of_state",
           "description": "Indicates if one duplicate of the certificate is filed with the secretary of state."
         },
         {
+          "name": "certificate_delivered_to_applicant",
+          "description": "Indicates if the other duplicate of the certificate is delivered to the applicant."
+        },
+        {
           "name": "certificate_recorded_in_county",
-          "description": "Indicates if the certificate is recorded in the office of the county recorder of each county where the land is situated."
+          "description": "Indicates if the certificate is recorded in the office of the county recorder of each county in which the land or any part of it is situated."
         }
       ],
       "consequences": [
-        "The consent of the state is declared under sections 1.041 to 1.048."
+        "The certificate process is completed as required by law."
       ]
     }
   ]

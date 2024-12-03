@@ -29,37 +29,9 @@
             ]
           },
           {
-            "and": [
-              {
-                "===": [
-                  {
-                    "var": "land_acquisition"
-                  },
-                  true
-                ]
-              },
-              {
-                "===": [
-                  {
-                    "var": "commission_consent"
-                  },
-                  true
-                ]
-              }
-            ]
-          },
-          {
             "===": [
               {
-                "var": "acquisition_method"
-              },
-              "purchase_or_gift"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "state_consent"
+                "var": "us_acquisition"
               },
               true
             ]
@@ -70,23 +42,17 @@
         {
           "jurisdiction": true,
           "state_consent": true,
-          "land_acquisition": true,
-          "commission_consent": true,
-          "acquisition_method": "purchase_or_gift"
+          "us_acquisition": true
         },
         {
           "jurisdiction": true,
           "state_consent": false,
-          "land_acquisition": true,
-          "commission_consent": false,
-          "acquisition_method": "condemnation"
+          "us_acquisition": false
         },
         {
           "jurisdiction": false,
           "state_consent": true,
-          "land_acquisition": false,
-          "commission_consent": true,
-          "acquisition_method": "purchase_or_gift"
+          "us_acquisition": false
         }
       ],
       "variables": [
@@ -96,25 +62,151 @@
         },
         {
           "name": "state_consent",
-          "description": "Whether the state's consent has been obtained."
+          "description": "Whether the state has given consent for the acquisition."
         },
         {
-          "name": "land_acquisition",
-          "description": "Whether the land is being acquired for national purposes."
-        },
-        {
-          "name": "commission_consent",
-          "description": "Whether the Land Exchange Commission has given consent."
-        },
-        {
-          "name": "acquisition_method",
-          "description": "The method used for acquiring the land (e.g., purchase, gift, condemnation)."
+          "name": "us_acquisition",
+          "description": "Whether the United States is acquiring land or property."
         }
       ],
       "consequences": [
-        "The United States can exercise jurisdiction over the land.",
-        "The land can be acquired for national purposes with state consent.",
-        "The acquisition method must be specified and consented by the state."
+        "The United States can acquire land or property with concurrent jurisdiction."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "acquisition_method"
+                  },
+                  "purchase"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "state_consent"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "transaction_allowed"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "acquisition_method": "purchase",
+          "state_consent": false,
+          "transaction_allowed": false
+        },
+        {
+          "acquisition_method": "purchase",
+          "state_consent": true,
+          "transaction_allowed": true
+        },
+        {
+          "acquisition_method": "condemnation",
+          "state_consent": false,
+          "transaction_allowed": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "acquisition_method",
+          "description": "The method used for acquiring land or property."
+        },
+        {
+          "name": "state_consent",
+          "description": "Whether the state has given consent for the acquisition."
+        },
+        {
+          "name": "transaction_allowed",
+          "description": "Whether the transaction is allowed to proceed."
+        }
+      ],
+      "consequences": [
+        "The transaction cannot proceed without state consent if the acquisition method is purchase."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "acquisition_method"
+                  },
+                  "condemnation"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "state_consent"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "proceeding_allowed"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "acquisition_method": "condemnation",
+          "state_consent": false,
+          "proceeding_allowed": false
+        },
+        {
+          "acquisition_method": "condemnation",
+          "state_consent": true,
+          "proceeding_allowed": true
+        },
+        {
+          "acquisition_method": "purchase",
+          "state_consent": false,
+          "proceeding_allowed": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "acquisition_method",
+          "description": "The method used for acquiring land or property."
+        },
+        {
+          "name": "state_consent",
+          "description": "Whether the state has given consent for the acquisition."
+        },
+        {
+          "name": "proceeding_allowed",
+          "description": "Whether the condemnation proceeding is allowed to commence."
+        }
+      ],
+      "consequences": [
+        "The condemnation proceeding cannot commence without state consent."
       ]
     }
   ]

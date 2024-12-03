@@ -75,7 +75,7 @@
                   {
                     "var": "us_relinquishes_jurisdiction"
                   },
-                  true
+                  false
                 ]
               }
             ]
@@ -88,23 +88,20 @@
           "us_right_of_possession": false,
           "us_owns": true,
           "purpose_matches": true,
-          "us_occupies": false,
           "us_relinquishes_jurisdiction": false
         },
         {
           "us_title_acquired": false,
           "us_right_of_possession": true,
-          "us_owns": false,
-          "purpose_matches": true,
           "us_occupies": true,
+          "purpose_matches": true,
           "us_relinquishes_jurisdiction": false
         },
         {
-          "us_title_acquired": false,
+          "us_title_acquired": true,
           "us_right_of_possession": false,
           "us_owns": false,
           "purpose_matches": false,
-          "us_occupies": false,
           "us_relinquishes_jurisdiction": true
         }
       ],
@@ -115,15 +112,15 @@
         },
         {
           "name": "us_right_of_possession",
-          "description": "Indicates if the United States has acquired the right of possession of the premises."
+          "description": "Indicates if the United States has the right of possession of the premises."
         },
         {
           "name": "us_owns",
-          "description": "Indicates if the United States currently owns the premises."
+          "description": "Indicates if the United States owns the premises."
         },
         {
           "name": "us_occupies",
-          "description": "Indicates if the United States currently occupies the premises."
+          "description": "Indicates if the United States occupies the premises."
         },
         {
           "name": "purpose_matches",

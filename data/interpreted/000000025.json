@@ -104,23 +104,19 @@
             ]
           },
           {
-            "or": [
+            "in": [
               {
-                "in": [
-                  {
-                    "var": "county"
-                  },
-                  [
-                    "Clearwater",
-                    "Koochiching",
-                    "Lake of the Woods",
-                    "Mahnomen",
-                    "Pennington",
-                    "Red Lake",
-                    "Roseau"
-                  ]
-                ]
-              }
+                "var": "county"
+              },
+              [
+                "Clearwater",
+                "Koochiching",
+                "Lake of the Woods",
+                "Mahnomen",
+                "Pennington",
+                "Red Lake",
+                "Roseau"
+              ]
             ]
           }
         ]

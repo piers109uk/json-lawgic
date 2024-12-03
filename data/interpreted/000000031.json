@@ -19,11 +19,39 @@
             ]
           },
           {
-            "==": [
+            "or": [
               {
-                "var": "seal_position"
+                "==": [
+                  {
+                    "var": "seal_position"
+                  },
+                  "12 o'clock"
+                ]
               },
-              "12 o'clock"
+              {
+                "==": [
+                  {
+                    "var": "seal_position"
+                  },
+                  "enlarged"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "seal_position"
+                  },
+                  "reduced"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "seal_position"
+                  },
+                  "embossed"
+                ]
+              }
             ]
           },
           {
@@ -31,7 +59,7 @@
               {
                 "<=": [
                   {
-                    "var": "current_date"
+                    "var": "use_date"
                   },
                   "2025-01-01"
                 ]
@@ -52,19 +80,19 @@
         {
           "seal_design": "certified_design",
           "seal_position": "12 o'clock",
-          "current_date": "2024-05-10",
+          "use_date": "2024-12-31",
           "material_type": "expendable"
         },
         {
           "seal_design": "certified_design",
-          "seal_position": "12 o'clock",
-          "current_date": "2025-01-02",
+          "seal_position": "enlarged",
+          "use_date": "2025-01-02",
           "material_type": "permanent"
         },
         {
           "seal_design": "certified_design",
-          "seal_position": "12 o'clock",
-          "current_date": "2023-11-15",
+          "seal_position": "embossed",
+          "use_date": "2023-06-15",
           "material_type": "expendable"
         }
       ],
@@ -75,152 +103,23 @@
         },
         {
           "name": "certified_design",
-          "description": "The design certified by the State Emblems Redesign Commission."
+          "description": "The official certified design of the Great Seal as per the State Emblems Redesign Commission."
         },
         {
           "name": "seal_position",
-          "description": "The position of the seal when reproduced."
+          "description": "The position or modification of the seal (e.g., 12 o'clock, enlarged, reduced, embossed)."
         },
         {
-          "name": "current_date",
-          "description": "The current date when the seal is being used or reproduced."
-        },
-        {
-          "name": "material_type",
-          "description": "The type of material to which the seal is affixed, either 'permanent' or 'expendable'."
-        }
-      ],
-      "consequences": [
-        "Seal is official and conforms to legal requirements."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "seal_design"
-              },
-              {
-                "var": "certified_design"
-              }
-            ]
-          },
-          {
-            "or": [
-              {
-                "<=": [
-                  {
-                    "var": "current_date"
-                  },
-                  "2025-01-01"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "material_type"
-                  },
-                  "permanent"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "seal_design": "certified_design",
-          "current_date": "2024-12-31",
-          "material_type": "expendable"
-        },
-        {
-          "seal_design": "certified_design",
-          "current_date": "2025-01-02",
-          "material_type": "permanent"
-        },
-        {
-          "seal_design": "certified_design",
-          "current_date": "2023-06-15",
-          "material_type": "expendable"
-        }
-      ],
-      "variables": [
-        {
-          "name": "seal_design",
-          "description": "The design of the seal being used or reproduced."
-        },
-        {
-          "name": "certified_design",
-          "description": "The design certified by the State Emblems Redesign Commission."
-        },
-        {
-          "name": "current_date",
-          "description": "The current date when the seal is being used or reproduced."
+          "name": "use_date",
+          "description": "The date when the seal or its likeness is being used or reproduced."
         },
         {
           "name": "material_type",
-          "description": "The type of material to which the seal is affixed, either 'permanent' or 'expendable'."
+          "description": "The type of material to which the seal is affixed (e.g., permanent, expendable)."
         }
       ],
       "consequences": [
-        "Seal can be used until the supply is exhausted or until January 1, 2025."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "seal_design"
-              },
-              {
-                "var": "certified_design"
-              }
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "seal_position"
-              },
-              "12 o'clock"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "seal_design": "certified_design",
-          "seal_position": "12 o'clock"
-        },
-        {
-          "seal_design": "certified_design",
-          "seal_position": "12 o'clock"
-        },
-        {
-          "seal_design": "certified_design",
-          "seal_position": "12 o'clock"
-        }
-      ],
-      "variables": [
-        {
-          "name": "seal_design",
-          "description": "The design of the seal being used or reproduced."
-        },
-        {
-          "name": "certified_design",
-          "description": "The design certified by the State Emblems Redesign Commission."
-        },
-        {
-          "name": "seal_position",
-          "description": "The position of the seal when reproduced."
-        }
-      ],
-      "consequences": [
-        "Seal is reproduced with justification to the 12 o'clock position."
+        "The seal is official and conforms to the legal requirements."
       ]
     }
   ]

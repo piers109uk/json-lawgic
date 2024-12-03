@@ -35,7 +35,7 @@
           {
             "===": [
               {
-                "var": "state_tree.state"
+                "var": "state"
               },
               "Minnesota"
             ]
@@ -63,9 +63,9 @@
           "state_tree": {
             "name": "Red pine",
             "scientific_name": "Pinus resinosa",
-            "common_name": "Norway pine",
-            "state": "Minnesota"
+            "common_name": "Norway pine"
           },
+          "state": "Minnesota",
           "photo": {
             "status": "approved",
             "location": "Office of the Secretary of State"
@@ -75,9 +75,9 @@
           "state_tree": {
             "name": "Red pine",
             "scientific_name": "Pinus resinosa",
-            "common_name": "Norway pine",
-            "state": "Minnesota"
+            "common_name": "Norway pine"
           },
+          "state": "Minnesota",
           "photo": {
             "status": "pending",
             "location": "Office of the Secretary of State"
@@ -87,9 +87,9 @@
           "state_tree": {
             "name": "Red pine",
             "scientific_name": "Pinus resinosa",
-            "common_name": "Norway pine",
-            "state": "Minnesota"
+            "common_name": "Norway pine"
           },
+          "state": "Minnesota",
           "photo": {
             "status": "approved",
             "location": "Department of Natural Resources"
@@ -110,22 +110,20 @@
           "description": "The common name of the state tree."
         },
         {
-          "name": "state_tree.state",
-          "description": "The state for which the tree is designated as the official state tree."
+          "name": "state",
+          "description": "The state in question."
         },
         {
           "name": "photo.status",
-          "description": "The approval status of the photograph of the state tree."
+          "description": "The approval status of the photograph."
         },
         {
           "name": "photo.location",
-          "description": "The location where the photograph of the state tree is preserved."
+          "description": "The location where the photograph is preserved."
         }
       ],
       "consequences": [
-        "The Red pine is confirmed as the official state tree of Minnesota.",
-        "The photograph of the Red pine is approved by the commissioner of natural resources.",
-        "The photograph is certified and preserved in the Office of the Secretary of State."
+        "The Red pine is confirmed as the state tree of Minnesota and its photograph is approved and preserved."
       ]
     }
   ]

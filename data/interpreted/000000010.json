@@ -9,57 +9,57 @@
       "rule": {
         "and": [
           {
-            "===": [
+            "==": [
               {
                 "var": "offer_made"
               },
-              "yes"
+              true
             ]
           },
           {
-            "===": [
+            "==": [
               {
                 "var": "governor_accepted"
               },
-              "yes"
+              true
             ]
           },
           {
-            "===": [
+            "==": [
               {
                 "var": "certificate_filed"
               },
-              "yes"
+              true
             ]
           },
           {
-            "===": [
+            "==": [
               {
                 "var": "duplicate_recorded"
               },
-              "yes"
+              true
             ]
           }
         ]
       },
       "examples": [
         {
-          "offer_made": "yes",
-          "governor_accepted": "yes",
-          "certificate_filed": "yes",
-          "duplicate_recorded": "yes"
+          "offer_made": true,
+          "governor_accepted": true,
+          "certificate_filed": true,
+          "duplicate_recorded": true
         },
         {
-          "offer_made": "yes",
-          "governor_accepted": "no",
-          "certificate_filed": "yes",
-          "duplicate_recorded": "yes"
+          "offer_made": true,
+          "governor_accepted": false,
+          "certificate_filed": true,
+          "duplicate_recorded": true
         },
         {
-          "offer_made": "yes",
-          "governor_accepted": "yes",
-          "certificate_filed": "no",
-          "duplicate_recorded": "yes"
+          "offer_made": true,
+          "governor_accepted": true,
+          "certificate_filed": false,
+          "duplicate_recorded": true
         }
       ],
       "variables": [
@@ -81,7 +81,7 @@
         }
       ],
       "consequences": [
-        "Jurisdiction is retroceded to the state and exercised by state and local authorities."
+        "The jurisdiction is retroceded to the state and exercised by appropriate state authorities and local governmental units."
       ]
     }
   ]

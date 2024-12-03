@@ -11,7 +11,7 @@
           {
             "==": [
               {
-                "var": "official_fish.state"
+                "var": "state"
               },
               "Minnesota"
             ]
@@ -19,115 +19,39 @@
           {
             "==": [
               {
-                "var": "official_fish.name"
+                "var": "official_fish"
               },
               "walleye"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "official_fish.scientific_name"
-              },
-              "Stizostedion v. vitreum"
             ]
           }
         ]
       },
       "examples": [
         {
-          "official_fish": {
-            "state": "Minnesota",
-            "name": "walleye",
-            "scientific_name": "Stizostedion v. vitreum"
-          }
+          "state": "Minnesota",
+          "official_fish": "walleye"
         },
         {
-          "official_fish": {
-            "state": "Minnesota",
-            "name": "bass",
-            "scientific_name": "Micropterus salmoides"
-          }
+          "state": "Minnesota",
+          "official_fish": "bass"
         },
         {
-          "official_fish": {
-            "state": "Wisconsin",
-            "name": "walleye",
-            "scientific_name": "Stizostedion v. vitreum"
-          }
+          "state": "Wisconsin",
+          "official_fish": "walleye"
         }
       ],
       "variables": [
         {
-          "name": "official_fish.state",
-          "description": "The state for which the fish is the official fish."
+          "name": "state",
+          "description": "The state being referenced."
         },
         {
-          "name": "official_fish.name",
-          "description": "The common name of the official fish."
-        },
-        {
-          "name": "official_fish.scientific_name",
-          "description": "The scientific name of the official fish."
+          "name": "official_fish",
+          "description": "The official fish of the state."
         }
       ],
       "consequences": [
-        "The walleye is confirmed as the official fish of Minnesota."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "photograph.subject"
-              },
-              "walleye"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "photograph.location"
-              },
-              "Office of the Secretary of State"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "photograph": {
-            "subject": "walleye",
-            "location": "Office of the Secretary of State"
-          }
-        },
-        {
-          "photograph": {
-            "subject": "bass",
-            "location": "Office of the Secretary of State"
-          }
-        },
-        {
-          "photograph": {
-            "subject": "walleye",
-            "location": "Minnesota State Capitol"
-          }
-        }
-      ],
-      "variables": [
-        {
-          "name": "photograph.subject",
-          "description": "The subject of the photograph."
-        },
-        {
-          "name": "photograph.location",
-          "description": "The location where the photograph is preserved."
-        }
-      ],
-      "consequences": [
-        "A photograph of the walleye is preserved in the Office of the Secretary of State."
+        "A photograph of the walleye shall be preserved in the Office of the Secretary of State."
       ]
     }
   ]

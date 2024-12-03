@@ -27,57 +27,9 @@
           {
             "===": [
               {
-                "var": "navigable_waters_jurisdiction"
+                "var": "jurisdiction_granted"
               },
-              "state"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "land_disposition"
-              },
-              "public_auction_or_exchange"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "trust_fund_land_location"
-              },
-              "Boundary Waters Canoe Area Wilderness"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "trust_fund_land_ownership"
-              },
-              "state"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "trust_fund_land_jurisdiction"
-              },
-              "state"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "officials_duty"
-              },
-              "assert_and_defend_state_ownership"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "free_travel_rights"
-              },
-              "Webster-Ashburton and Root-Bryce Treaties"
+              false
             ]
           }
         ]
@@ -86,80 +38,163 @@
         {
           "state": "Minnesota",
           "navigable_waters_ownership": "state",
-          "navigable_waters_jurisdiction": "state",
-          "land_disposition": "public_auction_or_exchange",
-          "trust_fund_land_location": "Boundary Waters Canoe Area Wilderness",
-          "trust_fund_land_ownership": "state",
-          "trust_fund_land_jurisdiction": "state",
-          "officials_duty": "assert_and_defend_state_ownership",
-          "free_travel_rights": "Webster-Ashburton and Root-Bryce Treaties"
+          "jurisdiction_granted": false
+        },
+        {
+          "state": "Minnesota",
+          "navigable_waters_ownership": "federal",
+          "jurisdiction_granted": false
         },
         {
           "state": "Minnesota",
           "navigable_waters_ownership": "state",
-          "navigable_waters_jurisdiction": "state",
-          "land_disposition": "public_auction_or_exchange",
-          "trust_fund_land_location": "Boundary Waters Canoe Area Wilderness",
-          "trust_fund_land_ownership": "state",
-          "trust_fund_land_jurisdiction": "state",
-          "officials_duty": "assert_and_defend_state_ownership",
-          "free_travel_rights": "Webster-Ashburton and Root-Bryce Treaties"
-        },
-        {
-          "state": "Minnesota",
-          "navigable_waters_ownership": "state",
-          "navigable_waters_jurisdiction": "state",
-          "land_disposition": "public_auction_or_exchange",
-          "trust_fund_land_location": "Boundary Waters Canoe Area Wilderness",
-          "trust_fund_land_ownership": "state",
-          "trust_fund_land_jurisdiction": "state",
-          "officials_duty": "assert_and_defend_state_ownership",
-          "free_travel_rights": "Webster-Ashburton and Root-Bryce Treaties"
+          "jurisdiction_granted": true
         }
       ],
       "variables": [
         {
           "name": "state",
-          "description": "The state in question, which should be Minnesota."
+          "description": "The state being referenced."
         },
         {
           "name": "navigable_waters_ownership",
-          "description": "Ownership status of navigable waters within the state."
+          "description": "The entity that owns the navigable waters and their beds."
         },
         {
-          "name": "navigable_waters_jurisdiction",
-          "description": "Jurisdiction over navigable waters within the state."
-        },
-        {
-          "name": "land_disposition",
-          "description": "The method of disposition for school and swampland grant lands."
-        },
-        {
-          "name": "trust_fund_land_location",
-          "description": "Location of state-owned trust fund land."
-        },
-        {
-          "name": "trust_fund_land_ownership",
-          "description": "Ownership status of trust fund land."
-        },
-        {
-          "name": "trust_fund_land_jurisdiction",
-          "description": "Jurisdiction over trust fund land."
-        },
-        {
-          "name": "officials_duty",
-          "description": "Duties of state officials regarding state ownership and jurisdiction."
-        },
-        {
-          "name": "free_travel_rights",
-          "description": "Rights of free travel under specific treaties."
+          "name": "jurisdiction_granted",
+          "description": "Whether the state has granted jurisdiction over the navigable waters to the United States."
         }
       ],
       "consequences": [
-        "State retains ownership and jurisdiction over navigable waters and trust fund lands.",
-        "State officials must assert and defend state ownership and jurisdiction.",
-        "State land disposition is limited to public auction or exchange.",
-        "Free travel rights are recognized under specified treaties."
+        "The state owns and has jurisdiction over navigable waters and their beds within its boundaries."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "land_type"
+              },
+              "trust_fund"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "land_disposition"
+              },
+              "not_disposed"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "land_type": "trust_fund",
+          "land_disposition": "not_disposed"
+        },
+        {
+          "state": "Minnesota",
+          "land_type": "trust_fund",
+          "land_disposition": "disposed"
+        },
+        {
+          "state": "Minnesota",
+          "land_type": "non_trust_fund",
+          "land_disposition": "not_disposed"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state being referenced."
+        },
+        {
+          "name": "land_type",
+          "description": "The type of land being referenced."
+        },
+        {
+          "name": "land_disposition",
+          "description": "The disposition status of the land."
+        }
+      ],
+      "consequences": [
+        "The state retains ownership and jurisdiction over trust fund lands."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "land_location"
+              },
+              "Boundary Waters Canoe Area Wilderness"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "land_value"
+              },
+              "high"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "land_location": "Boundary Waters Canoe Area Wilderness",
+          "land_value": "high"
+        },
+        {
+          "state": "Minnesota",
+          "land_location": "Boundary Waters Canoe Area Wilderness",
+          "land_value": "low"
+        },
+        {
+          "state": "Minnesota",
+          "land_location": "Other",
+          "land_value": "high"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state being referenced."
+        },
+        {
+          "name": "land_location",
+          "description": "The location of the land being referenced."
+        },
+        {
+          "name": "land_value",
+          "description": "The value of the land being referenced."
+        }
+      ],
+      "consequences": [
+        "The state should be especially cognizant of the high value of the lakeshore and other state land located within the area."
       ]
     }
   ]

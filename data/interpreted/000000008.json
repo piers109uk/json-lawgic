@@ -132,7 +132,7 @@
         },
         {
           "name": "jurisdiction",
-          "description": "The type of jurisdiction accepted by the United States."
+          "description": "The type of jurisdiction over the land."
         },
         {
           "name": "acceptedByUS",
@@ -228,7 +228,7 @@
         }
       ],
       "consequences": [
-        "State can execute civil and criminal process in ceded land."
+        "The state reserves the right to execute civil and criminal process."
       ]
     },
     {
@@ -316,7 +316,7 @@
         }
       ],
       "consequences": [
-        "State reserves the right to impose taxes on income, sales, personal property, or real property."
+        "The state reserves the right to impose taxes."
       ]
     }
   ]

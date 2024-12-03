@@ -51,14 +51,6 @@
                   {
                     "var": "law_violated"
                   },
-                  "Fair Labor Standards Act"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "law_violated"
-                  },
                   "Family and Medical Leave Act"
                 ]
               },
@@ -114,7 +106,7 @@
         },
         {
           "name": "law_violated",
-          "description": "The specific law that the state is alleged to have violated."
+          "description": "The specific law that was violated by the state."
         },
         {
           "name": "aggrieved",
@@ -123,6 +115,70 @@
       ],
       "consequences": [
         "The individual may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "employee_status"
+              },
+              "employee"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "law_violated"
+              },
+              "Fair Labor Standards Act"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "aggrieved"
+              },
+              "true"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "employee_status": "employee",
+          "law_violated": "Fair Labor Standards Act",
+          "aggrieved": "true"
+        },
+        {
+          "employee_status": "employee",
+          "law_violated": "Fair Labor Standards Act",
+          "aggrieved": "true"
+        },
+        {
+          "employee_status": "employee",
+          "law_violated": "Fair Labor Standards Act",
+          "aggrieved": "true"
+        }
+      ],
+      "variables": [
+        {
+          "name": "employee_status",
+          "description": "The status of the person as an employee of the state."
+        },
+        {
+          "name": "law_violated",
+          "description": "The specific law that was violated by the state."
+        },
+        {
+          "name": "aggrieved",
+          "description": "Indicates whether the person is aggrieved by the state's violation of the law."
+        }
+      ],
+      "consequences": [
+        "The employee may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
       ]
     }
   ]
