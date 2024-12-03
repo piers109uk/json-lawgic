@@ -22,19 +22,15 @@
             }
           },
           {
-            "or": [
+            "in": [
               {
-                "in": [
-                  {
-                    "var": "action"
-                  },
-                  [
-                    "appear_as_attorney",
-                    "give_legal_advice",
-                    "prepare_legal_documents"
-                  ]
-                ]
-              }
+                "var": "action"
+              },
+              [
+                "appear_as_attorney",
+                "give_legal_advice",
+                "prepare_legal_documents"
+              ]
             ]
           }
         ]
@@ -89,19 +85,15 @@
             }
           },
           {
-            "or": [
+            "in": [
               {
-                "in": [
-                  {
-                    "var": "action"
-                  },
-                  [
-                    "maintain_court_action",
-                    "give_legal_advice",
-                    "prepare_legal_documents"
-                  ]
-                ]
-              }
+                "var": "action"
+              },
+              [
+                "maintain_court_action",
+                "give_legal_advice",
+                "prepare_legal_documents"
+              ]
             ]
           }
         ]

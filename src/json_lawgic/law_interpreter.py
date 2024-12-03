@@ -150,21 +150,26 @@ class LawInterpreter:
         return {**res_dict}
 
 
-if __name__ == "__main__":
+def _run_interpret(input_file: str, output_file: str):
     interpreter = LawInterpreter()
-    # law_object = read_json("data/default/000000001.json")
-    # # law_object = read_json("data/default/000049272.json")
+    law_object = read_json(input_file)
+    law_dict = interpreter.interpret_law(law_object)
+    write_json(output_file, law_dict)
+    pprint(law_dict)
 
-    # law_dict = interpreter.interpret_law(law_object)
 
-    # write_json("data/tests/000000001.json", law_dict)
-    # pprint(law_dict)
-
-    # law_object = read_json("data/default/000000001.json")
-
-    interpreted_file = "data/examples-interpreted/1.json"
+def _simplify_interpretation(interpreted_file: str):
+    interpreter = LawInterpreter()
     law_interpretation = read_json(interpreted_file)
     simplified = asyncio.run(interpreter.asimplify_interpretation(law_interpretation, law_interpretation["rules"]))
     simplified_law = {**law_interpretation, **simplified}
     write_json(interpreted_file, simplified_law)
     pprint(simplified_law)
+
+
+if __name__ == "__main__":
+    interpreter = LawInterpreter()
+    # _run_interpret("data/default/000000001.json", "data/tests/000000001.json")
+
+    interpreted_file = "data/examples-interpreted/000049272.json"
+    _simplify_interpretation(interpreted_file)
