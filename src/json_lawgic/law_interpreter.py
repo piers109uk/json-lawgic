@@ -1,4 +1,5 @@
 import asyncio
+from enum import Enum
 from pprint import pprint
 from typing import cast
 
@@ -27,8 +28,11 @@ load_dotenv()
 # )
 # llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
+
 # TODO: Compare multi-agent with this approach - can one agent split the law up and another define the rules?
 # Is it effective to have a reviewer & simplifier agent?
+# TODO: For the benefit of evaluation, begin using a chat-based system with a system prompt and the law as the input
+# TODO use https://langfuse.com/docs/scores/custom with jsonLogic eval to grade traces
 
 
 class RuleVariable(BaseModel):
@@ -65,19 +69,27 @@ interpret_prompt_template = PromptManager.get_prompt_template("interpret-law")
 simplify_prompt_template = PromptManager.get_prompt_template("simplify-interpretation")
 
 
+class AIModel(Enum):
+    claude = "claude-3-5-sonnet-latest"
+    openai = "gpt-4o"
+
+
 class LawInterpreter:
     json_logic = read_text("markdown/json-logic.md")
 
-    def __init__(self):
-        self.model_name = "claude-3-5-sonnet-latest"
-        self.llm = ChatAnthropic(
-            model_name="claude-3-5-sonnet-latest",
-            max_tokens_to_sample=8192,  #
-            temperature=0,
-            timeout=None,
-            max_retries=2,
-            stop=None,
-        )
+    def __init__(self, model: AIModel = AIModel.claude):
+        self.model_name = model.value
+        if model == AIModel.claude:
+            self.llm = ChatAnthropic(
+                model_name=model.value,
+                max_tokens_to_sample=8192,
+                temperature=0,
+                timeout=None,
+                max_retries=2,
+                stop=None,
+            )
+        elif model == AIModel.openai:
+            self.llm = ChatOpenAI(model=model.value, temperature=0)
 
     def interpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
@@ -129,7 +141,7 @@ class LawInterpreter:
 
 
 def _run_interpret(input_file: str, output_file: str):
-    interpreter = LawInterpreter()
+    interpreter = LawInterpreter(AIModel.openai)
     law_object = read_json(input_file)
     law_dict = interpreter.interpret_law(law_object)
     merged_dict = {**law_object, **law_dict}
@@ -147,8 +159,7 @@ def _simplify_interpretation(interpreted_file: str):
 
 
 if __name__ == "__main__":
-    interpreter = LawInterpreter()
-    file_name = "000000001.json"
+    file_name = "000049272.json"
     input_file = f"data/default/{file_name}"
     output_file = f"data/tests/{file_name}"
     _run_interpret(input_file, output_file)

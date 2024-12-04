@@ -15,8 +15,6 @@ import { IStatuteData, showcase, statutes } from "./statutes"
 export default function Home() {
   const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
 
-  // TODO: determine how to display multiple rules
-
   return (
     <>
       <div className="h-screen bg-background">
