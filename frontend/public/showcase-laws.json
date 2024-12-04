@@ -9,12 +9,7 @@
         "rule": {
           "and": [
             {
-              "==": [
-                {
-                  "var": "intent"
-                },
-                true
-              ]
+              "var": "intent_to_defraud"
             },
             {
               "or": [
@@ -23,7 +18,7 @@
                     {
                       "var": "action"
                     },
-                    "false_entry"
+                    "make_false_entry"
                   ]
                 },
                 {
@@ -31,7 +26,7 @@
                     {
                       "var": "action"
                     },
-                    "alter_entry"
+                    "alter_true_entry"
                   ]
                 },
                 {
@@ -39,7 +34,7 @@
                     {
                       "var": "action"
                     },
-                    "omit_entry"
+                    "omit_true_entry"
                   ]
                 },
                 {
@@ -47,7 +42,7 @@
                     {
                       "var": "action"
                     },
-                    "prevent_entry"
+                    "prevent_true_entry"
                   ]
                 }
               ]
@@ -56,29 +51,39 @@
         },
         "examples": [
           {
-            "intent": true,
-            "action": "false_entry"
+            "intent_to_defraud": true,
+            "action": "make_false_entry"
           },
           {
-            "intent": true,
-            "action": "alter_entry"
+            "intent_to_defraud": true,
+            "action": "alter_true_entry"
           },
           {
-            "intent": false,
-            "action": "omit_entry"
+            "intent_to_defraud": false,
+            "action": "omit_true_entry"
+          },
+          {
+            "intent_to_defraud": true,
+            "action": "prevent_true_entry"
+          },
+          {
+            "intent_to_defraud": false,
+            "action": "make_false_entry"
           }
         ],
         "variables": [
           {
-            "name": "intent",
-            "description": "The intent to defraud"
+            "name": "intent_to_defraud",
+            "description": "Indicates whether the person has the intent to defraud."
           },
           {
             "name": "action",
-            "description": "The action taken on the business records"
+            "description": "The action taken by the person regarding business records, such as making a false entry, altering a true entry, omitting a true entry, or preventing a true entry."
           }
         ],
-        "consequences": ["Guilty of falsifying business records in the second degree", "Class A misdemeanor"]
+        "consequences": [
+          "Class A misdemeanor"
+        ]
       }
     ]
   },
@@ -119,25 +124,27 @@
           },
           {
             "falsifying_second_degree": true,
-            "intent_to_commit_another_crime": true,
-            "intent_to_aid_or_conceal": true
+            "intent_to_commit_another_crime": false,
+            "intent_to_aid_or_conceal": false
           }
         ],
         "variables": [
           {
             "name": "falsifying_second_degree",
-            "description": "Indicates if the person has committed falsifying business records in the second degree."
+            "description": "Indicates if the person has committed the crime of falsifying business records in the second degree."
           },
           {
             "name": "intent_to_commit_another_crime",
-            "description": "Indicates if there is an intent to commit another crime."
+            "description": "Indicates if the person has the intent to commit another crime."
           },
           {
             "name": "intent_to_aid_or_conceal",
-            "description": "Indicates if there is an intent to aid or conceal the commission of another crime."
+            "description": "Indicates if the person has the intent to aid or conceal the commission of another crime."
           }
         ],
-        "consequences": ["Guilty of falsifying business records in the first degree", "Class E felony"]
+        "consequences": [
+          "Guilty of falsifying business records in the first degree, a class E felony."
+        ]
       }
     ]
   },
@@ -157,7 +164,10 @@
                   {
                     "var": "person_type"
                   },
-                  ["member_of_bar", "licensed_attorney"]
+                  [
+                    "member_of_bar",
+                    "licensed_attorney"
+                  ]
                 ]
               }
             },
@@ -168,7 +178,35 @@
                     {
                       "var": "action"
                     },
-                    ["appear_as_attorney", "give_legal_advice", "prepare_legal_documents"]
+                    [
+                      "appear_as_attorney",
+                      "give_legal_advice",
+                      "prepare_legal_documents"
+                    ]
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "==": [
+                        {
+                          "var": "person_type"
+                        },
+                        "corporation"
+                      ]
+                    },
+                    {
+                      "in": [
+                        {
+                          "var": "action"
+                        },
+                        [
+                          "maintain_action",
+                          "give_legal_advice",
+                          "prepare_legal_documents"
+                        ]
+                      ]
+                    }
                   ]
                 }
               ]
@@ -177,11 +215,11 @@
         },
         "examples": [
           {
-            "person_type": "non_member",
+            "person_type": "individual",
             "action": "appear_as_attorney"
           },
           {
-            "person_type": "non_member",
+            "person_type": "corporation",
             "action": "give_legal_advice"
           },
           {
@@ -192,146 +230,168 @@
         "variables": [
           {
             "name": "person_type",
-            "description": "The type of person or entity, e.g., member_of_bar, licensed_attorney, non_member, corporation"
+            "description": "The type of person or entity performing the action, e.g., individual, corporation, member_of_bar, licensed_attorney."
           },
           {
             "name": "action",
-            "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents"
+            "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents."
           }
         ],
-        "consequences": ["Unlawful to perform legal actions without being a licensed attorney or member of the bar."]
+        "consequences": [
+          "The person or entity is acting unlawfully and may be subject to penalties."
+        ]
       },
       {
         "rule": {
           "and": [
             {
-              "===": [
-                {
-                  "var": "corporation_type"
-                },
-                "for_profit"
-              ]
-            },
-            {
-              "!": {
-                "===": [
-                  {
-                    "var": "corporation_exception"
-                  },
-                  "attorney_professional_firm"
-                ]
-              }
-            },
-            {
-              "or": [
-                {
-                  "in": [
-                    {
-                      "var": "action"
-                    },
-                    ["maintain_court_action", "give_legal_advice", "prepare_legal_documents"]
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        "examples": [
-          {
-            "corporation_type": "for_profit",
-            "corporation_exception": "non_attorney_firm",
-            "action": "maintain_court_action"
-          },
-          {
-            "corporation_type": "for_profit",
-            "corporation_exception": "non_attorney_firm",
-            "action": "give_legal_advice"
-          },
-          {
-            "corporation_type": "for_profit",
-            "corporation_exception": "non_attorney_firm",
-            "action": "prepare_legal_documents"
-          }
-        ],
-        "variables": [
-          {
-            "name": "corporation_type",
-            "description": "The type of corporation, e.g., for_profit, non_profit"
-          },
-          {
-            "name": "corporation_exception",
-            "description": "Exception status of the corporation, e.g., attorney_professional_firm"
-          },
-          {
-            "name": "action",
-            "description": "The action being performed, e.g., maintain_court_action, give_legal_advice, prepare_legal_documents"
-          }
-        ],
-        "consequences": ["Unlawful for for-profit corporations to perform legal actions unless they are attorney professional firms."]
-      },
-      {
-        "rule": {
-          "and": [
-            {
-              "===": [
+              "==": [
                 {
                   "var": "person_type"
                 },
-                "non_attorney"
-              ]
-            },
-            {
-              "===": [
-                {
-                  "var": "action"
-                },
-                "charge_attorney_fee"
+                "corporation"
               ]
             },
             {
               "!": {
-                "===": [
+                "in": [
                   {
-                    "var": "fee_recipient"
+                    "var": "corporation_type"
                   },
-                  "licensed_attorney"
+                  [
+                    "attorney_professional_firm"
+                  ]
                 ]
               }
+            },
+            {
+              "in": [
+                {
+                  "var": "action"
+                },
+                [
+                  "maintain_action",
+                  "give_legal_advice",
+                  "prepare_legal_documents"
+                ]
+              ]
             }
           ]
         },
         "examples": [
           {
-            "person_type": "non_attorney",
-            "action": "charge_attorney_fee",
-            "fee_recipient": "non_licensed_person"
+            "person_type": "corporation",
+            "corporation_type": "for_profit",
+            "action": "maintain_action"
           },
           {
-            "person_type": "non_attorney",
-            "action": "charge_attorney_fee",
-            "fee_recipient": "corporation"
+            "person_type": "corporation",
+            "corporation_type": "non_profit",
+            "action": "give_legal_advice"
           },
           {
-            "person_type": "non_attorney",
-            "action": "charge_attorney_fee",
-            "fee_recipient": "non_licensed_person"
+            "person_type": "corporation",
+            "corporation_type": "attorney_professional_firm",
+            "action": "prepare_legal_documents"
           }
         ],
         "variables": [
           {
             "name": "person_type",
-            "description": "The type of person or entity, e.g., non_attorney, licensed_attorney"
+            "description": "The type of person or entity performing the action, e.g., individual, corporation."
+          },
+          {
+            "name": "corporation_type",
+            "description": "The type of corporation, e.g., for_profit, non_profit, attorney_professional_firm."
           },
           {
             "name": "action",
-            "description": "The action being performed, e.g., charge_attorney_fee"
-          },
-          {
-            "name": "fee_recipient",
-            "description": "The recipient of the attorney fee, e.g., licensed_attorney, non_licensed_person"
+            "description": "The action being performed, e.g., maintain_action, give_legal_advice, prepare_legal_documents."
           }
         ],
-        "consequences": ["Unlawful to charge attorney fees unless the recipient is a licensed attorney."]
+        "consequences": [
+          "The corporation is acting unlawfully and may be subject to penalties."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "person_type"
+                },
+                "individual"
+              ]
+            },
+            {
+              "!": {
+                "in": [
+                  {
+                    "var": "action"
+                  },
+                  [
+                    "draw_document_without_charge",
+                    "draw_will_in_emergency",
+                    "defend_insureds",
+                    "act_for_common_carrier",
+                    "give_legal_advice_to_members",
+                    "cooperate_with_attorney",
+                    "draw_document_for_corporation",
+                    "draw_conveyance_documents",
+                    "render_legal_services_to_corporation",
+                    "engage_in_collections",
+                    "publish_legal_questions",
+                    "manage_rental_property",
+                    "commence_action_for_rental_property",
+                    "deliver_legal_services_as_specialized_assistant",
+                    "appear_on_behalf_of_corporation",
+                    "appear_on_behalf_of_association"
+                  ]
+                ]
+              }
+            },
+            {
+              "in": [
+                {
+                  "var": "action"
+                },
+                [
+                  "draw_will",
+                  "prepare_legal_document",
+                  "give_legal_advice"
+                ]
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "person_type": "individual",
+            "action": "draw_will"
+          },
+          {
+            "person_type": "individual",
+            "action": "prepare_legal_document"
+          },
+          {
+            "person_type": "individual",
+            "action": "give_legal_advice"
+          }
+        ],
+        "variables": [
+          {
+            "name": "person_type",
+            "description": "The type of person or entity performing the action, e.g., individual, corporation."
+          },
+          {
+            "name": "action",
+            "description": "The action being performed, e.g., draw_will, prepare_legal_document, give_legal_advice."
+          }
+        ],
+        "consequences": [
+          "The individual is acting unlawfully and may be subject to penalties."
+        ]
       }
     ]
   }
