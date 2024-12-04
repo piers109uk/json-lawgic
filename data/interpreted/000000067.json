@@ -4,51 +4,55 @@
   "title": "1.1497 STATE BUTTERFLY.",
   "text": "The Monarch butterfly (Danaus plexippus) is the official butterfly of the state of Minnesota.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "butterfly"
+            "==": [
+              {
+                "var": "butterfly_name"
+              },
+              "Monarch butterfly"
+            ]
           },
-          "Monarch butterfly"
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "butterfly": "Monarch butterfly",
-      "state": "Minnesota"
-    },
-    {
-      "butterfly": "Viceroy butterfly",
-      "state": "Minnesota"
-    },
-    {
-      "butterfly": "Monarch butterfly",
-      "state": "California"
+      "examples": [
+        {
+          "butterfly_name": "Monarch butterfly",
+          "state": "Minnesota"
+        },
+        {
+          "butterfly_name": "Viceroy butterfly",
+          "state": "Minnesota"
+        },
+        {
+          "butterfly_name": "Monarch butterfly",
+          "state": "California"
+        }
+      ],
+      "variables": [
+        {
+          "name": "butterfly_name",
+          "description": "The name of the butterfly being referenced."
+        },
+        {
+          "name": "state",
+          "description": "The name of the state being referenced."
+        }
+      ],
+      "consequences": [
+        "The Monarch butterfly is the official butterfly of Minnesota."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "butterfly",
-      "description": "The name of the butterfly being referenced."
-    },
-    {
-      "name": "state",
-      "description": "The name of the state being referenced."
-    }
-  ],
-  "consequences": [
-    "The Monarch butterfly is the official butterfly of Minnesota."
   ]
 }

@@ -4,124 +4,244 @@
   "title": "1.041 CONCURRENT JURISDICTION OF STATE AND UNITED STATES.",
   "text": "Except as otherwise expressly provided, the jurisdiction of the United States over any land or other property in this state owned for national purposes is concurrent with and subject to the jurisdiction and right of the state to cause its civil and criminal process to be executed there, to punish offenses against its laws committed there, and to protect, regulate, control, and dispose of any property of the state there.\nIn any case not otherwise provided for, the consent of the state to the acquisition by the United States of any land or right or interest in land in this state, desired for any authorized national purpose, with concurrent jurisdiction as defined in subdivision 1, may be given by concurrence of a majority of the members of the Land Exchange Commission created by the Constitution of Minnesota, article XI, section 10, upon finding that the acquisition and the methods of the acquisition and the exercise of the jurisdiction are consistent with the best interests of the state, if application for the state's consent is made by an authorized officer of the United States, setting forth a description of the property, with a map when necessary for its proper identification, and the authority for, purpose of, and method used or to be used in acquiring it. The commission may specify the method of acquisition as a condition of its consent.\nIn case of acquisition by purchase or gift, the state's consent shall be obtained before the execution of any instrument conveying the lands involved or any interest in them to the United States. In case of condemnation, consent shall be obtained before the commencement of a condemnation proceeding.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "var": "jurisdiction"
-              },
-              true
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "state_consent"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "var": "acquisition_method"
-              },
-              "purchase"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "state_consent"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "var": "acquisition_method"
-              },
-              "gift"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "state_consent"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      {
-        "and": [
-          {
-            "===": [
-              {
-                "var": "acquisition_method"
-              },
-              "condemnation"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "state_consent"
-              },
-              true
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "examples": [
+  "rules": [
     {
-      "jurisdiction": true,
-      "state_consent": true,
-      "acquisition_method": "purchase"
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "jurisdiction"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "state_consent"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "land_acquisition"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "best_interests"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "application_made"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "jurisdiction": true,
+          "state_consent": true,
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
+        },
+        {
+          "jurisdiction": true,
+          "state_consent": false,
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
+        },
+        {
+          "jurisdiction": false,
+          "state_consent": true,
+          "land_acquisition": true,
+          "best_interests": true,
+          "application_made": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "jurisdiction",
+          "description": "Whether the jurisdiction of the United States is concurrent with the state."
+        },
+        {
+          "name": "state_consent",
+          "description": "Whether the state has given consent for land acquisition."
+        },
+        {
+          "name": "land_acquisition",
+          "description": "Whether the land is being acquired for national purposes."
+        },
+        {
+          "name": "best_interests",
+          "description": "Whether the acquisition is consistent with the best interests of the state."
+        },
+        {
+          "name": "application_made",
+          "description": "Whether an application for the state's consent has been made by an authorized officer of the United States."
+        }
+      ],
+      "consequences": [
+        "The United States can acquire land with concurrent jurisdiction."
+      ]
     },
     {
-      "jurisdiction": true,
-      "state_consent": true,
-      "acquisition_method": "gift"
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "method_of_acquisition"
+                  },
+                  "purchase"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "state_consent"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "execution"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "method_of_acquisition": "purchase",
+          "state_consent": false,
+          "execution": false
+        },
+        {
+          "method_of_acquisition": "purchase",
+          "state_consent": true,
+          "execution": true
+        },
+        {
+          "method_of_acquisition": "condemnation",
+          "state_consent": false,
+          "execution": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "method_of_acquisition",
+          "description": "The method used for acquiring the land."
+        },
+        {
+          "name": "state_consent",
+          "description": "Whether the state has given consent for land acquisition."
+        },
+        {
+          "name": "execution",
+          "description": "Whether the execution of the land conveyance has occurred."
+        }
+      ],
+      "consequences": [
+        "Execution of land conveyance cannot occur without state consent."
+      ]
     },
     {
-      "jurisdiction": true,
-      "state_consent": true,
-      "acquisition_method": "condemnation"
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "method_of_acquisition"
+                  },
+                  "condemnation"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "state_consent"
+                  },
+                  false
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "condemnation_proceeding"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "method_of_acquisition": "condemnation",
+          "state_consent": false,
+          "condemnation_proceeding": false
+        },
+        {
+          "method_of_acquisition": "condemnation",
+          "state_consent": true,
+          "condemnation_proceeding": true
+        },
+        {
+          "method_of_acquisition": "purchase",
+          "state_consent": false,
+          "condemnation_proceeding": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "method_of_acquisition",
+          "description": "The method used for acquiring the land."
+        },
+        {
+          "name": "state_consent",
+          "description": "Whether the state has given consent for land acquisition."
+        },
+        {
+          "name": "condemnation_proceeding",
+          "description": "Whether the condemnation proceeding has commenced."
+        }
+      ],
+      "consequences": [
+        "Condemnation proceedings cannot commence without state consent."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "jurisdiction",
-      "description": "Whether the jurisdiction of the United States is concurrent with the state."
-    },
-    {
-      "name": "state_consent",
-      "description": "Whether the state has given consent for the acquisition."
-    },
-    {
-      "name": "acquisition_method",
-      "description": "The method used for acquiring the land or property."
-    }
-  ],
-  "consequences": [
-    "The United States can execute its jurisdiction over the land.",
-    "The state can execute its civil and criminal process on the land.",
-    "The acquisition method is consistent with the best interests of the state."
   ]
 }

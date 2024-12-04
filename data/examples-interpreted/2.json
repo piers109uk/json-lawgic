@@ -3,56 +3,59 @@
   "url": "https://www.nysenate.gov/legislation/laws/PEN/175.10",
   "title": "Falsifying business records in the first degree",
   "text": "\u00a7 175.10 Falsifying business records in the first degree.\n\nA person is guilty of falsifying business records in the first degree\nwhen he commits the crime of falsifying business records in the second\ndegree, and when his intent to defraud includes an intent to commit\nanother crime or to aid or conceal the commission thereof.\n\nFalsifying business records in the first degree is a class E felony.\n",
-  "rule": {
-    "and": [
-      {
-        "var": "falsifying_second_degree"
-      },
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "intent_to_commit_another_crime"
+            "var": "falsifying_second_degree"
           },
           {
-            "var": "intent_to_aid_or_conceal"
+            "or": [
+              {
+                "var": "intent_to_commit_another_crime"
+              },
+              {
+                "var": "intent_to_aid_or_conceal"
+              }
+            ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "falsifying_second_degree": true,
-      "intent_to_commit_another_crime": true,
-      "intent_to_aid_or_conceal": false
-    },
-    {
-      "falsifying_second_degree": true,
-      "intent_to_commit_another_crime": false,
-      "intent_to_aid_or_conceal": true
-    },
-    {
-      "falsifying_second_degree": false,
-      "intent_to_commit_another_crime": true,
-      "intent_to_aid_or_conceal": true
+      },
+      "examples": [
+        {
+          "falsifying_second_degree": true,
+          "intent_to_commit_another_crime": true,
+          "intent_to_aid_or_conceal": false
+        },
+        {
+          "falsifying_second_degree": true,
+          "intent_to_commit_another_crime": false,
+          "intent_to_aid_or_conceal": true
+        },
+        {
+          "falsifying_second_degree": true,
+          "intent_to_commit_another_crime": false,
+          "intent_to_aid_or_conceal": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "falsifying_second_degree",
+          "description": "Indicates if the person has committed the crime of falsifying business records in the second degree."
+        },
+        {
+          "name": "intent_to_commit_another_crime",
+          "description": "Indicates if the person has the intent to commit another crime."
+        },
+        {
+          "name": "intent_to_aid_or_conceal",
+          "description": "Indicates if the person has the intent to aid or conceal the commission of another crime."
+        }
+      ],
+      "consequences": [
+        "Guilty of falsifying business records in the first degree, a class E felony."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "falsifying_second_degree",
-      "description": "Indicates if the person has committed falsifying business records in the second degree."
-    },
-    {
-      "name": "intent_to_commit_another_crime",
-      "description": "Indicates if the person has the intent to commit another crime."
-    },
-    {
-      "name": "intent_to_aid_or_conceal",
-      "description": "Indicates if the person has the intent to aid or conceal the commission of another crime."
-    }
-  ],
-  "consequences": [
-    "Guilty of falsifying business records in the first degree",
-    "Class E felony"
   ]
 }

@@ -4,84 +4,126 @@
   "title": "1.05 WAIVER OF IMMUNITY FOR VIOLATIONS OF CERTAIN FEDERAL STATUTES.",
   "text": "An employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Age Discrimination in Employment Act of 1967, United States Code, title 29, section 621, et seq., as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee of the state who is aggrieved by the state's violation of the Fair Labor Standards Act of 1938, United States Code, title 29, section 201, et seq., as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Family and Medical Leave Act, United States Code, title 29, sections 2601 to 2654, as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Americans with Disabilities Act of 1990, United States Code, title 42, section 12101, as amended, may bring a civil action against the state in federal court or in any other court of competent jurisdiction for such legal or equitable relief as will effectuate the purposes of the act.\nAn employee, former employee, or prospective employee of the state who is aggrieved by the state's violation of the Uniformed Services Employment and Reemployment Rights Act, United States Code, title 38, sections 4301 to 4333, as amended, may bring a civil action against the state in federal court or another court of competent jurisdiction for legal or equitable relief that will effectuate the purposes of that act.",
   "repealed": false,
-  "rule": {
-    "or": [
-      {
+  "rules": [
+    {
+      "rule": {
         "and": [
           {
-            "in": [
+            "or": [
               {
-                "var": "act"
+                "==": [
+                  {
+                    "var": "role"
+                  },
+                  "employee"
+                ]
               },
-              [
-                "Age Discrimination in Employment Act of 1967",
-                "Family and Medical Leave Act",
-                "Americans with Disabilities Act of 1990",
-                "Uniformed Services Employment and Reemployment Rights Act"
-              ]
+              {
+                "==": [
+                  {
+                    "var": "role"
+                  },
+                  "former_employee"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "role"
+                  },
+                  "prospective_employee"
+                ]
+              }
             ]
           },
           {
-            "in": [
+            "or": [
               {
-                "var": "role"
+                "==": [
+                  {
+                    "var": "law"
+                  },
+                  "Age Discrimination in Employment Act"
+                ]
               },
-              [
-                "employee",
-                "former employee",
-                "prospective employee"
-              ]
+              {
+                "==": [
+                  {
+                    "var": "law"
+                  },
+                  "Fair Labor Standards Act"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "law"
+                  },
+                  "Family and Medical Leave Act"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "law"
+                  },
+                  "Americans with Disabilities Act"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "law"
+                  },
+                  "Uniformed Services Employment and Reemployment Rights Act"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "aggrieved"
+              },
+              "true"
             ]
           }
         ]
       },
-      {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "act"
-              },
-              "Fair Labor Standards Act of 1938"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "role"
-              },
-              "employee"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "role": "employee",
-      "act": "Age Discrimination in Employment Act of 1967"
-    },
-    {
-      "role": "former employee",
-      "act": "Family and Medical Leave Act"
-    },
-    {
-      "role": "prospective employee",
-      "act": "Americans with Disabilities Act of 1990"
+      "examples": [
+        {
+          "role": "employee",
+          "law": "Age Discrimination in Employment Act",
+          "aggrieved": "true"
+        },
+        {
+          "role": "former_employee",
+          "law": "Family and Medical Leave Act",
+          "aggrieved": "true"
+        },
+        {
+          "role": "prospective_employee",
+          "law": "Americans with Disabilities Act",
+          "aggrieved": "false"
+        }
+      ],
+      "variables": [
+        {
+          "name": "role",
+          "description": "The role of the person (employee, former employee, or prospective employee)"
+        },
+        {
+          "name": "law",
+          "description": "The specific law that is alleged to have been violated"
+        },
+        {
+          "name": "aggrieved",
+          "description": "Whether the person is aggrieved by the state's violation"
+        }
+      ],
+      "consequences": [
+        "The person may bring a civil action against the state in federal court or in any other court of competent jurisdiction for legal or equitable relief."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "role",
-      "description": "The role of the person (employee, former employee, or prospective employee) with respect to the state."
-    },
-    {
-      "name": "act",
-      "description": "The specific act that the state is alleged to have violated."
-    }
-  ],
-  "consequences": [
-    "The individual may bring a civil action against the state in federal court or any other court of competent jurisdiction for legal or equitable relief."
   ]
 }

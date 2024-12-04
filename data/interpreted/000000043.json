@@ -4,66 +4,85 @@
   "title": "1.142 STATE FLOWER.",
   "text": "The pink and white lady slipper, Cypripedium reginae, is the official flower of the state of Minnesota.\nA photograph of the pink and white lady slipper, obtained and approved by the commissioner of natural resources, shall be preserved in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "flower_name"
+            "==": [
+              {
+                "var": "flower_name"
+              },
+              "Cypripedium reginae"
+            ]
           },
-          "Cypripedium reginae"
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "flower_status"
+              },
+              "official"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "photo_approved"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
-          },
-          "Minnesota"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "approved_by"
-          },
-          "commissioner of natural resources"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "flower_name": "Cypripedium reginae",
-      "state": "Minnesota",
-      "approved_by": "commissioner of natural resources"
-    },
-    {
-      "flower_name": "Cypripedium reginae",
-      "state": "Minnesota",
-      "approved_by": "someone else"
-    },
-    {
-      "flower_name": "Another flower",
-      "state": "Minnesota",
-      "approved_by": "commissioner of natural resources"
+      "examples": [
+        {
+          "flower_name": "Cypripedium reginae",
+          "state": "Minnesota",
+          "flower_status": "official",
+          "photo_approved": true
+        },
+        {
+          "flower_name": "Cypripedium reginae",
+          "state": "Minnesota",
+          "flower_status": "official",
+          "photo_approved": false
+        },
+        {
+          "flower_name": "Cypripedium reginae",
+          "state": "Wisconsin",
+          "flower_status": "official",
+          "photo_approved": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "flower_name",
+          "description": "The name of the flower being referenced."
+        },
+        {
+          "name": "state",
+          "description": "The state in which the flower is being considered official."
+        },
+        {
+          "name": "flower_status",
+          "description": "The status of the flower as official or not."
+        },
+        {
+          "name": "photo_approved",
+          "description": "Whether the photograph of the flower has been approved by the commissioner of natural resources."
+        }
+      ],
+      "consequences": [
+        "The photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "flower_name",
-      "description": "The name of the flower being considered."
-    },
-    {
-      "name": "state",
-      "description": "The state for which the flower is being considered as the official flower."
-    },
-    {
-      "name": "approved_by",
-      "description": "The authority who approved the photograph of the flower."
-    }
-  ],
-  "consequences": [
-    "A photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
   ]
 }

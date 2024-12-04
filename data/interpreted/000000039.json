@@ -4,72 +4,100 @@
   "title": "1.146 STATE FISH.",
   "text": "The walleye, Stizostedion v. vitreum, is the official fish of the state of Minnesota.\nA photograph of the walleye shall be preserved in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "official_fish.state"
+            "==": [
+              {
+                "var": "official_fish.state"
+              },
+              "Minnesota"
+            ]
           },
-          "Minnesota"
+          {
+            "==": [
+              {
+                "var": "official_fish.name"
+              },
+              "walleye"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "official_fish.scientific_name"
+              },
+              "Stizostedion v. vitreum"
+            ]
+          },
+          {
+            "in": [
+              "walleye",
+              {
+                "var": "photographs"
+              }
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "official_fish.name"
+      "examples": [
+        {
+          "official_fish": {
+            "state": "Minnesota",
+            "name": "walleye",
+            "scientific_name": "Stizostedion v. vitreum"
           },
-          "walleye"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "official_fish.scientific_name"
+          "photographs": [
+            "walleye",
+            "bass"
+          ]
+        },
+        {
+          "official_fish": {
+            "state": "Minnesota",
+            "name": "walleye",
+            "scientific_name": "Stizostedion v. vitreum"
           },
-          "Stizostedion v. vitreum"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "official_fish": {
-        "state": "Minnesota",
-        "name": "walleye",
-        "scientific_name": "Stizostedion v. vitreum"
-      }
-    },
-    {
-      "official_fish": {
-        "state": "Minnesota",
-        "name": "bass",
-        "scientific_name": "Micropterus salmoides"
-      }
-    },
-    {
-      "official_fish": {
-        "state": "Wisconsin",
-        "name": "walleye",
-        "scientific_name": "Stizostedion v. vitreum"
-      }
+          "photographs": [
+            "trout",
+            "walleye"
+          ]
+        },
+        {
+          "official_fish": {
+            "state": "Minnesota",
+            "name": "walleye",
+            "scientific_name": "Stizostedion v. vitreum"
+          },
+          "photographs": [
+            "walleye"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "official_fish.state",
+          "description": "The state for which the fish is the official fish."
+        },
+        {
+          "name": "official_fish.name",
+          "description": "The common name of the official fish."
+        },
+        {
+          "name": "official_fish.scientific_name",
+          "description": "The scientific name of the official fish."
+        },
+        {
+          "name": "photographs",
+          "description": "A list of photographs preserved in the Office of the Secretary of State."
+        }
+      ],
+      "consequences": [
+        "The walleye is confirmed as the official fish of Minnesota.",
+        "A photograph of the walleye is preserved in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "official_fish.state",
-      "description": "The state for which the fish is the official fish."
-    },
-    {
-      "name": "official_fish.name",
-      "description": "The common name of the official fish."
-    },
-    {
-      "name": "official_fish.scientific_name",
-      "description": "The scientific name of the official fish."
-    }
-  ],
-  "consequences": [
-    "A photograph of the walleye shall be preserved in the Office of the Secretary of State."
   ]
 }

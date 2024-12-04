@@ -4,51 +4,55 @@
   "title": "1.1471 STATE FIRE MUSEUM.",
   "text": "The Bill and Bonnie Daniels Firefighters Hall and Museum in the city of Minneapolis is designated as the official state fire museum.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "museum_name"
+            "==": [
+              {
+                "var": "museum_name"
+              },
+              "Bill and Bonnie Daniels Firefighters Hall and Museum"
+            ]
           },
-          "Bill and Bonnie Daniels Firefighters Hall and Museum"
+          {
+            "==": [
+              {
+                "var": "city"
+              },
+              "Minneapolis"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "city"
-          },
-          "Minneapolis"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
-      "city": "Minneapolis"
-    },
-    {
-      "museum_name": "Minnesota History Center",
-      "city": "St. Paul"
-    },
-    {
-      "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
-      "city": "Duluth"
+      "examples": [
+        {
+          "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
+          "city": "Minneapolis"
+        },
+        {
+          "museum_name": "Bill and Bonnie Daniels Firefighters Hall and Museum",
+          "city": "St. Paul"
+        },
+        {
+          "museum_name": "Minnesota History Center",
+          "city": "Minneapolis"
+        }
+      ],
+      "variables": [
+        {
+          "name": "museum_name",
+          "description": "The name of the museum being evaluated."
+        },
+        {
+          "name": "city",
+          "description": "The city where the museum is located."
+        }
+      ],
+      "consequences": [
+        "The museum is designated as the official state fire museum."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "museum_name",
-      "description": "The name of the museum being referenced."
-    },
-    {
-      "name": "city",
-      "description": "The city where the museum is located."
-    }
-  ],
-  "consequences": [
-    "The museum is designated as the official state fire museum."
   ]
 }

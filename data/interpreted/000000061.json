@@ -4,32 +4,55 @@
   "title": "1.1496 STATE MUFFIN.",
   "text": "The blueberry muffin is adopted as the official muffin of the state of Minnesota.",
   "repealed": false,
-  "rule": {
-    "==": [
-      {
-        "var": "official_muffin"
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "item"
+              },
+              "blueberry muffin"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          }
+        ]
       },
-      "blueberry muffin"
-    ]
-  },
-  "examples": [
-    {
-      "official_muffin": "blueberry muffin"
-    },
-    {
-      "official_muffin": "chocolate muffin"
-    },
-    {
-      "official_muffin": "banana muffin"
+      "examples": [
+        {
+          "item": "blueberry muffin",
+          "state": "Minnesota"
+        },
+        {
+          "item": "chocolate muffin",
+          "state": "Minnesota"
+        },
+        {
+          "item": "blueberry muffin",
+          "state": "California"
+        }
+      ],
+      "variables": [
+        {
+          "name": "item",
+          "description": "The type of muffin being considered."
+        },
+        {
+          "name": "state",
+          "description": "The state for which the official muffin is being determined."
+        }
+      ],
+      "consequences": [
+        "The blueberry muffin is the official muffin of Minnesota."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "official_muffin",
-      "description": "The muffin designated as the official muffin of the state of Minnesota"
-    }
-  ],
-  "consequences": [
-    "The blueberry muffin is recognized as the official muffin of Minnesota."
   ]
 }

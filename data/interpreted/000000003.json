@@ -4,56 +4,60 @@
   "title": "1.02 JURISDICTION OVER WATERS.",
   "text": "Courts and officers having jurisdiction in a county bordering upon Big Stone Lake, Lake Traverse, Bois de Sioux River, or the Red River of the North, have jurisdiction in civil and criminal cases upon those waters concurrently with the courts and officers of other states bordering on them, to the extent any of them forms a common boundary between this state and any other state.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "in": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "county"
+            "in": [
+              {
+                "var": "county"
+              },
+              [
+                "Big Stone Lake",
+                "Lake Traverse",
+                "Bois de Sioux River",
+                "Red River of the North"
+              ]
+            ]
           },
-          [
-            "Big Stone Lake",
-            "Lake Traverse",
-            "Bois de Sioux River",
-            "Red River of the North"
-          ]
+          {
+            "==": [
+              {
+                "var": "forms_common_boundary"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "forms_common_boundary"
-          },
-          true
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "county": "Big Stone Lake",
-      "forms_common_boundary": true
-    },
-    {
-      "county": "Lake Traverse",
-      "forms_common_boundary": false
-    },
-    {
-      "county": "Some Other Lake",
-      "forms_common_boundary": true
+      "examples": [
+        {
+          "county": "Big Stone Lake",
+          "forms_common_boundary": true
+        },
+        {
+          "county": "Lake Traverse",
+          "forms_common_boundary": true
+        },
+        {
+          "county": "Some Other Lake",
+          "forms_common_boundary": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "county",
+          "description": "The name of the county in question."
+        },
+        {
+          "name": "forms_common_boundary",
+          "description": "Indicates if the water body forms a common boundary between this state and any other state."
+        }
+      ],
+      "consequences": [
+        "Courts and officers have jurisdiction in civil and criminal cases upon these waters."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "county",
-      "description": "The name of the county where the court or officer has jurisdiction."
-    },
-    {
-      "name": "forms_common_boundary",
-      "description": "A boolean indicating whether the water body forms a common boundary between this state and any other state."
-    }
-  ],
-  "consequences": [
-    "Courts and officers have jurisdiction in civil and criminal cases on these waters concurrently with courts and officers of other states."
   ]
 }

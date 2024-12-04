@@ -4,100 +4,183 @@
   "title": "1.141 STATE FLAG.",
   "text": "The design of the state flag as certified in the report of the State Emblems Redesign Commission, as established by Laws 2023, chapter 62, article 2, section 118, is adopted as the official state flag.\nThe secretary of state shall file a photograph of the state flag. The secretary shall also retain custodial control over the sample design flag of the commission for use by the public for copies.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nThe official state flag shall be flown on the State Capitol grounds at all times between sunrise and sunset.\nMS 2022 [Repealed, 2023 c 62 art 2 s 133]\nWhen folding the Minnesota State Flag for storage, the proper procedure is to fold and store the flag in the same manner as the national colors.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "flag_design_certified"
+            "==": [
+              {
+                "var": "flag_design_certified"
+              },
+              true
+            ]
           },
-          "State Emblems Redesign Commission"
+          {
+            "==": [
+              {
+                "var": "flag_adopted"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
+      "examples": [
+        {
+          "flag_design_certified": true,
+          "flag_adopted": true
+        },
+        {
+          "flag_design_certified": false,
+          "flag_adopted": true
+        },
+        {
+          "flag_design_certified": true,
+          "flag_adopted": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "flag_design_certified",
+          "description": "Indicates if the flag design is certified by the State Emblems Redesign Commission."
+        },
+        {
+          "name": "flag_adopted",
+          "description": "Indicates if the certified flag design is adopted as the official state flag."
+        }
+      ],
+      "consequences": [
+        "The design is adopted as the official state flag."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "flag_photograph_filed"
+            "==": [
+              {
+                "var": "secretary_of_state_photograph_filed"
+              },
+              true
+            ]
           },
-          true
+          {
+            "==": [
+              {
+                "var": "secretary_of_state_custodial_control"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
+      "examples": [
+        {
+          "secretary_of_state_photograph_filed": true,
+          "secretary_of_state_custodial_control": true
+        },
+        {
+          "secretary_of_state_photograph_filed": false,
+          "secretary_of_state_custodial_control": true
+        },
+        {
+          "secretary_of_state_photograph_filed": true,
+          "secretary_of_state_custodial_control": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "secretary_of_state_photograph_filed",
+          "description": "Indicates if the secretary of state has filed a photograph of the state flag."
+        },
+        {
+          "name": "secretary_of_state_custodial_control",
+          "description": "Indicates if the secretary of state retains custodial control over the sample design flag."
+        }
+      ],
+      "consequences": [
+        "The secretary of state manages the official state flag records and samples."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "flag_custodial_control"
+            "==": [
+              {
+                "var": "flag_flown_at_capitol"
+              },
+              true
+            ]
           },
-          true
+          {
+            "==": [
+              {
+                "var": "time_of_day"
+              },
+              true
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "flag_flown_times"
-          },
-          true
-        ]
-      },
-      {
+      "examples": [
+        {
+          "flag_flown_at_capitol": true,
+          "time_of_day": true
+        },
+        {
+          "flag_flown_at_capitol": false,
+          "time_of_day": true
+        },
+        {
+          "flag_flown_at_capitol": true,
+          "time_of_day": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "flag_flown_at_capitol",
+          "description": "Indicates if the official state flag is flown on the State Capitol grounds."
+        },
+        {
+          "name": "time_of_day",
+          "description": "Indicates if the time is between sunrise and sunset."
+        }
+      ],
+      "consequences": [
+        "The official state flag is flown on the State Capitol grounds during the specified times."
+      ]
+    },
+    {
+      "rule": {
         "==": [
           {
             "var": "flag_folding_procedure"
           },
           true
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "flag_design_certified": "State Emblems Redesign Commission",
-      "flag_photograph_filed": true,
-      "flag_custodial_control": true,
-      "flag_flown_times": true,
-      "flag_folding_procedure": true
-    },
-    {
-      "flag_design_certified": "Other Commission",
-      "flag_photograph_filed": true,
-      "flag_custodial_control": true,
-      "flag_flown_times": true,
-      "flag_folding_procedure": true
-    },
-    {
-      "flag_design_certified": "State Emblems Redesign Commission",
-      "flag_photograph_filed": false,
-      "flag_custodial_control": true,
-      "flag_flown_times": true,
-      "flag_folding_procedure": true
+      },
+      "examples": [
+        {
+          "flag_folding_procedure": true
+        },
+        {
+          "flag_folding_procedure": false
+        },
+        {
+          "flag_folding_procedure": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "flag_folding_procedure",
+          "description": "Indicates if the Minnesota State Flag is folded and stored in the same manner as the national colors."
+        }
+      ],
+      "consequences": [
+        "The Minnesota State Flag is folded and stored properly."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "flag_design_certified",
-      "description": "The entity that certified the design of the state flag."
-    },
-    {
-      "name": "flag_photograph_filed",
-      "description": "Whether a photograph of the state flag has been filed by the secretary of state."
-    },
-    {
-      "name": "flag_custodial_control",
-      "description": "Whether the secretary of state retains custodial control over the sample design flag for public use."
-    },
-    {
-      "name": "flag_flown_times",
-      "description": "Whether the official state flag is flown on the State Capitol grounds at all times between sunrise and sunset."
-    },
-    {
-      "name": "flag_folding_procedure",
-      "description": "Whether the Minnesota State Flag is folded and stored in the same manner as the national colors."
-    }
-  ],
-  "consequences": [
-    "The design is adopted as the official state flag.",
-    "The flag photograph is filed.",
-    "The secretary retains custodial control over the sample design flag.",
-    "The flag is flown on the State Capitol grounds between sunrise and sunset.",
-    "The flag is folded and stored properly."
   ]
 }

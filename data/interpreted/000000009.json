@@ -4,36 +4,16 @@
   "title": "1.043 JURISDICTION, WHEN TO VEST.",
   "text": "The jurisdiction granted or ceded to the United States over any place in the state under sections 1.041 or 1.042 shall not vest until the United States has acquired the title to or right of possession of the premises affected, and shall continue only while the United States owns or occupies them for the purposes to which the jurisdiction appertains as specified in those sections or until the United States relinquishes to the state full or partial jurisdiction under section 1.0431.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "==": [
-              {
-                "var": "us_title_acquired"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "us_right_of_possession"
-              },
-              true
-            ]
-          }
-        ]
-      },
-      {
-        "or": [
-          {
-            "and": [
+            "or": [
               {
                 "==": [
                   {
-                    "var": "us_owns"
+                    "var": "us_title_acquired"
                   },
                   true
                 ]
@@ -41,7 +21,7 @@
               {
                 "==": [
                   {
-                    "var": "purpose_matches"
+                    "var": "us_right_of_possession"
                   },
                   true
                 ]
@@ -49,7 +29,27 @@
             ]
           },
           {
-            "and": [
+            "or": [
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "us_owns"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "purpose_matches"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              },
               {
                 "==": [
                   {
@@ -57,82 +57,74 @@
                   },
                   true
                 ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "purpose_matches"
-                  },
-                  true
-                ]
               }
             ]
           },
           {
             "==": [
               {
-                "var": "us_relinquishes_jurisdiction"
+                "var": "us_relinquishes"
               },
-              true
+              false
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "us_title_acquired": true,
-      "us_right_of_possession": false,
-      "us_owns": true,
-      "us_occupies": false,
-      "purpose_matches": true,
-      "us_relinquishes_jurisdiction": false
-    },
-    {
-      "us_title_acquired": false,
-      "us_right_of_possession": true,
-      "us_owns": false,
-      "us_occupies": true,
-      "purpose_matches": true,
-      "us_relinquishes_jurisdiction": false
-    },
-    {
-      "us_title_acquired": false,
-      "us_right_of_possession": false,
-      "us_owns": false,
-      "us_occupies": false,
-      "purpose_matches": false,
-      "us_relinquishes_jurisdiction": true
+      },
+      "examples": [
+        {
+          "us_title_acquired": true,
+          "us_right_of_possession": false,
+          "us_owns": true,
+          "purpose_matches": true,
+          "us_occupies": false,
+          "us_relinquishes": false
+        },
+        {
+          "us_title_acquired": false,
+          "us_right_of_possession": true,
+          "us_owns": false,
+          "purpose_matches": false,
+          "us_occupies": true,
+          "us_relinquishes": false
+        },
+        {
+          "us_title_acquired": true,
+          "us_right_of_possession": false,
+          "us_owns": false,
+          "purpose_matches": false,
+          "us_occupies": false,
+          "us_relinquishes": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "us_title_acquired",
+          "description": "Indicates if the United States has acquired the title to the premises."
+        },
+        {
+          "name": "us_right_of_possession",
+          "description": "Indicates if the United States has acquired the right of possession of the premises."
+        },
+        {
+          "name": "us_owns",
+          "description": "Indicates if the United States owns the premises."
+        },
+        {
+          "name": "purpose_matches",
+          "description": "Indicates if the premises are used for the purposes to which the jurisdiction appertains."
+        },
+        {
+          "name": "us_occupies",
+          "description": "Indicates if the United States occupies the premises."
+        },
+        {
+          "name": "us_relinquishes",
+          "description": "Indicates if the United States has relinquished jurisdiction to the state."
+        }
+      ],
+      "consequences": [
+        "Jurisdiction is vested in the United States."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "us_title_acquired",
-      "description": "Indicates if the United States has acquired the title to the premises."
-    },
-    {
-      "name": "us_right_of_possession",
-      "description": "Indicates if the United States has acquired the right of possession of the premises."
-    },
-    {
-      "name": "us_owns",
-      "description": "Indicates if the United States currently owns the premises."
-    },
-    {
-      "name": "us_occupies",
-      "description": "Indicates if the United States currently occupies the premises."
-    },
-    {
-      "name": "purpose_matches",
-      "description": "Indicates if the premises are used for the purposes to which the jurisdiction appertains as specified in sections 1.041 or 1.042."
-    },
-    {
-      "name": "us_relinquishes_jurisdiction",
-      "description": "Indicates if the United States has relinquished full or partial jurisdiction to the state under section 1.0431."
-    }
-  ],
-  "consequences": [
-    "Jurisdiction is vested in the United States."
   ]
 }

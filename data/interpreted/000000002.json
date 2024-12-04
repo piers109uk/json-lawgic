@@ -4,70 +4,132 @@
   "title": "1.01 EXTENT.",
   "text": "The sovereignty and jurisdiction of this state extend to all places within its boundaries as defined in the constitution and, concurrently, to the waters forming a common boundary between this and adjoining states, subject only to rights of jurisdiction acquired by the United States over places in it.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
-          {
-            "var": "location_within_state_boundaries"
-          },
-          true
-        ]
-      },
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
             "==": [
               {
-                "var": "location_in_common_boundary_waters"
+                "var": "location_within_boundaries"
               },
-              true
+              "state"
             ]
           },
           {
-            "==": [
+            "or": [
               {
-                "var": "us_jurisdiction_acquired"
+                "==": [
+                  {
+                    "var": "location_type"
+                  },
+                  "land"
+                ]
               },
-              false
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "location_type"
+                      },
+                      "water"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "boundary_type"
+                      },
+                      "common"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "jurisdiction"
+                  },
+                  "state"
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "jurisdiction"
+                      },
+                      "US"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "jurisdiction_acquired"
+                      },
+                      "true"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "location_within_state_boundaries": true,
-      "location_in_common_boundary_waters": false,
-      "us_jurisdiction_acquired": false
-    },
-    {
-      "location_within_state_boundaries": false,
-      "location_in_common_boundary_waters": true,
-      "us_jurisdiction_acquired": false
-    },
-    {
-      "location_within_state_boundaries": true,
-      "location_in_common_boundary_waters": true,
-      "us_jurisdiction_acquired": true
+      },
+      "examples": [
+        {
+          "location_within_boundaries": "state",
+          "location_type": "land",
+          "boundary_type": "common",
+          "jurisdiction": "state",
+          "jurisdiction_acquired": "false"
+        },
+        {
+          "location_within_boundaries": "state",
+          "location_type": "water",
+          "boundary_type": "common",
+          "jurisdiction": "US",
+          "jurisdiction_acquired": "true"
+        },
+        {
+          "location_within_boundaries": "state",
+          "location_type": "water",
+          "boundary_type": "common",
+          "jurisdiction": "state",
+          "jurisdiction_acquired": "false"
+        }
+      ],
+      "variables": [
+        {
+          "name": "location_within_boundaries",
+          "description": "Indicates if the location is within the state's boundaries."
+        },
+        {
+          "name": "location_type",
+          "description": "The type of location, either land or water."
+        },
+        {
+          "name": "boundary_type",
+          "description": "The type of boundary, either common or not."
+        },
+        {
+          "name": "jurisdiction",
+          "description": "The jurisdiction over the location, either state or US."
+        },
+        {
+          "name": "jurisdiction_acquired",
+          "description": "Indicates if the US has acquired jurisdiction over the location."
+        }
+      ],
+      "consequences": [
+        "The state has sovereignty and jurisdiction over the location."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "location_within_state_boundaries",
-      "description": "Indicates if the location is within the state's boundaries as defined in the constitution."
-    },
-    {
-      "name": "location_in_common_boundary_waters",
-      "description": "Indicates if the location is in the waters forming a common boundary between this and adjoining states."
-    },
-    {
-      "name": "us_jurisdiction_acquired",
-      "description": "Indicates if the United States has acquired jurisdiction over the location."
-    }
-  ],
-  "consequences": [
-    "The state has sovereignty and jurisdiction over the location."
   ]
 }

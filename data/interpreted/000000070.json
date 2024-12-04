@@ -4,24 +4,72 @@
   "title": "1.15 BOUNDARY COMPACT; MICHIGAN, WISCONSIN, MINNESOTA.",
   "text": "The following compact is ratified and approved:\nA COMPACT\nEntered into by and between the state of Michigan, the state of Minnesota and the state of Wisconsin, states signatory hereto.\nThe contracting states solemnly agree:\n1. That the boundary between the state of Michigan and the state of Wisconsin in the center of Lake Michigan be and it hereby is finally fixed and established as the line marked A-B-C-D-E-F-G on the map, Exhibit A, annexed hereto, which line is more particularly described as follows:\nStarting at Point A, a point equidistant from either shore on the line which is the eastward continuation of the boundary line between Wisconsin and Illinois or latitude 42 degrees 29 minutes 37 seconds North;\nThence to Point B, a point equidistant from either shore on the line drawn through the Port Washington Fog Signal and Storm Signal and the White Lake Storm Signal, on a true azimuth of 354 degrees 12 minutes 00 seconds a distance of 61.55 statute miles;\nThence to Point C, a point equidistant from either shore on a line drawn through the Sheboygan Coast Guard Storm Signal, Fog Signal, Radio Beacon and Little Sable Point Light, on a true azimuth of 03 degrees 01 minute 15 seconds, a distance of 22.18 statute miles;\nThence to Point D, a point equidistant from either shore on a line drawn through the Twin River Point Light and Fog Signal and Big Sable Fog and Light Signal, on a true azimuth of 10 degrees 04 minutes 30 seconds, a distance of 30.33 statute miles;\nThence to Point E, a point equidistant from either shore on a line from Bailey's Harbor Inland Light and Point Betsie Fog Signal, Radio Beacon, and Distance Finding Station, on a true azimuth of 17 degrees 09 minutes 55 seconds, a distance of 54.20 statute miles;\nThence to Point F, a point equidistant from either shore on a line drawn through the Pilot Island Light and Fog Signal and Sleeping Bear Point Light, on a true azimuth of 33 degrees 29 minutes 10 seconds, a distance of 17.24 statute miles;\nThence to Point G, the point determined by the United States Supreme Court decree of March 12, 1936, which is a point 45,600 meters from the center of Rock Island Passage on a bearing of South 60 degrees East, on the true azimuth of 40 degrees 34 minutes 10 seconds, a distance of 15.66 statute miles. The latitude and longitude of the named control points is as follows:\n2. That the western boundary of the state of Michigan in the waters of Lake Superior and the eastern boundary in the waters of Lake Superior of the states of Minnesota and Wisconsin be and it hereby is finally fixed and established as the line marked M-N on the map, Exhibit B, annexed hereto, which line is more particularly described as follows:\nStarting at Point M, the point where the line through the middle of the main channel of the Montreal River enters Lake Superior,\nThence in a direct line to Point N, the point where a line drawn through the most easterly point of Pigeon Point and the most southerly point of Pine Point intersects the international boundary, on a true azimuth of 23 degrees 27 minutes 24 seconds and a distance of 108.86 statute miles.\nThe latitude and longitude of the named control points is:\n3. That the boundary between the state of Minnesota and the state of Wisconsin in the center of Lake Superior be and it hereby is finally fixed and established as the line marked A-B-C-D on the map, Exhibit B, annexed hereto, which line is more particularly described as follows:\nStarting at Point A which is the midpoint on the line M-N described in paragraph 2, supra;\nThence to Point B, the midpoint in a direct line between the mouth of Cross River, Minnesota and the Lighthouse on Outer Island in Wisconsin, on a true azimuth of 272 degrees 17 minutes 10 seconds, a distance of 33.15 statute miles;\nThence to Point C, the midpoint in a direct line between the Lighthouse on shore at Two Harbors, Minnesota and the light on the lakeward end of the government east pier at Port Wing, Wisconsin on a true azimuth of 235 degrees 27 minutes 40 seconds, a distance of 49.60 statute miles;\nThence to Point D, the midpoint in a direct line at right angles to the central axis of the Superior entry between the tops of the eastern ends of the pierheads at the lakeward ends of the United States government breakwaters at the Superior entry of Duluth Superior Harbor, on a true azimuth of 239 degrees 50 minutes 20 seconds, a distance of 26.43 statute miles;\nThe latitude and longitude of the named control points is as follows:\n4. All azimuths are measured clockwise from true north.\n5. That this compact shall become operative immediately upon its ratification by any state as between it and the other state or states so ratifying. Ratification shall be made by act of the legislature of the ratifying state.\n6. That immediately upon ratification of this compact by all three states, each state will appoint two members to a Joint Survey Commission to survey and mark the boundaries defined in this compact by establishing and perpetuating monuments at the reference points on shore by means of which the control points of said boundaries are located. The expense of marking the Lake Michigan Boundary shall be borne jointly by the states of Michigan and Wisconsin; the expense of marking the boundary line described in paragraph 2 above shall be borne equally by the states of Minnesota, Michigan and Wisconsin. The expense of marking the Lake Superior and Superior Bay boundary between Minnesota and Wisconsin shall be borne jointly by the states of Minnesota and Wisconsin.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
+  "rules": [
+    {
+      "rule": {
         "and": [
           {
             "===": [
               {
-                "var": "state1"
+                "var": "state"
               },
-              "Michigan"
+              [
+                "Michigan",
+                "Minnesota",
+                "Wisconsin"
+              ]
             ]
           },
           {
             "===": [
               {
-                "var": "state2"
+                "var": "ratified"
               },
-              "Wisconsin"
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Michigan",
+          "ratified": true
+        },
+        {
+          "state": "Minnesota",
+          "ratified": true
+        },
+        {
+          "state": "Wisconsin",
+          "ratified": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state that is part of the compact."
+        },
+        {
+          "name": "ratified",
+          "description": "Indicates whether the state has ratified the compact."
+        }
+      ],
+      "consequences": [
+        "The compact becomes operative between the ratifying states."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              [
+                "Michigan",
+                "Wisconsin"
+              ]
             ]
           },
           {
@@ -29,121 +77,135 @@
               {
                 "var": "boundary"
               },
-              "Lake Michigan"
+              true
             ]
           }
         ]
       },
-      {
-        "var": "Lake Michigan Boundary"
-      },
-      {
-        "if": [
+      "examples": [
+        {
+          "state": "Michigan",
+          "boundary": true
+        },
+        {
+          "state": "Wisconsin",
+          "boundary": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state involved in the boundary agreement."
+        },
+        {
+          "name": "boundary",
+          "description": "Indicates whether the boundary is established."
+        }
+      ],
+      "consequences": [
+        "The boundary in Lake Michigan is fixed and established."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "and": [
+            "===": [
               {
-                "===": [
-                  {
-                    "var": "state1"
-                  },
-                  "Michigan"
-                ]
+                "var": "state"
               },
-              {
-                "===": [
-                  {
-                    "var": "state2"
-                  },
-                  "Minnesota"
-                ]
-              },
-              {
-                "===": [
-                  {
-                    "var": "boundary"
-                  },
-                  "Lake Superior"
-                ]
-              }
+              [
+                "Minnesota",
+                "Wisconsin"
+              ]
             ]
           },
           {
-            "var": "Lake Superior Boundary"
-          },
-          {
-            "if": [
+            "===": [
               {
-                "and": [
-                  {
-                    "===": [
-                      {
-                        "var": "state1"
-                      },
-                      "Minnesota"
-                    ]
-                  },
-                  {
-                    "===": [
-                      {
-                        "var": "state2"
-                      },
-                      "Wisconsin"
-                    ]
-                  },
-                  {
-                    "===": [
-                      {
-                        "var": "boundary"
-                      },
-                      "Lake Superior"
-                    ]
-                  }
-                ]
+                "var": "boundary"
               },
-              {
-                "var": "Superior Bay Boundary"
-              },
-              "Unknown Boundary"
+              true
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "state1": "Michigan",
-      "state2": "Wisconsin",
-      "boundary": "Lake Michigan"
+      },
+      "examples": [
+        {
+          "state": "Minnesota",
+          "boundary": true
+        },
+        {
+          "state": "Wisconsin",
+          "boundary": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state involved in the boundary agreement."
+        },
+        {
+          "name": "boundary",
+          "description": "Indicates whether the boundary is established."
+        }
+      ],
+      "consequences": [
+        "The boundary in Lake Superior is fixed and established."
+      ]
     },
     {
-      "state1": "Michigan",
-      "state2": "Minnesota",
-      "boundary": "Lake Superior"
-    },
-    {
-      "state1": "Minnesota",
-      "state2": "Wisconsin",
-      "boundary": "Lake Superior"
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              [
+                "Michigan",
+                "Minnesota",
+                "Wisconsin"
+              ]
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "joint_survey_commission"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "state": "Michigan",
+          "joint_survey_commission": true
+        },
+        {
+          "state": "Minnesota",
+          "joint_survey_commission": true
+        },
+        {
+          "state": "Wisconsin",
+          "joint_survey_commission": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state",
+          "description": "The state that is part of the compact."
+        },
+        {
+          "name": "joint_survey_commission",
+          "description": "Indicates whether the state has appointed members to the Joint Survey Commission."
+        }
+      ],
+      "consequences": [
+        "The Joint Survey Commission is established to survey and mark the boundaries."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state1",
-      "description": "The first state involved in the boundary agreement."
-    },
-    {
-      "name": "state2",
-      "description": "The second state involved in the boundary agreement."
-    },
-    {
-      "name": "boundary",
-      "description": "The body of water where the boundary is being established."
-    }
-  ],
-  "consequences": [
-    "The boundary between Michigan and Wisconsin in Lake Michigan is established.",
-    "The boundary between Michigan and Minnesota in Lake Superior is established.",
-    "The boundary between Minnesota and Wisconsin in Lake Superior is established."
   ]
 }

@@ -4,73 +4,292 @@
   "title": "2.125 TWELFTH DISTRICT.",
   "text": "Notwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 consists of the district as described in that order, with the modification contained in file L12B-1, on file with the Geographic Information Systems Office of the Legislative Coordinating Commission and published on its website on April 27, 2022.\nNotwithstanding the order of the Minnesota Special Redistricting Panel in Wattson v. Simon, Nos. A21-0243, A21-0546 (February 15, 2022), Senate District 12 is divided into two house of representatives districts as follows:\n(a) House of Representatives District 12A consists of the district as described in that order.\n(b) House of Representatives District 12B consists of all territory of Senate District 12, as modified by subdivision 1, that is not included in House of Representatives District 12A.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "===": [
-          {
-            "var": "district"
-          },
-          12
-        ]
-      },
-      {
-        "and": [
+  "rules": [
+    {
+      "rule": {
+        "if": [
           {
             "===": [
               {
-                "var": "order"
+                "var": "district"
               },
-              true
+              12
             ]
           },
           {
-            "===": [
+            "merge": [
               {
-                "var": "modification"
+                "var": "district_12_order"
               },
-              true
+              {
+                "var": "L12B_1_modification"
+              }
             ]
-          }
+          },
+          "Unknown District"
         ]
       },
-      "District not applicable"
-    ]
-  },
-  "examples": [
-    {
-      "district": 12,
-      "order": true,
-      "modification": true
+      "examples": [
+        {
+          "district": 12,
+          "district_12_order": [
+            "Area1",
+            "Area2"
+          ],
+          "L12B_1_modification": [
+            "Area3"
+          ],
+          "result": [
+            "Area1",
+            "Area2",
+            "Area3"
+          ]
+        },
+        {
+          "district": 12,
+          "district_12_order": [
+            "AreaA",
+            "AreaB"
+          ],
+          "L12B_1_modification": [
+            "AreaC"
+          ],
+          "result": [
+            "AreaA",
+            "AreaB",
+            "AreaC"
+          ]
+        },
+        {
+          "district": 13,
+          "district_12_order": [
+            "AreaX",
+            "AreaY"
+          ],
+          "L12B_1_modification": [
+            "AreaZ"
+          ],
+          "result": "Unknown District"
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "district_12_order",
+          "description": "The original description of Senate District 12 as per the order."
+        },
+        {
+          "name": "L12B_1_modification",
+          "description": "The modification to Senate District 12 as per file L12B-1."
+        }
+      ],
+      "consequences": [
+        "Senate District 12 consists of the original district with modifications from L12B-1."
+      ]
     },
     {
-      "district": 12,
-      "order": true,
-      "modification": false
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "district"
+              },
+              12
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "subdivision"
+                  },
+                  1
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "house_district"
+                  },
+                  12
+                ]
+              }
+            ]
+          },
+          "Unknown District"
+        ]
+      },
+      "examples": [
+        {
+          "district": 12,
+          "subdivision": 1,
+          "house_district": 12,
+          "result": true
+        },
+        {
+          "district": 12,
+          "subdivision": 2,
+          "house_district": 12,
+          "result": false
+        },
+        {
+          "district": 13,
+          "subdivision": 1,
+          "house_district": 12,
+          "result": "Unknown District"
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "subdivision",
+          "description": "The subdivision number for modifications."
+        },
+        {
+          "name": "house_district",
+          "description": "The House of Representatives district number being evaluated."
+        }
+      ],
+      "consequences": [
+        "House of Representatives District 12A consists of the district as described in the order."
+      ]
     },
     {
-      "district": 11,
-      "order": true,
-      "modification": true
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "district"
+                  },
+                  12
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "subdivision"
+                  },
+                  1
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "house_district"
+                  },
+                  12
+                ]
+              }
+            ]
+          },
+          {
+            "filter": [
+              {
+                "var": "senate_district_12_modified"
+              },
+              {
+                "!": {
+                  "in": [
+                    {
+                      "var": ""
+                    },
+                    {
+                      "var": "house_district_12A"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "Unknown District"
+        ]
+      },
+      "examples": [
+        {
+          "district": 12,
+          "subdivision": 1,
+          "house_district": 12,
+          "senate_district_12_modified": [
+            "Area1",
+            "Area2",
+            "Area3"
+          ],
+          "house_district_12A": [
+            "Area1",
+            "Area2"
+          ],
+          "result": [
+            "Area3"
+          ]
+        },
+        {
+          "district": 12,
+          "subdivision": 1,
+          "house_district": 12,
+          "senate_district_12_modified": [
+            "AreaA",
+            "AreaB",
+            "AreaC"
+          ],
+          "house_district_12A": [
+            "AreaA"
+          ],
+          "result": [
+            "AreaB",
+            "AreaC"
+          ]
+        },
+        {
+          "district": 13,
+          "subdivision": 1,
+          "house_district": 12,
+          "senate_district_12_modified": [
+            "AreaX",
+            "AreaY",
+            "AreaZ"
+          ],
+          "house_district_12A": [
+            "AreaX"
+          ],
+          "result": "Unknown District"
+        }
+      ],
+      "variables": [
+        {
+          "name": "district",
+          "description": "The Senate district number being evaluated."
+        },
+        {
+          "name": "subdivision",
+          "description": "The subdivision number for modifications."
+        },
+        {
+          "name": "house_district",
+          "description": "The House of Representatives district number being evaluated."
+        },
+        {
+          "name": "senate_district_12_modified",
+          "description": "The modified Senate District 12 including all areas."
+        },
+        {
+          "name": "house_district_12A",
+          "description": "The areas included in House of Representatives District 12A."
+        }
+      ],
+      "consequences": [
+        "House of Representatives District 12B consists of all territory of Senate District 12, as modified, that is not included in House of Representatives District 12A."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "district",
-      "description": "The Senate District number being evaluated."
-    },
-    {
-      "name": "order",
-      "description": "Whether the district is as described in the order of the Minnesota Special Redistricting Panel."
-    },
-    {
-      "name": "modification",
-      "description": "Whether the district includes the modification contained in file L12B-1."
-    }
-  ],
-  "consequences": [
-    "Senate District 12 consists of the district as described in the order with the modification.",
-    "House of Representatives District 12A consists of the district as described in the order.",
-    "House of Representatives District 12B consists of all territory of Senate District 12, as modified, that is not included in House of Representatives District 12A."
   ]
 }

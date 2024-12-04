@@ -4,94 +4,98 @@
   "title": "1.048 EFFECT OF REPEAL OF CERTAIN LAWS.",
   "text": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1, are repealed, but their repeal shall not affect any case in which the consent of the state to the acquisition of property or the exercise of jurisdiction by the United States was given by any of them and the acquisition of the property was completed before the taking effect of Laws 1943, chapter 343, nor any case in which the consent of the state was given by Laws 1941, chapter 66, before the taking effect of Laws 1943, chapter 343.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "consent_given_by"
-                  },
-                  "Mason's Minnesota Statutes of 1927, sections 4 and 5"
-                ]
+                "var": "law_repealed"
               },
-              {
-                "<": [
-                  {
-                    "var": "acquisition_date"
-                  },
-                  "1943-01-01"
-                ]
-              }
+              "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1"
             ]
           },
           {
-            "and": [
+            "or": [
               {
-                "==": [
+                "and": [
                   {
-                    "var": "consent_given_by"
+                    "==": [
+                      {
+                        "var": "consent_given_by"
+                      },
+                      "Mason's Minnesota Statutes of 1927"
+                    ]
                   },
-                  "Laws 1941, chapter 66"
+                  {
+                    "<": [
+                      {
+                        "var": "acquisition_date"
+                      },
+                      "1943-01-01"
+                    ]
+                  }
                 ]
               },
               {
-                "<": [
+                "and": [
                   {
-                    "var": "acquisition_date"
+                    "==": [
+                      {
+                        "var": "consent_given_by"
+                      },
+                      "Laws 1941, chapter 66"
+                    ]
                   },
-                  "1943-01-01"
+                  {
+                    "<": [
+                      {
+                        "var": "acquisition_date"
+                      },
+                      "1943-01-01"
+                    ]
+                  }
                 ]
               }
             ]
           }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "acquisition_completed"
-          },
-          true
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "consent_given_by": "Mason's Minnesota Statutes of 1927, sections 4 and 5",
-      "acquisition_date": "1942-12-31",
-      "acquisition_completed": true
-    },
-    {
-      "consent_given_by": "Laws 1941, chapter 66",
-      "acquisition_date": "1942-12-31",
-      "acquisition_completed": true
-    },
-    {
-      "consent_given_by": "Laws 1941, chapter 66",
-      "acquisition_date": "1943-01-02",
-      "acquisition_completed": false
+      "examples": [
+        {
+          "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
+          "consent_given_by": "Mason's Minnesota Statutes of 1927",
+          "acquisition_date": "1942-12-31"
+        },
+        {
+          "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
+          "consent_given_by": "Laws 1941, chapter 66",
+          "acquisition_date": "1942-12-31"
+        },
+        {
+          "law_repealed": "Mason's Minnesota Statutes of 1927, sections 4 and 5, as amended by Laws 1941, chapter 66, and Mason's Minnesota Statutes of 1927, Sections 6, 6-2, 6-3, 6-4, 6-5, and 6-6, and Mason's Supplement 1940, Section 6-1",
+          "consent_given_by": "Laws 1941, chapter 66",
+          "acquisition_date": "1943-01-02"
+        }
+      ],
+      "variables": [
+        {
+          "name": "law_repealed",
+          "description": "The specific law or statute that has been repealed."
+        },
+        {
+          "name": "consent_given_by",
+          "description": "The law or statute under which the state's consent was given for property acquisition or jurisdiction."
+        },
+        {
+          "name": "acquisition_date",
+          "description": "The date on which the acquisition of property was completed."
+        }
+      ],
+      "consequences": [
+        "The repeal does not affect the case."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "consent_given_by",
-      "description": "The legal statute or law by which the state's consent was given for property acquisition or jurisdiction."
-    },
-    {
-      "name": "acquisition_date",
-      "description": "The date on which the property acquisition was completed."
-    },
-    {
-      "name": "acquisition_completed",
-      "description": "A boolean indicating whether the property acquisition was completed before the specified date."
-    }
-  ],
-  "consequences": [
-    "The repeal does not affect the case."
   ]
 }

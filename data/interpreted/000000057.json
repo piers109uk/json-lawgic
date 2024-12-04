@@ -4,52 +4,104 @@
   "title": "1.148 STATE GRAIN.",
   "text": "Zizania aquatica, commonly known as wild rice or manomin, is the official state grain of the state of Minnesota.\nA photograph of zizania aquatica, commonly known as wild rice or manomin, may be displayed in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "===": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state_grain"
+            "===": [
+              {
+                "var": "state_grain"
+              },
+              "Zizania aquatica"
+            ]
           },
-          "Zizania aquatica"
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          }
         ]
       },
-      {
-        "===": [
+      "examples": [
+        {
+          "state_grain": "Zizania aquatica",
+          "state": "Minnesota"
+        },
+        {
+          "state_grain": "Oryza sativa",
+          "state": "Minnesota"
+        },
+        {
+          "state_grain": "Zizania aquatica",
+          "state": "California"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_grain",
+          "description": "The official state grain of a state."
+        },
+        {
+          "name": "state",
+          "description": "The name of the state."
+        }
+      ],
+      "consequences": [
+        "Zizania aquatica is the official state grain of Minnesota."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state"
+            "===": [
+              {
+                "var": "photo_subject"
+              },
+              "Zizania aquatica"
+            ]
           },
-          "Minnesota"
+          {
+            "===": [
+              {
+                "var": "location"
+              },
+              "Office of the Secretary of State"
+            ]
+          }
         ]
       },
-      false
-    ]
-  },
-  "examples": [
-    {
-      "state_grain": "Zizania aquatica",
-      "state": "Minnesota"
-    },
-    {
-      "state_grain": "Zizania aquatica",
-      "state": "Wisconsin"
-    },
-    {
-      "state_grain": "Oryza sativa",
-      "state": "Minnesota"
+      "examples": [
+        {
+          "photo_subject": "Zizania aquatica",
+          "location": "Office of the Secretary of State"
+        },
+        {
+          "photo_subject": "Oryza sativa",
+          "location": "Office of the Secretary of State"
+        },
+        {
+          "photo_subject": "Zizania aquatica",
+          "location": "Governor's Office"
+        }
+      ],
+      "variables": [
+        {
+          "name": "photo_subject",
+          "description": "The subject of the photograph."
+        },
+        {
+          "name": "location",
+          "description": "The location where the photograph is displayed."
+        }
+      ],
+      "consequences": [
+        "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state_grain",
-      "description": "The official state grain of a state."
-    },
-    {
-      "name": "state",
-      "description": "The name of the state."
-    }
-  ],
-  "consequences": [
-    "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State."
   ]
 }

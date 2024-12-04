@@ -4,67 +4,144 @@
   "title": "1.143 STATE TREE.",
   "text": "The Red pine (Pinus resinosa), more commonly known as Norway pine, is designated as the official state tree of the state of Minnesota.\nA photograph of the Red pine, to be obtained and approved by the commissioner of natural resources, shall be certified and preserved in the Office of the Secretary of State.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state_tree"
+            "===": [
+              {
+                "var": "state_tree.name"
+              },
+              "Red pine"
+            ]
           },
-          "Red pine"
+          {
+            "===": [
+              {
+                "var": "state_tree.scientific_name"
+              },
+              "Pinus resinosa"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "state_tree.common_name"
+              },
+              "Norway pine"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "state"
+              },
+              "Minnesota"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "photo.approved_by"
+              },
+              "commissioner of natural resources"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "photo.certified"
+              },
+              "true"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "photo.preserved_in"
+              },
+              "Office of the Secretary of State"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "state"
+      "examples": [
+        {
+          "state_tree": {
+            "name": "Red pine",
+            "scientific_name": "Pinus resinosa",
+            "common_name": "Norway pine"
           },
-          "Minnesota"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "tree_photo_approved"
+          "state": "Minnesota",
+          "photo": {
+            "approved_by": "commissioner of natural resources",
+            "certified": "true",
+            "preserved_in": "Office of the Secretary of State"
+          }
+        },
+        {
+          "state_tree": {
+            "name": "Red pine",
+            "scientific_name": "Pinus resinosa",
+            "common_name": "Norway pine"
           },
-          true
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "state_tree": "Red pine",
-      "state": "Minnesota",
-      "tree_photo_approved": true
-    },
-    {
-      "state_tree": "Red pine",
-      "state": "Minnesota",
-      "tree_photo_approved": false
-    },
-    {
-      "state_tree": "Oak",
-      "state": "Minnesota",
-      "tree_photo_approved": true
+          "state": "Minnesota",
+          "photo": {
+            "approved_by": "commissioner of natural resources",
+            "certified": "false",
+            "preserved_in": "Office of the Secretary of State"
+          }
+        },
+        {
+          "state_tree": {
+            "name": "Red pine",
+            "scientific_name": "Pinus resinosa",
+            "common_name": "Norway pine"
+          },
+          "state": "Minnesota",
+          "photo": {
+            "approved_by": "commissioner of natural resources",
+            "certified": "true",
+            "preserved_in": "Office of the Secretary of State"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_tree.name",
+          "description": "The name of the state tree."
+        },
+        {
+          "name": "state_tree.scientific_name",
+          "description": "The scientific name of the state tree."
+        },
+        {
+          "name": "state_tree.common_name",
+          "description": "The common name of the state tree."
+        },
+        {
+          "name": "state",
+          "description": "The state in question."
+        },
+        {
+          "name": "photo.approved_by",
+          "description": "The authority who approved the photograph."
+        },
+        {
+          "name": "photo.certified",
+          "description": "Whether the photograph is certified."
+        },
+        {
+          "name": "photo.preserved_in",
+          "description": "Where the photograph is preserved."
+        }
+      ],
+      "consequences": [
+        "The Red pine is confirmed as the state tree of Minnesota.",
+        "The photograph of the Red pine is approved and certified.",
+        "The photograph is preserved in the Office of the Secretary of State."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state_tree",
-      "description": "The designated state tree of a state."
-    },
-    {
-      "name": "state",
-      "description": "The name of the state."
-    },
-    {
-      "name": "tree_photo_approved",
-      "description": "Indicates if the photograph of the state tree has been approved by the commissioner of natural resources."
-    }
-  ],
-  "consequences": [
-    "The Red pine is officially recognized as the state tree of Minnesota.",
-    "A certified photograph of the Red pine is preserved in the Office of the Secretary of State."
   ]
 }

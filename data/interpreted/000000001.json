@@ -4,66 +4,70 @@
   "title": "1.03 WATERS INCLUDED.",
   "text": "The concurrent jurisdiction of a county and of courts and officers exercising jurisdiction throughout it extends over the water area that would be included if the boundary lines of the county were produced in the direction of their approach and extended across the waters to the opposite shore.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "jurisdiction_type"
+            "==": [
+              {
+                "var": "jurisdiction_type"
+              },
+              "concurrent"
+            ]
           },
-          "concurrent"
+          {
+            "==": [
+              {
+                "var": "entity_type"
+              },
+              "county"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "boundary_extension"
+              },
+              "across_waters"
+            ]
+          }
         ]
       },
-      {
-        "==": [
-          {
-            "var": "area_type"
-          },
-          "water"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "boundary_extension"
-          },
-          "extended_to_opposite_shore"
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "jurisdiction_type": "concurrent",
-      "area_type": "water",
-      "boundary_extension": "extended_to_opposite_shore"
-    },
-    {
-      "jurisdiction_type": "exclusive",
-      "area_type": "land",
-      "boundary_extension": "not_extended"
-    },
-    {
-      "jurisdiction_type": "concurrent",
-      "area_type": "water",
-      "boundary_extension": "not_extended"
+      "examples": [
+        {
+          "jurisdiction_type": "concurrent",
+          "entity_type": "county",
+          "boundary_extension": "across_waters"
+        },
+        {
+          "jurisdiction_type": "exclusive",
+          "entity_type": "state",
+          "boundary_extension": "across_waters"
+        },
+        {
+          "jurisdiction_type": "concurrent",
+          "entity_type": "county",
+          "boundary_extension": "land_only"
+        }
+      ],
+      "variables": [
+        {
+          "name": "jurisdiction_type",
+          "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
+        },
+        {
+          "name": "entity_type",
+          "description": "The type of entity exercising jurisdiction (e.g., county, state)."
+        },
+        {
+          "name": "boundary_extension",
+          "description": "The manner in which the boundary lines are extended (e.g., across waters, land only)."
+        }
+      ],
+      "consequences": [
+        "The county and courts have jurisdiction over the water area extending to the opposite shore."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "jurisdiction_type",
-      "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
-    },
-    {
-      "name": "area_type",
-      "description": "The type of area over which jurisdiction is being exercised (e.g., water, land)."
-    },
-    {
-      "name": "boundary_extension",
-      "description": "Whether the boundary lines are extended to the opposite shore."
-    }
-  ],
-  "consequences": [
-    "County and courts have jurisdiction over the water area."
   ]
 }

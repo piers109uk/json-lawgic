@@ -4,87 +4,78 @@
   "title": "1.045 STATE, CONSENT TO ACQUISITION OF LANDS.",
   "text": "Consent of the state of Minnesota is given to the acquisition by the United States in any manner authorized by act of Congress of lands lying within the original boundaries of the Chippewa National Forest and the Superior National Forest for any purpose incident to the development or maintenance of those forests, subject to concurrent jurisdiction of the state and the United States as defined in section 1.041.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "var": "state"
+            "==": [
+              {
+                "var": "state_consent"
+              },
+              "Minnesota"
+            ]
           },
-          "Minnesota"
+          {
+            "==": [
+              {
+                "var": "land_location"
+              },
+              "Chippewa National Forest"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "land_location"
+              },
+              "Superior National Forest"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "jurisdiction"
+              },
+              "concurrent"
+            ]
+          }
         ]
       },
-      {
-        "in": [
-          {
-            "var": "land_location"
-          },
-          [
-            "Chippewa National Forest",
-            "Superior National Forest"
-          ]
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "jurisdiction"
-          },
-          "concurrent"
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "purpose"
-          },
-          [
-            "development",
-            "maintenance"
-          ]
-        ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "state": "Minnesota",
-      "land_location": "Chippewa National Forest",
-      "jurisdiction": "concurrent",
-      "purpose": "development"
-    },
-    {
-      "state": "Minnesota",
-      "land_location": "Superior National Forest",
-      "jurisdiction": "concurrent",
-      "purpose": "maintenance"
-    },
-    {
-      "state": "Minnesota",
-      "land_location": "Chippewa National Forest",
-      "jurisdiction": "concurrent",
-      "purpose": "maintenance"
+      "examples": [
+        {
+          "state_consent": "Minnesota",
+          "land_location": "Chippewa National Forest",
+          "jurisdiction": "concurrent"
+        },
+        {
+          "state_consent": "Minnesota",
+          "land_location": "Superior National Forest",
+          "jurisdiction": "concurrent"
+        },
+        {
+          "state_consent": "Minnesota",
+          "land_location": "Chippewa National Forest",
+          "jurisdiction": "exclusive"
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_consent",
+          "description": "The consent of the state involved in the land acquisition."
+        },
+        {
+          "name": "land_location",
+          "description": "The location of the land being acquired, either in Chippewa National Forest or Superior National Forest."
+        },
+        {
+          "name": "jurisdiction",
+          "description": "The type of jurisdiction applied, either concurrent or exclusive."
+        }
+      ],
+      "consequences": [
+        "The United States can acquire the land for forest development or maintenance."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "state",
-      "description": "The state giving consent for land acquisition."
-    },
-    {
-      "name": "land_location",
-      "description": "The location of the land within the national forests."
-    },
-    {
-      "name": "jurisdiction",
-      "description": "The type of jurisdiction over the land."
-    },
-    {
-      "name": "purpose",
-      "description": "The purpose for which the land is acquired."
-    }
-  ],
-  "consequences": [
-    "Consent is given for the acquisition of land by the United States."
   ]
 }

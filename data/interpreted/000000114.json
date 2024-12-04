@@ -4,52 +4,16 @@
   "title": "1.51 FLAGS FLOWN AT HALF-STAFF FOLLOWING PUBLIC SAFETY OFFICER DEATH.",
   "text": "Each American flag and Minnesota flag flown on the grounds of the Capitol Area, as described in section 15B.02, must be flown at half-staff following the death of a public safety officer, as defined in section 299A.41, subdivision 4, killed in the line of duty in Minnesota, or the death of Minnesota military personnel killed in the line of duty. The flags must be flown at half-staff for a period of time determined by the governor.",
   "repealed": false,
-  "rule": {
-    "and": [
-      {
-        "or": [
+  "rules": [
+    {
+      "rule": {
+        "and": [
           {
-            "==": [
-              {
-                "var": "flagType"
-              },
-              "American"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "flagType"
-              },
-              "Minnesota"
-            ]
-          }
-        ]
-      },
-      {
-        "==": [
-          {
-            "var": "location"
-          },
-          "Capitol Area"
-        ]
-      },
-      {
-        "or": [
-          {
-            "and": [
+            "or": [
               {
                 "==": [
                   {
-                    "var": "event"
-                  },
-                  "death"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "personType"
+                    "var": "deceased_role"
                   },
                   "public safety officer"
                 ]
@@ -57,114 +21,65 @@
               {
                 "==": [
                   {
-                    "var": "state"
+                    "var": "deceased_role"
                   },
-                  "Minnesota"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "dutyStatus"
-                  },
-                  "killed in the line of duty"
+                  "military personnel"
                 ]
               }
             ]
           },
           {
-            "and": [
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "event"
-                  },
-                  "death"
-                ]
+                "var": "deceased_location"
               },
+              "Minnesota"
+            ]
+          },
+          {
+            "==": [
               {
-                "==": [
-                  {
-                    "var": "personType"
-                  },
-                  "military personnel"
-                ]
+                "var": "flag_location"
               },
-              {
-                "==": [
-                  {
-                    "var": "state"
-                  },
-                  "Minnesota"
-                ]
-              },
-              {
-                "==": [
-                  {
-                    "var": "dutyStatus"
-                  },
-                  "killed in the line of duty"
-                ]
-              }
+              "Capitol Area"
             ]
           }
         ]
-      }
-    ]
-  },
-  "examples": [
-    {
-      "flagType": "American",
-      "location": "Capitol Area",
-      "event": "death",
-      "personType": "public safety officer",
-      "state": "Minnesota",
-      "dutyStatus": "killed in the line of duty"
-    },
-    {
-      "flagType": "Minnesota",
-      "location": "Capitol Area",
-      "event": "death",
-      "personType": "military personnel",
-      "state": "Minnesota",
-      "dutyStatus": "killed in the line of duty"
-    },
-    {
-      "flagType": "American",
-      "location": "Capitol Area",
-      "event": "death",
-      "personType": "public safety officer",
-      "state": "Minnesota",
-      "dutyStatus": "not in the line of duty"
+      },
+      "examples": [
+        {
+          "deceased_role": "public safety officer",
+          "deceased_location": "Minnesota",
+          "flag_location": "Capitol Area"
+        },
+        {
+          "deceased_role": "military personnel",
+          "deceased_location": "Minnesota",
+          "flag_location": "Capitol Area"
+        },
+        {
+          "deceased_role": "public safety officer",
+          "deceased_location": "Minnesota",
+          "flag_location": "Other Area"
+        }
+      ],
+      "variables": [
+        {
+          "name": "deceased_role",
+          "description": "The role of the deceased individual, either 'public safety officer' or 'military personnel'."
+        },
+        {
+          "name": "deceased_location",
+          "description": "The location where the individual was killed in the line of duty."
+        },
+        {
+          "name": "flag_location",
+          "description": "The location where the flag is flown, specifically the 'Capitol Area'."
+        }
+      ],
+      "consequences": [
+        "Flags must be flown at half-staff for a period determined by the governor."
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "flagType",
-      "description": "The type of flag being flown, either American or Minnesota."
-    },
-    {
-      "name": "location",
-      "description": "The location where the flag is being flown, specifically the Capitol Area."
-    },
-    {
-      "name": "event",
-      "description": "The event triggering the action, specifically a death."
-    },
-    {
-      "name": "personType",
-      "description": "The type of person whose death triggers the action, either a public safety officer or military personnel."
-    },
-    {
-      "name": "state",
-      "description": "The state where the event occurred, specifically Minnesota."
-    },
-    {
-      "name": "dutyStatus",
-      "description": "The duty status of the person at the time of death, specifically if they were killed in the line of duty."
-    }
-  ],
-  "consequences": [
-    "Flags must be flown at half-staff for a period determined by the governor."
   ]
 }

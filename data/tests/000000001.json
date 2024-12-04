@@ -1,0 +1,88 @@
+{
+  "id": "1.03",
+  "url": "https://www.revisor.mn.gov/statutes/cite/1.03",
+  "title": "1.03 WATERS INCLUDED.",
+  "text": "The concurrent jurisdiction of a county and of courts and officers exercising jurisdiction throughout it extends over the water area that would be included if the boundary lines of the county were produced in the direction of their approach and extended across the waters to the opposite shore.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "hasWaterBoundary"
+          },
+          {
+            "var": "isWithinExtendedLines"
+          },
+          {
+            "or": [
+              {
+                "var": "isCountyAuthority"
+              },
+              {
+                "and": [
+                  {
+                    "var": "isCourtOrOfficer"
+                  },
+                  {
+                    "var": "hasJurisdictionThroughoutCounty"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": true,
+          "isCountyAuthority": true,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": true
+        },
+        {
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": false,
+          "isCountyAuthority": true,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": true
+        },
+        {
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": true,
+          "isCountyAuthority": false,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "hasWaterBoundary",
+          "description": "Whether the county has a boundary that meets a body of water"
+        },
+        {
+          "name": "isWithinExtendedLines",
+          "description": "Whether the area in question falls within the theoretical lines created by extending the county's boundary lines across the water to the opposite shore"
+        },
+        {
+          "name": "isCountyAuthority",
+          "description": "Whether the entity exercising jurisdiction is a county authority"
+        },
+        {
+          "name": "isCourtOrOfficer",
+          "description": "Whether the entity exercising jurisdiction is a court or officer"
+        },
+        {
+          "name": "hasJurisdictionThroughoutCounty",
+          "description": "Whether the court or officer normally has jurisdiction throughout the entire county"
+        }
+      ],
+      "consequences": [
+        "The jurisdiction extends over the water area",
+        "The authority has legal power to act within the extended water boundary",
+        "Laws and regulations of the county apply in the extended water area"
+      ]
+    }
+  ]
+}

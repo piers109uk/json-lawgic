@@ -4,46 +4,46 @@
   "title": "1.13 MONEY RECEIVED CREDITED TO HIGHWAY FUND.",
   "text": "Any payment so received for the granting of an easement shall be deposited in the trunk highway fund.",
   "repealed": false,
-  "rule": {
-    "if": [
-      {
-        "==": [
+  "rules": [
+    {
+      "rule": {
+        "if": [
           {
-            "var": "payment_type"
+            "==": [
+              {
+                "var": "payment_type"
+              },
+              "easement"
+            ]
           },
-          "easement"
+          {
+            "log": "Deposit in trunk highway fund"
+          }
         ]
       },
-      {
-        "log": "Deposit in trunk highway fund"
-      }
-    ]
-  },
-  "examples": [
-    {
-      "payment_type": "easement",
-      "amount": 1000
-    },
-    {
-      "payment_type": "lease",
-      "amount": 500
-    },
-    {
-      "payment_type": "easement",
-      "amount": 2000
+      "examples": [
+        {
+          "payment_type": "easement",
+          "amount": 1000
+        },
+        {
+          "payment_type": "lease",
+          "amount": 500
+        },
+        {
+          "payment_type": "easement",
+          "amount": 2000
+        }
+      ],
+      "variables": [
+        {
+          "name": "payment_type",
+          "description": "The type of payment received, e.g., easement, lease, etc."
+        }
+      ],
+      "consequences": [
+        "Deposit in trunk highway fund"
+      ]
     }
-  ],
-  "variables": [
-    {
-      "name": "payment_type",
-      "description": "The type of payment received, e.g., easement, lease, etc."
-    },
-    {
-      "name": "amount",
-      "description": "The amount of money received for the payment."
-    }
-  ],
-  "consequences": [
-    "Deposit in trunk highway fund"
   ]
 }
