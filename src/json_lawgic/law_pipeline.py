@@ -2,10 +2,10 @@ import asyncio
 from pathlib import Path
 from pprint import pprint
 
-from data_io import read_json, write_json
-from json_merge import merge_json_files
-from law_interpreter import LawInterpreter
-from logger import logger
+from json_lawgic.data_io import read_json, write_json
+from json_lawgic.json_merge import merge_json_files
+from json_lawgic.law_interpreter import LawInterpreter
+from json_lawgic.logger import logger
 
 interpreter = LawInterpreter()
 # law_object = read_json("data/default/000000001.json")

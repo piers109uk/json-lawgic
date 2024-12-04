@@ -3,14 +3,15 @@ from pprint import pprint
 from typing import cast
 
 from dotenv import load_dotenv
-from langchain_core.prompts import PromptTemplate
 from langchain_anthropic import ChatAnthropic
+from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from logger import logger
 from pydantic import BaseModel, Field
 
-from data_io import read_json, read_text, write_json
-from langfuse_setup import langfuse_handler
+from json_lawgic.data_io import read_json, read_text, write_json
+from json_lawgic.langfuse_setup import langfuse_handler
+from json_lawgic.logger import logger
+from json_lawgic.prompts import PromptManager
 
 # Load environment variables from .env file
 load_dotenv()
@@ -59,62 +60,8 @@ class JsonLogicRules(BaseModel):
     rules: list[JsonLogicInterpretation] = Field(description="A collection of JsonLogic rules")
 
 
-interpret_prompt = """
-I am looking to express laws as JsonLogic.
-
-Here is some info on how JSON logic works:
----
-{json_logic}
----
-
-Please express the following law as one or more JSON logic rules:
-{law}
-
-Provide your response as JSON in the following form:
-// The pure JSON logic rule expressed as a JSON object
-rule: object
-// Three examples of data that we could run the JsonLogic rule on. Aim to make some that evaluate to true and some to false.
-examples: object[]
-// a list of variables referenced in the rule
-variables: RuleVariable[]
-// The consequences if the rule evaluates to true, expressed as briefly as possible
-consequences: string[]
-
-Where RuleVariable is defined as: 
-// The name of the variable referenced in the rule
-name: string
-// A description of what the variable represents
-description: string
-
-Express it as completely as possible without leaving out any information.
-
-"""
-
-simplify_prompt = """
-Please review the following JsonLogic interpretation of this law.
-If the JsonLogic Rules can be simplified, please return the interpretation with the rules simplified.
-If the interpretations are incomplete or incorrect, please update them to fix this.
-If the JsonLogic Rules cannot be simplified and are complete and correct, please return the original interpretation.
-
-Here is some info on how JSON logic works:
----
-{json_logic}
----
-
-Here is the law:
----
-{law}
----
-
-And here are the corresponding rules interpreted from the law:
----
-{interpretation}
----
-
-"""
-
-interpret_prompt_template = PromptTemplate.from_template(interpret_prompt)
-simplify_prompt_template = PromptTemplate.from_template(simplify_prompt)
+interpret_prompt_template = PromptManager.get_prompt_template("interpret-law")
+simplify_prompt_template = PromptManager.get_prompt_template("simplify-interpretation")
 
 
 class LawInterpreter:

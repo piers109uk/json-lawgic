@@ -11,62 +11,47 @@
           {
             "==": [
               {
-                "var": "jurisdiction_type"
+                "var": "county_boundary_extended"
               },
-              "concurrent"
+              "opposite_shore"
             ]
           },
           {
             "==": [
               {
-                "var": "boundary_type"
+                "var": "court_jurisdiction"
               },
-              "county"
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "water_area_included"
-              },
-              true
+              "county_boundary_extended"
             ]
           }
         ]
       },
       "examples": [
         {
-          "jurisdiction_type": "concurrent",
-          "boundary_type": "county",
-          "water_area_included": true
+          "county_boundary_extended": "opposite_shore",
+          "court_jurisdiction": "county_boundary_extended"
         },
         {
-          "jurisdiction_type": "exclusive",
-          "boundary_type": "county",
-          "water_area_included": false
+          "county_boundary_extended": "opposite_shore",
+          "court_jurisdiction": "different_area"
         },
         {
-          "jurisdiction_type": "concurrent",
-          "boundary_type": "state",
-          "water_area_included": false
+          "county_boundary_extended": "different_area",
+          "court_jurisdiction": "county_boundary_extended"
         }
       ],
       "variables": [
         {
-          "name": "jurisdiction_type",
-          "description": "The type of jurisdiction being exercised (e.g., concurrent, exclusive)."
+          "name": "county_boundary_extended",
+          "description": "The area that would be included if the boundary lines of the county were extended across the waters to the opposite shore."
         },
         {
-          "name": "boundary_type",
-          "description": "The type of boundary being considered (e.g., county, state)."
-        },
-        {
-          "name": "water_area_included",
-          "description": "A boolean indicating whether the water area is included within the jurisdiction."
+          "name": "court_jurisdiction",
+          "description": "The jurisdiction area of the courts and officers exercising jurisdiction throughout the county."
         }
       ],
       "consequences": [
-        "The jurisdiction extends over the water area to the opposite shore."
+        "The county and courts have jurisdiction over the extended water area."
       ]
     }
   ]
