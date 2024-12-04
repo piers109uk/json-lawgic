@@ -9,22 +9,23 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
 from json_lawgic.data_io import read_json, read_text, write_json
-from json_lawgic.langfuse_setup import langfuse_handler
+from json_lawgic.langfuse_setup import get_tracing_handler
 from json_lawgic.logger import logger
 from json_lawgic.prompts import PromptManager
+from json_lawgic.util import omit, pick
 
 # Load environment variables from .env file
 load_dotenv()
 
-llm = ChatAnthropic(
-    model_name="claude-3-5-sonnet-latest",
-    max_tokens_to_sample=8192,  #
-    temperature=0,
-    timeout=None,
-    max_retries=2,
-    stop=None,
-)
-llm = ChatOpenAI(model="gpt-4o", temperature=0)
+# llm = ChatAnthropic(
+#     model_name="claude-3-5-sonnet-latest",
+#     max_tokens_to_sample=8192,  #
+#     temperature=0,
+#     timeout=None,
+#     max_retries=2,
+#     stop=None,
+# )
+# llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 # TODO: Compare multi-agent with this approach - can one agent split the law up and another define the rules?
 # Is it effective to have a reviewer & simplifier agent?
@@ -67,13 +68,27 @@ simplify_prompt_template = PromptManager.get_prompt_template("simplify-interpret
 class LawInterpreter:
     json_logic = read_text("markdown/json-logic.md")
 
+    def __init__(self):
+        self.model_name = "claude-3-5-sonnet-latest"
+        self.llm = ChatAnthropic(
+            model_name="claude-3-5-sonnet-latest",
+            max_tokens_to_sample=8192,  #
+            temperature=0,
+            timeout=None,
+            max_retries=2,
+            stop=None,
+        )
+
     def interpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
         law_text = law_object.get("text")
         prompt = interpret_prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
-        structured_llm = llm.with_structured_output(JsonLogicRules)
+        structured_llm = self.llm.with_structured_output(JsonLogicRules)
 
-        response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [langfuse_handler]}))
+        metadata = pick(law_object, ["id", "url", "title"])
+        tags = [self.model_name]
+        tracing_handler = get_tracing_handler(metadata, tags)
+        response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [tracing_handler]}))
 
         res_dict = response.model_dump()
         return {**res_dict}
@@ -83,9 +98,11 @@ class LawInterpreter:
         law_text = law_object.get("text")
         prompt = await interpret_prompt_template.ainvoke({"json_logic": self.json_logic, "law": law_text})
 
-        structured_llm = llm.with_structured_output(JsonLogicRules)
-
-        response = await structured_llm.ainvoke(prompt, config={"callbacks": [langfuse_handler]})
+        structured_llm = self.llm.with_structured_output(JsonLogicRules)
+        metadata = pick(law_object, ["id", "url", "title"])
+        tags = [self.model_name]
+        tracing_handler = get_tracing_handler(metadata, tags)
+        response = await structured_llm.ainvoke(prompt, config={"callbacks": [tracing_handler]})
 
         rules = cast(JsonLogicRules, response)
 
@@ -94,13 +111,16 @@ class LawInterpreter:
 
     async def asimplify_interpretation(self, law_object: dict, interpretation: dict) -> dict:
         """Returns a dict containing rules"""
+
         law_text = law_object.get("text")
         prompt = simplify_prompt_template.invoke(
             {"json_logic": self.json_logic, "law": law_text, "interpretation": interpretation}
         )
-        structured_llm = llm.with_structured_output(JsonLogicRules)
-
-        response = await structured_llm.ainvoke(prompt, config={"callbacks": [langfuse_handler]})
+        structured_llm = self.llm.with_structured_output(JsonLogicRules)
+        metadata = pick(law_object, ["id", "url", "title"])
+        tags = [self.model_name]
+        tracing_handler = get_tracing_handler(metadata, tags)
+        response = await structured_llm.ainvoke(prompt, config={"callbacks": [tracing_handler]})
 
         rules = cast(JsonLogicRules, response)
 

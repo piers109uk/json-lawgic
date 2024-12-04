@@ -9,49 +9,79 @@
       "rule": {
         "and": [
           {
-            "==": [
-              {
-                "var": "county_boundary_extended"
-              },
-              "opposite_shore"
-            ]
+            "var": "hasWaterBoundary"
           },
           {
-            "==": [
+            "var": "isWithinExtendedLines"
+          },
+          {
+            "or": [
               {
-                "var": "court_jurisdiction"
+                "var": "isCountyAuthority"
               },
-              "county_boundary_extended"
+              {
+                "and": [
+                  {
+                    "var": "isCourtOrOfficer"
+                  },
+                  {
+                    "var": "hasJurisdictionThroughoutCounty"
+                  }
+                ]
+              }
             ]
           }
         ]
       },
       "examples": [
         {
-          "county_boundary_extended": "opposite_shore",
-          "court_jurisdiction": "county_boundary_extended"
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": true,
+          "isCountyAuthority": true,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": true
         },
         {
-          "county_boundary_extended": "opposite_shore",
-          "court_jurisdiction": "different_area"
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": true,
+          "isCountyAuthority": false,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": true
         },
         {
-          "county_boundary_extended": "different_area",
-          "court_jurisdiction": "county_boundary_extended"
+          "hasWaterBoundary": true,
+          "isWithinExtendedLines": false,
+          "isCountyAuthority": true,
+          "isCourtOrOfficer": true,
+          "hasJurisdictionThroughoutCounty": true
         }
       ],
       "variables": [
         {
-          "name": "county_boundary_extended",
-          "description": "The area that would be included if the boundary lines of the county were extended across the waters to the opposite shore."
+          "name": "hasWaterBoundary",
+          "description": "Whether the county has a boundary that meets a body of water"
         },
         {
-          "name": "court_jurisdiction",
-          "description": "The jurisdiction area of the courts and officers exercising jurisdiction throughout the county."
+          "name": "isWithinExtendedLines",
+          "description": "Whether the area in question falls within the theoretical extension of county boundary lines across the water to the opposite shore"
+        },
+        {
+          "name": "isCountyAuthority",
+          "description": "Whether the entity exercising jurisdiction is a county authority"
+        },
+        {
+          "name": "isCourtOrOfficer",
+          "description": "Whether the entity exercising jurisdiction is a court or officer"
+        },
+        {
+          "name": "hasJurisdictionThroughoutCounty",
+          "description": "Whether the court or officer normally has jurisdiction throughout the entire county"
         }
       ],
       "consequences": [
-        "The county and courts have jurisdiction over the extended water area."
+        "The jurisdiction extends over the water area",
+        "The authority has legal power to act in the water area defined by extended boundary lines",
+        "Courts and officers with county-wide jurisdiction can exercise their authority over the extended water area"
       ]
     }
   ]
