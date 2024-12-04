@@ -86,6 +86,8 @@ name: string
 // A description of what the variable represents
 description: string
 
+Express it as completely as possible without leaving out any information.
+
 """
 
 simplify_prompt = """

@@ -18,8 +18,7 @@ async def _process_file(file: Path, output_folder: str):
 
     if law_object.get("text") is None:
         return
-    print(file)
-    # pprint(law_object)
+    logger.info(f"Processing law file: {file.name}")
     try:
         law_rules = await interpreter.ainterpret_law(law_object)
         interpreted_law = {**law_object, **law_rules}

@@ -22,26 +22,54 @@
             }
           },
           {
-            "in": [
+            "or": [
               {
-                "var": "action"
+                "in": [
+                  {
+                    "var": "action"
+                  },
+                  [
+                    "appear_as_attorney",
+                    "give_legal_advice",
+                    "prepare_legal_documents"
+                  ]
+                ]
               },
-              [
-                "appear_as_attorney",
-                "give_legal_advice",
-                "prepare_legal_documents"
-              ]
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "person_type"
+                      },
+                      "corporation"
+                    ]
+                  },
+                  {
+                    "in": [
+                      {
+                        "var": "action"
+                      },
+                      [
+                        "maintain_action",
+                        "give_legal_advice",
+                        "prepare_legal_documents"
+                      ]
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
       },
       "examples": [
         {
-          "person_type": "non_member",
+          "person_type": "individual",
           "action": "appear_as_attorney"
         },
         {
-          "person_type": "non_member",
+          "person_type": "corporation",
           "action": "give_legal_advice"
         },
         {
@@ -52,35 +80,37 @@
       "variables": [
         {
           "name": "person_type",
-          "description": "The type of person or entity, e.g., member_of_bar, licensed_attorney, non_member, corporation"
+          "description": "The type of person or entity performing the action, e.g., individual, corporation, member_of_bar, licensed_attorney."
         },
         {
           "name": "action",
-          "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents"
+          "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents."
         }
       ],
       "consequences": [
-        "Unlawful to perform legal actions without being a licensed attorney or member of the bar."
+        "The person or entity is acting unlawfully and may be subject to penalties."
       ]
     },
     {
       "rule": {
         "and": [
           {
-            "===": [
+            "==": [
               {
-                "var": "corporation_type"
+                "var": "person_type"
               },
-              "for_profit"
+              "corporation"
             ]
           },
           {
             "!": {
-              "===": [
+              "in": [
                 {
-                  "var": "corporation_exception"
+                  "var": "corporation_type"
                 },
-                "attorney_professional_firm"
+                [
+                  "attorney_professional_firm"
+                ]
               ]
             }
           },
@@ -90,7 +120,7 @@
                 "var": "action"
               },
               [
-                "maintain_court_action",
+                "maintain_action",
                 "give_legal_advice",
                 "prepare_legal_documents"
               ]
@@ -100,103 +130,117 @@
       },
       "examples": [
         {
+          "person_type": "corporation",
           "corporation_type": "for_profit",
-          "corporation_exception": "non_attorney_firm",
-          "action": "maintain_court_action"
+          "action": "maintain_action"
         },
         {
-          "corporation_type": "for_profit",
-          "corporation_exception": "non_attorney_firm",
+          "person_type": "corporation",
+          "corporation_type": "non_profit",
           "action": "give_legal_advice"
         },
         {
-          "corporation_type": "for_profit",
-          "corporation_exception": "non_attorney_firm",
+          "person_type": "corporation",
+          "corporation_type": "attorney_professional_firm",
           "action": "prepare_legal_documents"
         }
       ],
       "variables": [
         {
-          "name": "corporation_type",
-          "description": "The type of corporation, e.g., for_profit, non_profit"
+          "name": "person_type",
+          "description": "The type of person or entity performing the action, e.g., individual, corporation."
         },
         {
-          "name": "corporation_exception",
-          "description": "Exception status of the corporation, e.g., attorney_professional_firm"
+          "name": "corporation_type",
+          "description": "The type of corporation, e.g., for_profit, non_profit, attorney_professional_firm."
         },
         {
           "name": "action",
-          "description": "The action being performed, e.g., maintain_court_action, give_legal_advice, prepare_legal_documents"
+          "description": "The action being performed, e.g., maintain_action, give_legal_advice, prepare_legal_documents."
         }
       ],
       "consequences": [
-        "Unlawful for for-profit corporations to perform legal actions unless they are attorney professional firms."
+        "The corporation is acting unlawfully and may be subject to penalties."
       ]
     },
     {
       "rule": {
         "and": [
           {
-            "===": [
+            "==": [
               {
                 "var": "person_type"
               },
-              "non_attorney"
-            ]
-          },
-          {
-            "===": [
-              {
-                "var": "action"
-              },
-              "charge_attorney_fee"
+              "individual"
             ]
           },
           {
             "!": {
-              "===": [
+              "in": [
                 {
-                  "var": "fee_recipient"
+                  "var": "action"
                 },
-                "licensed_attorney"
+                [
+                  "draw_document_without_charge",
+                  "draw_will_in_emergency",
+                  "defend_insureds",
+                  "act_for_common_carrier",
+                  "give_legal_advice_to_members",
+                  "cooperate_with_attorney",
+                  "draw_document_for_corporation",
+                  "draw_conveyance_documents",
+                  "render_legal_services_to_corporation",
+                  "engage_in_collections",
+                  "publish_legal_questions",
+                  "manage_rental_property",
+                  "commence_action_for_rental_property",
+                  "deliver_legal_services_as_specialized_assistant",
+                  "appear_on_behalf_of_corporation",
+                  "appear_on_behalf_of_association"
+                ]
               ]
             }
+          },
+          {
+            "in": [
+              {
+                "var": "action"
+              },
+              [
+                "draw_will",
+                "prepare_legal_document",
+                "give_legal_advice"
+              ]
+            ]
           }
         ]
       },
       "examples": [
         {
-          "person_type": "non_attorney",
-          "action": "charge_attorney_fee",
-          "fee_recipient": "non_licensed_person"
+          "person_type": "individual",
+          "action": "draw_will"
         },
         {
-          "person_type": "non_attorney",
-          "action": "charge_attorney_fee",
-          "fee_recipient": "corporation"
+          "person_type": "individual",
+          "action": "prepare_legal_document"
         },
         {
-          "person_type": "non_attorney",
-          "action": "charge_attorney_fee",
-          "fee_recipient": "non_licensed_person"
+          "person_type": "individual",
+          "action": "give_legal_advice"
         }
       ],
       "variables": [
         {
           "name": "person_type",
-          "description": "The type of person or entity, e.g., non_attorney, licensed_attorney"
+          "description": "The type of person or entity performing the action, e.g., individual, corporation."
         },
         {
           "name": "action",
-          "description": "The action being performed, e.g., charge_attorney_fee"
-        },
-        {
-          "name": "fee_recipient",
-          "description": "The recipient of the attorney fee, e.g., licensed_attorney, non_licensed_person"
+          "description": "The action being performed, e.g., draw_will, prepare_legal_document, give_legal_advice."
         }
       ],
       "consequences": [
-        "Unlawful to charge attorney fees unless the recipient is a licensed attorney."
+        "The individual is acting unlawfully and may be subject to penalties."
       ]
     }
   ]

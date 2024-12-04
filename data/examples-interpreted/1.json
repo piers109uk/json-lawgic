@@ -8,26 +8,40 @@
       "rule": {
         "and": [
           {
-            "==": [
-              {
-                "var": "intent"
-              },
-              true
-            ]
+            "var": "intent_to_defraud"
           },
           {
             "or": [
               {
-                "in": [
+                "==": [
                   {
                     "var": "action"
                   },
-                  [
-                    "false_entry",
-                    "alter_entry",
-                    "omit_entry",
-                    "prevent_entry"
-                  ]
+                  "make_false_entry"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "alter_true_entry"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "omit_true_entry"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "prevent_true_entry"
                 ]
               }
             ]
@@ -36,30 +50,37 @@
       },
       "examples": [
         {
-          "intent": true,
-          "action": "false_entry"
+          "intent_to_defraud": true,
+          "action": "make_false_entry"
         },
         {
-          "intent": true,
-          "action": "alter_entry"
+          "intent_to_defraud": true,
+          "action": "alter_true_entry"
         },
         {
-          "intent": false,
-          "action": "omit_entry"
+          "intent_to_defraud": false,
+          "action": "omit_true_entry"
+        },
+        {
+          "intent_to_defraud": true,
+          "action": "prevent_true_entry"
+        },
+        {
+          "intent_to_defraud": false,
+          "action": "make_false_entry"
         }
       ],
       "variables": [
         {
-          "name": "intent",
-          "description": "The intent to defraud"
+          "name": "intent_to_defraud",
+          "description": "Indicates whether the person has the intent to defraud."
         },
         {
           "name": "action",
-          "description": "The action taken on the business records"
+          "description": "The action taken by the person regarding business records, such as making a false entry, altering a true entry, omitting a true entry, or preventing a true entry."
         }
       ],
       "consequences": [
-        "Guilty of falsifying business records in the second degree",
         "Class A misdemeanor"
       ]
     }

@@ -35,27 +35,26 @@
         },
         {
           "falsifying_second_degree": true,
-          "intent_to_commit_another_crime": true,
-          "intent_to_aid_or_conceal": true
+          "intent_to_commit_another_crime": false,
+          "intent_to_aid_or_conceal": false
         }
       ],
       "variables": [
         {
           "name": "falsifying_second_degree",
-          "description": "Indicates if the person has committed falsifying business records in the second degree."
+          "description": "Indicates if the person has committed the crime of falsifying business records in the second degree."
         },
         {
           "name": "intent_to_commit_another_crime",
-          "description": "Indicates if there is an intent to commit another crime."
+          "description": "Indicates if the person has the intent to commit another crime."
         },
         {
           "name": "intent_to_aid_or_conceal",
-          "description": "Indicates if there is an intent to aid or conceal the commission of another crime."
+          "description": "Indicates if the person has the intent to aid or conceal the commission of another crime."
         }
       ],
       "consequences": [
-        "Guilty of falsifying business records in the first degree",
-        "Class E felony"
+        "Guilty of falsifying business records in the first degree, a class E felony."
       ]
     }
   ]
