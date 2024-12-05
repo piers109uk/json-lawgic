@@ -1,11 +1,11 @@
 "use client"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ScaleIcon } from "@heroicons/react/24/solid"
 import { useState } from "react"
 import LawDisplay from "./law-display"
 import LawRules from "./law-rules"
 import LawsList from "./laws-list"
+import { ScaleCodeIcon } from "./scale-code-icon"
 import Search from "./Search"
 import { IStatuteData, showcase, statutes } from "./statutes"
 
@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <div className="h-screen bg-background">
         <header className="bg-primary text-primary-foreground p-4 flex gap-1 items-center">
-          <ScaleIcon className="size-6" />
+          <ScaleCodeIcon />
           <h1 className="text-2xl font-bold">JsonLawgic</h1>
         </header>
         <Tabs defaultValue="search" className="">

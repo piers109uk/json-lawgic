@@ -43,17 +43,17 @@
         },
         {
           "hasWaterBoundary": true,
-          "isWithinExtendedLines": false,
-          "isCountyAuthority": true,
+          "isWithinExtendedLines": true,
+          "isCountyAuthority": false,
           "isCourtOrOfficer": true,
           "hasJurisdictionThroughoutCounty": true
         },
         {
           "hasWaterBoundary": true,
-          "isWithinExtendedLines": true,
-          "isCountyAuthority": false,
+          "isWithinExtendedLines": false,
+          "isCountyAuthority": true,
           "isCourtOrOfficer": true,
-          "hasJurisdictionThroughoutCounty": false
+          "hasJurisdictionThroughoutCounty": true
         }
       ],
       "variables": [
@@ -63,7 +63,7 @@
         },
         {
           "name": "isWithinExtendedLines",
-          "description": "Whether the area in question falls within the theoretical lines created by extending the county's boundary lines across the water to the opposite shore"
+          "description": "Whether the area in question falls within the theoretical extension of county boundary lines across the water to the opposite shore"
         },
         {
           "name": "isCountyAuthority",
@@ -80,8 +80,8 @@
       ],
       "consequences": [
         "The jurisdiction extends over the water area",
-        "The authority has legal power to act within the extended water boundary",
-        "Laws and regulations of the county apply in the extended water area"
+        "The authority has legal power to act in the water area defined by extended boundary lines",
+        "Courts and officers with county-wide jurisdiction can exercise their authority over the extended water area"
       ]
     }
   ]

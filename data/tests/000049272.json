@@ -43,18 +43,20 @@
                         "var": "action"
                       },
                       [
-                        "prepare_will",
-                        "prepare_trust"
+                        "maintain_conduct_defend"
                       ]
                     ]
                   },
-                  ">=",
-                  [
-                    {
-                      "var": "fee"
-                    },
-                    0
-                  ]
+                  {
+                    "!": {
+                      "===": [
+                        {
+                          "var": "capacity"
+                        },
+                        "personal"
+                      ]
+                    }
+                  }
                 ]
               }
             ]
@@ -65,35 +67,35 @@
         {
           "person_type": "non_member",
           "action": "appear_as_attorney",
-          "fee": 100
-        },
-        {
-          "person_type": "licensed_attorney",
-          "action": "give_legal_advice",
-          "fee": 0
+          "capacity": "representative"
         },
         {
           "person_type": "non_member",
-          "action": "prepare_will",
-          "fee": 0
+          "action": "give_legal_advice",
+          "capacity": "personal"
+        },
+        {
+          "person_type": "member_of_bar",
+          "action": "appear_as_attorney",
+          "capacity": "representative"
         }
       ],
       "variables": [
         {
           "name": "person_type",
-          "description": "The type of person or entity performing the action, e.g., non_member, member_of_bar, licensed_attorney."
+          "description": "The type of person or entity, e.g., member_of_bar, non_member, licensed_attorney"
         },
         {
           "name": "action",
-          "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents, prepare_will, prepare_trust."
+          "description": "The action being performed, e.g., appear_as_attorney, give_legal_advice, prepare_legal_documents"
         },
         {
-          "name": "fee",
-          "description": "The fee charged for the action, if applicable."
+          "name": "capacity",
+          "description": "The capacity in which the action is performed, e.g., personal, representative"
         }
       ],
       "consequences": [
-        "Unlawful action, subject to penalties."
+        "Unlawful to perform legal actions without being a licensed attorney"
       ]
     },
     {
@@ -125,19 +127,34 @@
                     "var": "action"
                   },
                   [
-                    "maintain_action",
+                    "maintain_conduct_defend",
                     "give_legal_advice",
                     "prepare_legal_documents"
                   ]
                 ]
               },
-              ">=",
-              [
-                {
-                  "var": "fee"
-                },
-                0
-              ]
+              {
+                "and": [
+                  {
+                    "in": [
+                      {
+                        "var": "action"
+                      },
+                      [
+                        "solicit_public"
+                      ]
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "document_type"
+                      },
+                      "will"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -147,41 +164,92 @@
           "entity_type": "corporation",
           "corporation_type": "non_attorney_firm",
           "action": "give_legal_advice",
-          "fee": 100
+          "document_type": "will"
         },
         {
           "entity_type": "corporation",
           "corporation_type": "attorney_professional_firm",
-          "action": "maintain_action",
-          "fee": 0
+          "action": "give_legal_advice",
+          "document_type": "will"
         },
         {
           "entity_type": "corporation",
           "corporation_type": "non_attorney_firm",
-          "action": "prepare_legal_documents",
-          "fee": 0
+          "action": "solicit_public",
+          "document_type": "will"
         }
       ],
       "variables": [
         {
           "name": "entity_type",
-          "description": "The type of entity performing the action, e.g., corporation."
+          "description": "The type of entity, e.g., corporation, individual"
         },
         {
           "name": "corporation_type",
-          "description": "The type of corporation, e.g., attorney_professional_firm, non_attorney_firm."
+          "description": "The type of corporation, e.g., attorney_professional_firm, non_attorney_firm"
         },
         {
           "name": "action",
-          "description": "The action being performed, e.g., maintain_action, give_legal_advice, prepare_legal_documents."
+          "description": "The action being performed, e.g., maintain_conduct_defend, give_legal_advice, prepare_legal_documents, solicit_public"
         },
         {
-          "name": "fee",
-          "description": "The fee charged for the action, if applicable."
+          "name": "document_type",
+          "description": "The type of document involved, e.g., will, legal_document"
         }
       ],
       "consequences": [
-        "Unlawful corporate action, subject to penalties."
+        "Unlawful for corporations to perform legal actions unless an attorney's professional firm"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "action"
+              },
+              "charge_attorney_fee"
+            ]
+          },
+          {
+            "!": {
+              "===": [
+                {
+                  "var": "executor"
+                },
+                "licensed_attorney"
+              ]
+            }
+          }
+        ]
+      },
+      "examples": [
+        {
+          "action": "charge_attorney_fee",
+          "executor": "non_licensed_attorney"
+        },
+        {
+          "action": "charge_attorney_fee",
+          "executor": "licensed_attorney"
+        },
+        {
+          "action": "prepare_legal_document",
+          "executor": "non_licensed_attorney"
+        }
+      ],
+      "variables": [
+        {
+          "name": "action",
+          "description": "The action being performed, e.g., charge_attorney_fee, prepare_legal_document"
+        },
+        {
+          "name": "executor",
+          "description": "The executor of the action, e.g., licensed_attorney, non_licensed_attorney"
+        }
+      ],
+      "consequences": [
+        "Unlawful to charge attorney fees without being a licensed attorney"
       ]
     }
   ]
