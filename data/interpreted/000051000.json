@@ -1,0 +1,86 @@
+{
+  "id": "573.13",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.13",
+  "title": "573.13 CONTRIBUTION AMONG HEIRS.",
+  "text": "When any heir, devisee, or legatee pays more than a proportional share of such debt, the other persons liable shall be holden and compelled to contribute their just proportion of the same.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "<": [
+              {
+                "var": "paid_share"
+              },
+              {
+                "var": "proportional_share"
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "other_liable_persons_contribution"
+                  },
+                  0
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "compelled_to_contribute"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "paid_share": 150,
+          "proportional_share": 100,
+          "other_liable_persons_contribution": 0,
+          "compelled_to_contribute": true
+        },
+        {
+          "paid_share": 100,
+          "proportional_share": 100,
+          "other_liable_persons_contribution": 50,
+          "compelled_to_contribute": false
+        },
+        {
+          "paid_share": 200,
+          "proportional_share": 150,
+          "other_liable_persons_contribution": 50,
+          "compelled_to_contribute": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "paid_share",
+          "description": "The amount paid by the heir, devisee, or legatee."
+        },
+        {
+          "name": "proportional_share",
+          "description": "The proportional share of the debt that the heir, devisee, or legatee is responsible for."
+        },
+        {
+          "name": "other_liable_persons_contribution",
+          "description": "The contribution made by other persons liable for the debt."
+        },
+        {
+          "name": "compelled_to_contribute",
+          "description": "Indicates whether other liable persons are compelled to contribute their just proportion."
+        }
+      ],
+      "consequences": [
+        "Other liable persons are compelled to contribute their just proportion of the debt."
+      ]
+    }
+  ]
+}

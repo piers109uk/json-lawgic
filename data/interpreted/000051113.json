@@ -1,0 +1,268 @@
+{
+  "id": "578.17",
+  "url": "https://www.revisor.mn.gov/statutes/cite/578.17",
+  "title": "578.17 HEARING BY COURT; DETERMINATION OF DEATH OF AN ABSENTEE.",
+  "text": "A person in interest may request a hearing in the following circumstances:\n(1) if an absentee is absent from the domicile without being in communication after being exposed to a specific peril and a diligent search has been made; or\n(2) if an absentee has been absent from the domicile for a period of four consecutive years or more without being in communication and a diligent search has been made; or\n(3) if unforeseeable or changing circumstances necessitate court authorization for action in respect to the management or disposition of the absentee's business or property.\nThe person requesting the hearing shall file a petition stating name, address, relationship to the absentee, and the specific grounds for the hearing requested.\nUpon the filing of the petition, the court shall notify all proper persons in interest of the date, time and place of the hearing.\nThe notice shall in all cases be served as follows:\n(1) by publication in the county in which the petition is filed once in each of three successive weeks, in a newspaper designated by the court; and\n(2) upon all persons in interest by ordinary mail.\nThe court, if satisfied by the evidence adduced at a hearing in support of a petition alleging the absentee is missing after being exposed to a specific peril or that an absentee has been absent for four or more consecutive years, shall enter an order establishing as a matter of law the death of the absentee and the date thereof. The court shall order the distribution of the absentee's property to the persons and in the manner prescribed in chapters 524 and 525.\nUpon a hearing brought pursuant to subdivision 1, clause (3), the court shall have full power to make orders appropriate to conserve the absentee's property or business or to protect the rights of the persons in interest.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "petition_filed"
+          },
+          {
+            "var": "petitioner_info_complete"
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "var": "exposed_to_specific_peril"
+                  },
+                  {
+                    "var": "absent_from_domicile"
+                  },
+                  {
+                    "var": "no_communication"
+                  },
+                  {
+                    "var": "diligent_search_made"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "var": "absent_from_domicile"
+                  },
+                  {
+                    ">=": [
+                      {
+                        "var": "years_absent"
+                      },
+                      4
+                    ]
+                  },
+                  {
+                    "var": "no_communication"
+                  },
+                  {
+                    "var": "diligent_search_made"
+                  }
+                ]
+              },
+              {
+                "var": "unforeseeable_circumstances_requiring_court_action"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "petition_filed": true,
+          "petitioner_info_complete": true,
+          "exposed_to_specific_peril": true,
+          "absent_from_domicile": true,
+          "no_communication": true,
+          "diligent_search_made": true,
+          "years_absent": 1,
+          "unforeseeable_circumstances_requiring_court_action": false
+        },
+        {
+          "petition_filed": true,
+          "petitioner_info_complete": true,
+          "exposed_to_specific_peril": false,
+          "absent_from_domicile": true,
+          "no_communication": true,
+          "diligent_search_made": true,
+          "years_absent": 5,
+          "unforeseeable_circumstances_requiring_court_action": false
+        },
+        {
+          "petition_filed": true,
+          "petitioner_info_complete": false,
+          "exposed_to_specific_peril": false,
+          "absent_from_domicile": true,
+          "no_communication": true,
+          "diligent_search_made": true,
+          "years_absent": 3,
+          "unforeseeable_circumstances_requiring_court_action": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "petition_filed",
+          "description": "Whether a petition has been filed with the court"
+        },
+        {
+          "name": "petitioner_info_complete",
+          "description": "Whether the petition includes name, address, relationship to absentee, and specific grounds"
+        },
+        {
+          "name": "exposed_to_specific_peril",
+          "description": "Whether the absentee was exposed to a specific peril"
+        },
+        {
+          "name": "absent_from_domicile",
+          "description": "Whether the person is absent from their domicile"
+        },
+        {
+          "name": "no_communication",
+          "description": "Whether the person has been out of communication"
+        },
+        {
+          "name": "diligent_search_made",
+          "description": "Whether a diligent search has been conducted"
+        },
+        {
+          "name": "years_absent",
+          "description": "Number of consecutive years person has been absent"
+        },
+        {
+          "name": "unforeseeable_circumstances_requiring_court_action",
+          "description": "Whether there are unforeseeable circumstances requiring court authorization for property management"
+        }
+      ],
+      "consequences": [
+        "Court must schedule a hearing",
+        "Court must notify all proper persons in interest of hearing details",
+        "Court must serve notice by publication for 3 successive weeks",
+        "Court must serve notice to all persons in interest by ordinary mail"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "hearing_held"
+          },
+          {
+            "var": "evidence_presented"
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "var": "exposed_to_specific_peril"
+                  },
+                  {
+                    "var": "evidence_supports_death"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    ">=": [
+                      {
+                        "var": "years_absent"
+                      },
+                      4
+                    ]
+                  },
+                  {
+                    "var": "evidence_supports_death"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "hearing_held": true,
+          "evidence_presented": true,
+          "exposed_to_specific_peril": true,
+          "evidence_supports_death": true,
+          "years_absent": 2
+        },
+        {
+          "hearing_held": true,
+          "evidence_presented": true,
+          "exposed_to_specific_peril": false,
+          "evidence_supports_death": true,
+          "years_absent": 5
+        },
+        {
+          "hearing_held": true,
+          "evidence_presented": true,
+          "exposed_to_specific_peril": false,
+          "evidence_supports_death": false,
+          "years_absent": 3
+        }
+      ],
+      "variables": [
+        {
+          "name": "hearing_held",
+          "description": "Whether a hearing has been held"
+        },
+        {
+          "name": "evidence_presented",
+          "description": "Whether evidence was presented at the hearing"
+        },
+        {
+          "name": "exposed_to_specific_peril",
+          "description": "Whether evidence shows exposure to specific peril"
+        },
+        {
+          "name": "evidence_supports_death",
+          "description": "Whether the evidence supports establishing death"
+        },
+        {
+          "name": "years_absent",
+          "description": "Number of consecutive years person has been absent"
+        }
+      ],
+      "consequences": [
+        "Court must enter order establishing death as matter of law",
+        "Court must establish date of death",
+        "Court must order distribution of property according to chapters 524 and 525"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "hearing_held"
+          },
+          {
+            "var": "unforeseeable_circumstances_requiring_court_action"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "hearing_held": true,
+          "unforeseeable_circumstances_requiring_court_action": true
+        },
+        {
+          "hearing_held": true,
+          "unforeseeable_circumstances_requiring_court_action": false
+        },
+        {
+          "hearing_held": false,
+          "unforeseeable_circumstances_requiring_court_action": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "hearing_held",
+          "description": "Whether a hearing has been held"
+        },
+        {
+          "name": "unforeseeable_circumstances_requiring_court_action",
+          "description": "Whether there are unforeseeable circumstances requiring court authorization"
+        }
+      ],
+      "consequences": [
+        "Court has full power to make orders to conserve absentee's property or business",
+        "Court has full power to make orders to protect rights of persons in interest"
+      ]
+    }
+  ]
+}

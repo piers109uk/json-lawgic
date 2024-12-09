@@ -1,0 +1,83 @@
+{
+  "id": "574.15",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.15",
+  "title": "574.15 SURETY COMPANIES.",
+  "text": "When the bond or other instrument is required to be made with one surety, or with two or more sureties, it shall be sufficient if the same be executed, or the conditions thereof be guaranteed, solely by a corporation authorized by law so to do. No such corporation shall be accepted or approved as a surety or guarantor unless it holds the certificate of the commissioner of commerce, showing that it is authorized to contract as such.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "surety_type"
+                  },
+                  "individual"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "surety_type"
+                  },
+                  "corporation"
+                ]
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "==": [
+                  {
+                    "var": "surety_type"
+                  },
+                  "corporation"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "certificate_of_commissioner"
+                  },
+                  "valid"
+                ],
+                "true": true
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "surety_type": "individual",
+          "certificate_of_commissioner": "valid"
+        },
+        {
+          "surety_type": "corporation",
+          "certificate_of_commissioner": "valid"
+        },
+        {
+          "surety_type": "corporation",
+          "certificate_of_commissioner": "invalid"
+        }
+      ],
+      "variables": [
+        {
+          "name": "surety_type",
+          "description": "Indicates whether the surety is an individual or a corporation."
+        },
+        {
+          "name": "certificate_of_commissioner",
+          "description": "Indicates whether the corporation holds a valid certificate from the commissioner of commerce."
+        }
+      ],
+      "consequences": [
+        "The bond or instrument is validly executed or guaranteed."
+      ]
+    }
+  ]
+}

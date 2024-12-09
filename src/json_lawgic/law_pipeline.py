@@ -31,24 +31,24 @@ async def _process_file(file: Path, output_folder: str):
         logger.error(e)
 
 
-async def run_pipeline(input_folder: str, output_folder: str, limit: int = 150):
+async def run_pipeline(input_folder: str, output_folder: str, pattern: str = "*.json", limit: int = 150):
     p = Path(input_folder)
-    files = sorted(p.glob("*.json"))
+    files = sorted(p.glob(pattern))
 
     tasks = [_process_file(file, output_folder) for file in files[:limit]]
     await asyncio.gather(*tasks)
 
 
 if __name__ == "__main__":
-    # input_folder = "data/default"
-    # output_folder = "data/interpreted"
-    # output_file = "data/interpreted-laws.json"
+    input_folder = "data/default"
+    output_folder = "data/interpreted"
+    output_file = "data/interpreted-laws.json"
 
-    input_folder = "data/examples"
-    output_folder = "data/examples-interpreted"
-    output_file = "data/showcase.json"
+    # input_folder = "data/examples"
+    # output_folder = "data/examples-interpreted"
+    # output_file = "data/showcase.json"
 
-    asyncio.run(run_pipeline(input_folder, output_folder))
+    asyncio.run(run_pipeline(input_folder, output_folder, pattern="000051*.json", limit=20))
     combined = merge_json_files(output_folder, output_file)
     # A little data on what we've done
     for law in combined:

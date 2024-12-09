@@ -1,0 +1,102 @@
+{
+  "id": "573.15",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.15",
+  "title": "573.15 NO PREFERENCE BETWEEN DEBTS OF SAME CLASS.",
+  "text": "No preference shall be given by any next of kin, legatee, heir, or devisee to one debt over another of the same class, except one specified in section 573.14, clause (2); nor shall a debt due and payable be entitled to a preference over one not due; nor shall the commencement of an action against any next of kin, legatee, heir, or devisee, for the recovery of a debt, entitle it to preference over others of the same class.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "!": {
+              "in": [
+                {
+                  "var": "preference_given_by"
+                },
+                "next_of_kin",
+                "legatee",
+                "heir",
+                "devisee"
+              ]
+            }
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "debt_class"
+                  },
+                  "same"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "debt_class"
+                  },
+                  "573.14_clause_2"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "debt_due_status"
+              },
+              "not_due"
+            ]
+          },
+          {
+            "!": {
+              "var": "action_commenced"
+            }
+          }
+        ]
+      },
+      "examples": [
+        {
+          "preference_given_by": "legatee",
+          "debt_class": "same",
+          "debt_due_status": "not_due",
+          "action_commenced": false
+        },
+        {
+          "preference_given_by": "heir",
+          "debt_class": "573.14_clause_2",
+          "debt_due_status": "due",
+          "action_commenced": false
+        },
+        {
+          "preference_given_by": "devisee",
+          "debt_class": "same",
+          "debt_due_status": "not_due",
+          "action_commenced": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "preference_given_by",
+          "description": "The entity (next of kin, legatee, heir, or devisee) giving preference to a debt."
+        },
+        {
+          "name": "debt_class",
+          "description": "The class of the debt, either 'same' or '573.14_clause_2'."
+        },
+        {
+          "name": "debt_due_status",
+          "description": "The due status of the debt, either 'due' or 'not_due'."
+        },
+        {
+          "name": "action_commenced",
+          "description": "Whether an action has been commenced against the entity for the recovery of a debt."
+        }
+      ],
+      "consequences": [
+        "No preference is allowed for the debt."
+      ]
+    }
+  ]
+}

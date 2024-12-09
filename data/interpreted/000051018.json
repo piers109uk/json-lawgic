@@ -1,0 +1,191 @@
+{
+  "id": "572B.20",
+  "url": "https://www.revisor.mn.gov/statutes/cite/572B.20",
+  "title": "572B.20 CHANGE OF AWARD BY ARBITRATOR.",
+  "text": "(a) On motion to an arbitrator by a party to the arbitration proceeding, the arbitrator may modify or correct an award:\n(1) upon the grounds stated in section 572B.24, subsection (a)(1) or (3);\n(2) because the arbitrator has not made a final and definite award upon a claim submitted by the parties to the arbitration proceeding; or\n(3) to clarify the award.\n(b) A motion under subsection (a) must be made and served on all parties within 20 days after the movant receives notice of the award.\n(c) A party to the arbitration proceeding must serve any objections to the motion within ten days after receipt of the notice.\n(d) If a motion to the court is pending under sections 572B.22, 572B.23, and 572B.24, the court may submit the claim to the arbitrator to consider whether to modify or correct the award:\n(1) upon the grounds stated in section 572B.24, subsection (a)(1) or (3);\n(2) because the arbitrator has not made a final and definite award upon a claim submitted by the parties to the arbitration proceeding; or\n(3) to clarify the award.\n(e) An award modified or corrected pursuant to this section is subject to sections 572B.22, 572B.23, and 572B.24.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "in": [
+                  {
+                    "var": "ground"
+                  },
+                  [
+                    "section 572B.24 subsection (a)(1)",
+                    "section 572B.24 subsection (a)(3)"
+                  ]
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "final_award"
+                  },
+                  false
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "clarify_award"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "days_since_award_notice"
+              },
+              20
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "days_since_motion_notice"
+              },
+              10
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "ground": "section 572B.24 subsection (a)(1)",
+          "final_award": false,
+          "clarify_award": false,
+          "days_since_award_notice": 15,
+          "days_since_motion_notice": 5
+        },
+        {
+          "ground": "section 572B.24 subsection (a)(3)",
+          "final_award": true,
+          "clarify_award": true,
+          "days_since_award_notice": 10,
+          "days_since_motion_notice": 8
+        },
+        {
+          "ground": "other",
+          "final_award": true,
+          "clarify_award": false,
+          "days_since_award_notice": 25,
+          "days_since_motion_notice": 12
+        }
+      ],
+      "variables": [
+        {
+          "name": "ground",
+          "description": "The grounds for modifying or correcting the award."
+        },
+        {
+          "name": "final_award",
+          "description": "Whether the arbitrator has made a final and definite award."
+        },
+        {
+          "name": "clarify_award",
+          "description": "Whether the award needs clarification."
+        },
+        {
+          "name": "days_since_award_notice",
+          "description": "Days since the movant received notice of the award."
+        },
+        {
+          "name": "days_since_motion_notice",
+          "description": "Days since a party received notice of the motion."
+        }
+      ],
+      "consequences": [
+        "The arbitrator may modify or correct the award."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "court_motion_pending"
+          },
+          {
+            "or": [
+              {
+                "in": [
+                  {
+                    "var": "ground"
+                  },
+                  [
+                    "section 572B.24 subsection (a)(1)",
+                    "section 572B.24 subsection (a)(3)"
+                  ]
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "final_award"
+                  },
+                  false
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "clarify_award"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "court_motion_pending": true,
+          "ground": "section 572B.24 subsection (a)(1)",
+          "final_award": false,
+          "clarify_award": false
+        },
+        {
+          "court_motion_pending": true,
+          "ground": "section 572B.24 subsection (a)(3)",
+          "final_award": true,
+          "clarify_award": true
+        },
+        {
+          "court_motion_pending": false,
+          "ground": "other",
+          "final_award": true,
+          "clarify_award": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "court_motion_pending",
+          "description": "Whether a motion to the court is pending."
+        },
+        {
+          "name": "ground",
+          "description": "The grounds for modifying or correcting the award."
+        },
+        {
+          "name": "final_award",
+          "description": "Whether the arbitrator has made a final and definite award."
+        },
+        {
+          "name": "clarify_award",
+          "description": "Whether the award needs clarification."
+        }
+      ],
+      "consequences": [
+        "The court may submit the claim to the arbitrator to consider modification or correction."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "572.39",
+  "url": "https://www.revisor.mn.gov/statutes/cite/572.39",
+  "title": "572.39 STATUTES OF LIMITATION.",
+  "text": "The running of the limitation of time within which an action may be brought is suspended from the date of the agreement to mediate until 20 days after notice of termination of mediation is delivered by certified mail or personally delivered as provided in the agreement to mediate.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "hasAgreementToMediate"
+          },
+          {
+            "var": "mediationTerminationNoticeDelivered"
+          },
+          {
+            "or": [
+              {
+                "var": "deliveredByCertifiedMail"
+              },
+              {
+                "var": "deliveredPersonally"
+              }
+            ]
+          },
+          {
+            "<": [
+              {
+                "-": [
+                  {
+                    "var": "currentDate"
+                  },
+                  {
+                    "var": "mediationTerminationNoticeDate"
+                  }
+                ]
+              },
+              20
+            ]
+          },
+          {
+            ">": [
+              {
+                "var": "currentDate"
+              },
+              {
+                "var": "agreementToMediateDate"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "hasAgreementToMediate": true,
+          "mediationTerminationNoticeDelivered": true,
+          "deliveredByCertifiedMail": true,
+          "deliveredPersonally": false,
+          "currentDate": "2024-01-15",
+          "mediationTerminationNoticeDate": "2024-01-01",
+          "agreementToMediateDate": "2023-12-01"
+        },
+        {
+          "hasAgreementToMediate": true,
+          "mediationTerminationNoticeDelivered": true,
+          "deliveredByCertifiedMail": false,
+          "deliveredPersonally": false,
+          "currentDate": "2024-01-15",
+          "mediationTerminationNoticeDate": "2024-01-01",
+          "agreementToMediateDate": "2023-12-01"
+        },
+        {
+          "hasAgreementToMediate": true,
+          "mediationTerminationNoticeDelivered": true,
+          "deliveredByCertifiedMail": true,
+          "deliveredPersonally": false,
+          "currentDate": "2024-02-01",
+          "mediationTerminationNoticeDate": "2024-01-01",
+          "agreementToMediateDate": "2023-12-01"
+        }
+      ],
+      "variables": [
+        {
+          "name": "hasAgreementToMediate",
+          "description": "Boolean indicating whether there is an agreement to mediate in place"
+        },
+        {
+          "name": "mediationTerminationNoticeDelivered",
+          "description": "Boolean indicating whether a notice of termination of mediation has been delivered"
+        },
+        {
+          "name": "deliveredByCertifiedMail",
+          "description": "Boolean indicating whether the termination notice was delivered by certified mail"
+        },
+        {
+          "name": "deliveredPersonally",
+          "description": "Boolean indicating whether the termination notice was delivered personally"
+        },
+        {
+          "name": "currentDate",
+          "description": "The current date being evaluated"
+        },
+        {
+          "name": "mediationTerminationNoticeDate",
+          "description": "The date when the mediation termination notice was delivered"
+        },
+        {
+          "name": "agreementToMediateDate",
+          "description": "The date when the agreement to mediate was established"
+        }
+      ],
+      "consequences": [
+        "The limitation period is suspended",
+        "Time does not run against the limitation period"
+      ]
+    }
+  ]
+}

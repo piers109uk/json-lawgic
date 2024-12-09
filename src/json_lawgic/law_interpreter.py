@@ -70,16 +70,16 @@ simplify_prompt_template = PromptManager.get_prompt_template("simplify-interpret
 
 
 class AIModel(Enum):
-    claude = "claude-3-5-sonnet-latest"
-    openai = "gpt-4o"
+    claude_sonnet = "claude-3-5-sonnet-latest"
+    openai_4o = "gpt-4o"
 
 
 class LawInterpreter:
     json_logic = read_text("markdown/json-logic.md")
 
-    def __init__(self, model: AIModel = AIModel.claude):
+    def __init__(self, model: AIModel = AIModel.openai_4o):
         self.model_name = model.value
-        if model == AIModel.claude:
+        if model == AIModel.claude_sonnet:
             self.llm = ChatAnthropic(
                 model_name=model.value,
                 max_tokens_to_sample=8192,
@@ -88,7 +88,7 @@ class LawInterpreter:
                 max_retries=2,
                 stop=None,
             )
-        elif model == AIModel.openai:
+        elif model in [AIModel.openai_4o]:
             self.llm = ChatOpenAI(model=model.value, temperature=0)
 
     def interpret_law(self, law_object: dict) -> dict:
@@ -141,7 +141,7 @@ class LawInterpreter:
 
 
 def _run_interpret(input_file: str, output_file: str):
-    interpreter = LawInterpreter(AIModel.openai)
+    interpreter = LawInterpreter(AIModel.openai_4o)
     law_object = read_json(input_file)
     law_dict = interpreter.interpret_law(law_object)
     merged_dict = {**law_object, **law_dict}
@@ -159,7 +159,7 @@ def _simplify_interpretation(interpreted_file: str):
 
 
 if __name__ == "__main__":
-    file_name = "000049272.json"
+    file_name = "000047905.json"
     input_file = f"data/default/{file_name}"
     output_file = f"data/tests/{file_name}"
     _run_interpret(input_file, output_file)

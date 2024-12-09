@@ -1,0 +1,107 @@
+{
+  "id": "577.07",
+  "url": "https://www.revisor.mn.gov/statutes/cite/577.07",
+  "title": "577.07 FRAUDULENT CONVEYANCES.",
+  "text": "In all cases of general assignments for the benefit of creditors, the assignee shall represent the creditors of the assignor as against all transfers and conveyances of the assignor's property which were fraudulent as to them, and shall have all the rights of such creditors in their avoidance.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "assignment.type"
+              },
+              "general"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "assignment.purpose"
+              },
+              "benefit of creditors"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "assignee.role"
+              },
+              "represent creditors"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "transfer.status"
+              },
+              "fraudulent"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "assignment": {
+            "type": "general",
+            "purpose": "benefit of creditors"
+          },
+          "assignee": {
+            "role": "represent creditors"
+          },
+          "transfer": {
+            "status": "fraudulent"
+          }
+        },
+        {
+          "assignment": {
+            "type": "general",
+            "purpose": "benefit of creditors"
+          },
+          "assignee": {
+            "role": "represent creditors"
+          },
+          "transfer": {
+            "status": "legitimate"
+          }
+        },
+        {
+          "assignment": {
+            "type": "special",
+            "purpose": "benefit of creditors"
+          },
+          "assignee": {
+            "role": "represent creditors"
+          },
+          "transfer": {
+            "status": "fraudulent"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "assignment.type",
+          "description": "The type of assignment, e.g., general or special."
+        },
+        {
+          "name": "assignment.purpose",
+          "description": "The purpose of the assignment, e.g., for the benefit of creditors."
+        },
+        {
+          "name": "assignee.role",
+          "description": "The role of the assignee, e.g., to represent creditors."
+        },
+        {
+          "name": "transfer.status",
+          "description": "The status of the transfer, e.g., fraudulent or legitimate."
+        }
+      ],
+      "consequences": [
+        "Assignee can act against fraudulent transfers.",
+        "Assignee has rights of creditors in avoidance."
+      ]
+    }
+  ]
+}

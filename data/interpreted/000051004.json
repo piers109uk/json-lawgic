@@ -1,0 +1,206 @@
+{
+  "id": "578.03",
+  "url": "https://www.revisor.mn.gov/statutes/cite/578.03",
+  "title": "578.03 WARRANT; SHERIFF TO TAKE POSSESSION OF PROPERTY; FEES AND COSTS.",
+  "text": "The court may thereupon issue a warrant directed to the sheriff or a deputy, which may run throughout the state, commanding the officer to take possession of the property named in the schedule and hold it subject to the order of the court and make return of the warrant as soon as may be, with the officer's doings thereon and with a schedule of the property so taken. The officer shall post a copy of the warrant upon each parcel of land named in the schedule and cause so much of the warrant as relates to land to be recorded in the office of the county recorder for the county where the land is located. The officer shall receive such fees for serving the warrant as the court allows, but not more than those established by law for similar service upon a writ of attachment. If the petition is dismissed, the fees and the cost of publishing and serving the notice hereinafter provided shall be paid by the petitioner; if a receiver is appointed, they shall be paid by the receiver and allowed in the receiver's account.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "==": [
+              {
+                "var": "petition_status"
+              },
+              "dismissed"
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "fees_payer"
+                  },
+                  "petitioner"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "costs_payer"
+                  },
+                  "petitioner"
+                ]
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "==": [
+                  {
+                    "var": "receiver_appointed"
+                  },
+                  true
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "fees_payer"
+                      },
+                      "receiver"
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "costs_payer"
+                      },
+                      "receiver"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "petition_status": "dismissed",
+          "receiver_appointed": false,
+          "fees_payer": "petitioner",
+          "costs_payer": "petitioner"
+        },
+        {
+          "petition_status": "active",
+          "receiver_appointed": true,
+          "fees_payer": "receiver",
+          "costs_payer": "receiver"
+        },
+        {
+          "petition_status": "active",
+          "receiver_appointed": false,
+          "fees_payer": "petitioner",
+          "costs_payer": "receiver"
+        }
+      ],
+      "variables": [
+        {
+          "name": "petition_status",
+          "description": "The current status of the petition, whether it is dismissed or active."
+        },
+        {
+          "name": "receiver_appointed",
+          "description": "A boolean indicating whether a receiver has been appointed."
+        },
+        {
+          "name": "fees_payer",
+          "description": "The party responsible for paying the fees."
+        },
+        {
+          "name": "costs_payer",
+          "description": "The party responsible for paying the costs of publishing and serving the notice."
+        }
+      ],
+      "consequences": [
+        "If the petition is dismissed, the petitioner pays the fees and costs.",
+        "If a receiver is appointed, the receiver pays the fees and costs."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "warrant_issued"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "warrant_posted"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "warrant_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "fees_allowed"
+              },
+              {
+                "var": "max_fees"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "warrant_issued": true,
+          "warrant_posted": true,
+          "warrant_recorded": true,
+          "fees_allowed": 100,
+          "max_fees": 150
+        },
+        {
+          "warrant_issued": true,
+          "warrant_posted": false,
+          "warrant_recorded": true,
+          "fees_allowed": 100,
+          "max_fees": 150
+        },
+        {
+          "warrant_issued": true,
+          "warrant_posted": true,
+          "warrant_recorded": true,
+          "fees_allowed": 200,
+          "max_fees": 150
+        }
+      ],
+      "variables": [
+        {
+          "name": "warrant_issued",
+          "description": "A boolean indicating whether the warrant has been issued."
+        },
+        {
+          "name": "warrant_posted",
+          "description": "A boolean indicating whether the warrant has been posted on each parcel of land."
+        },
+        {
+          "name": "warrant_recorded",
+          "description": "A boolean indicating whether the warrant has been recorded in the county recorder's office."
+        },
+        {
+          "name": "fees_allowed",
+          "description": "The fees allowed by the court for serving the warrant."
+        },
+        {
+          "name": "max_fees",
+          "description": "The maximum fees established by law for similar service upon a writ of attachment."
+        }
+      ],
+      "consequences": [
+        "The warrant is valid and properly executed.",
+        "The fees for serving the warrant are within legal limits."
+      ]
+    }
+  ]
+}

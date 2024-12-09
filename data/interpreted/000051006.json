@@ -1,0 +1,143 @@
+{
+  "id": "572B.18",
+  "url": "https://www.revisor.mn.gov/statutes/cite/572B.18",
+  "title": "572B.18 COURT ENFORCEMENT OF PRE-AWARD RULING BY ARBITRATOR.",
+  "text": "If an arbitrator makes a pre-award ruling in favor of a party to the arbitration proceeding, the party may request the arbitrator to incorporate the ruling into an award under section 572B.19. The successful party may file a motion to the court for an expedited order to confirm the award under section 572B.22, in which case the court shall proceed summarily to decide the motion. The court shall issue an order to confirm the award unless the court vacates, modifies, or corrects the award of the arbitrator pursuant to sections 572B.23 and 572B.24.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "pre_award_ruling"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "party_request"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "==": [
+                  {
+                    "var": "court_motion"
+                  },
+                  true
+                ]
+              },
+              {
+                "if": [
+                  {
+                    "or": [
+                      {
+                        "==": [
+                          {
+                            "var": "court_vacates"
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
+                            "var": "court_modifies"
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
+                            "var": "court_corrects"
+                          },
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  "Court vacates, modifies, or corrects the award",
+                  {
+                    "consequences": "Court confirms the award"
+                  }
+                ]
+              },
+              {
+                "consequences": "Party may request arbitrator to incorporate ruling into an award"
+              }
+            ]
+          },
+          "No pre-award ruling or party request"
+        ]
+      },
+      "examples": [
+        {
+          "pre_award_ruling": true,
+          "party_request": true,
+          "court_motion": true,
+          "court_vacates": false,
+          "court_modifies": false,
+          "court_corrects": false
+        },
+        {
+          "pre_award_ruling": true,
+          "party_request": true,
+          "court_motion": true,
+          "court_vacates": true,
+          "court_modifies": false,
+          "court_corrects": false
+        },
+        {
+          "pre_award_ruling": false,
+          "party_request": false,
+          "court_motion": false,
+          "court_vacates": false,
+          "court_modifies": false,
+          "court_corrects": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "pre_award_ruling",
+          "description": "Indicates if there is a pre-award ruling in favor of a party"
+        },
+        {
+          "name": "party_request",
+          "description": "Indicates if the party has requested the arbitrator to incorporate the ruling into an award"
+        },
+        {
+          "name": "court_motion",
+          "description": "Indicates if the successful party has filed a motion to the court for an expedited order to confirm the award"
+        },
+        {
+          "name": "court_vacates",
+          "description": "Indicates if the court vacates the award"
+        },
+        {
+          "name": "court_modifies",
+          "description": "Indicates if the court modifies the award"
+        },
+        {
+          "name": "court_corrects",
+          "description": "Indicates if the court corrects the award"
+        }
+      ],
+      "consequences": [
+        "Court confirms the award",
+        "Party may request arbitrator to incorporate ruling into an award"
+      ]
+    }
+  ]
+}

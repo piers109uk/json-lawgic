@@ -1,0 +1,112 @@
+{
+  "id": "574.16",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.16",
+  "title": "574.16 SURETY, SUBROGATION.",
+  "text": "When the surety upon the bond of any state officer shall have fulfilled the conditions of such bond and compensated the state for any loss occasioned by any act or omission of such officer, such surety shall be subrogated to all the rights of the state and, if there shall be any property, evidence of indebtedness, or other obligation, or evidence thereof, in the possession of any official of the state and which shall have been received in connection with the transaction wherein such loss shall have occurred, the governor, upon satisfactory proof that such loss has been so paid and the obligation of such bond fulfilled by such surety, shall thereupon, by sufficient instruments of transfer, assign, transfer, or convey to such surety any such property, evidence of indebtedness, or obligation.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "surety_fulfilled_conditions"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "compensated_state"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "loss_occurred"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "proof_of_payment"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "bond_fulfilled"
+                  },
+                  true
+                ]
+              }
+            ],
+            "": false
+          }
+        ]
+      },
+      "examples": [
+        {
+          "surety_fulfilled_conditions": true,
+          "compensated_state": true,
+          "loss_occurred": true,
+          "proof_of_payment": true,
+          "bond_fulfilled": true
+        },
+        {
+          "surety_fulfilled_conditions": true,
+          "compensated_state": false,
+          "loss_occurred": true,
+          "proof_of_payment": true,
+          "bond_fulfilled": true
+        },
+        {
+          "surety_fulfilled_conditions": true,
+          "compensated_state": true,
+          "loss_occurred": true,
+          "proof_of_payment": false,
+          "bond_fulfilled": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "surety_fulfilled_conditions",
+          "description": "Indicates if the surety has fulfilled the conditions of the bond."
+        },
+        {
+          "name": "compensated_state",
+          "description": "Indicates if the surety has compensated the state for any loss."
+        },
+        {
+          "name": "loss_occurred",
+          "description": "Indicates if a loss has occurred due to the officer's act or omission."
+        },
+        {
+          "name": "proof_of_payment",
+          "description": "Indicates if there is satisfactory proof that the loss has been paid."
+        },
+        {
+          "name": "bond_fulfilled",
+          "description": "Indicates if the obligation of the bond has been fulfilled by the surety."
+        }
+      ],
+      "consequences": [
+        "The governor assigns, transfers, or conveys any related property, evidence of indebtedness, or obligation to the surety."
+      ]
+    }
+  ]
+}

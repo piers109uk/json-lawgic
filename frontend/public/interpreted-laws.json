@@ -81,9 +81,7 @@
             "description": "The number of representatives elected in the state."
           }
         ],
-        "consequences": [
-          "The apportionment of representatives in the senate and house of representatives is correct."
-        ]
+        "consequences": ["The apportionment of representatives in the senate and house of representatives is correct."]
       }
     ]
   },
@@ -121,33 +119,18 @@
         "examples": [
           {
             "district_name": "Senate District 9",
-            "district_as_described": [
-              "Area1",
-              "Area2"
-            ],
-            "modification_L12B_1": [
-              "Area3"
-            ]
+            "district_as_described": ["Area1", "Area2"],
+            "modification_L12B_1": ["Area3"]
           },
           {
             "district_name": "Senate District 8",
-            "district_as_described": [
-              "Area1",
-              "Area2"
-            ],
-            "modification_L12B_1": [
-              "Area3"
-            ]
+            "district_as_described": ["Area1", "Area2"],
+            "modification_L12B_1": ["Area3"]
           },
           {
             "district_name": "Senate District 9",
-            "district_as_described": [
-              "Area4",
-              "Area5"
-            ],
-            "modification_L12B_1": [
-              "Area6"
-            ]
+            "district_as_described": ["Area4", "Area5"],
+            "modification_L12B_1": ["Area6"]
           }
         ],
         "variables": [
@@ -164,9 +147,7 @@
             "description": "The modification to the district as per file L12B-1."
           }
         ],
-        "consequences": [
-          "Senate District 9 consists of the described areas with modifications."
-        ]
+        "consequences": ["Senate District 9 consists of the described areas with modifications."]
       },
       {
         "rule": {
@@ -188,24 +169,15 @@
         "examples": [
           {
             "district_name": "House of Representatives District 9A",
-            "district_as_described": [
-              "Area1",
-              "Area2"
-            ]
+            "district_as_described": ["Area1", "Area2"]
           },
           {
             "district_name": "House of Representatives District 9B",
-            "district_as_described": [
-              "Area1",
-              "Area2"
-            ]
+            "district_as_described": ["Area1", "Area2"]
           },
           {
             "district_name": "House of Representatives District 9A",
-            "district_as_described": [
-              "Area4",
-              "Area5"
-            ]
+            "district_as_described": ["Area4", "Area5"]
           }
         ],
         "variables": [
@@ -218,9 +190,7 @@
             "description": "The areas described in the original order for the district."
           }
         ],
-        "consequences": [
-          "House of Representatives District 9A consists of the described areas."
-        ]
+        "consequences": ["House of Representatives District 9A consists of the described areas."]
       },
       {
         "rule": {
@@ -258,38 +228,18 @@
         "examples": [
           {
             "district_name": "House of Representatives District 9B",
-            "senate_district_9_modified": [
-              "Area1",
-              "Area2",
-              "Area3"
-            ],
-            "house_district_9A": [
-              "Area1",
-              "Area2"
-            ]
+            "senate_district_9_modified": ["Area1", "Area2", "Area3"],
+            "house_district_9A": ["Area1", "Area2"]
           },
           {
             "district_name": "House of Representatives District 9A",
-            "senate_district_9_modified": [
-              "Area1",
-              "Area2",
-              "Area3"
-            ],
-            "house_district_9A": [
-              "Area1",
-              "Area2"
-            ]
+            "senate_district_9_modified": ["Area1", "Area2", "Area3"],
+            "house_district_9A": ["Area1", "Area2"]
           },
           {
             "district_name": "House of Representatives District 9B",
-            "senate_district_9_modified": [
-              "Area4",
-              "Area5",
-              "Area6"
-            ],
-            "house_district_9A": [
-              "Area4"
-            ]
+            "senate_district_9_modified": ["Area4", "Area5", "Area6"],
+            "house_district_9A": ["Area4"]
           }
         ],
         "variables": [
@@ -306,9 +256,7 @@
             "description": "The areas included in House of Representatives District 9A."
           }
         ],
-        "consequences": [
-          "House of Representatives District 9B consists of all modified areas not in District 9A."
-        ]
+        "consequences": ["House of Representatives District 9B consists of all modified areas not in District 9A."]
       }
     ]
   },
@@ -387,9 +335,7 @@
             "description": "The type of jurisdiction applied, either concurrent or exclusive."
           }
         ],
-        "consequences": [
-          "The United States can acquire the land for forest development or maintenance."
-        ]
+        "consequences": ["The United States can acquire the land for forest development or maintenance."]
       }
     ]
   },
@@ -475,9 +421,7 @@
             "description": "Whether the photograph of the flower has been approved by the commissioner of natural resources."
           }
         ],
-        "consequences": [
-          "The photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."
-        ]
+        "consequences": ["The photograph of the pink and white lady slipper is preserved in the Office of the Secretary of State."]
       }
     ]
   },
@@ -533,9 +477,7 @@
             "description": "The state being referenced."
           }
         ],
-        "consequences": [
-          "The Honeycrisp apple is the official fruit of the state of Minnesota."
-        ]
+        "consequences": ["The Honeycrisp apple is the official fruit of the state of Minnesota."]
       }
     ]
   },
@@ -668,9 +610,7 @@
             "description": "Indicates if the US has acquired jurisdiction over the location."
           }
         ],
-        "consequences": [
-          "The state has sovereignty and jurisdiction over the location."
-        ]
+        "consequences": ["The state has sovereignty and jurisdiction over the location."]
       }
     ]
   },
@@ -797,9 +737,7 @@
             "description": "The method of condemnation specified by the Land Exchange Commission, if applicable."
           }
         ],
-        "consequences": [
-          "The United States may effect condemnation in the specified court type."
-        ]
+        "consequences": ["The United States may effect condemnation in the specified court type."]
       }
     ]
   },
@@ -855,9 +793,7 @@
             "description": "The sport being referenced."
           }
         ],
-        "consequences": [
-          "Ice hockey is the official sport of Minnesota."
-        ]
+        "consequences": ["Ice hockey is the official sport of Minnesota."]
       }
     ]
   },
@@ -928,9 +864,7 @@
             "description": "Whether the state has granted jurisdiction over the navigable waters to the United States."
           }
         ],
-        "consequences": [
-          "The state owns and has jurisdiction over navigable waters and their beds within its boundaries."
-        ]
+        "consequences": ["The state owns and has jurisdiction over navigable waters and their beds within its boundaries."]
       },
       {
         "rule": {
@@ -992,9 +926,7 @@
             "description": "The disposition status of the land."
           }
         ],
-        "consequences": [
-          "The state retains ownership and jurisdiction over trust fund lands."
-        ]
+        "consequences": ["The state retains ownership and jurisdiction over trust fund lands."]
       },
       {
         "rule": {
@@ -1056,9 +988,7 @@
             "description": "The type of resource in question."
           }
         ],
-        "consequences": [
-          "State officials must assert and defend the state's ownership and jurisdiction over navigable waters."
-        ]
+        "consequences": ["State officials must assert and defend the state's ownership and jurisdiction over navigable waters."]
       }
     ]
   },
@@ -1188,9 +1118,7 @@
             "description": "The name of the official soil of the state."
           }
         ],
-        "consequences": [
-          "Lester is confirmed as the official soil of Minnesota."
-        ]
+        "consequences": ["Lester is confirmed as the official soil of Minnesota."]
       }
     ]
   },
@@ -1246,9 +1174,7 @@
             "description": "Indicates if the title to the property has vested in the United States."
           }
         ],
-        "consequences": [
-          "The governor issues a certificate under the great seal of the state."
-        ]
+        "consequences": ["The governor issues a certificate under the great seal of the state."]
       },
       {
         "rule": {
@@ -1310,9 +1236,7 @@
             "description": "Indicates if the certificate is recorded in the office of the county recorder of each county where the land is situated."
           }
         ],
-        "consequences": [
-          "The consent of the state is declared under sections 1.041 to 1.048."
-        ]
+        "consequences": ["The consent of the state is declared under sections 1.041 to 1.048."]
       }
     ]
   },
@@ -1398,9 +1322,7 @@
             "description": "The location where the photograph was taken."
           }
         ],
-        "consequences": [
-          "The photograph is designated as the state photograph."
-        ]
+        "consequences": ["The photograph is designated as the state photograph."]
       },
       {
         "rule": {
@@ -1447,9 +1369,7 @@
             "description": "The location where the photograph is displayed."
           }
         ],
-        "consequences": [
-          "A copy of the photograph must be displayed in the Office of the Secretary of State."
-        ]
+        "consequences": ["A copy of the photograph must be displayed in the Office of the Secretary of State."]
       }
     ]
   },
@@ -1550,9 +1470,7 @@
             "description": "The purpose for which the land is being acquired."
           }
         ],
-        "consequences": [
-          "Consent is given for the acquisition of the land by the United States."
-        ]
+        "consequences": ["Consent is given for the acquisition of the land by the United States."]
       }
     ]
   },
@@ -1579,10 +1497,7 @@
                 {
                   "var": "province"
                 },
-                [
-                  "Ontario",
-                  "Quebec"
-                ]
+                ["Ontario", "Quebec"]
               ]
             }
           ]
@@ -1611,9 +1526,7 @@
             "description": "The province considering joining the compact."
           }
         ],
-        "consequences": [
-          "The compact becomes effective and binding for the province."
-        ]
+        "consequences": ["The compact becomes effective and binding for the province."]
       },
       {
         "rule": {
@@ -1631,16 +1544,7 @@
                 {
                   "var": "state"
                 },
-                [
-                  "Illinois",
-                  "Indiana",
-                  "Michigan",
-                  "Minnesota",
-                  "New York",
-                  "Ohio",
-                  "Pennsylvania",
-                  "Wisconsin"
-                ]
+                ["Illinois", "Indiana", "Michigan", "Minnesota", "New York", "Ohio", "Pennsylvania", "Wisconsin"]
               ]
             }
           ]
@@ -1669,9 +1573,7 @@
             "description": "The state considering joining the compact."
           }
         ],
-        "consequences": [
-          "The compact becomes effective and binding for the state."
-        ]
+        "consequences": ["The compact becomes effective and binding for the state."]
       },
       {
         "rule": {
@@ -1718,9 +1620,7 @@
             "description": "The number of states present at the meeting."
           }
         ],
-        "consequences": [
-          "A quorum is established for the transaction of business."
-        ]
+        "consequences": ["A quorum is established for the transaction of business."]
       },
       {
         "rule": {
@@ -1767,9 +1667,7 @@
             "description": "The number of states voting at the meeting."
           }
         ],
-        "consequences": [
-          "Actions of the commission are valid."
-        ]
+        "consequences": ["Actions of the commission are valid."]
       },
       {
         "rule": {
@@ -1816,9 +1714,7 @@
             "description": "Whether the renunciation notice has been given."
           }
         ],
-        "consequences": [
-          "The compact is renounced by the state."
-        ]
+        "consequences": ["The compact is renounced by the state."]
       }
     ]
   },
@@ -1837,12 +1733,7 @@
                 {
                   "var": "county"
                 },
-                [
-                  "Big Stone Lake",
-                  "Lake Traverse",
-                  "Bois de Sioux River",
-                  "Red River of the North"
-                ]
+                ["Big Stone Lake", "Lake Traverse", "Bois de Sioux River", "Red River of the North"]
               ]
             },
             {
@@ -1879,9 +1770,7 @@
             "description": "Indicates if the water body forms a common boundary between this state and any other state."
           }
         ],
-        "consequences": [
-          "Courts and officers have jurisdiction in civil and criminal cases upon these waters."
-        ]
+        "consequences": ["Courts and officers have jurisdiction in civil and criminal cases upon these waters."]
       }
     ]
   },
@@ -1937,9 +1826,7 @@
             "description": "The city where the museum is located."
           }
         ],
-        "consequences": [
-          "The museum is designated as the official state fire museum."
-        ]
+        "consequences": ["The museum is designated as the official state fire museum."]
       }
     ]
   },
@@ -2082,10 +1969,7 @@
               "name": "walleye",
               "scientific_name": "Stizostedion v. vitreum"
             },
-            "photographs": [
-              "walleye",
-              "bass"
-            ]
+            "photographs": ["walleye", "bass"]
           },
           {
             "official_fish": {
@@ -2093,10 +1977,7 @@
               "name": "walleye",
               "scientific_name": "Stizostedion v. vitreum"
             },
-            "photographs": [
-              "trout",
-              "walleye"
-            ]
+            "photographs": ["trout", "walleye"]
           },
           {
             "official_fish": {
@@ -2104,9 +1985,7 @@
               "name": "walleye",
               "scientific_name": "Stizostedion v. vitreum"
             },
-            "photographs": [
-              "walleye"
-            ]
+            "photographs": ["walleye"]
           }
         ],
         "variables": [
@@ -2186,9 +2065,7 @@
             "description": "The action being performed by the officer."
           }
         ],
-        "consequences": [
-          "Officers are fulfilling their duty to carry out the compact."
-        ]
+        "consequences": ["Officers are fulfilling their duty to carry out the compact."]
       },
       {
         "rule": {
@@ -2250,9 +2127,7 @@
             "description": "Whether the information has been furnished to the commission."
           }
         ],
-        "consequences": [
-          "State entities are complying with requests for information."
-        ]
+        "consequences": ["State entities are complying with requests for information."]
       }
     ]
   },
@@ -2351,9 +2226,7 @@
             "description": "The date on which the acquisition of property was completed."
           }
         ],
-        "consequences": [
-          "The repeal does not affect the case."
-        ]
+        "consequences": ["The repeal does not affect the case."]
       }
     ]
   },
@@ -2409,9 +2282,7 @@
             "description": "The number of members in the house of representatives."
           }
         ],
-        "consequences": [
-          "The legislature is correctly apportioned with 67 senate members and 134 house members."
-        ]
+        "consequences": ["The legislature is correctly apportioned with 67 senate members and 134 house members."]
       }
     ]
   },
@@ -2494,9 +2365,7 @@
             "description": "The purpose for which the land is acquired."
           }
         ],
-        "consequences": [
-          "Consent is given for the acquisition of land by the United States."
-        ]
+        "consequences": ["Consent is given for the acquisition of land by the United States."]
       },
       {
         "rule": {
@@ -2514,10 +2383,7 @@
                 {
                   "var": "jurisdiction_type"
                 },
-                [
-                  "exclusive",
-                  "partial"
-                ]
+                ["exclusive", "partial"]
               ]
             },
             {
@@ -2556,9 +2422,7 @@
             "description": "Whether the jurisdiction is accepted by the United States."
           }
         ],
-        "consequences": [
-          "Jurisdiction is ceded to the United States."
-        ]
+        "consequences": ["Jurisdiction is ceded to the United States."]
       },
       {
         "rule": {
@@ -2600,9 +2464,7 @@
             "description": "Whether the land abuts navigable waters."
           }
         ],
-        "consequences": [
-          "Jurisdiction includes underwater lands adjacent to the premises."
-        ]
+        "consequences": ["Jurisdiction includes underwater lands adjacent to the premises."]
       },
       {
         "rule": {
@@ -2644,9 +2506,7 @@
             "description": "Whether the land is ceded to the United States."
           }
         ],
-        "consequences": [
-          "The state reserves the right to execute civil and criminal process."
-        ]
+        "consequences": ["The state reserves the right to execute civil and criminal process."]
       },
       {
         "rule": {
@@ -2667,13 +2527,7 @@
                 {
                   "var": "tax_type"
                 },
-                [
-                  "income",
-                  "sales",
-                  "use",
-                  "personal property",
-                  "real property"
-                ]
+                ["income", "sales", "use", "personal property", "real property"]
               ]
             }
           ]
@@ -2709,9 +2563,7 @@
             "description": "The type of tax imposed by the state."
           }
         ],
-        "consequences": [
-          "The state reserves the right to impose taxes on the specified type."
-        ]
+        "consequences": ["The state reserves the right to impose taxes on the specified type."]
       }
     ]
   },
@@ -2990,9 +2842,7 @@
             "description": "The location where the duplicate of Exhibit C is filed."
           }
         ],
-        "consequences": [
-          "The maps are correctly filed according to the compact."
-        ]
+        "consequences": ["The maps are correctly filed according to the compact."]
       }
     ]
   },
@@ -3101,9 +2951,7 @@
             "description": "Whether an application for the state's consent has been made by an authorized officer of the United States."
           }
         ],
-        "consequences": [
-          "The United States can acquire land with concurrent jurisdiction."
-        ]
+        "consequences": ["The United States can acquire land with concurrent jurisdiction."]
       },
       {
         "rule": {
@@ -3169,9 +3017,7 @@
             "description": "Whether the execution of the land conveyance has occurred."
           }
         ],
-        "consequences": [
-          "Execution of land conveyance cannot occur without state consent."
-        ]
+        "consequences": ["Execution of land conveyance cannot occur without state consent."]
       },
       {
         "rule": {
@@ -3237,9 +3083,7 @@
             "description": "Whether the condemnation proceeding has commenced."
           }
         ],
-        "consequences": [
-          "Condemnation proceedings cannot commence without state consent."
-        ]
+        "consequences": ["Condemnation proceedings cannot commence without state consent."]
       }
     ]
   },
@@ -3299,29 +3143,19 @@
           {
             "official_gemstone": "Lake Superior agate",
             "state": "Minnesota",
-            "preserved_items": [
-              "photograph",
-              "typical specimen"
-            ],
+            "preserved_items": ["photograph", "typical specimen"],
             "office": "Office of the Secretary of State"
           },
           {
             "official_gemstone": "Lake Superior agate",
             "state": "Minnesota",
-            "preserved_items": [
-              "typical specimen",
-              "photograph"
-            ],
+            "preserved_items": ["typical specimen", "photograph"],
             "office": "Office of the Secretary of State"
           },
           {
             "official_gemstone": "Lake Superior agate",
             "state": "Minnesota",
-            "preserved_items": [
-              "photograph",
-              "typical specimen",
-              "other item"
-            ],
+            "preserved_items": ["photograph", "typical specimen", "other item"],
             "office": "Office of the Secretary of State"
           }
         ],
@@ -3373,11 +3207,7 @@
                 {
                   "var": "acquisition_method"
                 },
-                [
-                  "purchase",
-                  "gift",
-                  "lease"
-                ]
+                ["purchase", "gift", "lease"]
               ]
             },
             {
@@ -3436,9 +3266,7 @@
             "description": "The Act of Congress under which the acquisition is made."
           }
         ],
-        "consequences": [
-          "Consent is given for the acquisition by the United States."
-        ]
+        "consequences": ["Consent is given for the acquisition by the United States."]
       }
     ]
   },
@@ -3521,9 +3349,7 @@
             "description": "A boolean indicating if the governing body has enacted necessary ordinances or resolutions."
           }
         ],
-        "consequences": [
-          "Continuity of government is ensured through emergency interim succession."
-        ]
+        "consequences": ["Continuity of government is ensured through emergency interim succession."]
       },
       {
         "rule": {
@@ -3589,9 +3415,7 @@
             "description": "A boolean indicating if a new successor has been designated as required by law."
           }
         ],
-        "consequences": [
-          "Interim emergency successor exercises office until the original officer resumes or a new successor is designated."
-        ]
+        "consequences": ["Interim emergency successor exercises office until the original officer resumes or a new successor is designated."]
       }
     ]
   },
@@ -3719,9 +3543,7 @@
             "description": "Indicates if the United States has relinquished jurisdiction to the state."
           }
         ],
-        "consequences": [
-          "Jurisdiction is vested in the United States."
-        ]
+        "consequences": ["Jurisdiction is vested in the United States."]
       }
     ]
   },
@@ -3837,15 +3659,7 @@
                     {
                       "var": "county"
                     },
-                    [
-                      "Clearwater",
-                      "Koochiching",
-                      "Lake of the Woods",
-                      "Mahnomen",
-                      "Pennington",
-                      "Red Lake",
-                      "Roseau"
-                    ]
+                    ["Clearwater", "Koochiching", "Lake of the Woods", "Mahnomen", "Pennington", "Red Lake", "Roseau"]
                   ]
                 }
               ]
@@ -3876,10 +3690,7 @@
             "description": "The year in which the county's boundaries are being checked."
           }
         ],
-        "consequences": [
-          "The county's boundaries are fixed by laws passed before 1892.",
-          "The county was formed by popular vote after 1892."
-        ]
+        "consequences": ["The county's boundaries are fixed by laws passed before 1892.", "The county was formed by popular vote after 1892."]
       }
     ]
   },
@@ -3935,9 +3746,7 @@
             "description": "The name of the state being referenced."
           }
         ],
-        "consequences": [
-          "The Monarch butterfly is the official butterfly of Minnesota."
-        ]
+        "consequences": ["The Monarch butterfly is the official butterfly of Minnesota."]
       }
     ]
   },
@@ -3984,9 +3793,7 @@
             "description": "The type of payment received, e.g., easement, lease, etc."
           }
         ],
-        "consequences": [
-          "Deposit in trunk highway fund"
-        ]
+        "consequences": ["Deposit in trunk highway fund"]
       }
     ]
   },
@@ -4198,9 +4005,7 @@
             "description": "The location where the flag is flown, specifically the 'Capitol Area'."
           }
         ],
-        "consequences": [
-          "Flags must be flown at half-staff for a period determined by the governor."
-        ]
+        "consequences": ["Flags must be flown at half-staff for a period determined by the governor."]
       }
     ]
   },
@@ -4286,9 +4091,7 @@
             "description": "Indicates if a duplicate of the certificate has been recorded in the office of the county recorder of each county where the lands are situated."
           }
         ],
-        "consequences": [
-          "The jurisdiction is retroceded to the state and exercised by appropriate state authorities and local governmental units."
-        ]
+        "consequences": ["The jurisdiction is retroceded to the state and exercised by appropriate state authorities and local governmental units."]
       }
     ]
   },
@@ -4326,36 +4129,18 @@
         "examples": [
           {
             "district": 15,
-            "L15A-1": [
-              "Area1",
-              "Area2"
-            ],
-            "L15B": [
-              "Area3",
-              "Area4"
-            ]
+            "L15A-1": ["Area1", "Area2"],
+            "L15B": ["Area3", "Area4"]
           },
           {
             "district": 15,
-            "L15A-1": [
-              "Area1"
-            ],
-            "L15B": [
-              "Area2",
-              "Area3",
-              "Area4"
-            ]
+            "L15A-1": ["Area1"],
+            "L15B": ["Area2", "Area3", "Area4"]
           },
           {
             "district": 14,
-            "L15A-1": [
-              "Area1",
-              "Area2"
-            ],
-            "L15B": [
-              "Area3",
-              "Area4"
-            ]
+            "L15A-1": ["Area1", "Area2"],
+            "L15B": ["Area3", "Area4"]
           }
         ],
         "variables": [
@@ -4372,9 +4157,7 @@
             "description": "The remaining areas of Senate District 15 not included in 15A."
           }
         ],
-        "consequences": [
-          "Senate District 15 is divided into House Districts 15A and 15B as per the modifications."
-        ]
+        "consequences": ["Senate District 15 is divided into House Districts 15A and 15B as per the modifications."]
       }
     ]
   },
@@ -4393,11 +4176,7 @@
                 {
                   "var": "state"
                 },
-                [
-                  "Michigan",
-                  "Minnesota",
-                  "Wisconsin"
-                ]
+                ["Michigan", "Minnesota", "Wisconsin"]
               ]
             },
             {
@@ -4434,9 +4213,7 @@
             "description": "Indicates whether the state has ratified the compact."
           }
         ],
-        "consequences": [
-          "The compact becomes operative between the ratifying states."
-        ]
+        "consequences": ["The compact becomes operative between the ratifying states."]
       },
       {
         "rule": {
@@ -4446,10 +4223,7 @@
                 {
                   "var": "state"
                 },
-                [
-                  "Michigan",
-                  "Wisconsin"
-                ]
+                ["Michigan", "Wisconsin"]
               ]
             },
             {
@@ -4482,9 +4256,7 @@
             "description": "Indicates whether the boundary is established."
           }
         ],
-        "consequences": [
-          "The boundary in Lake Michigan is fixed and established."
-        ]
+        "consequences": ["The boundary in Lake Michigan is fixed and established."]
       },
       {
         "rule": {
@@ -4494,10 +4266,7 @@
                 {
                   "var": "state"
                 },
-                [
-                  "Minnesota",
-                  "Wisconsin"
-                ]
+                ["Minnesota", "Wisconsin"]
               ]
             },
             {
@@ -4530,9 +4299,7 @@
             "description": "Indicates whether the boundary is established."
           }
         ],
-        "consequences": [
-          "The boundary in Lake Superior is fixed and established."
-        ]
+        "consequences": ["The boundary in Lake Superior is fixed and established."]
       },
       {
         "rule": {
@@ -4542,11 +4309,7 @@
                 {
                   "var": "state"
                 },
-                [
-                  "Michigan",
-                  "Minnesota",
-                  "Wisconsin"
-                ]
+                ["Michigan", "Minnesota", "Wisconsin"]
               ]
             },
             {
@@ -4583,9 +4346,7 @@
             "description": "Indicates whether the state has appointed members to the Joint Survey Commission."
           }
         ],
-        "consequences": [
-          "The Joint Survey Commission is established to survey and mark the boundaries."
-        ]
+        "consequences": ["The Joint Survey Commission is established to survey and mark the boundaries."]
       }
     ]
   },
@@ -4671,9 +4432,7 @@
             "description": "The purpose for which the easement is required."
           }
         ],
-        "consequences": [
-          "The governor may grant, bargain, sell, and convey the easement to the United States."
-        ]
+        "consequences": ["The governor may grant, bargain, sell, and convey the easement to the United States."]
       }
     ]
   },
@@ -4797,9 +4556,7 @@
             "description": "The type of material to which the seal is affixed (e.g., permanent, expendable)."
           }
         ],
-        "consequences": [
-          "The seal is considered official and compliant with the law."
-        ]
+        "consequences": ["The seal is considered official and compliant with the law."]
       }
     ]
   },
@@ -4836,10 +4593,7 @@
             "description": "Indicates whether an act of violence has occurred"
           }
         ],
-        "consequences": [
-          "Every person in the state lives free from violence",
-          "Zero tolerance policy is upheld"
-        ]
+        "consequences": ["Every person in the state lives free from violence", "Zero tolerance policy is upheld"]
       }
     ]
   },
@@ -4895,9 +4649,7 @@
             "description": "The name of the state."
           }
         ],
-        "consequences": [
-          "Zizania aquatica is the official state grain of Minnesota."
-        ]
+        "consequences": ["Zizania aquatica is the official state grain of Minnesota."]
       },
       {
         "rule": {
@@ -4944,9 +4696,7 @@
             "description": "The location where the photograph is displayed."
           }
         ],
-        "consequences": [
-          "A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State."
-        ]
+        "consequences": ["A photograph of Zizania aquatica may be displayed in the Office of the Secretary of State."]
       }
     ]
   },
@@ -5002,9 +4752,7 @@
             "description": "Indicates if the certified flag design is adopted as the official state flag."
           }
         ],
-        "consequences": [
-          "The design is adopted as the official state flag."
-        ]
+        "consequences": ["The design is adopted as the official state flag."]
       },
       {
         "rule": {
@@ -5051,9 +4799,7 @@
             "description": "Indicates if the secretary of state retains custodial control over the sample design flag."
           }
         ],
-        "consequences": [
-          "The secretary of state manages the official state flag records and samples."
-        ]
+        "consequences": ["The secretary of state manages the official state flag records and samples."]
       },
       {
         "rule": {
@@ -5100,9 +4846,7 @@
             "description": "Indicates if the time is between sunrise and sunset."
           }
         ],
-        "consequences": [
-          "The official state flag is flown on the State Capitol grounds during the specified times."
-        ]
+        "consequences": ["The official state flag is flown on the State Capitol grounds during the specified times."]
       },
       {
         "rule": {
@@ -5130,9 +4874,7 @@
             "description": "Indicates if the Minnesota State Flag is folded and stored in the same manner as the national colors."
           }
         ],
-        "consequences": [
-          "The Minnesota State Flag is folded and stored properly."
-        ]
+        "consequences": ["The Minnesota State Flag is folded and stored properly."]
       }
     ]
   },
@@ -5188,9 +4930,7 @@
             "description": "The state for which the official muffin is being determined."
           }
         ],
-        "consequences": [
-          "The blueberry muffin is the official muffin of Minnesota."
-        ]
+        "consequences": ["The blueberry muffin is the official muffin of Minnesota."]
       }
     ]
   },
@@ -5306,9 +5046,7 @@
             "description": "The authority who appoints the state senate members."
           }
         ],
-        "consequences": [
-          "The composition of the Great Lakes Commission from the state is valid as per Article IV of the compact."
-        ]
+        "consequences": ["The composition of the Great Lakes Commission from the state is valid as per Article IV of the compact."]
       }
     ]
   },
@@ -5346,33 +5084,18 @@
         "examples": [
           {
             "district": 16,
-            "district_16_order": [
-              "Area1",
-              "Area2"
-            ],
-            "L15A_1_modification": [
-              "Area3"
-            ]
+            "district_16_order": ["Area1", "Area2"],
+            "L15A_1_modification": ["Area3"]
           },
           {
             "district": 15,
-            "district_16_order": [
-              "Area1",
-              "Area2"
-            ],
-            "L15A_1_modification": [
-              "Area3"
-            ]
+            "district_16_order": ["Area1", "Area2"],
+            "L15A_1_modification": ["Area3"]
           },
           {
             "district": 16,
-            "district_16_order": [
-              "Area1"
-            ],
-            "L15A_1_modification": [
-              "Area2",
-              "Area3"
-            ]
+            "district_16_order": ["Area1"],
+            "L15A_1_modification": ["Area2", "Area3"]
           }
         ],
         "variables": [
@@ -5389,9 +5112,7 @@
             "description": "The modification to Senate District 16 as per file L15A-1."
           }
         ],
-        "consequences": [
-          "Senate District 16 consists of the original order with modifications from L15A-1."
-        ]
+        "consequences": ["Senate District 16 consists of the original order with modifications from L15A-1."]
       },
       {
         "rule": {
@@ -5470,9 +5191,7 @@
             "description": "The sub-district number within the House district."
           }
         ],
-        "consequences": [
-          "House District 16A or 16B is correctly identified within Senate District 16."
-        ]
+        "consequences": ["House District 16A or 16B is correctly identified within Senate District 16."]
       }
     ]
   },
@@ -5548,9 +5267,7 @@
             "description": "The House of Representatives district number."
           }
         ],
-        "consequences": [
-          "The area is part of Senate District 17 and either House District 17A or 17B."
-        ]
+        "consequences": ["The area is part of Senate District 17 and either House District 17A or 17B."]
       }
     ]
   },
@@ -5753,9 +5470,7 @@
             "description": "The official drink of the state."
           }
         ],
-        "consequences": [
-          "Milk is the official drink of Minnesota."
-        ]
+        "consequences": ["Milk is the official drink of Minnesota."]
       }
     ]
   },
@@ -5852,43 +5567,20 @@
         "examples": [
           {
             "district": 12,
-            "district_12_order": [
-              "Area1",
-              "Area2"
-            ],
-            "L12B_1_modification": [
-              "Area3"
-            ],
-            "result": [
-              "Area1",
-              "Area2",
-              "Area3"
-            ]
+            "district_12_order": ["Area1", "Area2"],
+            "L12B_1_modification": ["Area3"],
+            "result": ["Area1", "Area2", "Area3"]
           },
           {
             "district": 12,
-            "district_12_order": [
-              "AreaA",
-              "AreaB"
-            ],
-            "L12B_1_modification": [
-              "AreaC"
-            ],
-            "result": [
-              "AreaA",
-              "AreaB",
-              "AreaC"
-            ]
+            "district_12_order": ["AreaA", "AreaB"],
+            "L12B_1_modification": ["AreaC"],
+            "result": ["AreaA", "AreaB", "AreaC"]
           },
           {
             "district": 13,
-            "district_12_order": [
-              "AreaX",
-              "AreaY"
-            ],
-            "L12B_1_modification": [
-              "AreaZ"
-            ],
+            "district_12_order": ["AreaX", "AreaY"],
+            "L12B_1_modification": ["AreaZ"],
             "result": "Unknown District"
           }
         ],
@@ -5906,9 +5598,7 @@
             "description": "The modification to Senate District 12 as per file L12B-1."
           }
         ],
-        "consequences": [
-          "Senate District 12 consists of the original district with modifications from L12B-1."
-        ]
+        "consequences": ["Senate District 12 consists of the original district with modifications from L12B-1."]
       },
       {
         "rule": {
@@ -5978,9 +5668,7 @@
             "description": "The House of Representatives district number being evaluated."
           }
         ],
-        "consequences": [
-          "House of Representatives District 12A consists of the district as described in the order."
-        ]
+        "consequences": ["House of Representatives District 12A consists of the district as described in the order."]
       },
       {
         "rule": {
@@ -6040,48 +5728,24 @@
             "district": 12,
             "subdivision": 1,
             "house_district": 12,
-            "senate_district_12_modified": [
-              "Area1",
-              "Area2",
-              "Area3"
-            ],
-            "house_district_12A": [
-              "Area1",
-              "Area2"
-            ],
-            "result": [
-              "Area3"
-            ]
+            "senate_district_12_modified": ["Area1", "Area2", "Area3"],
+            "house_district_12A": ["Area1", "Area2"],
+            "result": ["Area3"]
           },
           {
             "district": 12,
             "subdivision": 1,
             "house_district": 12,
-            "senate_district_12_modified": [
-              "AreaA",
-              "AreaB",
-              "AreaC"
-            ],
-            "house_district_12A": [
-              "AreaA"
-            ],
-            "result": [
-              "AreaB",
-              "AreaC"
-            ]
+            "senate_district_12_modified": ["AreaA", "AreaB", "AreaC"],
+            "house_district_12A": ["AreaA"],
+            "result": ["AreaB", "AreaC"]
           },
           {
             "district": 13,
             "subdivision": 1,
             "house_district": 12,
-            "senate_district_12_modified": [
-              "AreaX",
-              "AreaY",
-              "AreaZ"
-            ],
-            "house_district_12A": [
-              "AreaX"
-            ],
+            "senate_district_12_modified": ["AreaX", "AreaY", "AreaZ"],
+            "house_district_12A": ["AreaX"],
             "result": "Unknown District"
           }
         ],
@@ -6180,9 +5844,7 @@
             "description": "The manner in which the boundary lines are extended (e.g., across waters, land only)."
           }
         ],
-        "consequences": [
-          "The county and courts have jurisdiction over the water area extending to the opposite shore."
-        ]
+        "consequences": ["The county and courts have jurisdiction over the water area extending to the opposite shore."]
       }
     ]
   }

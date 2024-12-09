@@ -1,0 +1,95 @@
+{
+  "id": "574.17",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.17",
+  "title": "574.17 SURETIES FOR PART OF PENALTY.",
+  "text": "Sureties may be accepted, in the discretion of the approving officer or body, for a part only of the penalty, and may justify in separate and different sums; but the aggregate liability of the sureties shall in all cases be not less than that required by law if each surety had justified in the full amount.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "aggregate_liability"
+              },
+              {
+                "var": "required_liability"
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "aggregate_liability"
+              },
+              {
+                "reduce": [
+                  {
+                    "var": "sureties"
+                  },
+                  {
+                    "sum": [
+                      {
+                        "var": "current"
+                      },
+                      {
+                        "var": "accumulator"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "sureties": [
+            1000,
+            2000,
+            3000
+          ],
+          "required_liability": 6000,
+          "aggregate_liability": 6000
+        },
+        {
+          "sureties": [
+            1000,
+            2000
+          ],
+          "required_liability": 4000,
+          "aggregate_liability": 3000
+        },
+        {
+          "sureties": [
+            1500,
+            1500,
+            1500
+          ],
+          "required_liability": 4500,
+          "aggregate_liability": 4500
+        }
+      ],
+      "variables": [
+        {
+          "name": "sureties",
+          "description": "An array representing the amounts justified by each surety."
+        },
+        {
+          "name": "required_liability",
+          "description": "The total liability required by law if each surety had justified in the full amount."
+        },
+        {
+          "name": "aggregate_liability",
+          "description": "The total liability covered by the sureties."
+        }
+      ],
+      "consequences": [
+        "Sureties are accepted as they meet the required liability."
+      ]
+    }
+  ]
+}

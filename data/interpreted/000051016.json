@@ -1,0 +1,103 @@
+{
+  "id": "578.04",
+  "url": "https://www.revisor.mn.gov/statutes/cite/578.04",
+  "title": "578.04 NOTICE OF SEIZURE; APPOINTMENT OF RECEIVER; DISPOSITION OF PROPERTY.",
+  "text": "Upon the return of such warrant, the court may issue a notice reciting the substance of the petition, warrant, and officer's return, which shall be addressed to such absentee and to all persons who claim an interest in such property, and to all whom it may concern, citing them to appear at a time and place named and show cause why a receiver of the property named in the officer's schedule should not be appointed and the property held and disposed of under this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "warrant_returned"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "court_issued_notice"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "absentee_notified"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "interested_parties_notified"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "show_cause_hearing_scheduled"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "warrant_returned": true,
+          "court_issued_notice": true,
+          "absentee_notified": true,
+          "interested_parties_notified": true,
+          "show_cause_hearing_scheduled": true
+        },
+        {
+          "warrant_returned": true,
+          "court_issued_notice": true,
+          "absentee_notified": false,
+          "interested_parties_notified": true,
+          "show_cause_hearing_scheduled": true
+        },
+        {
+          "warrant_returned": false,
+          "court_issued_notice": true,
+          "absentee_notified": true,
+          "interested_parties_notified": true,
+          "show_cause_hearing_scheduled": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "warrant_returned",
+          "description": "Indicates if the warrant has been returned to the court."
+        },
+        {
+          "name": "court_issued_notice",
+          "description": "Indicates if the court has issued a notice reciting the substance of the petition, warrant, and officer's return."
+        },
+        {
+          "name": "absentee_notified",
+          "description": "Indicates if the absentee has been notified."
+        },
+        {
+          "name": "interested_parties_notified",
+          "description": "Indicates if all persons who claim an interest in the property have been notified."
+        },
+        {
+          "name": "show_cause_hearing_scheduled",
+          "description": "Indicates if a hearing has been scheduled for the absentee and interested parties to show cause why a receiver should not be appointed."
+        }
+      ],
+      "consequences": [
+        "A receiver of the property may be appointed and the property held and disposed of under this chapter."
+      ]
+    }
+  ]
+}
