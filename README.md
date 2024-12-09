@@ -36,7 +36,7 @@ LANGFUSE_PUBLIC_KEY=your-langfuse-public-key
 LANGFUSE_HOST="https://us.cloud.langfuse.com"
 ```
 
-Then run the LLM on laws with `python src/json_lawgic/law_pipeline.py`
+Then run the LLM on laws with `python -m json_lawgic.law_pipeline`
 
 ## Data extraction
 
@@ -52,6 +52,7 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
   - [ ] Fix JsonLogic for Python
   - [ ] Build self-review capability
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
+- [ ] Trim JsonLogic spec to reduce input size
 - [x] Instrument with Langfuse
 - [x] Law search & selector
 - [ ] Support real-time translation of a law into json-logic upon request

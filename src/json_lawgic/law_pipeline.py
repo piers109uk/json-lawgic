@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # output_folder = "data/examples-interpreted"
     # output_file = "data/showcase.json"
 
-    asyncio.run(run_pipeline(input_folder, output_folder, pattern="000051*.json", limit=20))
+    asyncio.run(run_pipeline(input_folder, output_folder, pattern="000051*.json", limit=50))
     combined = merge_json_files(output_folder, output_file)
     # A little data on what we've done
     for law in combined:

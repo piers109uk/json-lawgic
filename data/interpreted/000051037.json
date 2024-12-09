@@ -1,0 +1,76 @@
+{
+  "id": "573.18",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.18",
+  "title": "573.18 PERSONAL LIABILITY; ALIENATION BEFORE SUIT.",
+  "text": "If it appears in the action that before the commencement thereof the heir has aliened the real property descended to that heir, or any part thereof, that heir shall be personally liable for the value of that aliened; and judgment may be rendered therefor, and execution awarded, as in actions for personal debts. No real property aliened in good faith by an heir, before action commenced against the heir, shall be liable to execution or in any manner affected by a judgment against the heir.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "<": [
+                  {
+                    "var": "alienation_date"
+                  },
+                  {
+                    "var": "action_commencement_date"
+                  }
+                ]
+              },
+              {
+                "!": {
+                  "var": "good_faith"
+                }
+              }
+            ]
+          },
+          {
+            "var": "heir_liable"
+          },
+          false
+        ]
+      },
+      "examples": [
+        {
+          "alienation_date": "2023-01-01",
+          "action_commencement_date": "2023-06-01",
+          "good_faith": false
+        },
+        {
+          "alienation_date": "2023-01-01",
+          "action_commencement_date": "2023-06-01",
+          "good_faith": true
+        },
+        {
+          "alienation_date": "2023-07-01",
+          "action_commencement_date": "2023-06-01",
+          "good_faith": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "alienation_date",
+          "description": "The date when the heir aliened the real property."
+        },
+        {
+          "name": "action_commencement_date",
+          "description": "The date when the action against the heir commenced."
+        },
+        {
+          "name": "good_faith",
+          "description": "Indicates whether the alienation was done in good faith."
+        },
+        {
+          "name": "heir_liable",
+          "description": "Indicates whether the heir is personally liable for the value of the aliened property."
+        }
+      ],
+      "consequences": [
+        "The heir is personally liable for the value of the aliened property."
+      ]
+    }
+  ]
+}

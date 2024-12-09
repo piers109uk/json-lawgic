@@ -1,0 +1,150 @@
+{
+  "id": "574.20",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.20",
+  "title": "574.20 BONDS, BY WHOM APPROVED.",
+  "text": "Except as otherwise provided by law in particular cases, bonds shall be approved as follows:\n(1) the official bonds of all state officers, including those of the treasurers, superintendents, and other officials, and employees of the several public educational, charitable, penal, and reformatory institutions belonging to the state, shall be approved, as to form, by the attorney general, and in all other respects by the governor;\n(2) the official bonds of county, town, city, and school district officers and employees by the governing body of the political subdivision for whose security they are, respectively, given; and\n(3) those required or permitted by law to be given in any court, by the judge or justice of the court in which the proceeding is begun or pending.\nNo officer, official, or employee required to give bond shall enter upon duties until the bond is duly approved and filed.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "bondType"
+              },
+              "state"
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "formApproval"
+                  },
+                  "attorney general"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "otherApproval"
+                  },
+                  "governor"
+                ]
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "===": [
+                  {
+                    "var": "bondType"
+                  },
+                  "county"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "approvalBody"
+                  },
+                  "governing body of the political subdivision"
+                ]
+              },
+              {
+                "if": [
+                  {
+                    "===": [
+                      {
+                        "var": "bondType"
+                      },
+                      "court"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "approvalBody"
+                      },
+                      "judge or justice of the court"
+                    ]
+                  },
+                  false
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "bondType": "state",
+          "formApproval": "attorney general",
+          "otherApproval": "governor"
+        },
+        {
+          "bondType": "county",
+          "approvalBody": "governing body of the political subdivision"
+        },
+        {
+          "bondType": "court",
+          "approvalBody": "judge or justice of the court"
+        }
+      ],
+      "variables": [
+        {
+          "name": "bondType",
+          "description": "The type of bond, which can be 'state', 'county', or 'court'."
+        },
+        {
+          "name": "formApproval",
+          "description": "The entity responsible for approving the form of the bond, applicable for state bonds."
+        },
+        {
+          "name": "otherApproval",
+          "description": "The entity responsible for other aspects of approval, applicable for state bonds."
+        },
+        {
+          "name": "approvalBody",
+          "description": "The entity responsible for approving the bond, applicable for county and court bonds."
+        }
+      ],
+      "consequences": [
+        "The bond is approved and can be filed."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "bondApproved"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "bondApproved": true
+        },
+        {
+          "bondApproved": false
+        },
+        {
+          "bondApproved": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "bondApproved",
+          "description": "Indicates whether the bond has been approved."
+        }
+      ],
+      "consequences": [
+        "The officer, official, or employee can enter upon duties."
+      ]
+    }
+  ]
+}

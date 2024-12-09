@@ -13,7 +13,7 @@
               {
                 "==": [
                   {
-                    "var": "pre_award_ruling"
+                    "var": "arbitrator_pre_award_ruling"
                   },
                   true
                 ]
@@ -21,7 +21,15 @@
               {
                 "==": [
                   {
-                    "var": "party_request"
+                    "var": "party_request_award"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "court_motion_filed"
                   },
                   true
                 ]
@@ -31,112 +39,98 @@
           {
             "if": [
               {
-                "==": [
+                "or": [
                   {
-                    "var": "court_motion"
-                  },
-                  true
-                ]
-              },
-              {
-                "if": [
-                  {
-                    "or": [
+                    "==": [
                       {
-                        "==": [
-                          {
-                            "var": "court_vacates"
-                          },
-                          true
-                        ]
+                        "var": "court_vacates_award"
                       },
-                      {
-                        "==": [
-                          {
-                            "var": "court_modifies"
-                          },
-                          true
-                        ]
-                      },
-                      {
-                        "==": [
-                          {
-                            "var": "court_corrects"
-                          },
-                          true
-                        ]
-                      }
+                      true
                     ]
                   },
-                  "Court vacates, modifies, or corrects the award",
                   {
-                    "consequences": "Court confirms the award"
+                    "==": [
+                      {
+                        "var": "court_modifies_award"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "court_corrects_award"
+                      },
+                      true
+                    ]
                   }
                 ]
               },
               {
-                "consequences": "Party may request arbitrator to incorporate ruling into an award"
+                "var": "court_decision"
+              },
+              {
+                "var": "court_confirms_award"
               }
             ]
           },
-          "No pre-award ruling or party request"
+          "no_action"
         ]
       },
       "examples": [
         {
-          "pre_award_ruling": true,
-          "party_request": true,
-          "court_motion": true,
-          "court_vacates": false,
-          "court_modifies": false,
-          "court_corrects": false
+          "arbitrator_pre_award_ruling": true,
+          "party_request_award": true,
+          "court_motion_filed": true,
+          "court_vacates_award": false,
+          "court_modifies_award": false,
+          "court_corrects_award": false
         },
         {
-          "pre_award_ruling": true,
-          "party_request": true,
-          "court_motion": true,
-          "court_vacates": true,
-          "court_modifies": false,
-          "court_corrects": false
+          "arbitrator_pre_award_ruling": true,
+          "party_request_award": true,
+          "court_motion_filed": true,
+          "court_vacates_award": true,
+          "court_modifies_award": false,
+          "court_corrects_award": false
         },
         {
-          "pre_award_ruling": false,
-          "party_request": false,
-          "court_motion": false,
-          "court_vacates": false,
-          "court_modifies": false,
-          "court_corrects": false
+          "arbitrator_pre_award_ruling": false,
+          "party_request_award": true,
+          "court_motion_filed": true,
+          "court_vacates_award": false,
+          "court_modifies_award": false,
+          "court_corrects_award": false
         }
       ],
       "variables": [
         {
-          "name": "pre_award_ruling",
-          "description": "Indicates if there is a pre-award ruling in favor of a party"
+          "name": "arbitrator_pre_award_ruling",
+          "description": "Indicates if the arbitrator made a pre-award ruling in favor of a party."
         },
         {
-          "name": "party_request",
-          "description": "Indicates if the party has requested the arbitrator to incorporate the ruling into an award"
+          "name": "party_request_award",
+          "description": "Indicates if the party requested the arbitrator to incorporate the ruling into an award."
         },
         {
-          "name": "court_motion",
-          "description": "Indicates if the successful party has filed a motion to the court for an expedited order to confirm the award"
+          "name": "court_motion_filed",
+          "description": "Indicates if the successful party filed a motion to the court for an expedited order to confirm the award."
         },
         {
-          "name": "court_vacates",
-          "description": "Indicates if the court vacates the award"
+          "name": "court_vacates_award",
+          "description": "Indicates if the court vacates the award."
         },
         {
-          "name": "court_modifies",
-          "description": "Indicates if the court modifies the award"
+          "name": "court_modifies_award",
+          "description": "Indicates if the court modifies the award."
         },
         {
-          "name": "court_corrects",
-          "description": "Indicates if the court corrects the award"
+          "name": "court_corrects_award",
+          "description": "Indicates if the court corrects the award."
         }
       ],
       "consequences": [
-        "Court confirms the award",
-        "Party may request arbitrator to incorporate ruling into an award"
+        "Court confirms the award unless it vacates, modifies, or corrects it."
       ]
     }
   ]

@@ -1,0 +1,95 @@
+{
+  "id": "573.17",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.17",
+  "title": "573.17 REAL PROPERTY DESCENDED; LIEN OF JUDGMENT.",
+  "text": "If it appears that the real property so descended was not alienated by the heir at the time of the commencement of the action, the court shall order that plaintiff's debt, or the proportion thereof which the plaintiff is entitled to recover, be levied upon such real estate, and not otherwise; and every judgment rendered in such action has preference as a lien on such real estate, to any judgment obtained against such heir for a personal debt.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "!": {
+                  "var": "alienated"
+                }
+              },
+              {
+                "==": [
+                  {
+                    "var": "action_status"
+                  },
+                  "commenced"
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "debt_type"
+                  },
+                  "plaintiff"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "lien_preference"
+                  },
+                  "real_estate"
+                ]
+              }
+            ]
+          },
+          "no_action"
+        ]
+      },
+      "examples": [
+        {
+          "alienated": false,
+          "action_status": "commenced",
+          "debt_type": "plaintiff",
+          "lien_preference": "real_estate"
+        },
+        {
+          "alienated": true,
+          "action_status": "commenced",
+          "debt_type": "plaintiff",
+          "lien_preference": "real_estate"
+        },
+        {
+          "alienated": false,
+          "action_status": "not_commenced",
+          "debt_type": "plaintiff",
+          "lien_preference": "real_estate"
+        }
+      ],
+      "variables": [
+        {
+          "name": "alienated",
+          "description": "Indicates whether the real property was alienated by the heir."
+        },
+        {
+          "name": "action_status",
+          "description": "The status of the legal action, whether it has commenced or not."
+        },
+        {
+          "name": "debt_type",
+          "description": "The type of debt, specifically if it is the plaintiff's debt."
+        },
+        {
+          "name": "lien_preference",
+          "description": "The preference of the lien, whether it is on real estate or not."
+        }
+      ],
+      "consequences": [
+        "Plaintiff's debt is levied upon the real estate.",
+        "Judgment has preference as a lien on the real estate over personal debts of the heir."
+      ]
+    }
+  ]
+}

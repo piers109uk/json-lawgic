@@ -1,0 +1,103 @@
+{
+  "id": "577.13",
+  "url": "https://www.revisor.mn.gov/statutes/cite/577.13",
+  "title": "577.13 FORM OF ASSIGNMENT.",
+  "text": "An assignment for the benefit of creditors under this chapter shall be signed by the assignor and duly acknowledged in the same manner as conveyances of real property before a notary public of the state, shall include an acceptance of the assignment by the assignee, and shall be in substantially the following form:\nASSIGNMENT\nTHIS ASSIGNMENT is made this .... day of .............., .........., by and between............, with a principal place of business at .......... (hereinafter \"assignor\"), and ............, whose address is ........... (hereinafter \"assignee\").\nWHEREAS, the assignor has been engaged in the business of............................................\nWHEREAS, the assignor is indebted to creditors and is unable to pay debts as they become due, and is desirous of providing for the payment of debts, so far as it is possible by an assignment of property for that purpose.\nNOW, THEREFORE, the assignor, in consideration of the assignee's acceptance of this assignment, and for other good and valuable consideration, hereby assigns to the assignee, and the assignee's successors and assigns, the assignor's property, except the property as is exempt by law from levy and sale under an execution (and then only to the extent of the exemption), including but not limited to all real property, fixtures, goods, stock, inventory, equipment, furniture, furnishings, accounts receivable, general intangibles, bank deposits, cash, promissory notes, cash value and proceeds of insurance policies, claims, and demands belonging to the assignor, wherever the property may be located (hereinafter collectively the \"assignment property\"), which property is set forth on Schedule A attached hereto.\nA list of the creditors of the assignor is set forth in Schedule B annexed hereto.\nBy making this assignment, the assignor consents to the appointment of the assignee as a general receiver with respect to the assignment property in accordance with Minnesota Statutes, chapters 576 and 577.\nThe assignee shall take possession of and administer the assignment property and shall liquidate the assignment property with reasonable dispatch, collect all claims and demands hereby assigned as and to the extent they may be collectible, and pay and discharge all reasonable expenses, costs, and disbursements in connection with the execution and administration of this assignment from the proceeds of the liquidations and collections in accordance with Minnesota Statutes, chapters 576 and 577.\nThe assignee shall then pay and discharge in full, to the extent that funds are available from the assignment property after payment of expenses, costs, and disbursements, all of the debts and liabilities now due from the assignor, including interest on the debts and liabilities in full, in accordance with Minnesota Statutes, chapters 576 and 577.\nIn the event that all debts and liabilities are paid in full, the remainder of the assignment property shall be returned to the assignor.\nTo accomplish the purposes of this assignment, the assignor hereby irrevocably appoints the assignee as the assignor's true and lawful attorney-in-fact, with full power and authority to do all acts and things which may be necessary to execute and fulfill the assignment hereby created, to the same extent as the acts and things might be done by the assignor in the absence of this assignment, including, but not limited to, the power to demand and recover from all persons all assignment property; to sue for the recovery of assignment property; to execute, acknowledge, and deliver all necessary deeds, instruments, and conveyances, and to grant and convey any or all of the real or personal property of the assignment property pursuant thereto; and to appoint one or more attorneys to assist the assignee in carrying out the assignee's duties hereunder.\nThe assignor hereby authorizes the assignee to sign the name of the assignor to any check, draft, promissory note, or other instrument in writing which is payable to the order of the assignor, or to sign the name of the assignor to any instrument in writing, whenever it shall be necessary to do so, to carry out the purposes of this assignment.\nThe assignor declares, under penalty of perjury under the laws of the state of Minnesota, that the attached schedules of the property or the assignor and creditors are true and complete to the best of the assignor's knowledge.\nThe assignee hereby accepts the assignment property and agrees faithfully and without delay to carry out the assignee's duties under the foregoing assignment.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "assignor_signature"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "notary_acknowledgment"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "assignee_acceptance"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "form_structure"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "assignor_declaration"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "assignor_signature": true,
+          "notary_acknowledgment": true,
+          "assignee_acceptance": true,
+          "form_structure": true,
+          "assignor_declaration": true
+        },
+        {
+          "assignor_signature": true,
+          "notary_acknowledgment": false,
+          "assignee_acceptance": true,
+          "form_structure": true,
+          "assignor_declaration": true
+        },
+        {
+          "assignor_signature": true,
+          "notary_acknowledgment": true,
+          "assignee_acceptance": true,
+          "form_structure": false,
+          "assignor_declaration": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "assignor_signature",
+          "description": "Indicates whether the assignor has signed the assignment."
+        },
+        {
+          "name": "notary_acknowledgment",
+          "description": "Indicates whether the assignment has been acknowledged before a notary public."
+        },
+        {
+          "name": "assignee_acceptance",
+          "description": "Indicates whether the assignee has accepted the assignment."
+        },
+        {
+          "name": "form_structure",
+          "description": "Indicates whether the assignment follows the required form structure."
+        },
+        {
+          "name": "assignor_declaration",
+          "description": "Indicates whether the assignor has declared the truthfulness of the attached schedules under penalty of perjury."
+        }
+      ],
+      "consequences": [
+        "The assignment is valid and enforceable under the law."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "573.19",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.19",
+  "title": "573.19 HEIRS AND DEVISEES; LIMIT OF RECOVERY.",
+  "text": "In actions brought against several heirs or several devisees jointly, the amount of plaintiff's recovery shall be apportioned among all the heirs of the ancestor, or all the devisees of the testator, in proportion to the value of the real property descended or devised, and such proportion only can be recovered of each.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "map": [
+          {
+            "var": "heirs_or_devisees"
+          },
+          {
+            "*": [
+              {
+                "var": "plaintiff_recovery"
+              },
+              {
+                "var": "value_of_property"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "heirs_or_devisees": [
+            {
+              "name": "Heir1",
+              "value_of_property": 0.3
+            },
+            {
+              "name": "Heir2",
+              "value_of_property": 0.7
+            }
+          ],
+          "plaintiff_recovery": 1000
+        },
+        {
+          "heirs_or_devisees": [
+            {
+              "name": "Devisee1",
+              "value_of_property": 0.5
+            },
+            {
+              "name": "Devisee2",
+              "value_of_property": 0.5
+            }
+          ],
+          "plaintiff_recovery": 2000
+        },
+        {
+          "heirs_or_devisees": [
+            {
+              "name": "Heir1",
+              "value_of_property": 0.2
+            },
+            {
+              "name": "Heir2",
+              "value_of_property": 0.3
+            },
+            {
+              "name": "Heir3",
+              "value_of_property": 0.5
+            }
+          ],
+          "plaintiff_recovery": 1500
+        }
+      ],
+      "variables": [
+        {
+          "name": "heirs_or_devisees",
+          "description": "An array of heirs or devisees involved in the case, each with a proportion of the property value."
+        },
+        {
+          "name": "plaintiff_recovery",
+          "description": "The total amount of recovery the plaintiff is entitled to."
+        },
+        {
+          "name": "value_of_property",
+          "description": "The proportion of the total property value attributed to each heir or devisee."
+        }
+      ],
+      "consequences": [
+        "The recovery amount is apportioned among the heirs or devisees based on their property value proportion."
+      ]
+    }
+  ]
+}

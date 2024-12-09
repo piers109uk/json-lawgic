@@ -31,29 +31,8 @@
                   }
                 ]
               },
-              {
-                "and": [
-                  {
-                    "<=": [
-                      {
-                        "var": "property_value"
-                      },
-                      {
-                        "var": "prior_class_debts"
-                      }
-                    ]
-                  },
-                  {
-                    "==": [
-                      {
-                        "var": "same_class_debts"
-                      },
-                      0
-                    ]
-                  }
-                ]
-              },
-              "proportionate"
+              "proportionate",
+              null
             ]
           }
         ]
@@ -62,17 +41,20 @@
         {
           "property_value": 100000,
           "prior_class_debts": 120000,
-          "same_class_debts": 0
+          "same_class_debts": 30000,
+          "paid_debts": 0
         },
         {
           "property_value": 150000,
           "prior_class_debts": 100000,
-          "same_class_debts": 50000
+          "same_class_debts": 50000,
+          "paid_debts": 0
         },
         {
           "property_value": 200000,
           "prior_class_debts": 150000,
-          "same_class_debts": 0
+          "same_class_debts": 50000,
+          "paid_debts": 20000
         }
       ],
       "variables": [
@@ -87,6 +69,10 @@
         {
           "name": "same_class_debts",
           "description": "The total amount of debts of the same class as the debt in action."
+        },
+        {
+          "name": "paid_debts",
+          "description": "The amount of debts of a prior or same class that have been paid by the next of kin, legatees, heirs, or devisees."
         }
       ],
       "consequences": [

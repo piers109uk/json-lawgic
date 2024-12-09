@@ -1,0 +1,205 @@
+{
+  "id": "577.11",
+  "url": "https://www.revisor.mn.gov/statutes/cite/577.11",
+  "title": "577.11 DEFINITIONS.",
+  "text": "(a) The definitions in this section and in section 576.21 apply throughout this chapter unless the context requires otherwise.\n(b) \"Assignee\" means the person to whom the assignment property is assigned.\n(c) \"Assignment property\" means the property assigned pursuant to the provisions of this chapter.\n(d) \"Assignor\" means the person who assigns the assignment property.\n(e) \"Time of assignment\" means the date and time endorsed by the court administrator pursuant to section 577.14.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "context"
+              },
+              null
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "section"
+                  },
+                  576.21
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "chapter"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "context"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "section": 576.21,
+          "chapter": true,
+          "context": null
+        },
+        {
+          "section": 576.21,
+          "chapter": false,
+          "context": null
+        },
+        {
+          "section": 576.22,
+          "chapter": true,
+          "context": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "section",
+          "description": "The section number being referenced."
+        },
+        {
+          "name": "chapter",
+          "description": "Indicates if the chapter context is applicable."
+        },
+        {
+          "name": "context",
+          "description": "The context that might require different definitions."
+        }
+      ],
+      "consequences": [
+        "Definitions apply throughout the chapter."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "assignee"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "assignee": true
+        },
+        {
+          "assignee": false
+        },
+        {
+          "assignee": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "assignee",
+          "description": "Indicates if the person is the assignee."
+        }
+      ],
+      "consequences": [
+        "The person is recognized as the assignee."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "assignment_property"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "assignment_property": true
+        },
+        {
+          "assignment_property": false
+        },
+        {
+          "assignment_property": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "assignment_property",
+          "description": "Indicates if the property is assignment property."
+        }
+      ],
+      "consequences": [
+        "The property is recognized as assignment property."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "assignor"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "assignor": true
+        },
+        {
+          "assignor": false
+        },
+        {
+          "assignor": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "assignor",
+          "description": "Indicates if the person is the assignor."
+        }
+      ],
+      "consequences": [
+        "The person is recognized as the assignor."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "time_of_assignment"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "time_of_assignment": true
+        },
+        {
+          "time_of_assignment": false
+        },
+        {
+          "time_of_assignment": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "time_of_assignment",
+          "description": "Indicates if the date and time are the time of assignment."
+        }
+      ],
+      "consequences": [
+        "The date and time are recognized as the time of assignment."
+      ]
+    }
+  ]
+}

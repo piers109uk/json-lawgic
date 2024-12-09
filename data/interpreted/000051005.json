@@ -54,8 +54,7 @@
                   true
                 ]
               }
-            ],
-            "": false
+            ]
           }
         ]
       },
@@ -105,7 +104,8 @@
         }
       ],
       "consequences": [
-        "The governor assigns, transfers, or conveys any related property, evidence of indebtedness, or obligation to the surety."
+        "The surety is subrogated to all the rights of the state.",
+        "The governor assigns, transfers, or conveys any related property or obligation to the surety."
       ]
     }
   ]

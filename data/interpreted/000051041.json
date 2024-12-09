@@ -1,0 +1,430 @@
+{
+  "id": "572B.23",
+  "url": "https://www.revisor.mn.gov/statutes/cite/572B.23",
+  "title": "572B.23 VACATING AWARD.",
+  "text": "(a) Upon motion of a party to the arbitration proceeding, the court shall vacate an award if:\n(1) the award was procured by corruption, fraud, or other undue means;\n(2) there was:\n(A) evident partiality by an arbitrator appointed as a neutral;\n(B) corruption by an arbitrator; or\n(C) misconduct by an arbitrator prejudicing the rights of a party to the arbitration proceeding;\n(3) an arbitrator refused to postpone the hearing upon showing of sufficient cause for postponement, refused to consider evidence material to the controversy, or otherwise conducted the hearing contrary to section 572B.15, so as to prejudice substantially the rights of a party to the arbitration proceeding;\n(4) an arbitrator exceeded the arbitrator's powers;\n(5) there was no agreement to arbitrate, unless the person participated in the arbitration proceeding without raising the objection under section 572B.15, subsection (c), not later than the commencement of the arbitration hearing; or\n(6) the arbitration was conducted without proper notice of the initiation of an arbitration as required in section 572B.09 so as to prejudice substantially the rights of a party to the arbitration proceeding.\n(b) A motion under this section must be filed within 90 days after the movant receives notice of the award in a record pursuant to section 572B.19 or within 90 days after the movant receives notice of an arbitrator's award in a record on a motion to modify or correct an award pursuant to section 572B.20, unless the motion is predicated upon the ground that the award was procured by corruption, fraud, or other undue means, in which case it must be filed within 90 days after such a ground is known or by the exercise of reasonable care should have been known by the movant.\n(c) In vacating an award on a ground other than that set forth in subsection (a)(5), the court may order a rehearing before a new arbitrator. If the award is vacated on the ground stated in subsection (a)(3), (4), or (6), the court may order a rehearing before the arbitrator who made the award or the arbitrator's successor. The arbitrator must render the decision in the rehearing within the same time as that provided in section 572B.19, subsection (b), for an award.\n(d) If a motion to vacate an award is denied and a motion to modify or correct the award is not pending, the court shall confirm the award.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "motion_filed"
+              },
+              true
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "award_procured_by"
+                  },
+                  [
+                    "corruption",
+                    "fraud",
+                    "undue_means"
+                  ]
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "and": [
+                      {
+                        "==": [
+                          {
+                            "var": "evident_partiality"
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
+                            "var": "arbitrator_role"
+                          },
+                          "neutral"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "arbitrator_corruption"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "arbitrator_misconduct"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "==": [
+                      {
+                        "var": "arbitrator_refused_postponement"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "arbitrator_refused_evidence"
+                      },
+                      true
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "hearing_conducted_contrary"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "arbitrator_exceeded_powers"
+                  },
+                  true
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "==": [
+                      {
+                        "var": "agreement_to_arbitrate"
+                      },
+                      false
+                    ]
+                  },
+                  {
+                    "==": [
+                      {
+                        "var": "objection_raised"
+                      },
+                      false
+                    ]
+                  }
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "proper_notice"
+                  },
+                  false
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "motion_filed": true,
+          "award_procured_by": "fraud",
+          "evident_partiality": false,
+          "arbitrator_role": "neutral",
+          "arbitrator_corruption": false,
+          "arbitrator_misconduct": false,
+          "arbitrator_refused_postponement": false,
+          "arbitrator_refused_evidence": false,
+          "hearing_conducted_contrary": false,
+          "arbitrator_exceeded_powers": false,
+          "agreement_to_arbitrate": true,
+          "objection_raised": false,
+          "proper_notice": true
+        },
+        {
+          "motion_filed": true,
+          "award_procured_by": "undue_means",
+          "evident_partiality": true,
+          "arbitrator_role": "neutral",
+          "arbitrator_corruption": false,
+          "arbitrator_misconduct": false,
+          "arbitrator_refused_postponement": false,
+          "arbitrator_refused_evidence": false,
+          "hearing_conducted_contrary": false,
+          "arbitrator_exceeded_powers": false,
+          "agreement_to_arbitrate": true,
+          "objection_raised": false,
+          "proper_notice": true
+        },
+        {
+          "motion_filed": false,
+          "award_procured_by": "corruption",
+          "evident_partiality": false,
+          "arbitrator_role": "neutral",
+          "arbitrator_corruption": false,
+          "arbitrator_misconduct": false,
+          "arbitrator_refused_postponement": false,
+          "arbitrator_refused_evidence": false,
+          "hearing_conducted_contrary": false,
+          "arbitrator_exceeded_powers": false,
+          "agreement_to_arbitrate": true,
+          "objection_raised": false,
+          "proper_notice": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "motion_filed",
+          "description": "Indicates if a motion to vacate the award has been filed."
+        },
+        {
+          "name": "award_procured_by",
+          "description": "The means by which the award was procured, e.g., corruption, fraud, or undue means."
+        },
+        {
+          "name": "evident_partiality",
+          "description": "Indicates if there was evident partiality by an arbitrator appointed as a neutral."
+        },
+        {
+          "name": "arbitrator_role",
+          "description": "The role of the arbitrator, e.g., neutral."
+        },
+        {
+          "name": "arbitrator_corruption",
+          "description": "Indicates if there was corruption by an arbitrator."
+        },
+        {
+          "name": "arbitrator_misconduct",
+          "description": "Indicates if there was misconduct by an arbitrator prejudicing the rights of a party."
+        },
+        {
+          "name": "arbitrator_refused_postponement",
+          "description": "Indicates if an arbitrator refused to postpone the hearing upon showing of sufficient cause."
+        },
+        {
+          "name": "arbitrator_refused_evidence",
+          "description": "Indicates if an arbitrator refused to consider evidence material to the controversy."
+        },
+        {
+          "name": "hearing_conducted_contrary",
+          "description": "Indicates if the hearing was conducted contrary to section 572B.15."
+        },
+        {
+          "name": "arbitrator_exceeded_powers",
+          "description": "Indicates if an arbitrator exceeded their powers."
+        },
+        {
+          "name": "agreement_to_arbitrate",
+          "description": "Indicates if there was an agreement to arbitrate."
+        },
+        {
+          "name": "objection_raised",
+          "description": "Indicates if an objection was raised under section 572B.15, subsection (c)."
+        },
+        {
+          "name": "proper_notice",
+          "description": "Indicates if proper notice of the initiation of arbitration was given as required in section 572B.09."
+        }
+      ],
+      "consequences": [
+        "The court shall vacate the arbitration award."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "motion_filed_within_90_days"
+              },
+              true
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "award_procured_by"
+                  },
+                  [
+                    "corruption",
+                    "fraud",
+                    "undue_means"
+                  ]
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "motion_predicated_on_known_ground"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "motion_filed_within_90_days": true,
+          "award_procured_by": "fraud",
+          "motion_predicated_on_known_ground": false
+        },
+        {
+          "motion_filed_within_90_days": false,
+          "award_procured_by": "undue_means",
+          "motion_predicated_on_known_ground": true
+        },
+        {
+          "motion_filed_within_90_days": true,
+          "award_procured_by": "corruption",
+          "motion_predicated_on_known_ground": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "motion_filed_within_90_days",
+          "description": "Indicates if the motion was filed within 90 days after receiving notice of the award."
+        },
+        {
+          "name": "award_procured_by",
+          "description": "The means by which the award was procured, e.g., corruption, fraud, or undue means."
+        },
+        {
+          "name": "motion_predicated_on_known_ground",
+          "description": "Indicates if the motion is predicated upon a ground known or should have been known by the movant."
+        }
+      ],
+      "consequences": [
+        "The motion to vacate the award is considered valid."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "!=": [
+              {
+                "var": "ground_for_vacating"
+              },
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "ground_for_vacating"
+                  },
+                  3
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "ground_for_vacating"
+                  },
+                  4
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "ground_for_vacating"
+                  },
+                  6
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "ground_for_vacating": 3
+        },
+        {
+          "ground_for_vacating": 4
+        },
+        {
+          "ground_for_vacating": 5
+        }
+      ],
+      "variables": [
+        {
+          "name": "ground_for_vacating",
+          "description": "The specific ground for vacating the award, corresponding to subsections (a)(3), (a)(4), or (a)(6)."
+        }
+      ],
+      "consequences": [
+        "The court may order a rehearing before the original or a new arbitrator."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "motion_to_vacate_denied"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "motion_to_modify_pending"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "motion_to_vacate_denied": true,
+          "motion_to_modify_pending": false
+        },
+        {
+          "motion_to_vacate_denied": false,
+          "motion_to_modify_pending": true
+        },
+        {
+          "motion_to_vacate_denied": true,
+          "motion_to_modify_pending": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "motion_to_vacate_denied",
+          "description": "Indicates if the motion to vacate an award is denied."
+        },
+        {
+          "name": "motion_to_modify_pending",
+          "description": "Indicates if a motion to modify or correct the award is pending."
+        }
+      ],
+      "consequences": [
+        "The court shall confirm the arbitration award."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "574.205",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.205",
+  "title": "574.205 BONDS; STATE OFFICIALS AND EMPLOYEES EXCLUDED.",
+  "text": "On and after July 1, 1971, and notwithstanding any law to the contrary, elected state officials, appointed state officers and other state employees are not required to give and file surety or fidelity bonds, except when federal law or rule requires such a bond as a condition precedent to receiving federal grants.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              "1971-07-01",
+              {
+                "var": "date"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "!": {
+                  "var": "federal_law_requires_bond"
+                }
+              },
+              {
+                "!": {
+                  "var": "federal_rule_requires_bond"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "date": "1972-01-01",
+          "federal_law_requires_bond": false,
+          "federal_rule_requires_bond": false
+        },
+        {
+          "date": "1970-06-30",
+          "federal_law_requires_bond": true,
+          "federal_rule_requires_bond": true
+        },
+        {
+          "date": "1972-01-01",
+          "federal_law_requires_bond": true,
+          "federal_rule_requires_bond": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "date",
+          "description": "The date on which the bond requirement is being evaluated."
+        },
+        {
+          "name": "federal_law_requires_bond",
+          "description": "Indicates if federal law requires a bond."
+        },
+        {
+          "name": "federal_rule_requires_bond",
+          "description": "Indicates if a federal rule requires a bond."
+        }
+      ],
+      "consequences": [
+        "State officials and employees are not required to file surety or fidelity bonds."
+      ]
+    }
+  ]
+}

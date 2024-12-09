@@ -32,13 +32,12 @@
                     "sum": [
                       {
                         "var": "current"
-                      },
-                      {
-                        "var": "accumulator"
                       }
                     ]
                   },
-                  0
+                  {
+                    "var": "initial_value"
+                  }
                 ]
               }
             ]
@@ -53,7 +52,8 @@
             3000
           ],
           "required_liability": 6000,
-          "aggregate_liability": 6000
+          "aggregate_liability": 6000,
+          "initial_value": 0
         },
         {
           "sureties": [
@@ -61,7 +61,8 @@
             2000
           ],
           "required_liability": 4000,
-          "aggregate_liability": 3000
+          "aggregate_liability": 3000,
+          "initial_value": 0
         },
         {
           "sureties": [
@@ -70,21 +71,26 @@
             1500
           ],
           "required_liability": 4500,
-          "aggregate_liability": 4500
+          "aggregate_liability": 4500,
+          "initial_value": 0
         }
       ],
       "variables": [
         {
           "name": "sureties",
-          "description": "An array representing the amounts justified by each surety."
+          "description": "An array of amounts each surety is justifying for."
         },
         {
           "name": "required_liability",
-          "description": "The total liability required by law if each surety had justified in the full amount."
+          "description": "The total liability required by law."
         },
         {
           "name": "aggregate_liability",
-          "description": "The total liability covered by the sureties."
+          "description": "The total liability covered by all sureties."
+        },
+        {
+          "name": "initial_value",
+          "description": "The initial value for the reduction operation, typically 0."
         }
       ],
       "consequences": [

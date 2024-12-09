@@ -11,9 +11,9 @@
           {
             "==": [
               {
-                "var": "petition_status"
+                "var": "court_decision"
               },
-              "dismissed"
+              "issue_warrant"
             ]
           },
           {
@@ -21,17 +21,43 @@
               {
                 "==": [
                   {
-                    "var": "fees_payer"
+                    "var": "officer_action"
                   },
-                  "petitioner"
+                  "take_possession"
                 ]
               },
               {
                 "==": [
                   {
-                    "var": "costs_payer"
+                    "var": "warrant_status"
                   },
-                  "petitioner"
+                  "returned"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "warrant_posted"
+                  },
+                  "true"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "warrant_recorded"
+                  },
+                  "true"
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "officer_fees"
+                  },
+                  {
+                    "var": "max_fees"
+                  }
                 ]
               }
             ]
@@ -41,29 +67,17 @@
               {
                 "==": [
                   {
-                    "var": "receiver_appointed"
+                    "var": "petition_status"
                   },
-                  true
+                  "dismissed"
                 ]
               },
               {
-                "and": [
+                "==": [
                   {
-                    "==": [
-                      {
-                        "var": "fees_payer"
-                      },
-                      "receiver"
-                    ]
+                    "var": "fees_paid_by"
                   },
-                  {
-                    "==": [
-                      {
-                        "var": "costs_payer"
-                      },
-                      "receiver"
-                    ]
-                  }
+                  "receiver"
                 ]
               }
             ]
@@ -72,134 +86,81 @@
       },
       "examples": [
         {
+          "court_decision": "issue_warrant",
+          "officer_action": "take_possession",
+          "warrant_status": "returned",
+          "warrant_posted": "true",
+          "warrant_recorded": "true",
+          "officer_fees": 100,
+          "max_fees": 150,
           "petition_status": "dismissed",
-          "receiver_appointed": false,
-          "fees_payer": "petitioner",
-          "costs_payer": "petitioner"
+          "fees_paid_by": "petitioner"
         },
         {
-          "petition_status": "active",
-          "receiver_appointed": true,
-          "fees_payer": "receiver",
-          "costs_payer": "receiver"
+          "court_decision": "issue_warrant",
+          "officer_action": "take_possession",
+          "warrant_status": "not_returned",
+          "warrant_posted": "false",
+          "warrant_recorded": "false",
+          "officer_fees": 200,
+          "max_fees": 150,
+          "petition_status": "dismissed",
+          "fees_paid_by": "petitioner"
         },
         {
-          "petition_status": "active",
-          "receiver_appointed": false,
-          "fees_payer": "petitioner",
-          "costs_payer": "receiver"
+          "court_decision": "no_warrant",
+          "officer_action": "none",
+          "warrant_status": "none",
+          "warrant_posted": "false",
+          "warrant_recorded": "false",
+          "officer_fees": 0,
+          "max_fees": 150,
+          "petition_status": "dismissed",
+          "fees_paid_by": "petitioner"
         }
       ],
       "variables": [
         {
-          "name": "petition_status",
-          "description": "The current status of the petition, whether it is dismissed or active."
+          "name": "court_decision",
+          "description": "The decision made by the court regarding the issuance of a warrant."
         },
         {
-          "name": "receiver_appointed",
-          "description": "A boolean indicating whether a receiver has been appointed."
+          "name": "officer_action",
+          "description": "The action taken by the officer in response to the warrant."
         },
         {
-          "name": "fees_payer",
-          "description": "The party responsible for paying the fees."
-        },
-        {
-          "name": "costs_payer",
-          "description": "The party responsible for paying the costs of publishing and serving the notice."
-        }
-      ],
-      "consequences": [
-        "If the petition is dismissed, the petitioner pays the fees and costs.",
-        "If a receiver is appointed, the receiver pays the fees and costs."
-      ]
-    },
-    {
-      "rule": {
-        "and": [
-          {
-            "==": [
-              {
-                "var": "warrant_issued"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "warrant_posted"
-              },
-              true
-            ]
-          },
-          {
-            "==": [
-              {
-                "var": "warrant_recorded"
-              },
-              true
-            ]
-          },
-          {
-            "<=": [
-              {
-                "var": "fees_allowed"
-              },
-              {
-                "var": "max_fees"
-              }
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "warrant_issued": true,
-          "warrant_posted": true,
-          "warrant_recorded": true,
-          "fees_allowed": 100,
-          "max_fees": 150
-        },
-        {
-          "warrant_issued": true,
-          "warrant_posted": false,
-          "warrant_recorded": true,
-          "fees_allowed": 100,
-          "max_fees": 150
-        },
-        {
-          "warrant_issued": true,
-          "warrant_posted": true,
-          "warrant_recorded": true,
-          "fees_allowed": 200,
-          "max_fees": 150
-        }
-      ],
-      "variables": [
-        {
-          "name": "warrant_issued",
-          "description": "A boolean indicating whether the warrant has been issued."
+          "name": "warrant_status",
+          "description": "The status of the warrant after being executed by the officer."
         },
         {
           "name": "warrant_posted",
-          "description": "A boolean indicating whether the warrant has been posted on each parcel of land."
+          "description": "Indicates whether the warrant was posted on each parcel of land."
         },
         {
           "name": "warrant_recorded",
-          "description": "A boolean indicating whether the warrant has been recorded in the county recorder's office."
+          "description": "Indicates whether the warrant was recorded in the county recorder's office."
         },
         {
-          "name": "fees_allowed",
-          "description": "The fees allowed by the court for serving the warrant."
+          "name": "officer_fees",
+          "description": "The fees received by the officer for serving the warrant."
         },
         {
           "name": "max_fees",
-          "description": "The maximum fees established by law for similar service upon a writ of attachment."
+          "description": "The maximum allowable fees for serving the warrant."
+        },
+        {
+          "name": "petition_status",
+          "description": "The status of the petition, whether dismissed or not."
+        },
+        {
+          "name": "fees_paid_by",
+          "description": "The party responsible for paying the fees and costs."
         }
       ],
       "consequences": [
-        "The warrant is valid and properly executed.",
-        "The fees for serving the warrant are within legal limits."
+        "Warrant is executed and property is held subject to court order.",
+        "Officer fees are paid by petitioner if petition is dismissed.",
+        "Officer fees are paid by receiver if a receiver is appointed."
       ]
     }
   ]

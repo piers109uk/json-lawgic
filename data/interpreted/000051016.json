@@ -27,7 +27,7 @@
           {
             "==": [
               {
-                "var": "absentee_notified"
+                "var": "notice_addressed_to_absentee"
               },
               true
             ]
@@ -35,7 +35,7 @@
           {
             "==": [
               {
-                "var": "interested_parties_notified"
+                "var": "notice_addressed_to_claimants"
               },
               true
             ]
@@ -43,7 +43,7 @@
           {
             "==": [
               {
-                "var": "show_cause_hearing_scheduled"
+                "var": "notice_addressed_to_concerned_parties"
               },
               true
             ]
@@ -54,49 +54,49 @@
         {
           "warrant_returned": true,
           "court_issued_notice": true,
-          "absentee_notified": true,
-          "interested_parties_notified": true,
-          "show_cause_hearing_scheduled": true
+          "notice_addressed_to_absentee": true,
+          "notice_addressed_to_claimants": true,
+          "notice_addressed_to_concerned_parties": true
         },
         {
           "warrant_returned": true,
           "court_issued_notice": true,
-          "absentee_notified": false,
-          "interested_parties_notified": true,
-          "show_cause_hearing_scheduled": true
+          "notice_addressed_to_absentee": false,
+          "notice_addressed_to_claimants": true,
+          "notice_addressed_to_concerned_parties": true
         },
         {
           "warrant_returned": false,
           "court_issued_notice": true,
-          "absentee_notified": true,
-          "interested_parties_notified": true,
-          "show_cause_hearing_scheduled": true
+          "notice_addressed_to_absentee": true,
+          "notice_addressed_to_claimants": true,
+          "notice_addressed_to_concerned_parties": true
         }
       ],
       "variables": [
         {
           "name": "warrant_returned",
-          "description": "Indicates if the warrant has been returned to the court."
+          "description": "Indicates if the warrant has been returned."
         },
         {
           "name": "court_issued_notice",
-          "description": "Indicates if the court has issued a notice reciting the substance of the petition, warrant, and officer's return."
+          "description": "Indicates if the court has issued a notice."
         },
         {
-          "name": "absentee_notified",
-          "description": "Indicates if the absentee has been notified."
+          "name": "notice_addressed_to_absentee",
+          "description": "Indicates if the notice is addressed to the absentee."
         },
         {
-          "name": "interested_parties_notified",
-          "description": "Indicates if all persons who claim an interest in the property have been notified."
+          "name": "notice_addressed_to_claimants",
+          "description": "Indicates if the notice is addressed to all persons who claim an interest in the property."
         },
         {
-          "name": "show_cause_hearing_scheduled",
-          "description": "Indicates if a hearing has been scheduled for the absentee and interested parties to show cause why a receiver should not be appointed."
+          "name": "notice_addressed_to_concerned_parties",
+          "description": "Indicates if the notice is addressed to all whom it may concern."
         }
       ],
       "consequences": [
-        "A receiver of the property may be appointed and the property held and disposed of under this chapter."
+        "The absentee and all interested parties are cited to appear and show cause why a receiver should not be appointed."
       ]
     }
   ]

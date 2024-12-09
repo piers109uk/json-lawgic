@@ -1,0 +1,106 @@
+{
+  "id": "578.06",
+  "url": "https://www.revisor.mn.gov/statutes/cite/578.06",
+  "title": "578.06 HEARING BY COURT; DISMISSAL OF PROCEEDING; APPOINTMENT AND BOND OF RECEIVER.",
+  "text": "The absentee, or any person who claims an interest in any of the property, may appear and show cause why the prayer of the petition should not be granted. The court may, after hearing, dismiss the petition and order the property in possession of the officer to be returned to the person entitled thereto, or it may appoint a receiver of the property which is in the possession of the officer and named in the schedule. If a receiver is appointed, the court shall find and record the date of the disappearance or absconding of the absentee; and the receiver shall give a bond pursuant to section 576.27. In the appointment of the receiver the court shall give preference to the spouse of the absentee, if the spouse is eligible to serve as receiver under section 576.26.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "or": [
+              {
+                "var": "absentee_appears"
+              },
+              {
+                "var": "interested_person_appears"
+              }
+            ]
+          },
+          {
+            "if": [
+              {
+                "var": "court_hearing"
+              },
+              {
+                "if": [
+                  {
+                    "var": "appoint_receiver"
+                  },
+                  {
+                    "and": [
+                      {
+                        "var": "court_finds_date_of_disappearance"
+                      },
+                      {
+                        "var": "receiver_gives_bond"
+                      }
+                    ]
+                  },
+                  {
+                    "var": "dismiss_petition"
+                  }
+                ]
+              },
+              {
+                "var": "dismiss_petition"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "absentee_appears": true,
+          "interested_person_appears": false,
+          "court_hearing": true,
+          "appoint_receiver": true,
+          "court_finds_date_of_disappearance": true,
+          "receiver_gives_bond": true
+        },
+        {
+          "absentee_appears": false,
+          "interested_person_appears": true,
+          "court_hearing": true,
+          "appoint_receiver": false
+        },
+        {
+          "absentee_appears": false,
+          "interested_person_appears": false,
+          "court_hearing": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "absentee_appears",
+          "description": "Indicates if the absentee appears in court."
+        },
+        {
+          "name": "interested_person_appears",
+          "description": "Indicates if any interested person appears in court."
+        },
+        {
+          "name": "court_hearing",
+          "description": "Indicates if a court hearing is conducted."
+        },
+        {
+          "name": "appoint_receiver",
+          "description": "Indicates if the court decides to appoint a receiver."
+        },
+        {
+          "name": "court_finds_date_of_disappearance",
+          "description": "Indicates if the court finds and records the date of disappearance or absconding of the absentee."
+        },
+        {
+          "name": "receiver_gives_bond",
+          "description": "Indicates if the receiver gives a bond pursuant to section 576.27."
+        }
+      ],
+      "consequences": [
+        "The petition is dismissed and property is returned to the entitled person.",
+        "A receiver is appointed for the property, and the court records the date of disappearance."
+      ]
+    }
+  ]
+}

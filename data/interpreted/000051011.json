@@ -12,90 +12,106 @@
             "!": {
               "in": [
                 {
-                  "var": "preference_given_by"
+                  "var": "preference_by_next_of_kin"
                 },
-                "next_of_kin",
-                "legatee",
-                "heir",
-                "devisee"
+                [
+                  "next_of_kin",
+                  "legatee",
+                  "heir",
+                  "devisee"
+                ]
               ]
             }
           },
           {
             "or": [
               {
-                "==": [
+                "===": [
                   {
                     "var": "debt_class"
                   },
-                  "same"
+                  2
                 ]
               },
               {
-                "==": [
+                "===": [
                   {
                     "var": "debt_class"
                   },
-                  "573.14_clause_2"
+                  {
+                    "var": "other_debt_class"
+                  }
                 ]
               }
             ]
           },
           {
-            "==": [
+            "===": [
               {
-                "var": "debt_due_status"
+                "var": "debt_due"
               },
-              "not_due"
+              false
             ]
           },
           {
-            "!": {
-              "var": "action_commenced"
-            }
+            "===": [
+              {
+                "var": "action_commenced"
+              },
+              false
+            ]
           }
         ]
       },
       "examples": [
         {
-          "preference_given_by": "legatee",
-          "debt_class": "same",
-          "debt_due_status": "not_due",
+          "preference_by_next_of_kin": "legatee",
+          "debt_class": 1,
+          "other_debt_class": 1,
+          "debt_due": false,
           "action_commenced": false
         },
         {
-          "preference_given_by": "heir",
-          "debt_class": "573.14_clause_2",
-          "debt_due_status": "due",
+          "preference_by_next_of_kin": "heir",
+          "debt_class": 2,
+          "other_debt_class": 1,
+          "debt_due": false,
           "action_commenced": false
         },
         {
-          "preference_given_by": "devisee",
-          "debt_class": "same",
-          "debt_due_status": "not_due",
+          "preference_by_next_of_kin": "devisee",
+          "debt_class": 1,
+          "other_debt_class": 1,
+          "debt_due": true,
           "action_commenced": true
         }
       ],
       "variables": [
         {
-          "name": "preference_given_by",
+          "name": "preference_by_next_of_kin",
           "description": "The entity (next of kin, legatee, heir, or devisee) giving preference to a debt."
         },
         {
           "name": "debt_class",
-          "description": "The class of the debt, either 'same' or '573.14_clause_2'."
+          "description": "The class of the debt being considered for preference."
         },
         {
-          "name": "debt_due_status",
-          "description": "The due status of the debt, either 'due' or 'not_due'."
+          "name": "other_debt_class",
+          "description": "The class of another debt being compared."
+        },
+        {
+          "name": "debt_due",
+          "description": "Indicates if the debt is due and payable."
         },
         {
           "name": "action_commenced",
-          "description": "Whether an action has been commenced against the entity for the recovery of a debt."
+          "description": "Indicates if an action has been commenced for the recovery of the debt."
         }
       ],
       "consequences": [
-        "No preference is allowed for the debt."
+        "No preference is given to one debt over another of the same class.",
+        "A debt due and payable is not entitled to preference over one not due.",
+        "Commencement of an action does not entitle a debt to preference over others of the same class."
       ]
     }
   ]

@@ -1,0 +1,92 @@
+{
+  "id": "573.20",
+  "url": "https://www.revisor.mn.gov/statutes/cite/573.20",
+  "title": "573.20 DEVISEES, WHEN LIABLE; LIMITATIONS.",
+  "text": "Devisees made liable to creditors of their testator by the provisions of this chapter shall not be held liable unless it shall appear that the testator's personal assets and the real property descended to the testator's heirs were insufficient to discharge the debt, or that after due proceedings before the district court the creditor has been unable to recover the debt, or any part thereof, from the personal representative of the testator, or next of kin, legatees, or heirs. In either of these cases, the amount of the deficiency of the personal assets, and of the real property descended to satisfy the debt of the plaintiff, and the amount which the plaintiff may have failed to recover from the personal representative, next of kin, legatees, and heirs of the testator, may be recovered of the devisees, to the extent of the real property devised to them, respectively. Nothing in this section shall affect the liability of the devisees for a debt of their testator which was charged by will exclusively upon the real property devised, or made payable exclusively by such devisees, or out of the real property devised before resorting to the personal property or to any other real property descended or devised.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "or": [
+          {
+            "and": [
+              {
+                "<": [
+                  {
+                    "var": "personal_assets"
+                  },
+                  0
+                ]
+              },
+              {
+                "<": [
+                  {
+                    "var": "real_property_descended"
+                  },
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "creditor_recovery"
+              },
+              false
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "debt_charged_exclusively_on_real_property"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "personal_assets": -1000,
+          "real_property_descended": -500,
+          "creditor_recovery": false,
+          "debt_charged_exclusively_on_real_property": false
+        },
+        {
+          "personal_assets": 1000,
+          "real_property_descended": 500,
+          "creditor_recovery": false,
+          "debt_charged_exclusively_on_real_property": false
+        },
+        {
+          "personal_assets": 1000,
+          "real_property_descended": 500,
+          "creditor_recovery": true,
+          "debt_charged_exclusively_on_real_property": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "personal_assets",
+          "description": "The value of the testator's personal assets."
+        },
+        {
+          "name": "real_property_descended",
+          "description": "The value of the real property descended to the testator's heirs."
+        },
+        {
+          "name": "creditor_recovery",
+          "description": "Whether the creditor has been able to recover the debt from the personal representative, next of kin, legatees, or heirs."
+        },
+        {
+          "name": "debt_charged_exclusively_on_real_property",
+          "description": "Whether the debt was charged by will exclusively upon the real property devised."
+        }
+      ],
+      "consequences": [
+        "Devisees are liable to creditors for the debt."
+      ]
+    }
+  ]
+}

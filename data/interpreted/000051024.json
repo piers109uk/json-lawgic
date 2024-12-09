@@ -1,0 +1,194 @@
+{
+  "id": "572B.21",
+  "url": "https://www.revisor.mn.gov/statutes/cite/572B.21",
+  "title": "572B.21 REMEDIES; FEES AND EXPENSES OF ARBITRATION PROCEEDING.",
+  "text": "(a) An arbitrator may award punitive damages or other exemplary relief if such an award is authorized by law in a civil action involving the same claim and the evidence produced at the hearing justifies the award under the legal standards otherwise applicable to the claim.\n(b) An arbitrator may award attorney fees and other reasonable expenses of arbitration if such an award is authorized by law in a civil action involving the same claim or by the agreement of the parties to the arbitration proceeding.\n(c) As to all remedies other than those authorized by subsections (a) and (b), an arbitrator may order such remedies as the arbitrator considers just and appropriate under the circumstances of the arbitration proceeding. The fact that such a remedy could not or would not be granted by the court is not a ground for refusing to confirm an award under section 572B.22 or for vacating an award under section 572B.23.\n(d) An arbitrator's expenses and fees, together with other expenses, must be paid as provided in the award.\n(e) If an arbitrator awards punitive damages or other exemplary relief under subsection (a), the arbitrator shall specify in the award the basis in fact justifying and the basis in law authorizing the award and state separately the amount of the punitive damages or other exemplary relief.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "award_type"
+              },
+              "punitive"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "authorized_by_law"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "evidence_justifies"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "award_type": "punitive",
+          "authorized_by_law": true,
+          "evidence_justifies": true
+        },
+        {
+          "award_type": "punitive",
+          "authorized_by_law": false,
+          "evidence_justifies": true
+        },
+        {
+          "award_type": "punitive",
+          "authorized_by_law": true,
+          "evidence_justifies": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "award_type",
+          "description": "The type of award being considered, e.g., punitive damages."
+        },
+        {
+          "name": "authorized_by_law",
+          "description": "Whether the award is authorized by law in a civil action involving the same claim."
+        },
+        {
+          "name": "evidence_justifies",
+          "description": "Whether the evidence produced at the hearing justifies the award under the legal standards applicable to the claim."
+        }
+      ],
+      "consequences": [
+        "Arbitrator may award punitive damages or exemplary relief."
+      ]
+    },
+    {
+      "rule": {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "authorized_by_law"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "agreement_of_parties"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "authorized_by_law": true,
+          "agreement_of_parties": false
+        },
+        {
+          "authorized_by_law": false,
+          "agreement_of_parties": true
+        },
+        {
+          "authorized_by_law": false,
+          "agreement_of_parties": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "authorized_by_law",
+          "description": "Whether the award is authorized by law in a civil action involving the same claim."
+        },
+        {
+          "name": "agreement_of_parties",
+          "description": "Whether the award is authorized by the agreement of the parties to the arbitration proceeding."
+        }
+      ],
+      "consequences": [
+        "Arbitrator may award attorney fees and other reasonable expenses of arbitration."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "!=": [
+              {
+                "var": "award_type"
+              },
+              "punitive"
+            ]
+          },
+          {
+            "!=": [
+              {
+                "var": "award_type"
+              },
+              "attorney_fees"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "award_type": "compensatory"
+        },
+        {
+          "award_type": "punitive"
+        },
+        {
+          "award_type": "attorney_fees"
+        }
+      ],
+      "variables": [
+        {
+          "name": "award_type",
+          "description": "The type of award being considered, e.g., punitive damages, attorney fees, or other."
+        }
+      ],
+      "consequences": [
+        "Arbitrator may order remedies considered just and appropriate under the circumstances."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "award_type"
+          },
+          "punitive"
+        ]
+      },
+      "examples": [
+        {
+          "award_type": "punitive"
+        },
+        {
+          "award_type": "compensatory"
+        },
+        {
+          "award_type": "attorney_fees"
+        }
+      ],
+      "variables": [
+        {
+          "name": "award_type",
+          "description": "The type of award being considered, e.g., punitive damages."
+        }
+      ],
+      "consequences": [
+        "Arbitrator must specify the basis in fact and law for punitive damages and state the amount separately."
+      ]
+    }
+  ]
+}

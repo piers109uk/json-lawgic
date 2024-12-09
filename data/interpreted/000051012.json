@@ -15,7 +15,7 @@
             "var": "award_authenticated"
           },
           {
-            "var": "award_notice_given"
+            "var": "award_notified"
           }
         ]
       },
@@ -23,17 +23,17 @@
         {
           "award_recorded": true,
           "award_authenticated": true,
-          "award_notice_given": true
+          "award_notified": true
         },
         {
           "award_recorded": true,
           "award_authenticated": false,
-          "award_notice_given": true
+          "award_notified": true
         },
         {
           "award_recorded": false,
           "award_authenticated": true,
-          "award_notice_given": true
+          "award_notified": true
         }
       ],
       "variables": [
@@ -46,12 +46,12 @@
           "description": "Indicates if the award record is authenticated by any arbitrator who concurs with the award."
         },
         {
-          "name": "award_notice_given",
-          "description": "Indicates if notice of the award, including a copy of the award, has been given to each party to the arbitration proceeding."
+          "name": "award_notified",
+          "description": "Indicates if notice of the award, including a copy, has been given to each party."
         }
       ],
       "consequences": [
-        "The award process is compliant with the arbitration requirements."
+        "The award process is complete and valid."
       ]
     },
     {
@@ -60,20 +60,20 @@
           {
             "or": [
               {
-                "var": "time_specified_in_agreement"
+                "var": "time_specified"
               },
               {
-                "var": "time_ordered_by_court"
+                "var": "time_ordered"
               }
             ]
           },
           {
             "or": [
               {
-                "var": "time_extended_by_court"
+                "var": "court_extended"
               },
               {
-                "var": "time_extended_by_parties"
+                "var": "parties_agreed"
               }
             ]
           },
@@ -83,16 +83,7 @@
                 "var": "objection_waived"
               },
               {
-                "and": [
-                  {
-                    "var": "objection_given"
-                  },
-                  {
-                    "!": {
-                      "var": "award_notice_received"
-                    }
-                  }
-                ]
+                "var": "objection_before_notice"
               }
             ]
           }
@@ -100,61 +91,54 @@
       },
       "examples": [
         {
-          "time_specified_in_agreement": true,
-          "time_ordered_by_court": false,
-          "time_extended_by_court": false,
-          "time_extended_by_parties": true,
+          "time_specified": true,
+          "time_ordered": false,
+          "court_extended": false,
+          "parties_agreed": true,
           "objection_waived": true,
-          "objection_given": false,
-          "award_notice_received": false
+          "objection_before_notice": false
         },
         {
-          "time_specified_in_agreement": false,
-          "time_ordered_by_court": true,
-          "time_extended_by_court": true,
-          "time_extended_by_parties": false,
+          "time_specified": false,
+          "time_ordered": true,
+          "court_extended": true,
+          "parties_agreed": false,
           "objection_waived": false,
-          "objection_given": true,
-          "award_notice_received": false
+          "objection_before_notice": true
         },
         {
-          "time_specified_in_agreement": false,
-          "time_ordered_by_court": false,
-          "time_extended_by_court": false,
-          "time_extended_by_parties": false,
+          "time_specified": false,
+          "time_ordered": false,
+          "court_extended": false,
+          "parties_agreed": false,
           "objection_waived": false,
-          "objection_given": false,
-          "award_notice_received": true
+          "objection_before_notice": false
         }
       ],
       "variables": [
         {
-          "name": "time_specified_in_agreement",
+          "name": "time_specified",
           "description": "Indicates if the award was made within the time specified by the agreement to arbitrate."
         },
         {
-          "name": "time_ordered_by_court",
+          "name": "time_ordered",
           "description": "Indicates if the award was made within the time ordered by the court."
         },
         {
-          "name": "time_extended_by_court",
-          "description": "Indicates if the time for making the award was extended by the court."
+          "name": "court_extended",
+          "description": "Indicates if the court has extended the time for making the award."
         },
         {
-          "name": "time_extended_by_parties",
-          "description": "Indicates if the time for making the award was extended by agreement of the parties."
+          "name": "parties_agreed",
+          "description": "Indicates if the parties have agreed in a record to extend the time for making the award."
         },
         {
           "name": "objection_waived",
           "description": "Indicates if a party has waived any objection to the timeliness of the award."
         },
         {
-          "name": "objection_given",
-          "description": "Indicates if a party has given notice of objection to the timeliness of the award."
-        },
-        {
-          "name": "award_notice_received",
-          "description": "Indicates if the party has received notice of the award."
+          "name": "objection_before_notice",
+          "description": "Indicates if a party gave notice of objection to the arbitrator before receiving notice of the award."
         }
       ],
       "consequences": [

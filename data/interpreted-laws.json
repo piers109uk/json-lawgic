@@ -1,5 +1,81 @@
 [
   {
+    "id": "573.18",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.18",
+    "title": "573.18 PERSONAL LIABILITY; ALIENATION BEFORE SUIT.",
+    "text": "If it appears in the action that before the commencement thereof the heir has aliened the real property descended to that heir, or any part thereof, that heir shall be personally liable for the value of that aliened; and judgment may be rendered therefor, and execution awarded, as in actions for personal debts. No real property aliened in good faith by an heir, before action commenced against the heir, shall be liable to execution or in any manner affected by a judgment against the heir.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "<": [
+                    {
+                      "var": "alienation_date"
+                    },
+                    {
+                      "var": "action_commencement_date"
+                    }
+                  ]
+                },
+                {
+                  "!": {
+                    "var": "good_faith"
+                  }
+                }
+              ]
+            },
+            {
+              "var": "heir_liable"
+            },
+            false
+          ]
+        },
+        "examples": [
+          {
+            "alienation_date": "2023-01-01",
+            "action_commencement_date": "2023-06-01",
+            "good_faith": false
+          },
+          {
+            "alienation_date": "2023-01-01",
+            "action_commencement_date": "2023-06-01",
+            "good_faith": true
+          },
+          {
+            "alienation_date": "2023-07-01",
+            "action_commencement_date": "2023-06-01",
+            "good_faith": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "alienation_date",
+            "description": "The date when the heir aliened the real property."
+          },
+          {
+            "name": "action_commencement_date",
+            "description": "The date when the action against the heir commenced."
+          },
+          {
+            "name": "good_faith",
+            "description": "Indicates whether the alienation was done in good faith."
+          },
+          {
+            "name": "heir_liable",
+            "description": "Indicates whether the heir is personally liable for the value of the aliened property."
+          }
+        ],
+        "consequences": [
+          "The heir is personally liable for the value of the aliened property."
+        ]
+      }
+    ]
+  },
+  {
     "id": "2.031",
     "url": "https://www.revisor.mn.gov/statutes/cite/2.031",
     "title": "2.031 APPORTIONMENT.",
@@ -1063,6 +1139,203 @@
     ]
   },
   {
+    "id": "577.12",
+    "url": "https://www.revisor.mn.gov/statutes/cite/577.12",
+    "title": "577.12 REQUISITES.",
+    "text": "A person may execute a written assignment of property to one or more assignees for the benefit of creditors in conformity with the provisions of this chapter. Every assignment for the benefit of creditors subject to this chapter made by an assignor of the whole or any part of the assignor's property, real or personal, for the benefit of creditors, shall be: (1) to a person eligible to be a receiver under section 576.26, in writing, subscribed and acknowledged by the assignor, and (2) filed by the assignor or the assignee with the court administrator of the district court of the county in which the assignor, or one of the assignors if there is more than one, resides, or in which the principal place of business of an assignor engaged in business is located. The district court shall have supervision over the assignment property and of all proceedings under this chapter. The assignee shall be deemed to have submitted to the jurisdiction of the district court.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "assignment.writing"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignment.subscribed"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignment.acknowledged"
+                },
+                true
+              ]
+            },
+            {
+              "or": [
+                {
+                  "in": [
+                    {
+                      "var": "assignment.assignor.residence"
+                    },
+                    {
+                      "var": "court.county"
+                    }
+                  ]
+                },
+                {
+                  "in": [
+                    {
+                      "var": "assignment.assignor.business_location"
+                    },
+                    {
+                      "var": "court.county"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "assignment": {
+              "writing": true,
+              "subscribed": true,
+              "acknowledged": true,
+              "assignor": {
+                "residence": "County A",
+                "business_location": "County B"
+              }
+            },
+            "court": {
+              "county": "County A"
+            }
+          },
+          {
+            "assignment": {
+              "writing": true,
+              "subscribed": true,
+              "acknowledged": false,
+              "assignor": {
+                "residence": "County A",
+                "business_location": "County B"
+              }
+            },
+            "court": {
+              "county": "County A"
+            }
+          },
+          {
+            "assignment": {
+              "writing": true,
+              "subscribed": true,
+              "acknowledged": true,
+              "assignor": {
+                "residence": "County C",
+                "business_location": "County D"
+              }
+            },
+            "court": {
+              "county": "County A"
+            }
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignment.writing",
+            "description": "Indicates if the assignment is in writing."
+          },
+          {
+            "name": "assignment.subscribed",
+            "description": "Indicates if the assignment is subscribed by the assignor."
+          },
+          {
+            "name": "assignment.acknowledged",
+            "description": "Indicates if the assignment is acknowledged by the assignor."
+          },
+          {
+            "name": "assignment.assignor.residence",
+            "description": "The residence of the assignor."
+          },
+          {
+            "name": "assignment.assignor.business_location",
+            "description": "The business location of the assignor."
+          },
+          {
+            "name": "court.county",
+            "description": "The county where the court is located."
+          }
+        ],
+        "consequences": [
+          "The assignment is valid and the district court has supervision over the assignment property."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "assignee.eligible_receiver"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignment.filed"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "assignee": {
+              "eligible_receiver": true
+            },
+            "assignment": {
+              "filed": true
+            }
+          },
+          {
+            "assignee": {
+              "eligible_receiver": false
+            },
+            "assignment": {
+              "filed": true
+            }
+          },
+          {
+            "assignee": {
+              "eligible_receiver": true
+            },
+            "assignment": {
+              "filed": false
+            }
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignee.eligible_receiver",
+            "description": "Indicates if the assignee is eligible to be a receiver under section 576.26."
+          },
+          {
+            "name": "assignment.filed",
+            "description": "Indicates if the assignment is filed with the court administrator."
+          }
+        ],
+        "consequences": [
+          "The assignee is deemed to have submitted to the jurisdiction of the district court."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.149",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.149",
     "title": "1.149 STATE MUSHROOM.",
@@ -1137,6 +1410,467 @@
     ]
   },
   {
+    "id": "578.17",
+    "url": "https://www.revisor.mn.gov/statutes/cite/578.17",
+    "title": "578.17 HEARING BY COURT; DETERMINATION OF DEATH OF AN ABSENTEE.",
+    "text": "A person in interest may request a hearing in the following circumstances:\n(1) if an absentee is absent from the domicile without being in communication after being exposed to a specific peril and a diligent search has been made; or\n(2) if an absentee has been absent from the domicile for a period of four consecutive years or more without being in communication and a diligent search has been made; or\n(3) if unforeseeable or changing circumstances necessitate court authorization for action in respect to the management or disposition of the absentee's business or property.\nThe person requesting the hearing shall file a petition stating name, address, relationship to the absentee, and the specific grounds for the hearing requested.\nUpon the filing of the petition, the court shall notify all proper persons in interest of the date, time and place of the hearing.\nThe notice shall in all cases be served as follows:\n(1) by publication in the county in which the petition is filed once in each of three successive weeks, in a newspaper designated by the court; and\n(2) upon all persons in interest by ordinary mail.\nThe court, if satisfied by the evidence adduced at a hearing in support of a petition alleging the absentee is missing after being exposed to a specific peril or that an absentee has been absent for four or more consecutive years, shall enter an order establishing as a matter of law the death of the absentee and the date thereof. The court shall order the distribution of the absentee's property to the persons and in the manner prescribed in chapters 524 and 525.\nUpon a hearing brought pursuant to subdivision 1, clause (3), the court shall have full power to make orders appropriate to conserve the absentee's property or business or to protect the rights of the persons in interest.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "petition_filed"
+            },
+            {
+              "var": "petitioner_info_complete"
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "var": "exposed_to_specific_peril"
+                    },
+                    {
+                      "var": "absent_from_domicile"
+                    },
+                    {
+                      "var": "no_communication"
+                    },
+                    {
+                      "var": "diligent_search_made"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "var": "absent_from_domicile"
+                    },
+                    {
+                      ">=": [
+                        {
+                          "var": "years_absent"
+                        },
+                        4
+                      ]
+                    },
+                    {
+                      "var": "no_communication"
+                    },
+                    {
+                      "var": "diligent_search_made"
+                    }
+                  ]
+                },
+                {
+                  "var": "unforeseeable_circumstances_requiring_court_action"
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "petition_filed": true,
+            "petitioner_info_complete": true,
+            "exposed_to_specific_peril": true,
+            "absent_from_domicile": true,
+            "no_communication": true,
+            "diligent_search_made": true,
+            "years_absent": 1,
+            "unforeseeable_circumstances_requiring_court_action": false
+          },
+          {
+            "petition_filed": true,
+            "petitioner_info_complete": true,
+            "exposed_to_specific_peril": false,
+            "absent_from_domicile": true,
+            "no_communication": true,
+            "diligent_search_made": true,
+            "years_absent": 5,
+            "unforeseeable_circumstances_requiring_court_action": false
+          },
+          {
+            "petition_filed": true,
+            "petitioner_info_complete": false,
+            "exposed_to_specific_peril": false,
+            "absent_from_domicile": true,
+            "no_communication": true,
+            "diligent_search_made": true,
+            "years_absent": 3,
+            "unforeseeable_circumstances_requiring_court_action": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "petition_filed",
+            "description": "Whether a petition has been filed with the court"
+          },
+          {
+            "name": "petitioner_info_complete",
+            "description": "Whether the petition includes name, address, relationship to absentee, and specific grounds"
+          },
+          {
+            "name": "exposed_to_specific_peril",
+            "description": "Whether the absentee was exposed to a specific peril"
+          },
+          {
+            "name": "absent_from_domicile",
+            "description": "Whether the person is absent from their domicile"
+          },
+          {
+            "name": "no_communication",
+            "description": "Whether the person has been out of communication"
+          },
+          {
+            "name": "diligent_search_made",
+            "description": "Whether a diligent search has been conducted"
+          },
+          {
+            "name": "years_absent",
+            "description": "Number of consecutive years person has been absent"
+          },
+          {
+            "name": "unforeseeable_circumstances_requiring_court_action",
+            "description": "Whether there are unforeseeable circumstances requiring court authorization for property management"
+          }
+        ],
+        "consequences": [
+          "Court must schedule a hearing",
+          "Court must notify all proper persons in interest of hearing details",
+          "Court must serve notice by publication for 3 successive weeks",
+          "Court must serve notice to all persons in interest by ordinary mail"
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "hearing_held"
+            },
+            {
+              "var": "evidence_presented"
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "var": "exposed_to_specific_peril"
+                    },
+                    {
+                      "var": "evidence_supports_death"
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      ">=": [
+                        {
+                          "var": "years_absent"
+                        },
+                        4
+                      ]
+                    },
+                    {
+                      "var": "evidence_supports_death"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "hearing_held": true,
+            "evidence_presented": true,
+            "exposed_to_specific_peril": true,
+            "evidence_supports_death": true,
+            "years_absent": 2
+          },
+          {
+            "hearing_held": true,
+            "evidence_presented": true,
+            "exposed_to_specific_peril": false,
+            "evidence_supports_death": true,
+            "years_absent": 5
+          },
+          {
+            "hearing_held": true,
+            "evidence_presented": true,
+            "exposed_to_specific_peril": false,
+            "evidence_supports_death": false,
+            "years_absent": 3
+          }
+        ],
+        "variables": [
+          {
+            "name": "hearing_held",
+            "description": "Whether a hearing has been held"
+          },
+          {
+            "name": "evidence_presented",
+            "description": "Whether evidence was presented at the hearing"
+          },
+          {
+            "name": "exposed_to_specific_peril",
+            "description": "Whether evidence shows exposure to specific peril"
+          },
+          {
+            "name": "evidence_supports_death",
+            "description": "Whether the evidence supports establishing death"
+          },
+          {
+            "name": "years_absent",
+            "description": "Number of consecutive years person has been absent"
+          }
+        ],
+        "consequences": [
+          "Court must enter order establishing death as matter of law",
+          "Court must establish date of death",
+          "Court must order distribution of property according to chapters 524 and 525"
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "hearing_held"
+            },
+            {
+              "var": "unforeseeable_circumstances_requiring_court_action"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "hearing_held": true,
+            "unforeseeable_circumstances_requiring_court_action": true
+          },
+          {
+            "hearing_held": true,
+            "unforeseeable_circumstances_requiring_court_action": false
+          },
+          {
+            "hearing_held": false,
+            "unforeseeable_circumstances_requiring_court_action": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "hearing_held",
+            "description": "Whether a hearing has been held"
+          },
+          {
+            "name": "unforeseeable_circumstances_requiring_court_action",
+            "description": "Whether there are unforeseeable circumstances requiring court authorization"
+          }
+        ],
+        "consequences": [
+          "Court has full power to make orders to conserve absentee's property or business",
+          "Court has full power to make orders to protect rights of persons in interest"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "577.07",
+    "url": "https://www.revisor.mn.gov/statutes/cite/577.07",
+    "title": "577.07 FRAUDULENT CONVEYANCES.",
+    "text": "In all cases of general assignments for the benefit of creditors, the assignee shall represent the creditors of the assignor as against all transfers and conveyances of the assignor's property which were fraudulent as to them, and shall have all the rights of such creditors in their avoidance.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "assignment.type"
+                },
+                "general"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignment.purpose"
+                },
+                "benefit of creditors"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignee.role"
+                },
+                "represent creditors"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "transfer.status"
+                },
+                "fraudulent"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "assignment": {
+              "type": "general",
+              "purpose": "benefit of creditors"
+            },
+            "assignee": {
+              "role": "represent creditors"
+            },
+            "transfer": {
+              "status": "fraudulent"
+            }
+          },
+          {
+            "assignment": {
+              "type": "general",
+              "purpose": "benefit of creditors"
+            },
+            "assignee": {
+              "role": "represent creditors"
+            },
+            "transfer": {
+              "status": "legitimate"
+            }
+          },
+          {
+            "assignment": {
+              "type": "specific",
+              "purpose": "benefit of creditors"
+            },
+            "assignee": {
+              "role": "represent creditors"
+            },
+            "transfer": {
+              "status": "fraudulent"
+            }
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignment.type",
+            "description": "The type of assignment, e.g., general or specific."
+          },
+          {
+            "name": "assignment.purpose",
+            "description": "The purpose of the assignment, e.g., for the benefit of creditors."
+          },
+          {
+            "name": "assignee.role",
+            "description": "The role of the assignee, e.g., to represent creditors."
+          },
+          {
+            "name": "transfer.status",
+            "description": "The status of the transfer, e.g., fraudulent or legitimate."
+          }
+        ],
+        "consequences": [
+          "Assignee can act against fraudulent transfers",
+          "Assignee has rights of creditors in avoidance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "573.13",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.13",
+    "title": "573.13 CONTRIBUTION AMONG HEIRS.",
+    "text": "When any heir, devisee, or legatee pays more than a proportional share of such debt, the other persons liable shall be holden and compelled to contribute their just proportion of the same.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "<": [
+                {
+                  "var": "paid_share"
+                },
+                {
+                  "var": "proportional_share"
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "liable"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "contribute"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "paid_share": 100,
+            "proportional_share": 150,
+            "liable": true,
+            "contribute": true
+          },
+          {
+            "paid_share": 200,
+            "proportional_share": 150,
+            "liable": true,
+            "contribute": false
+          },
+          {
+            "paid_share": 150,
+            "proportional_share": 150,
+            "liable": true,
+            "contribute": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "paid_share",
+            "description": "The amount paid by the heir, devisee, or legatee."
+          },
+          {
+            "name": "proportional_share",
+            "description": "The proportional share of the debt that the heir, devisee, or legatee is responsible for."
+          },
+          {
+            "name": "liable",
+            "description": "Indicates if the person is liable for the debt."
+          },
+          {
+            "name": "contribute",
+            "description": "Indicates if the person is compelled to contribute their just proportion."
+          }
+        ],
+        "consequences": [
+          "The liable person is compelled to contribute their just proportion of the debt."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.1485",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.1485",
     "title": "1.1485 STATE SOIL.",
@@ -1190,6 +1924,539 @@
         ],
         "consequences": [
           "Lester is confirmed as the official soil of Minnesota."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572B.23",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.23",
+    "title": "572B.23 VACATING AWARD.",
+    "text": "(a) Upon motion of a party to the arbitration proceeding, the court shall vacate an award if:\n(1) the award was procured by corruption, fraud, or other undue means;\n(2) there was:\n(A) evident partiality by an arbitrator appointed as a neutral;\n(B) corruption by an arbitrator; or\n(C) misconduct by an arbitrator prejudicing the rights of a party to the arbitration proceeding;\n(3) an arbitrator refused to postpone the hearing upon showing of sufficient cause for postponement, refused to consider evidence material to the controversy, or otherwise conducted the hearing contrary to section 572B.15, so as to prejudice substantially the rights of a party to the arbitration proceeding;\n(4) an arbitrator exceeded the arbitrator's powers;\n(5) there was no agreement to arbitrate, unless the person participated in the arbitration proceeding without raising the objection under section 572B.15, subsection (c), not later than the commencement of the arbitration hearing; or\n(6) the arbitration was conducted without proper notice of the initiation of an arbitration as required in section 572B.09 so as to prejudice substantially the rights of a party to the arbitration proceeding.\n(b) A motion under this section must be filed within 90 days after the movant receives notice of the award in a record pursuant to section 572B.19 or within 90 days after the movant receives notice of an arbitrator's award in a record on a motion to modify or correct an award pursuant to section 572B.20, unless the motion is predicated upon the ground that the award was procured by corruption, fraud, or other undue means, in which case it must be filed within 90 days after such a ground is known or by the exercise of reasonable care should have been known by the movant.\n(c) In vacating an award on a ground other than that set forth in subsection (a)(5), the court may order a rehearing before a new arbitrator. If the award is vacated on the ground stated in subsection (a)(3), (4), or (6), the court may order a rehearing before the arbitrator who made the award or the arbitrator's successor. The arbitrator must render the decision in the rehearing within the same time as that provided in section 572B.19, subsection (b), for an award.\n(d) If a motion to vacate an award is denied and a motion to modify or correct the award is not pending, the court shall confirm the award.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "motion_filed"
+                },
+                true
+              ]
+            },
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "award_procured_by"
+                    },
+                    [
+                      "corruption",
+                      "fraud",
+                      "undue_means"
+                    ]
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "and": [
+                        {
+                          "==": [
+                            {
+                              "var": "evident_partiality"
+                            },
+                            true
+                          ]
+                        },
+                        {
+                          "==": [
+                            {
+                              "var": "arbitrator_role"
+                            },
+                            "neutral"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "arbitrator_corruption"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "arbitrator_misconduct"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "or": [
+                    {
+                      "==": [
+                        {
+                          "var": "arbitrator_refused_postponement"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "arbitrator_refused_evidence"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "hearing_conducted_contrary"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "arbitrator_exceeded_powers"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "==": [
+                        {
+                          "var": "agreement_to_arbitrate"
+                        },
+                        false
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "objection_raised"
+                        },
+                        false
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "proper_notice"
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "motion_filed": true,
+            "award_procured_by": "fraud",
+            "evident_partiality": false,
+            "arbitrator_role": "neutral",
+            "arbitrator_corruption": false,
+            "arbitrator_misconduct": false,
+            "arbitrator_refused_postponement": false,
+            "arbitrator_refused_evidence": false,
+            "hearing_conducted_contrary": false,
+            "arbitrator_exceeded_powers": false,
+            "agreement_to_arbitrate": true,
+            "objection_raised": false,
+            "proper_notice": true
+          },
+          {
+            "motion_filed": true,
+            "award_procured_by": "undue_means",
+            "evident_partiality": true,
+            "arbitrator_role": "neutral",
+            "arbitrator_corruption": false,
+            "arbitrator_misconduct": false,
+            "arbitrator_refused_postponement": false,
+            "arbitrator_refused_evidence": false,
+            "hearing_conducted_contrary": false,
+            "arbitrator_exceeded_powers": false,
+            "agreement_to_arbitrate": true,
+            "objection_raised": false,
+            "proper_notice": true
+          },
+          {
+            "motion_filed": false,
+            "award_procured_by": "corruption",
+            "evident_partiality": false,
+            "arbitrator_role": "neutral",
+            "arbitrator_corruption": false,
+            "arbitrator_misconduct": false,
+            "arbitrator_refused_postponement": false,
+            "arbitrator_refused_evidence": false,
+            "hearing_conducted_contrary": false,
+            "arbitrator_exceeded_powers": false,
+            "agreement_to_arbitrate": true,
+            "objection_raised": false,
+            "proper_notice": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "motion_filed",
+            "description": "Indicates if a motion to vacate the award has been filed."
+          },
+          {
+            "name": "award_procured_by",
+            "description": "The means by which the award was procured, e.g., corruption, fraud, or undue means."
+          },
+          {
+            "name": "evident_partiality",
+            "description": "Indicates if there was evident partiality by an arbitrator appointed as a neutral."
+          },
+          {
+            "name": "arbitrator_role",
+            "description": "The role of the arbitrator, e.g., neutral."
+          },
+          {
+            "name": "arbitrator_corruption",
+            "description": "Indicates if there was corruption by an arbitrator."
+          },
+          {
+            "name": "arbitrator_misconduct",
+            "description": "Indicates if there was misconduct by an arbitrator prejudicing the rights of a party."
+          },
+          {
+            "name": "arbitrator_refused_postponement",
+            "description": "Indicates if an arbitrator refused to postpone the hearing upon showing of sufficient cause."
+          },
+          {
+            "name": "arbitrator_refused_evidence",
+            "description": "Indicates if an arbitrator refused to consider evidence material to the controversy."
+          },
+          {
+            "name": "hearing_conducted_contrary",
+            "description": "Indicates if the hearing was conducted contrary to section 572B.15."
+          },
+          {
+            "name": "arbitrator_exceeded_powers",
+            "description": "Indicates if an arbitrator exceeded their powers."
+          },
+          {
+            "name": "agreement_to_arbitrate",
+            "description": "Indicates if there was an agreement to arbitrate."
+          },
+          {
+            "name": "objection_raised",
+            "description": "Indicates if an objection was raised under section 572B.15, subsection (c)."
+          },
+          {
+            "name": "proper_notice",
+            "description": "Indicates if proper notice of the initiation of arbitration was given as required in section 572B.09."
+          }
+        ],
+        "consequences": [
+          "The court shall vacate the arbitration award."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "motion_filed_within_90_days"
+                },
+                true
+              ]
+            },
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "award_procured_by"
+                    },
+                    [
+                      "corruption",
+                      "fraud",
+                      "undue_means"
+                    ]
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "motion_predicated_on_known_ground"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "motion_filed_within_90_days": true,
+            "award_procured_by": "fraud",
+            "motion_predicated_on_known_ground": false
+          },
+          {
+            "motion_filed_within_90_days": false,
+            "award_procured_by": "undue_means",
+            "motion_predicated_on_known_ground": true
+          },
+          {
+            "motion_filed_within_90_days": true,
+            "award_procured_by": "corruption",
+            "motion_predicated_on_known_ground": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "motion_filed_within_90_days",
+            "description": "Indicates if the motion was filed within 90 days after receiving notice of the award."
+          },
+          {
+            "name": "award_procured_by",
+            "description": "The means by which the award was procured, e.g., corruption, fraud, or undue means."
+          },
+          {
+            "name": "motion_predicated_on_known_ground",
+            "description": "Indicates if the motion is predicated upon a ground known or should have been known by the movant."
+          }
+        ],
+        "consequences": [
+          "The motion to vacate the award is considered valid."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "!=": [
+                {
+                  "var": "ground_for_vacating"
+                },
+                5
+              ]
+            },
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "ground_for_vacating"
+                    },
+                    3
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "ground_for_vacating"
+                    },
+                    4
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "ground_for_vacating"
+                    },
+                    6
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "ground_for_vacating": 3
+          },
+          {
+            "ground_for_vacating": 4
+          },
+          {
+            "ground_for_vacating": 5
+          }
+        ],
+        "variables": [
+          {
+            "name": "ground_for_vacating",
+            "description": "The specific ground for vacating the award, corresponding to subsections (a)(3), (a)(4), or (a)(6)."
+          }
+        ],
+        "consequences": [
+          "The court may order a rehearing before the original or a new arbitrator."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "motion_to_vacate_denied"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "motion_to_modify_pending"
+                },
+                false
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "motion_to_vacate_denied": true,
+            "motion_to_modify_pending": false
+          },
+          {
+            "motion_to_vacate_denied": false,
+            "motion_to_modify_pending": true
+          },
+          {
+            "motion_to_vacate_denied": true,
+            "motion_to_modify_pending": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "motion_to_vacate_denied",
+            "description": "Indicates if the motion to vacate an award is denied."
+          },
+          {
+            "name": "motion_to_modify_pending",
+            "description": "Indicates if a motion to modify or correct the award is pending."
+          }
+        ],
+        "consequences": [
+          "The court shall confirm the arbitration award."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "578.04",
+    "url": "https://www.revisor.mn.gov/statutes/cite/578.04",
+    "title": "578.04 NOTICE OF SEIZURE; APPOINTMENT OF RECEIVER; DISPOSITION OF PROPERTY.",
+    "text": "Upon the return of such warrant, the court may issue a notice reciting the substance of the petition, warrant, and officer's return, which shall be addressed to such absentee and to all persons who claim an interest in such property, and to all whom it may concern, citing them to appear at a time and place named and show cause why a receiver of the property named in the officer's schedule should not be appointed and the property held and disposed of under this chapter.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "warrant_returned"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "court_issued_notice"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "notice_addressed_to_absentee"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "notice_addressed_to_claimants"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "notice_addressed_to_concerned_parties"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "warrant_returned": true,
+            "court_issued_notice": true,
+            "notice_addressed_to_absentee": true,
+            "notice_addressed_to_claimants": true,
+            "notice_addressed_to_concerned_parties": true
+          },
+          {
+            "warrant_returned": true,
+            "court_issued_notice": true,
+            "notice_addressed_to_absentee": false,
+            "notice_addressed_to_claimants": true,
+            "notice_addressed_to_concerned_parties": true
+          },
+          {
+            "warrant_returned": false,
+            "court_issued_notice": true,
+            "notice_addressed_to_absentee": true,
+            "notice_addressed_to_claimants": true,
+            "notice_addressed_to_concerned_parties": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "warrant_returned",
+            "description": "Indicates if the warrant has been returned."
+          },
+          {
+            "name": "court_issued_notice",
+            "description": "Indicates if the court has issued a notice."
+          },
+          {
+            "name": "notice_addressed_to_absentee",
+            "description": "Indicates if the notice is addressed to the absentee."
+          },
+          {
+            "name": "notice_addressed_to_claimants",
+            "description": "Indicates if the notice is addressed to all persons who claim an interest in the property."
+          },
+          {
+            "name": "notice_addressed_to_concerned_parties",
+            "description": "Indicates if the notice is addressed to all whom it may concern."
+          }
+        ],
+        "consequences": [
+          "The absentee and all interested parties are cited to appear and show cause why a receiver should not be appointed."
         ]
       }
     ]
@@ -1312,6 +2579,125 @@
         ],
         "consequences": [
           "The consent of the state is declared under sections 1.041 to 1.048."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572.39",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572.39",
+    "title": "572.39 STATUTES OF LIMITATION.",
+    "text": "The running of the limitation of time within which an action may be brought is suspended from the date of the agreement to mediate until 20 days after notice of termination of mediation is delivered by certified mail or personally delivered as provided in the agreement to mediate.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "hasAgreementToMediate"
+            },
+            {
+              "var": "mediationTerminationNoticeDelivered"
+            },
+            {
+              "or": [
+                {
+                  "var": "deliveredByCertifiedMail"
+                },
+                {
+                  "var": "deliveredPersonally"
+                }
+              ]
+            },
+            {
+              "<": [
+                {
+                  "-": [
+                    {
+                      "var": "currentDate"
+                    },
+                    {
+                      "var": "mediationTerminationNoticeDate"
+                    }
+                  ]
+                },
+                20
+              ]
+            },
+            {
+              ">": [
+                {
+                  "var": "currentDate"
+                },
+                {
+                  "var": "agreementToMediateDate"
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "hasAgreementToMediate": true,
+            "mediationTerminationNoticeDelivered": true,
+            "deliveredByCertifiedMail": true,
+            "deliveredPersonally": false,
+            "currentDate": "2024-01-15",
+            "mediationTerminationNoticeDate": "2024-01-01",
+            "agreementToMediateDate": "2023-12-01"
+          },
+          {
+            "hasAgreementToMediate": true,
+            "mediationTerminationNoticeDelivered": true,
+            "deliveredByCertifiedMail": false,
+            "deliveredPersonally": false,
+            "currentDate": "2024-01-15",
+            "mediationTerminationNoticeDate": "2024-01-01",
+            "agreementToMediateDate": "2023-12-01"
+          },
+          {
+            "hasAgreementToMediate": true,
+            "mediationTerminationNoticeDelivered": true,
+            "deliveredByCertifiedMail": true,
+            "deliveredPersonally": false,
+            "currentDate": "2024-02-01",
+            "mediationTerminationNoticeDate": "2024-01-01",
+            "agreementToMediateDate": "2023-12-01"
+          }
+        ],
+        "variables": [
+          {
+            "name": "hasAgreementToMediate",
+            "description": "Boolean indicating whether there is an agreement to mediate in place"
+          },
+          {
+            "name": "mediationTerminationNoticeDelivered",
+            "description": "Boolean indicating whether a notice of termination of mediation has been delivered"
+          },
+          {
+            "name": "deliveredByCertifiedMail",
+            "description": "Boolean indicating whether the termination notice was delivered by certified mail"
+          },
+          {
+            "name": "deliveredPersonally",
+            "description": "Boolean indicating whether the termination notice was delivered personally"
+          },
+          {
+            "name": "currentDate",
+            "description": "The current date being evaluated"
+          },
+          {
+            "name": "mediationTerminationNoticeDate",
+            "description": "The date when the mediation termination notice was delivered"
+          },
+          {
+            "name": "agreementToMediateDate",
+            "description": "The date when the agreement to mediate was established"
+          }
+        ],
+        "consequences": [
+          "The limitation period is suspended",
+          "Time does not run against the limitation period"
         ]
       }
     ]
@@ -2032,6 +3418,156 @@
     ]
   },
   {
+    "id": "574.20",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.20",
+    "title": "574.20 BONDS, BY WHOM APPROVED.",
+    "text": "Except as otherwise provided by law in particular cases, bonds shall be approved as follows:\n(1) the official bonds of all state officers, including those of the treasurers, superintendents, and other officials, and employees of the several public educational, charitable, penal, and reformatory institutions belonging to the state, shall be approved, as to form, by the attorney general, and in all other respects by the governor;\n(2) the official bonds of county, town, city, and school district officers and employees by the governing body of the political subdivision for whose security they are, respectively, given; and\n(3) those required or permitted by law to be given in any court, by the judge or justice of the court in which the proceeding is begun or pending.\nNo officer, official, or employee required to give bond shall enter upon duties until the bond is duly approved and filed.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "bondType"
+                },
+                "state"
+              ]
+            },
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "formApproval"
+                    },
+                    "attorney general"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "otherApproval"
+                    },
+                    "governor"
+                  ]
+                }
+              ]
+            },
+            {
+              "if": [
+                {
+                  "===": [
+                    {
+                      "var": "bondType"
+                    },
+                    "county"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "approvalBody"
+                    },
+                    "governing body of the political subdivision"
+                  ]
+                },
+                {
+                  "if": [
+                    {
+                      "===": [
+                        {
+                          "var": "bondType"
+                        },
+                        "court"
+                      ]
+                    },
+                    {
+                      "===": [
+                        {
+                          "var": "approvalBody"
+                        },
+                        "judge or justice of the court"
+                      ]
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "bondType": "state",
+            "formApproval": "attorney general",
+            "otherApproval": "governor"
+          },
+          {
+            "bondType": "county",
+            "approvalBody": "governing body of the political subdivision"
+          },
+          {
+            "bondType": "court",
+            "approvalBody": "judge or justice of the court"
+          }
+        ],
+        "variables": [
+          {
+            "name": "bondType",
+            "description": "The type of bond, which can be 'state', 'county', or 'court'."
+          },
+          {
+            "name": "formApproval",
+            "description": "The entity responsible for approving the form of the bond, applicable for state bonds."
+          },
+          {
+            "name": "otherApproval",
+            "description": "The entity responsible for other aspects of approval, applicable for state bonds."
+          },
+          {
+            "name": "approvalBody",
+            "description": "The entity responsible for approving the bond, applicable for county and court bonds."
+          }
+        ],
+        "consequences": [
+          "The bond is approved and can be filed."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "bondApproved"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "bondApproved": true
+          },
+          {
+            "bondApproved": false
+          },
+          {
+            "bondApproved": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "bondApproved",
+            "description": "Indicates whether the bond has been approved."
+          }
+        ],
+        "consequences": [
+          "The officer, official, or employee can enter upon duties."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.146",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.146",
     "title": "1.146 STATE FISH.",
@@ -2416,6 +3952,124 @@
     ]
   },
   {
+    "id": "573.15",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.15",
+    "title": "573.15 NO PREFERENCE BETWEEN DEBTS OF SAME CLASS.",
+    "text": "No preference shall be given by any next of kin, legatee, heir, or devisee to one debt over another of the same class, except one specified in section 573.14, clause (2); nor shall a debt due and payable be entitled to a preference over one not due; nor shall the commencement of an action against any next of kin, legatee, heir, or devisee, for the recovery of a debt, entitle it to preference over others of the same class.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "!": {
+                "in": [
+                  {
+                    "var": "preference_by_next_of_kin"
+                  },
+                  [
+                    "next_of_kin",
+                    "legatee",
+                    "heir",
+                    "devisee"
+                  ]
+                ]
+              }
+            },
+            {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "debt_class"
+                    },
+                    2
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "debt_class"
+                    },
+                    {
+                      "var": "other_debt_class"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "debt_due"
+                },
+                false
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "action_commenced"
+                },
+                false
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "preference_by_next_of_kin": "legatee",
+            "debt_class": 1,
+            "other_debt_class": 1,
+            "debt_due": false,
+            "action_commenced": false
+          },
+          {
+            "preference_by_next_of_kin": "heir",
+            "debt_class": 2,
+            "other_debt_class": 1,
+            "debt_due": false,
+            "action_commenced": false
+          },
+          {
+            "preference_by_next_of_kin": "devisee",
+            "debt_class": 1,
+            "other_debt_class": 1,
+            "debt_due": true,
+            "action_commenced": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "preference_by_next_of_kin",
+            "description": "The entity (next of kin, legatee, heir, or devisee) giving preference to a debt."
+          },
+          {
+            "name": "debt_class",
+            "description": "The class of the debt being considered for preference."
+          },
+          {
+            "name": "other_debt_class",
+            "description": "The class of another debt being compared."
+          },
+          {
+            "name": "debt_due",
+            "description": "Indicates if the debt is due and payable."
+          },
+          {
+            "name": "action_commenced",
+            "description": "Indicates if an action has been commenced for the recovery of the debt."
+          }
+        ],
+        "consequences": [
+          "No preference is given to one debt over another of the same class.",
+          "A debt due and payable is not entitled to preference over one not due.",
+          "Commencement of an action does not entitle a debt to preference over others of the same class."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.042",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.042",
     "title": "1.042 CONSENT OF STATE.",
@@ -2711,6 +4365,211 @@
         ],
         "consequences": [
           "The state reserves the right to impose taxes on the specified type."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "577.11",
+    "url": "https://www.revisor.mn.gov/statutes/cite/577.11",
+    "title": "577.11 DEFINITIONS.",
+    "text": "(a) The definitions in this section and in section 576.21 apply throughout this chapter unless the context requires otherwise.\n(b) \"Assignee\" means the person to whom the assignment property is assigned.\n(c) \"Assignment property\" means the property assigned pursuant to the provisions of this chapter.\n(d) \"Assignor\" means the person who assigns the assignment property.\n(e) \"Time of assignment\" means the date and time endorsed by the court administrator pursuant to section 577.14.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "===": [
+                {
+                  "var": "context"
+                },
+                null
+              ]
+            },
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "section"
+                    },
+                    576.21
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "chapter"
+                    },
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "context"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "section": 576.21,
+            "chapter": true,
+            "context": null
+          },
+          {
+            "section": 576.21,
+            "chapter": false,
+            "context": null
+          },
+          {
+            "section": 576.22,
+            "chapter": true,
+            "context": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "section",
+            "description": "The section number being referenced."
+          },
+          {
+            "name": "chapter",
+            "description": "Indicates if the chapter context is applicable."
+          },
+          {
+            "name": "context",
+            "description": "The context that might require different definitions."
+          }
+        ],
+        "consequences": [
+          "Definitions apply throughout the chapter."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "assignee"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "assignee": true
+          },
+          {
+            "assignee": false
+          },
+          {
+            "assignee": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignee",
+            "description": "Indicates if the person is the assignee."
+          }
+        ],
+        "consequences": [
+          "The person is recognized as the assignee."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "assignment_property"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "assignment_property": true
+          },
+          {
+            "assignment_property": false
+          },
+          {
+            "assignment_property": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignment_property",
+            "description": "Indicates if the property is assignment property."
+          }
+        ],
+        "consequences": [
+          "The property is recognized as assignment property."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "assignor"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "assignor": true
+          },
+          {
+            "assignor": false
+          },
+          {
+            "assignor": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignor",
+            "description": "Indicates if the person is the assignor."
+          }
+        ],
+        "consequences": [
+          "The person is recognized as the assignor."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "time_of_assignment"
+            },
+            true
+          ]
+        },
+        "examples": [
+          {
+            "time_of_assignment": true
+          },
+          {
+            "time_of_assignment": false
+          },
+          {
+            "time_of_assignment": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "time_of_assignment",
+            "description": "Indicates if the date and time are the time of assignment."
+          }
+        ],
+        "consequences": [
+          "The date and time are recognized as the time of assignment."
         ]
       }
     ]
@@ -3596,6 +5455,225 @@
     ]
   },
   {
+    "id": "574.19",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.19",
+    "title": "574.19 COST OF SURETY BONDS; PROPER EXPENSE ITEMS.",
+    "text": "Any receiver, assignee, trustee, committee, guardian, executor, administrator, or other fiduciary, required by law to give bond as such, may include as a part of lawful expenses such actual sum paid for such suretyship, not exceeding $10 per annum when the amount of the bond is not more than $1,000, and not more than one percent per annum on the excess when over $1,000, as the head of the department, court, judge, or officer by whom, or the court or body by which, the fiduciary is appointed allows; and in all actions or proceedings the party entitled to recover costs may include therein the reasonable fees of such company for executing or guaranteeing any bond or undertaking therein. The several county and town boards, and the governing body of any city, or school district, may allow the treasurer of the municipality such reasonable sum, not exceeding the amount herein specified, as may have been paid by the treasurer for such suretyship, to be paid out of the general revenue fund of the municipality. The officers required by law to approve such bill may first designate the surety company to be employed, if its charges be as low as those offered by any other responsible company.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "<=": [
+                {
+                  "var": "bond_amount"
+                },
+                1000
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "suretyship_expense"
+                },
+                10
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "bond_amount": 500,
+            "suretyship_expense": 10
+          },
+          {
+            "bond_amount": 1000,
+            "suretyship_expense": 10
+          },
+          {
+            "bond_amount": 1500,
+            "suretyship_expense": 15
+          }
+        ],
+        "variables": [
+          {
+            "name": "bond_amount",
+            "description": "The total amount of the bond for which the fiduciary is responsible."
+          },
+          {
+            "name": "suretyship_expense",
+            "description": "The actual sum paid for suretyship by the fiduciary."
+          }
+        ],
+        "consequences": [
+          "The suretyship expense is within the lawful limit for bonds not exceeding $1,000."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              ">": [
+                {
+                  "var": "bond_amount"
+                },
+                1000
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "suretyship_expense"
+                },
+                {
+                  "*": [
+                    {
+                      "var": "bond_amount"
+                    },
+                    0.01
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "bond_amount": 1500,
+            "suretyship_expense": 15
+          },
+          {
+            "bond_amount": 2000,
+            "suretyship_expense": 20
+          },
+          {
+            "bond_amount": 2000,
+            "suretyship_expense": 25
+          }
+        ],
+        "variables": [
+          {
+            "name": "bond_amount",
+            "description": "The total amount of the bond for which the fiduciary is responsible."
+          },
+          {
+            "name": "suretyship_expense",
+            "description": "The actual sum paid for suretyship by the fiduciary."
+          }
+        ],
+        "consequences": [
+          "The suretyship expense is within the lawful limit for bonds exceeding $1,000."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "<=": [
+                {
+                  "var": "treasurer_expense"
+                },
+                10
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "bond_amount"
+                },
+                1000
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "treasurer_expense": 10,
+            "bond_amount": 1000
+          },
+          {
+            "treasurer_expense": 5,
+            "bond_amount": 800
+          },
+          {
+            "treasurer_expense": 15,
+            "bond_amount": 1000
+          }
+        ],
+        "variables": [
+          {
+            "name": "treasurer_expense",
+            "description": "The sum paid by the treasurer for suretyship."
+          },
+          {
+            "name": "bond_amount",
+            "description": "The total amount of the bond for which the fiduciary is responsible."
+          }
+        ],
+        "consequences": [
+          "The treasurer's suretyship expense is within the lawful limit for bonds not exceeding $1,000."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              ">": [
+                {
+                  "var": "bond_amount"
+                },
+                1000
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "treasurer_expense"
+                },
+                {
+                  "*": [
+                    {
+                      "var": "bond_amount"
+                    },
+                    0.01
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "treasurer_expense": 15,
+            "bond_amount": 1500
+          },
+          {
+            "treasurer_expense": 20,
+            "bond_amount": 2000
+          },
+          {
+            "treasurer_expense": 25,
+            "bond_amount": 2000
+          }
+        ],
+        "variables": [
+          {
+            "name": "treasurer_expense",
+            "description": "The sum paid by the treasurer for suretyship."
+          },
+          {
+            "name": "bond_amount",
+            "description": "The total amount of the bond for which the fiduciary is responsible."
+          }
+        ],
+        "consequences": [
+          "The treasurer's suretyship expense is within the lawful limit for bonds exceeding $1,000."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.043",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.043",
     "title": "1.043 JURISDICTION, WHEN TO VEST.",
@@ -3721,6 +5799,143 @@
         ],
         "consequences": [
           "Jurisdiction is vested in the United States."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572B.18",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.18",
+    "title": "572B.18 COURT ENFORCEMENT OF PRE-AWARD RULING BY ARBITRATOR.",
+    "text": "If an arbitrator makes a pre-award ruling in favor of a party to the arbitration proceeding, the party may request the arbitrator to incorporate the ruling into an award under section 572B.19. The successful party may file a motion to the court for an expedited order to confirm the award under section 572B.22, in which case the court shall proceed summarily to decide the motion. The court shall issue an order to confirm the award unless the court vacates, modifies, or corrects the award of the arbitrator pursuant to sections 572B.23 and 572B.24.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "arbitrator_pre_award_ruling"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "party_request_award"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "court_motion_filed"
+                    },
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "if": [
+                {
+                  "or": [
+                    {
+                      "==": [
+                        {
+                          "var": "court_vacates_award"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "court_modifies_award"
+                        },
+                        true
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "court_corrects_award"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "var": "court_decision"
+                },
+                {
+                  "var": "court_confirms_award"
+                }
+              ]
+            },
+            "no_action"
+          ]
+        },
+        "examples": [
+          {
+            "arbitrator_pre_award_ruling": true,
+            "party_request_award": true,
+            "court_motion_filed": true,
+            "court_vacates_award": false,
+            "court_modifies_award": false,
+            "court_corrects_award": false
+          },
+          {
+            "arbitrator_pre_award_ruling": true,
+            "party_request_award": true,
+            "court_motion_filed": true,
+            "court_vacates_award": true,
+            "court_modifies_award": false,
+            "court_corrects_award": false
+          },
+          {
+            "arbitrator_pre_award_ruling": false,
+            "party_request_award": true,
+            "court_motion_filed": true,
+            "court_vacates_award": false,
+            "court_modifies_award": false,
+            "court_corrects_award": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "arbitrator_pre_award_ruling",
+            "description": "Indicates if the arbitrator made a pre-award ruling in favor of a party."
+          },
+          {
+            "name": "party_request_award",
+            "description": "Indicates if the party requested the arbitrator to incorporate the ruling into an award."
+          },
+          {
+            "name": "court_motion_filed",
+            "description": "Indicates if the successful party filed a motion to the court for an expedited order to confirm the award."
+          },
+          {
+            "name": "court_vacates_award",
+            "description": "Indicates if the court vacates the award."
+          },
+          {
+            "name": "court_modifies_award",
+            "description": "Indicates if the court modifies the award."
+          },
+          {
+            "name": "court_corrects_award",
+            "description": "Indicates if the court corrects the award."
+          }
+        ],
+        "consequences": [
+          "Court confirms the award unless it vacates, modifies, or corrects it."
         ]
       }
     ]
@@ -3879,6 +6094,311 @@
         "consequences": [
           "The county's boundaries are fixed by laws passed before 1892.",
           "The county was formed by popular vote after 1892."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "574.16",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.16",
+    "title": "574.16 SURETY, SUBROGATION.",
+    "text": "When the surety upon the bond of any state officer shall have fulfilled the conditions of such bond and compensated the state for any loss occasioned by any act or omission of such officer, such surety shall be subrogated to all the rights of the state and, if there shall be any property, evidence of indebtedness, or other obligation, or evidence thereof, in the possession of any official of the state and which shall have been received in connection with the transaction wherein such loss shall have occurred, the governor, upon satisfactory proof that such loss has been so paid and the obligation of such bond fulfilled by such surety, shall thereupon, by sufficient instruments of transfer, assign, transfer, or convey to such surety any such property, evidence of indebtedness, or obligation.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "surety_fulfilled_conditions"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "compensated_state"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "loss_occurred"
+                    },
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "proof_of_payment"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "bond_fulfilled"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "surety_fulfilled_conditions": true,
+            "compensated_state": true,
+            "loss_occurred": true,
+            "proof_of_payment": true,
+            "bond_fulfilled": true
+          },
+          {
+            "surety_fulfilled_conditions": true,
+            "compensated_state": false,
+            "loss_occurred": true,
+            "proof_of_payment": true,
+            "bond_fulfilled": true
+          },
+          {
+            "surety_fulfilled_conditions": true,
+            "compensated_state": true,
+            "loss_occurred": true,
+            "proof_of_payment": false,
+            "bond_fulfilled": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "surety_fulfilled_conditions",
+            "description": "Indicates if the surety has fulfilled the conditions of the bond."
+          },
+          {
+            "name": "compensated_state",
+            "description": "Indicates if the surety has compensated the state for any loss."
+          },
+          {
+            "name": "loss_occurred",
+            "description": "Indicates if a loss has occurred due to the officer's act or omission."
+          },
+          {
+            "name": "proof_of_payment",
+            "description": "Indicates if there is satisfactory proof that the loss has been paid."
+          },
+          {
+            "name": "bond_fulfilled",
+            "description": "Indicates if the obligation of the bond has been fulfilled by the surety."
+          }
+        ],
+        "consequences": [
+          "The surety is subrogated to all the rights of the state.",
+          "The governor assigns, transfers, or conveys any related property or obligation to the surety."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "573.20",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.20",
+    "title": "573.20 DEVISEES, WHEN LIABLE; LIMITATIONS.",
+    "text": "Devisees made liable to creditors of their testator by the provisions of this chapter shall not be held liable unless it shall appear that the testator's personal assets and the real property descended to the testator's heirs were insufficient to discharge the debt, or that after due proceedings before the district court the creditor has been unable to recover the debt, or any part thereof, from the personal representative of the testator, or next of kin, legatees, or heirs. In either of these cases, the amount of the deficiency of the personal assets, and of the real property descended to satisfy the debt of the plaintiff, and the amount which the plaintiff may have failed to recover from the personal representative, next of kin, legatees, and heirs of the testator, may be recovered of the devisees, to the extent of the real property devised to them, respectively. Nothing in this section shall affect the liability of the devisees for a debt of their testator which was charged by will exclusively upon the real property devised, or made payable exclusively by such devisees, or out of the real property devised before resorting to the personal property or to any other real property descended or devised.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "or": [
+            {
+              "and": [
+                {
+                  "<": [
+                    {
+                      "var": "personal_assets"
+                    },
+                    0
+                  ]
+                },
+                {
+                  "<": [
+                    {
+                      "var": "real_property_descended"
+                    },
+                    0
+                  ]
+                }
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "creditor_recovery"
+                },
+                false
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "debt_charged_exclusively_on_real_property"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "personal_assets": -1000,
+            "real_property_descended": -500,
+            "creditor_recovery": false,
+            "debt_charged_exclusively_on_real_property": false
+          },
+          {
+            "personal_assets": 1000,
+            "real_property_descended": 500,
+            "creditor_recovery": false,
+            "debt_charged_exclusively_on_real_property": false
+          },
+          {
+            "personal_assets": 1000,
+            "real_property_descended": 500,
+            "creditor_recovery": true,
+            "debt_charged_exclusively_on_real_property": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "personal_assets",
+            "description": "The value of the testator's personal assets."
+          },
+          {
+            "name": "real_property_descended",
+            "description": "The value of the real property descended to the testator's heirs."
+          },
+          {
+            "name": "creditor_recovery",
+            "description": "Whether the creditor has been able to recover the debt from the personal representative, next of kin, legatees, or heirs."
+          },
+          {
+            "name": "debt_charged_exclusively_on_real_property",
+            "description": "Whether the debt was charged by will exclusively upon the real property devised."
+          }
+        ],
+        "consequences": [
+          "Devisees are liable to creditors for the debt."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "574.17",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.17",
+    "title": "574.17 SURETIES FOR PART OF PENALTY.",
+    "text": "Sureties may be accepted, in the discretion of the approving officer or body, for a part only of the penalty, and may justify in separate and different sums; but the aggregate liability of the sureties shall in all cases be not less than that required by law if each surety had justified in the full amount.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "<=": [
+                {
+                  "var": "aggregate_liability"
+                },
+                {
+                  "var": "required_liability"
+                }
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "aggregate_liability"
+                },
+                {
+                  "reduce": [
+                    {
+                      "var": "sureties"
+                    },
+                    {
+                      "sum": [
+                        {
+                          "var": "current"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "initial_value"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "sureties": [
+              1000,
+              2000,
+              3000
+            ],
+            "required_liability": 6000,
+            "aggregate_liability": 6000,
+            "initial_value": 0
+          },
+          {
+            "sureties": [
+              1000,
+              2000
+            ],
+            "required_liability": 4000,
+            "aggregate_liability": 3000,
+            "initial_value": 0
+          },
+          {
+            "sureties": [
+              1500,
+              1500,
+              1500
+            ],
+            "required_liability": 4500,
+            "aggregate_liability": 4500,
+            "initial_value": 0
+          }
+        ],
+        "variables": [
+          {
+            "name": "sureties",
+            "description": "An array of amounts each surety is justifying for."
+          },
+          {
+            "name": "required_liability",
+            "description": "The total liability required by law."
+          },
+          {
+            "name": "aggregate_liability",
+            "description": "The total liability covered by all sureties."
+          },
+          {
+            "name": "initial_value",
+            "description": "The initial value for the reduction operation, typically 0."
+          }
+        ],
+        "consequences": [
+          "Sureties are accepted as they meet the required liability."
         ]
       }
     ]
@@ -4288,6 +6808,578 @@
         ],
         "consequences": [
           "The jurisdiction is retroceded to the state and exercised by appropriate state authorities and local governmental units."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572B.22",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.22",
+    "title": "572B.22 CONFIRMATION OF AWARD.",
+    "text": "After a party to the arbitration proceeding receives notice of an award, the party may file a motion with the court for an order confirming the award, at which time the court shall issue such an order unless the award is modified or corrected pursuant to section 572B.20 or 572B.24 or is vacated pursuant to section 572B.23.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "var": "received_notice"
+                },
+                {
+                  "var": "filed_motion"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "var": "award_modified"
+                },
+                {
+                  "var": "award_corrected"
+                },
+                {
+                  "var": "award_vacated"
+                }
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "court_order"
+                },
+                "confirm"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "received_notice": true,
+            "filed_motion": true,
+            "award_modified": false,
+            "award_corrected": false,
+            "award_vacated": false,
+            "court_order": "confirm"
+          },
+          {
+            "received_notice": true,
+            "filed_motion": true,
+            "award_modified": true,
+            "award_corrected": false,
+            "award_vacated": false,
+            "court_order": "do not confirm"
+          },
+          {
+            "received_notice": false,
+            "filed_motion": true,
+            "award_modified": false,
+            "award_corrected": false,
+            "award_vacated": false,
+            "court_order": "do not confirm"
+          }
+        ],
+        "variables": [
+          {
+            "name": "received_notice",
+            "description": "Indicates if the party has received notice of the award."
+          },
+          {
+            "name": "filed_motion",
+            "description": "Indicates if the party has filed a motion with the court to confirm the award."
+          },
+          {
+            "name": "award_modified",
+            "description": "Indicates if the award has been modified pursuant to section 572B.20."
+          },
+          {
+            "name": "award_corrected",
+            "description": "Indicates if the award has been corrected pursuant to section 572B.24."
+          },
+          {
+            "name": "award_vacated",
+            "description": "Indicates if the award has been vacated pursuant to section 572B.23."
+          },
+          {
+            "name": "court_order",
+            "description": "The order issued by the court regarding the award."
+          }
+        ],
+        "consequences": [
+          "The court confirms the arbitration award."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "573.17",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.17",
+    "title": "573.17 REAL PROPERTY DESCENDED; LIEN OF JUDGMENT.",
+    "text": "If it appears that the real property so descended was not alienated by the heir at the time of the commencement of the action, the court shall order that plaintiff's debt, or the proportion thereof which the plaintiff is entitled to recover, be levied upon such real estate, and not otherwise; and every judgment rendered in such action has preference as a lien on such real estate, to any judgment obtained against such heir for a personal debt.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "and": [
+                {
+                  "!": {
+                    "var": "alienated"
+                  }
+                },
+                {
+                  "==": [
+                    {
+                      "var": "action_status"
+                    },
+                    "commenced"
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "debt_type"
+                    },
+                    "plaintiff"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "lien_preference"
+                    },
+                    "real_estate"
+                  ]
+                }
+              ]
+            },
+            "no_action"
+          ]
+        },
+        "examples": [
+          {
+            "alienated": false,
+            "action_status": "commenced",
+            "debt_type": "plaintiff",
+            "lien_preference": "real_estate"
+          },
+          {
+            "alienated": true,
+            "action_status": "commenced",
+            "debt_type": "plaintiff",
+            "lien_preference": "real_estate"
+          },
+          {
+            "alienated": false,
+            "action_status": "not_commenced",
+            "debt_type": "plaintiff",
+            "lien_preference": "real_estate"
+          }
+        ],
+        "variables": [
+          {
+            "name": "alienated",
+            "description": "Indicates whether the real property was alienated by the heir."
+          },
+          {
+            "name": "action_status",
+            "description": "The status of the legal action, whether it has commenced or not."
+          },
+          {
+            "name": "debt_type",
+            "description": "The type of debt, specifically if it is the plaintiff's debt."
+          },
+          {
+            "name": "lien_preference",
+            "description": "The preference of the lien, whether it is on real estate or not."
+          }
+        ],
+        "consequences": [
+          "Plaintiff's debt is levied upon the real estate.",
+          "Judgment has preference as a lien on the real estate over personal debts of the heir."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572B.21",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.21",
+    "title": "572B.21 REMEDIES; FEES AND EXPENSES OF ARBITRATION PROCEEDING.",
+    "text": "(a) An arbitrator may award punitive damages or other exemplary relief if such an award is authorized by law in a civil action involving the same claim and the evidence produced at the hearing justifies the award under the legal standards otherwise applicable to the claim.\n(b) An arbitrator may award attorney fees and other reasonable expenses of arbitration if such an award is authorized by law in a civil action involving the same claim or by the agreement of the parties to the arbitration proceeding.\n(c) As to all remedies other than those authorized by subsections (a) and (b), an arbitrator may order such remedies as the arbitrator considers just and appropriate under the circumstances of the arbitration proceeding. The fact that such a remedy could not or would not be granted by the court is not a ground for refusing to confirm an award under section 572B.22 or for vacating an award under section 572B.23.\n(d) An arbitrator's expenses and fees, together with other expenses, must be paid as provided in the award.\n(e) If an arbitrator awards punitive damages or other exemplary relief under subsection (a), the arbitrator shall specify in the award the basis in fact justifying and the basis in law authorizing the award and state separately the amount of the punitive damages or other exemplary relief.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "award_type"
+                },
+                "punitive"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "authorized_by_law"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "evidence_justifies"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "award_type": "punitive",
+            "authorized_by_law": true,
+            "evidence_justifies": true
+          },
+          {
+            "award_type": "punitive",
+            "authorized_by_law": false,
+            "evidence_justifies": true
+          },
+          {
+            "award_type": "punitive",
+            "authorized_by_law": true,
+            "evidence_justifies": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "award_type",
+            "description": "The type of award being considered, e.g., punitive damages."
+          },
+          {
+            "name": "authorized_by_law",
+            "description": "Whether the award is authorized by law in a civil action involving the same claim."
+          },
+          {
+            "name": "evidence_justifies",
+            "description": "Whether the evidence produced at the hearing justifies the award under the legal standards applicable to the claim."
+          }
+        ],
+        "consequences": [
+          "Arbitrator may award punitive damages or exemplary relief."
+        ]
+      },
+      {
+        "rule": {
+          "or": [
+            {
+              "==": [
+                {
+                  "var": "authorized_by_law"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "agreement_of_parties"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "authorized_by_law": true,
+            "agreement_of_parties": false
+          },
+          {
+            "authorized_by_law": false,
+            "agreement_of_parties": true
+          },
+          {
+            "authorized_by_law": false,
+            "agreement_of_parties": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "authorized_by_law",
+            "description": "Whether the award is authorized by law in a civil action involving the same claim."
+          },
+          {
+            "name": "agreement_of_parties",
+            "description": "Whether the award is authorized by the agreement of the parties to the arbitration proceeding."
+          }
+        ],
+        "consequences": [
+          "Arbitrator may award attorney fees and other reasonable expenses of arbitration."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "!=": [
+                {
+                  "var": "award_type"
+                },
+                "punitive"
+              ]
+            },
+            {
+              "!=": [
+                {
+                  "var": "award_type"
+                },
+                "attorney_fees"
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "award_type": "compensatory"
+          },
+          {
+            "award_type": "punitive"
+          },
+          {
+            "award_type": "attorney_fees"
+          }
+        ],
+        "variables": [
+          {
+            "name": "award_type",
+            "description": "The type of award being considered, e.g., punitive damages, attorney fees, or other."
+          }
+        ],
+        "consequences": [
+          "Arbitrator may order remedies considered just and appropriate under the circumstances."
+        ]
+      },
+      {
+        "rule": {
+          "==": [
+            {
+              "var": "award_type"
+            },
+            "punitive"
+          ]
+        },
+        "examples": [
+          {
+            "award_type": "punitive"
+          },
+          {
+            "award_type": "compensatory"
+          },
+          {
+            "award_type": "attorney_fees"
+          }
+        ],
+        "variables": [
+          {
+            "name": "award_type",
+            "description": "The type of award being considered, e.g., punitive damages."
+          }
+        ],
+        "consequences": [
+          "Arbitrator must specify the basis in fact and law for punitive damages and state the amount separately."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "578.05",
+    "url": "https://www.revisor.mn.gov/statutes/cite/578.05",
+    "title": "578.05 PUBLICATION OF NOTICE.",
+    "text": "The return day of the notice shall be not less than 30, nor more than 60, days after its date. The court shall order the notice to be published once in each of three successive weeks in one or more newspapers within the state, and to be posted in two or more conspicuous places in the county within the state where the absentee last resided or was known to have been either temporarily or permanently, and upon each parcel of land named in the officer's schedule, and a copy to be mailed to the last known address of such absentee. In all cases where the absentee is not a citizen of the United States, a copy of the notice shall be ordered by the court to be served within such time, by mail, on the consular representative of the foreign country of which the absentee is a citizen, if there be one in this state, otherwise on the secretary of state, who shall forward the same to the chief diplomatic representatives of such country at Washington. The court may order other and further notice to be given within or without the state.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "<=": [
+                30,
+                {
+                  "var": "days_after_notice_date"
+                }
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "days_after_notice_date"
+                },
+                60
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "notice_published_weeks"
+                },
+                3
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "newspapers_within_state"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "posted_conspicuous_places"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "copy_mailed_last_known_address"
+                },
+                true
+              ]
+            },
+            {
+              "or": [
+                {
+                  "and": [
+                    {
+                      "==": [
+                        {
+                          "var": "absentee_citizen"
+                        },
+                        false
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "notice_served_consular_representative"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "and": [
+                    {
+                      "==": [
+                        {
+                          "var": "absentee_citizen"
+                        },
+                        false
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "notice_served_secretary_of_state"
+                        },
+                        true
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "absentee_citizen"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "days_after_notice_date": 45,
+            "notice_published_weeks": 3,
+            "newspapers_within_state": true,
+            "posted_conspicuous_places": true,
+            "copy_mailed_last_known_address": true,
+            "absentee_citizen": false,
+            "notice_served_consular_representative": true,
+            "notice_served_secretary_of_state": false
+          },
+          {
+            "days_after_notice_date": 25,
+            "notice_published_weeks": 3,
+            "newspapers_within_state": true,
+            "posted_conspicuous_places": true,
+            "copy_mailed_last_known_address": true,
+            "absentee_citizen": true
+          },
+          {
+            "days_after_notice_date": 50,
+            "notice_published_weeks": 2,
+            "newspapers_within_state": true,
+            "posted_conspicuous_places": true,
+            "copy_mailed_last_known_address": true,
+            "absentee_citizen": false,
+            "notice_served_consular_representative": false,
+            "notice_served_secretary_of_state": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "days_after_notice_date",
+            "description": "The number of days after the notice date for the return day."
+          },
+          {
+            "name": "notice_published_weeks",
+            "description": "The number of weeks the notice is published in newspapers."
+          },
+          {
+            "name": "newspapers_within_state",
+            "description": "Whether the notice is published in newspapers within the state."
+          },
+          {
+            "name": "posted_conspicuous_places",
+            "description": "Whether the notice is posted in conspicuous places in the county."
+          },
+          {
+            "name": "copy_mailed_last_known_address",
+            "description": "Whether a copy of the notice is mailed to the absentee's last known address."
+          },
+          {
+            "name": "absentee_citizen",
+            "description": "Whether the absentee is a citizen of the United States."
+          },
+          {
+            "name": "notice_served_consular_representative",
+            "description": "Whether the notice is served to the consular representative of the absentee's country."
+          },
+          {
+            "name": "notice_served_secretary_of_state",
+            "description": "Whether the notice is served to the secretary of state."
+          }
+        ],
+        "consequences": [
+          "The notice is valid and complies with the legal requirements."
         ]
       }
     ]
@@ -4804,6 +7896,322 @@
     ]
   },
   {
+    "id": "572B.19",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.19",
+    "title": "572B.19 AWARD.",
+    "text": "(a) An arbitrator shall make a record of an award. The record must be authenticated by any arbitrator who concurs with the award. The arbitrator or the arbitration organization shall give notice of the award, including a copy of the award, to each party to the arbitration proceeding.\n(b) An award must be made within the time specified by the agreement to arbitrate or, if not specified therein, within the time ordered by the court. The court may extend or the parties to the arbitration proceeding may agree in a record to extend the time. The court or the parties may do so within or after the time specified or ordered. A party waives any objection that an award was not timely made unless the party gives notice of the objection to the arbitrator before receiving notice of the award.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "award_recorded"
+            },
+            {
+              "var": "award_authenticated"
+            },
+            {
+              "var": "award_notified"
+            }
+          ]
+        },
+        "examples": [
+          {
+            "award_recorded": true,
+            "award_authenticated": true,
+            "award_notified": true
+          },
+          {
+            "award_recorded": true,
+            "award_authenticated": false,
+            "award_notified": true
+          },
+          {
+            "award_recorded": false,
+            "award_authenticated": true,
+            "award_notified": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "award_recorded",
+            "description": "Indicates if the arbitrator has made a record of the award."
+          },
+          {
+            "name": "award_authenticated",
+            "description": "Indicates if the award record is authenticated by any arbitrator who concurs with the award."
+          },
+          {
+            "name": "award_notified",
+            "description": "Indicates if notice of the award, including a copy, has been given to each party."
+          }
+        ],
+        "consequences": [
+          "The award process is complete and valid."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "or": [
+                {
+                  "var": "time_specified"
+                },
+                {
+                  "var": "time_ordered"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "var": "court_extended"
+                },
+                {
+                  "var": "parties_agreed"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "var": "objection_waived"
+                },
+                {
+                  "var": "objection_before_notice"
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "time_specified": true,
+            "time_ordered": false,
+            "court_extended": false,
+            "parties_agreed": true,
+            "objection_waived": true,
+            "objection_before_notice": false
+          },
+          {
+            "time_specified": false,
+            "time_ordered": true,
+            "court_extended": true,
+            "parties_agreed": false,
+            "objection_waived": false,
+            "objection_before_notice": true
+          },
+          {
+            "time_specified": false,
+            "time_ordered": false,
+            "court_extended": false,
+            "parties_agreed": false,
+            "objection_waived": false,
+            "objection_before_notice": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "time_specified",
+            "description": "Indicates if the award was made within the time specified by the agreement to arbitrate."
+          },
+          {
+            "name": "time_ordered",
+            "description": "Indicates if the award was made within the time ordered by the court."
+          },
+          {
+            "name": "court_extended",
+            "description": "Indicates if the court has extended the time for making the award."
+          },
+          {
+            "name": "parties_agreed",
+            "description": "Indicates if the parties have agreed in a record to extend the time for making the award."
+          },
+          {
+            "name": "objection_waived",
+            "description": "Indicates if a party has waived any objection to the timeliness of the award."
+          },
+          {
+            "name": "objection_before_notice",
+            "description": "Indicates if a party gave notice of objection to the arbitrator before receiving notice of the award."
+          }
+        ],
+        "consequences": [
+          "The award is considered timely and valid."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "578.03",
+    "url": "https://www.revisor.mn.gov/statutes/cite/578.03",
+    "title": "578.03 WARRANT; SHERIFF TO TAKE POSSESSION OF PROPERTY; FEES AND COSTS.",
+    "text": "The court may thereupon issue a warrant directed to the sheriff or a deputy, which may run throughout the state, commanding the officer to take possession of the property named in the schedule and hold it subject to the order of the court and make return of the warrant as soon as may be, with the officer's doings thereon and with a schedule of the property so taken. The officer shall post a copy of the warrant upon each parcel of land named in the schedule and cause so much of the warrant as relates to land to be recorded in the office of the county recorder for the county where the land is located. The officer shall receive such fees for serving the warrant as the court allows, but not more than those established by law for similar service upon a writ of attachment. If the petition is dismissed, the fees and the cost of publishing and serving the notice hereinafter provided shall be paid by the petitioner; if a receiver is appointed, they shall be paid by the receiver and allowed in the receiver's account.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "==": [
+                {
+                  "var": "court_decision"
+                },
+                "issue_warrant"
+              ]
+            },
+            {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "officer_action"
+                    },
+                    "take_possession"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "warrant_status"
+                    },
+                    "returned"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "warrant_posted"
+                    },
+                    "true"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "warrant_recorded"
+                    },
+                    "true"
+                  ]
+                },
+                {
+                  "<=": [
+                    {
+                      "var": "officer_fees"
+                    },
+                    {
+                      "var": "max_fees"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "if": [
+                {
+                  "==": [
+                    {
+                      "var": "petition_status"
+                    },
+                    "dismissed"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "fees_paid_by"
+                    },
+                    "receiver"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "court_decision": "issue_warrant",
+            "officer_action": "take_possession",
+            "warrant_status": "returned",
+            "warrant_posted": "true",
+            "warrant_recorded": "true",
+            "officer_fees": 100,
+            "max_fees": 150,
+            "petition_status": "dismissed",
+            "fees_paid_by": "petitioner"
+          },
+          {
+            "court_decision": "issue_warrant",
+            "officer_action": "take_possession",
+            "warrant_status": "not_returned",
+            "warrant_posted": "false",
+            "warrant_recorded": "false",
+            "officer_fees": 200,
+            "max_fees": 150,
+            "petition_status": "dismissed",
+            "fees_paid_by": "petitioner"
+          },
+          {
+            "court_decision": "no_warrant",
+            "officer_action": "none",
+            "warrant_status": "none",
+            "warrant_posted": "false",
+            "warrant_recorded": "false",
+            "officer_fees": 0,
+            "max_fees": 150,
+            "petition_status": "dismissed",
+            "fees_paid_by": "petitioner"
+          }
+        ],
+        "variables": [
+          {
+            "name": "court_decision",
+            "description": "The decision made by the court regarding the issuance of a warrant."
+          },
+          {
+            "name": "officer_action",
+            "description": "The action taken by the officer in response to the warrant."
+          },
+          {
+            "name": "warrant_status",
+            "description": "The status of the warrant after being executed by the officer."
+          },
+          {
+            "name": "warrant_posted",
+            "description": "Indicates whether the warrant was posted on each parcel of land."
+          },
+          {
+            "name": "warrant_recorded",
+            "description": "Indicates whether the warrant was recorded in the county recorder's office."
+          },
+          {
+            "name": "officer_fees",
+            "description": "The fees received by the officer for serving the warrant."
+          },
+          {
+            "name": "max_fees",
+            "description": "The maximum allowable fees for serving the warrant."
+          },
+          {
+            "name": "petition_status",
+            "description": "The status of the petition, whether dismissed or not."
+          },
+          {
+            "name": "fees_paid_by",
+            "description": "The party responsible for paying the fees and costs."
+          }
+        ],
+        "consequences": [
+          "Warrant is executed and property is held subject to court order.",
+          "Officer fees are paid by petitioner if petition is dismissed.",
+          "Officer fees are paid by receiver if a receiver is appointed."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.50",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.50",
     "title": "1.50 FREEDOM FROM VIOLENCE.",
@@ -5137,6 +8545,292 @@
     ]
   },
   {
+    "id": "573.16",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.16",
+    "title": "573.16 DEFENSES; OTHER DEBTS OUTSTANDING OR PAID.",
+    "text": "The next of kin, legatees, heirs, and devisees may show, in their defense, that there are unsatisfied debts of a prior class, or others of the same class as the debt in action; and if it shall appear that the value of the personal property delivered, or of the real estate descended or devised, to them does not exceed the debts of a prior class, judgment shall be rendered in their favor. If the value of such property exceeds the amount of debts which are entitled to preference over the debt in action, judgment shall be rendered against them only for such a sum as bears a just proportion to the other debts of the same class. If a debt of a class prior to the one in action, or of the same class, is paid by any next of kin, legatees, heirs, or devisees, they may prove such payment, and the amount thereof shall be treated, in ascertaining the amount to be recovered, as if it were unpaid.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "<=": [
+                {
+                  "var": "property_value"
+                },
+                {
+                  "var": "prior_class_debts"
+                }
+              ]
+            },
+            "favor",
+            {
+              "if": [
+                {
+                  ">": [
+                    {
+                      "var": "property_value"
+                    },
+                    {
+                      "var": "prior_class_debts"
+                    }
+                  ]
+                },
+                "proportionate",
+                null
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "property_value": 100000,
+            "prior_class_debts": 120000,
+            "same_class_debts": 30000,
+            "paid_debts": 0
+          },
+          {
+            "property_value": 150000,
+            "prior_class_debts": 100000,
+            "same_class_debts": 50000,
+            "paid_debts": 0
+          },
+          {
+            "property_value": 200000,
+            "prior_class_debts": 150000,
+            "same_class_debts": 50000,
+            "paid_debts": 20000
+          }
+        ],
+        "variables": [
+          {
+            "name": "property_value",
+            "description": "The value of the personal property delivered or real estate descended or devised to the next of kin, legatees, heirs, or devisees."
+          },
+          {
+            "name": "prior_class_debts",
+            "description": "The total amount of debts of a prior class."
+          },
+          {
+            "name": "same_class_debts",
+            "description": "The total amount of debts of the same class as the debt in action."
+          },
+          {
+            "name": "paid_debts",
+            "description": "The amount of debts of a prior or same class that have been paid by the next of kin, legatees, heirs, or devisees."
+          }
+        ],
+        "consequences": [
+          "Judgment in favor of the next of kin, legatees, heirs, or devisees.",
+          "Judgment against them for a proportionate sum."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "573.14",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.14",
+    "title": "573.14 PRIORITY AMONG DEBTS.",
+    "text": "When the next of kin, legatees, heirs, and devisees are liable for the debts of their ancestor, or testator, they shall give preference in the payment of the same, and be liable therefor, in the following order:\n(1) debts entitled to a preference under the laws of the United States;\n(2) judgments against the ancestor or testator, according to the priority thereof, respectively;\n(3) debts due to other creditors.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "==": [
+                {
+                  "var": "debt_type"
+                },
+                "US_preference"
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "priority"
+                },
+                "first"
+              ]
+            },
+            {
+              "if": [
+                {
+                  "==": [
+                    {
+                      "var": "debt_type"
+                    },
+                    "judgment"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "priority"
+                    },
+                    "second"
+                  ]
+                },
+                {
+                  "if": [
+                    {
+                      "==": [
+                        {
+                          "var": "debt_type"
+                        },
+                        "other_creditors"
+                      ]
+                    },
+                    {
+                      "==": [
+                        {
+                          "var": "priority"
+                        },
+                        "third"
+                      ]
+                    },
+                    "unknown"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "debt_type": "US_preference",
+            "priority": "first"
+          },
+          {
+            "debt_type": "judgment",
+            "priority": "second"
+          },
+          {
+            "debt_type": "other_creditors",
+            "priority": "third"
+          }
+        ],
+        "variables": [
+          {
+            "name": "debt_type",
+            "description": "The type of debt being considered, such as US preference, judgment, or other creditors."
+          },
+          {
+            "name": "priority",
+            "description": "The priority level assigned to the debt, such as first, second, or third."
+          }
+        ],
+        "consequences": [
+          "The debt is prioritized correctly according to the law."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "577.13",
+    "url": "https://www.revisor.mn.gov/statutes/cite/577.13",
+    "title": "577.13 FORM OF ASSIGNMENT.",
+    "text": "An assignment for the benefit of creditors under this chapter shall be signed by the assignor and duly acknowledged in the same manner as conveyances of real property before a notary public of the state, shall include an acceptance of the assignment by the assignee, and shall be in substantially the following form:\nASSIGNMENT\nTHIS ASSIGNMENT is made this .... day of .............., .........., by and between............, with a principal place of business at .......... (hereinafter \"assignor\"), and ............, whose address is ........... (hereinafter \"assignee\").\nWHEREAS, the assignor has been engaged in the business of............................................\nWHEREAS, the assignor is indebted to creditors and is unable to pay debts as they become due, and is desirous of providing for the payment of debts, so far as it is possible by an assignment of property for that purpose.\nNOW, THEREFORE, the assignor, in consideration of the assignee's acceptance of this assignment, and for other good and valuable consideration, hereby assigns to the assignee, and the assignee's successors and assigns, the assignor's property, except the property as is exempt by law from levy and sale under an execution (and then only to the extent of the exemption), including but not limited to all real property, fixtures, goods, stock, inventory, equipment, furniture, furnishings, accounts receivable, general intangibles, bank deposits, cash, promissory notes, cash value and proceeds of insurance policies, claims, and demands belonging to the assignor, wherever the property may be located (hereinafter collectively the \"assignment property\"), which property is set forth on Schedule A attached hereto.\nA list of the creditors of the assignor is set forth in Schedule B annexed hereto.\nBy making this assignment, the assignor consents to the appointment of the assignee as a general receiver with respect to the assignment property in accordance with Minnesota Statutes, chapters 576 and 577.\nThe assignee shall take possession of and administer the assignment property and shall liquidate the assignment property with reasonable dispatch, collect all claims and demands hereby assigned as and to the extent they may be collectible, and pay and discharge all reasonable expenses, costs, and disbursements in connection with the execution and administration of this assignment from the proceeds of the liquidations and collections in accordance with Minnesota Statutes, chapters 576 and 577.\nThe assignee shall then pay and discharge in full, to the extent that funds are available from the assignment property after payment of expenses, costs, and disbursements, all of the debts and liabilities now due from the assignor, including interest on the debts and liabilities in full, in accordance with Minnesota Statutes, chapters 576 and 577.\nIn the event that all debts and liabilities are paid in full, the remainder of the assignment property shall be returned to the assignor.\nTo accomplish the purposes of this assignment, the assignor hereby irrevocably appoints the assignee as the assignor's true and lawful attorney-in-fact, with full power and authority to do all acts and things which may be necessary to execute and fulfill the assignment hereby created, to the same extent as the acts and things might be done by the assignor in the absence of this assignment, including, but not limited to, the power to demand and recover from all persons all assignment property; to sue for the recovery of assignment property; to execute, acknowledge, and deliver all necessary deeds, instruments, and conveyances, and to grant and convey any or all of the real or personal property of the assignment property pursuant thereto; and to appoint one or more attorneys to assist the assignee in carrying out the assignee's duties hereunder.\nThe assignor hereby authorizes the assignee to sign the name of the assignor to any check, draft, promissory note, or other instrument in writing which is payable to the order of the assignor, or to sign the name of the assignor to any instrument in writing, whenever it shall be necessary to do so, to carry out the purposes of this assignment.\nThe assignor declares, under penalty of perjury under the laws of the state of Minnesota, that the attached schedules of the property or the assignor and creditors are true and complete to the best of the assignor's knowledge.\nThe assignee hereby accepts the assignment property and agrees faithfully and without delay to carry out the assignee's duties under the foregoing assignment.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "==": [
+                {
+                  "var": "assignor_signature"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "notary_acknowledgment"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignee_acceptance"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "form_structure"
+                },
+                true
+              ]
+            },
+            {
+              "==": [
+                {
+                  "var": "assignor_declaration"
+                },
+                true
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "assignor_signature": true,
+            "notary_acknowledgment": true,
+            "assignee_acceptance": true,
+            "form_structure": true,
+            "assignor_declaration": true
+          },
+          {
+            "assignor_signature": true,
+            "notary_acknowledgment": false,
+            "assignee_acceptance": true,
+            "form_structure": true,
+            "assignor_declaration": true
+          },
+          {
+            "assignor_signature": true,
+            "notary_acknowledgment": true,
+            "assignee_acceptance": true,
+            "form_structure": false,
+            "assignor_declaration": true
+          }
+        ],
+        "variables": [
+          {
+            "name": "assignor_signature",
+            "description": "Indicates whether the assignor has signed the assignment."
+          },
+          {
+            "name": "notary_acknowledgment",
+            "description": "Indicates whether the assignment has been acknowledged before a notary public."
+          },
+          {
+            "name": "assignee_acceptance",
+            "description": "Indicates whether the assignee has accepted the assignment."
+          },
+          {
+            "name": "form_structure",
+            "description": "Indicates whether the assignment follows the required form structure."
+          },
+          {
+            "name": "assignor_declaration",
+            "description": "Indicates whether the assignor has declared the truthfulness of the attached schedules under penalty of perjury."
+          }
+        ],
+        "consequences": [
+          "The assignment is valid and enforceable under the law."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.1496",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.1496",
     "title": "1.1496 STATE MUFFIN.",
@@ -5190,6 +8884,96 @@
         ],
         "consequences": [
           "The blueberry muffin is the official muffin of Minnesota."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "573.19",
+    "url": "https://www.revisor.mn.gov/statutes/cite/573.19",
+    "title": "573.19 HEIRS AND DEVISEES; LIMIT OF RECOVERY.",
+    "text": "In actions brought against several heirs or several devisees jointly, the amount of plaintiff's recovery shall be apportioned among all the heirs of the ancestor, or all the devisees of the testator, in proportion to the value of the real property descended or devised, and such proportion only can be recovered of each.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "map": [
+            {
+              "var": "heirs_or_devisees"
+            },
+            {
+              "*": [
+                {
+                  "var": "plaintiff_recovery"
+                },
+                {
+                  "var": "value_of_property"
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "heirs_or_devisees": [
+              {
+                "name": "Heir1",
+                "value_of_property": 0.3
+              },
+              {
+                "name": "Heir2",
+                "value_of_property": 0.7
+              }
+            ],
+            "plaintiff_recovery": 1000
+          },
+          {
+            "heirs_or_devisees": [
+              {
+                "name": "Devisee1",
+                "value_of_property": 0.5
+              },
+              {
+                "name": "Devisee2",
+                "value_of_property": 0.5
+              }
+            ],
+            "plaintiff_recovery": 2000
+          },
+          {
+            "heirs_or_devisees": [
+              {
+                "name": "Heir1",
+                "value_of_property": 0.2
+              },
+              {
+                "name": "Heir2",
+                "value_of_property": 0.3
+              },
+              {
+                "name": "Heir3",
+                "value_of_property": 0.5
+              }
+            ],
+            "plaintiff_recovery": 1500
+          }
+        ],
+        "variables": [
+          {
+            "name": "heirs_or_devisees",
+            "description": "An array of heirs or devisees involved in the case, each with a proportion of the property value."
+          },
+          {
+            "name": "plaintiff_recovery",
+            "description": "The total amount of recovery the plaintiff is entitled to."
+          },
+          {
+            "name": "value_of_property",
+            "description": "The proportion of the total property value attributed to each heir or devisee."
+          }
+        ],
+        "consequences": [
+          "The recovery amount is apportioned among the heirs or devisees based on their property value proportion."
         ]
       }
     ]
@@ -5702,6 +9486,77 @@
     ]
   },
   {
+    "id": "574.205",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.205",
+    "title": "574.205 BONDS; STATE OFFICIALS AND EMPLOYEES EXCLUDED.",
+    "text": "On and after July 1, 1971, and notwithstanding any law to the contrary, elected state officials, appointed state officers and other state employees are not required to give and file surety or fidelity bonds, except when federal law or rule requires such a bond as a condition precedent to receiving federal grants.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "<=": [
+                "1971-07-01",
+                {
+                  "var": "date"
+                }
+              ]
+            },
+            {
+              "or": [
+                {
+                  "!": {
+                    "var": "federal_law_requires_bond"
+                  }
+                },
+                {
+                  "!": {
+                    "var": "federal_rule_requires_bond"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "date": "1972-01-01",
+            "federal_law_requires_bond": false,
+            "federal_rule_requires_bond": false
+          },
+          {
+            "date": "1970-06-30",
+            "federal_law_requires_bond": true,
+            "federal_rule_requires_bond": true
+          },
+          {
+            "date": "1972-01-01",
+            "federal_law_requires_bond": true,
+            "federal_rule_requires_bond": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "date",
+            "description": "The date on which the bond requirement is being evaluated."
+          },
+          {
+            "name": "federal_law_requires_bond",
+            "description": "Indicates if federal law requires a bond."
+          },
+          {
+            "name": "federal_rule_requires_bond",
+            "description": "Indicates if a federal rule requires a bond."
+          }
+        ],
+        "consequences": [
+          "State officials and employees are not required to file surety or fidelity bonds."
+        ]
+      }
+    ]
+  },
+  {
     "id": "1.1495",
     "url": "https://www.revisor.mn.gov/statutes/cite/1.1495",
     "title": "1.1495 STATE DRINK.",
@@ -5755,6 +9610,565 @@
         ],
         "consequences": [
           "Milk is the official drink of Minnesota."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "578.06",
+    "url": "https://www.revisor.mn.gov/statutes/cite/578.06",
+    "title": "578.06 HEARING BY COURT; DISMISSAL OF PROCEEDING; APPOINTMENT AND BOND OF RECEIVER.",
+    "text": "The absentee, or any person who claims an interest in any of the property, may appear and show cause why the prayer of the petition should not be granted. The court may, after hearing, dismiss the petition and order the property in possession of the officer to be returned to the person entitled thereto, or it may appoint a receiver of the property which is in the possession of the officer and named in the schedule. If a receiver is appointed, the court shall find and record the date of the disappearance or absconding of the absentee; and the receiver shall give a bond pursuant to section 576.27. In the appointment of the receiver the court shall give preference to the spouse of the absentee, if the spouse is eligible to serve as receiver under section 576.26.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "or": [
+                {
+                  "var": "absentee_appears"
+                },
+                {
+                  "var": "interested_person_appears"
+                }
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "court_hearing"
+                },
+                {
+                  "if": [
+                    {
+                      "var": "appoint_receiver"
+                    },
+                    {
+                      "and": [
+                        {
+                          "var": "court_finds_date_of_disappearance"
+                        },
+                        {
+                          "var": "receiver_gives_bond"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "dismiss_petition"
+                    }
+                  ]
+                },
+                {
+                  "var": "dismiss_petition"
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "absentee_appears": true,
+            "interested_person_appears": false,
+            "court_hearing": true,
+            "appoint_receiver": true,
+            "court_finds_date_of_disappearance": true,
+            "receiver_gives_bond": true
+          },
+          {
+            "absentee_appears": false,
+            "interested_person_appears": true,
+            "court_hearing": true,
+            "appoint_receiver": false
+          },
+          {
+            "absentee_appears": false,
+            "interested_person_appears": false,
+            "court_hearing": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "absentee_appears",
+            "description": "Indicates if the absentee appears in court."
+          },
+          {
+            "name": "interested_person_appears",
+            "description": "Indicates if any interested person appears in court."
+          },
+          {
+            "name": "court_hearing",
+            "description": "Indicates if a court hearing is conducted."
+          },
+          {
+            "name": "appoint_receiver",
+            "description": "Indicates if the court decides to appoint a receiver."
+          },
+          {
+            "name": "court_finds_date_of_disappearance",
+            "description": "Indicates if the court finds and records the date of disappearance or absconding of the absentee."
+          },
+          {
+            "name": "receiver_gives_bond",
+            "description": "Indicates if the receiver gives a bond pursuant to section 576.27."
+          }
+        ],
+        "consequences": [
+          "The petition is dismissed and property is returned to the entitled person.",
+          "A receiver is appointed for the property, and the court records the date of disappearance."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "574.15",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.15",
+    "title": "574.15 SURETY COMPANIES.",
+    "text": "When the bond or other instrument is required to be made with one surety, or with two or more sureties, it shall be sufficient if the same be executed, or the conditions thereof be guaranteed, solely by a corporation authorized by law so to do. No such corporation shall be accepted or approved as a surety or guarantor unless it holds the certificate of the commissioner of commerce, showing that it is authorized to contract as such.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "surety_type"
+                    },
+                    "individual"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "surety_type"
+                    },
+                    "corporation"
+                  ]
+                }
+              ]
+            },
+            {
+              "if": [
+                {
+                  "==": [
+                    {
+                      "var": "surety_type"
+                    },
+                    "corporation"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "certificate_status"
+                    },
+                    "authorized"
+                  ],
+                  "true": true
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "surety_type": "corporation",
+            "certificate_status": "authorized"
+          },
+          {
+            "surety_type": "individual"
+          },
+          {
+            "surety_type": "corporation",
+            "certificate_status": "unauthorized"
+          }
+        ],
+        "variables": [
+          {
+            "name": "surety_type",
+            "description": "The type of surety, either 'individual' or 'corporation'."
+          },
+          {
+            "name": "certificate_status",
+            "description": "The authorization status of the corporation, either 'authorized' or 'unauthorized'."
+          }
+        ],
+        "consequences": [
+          "The bond or instrument is validly executed or guaranteed."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "574.18",
+    "url": "https://www.revisor.mn.gov/statutes/cite/574.18",
+    "title": "574.18 UNDERTAKING IN LIEU OF BOND.",
+    "text": "In all cases of appeal from a county board to the district court upon the allowance or disallowance of claims, in all actions begun in the district court, in all cases of appeal or writ of error to remove a cause or proceeding to the court of appeals or the supreme court, and in all cases of special or equitable proceedings in the district court, the court of appeals, or the supreme court, the filing or service, or both, as may be required, of an undertaking, signed by a surety or sureties, as the law may require, containing a condition substantially the same as required for bonds, with like sureties, qualifications, and justifications, and without acknowledgment or signature of the principal, shall be deemed a sufficient compliance with the law to sustain the action, appeal, or proceeding. Every undertaking shall save and secure all rights and liabilities to the same extent as a bond. The damages presumed to accrue to the party against whom the proceeding is taken shall be deemed a sufficient consideration for the undertaking, though no consideration is mentioned in it. No undertaking or bond need be given upon any appeal or other proceeding instituted in favor of the state, or any county, city, town, or school district in it, or of any executor or administrator as such.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "if": [
+            {
+              "or": [
+                {
+                  "===": [
+                    {
+                      "var": "caseType"
+                    },
+                    "appeal"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "caseType"
+                    },
+                    "writ of error"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "caseType"
+                    },
+                    "special proceeding"
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "caseType"
+                    },
+                    "equitable proceeding"
+                  ]
+                }
+              ]
+            },
+            {
+              "and": [
+                {
+                  "===": [
+                    {
+                      "var": "undertaking.signedBySurety"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "undertaking.conditionLikeBond"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "undertaking.withoutPrincipalSignature"
+                    },
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "===": [
+                {
+                  "var": "undertaking.required"
+                },
+                false
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "caseType": "appeal",
+            "undertaking": {
+              "signedBySurety": true,
+              "conditionLikeBond": true,
+              "withoutPrincipalSignature": true,
+              "required": true
+            }
+          },
+          {
+            "caseType": "appeal",
+            "undertaking": {
+              "signedBySurety": false,
+              "conditionLikeBond": true,
+              "withoutPrincipalSignature": true,
+              "required": true
+            }
+          },
+          {
+            "caseType": "appeal",
+            "undertaking": {
+              "signedBySurety": true,
+              "conditionLikeBond": true,
+              "withoutPrincipalSignature": true,
+              "required": false
+            }
+          }
+        ],
+        "variables": [
+          {
+            "name": "caseType",
+            "description": "The type of legal case or proceeding."
+          },
+          {
+            "name": "undertaking.signedBySurety",
+            "description": "Indicates if the undertaking is signed by a surety."
+          },
+          {
+            "name": "undertaking.conditionLikeBond",
+            "description": "Indicates if the undertaking contains a condition similar to a bond."
+          },
+          {
+            "name": "undertaking.withoutPrincipalSignature",
+            "description": "Indicates if the undertaking lacks the principal's signature."
+          },
+          {
+            "name": "undertaking.required",
+            "description": "Indicates if an undertaking is required for the case."
+          }
+        ],
+        "consequences": [
+          "The undertaking is sufficient to sustain the action, appeal, or proceeding."
+        ]
+      },
+      {
+        "rule": {
+          "===": [
+            {
+              "var": "undertaking.required"
+            },
+            false
+          ]
+        },
+        "examples": [
+          {
+            "caseType": "appeal",
+            "undertaking": {
+              "required": false
+            }
+          },
+          {
+            "caseType": "writ of error",
+            "undertaking": {
+              "required": false
+            }
+          },
+          {
+            "caseType": "special proceeding",
+            "undertaking": {
+              "required": true
+            }
+          }
+        ],
+        "variables": [
+          {
+            "name": "undertaking.required",
+            "description": "Indicates if an undertaking is required for the case."
+          }
+        ],
+        "consequences": [
+          "No undertaking or bond is needed for the proceeding."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "572B.20",
+    "url": "https://www.revisor.mn.gov/statutes/cite/572B.20",
+    "title": "572B.20 CHANGE OF AWARD BY ARBITRATOR.",
+    "text": "(a) On motion to an arbitrator by a party to the arbitration proceeding, the arbitrator may modify or correct an award:\n(1) upon the grounds stated in section 572B.24, subsection (a)(1) or (3);\n(2) because the arbitrator has not made a final and definite award upon a claim submitted by the parties to the arbitration proceeding; or\n(3) to clarify the award.\n(b) A motion under subsection (a) must be made and served on all parties within 20 days after the movant receives notice of the award.\n(c) A party to the arbitration proceeding must serve any objections to the motion within ten days after receipt of the notice.\n(d) If a motion to the court is pending under sections 572B.22, 572B.23, and 572B.24, the court may submit the claim to the arbitrator to consider whether to modify or correct the award:\n(1) upon the grounds stated in section 572B.24, subsection (a)(1) or (3);\n(2) because the arbitrator has not made a final and definite award upon a claim submitted by the parties to the arbitration proceeding; or\n(3) to clarify the award.\n(e) An award modified or corrected pursuant to this section is subject to sections 572B.22, 572B.23, and 572B.24.",
+    "repealed": false,
+    "rules": [
+      {
+        "rule": {
+          "and": [
+            {
+              "or": [
+                {
+                  "in": [
+                    {
+                      "var": "ground"
+                    },
+                    [
+                      "section 572B.24 subsection (a)(1)",
+                      "section 572B.24 subsection (a)(3)"
+                    ]
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "final_award"
+                    },
+                    false
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "clarify_award"
+                    },
+                    true
+                  ]
+                }
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "days_since_award_notice"
+                },
+                20
+              ]
+            },
+            {
+              "<=": [
+                {
+                  "var": "days_since_motion_notice"
+                },
+                10
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "ground": "section 572B.24 subsection (a)(1)",
+            "final_award": false,
+            "clarify_award": false,
+            "days_since_award_notice": 15,
+            "days_since_motion_notice": 5
+          },
+          {
+            "ground": "section 572B.24 subsection (a)(3)",
+            "final_award": true,
+            "clarify_award": true,
+            "days_since_award_notice": 10,
+            "days_since_motion_notice": 8
+          },
+          {
+            "ground": "other",
+            "final_award": true,
+            "clarify_award": false,
+            "days_since_award_notice": 25,
+            "days_since_motion_notice": 12
+          }
+        ],
+        "variables": [
+          {
+            "name": "ground",
+            "description": "The grounds for modifying or correcting the award."
+          },
+          {
+            "name": "final_award",
+            "description": "Whether the arbitrator has made a final and definite award."
+          },
+          {
+            "name": "clarify_award",
+            "description": "Whether the award needs clarification."
+          },
+          {
+            "name": "days_since_award_notice",
+            "description": "Days since the movant received notice of the award."
+          },
+          {
+            "name": "days_since_motion_notice",
+            "description": "Days since a party received notice of the motion."
+          }
+        ],
+        "consequences": [
+          "The arbitrator may modify or correct the award."
+        ]
+      },
+      {
+        "rule": {
+          "and": [
+            {
+              "var": "court_motion_pending"
+            },
+            {
+              "or": [
+                {
+                  "in": [
+                    {
+                      "var": "ground"
+                    },
+                    [
+                      "section 572B.24 subsection (a)(1)",
+                      "section 572B.24 subsection (a)(3)"
+                    ]
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "final_award"
+                    },
+                    false
+                  ]
+                },
+                {
+                  "===": [
+                    {
+                      "var": "clarify_award"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "examples": [
+          {
+            "court_motion_pending": true,
+            "ground": "section 572B.24 subsection (a)(1)",
+            "final_award": false,
+            "clarify_award": false
+          },
+          {
+            "court_motion_pending": true,
+            "ground": "section 572B.24 subsection (a)(3)",
+            "final_award": true,
+            "clarify_award": true
+          },
+          {
+            "court_motion_pending": false,
+            "ground": "other",
+            "final_award": true,
+            "clarify_award": false
+          }
+        ],
+        "variables": [
+          {
+            "name": "court_motion_pending",
+            "description": "Whether a motion to the court is pending."
+          },
+          {
+            "name": "ground",
+            "description": "The grounds for modifying or correcting the award."
+          },
+          {
+            "name": "final_award",
+            "description": "Whether the arbitrator has made a final and definite award."
+          },
+          {
+            "name": "clarify_award",
+            "description": "Whether the award needs clarification."
+          }
+        ],
+        "consequences": [
+          "The court may submit the claim to the arbitrator to consider modification or correction."
         ]
       }
     ]

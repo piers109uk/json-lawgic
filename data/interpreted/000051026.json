@@ -1,0 +1,219 @@
+{
+  "id": "574.19",
+  "url": "https://www.revisor.mn.gov/statutes/cite/574.19",
+  "title": "574.19 COST OF SURETY BONDS; PROPER EXPENSE ITEMS.",
+  "text": "Any receiver, assignee, trustee, committee, guardian, executor, administrator, or other fiduciary, required by law to give bond as such, may include as a part of lawful expenses such actual sum paid for such suretyship, not exceeding $10 per annum when the amount of the bond is not more than $1,000, and not more than one percent per annum on the excess when over $1,000, as the head of the department, court, judge, or officer by whom, or the court or body by which, the fiduciary is appointed allows; and in all actions or proceedings the party entitled to recover costs may include therein the reasonable fees of such company for executing or guaranteeing any bond or undertaking therein. The several county and town boards, and the governing body of any city, or school district, may allow the treasurer of the municipality such reasonable sum, not exceeding the amount herein specified, as may have been paid by the treasurer for such suretyship, to be paid out of the general revenue fund of the municipality. The officers required by law to approve such bill may first designate the surety company to be employed, if its charges be as low as those offered by any other responsible company.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "bond_amount"
+              },
+              1000
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "suretyship_expense"
+              },
+              10
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "bond_amount": 500,
+          "suretyship_expense": 10
+        },
+        {
+          "bond_amount": 1000,
+          "suretyship_expense": 10
+        },
+        {
+          "bond_amount": 1500,
+          "suretyship_expense": 15
+        }
+      ],
+      "variables": [
+        {
+          "name": "bond_amount",
+          "description": "The total amount of the bond for which the fiduciary is responsible."
+        },
+        {
+          "name": "suretyship_expense",
+          "description": "The actual sum paid for suretyship by the fiduciary."
+        }
+      ],
+      "consequences": [
+        "The suretyship expense is within the lawful limit for bonds not exceeding $1,000."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            ">": [
+              {
+                "var": "bond_amount"
+              },
+              1000
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "suretyship_expense"
+              },
+              {
+                "*": [
+                  {
+                    "var": "bond_amount"
+                  },
+                  0.01
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "bond_amount": 1500,
+          "suretyship_expense": 15
+        },
+        {
+          "bond_amount": 2000,
+          "suretyship_expense": 20
+        },
+        {
+          "bond_amount": 2000,
+          "suretyship_expense": 25
+        }
+      ],
+      "variables": [
+        {
+          "name": "bond_amount",
+          "description": "The total amount of the bond for which the fiduciary is responsible."
+        },
+        {
+          "name": "suretyship_expense",
+          "description": "The actual sum paid for suretyship by the fiduciary."
+        }
+      ],
+      "consequences": [
+        "The suretyship expense is within the lawful limit for bonds exceeding $1,000."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "treasurer_expense"
+              },
+              10
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "bond_amount"
+              },
+              1000
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "treasurer_expense": 10,
+          "bond_amount": 1000
+        },
+        {
+          "treasurer_expense": 5,
+          "bond_amount": 800
+        },
+        {
+          "treasurer_expense": 15,
+          "bond_amount": 1000
+        }
+      ],
+      "variables": [
+        {
+          "name": "treasurer_expense",
+          "description": "The sum paid by the treasurer for suretyship."
+        },
+        {
+          "name": "bond_amount",
+          "description": "The total amount of the bond for which the fiduciary is responsible."
+        }
+      ],
+      "consequences": [
+        "The treasurer's suretyship expense is within the lawful limit for bonds not exceeding $1,000."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            ">": [
+              {
+                "var": "bond_amount"
+              },
+              1000
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "treasurer_expense"
+              },
+              {
+                "*": [
+                  {
+                    "var": "bond_amount"
+                  },
+                  0.01
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "treasurer_expense": 15,
+          "bond_amount": 1500
+        },
+        {
+          "treasurer_expense": 20,
+          "bond_amount": 2000
+        },
+        {
+          "treasurer_expense": 25,
+          "bond_amount": 2000
+        }
+      ],
+      "variables": [
+        {
+          "name": "treasurer_expense",
+          "description": "The sum paid by the treasurer for suretyship."
+        },
+        {
+          "name": "bond_amount",
+          "description": "The total amount of the bond for which the fiduciary is responsible."
+        }
+      ],
+      "consequences": [
+        "The treasurer's suretyship expense is within the lawful limit for bonds exceeding $1,000."
+      ]
+    }
+  ]
+}

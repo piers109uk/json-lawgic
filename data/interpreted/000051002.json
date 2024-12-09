@@ -41,9 +41,9 @@
               {
                 "==": [
                   {
-                    "var": "certificate_of_commissioner"
+                    "var": "certificate_status"
                   },
-                  "valid"
+                  "authorized"
                 ],
                 "true": true
               }
@@ -53,26 +53,25 @@
       },
       "examples": [
         {
-          "surety_type": "individual",
-          "certificate_of_commissioner": "valid"
+          "surety_type": "corporation",
+          "certificate_status": "authorized"
+        },
+        {
+          "surety_type": "individual"
         },
         {
           "surety_type": "corporation",
-          "certificate_of_commissioner": "valid"
-        },
-        {
-          "surety_type": "corporation",
-          "certificate_of_commissioner": "invalid"
+          "certificate_status": "unauthorized"
         }
       ],
       "variables": [
         {
           "name": "surety_type",
-          "description": "Indicates whether the surety is an individual or a corporation."
+          "description": "The type of surety, either 'individual' or 'corporation'."
         },
         {
-          "name": "certificate_of_commissioner",
-          "description": "Indicates whether the corporation holds a valid certificate from the commissioner of commerce."
+          "name": "certificate_status",
+          "description": "The authorization status of the corporation, either 'authorized' or 'unauthorized'."
         }
       ],
       "consequences": [
