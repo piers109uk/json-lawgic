@@ -15,7 +15,19 @@ from pydantic import BaseModel, Field
 
 class RuleReview(BaseModel):
     rule_index: int
-    feedback: str
+    completeness_feedback: str = Field(
+        description="List of missing elements that should be included, or empty string if the rule is complete"
+    )
+    correctness_feedback: str = Field(description="List of incorrect elements or empty string if the rule is correct")
+    simplicity_feedback: str = Field(
+        description="Feedback recommending a simpler way to express the rule, or an empty string if the rule is simple enough"
+    )
+    examples_feedback: str = Field(
+        description="Feedback on the quality of the examples, or an empty string if the examples are good"
+    )
+    variables_feedback: str = Field(
+        description="Feedback on the quality of the variables, or an empty string if the variables are comprehensive"
+    )
     rating: Optional[float] = Field(description="Between 0 and 1")
 
 
@@ -152,8 +164,9 @@ async def _run_interpret(input_file: str, output_file: str):
 
 
 if __name__ == "__main__":
-    file_name = "000047905.json"
-    input_file = f"data/default/{file_name}"
+    # file_name = "000047905.json"
+    file_name = "1.json"
+    input_file = f"data/examples/{file_name}"
 
     output_file = f"data/tests/{file_name}"
     asyncio.run(_run_interpret(input_file, output_file))
