@@ -12,21 +12,13 @@ from pydantic import BaseModel, Field
 from json_lawgic.data_io import read_json, read_text, write_json
 from json_lawgic.langfuse_setup import get_tracing_handler
 from json_lawgic.logger import logger
-from json_lawgic.prompts import PromptManager
+from json_lawgic.model import AIModel, get_model
+from json_lawgic.prompts import PromptManager, PromptType
+from json_lawgic.types import JsonLogicRules
 from json_lawgic.util import omit, pick
 
 # Load environment variables from .env file
 load_dotenv()
-
-# llm = ChatAnthropic(
-#     model_name="claude-3-5-sonnet-latest",
-#     max_tokens_to_sample=8192,  #
-#     temperature=0,
-#     timeout=None,
-#     max_retries=2,
-#     stop=None,
-# )
-# llm = ChatOpenAI(model="gpt-4o", temperature=0)
 
 
 # TODO: Compare multi-agent with this approach - can one agent split the law up and another define the rules?
@@ -35,43 +27,8 @@ load_dotenv()
 # TODO use https://langfuse.com/docs/scores/custom with jsonLogic eval to grade traces
 
 
-class RuleVariable(BaseModel):
-    """A variable used in the JSON logic rule."""
-
-    name: str = Field(description="The name of the variable referenced in the rule")
-    description: str = Field(description="A description of what the variable represents")
-
-
-class JsonLogicInterpretation(BaseModel):
-    """A JSON logic interpretation."""
-
-    rule: object = Field(description="The pure JSON logic rule expressed as a JSON object")
-    examples: list[object] = Field(
-        description="Three examples of data that we could run the JsonLogic rule on. Aim to make some that evaluate to true and some to false."
-    )
-    variables: list[RuleVariable] = Field(description="A list of variables referenced in the rule")
-    consequences: list[str] = Field(
-        description="The consequences IF the rule evaluates to true, expressed as briefly as possible"
-    )
-
-    # TODO:
-    # Compliance, Obligation, Permission, Prohibition, Right, SuborderList, Violation
-    # https://docs.oasis-open.org/legalruleml/legalruleml-core-spec/v1.0/os/legalruleml-core-spec-v1.0-os.html#_Toc38017883
-
-
-class JsonLogicRules(BaseModel):
-    """A collection of JsonLogic rules."""
-
-    rules: list[JsonLogicInterpretation] = Field(description="A collection of JsonLogic rules")
-
-
 interpret_prompt_template = PromptManager.get_prompt_template("interpret-law")
 simplify_prompt_template = PromptManager.get_prompt_template("simplify-interpretation")
-
-
-class AIModel(Enum):
-    claude_sonnet = "claude-3-5-sonnet-latest"
-    openai_4o = "gpt-4o"
 
 
 class LawInterpreter:
@@ -79,17 +36,7 @@ class LawInterpreter:
 
     def __init__(self, model: AIModel = AIModel.openai_4o):
         self.model_name = model.value
-        if model == AIModel.claude_sonnet:
-            self.llm = ChatAnthropic(
-                model_name=model.value,
-                max_tokens_to_sample=8192,
-                temperature=0,
-                timeout=None,
-                max_retries=2,
-                stop=None,
-            )
-        elif model in [AIModel.openai_4o]:
-            self.llm = ChatOpenAI(model=model.value, temperature=0)
+        self.llm = get_model(model)
 
     def interpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
@@ -100,15 +47,15 @@ class LawInterpreter:
         metadata = pick(law_object, ["id", "url", "title"])
         tags = [self.model_name]
         tracing_handler = get_tracing_handler(metadata, tags)
-        response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [tracing_handler]}))
 
+        response = cast(JsonLogicRules, structured_llm.invoke(prompt, config={"callbacks": [tracing_handler]}))
         res_dict = response.model_dump()
         return {**res_dict}
 
     async def ainterpret_law(self, law_object: dict) -> dict:
         """Returns a dict containing rules"""
         law_text = law_object.get("text")
-        prompt = await interpret_prompt_template.ainvoke({"json_logic": self.json_logic, "law": law_text})
+        prompt = interpret_prompt_template.invoke({"json_logic": self.json_logic, "law": law_text})
 
         structured_llm = self.llm.with_structured_output(JsonLogicRules)
         metadata = pick(law_object, ["id", "url", "title"])

@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Literal
 
 from langchain_core.prompts import ChatPromptTemplate
 from langfuse import Langfuse
@@ -6,11 +7,17 @@ from langfuse import Langfuse
 # Initialize Langfuse client
 langfuse = Langfuse()
 
+PromptType = Literal["interpret-law", "simplify-interpretation", "review-interpretation", "interpret-with-feedback"]
+
 
 class PromptManager:
     @staticmethod
-    def get_prompt_template(name: str) -> ChatPromptTemplate:
-        langfuse_prompt = langfuse.get_prompt(name, label="latest")
+    def get_prompt_template(prompt_type: PromptType) -> ChatPromptTemplate:
+        if prompt_type == "review-interpretation":
+            return ChatPromptTemplate.from_template(review_prompt)
+        elif prompt_type == "interpret-with-feedback":
+            return ChatPromptTemplate.from_template(interpret_with_feedback_prompt)
+        langfuse_prompt = langfuse.get_prompt(prompt_type, label="latest")
 
         return ChatPromptTemplate.from_template(langfuse_prompt.get_langchain_prompt())
 
@@ -67,4 +74,40 @@ And here are the corresponding rules interpreted from the law:
 {interpretation}
 ---
 
+"""
+
+review_prompt = """
+You are a critical reviewer of JSON Logic rules that encode legal requirements.
+Review each rule individually and provide detailed feedback on:
+1. Correctness - Do the rules accurately capture the law's requirements?
+2. Completeness - Are any important aspects of the law missing?
+3. Clarity - Are the rules clear and well-structured?
+4. Quality of examples - Are the examples comprehensive and useful?
+
+For each rule, provide specific feedback and boolean assessments.
+Only approve the entire ruleset if all rules are correct, complete, clear, and have good examples.
+
+Law: {law}
+
+Rules: {rules}
+"""
+
+interpret_with_feedback_prompt = """
+You are looking to express laws as JsonLogic and have received feedback on your previous attempt.
+
+Here is some info on how JSON logic works:
+---
+{json_logic}
+---
+
+Please express the following law as one or more JSON logic rules:
+{law}
+
+Your previous attempt at rules was:
+{previous_attempt}
+
+You received this feedback:
+{feedback}
+
+Please revise your rules taking into account this feedback. Focus specifically on addressing the concerns raised.
 """

@@ -52,7 +52,7 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
   - [ ] Fix JsonLogic for Python
   - [ ] Build self-review capability
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
-- [ ] Trim JsonLogic spec to reduce input size
+- [ ] Trim/simplify JsonLogic spec to reduce input size
 - [x] Instrument with Langfuse
 - [x] Law search & selector
 - [ ] Support real-time translation of a law into json-logic upon request
