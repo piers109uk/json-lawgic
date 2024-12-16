@@ -3,6 +3,7 @@ from typing import Any, Optional
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langfuse.callback import CallbackHandler
+from langfuse import Langfuse
 
 load_dotenv()
 
@@ -17,6 +18,8 @@ def get_tracing_handler(metadata: Optional[dict[str, Any]] = None, tags: Optiona
         public_key=LANGFUSE_PUBLIC_KEY, secret_key=LANGFUSE_SECRET_KEY, host=LANGFUSE_HOST, metadata=metadata, tags=tags
     )
 
+
+langfuse = Langfuse(public_key=LANGFUSE_PUBLIC_KEY, secret_key=LANGFUSE_SECRET_KEY, host=LANGFUSE_HOST)
 
 if __name__ == "__main__":
     chain = ChatOpenAI(model="gpt-4o-mini")

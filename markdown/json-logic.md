@@ -291,12 +291,4 @@ Here is a complete DSL specification for JsonLogic, including all supported oper
   ```
   Result: `"logic"`
 
-### Miscellaneous
-
-- **log**: Logs the first value to console, then passes it through unmodified.
-  ```json
-  { "log": "apple" }
-  ```
-  Result: `"apple"` (Check your developer console!)
-
 This specification provides a comprehensive overview of the operations supported by JsonLogic, along with examples to illustrate their usage.

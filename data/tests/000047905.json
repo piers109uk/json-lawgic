@@ -29,28 +29,25 @@
       "examples": [
         {
           "depositType": "security",
-          "depositPurpose": "damage",
-          "expected": true
+          "depositPurpose": "damage repair"
         },
         {
           "depositType": "security",
-          "depositPurpose": "advance rent",
-          "expected": false
+          "depositPurpose": "advance rent"
         },
         {
-          "depositType": "other",
-          "depositPurpose": "damage",
-          "expected": false
+          "depositType": "pet",
+          "depositPurpose": "damage repair"
         }
       ],
       "variables": [
         {
           "name": "depositType",
-          "description": "The type of deposit, e.g., security or other."
+          "description": "The type of deposit made by the tenant."
         },
         {
           "name": "depositPurpose",
-          "description": "The purpose of the deposit, e.g., to secure performance or as advance rent."
+          "description": "The purpose for which the deposit is made."
         }
       ],
       "consequences": [
@@ -83,7 +80,7 @@
                   {
                     "==": [
                       {
-                        "var": "tenantLeftReason"
+                        "var": "tenantLeftDueTo"
                       },
                       "condemnation"
                     ]
@@ -99,9 +96,6 @@
                 ]
               }
             ]
-          },
-          {
-            "var": "tenantAddressProvided"
           }
         ]
       },
@@ -109,41 +103,38 @@
         {
           "landlordAction": "return deposit",
           "timeSinceTermination": "2 weeks",
-          "tenantLeftReason": "normal",
-          "tenantAddressProvided": true,
-          "expected": true
+          "tenantLeftDueTo": "condemnation",
+          "timeSinceTenantLeft": "3 days"
         },
         {
           "landlordAction": "return deposit",
           "timeSinceTermination": "4 weeks",
-          "tenantLeftReason": "normal",
-          "tenantAddressProvided": true,
-          "expected": false
+          "tenantLeftDueTo": "condemnation",
+          "timeSinceTenantLeft": "6 days"
         },
         {
-          "landlordAction": "return deposit",
-          "timeSinceTenantLeft": "4 days",
-          "tenantLeftReason": "condemnation",
-          "tenantAddressProvided": true,
-          "expected": true
+          "landlordAction": "withhold deposit",
+          "timeSinceTermination": "2 weeks",
+          "tenantLeftDueTo": "condemnation",
+          "timeSinceTenantLeft": "3 days"
         }
       ],
       "variables": [
         {
           "name": "landlordAction",
-          "description": "The action taken by the landlord, e.g., return deposit or withhold deposit."
+          "description": "The action taken by the landlord regarding the deposit."
         },
         {
           "name": "timeSinceTermination",
           "description": "The time elapsed since the termination of the tenancy."
         },
         {
-          "name": "tenantLeftReason",
-          "description": "The reason the tenant left, e.g., normal or condemnation."
+          "name": "tenantLeftDueTo",
+          "description": "The reason the tenant left the dwelling."
         },
         {
-          "name": "tenantAddressProvided",
-          "description": "Whether the tenant has provided a mailing address or delivery instructions."
+          "name": "timeSinceTenantLeft",
+          "description": "The time elapsed since the tenant left the dwelling."
         }
       ],
       "consequences": [
@@ -168,7 +159,7 @@
                   {
                     "var": "reasonForWithholding"
                   },
-                  "rent default"
+                  "unpaid rent"
                 ]
               },
               {
@@ -176,7 +167,7 @@
                   {
                     "var": "reasonForWithholding"
                   },
-                  "restore premises"
+                  "damage repair"
                 ]
               }
             ]
@@ -186,28 +177,25 @@
       "examples": [
         {
           "landlordAction": "withhold deposit",
-          "reasonForWithholding": "rent default",
-          "expected": true
+          "reasonForWithholding": "unpaid rent"
         },
         {
           "landlordAction": "withhold deposit",
-          "reasonForWithholding": "damage",
-          "expected": false
+          "reasonForWithholding": "damage repair"
         },
         {
-          "landlordAction": "return deposit",
-          "reasonForWithholding": "restore premises",
-          "expected": false
+          "landlordAction": "withhold deposit",
+          "reasonForWithholding": "personal use"
         }
       ],
       "variables": [
         {
           "name": "landlordAction",
-          "description": "The action taken by the landlord, e.g., return deposit or withhold deposit."
+          "description": "The action taken by the landlord regarding the deposit."
         },
         {
           "name": "reasonForWithholding",
-          "description": "The reason for withholding the deposit, e.g., rent default or restore premises."
+          "description": "The reason provided by the landlord for withholding the deposit."
         }
       ],
       "consequences": [
@@ -228,9 +216,9 @@
           {
             "==": [
               {
-                "var": "lastPaymentPeriod"
+                "var": "rentalAgreementType"
               },
-              "true"
+              "last payment period"
             ]
           }
         ]
@@ -238,28 +226,25 @@
       "examples": [
         {
           "tenantAction": "withhold rent",
-          "lastPaymentPeriod": true,
-          "expected": true
+          "rentalAgreementType": "last payment period"
         },
         {
           "tenantAction": "withhold rent",
-          "lastPaymentPeriod": false,
-          "expected": false
+          "rentalAgreementType": "month to month"
         },
         {
           "tenantAction": "pay rent",
-          "lastPaymentPeriod": true,
-          "expected": false
+          "rentalAgreementType": "last payment period"
         }
       ],
       "variables": [
         {
           "name": "tenantAction",
-          "description": "The action taken by the tenant, e.g., withhold rent or pay rent."
+          "description": "The action taken by the tenant regarding rent payment."
         },
         {
-          "name": "lastPaymentPeriod",
-          "description": "Whether it is the last payment period of the rental agreement."
+          "name": "rentalAgreementType",
+          "description": "The type of rental agreement in place."
         }
       ],
       "consequences": [
@@ -280,9 +265,9 @@
           {
             "==": [
               {
-                "var": "badFaith"
+                "var": "complianceStatus"
               },
-              "true"
+              "non-compliant"
             ]
           }
         ]
@@ -290,32 +275,29 @@
       "examples": [
         {
           "landlordAction": "retain deposit",
-          "badFaith": true,
-          "expected": true
-        },
-        {
-          "landlordAction": "retain deposit",
-          "badFaith": false,
-          "expected": false
+          "complianceStatus": "non-compliant"
         },
         {
           "landlordAction": "return deposit",
-          "badFaith": true,
-          "expected": false
+          "complianceStatus": "compliant"
+        },
+        {
+          "landlordAction": "retain deposit",
+          "complianceStatus": "compliant"
         }
       ],
       "variables": [
         {
           "name": "landlordAction",
-          "description": "The action taken by the landlord, e.g., retain deposit or return deposit."
+          "description": "The action taken by the landlord regarding the deposit."
         },
         {
-          "name": "badFaith",
-          "description": "Whether the retention of the deposit is in bad faith."
+          "name": "complianceStatus",
+          "description": "The compliance status of the landlord with the provisions of the section."
         }
       ],
       "consequences": [
-        "Landlord is subject to punitive damages."
+        "Landlord is subject to punitive damages for bad faith retention of deposit."
       ]
     }
   ]

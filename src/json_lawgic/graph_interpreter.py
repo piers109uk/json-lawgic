@@ -1,10 +1,12 @@
+import asyncio
 import json
 from langgraph.graph import Graph, StateGraph, START, END
 from typing import Annotated, Literal, Optional, TypedDict, cast
-from json_lawgic.data_io import read_json, read_text
+from json_lawgic.data_io import read_json, read_text, write_json
+from json_lawgic.evaluator import JsonLogicEvaluator
 from json_lawgic.model import AIModel, get_model
 from json_lawgic.prompts import PromptManager, PromptType
-from json_lawgic.types import JsonLogicRules, Law
+from json_lawgic.types import InterpretedLaw, JsonLogicRules, Law
 from json_lawgic.langfuse_setup import get_tracing_handler
 from json_lawgic.util import pick
 from json_lawgic.logger import logger
@@ -32,9 +34,8 @@ class AgentState(TypedDict):
     law: Law
     current_rules: Optional[JsonLogicRules]
     attempts: int
-    feedback: str
+    reviews: Optional[RulesReviewResponse]
     is_approved: bool
-    rating: Optional[float]
 
 
 max_attempts = 3
@@ -60,7 +61,7 @@ class InterpreterAgent:
 
         if state["attempts"] > 0:
             prompt_vars["previous_attempt"] = json.dumps(state["current_rules"].model_dump(), indent=2)
-            prompt_vars["feedback"] = state["feedback"]
+            prompt_vars["reviews"] = json.dumps(state["reviews"], indent=2)
             self.prompt = PromptManager.get_prompt_template("interpret-with-feedback")
         else:
             self.prompt = PromptManager.get_prompt_template("interpret-law")
@@ -75,7 +76,7 @@ class ReviewerAgent:
     max_attempts = max_attempts
 
     def __init__(self, llm):
-        self.llm = llm
+        self.llm = llm.with_structured_output(RulesReviewResponse)
         self.prompt = PromptManager.get_prompt_template("review-interpretation")
 
     def invoke(self, state: AgentState) -> AgentState:
@@ -86,11 +87,11 @@ class ReviewerAgent:
 
         prompt = self.prompt.invoke({"law": state["law"]["text"], "rules": current_rules})
 
-        response = self.llm.invoke(prompt)
-        is_approved = "APPROVED" in response.content
-        logger.info(f"ReviewerAgent.invoke: is_approved: {is_approved}")
-        logger.info(f"ReviewerAgent.invoke: content: {response.content}")
-        return {**state, "feedback": response.content, "is_approved": is_approved}
+        reviews = self.llm.invoke(prompt)
+
+        logger.info(f"ReviewerAgent.invoke: is_approved: {reviews.is_approved}")
+        logger.info(f"ReviewerAgent.invoke: overall_feedback: {reviews.overall_feedback}")
+        return {**state, "reviews": reviews.model_dump(), "is_approved": reviews.is_approved}
 
 
 def create_graph(interpreter_llm, reviewer_llm):
@@ -123,7 +124,7 @@ def create_graph(interpreter_llm, reviewer_llm):
     return workflow.compile()
 
 
-def interpret_law_with_review(law: Law) -> JsonLogicRules:
+async def interpret_law_with_review(law: Law) -> InterpretedLaw:
     interpreter_llm = get_model(AIModel.openai_4o)
     reviewer_llm = get_model(AIModel.openai_4o)
 
@@ -132,20 +133,34 @@ def interpret_law_with_review(law: Law) -> JsonLogicRules:
     initial_state: AgentState = {
         "law": law,
         "attempts": 0,
-        "feedback": "",
+        "reviews": None,
         "is_approved": False,
-        "rating": None,
         "current_rules": None,
     }
     metadata = pick(law, ["id", "url", "title"])
     langfuse_handler = get_tracing_handler(metadata)
-    final_state = graph.invoke(initial_state, config={"callbacks": [langfuse_handler]})
-    return final_state["current_rules"]
+    final_state = await graph.ainvoke(initial_state, config={"callbacks": [langfuse_handler]})
+    rules = final_state["current_rules"].model_dump()
+    eval = JsonLogicEvaluator().evaluate(rules, law).model_dump()
+    print(eval)
+
+    return rules
+
+
+async def _run_interpret(input_file: str, output_file: str):
+    law = cast(Law, read_json(input_file))
+    law_rules = await interpret_law_with_review(law)
+    merged_dict = {**law, **law_rules}
+    write_json(output_file, merged_dict)
 
 
 if __name__ == "__main__":
     file_name = "000047905.json"
     input_file = f"data/default/{file_name}"
-    law = cast(Law, read_json(input_file))
-    law_rules = interpret_law_with_review(law)
-    print(law_rules)
+
+    output_file = f"data/tests/{file_name}"
+    asyncio.run(_run_interpret(input_file, output_file))
+
+    # law = cast(Law, read_json(input_file))
+    # law_rules = interpret_law_with_review(law)
+    # print(law_rules)
