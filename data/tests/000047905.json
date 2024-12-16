@@ -11,7 +11,7 @@
           {
             "==": [
               {
-                "var": "depositType"
+                "var": "deposit_type"
               },
               "security"
             ]
@@ -19,35 +19,77 @@
           {
             "!=": [
               {
-                "var": "depositPurpose"
+                "var": "deposit_type"
               },
-              "advance rent"
+              "advance_rent"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "deposit_currency"
+              },
+              "money"
+            ]
+          },
+          {
+            "or": [
+              {
+                "<": [
+                  {
+                    "var": "interest_amount"
+                  },
+                  1
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "interest_calculated"
+                  },
+                  true
+                ]
+              }
             ]
           }
         ]
       },
       "examples": [
         {
-          "depositType": "security",
-          "depositPurpose": "damage repair"
+          "deposit_type": "security",
+          "deposit_currency": "money",
+          "interest_amount": 0.5,
+          "interest_calculated": true
         },
         {
-          "depositType": "security",
-          "depositPurpose": "advance rent"
+          "deposit_type": "advance_rent",
+          "deposit_currency": "money",
+          "interest_amount": 1.5,
+          "interest_calculated": false
         },
         {
-          "depositType": "pet",
-          "depositPurpose": "damage repair"
+          "deposit_type": "other",
+          "deposit_currency": "money",
+          "interest_amount": 0.8,
+          "interest_calculated": true
         }
       ],
       "variables": [
         {
-          "name": "depositType",
+          "name": "deposit_type",
           "description": "The type of deposit made by the tenant."
         },
         {
-          "name": "depositPurpose",
-          "description": "The purpose for which the deposit is made."
+          "name": "deposit_currency",
+          "description": "The currency of the deposit, should be 'money'."
+        },
+        {
+          "name": "interest_amount",
+          "description": "The calculated interest amount on the deposit."
+        },
+        {
+          "name": "interest_calculated",
+          "description": "Whether the interest has been calculated according to the law."
         }
       ],
       "consequences": [
@@ -60,9 +102,22 @@
           {
             "==": [
               {
-                "var": "landlordAction"
+                "var": "landlord_action"
               },
-              "return deposit"
+              {
+                "if": [
+                  {
+                    "==": [
+                      {
+                        "var": "withhold_reason_provided"
+                      },
+                      true
+                    ]
+                  },
+                  "return_deposit",
+                  "provide_statement"
+                ]
+              }
             ]
           },
           {
@@ -70,9 +125,9 @@
               {
                 "<=": [
                   {
-                    "var": "timeSinceTermination"
+                    "var": "time_since_tenancy_end"
                   },
-                  "3 weeks"
+                  21
                 ]
               },
               {
@@ -80,65 +135,84 @@
                   {
                     "==": [
                       {
-                        "var": "tenantLeftDueTo"
+                        "var": "tenant_left_due_to_condemnation"
                       },
-                      "condemnation"
+                      true
                     ]
                   },
                   {
                     "<=": [
                       {
-                        "var": "timeSinceTenantLeft"
+                        "var": "time_since_tenant_left"
                       },
-                      "5 days"
+                      5
                     ]
                   }
                 ]
               }
             ]
+          },
+          {
+            "!!": {
+              "var": "tenant_address_received"
+            }
           }
         ]
       },
       "examples": [
         {
-          "landlordAction": "return deposit",
-          "timeSinceTermination": "2 weeks",
-          "tenantLeftDueTo": "condemnation",
-          "timeSinceTenantLeft": "3 days"
+          "landlord_action": "return_deposit",
+          "time_since_tenancy_end": 20,
+          "tenant_left_due_to_condemnation": false,
+          "time_since_tenant_left": 0,
+          "tenant_address_received": true,
+          "withhold_reason_provided": true
         },
         {
-          "landlordAction": "return deposit",
-          "timeSinceTermination": "4 weeks",
-          "tenantLeftDueTo": "condemnation",
-          "timeSinceTenantLeft": "6 days"
+          "landlord_action": "provide_statement",
+          "time_since_tenancy_end": 22,
+          "tenant_left_due_to_condemnation": true,
+          "time_since_tenant_left": 4,
+          "tenant_address_received": true,
+          "withhold_reason_provided": false
         },
         {
-          "landlordAction": "withhold deposit",
-          "timeSinceTermination": "2 weeks",
-          "tenantLeftDueTo": "condemnation",
-          "timeSinceTenantLeft": "3 days"
+          "landlord_action": "withhold_deposit",
+          "time_since_tenancy_end": 15,
+          "tenant_left_due_to_condemnation": false,
+          "time_since_tenant_left": 0,
+          "tenant_address_received": false,
+          "withhold_reason_provided": false
         }
       ],
       "variables": [
         {
-          "name": "landlordAction",
+          "name": "landlord_action",
           "description": "The action taken by the landlord regarding the deposit."
         },
         {
-          "name": "timeSinceTermination",
-          "description": "The time elapsed since the termination of the tenancy."
+          "name": "time_since_tenancy_end",
+          "description": "The number of days since the tenancy ended."
         },
         {
-          "name": "tenantLeftDueTo",
-          "description": "The reason the tenant left the dwelling."
+          "name": "tenant_left_due_to_condemnation",
+          "description": "Whether the tenant left due to legal condemnation of the building."
         },
         {
-          "name": "timeSinceTenantLeft",
-          "description": "The time elapsed since the tenant left the dwelling."
+          "name": "time_since_tenant_left",
+          "description": "The number of days since the tenant left due to condemnation."
+        },
+        {
+          "name": "tenant_address_received",
+          "description": "Whether the landlord has received the tenant's mailing address or delivery instructions."
+        },
+        {
+          "name": "withhold_reason_provided",
+          "description": "Whether the landlord provided a written statement with specific reasons for withholding the deposit."
         }
       ],
       "consequences": [
-        "Landlord complies with the time requirement for returning the deposit."
+        "Landlord has complied with the time requirement for returning the deposit or providing a statement."
       ]
     },
     {
@@ -147,9 +221,9 @@
           {
             "==": [
               {
-                "var": "landlordAction"
+                "var": "landlord_action"
               },
-              "withhold deposit"
+              "withhold_deposit"
             ]
           },
           {
@@ -157,49 +231,79 @@
               {
                 "==": [
                   {
-                    "var": "reasonForWithholding"
+                    "var": "reason_for_withholding"
                   },
-                  "unpaid rent"
+                  "rent_default"
                 ]
               },
               {
                 "==": [
                   {
-                    "var": "reasonForWithholding"
+                    "var": "reason_for_withholding"
                   },
-                  "damage repair"
+                  "restore_premises"
                 ]
               }
             ]
+          },
+          {
+            "==": [
+              {
+                "var": "amount_withheld_reasonable"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "withhold_reason_provided"
+              },
+              true
+            ]
           }
         ]
       },
       "examples": [
         {
-          "landlordAction": "withhold deposit",
-          "reasonForWithholding": "unpaid rent"
+          "landlord_action": "withhold_deposit",
+          "reason_for_withholding": "rent_default",
+          "amount_withheld_reasonable": true,
+          "withhold_reason_provided": true
         },
         {
-          "landlordAction": "withhold deposit",
-          "reasonForWithholding": "damage repair"
+          "landlord_action": "withhold_deposit",
+          "reason_for_withholding": "restore_premises",
+          "amount_withheld_reasonable": true,
+          "withhold_reason_provided": true
         },
         {
-          "landlordAction": "withhold deposit",
-          "reasonForWithholding": "personal use"
+          "landlord_action": "withhold_deposit",
+          "reason_for_withholding": "other",
+          "amount_withheld_reasonable": false,
+          "withhold_reason_provided": false
         }
       ],
       "variables": [
         {
-          "name": "landlordAction",
+          "name": "landlord_action",
           "description": "The action taken by the landlord regarding the deposit."
         },
         {
-          "name": "reasonForWithholding",
+          "name": "reason_for_withholding",
           "description": "The reason provided by the landlord for withholding the deposit."
+        },
+        {
+          "name": "amount_withheld_reasonable",
+          "description": "Whether the amount withheld is reasonably necessary."
+        },
+        {
+          "name": "withhold_reason_provided",
+          "description": "Whether the landlord provided a written statement with specific reasons for withholding the deposit."
         }
       ],
       "consequences": [
-        "Landlord may withhold deposit for specified reasons."
+        "Landlord may withhold the deposit for the specified reasons and has provided a written statement."
       ]
     },
     {
@@ -208,47 +312,98 @@
           {
             "==": [
               {
-                "var": "tenantAction"
+                "var": "tenant_action"
               },
-              "withhold rent"
+              "withhold_rent"
             ]
           },
           {
             "==": [
               {
-                "var": "rentalAgreementType"
+                "var": "last_payment_period"
               },
-              "last payment period"
+              true
+            ]
+          },
+          {
+            "!": {
+              "or": [
+                {
+                  "==": [
+                    {
+                      "var": "agreement_type"
+                    },
+                    "month_to_month"
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "foreclosure_situation"
+                    },
+                    true
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "==": [
+              {
+                "var": "penalty_imposed"
+              },
+              true
             ]
           }
         ]
       },
       "examples": [
         {
-          "tenantAction": "withhold rent",
-          "rentalAgreementType": "last payment period"
+          "tenant_action": "withhold_rent",
+          "last_payment_period": true,
+          "agreement_type": "fixed_term",
+          "foreclosure_situation": false,
+          "penalty_imposed": true
         },
         {
-          "tenantAction": "withhold rent",
-          "rentalAgreementType": "month to month"
+          "tenant_action": "withhold_rent",
+          "last_payment_period": false,
+          "agreement_type": "month_to_month",
+          "foreclosure_situation": false,
+          "penalty_imposed": false
         },
         {
-          "tenantAction": "pay rent",
-          "rentalAgreementType": "last payment period"
+          "tenant_action": "pay_rent",
+          "last_payment_period": true,
+          "agreement_type": "fixed_term",
+          "foreclosure_situation": true,
+          "penalty_imposed": false
         }
       ],
       "variables": [
         {
-          "name": "tenantAction",
+          "name": "tenant_action",
           "description": "The action taken by the tenant regarding rent payment."
         },
         {
-          "name": "rentalAgreementType",
-          "description": "The type of rental agreement in place."
+          "name": "last_payment_period",
+          "description": "Whether it is the last payment period of the rental agreement."
+        },
+        {
+          "name": "agreement_type",
+          "description": "The type of rental agreement, e.g., 'fixed_term' or 'month_to_month'."
+        },
+        {
+          "name": "foreclosure_situation",
+          "description": "Whether the situation involves a foreclosure or similar legal situation."
+        },
+        {
+          "name": "penalty_imposed",
+          "description": "Whether a penalty has been imposed on the tenant for withholding rent."
         }
       ],
       "consequences": [
-        "Creates a rebuttable presumption that the tenant withheld rent because the deposit should serve as payment."
+        "Creates a rebuttable presumption that the tenant withheld rent because the deposit should serve as payment and imposes penalties."
       ]
     },
     {
@@ -257,47 +412,231 @@
           {
             "==": [
               {
-                "var": "landlordAction"
+                "var": "landlord_action"
               },
-              "retain deposit"
+              "retain_deposit"
             ]
           },
           {
-            "==": [
+            "or": [
               {
-                "var": "complianceStatus"
+                "==": [
+                  {
+                    "var": "bad_faith"
+                  },
+                  true
+                ]
               },
-              "non-compliant"
+              {
+                "and": [
+                  {
+                    "or": [
+                      {
+                        "==": [
+                          {
+                            "var": "failed_compliance_subdivision_3"
+                          },
+                          true
+                        ]
+                      },
+                      {
+                        "==": [
+                          {
+                            "var": "failed_compliance_subdivision_5"
+                          },
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "!": {
+                      "<=": [
+                        {
+                          "var": "time_since_action_commenced"
+                        },
+                        14
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "punitive_damages"
+              },
+              500
             ]
           }
         ]
       },
       "examples": [
         {
-          "landlordAction": "retain deposit",
-          "complianceStatus": "non-compliant"
+          "landlord_action": "retain_deposit",
+          "bad_faith": true,
+          "failed_compliance_subdivision_3": true,
+          "failed_compliance_subdivision_5": false,
+          "time_since_action_commenced": 15,
+          "punitive_damages": 500
         },
         {
-          "landlordAction": "return deposit",
-          "complianceStatus": "compliant"
+          "landlord_action": "retain_deposit",
+          "bad_faith": false,
+          "failed_compliance_subdivision_3": true,
+          "failed_compliance_subdivision_5": true,
+          "time_since_action_commenced": 10,
+          "punitive_damages": 300
         },
         {
-          "landlordAction": "retain deposit",
-          "complianceStatus": "compliant"
+          "landlord_action": "return_deposit",
+          "bad_faith": true,
+          "failed_compliance_subdivision_3": false,
+          "failed_compliance_subdivision_5": false,
+          "time_since_action_commenced": 20,
+          "punitive_damages": 0
         }
       ],
       "variables": [
         {
-          "name": "landlordAction",
+          "name": "landlord_action",
           "description": "The action taken by the landlord regarding the deposit."
         },
         {
-          "name": "complianceStatus",
-          "description": "The compliance status of the landlord with the provisions of the section."
+          "name": "bad_faith",
+          "description": "Whether the landlord's retention of the deposit is in bad faith."
+        },
+        {
+          "name": "failed_compliance_subdivision_3",
+          "description": "Whether the landlord failed to comply with subdivision 3."
+        },
+        {
+          "name": "failed_compliance_subdivision_5",
+          "description": "Whether the landlord failed to comply with subdivision 5."
+        },
+        {
+          "name": "time_since_action_commenced",
+          "description": "The number of days since the action for recovery of the deposit was commenced."
+        },
+        {
+          "name": "punitive_damages",
+          "description": "The amount of punitive damages imposed, capped at $500."
         }
       ],
       "consequences": [
-        "Landlord is subject to punitive damages for bad faith retention of deposit."
+        "Landlord is subject to punitive damages, capped at $500."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "landlord_interest_terminated"
+              },
+              true
+            ]
+          },
+          {
+            "or": [
+              {
+                "<=": [
+                  {
+                    "var": "time_since_interest_terminated"
+                  },
+                  60
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "successor_required_to_return"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "tenant_notified"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "landlord_interest_terminated": true,
+          "time_since_interest_terminated": 30,
+          "successor_required_to_return": false,
+          "tenant_notified": true
+        },
+        {
+          "landlord_interest_terminated": true,
+          "time_since_interest_terminated": 61,
+          "successor_required_to_return": true,
+          "tenant_notified": true
+        },
+        {
+          "landlord_interest_terminated": false,
+          "time_since_interest_terminated": 0,
+          "successor_required_to_return": false,
+          "tenant_notified": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "landlord_interest_terminated",
+          "description": "Whether the landlord's interest in the premises has been terminated."
+        },
+        {
+          "name": "time_since_interest_terminated",
+          "description": "The number of days since the landlord's interest was terminated."
+        },
+        {
+          "name": "successor_required_to_return",
+          "description": "Whether the successor in interest is required to return the deposit."
+        },
+        {
+          "name": "tenant_notified",
+          "description": "Whether the tenant has been notified about the transfer of the deposit."
+        }
+      ],
+      "consequences": [
+        "Landlord or agent is relieved of further liability with respect to the deposit, and tenant is notified of the transfer."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "waiver_attempted"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "waiver_attempted": true
+        },
+        {
+          "waiver_attempted": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "waiver_attempted",
+          "description": "Whether there was an attempted waiver of the section by landlord and tenant."
+        }
+      ],
+      "consequences": [
+        "The waiver is void and unenforceable."
       ]
     }
   ]

@@ -15,10 +15,6 @@ from pydantic import BaseModel, Field
 
 class RuleReview(BaseModel):
     rule_index: int
-    is_correct: bool
-    is_complete: bool
-    is_clear: bool
-    has_good_examples: bool
     feedback: str
     rating: Optional[float] = Field(description="Between 0 and 1")
 
@@ -91,6 +87,7 @@ class ReviewerAgent:
 
         logger.info(f"ReviewerAgent.invoke: is_approved: {reviews.is_approved}")
         logger.info(f"ReviewerAgent.invoke: overall_feedback: {reviews.overall_feedback}")
+        logger.info(reviews.model_dump())
         return {**state, "reviews": reviews.model_dump(), "is_approved": reviews.is_approved}
 
 
