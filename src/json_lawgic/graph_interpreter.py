@@ -105,18 +105,14 @@ class ReviewerAgent:
 
 
 def create_graph(interpreter_llm, reviewer_llm):
-    # Create our agents
     interpreter = InterpreterAgent(interpreter_llm)
     reviewer = ReviewerAgent(reviewer_llm)
 
-    # Create workflow
     workflow = StateGraph(AgentState)
 
-    # Add nodes
     workflow.add_node("interpret", interpreter.invoke)
     workflow.add_node("review", reviewer.invoke)
 
-    # Add edges
     workflow.add_edge("interpret", "review")
 
     def should_continue(state: AgentState):
@@ -124,11 +120,8 @@ def create_graph(interpreter_llm, reviewer_llm):
             return "interpret"
         return END
 
-    workflow.add_conditional_edges("review", should_continue, {"interpret": "interpret", END: END})
+    workflow.add_conditional_edges("review", should_continue)
 
-    # workflow.add_edge("review", "interpret")
-
-    # Add conditional edges
     workflow.set_entry_point("interpret")
 
     return workflow.compile()
