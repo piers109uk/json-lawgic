@@ -215,15 +215,6 @@ Here is a complete DSL specification for JsonLogic, including all supported oper
   Data: `{ "integers": [1, 2, 3, 4, 5] }`
   Result: `[1, 3, 5]`
 
-- **reduce**: Combine all the elements in an array into a single value.
-
-  ```json
-  { "reduce": [{ "var": "integers" }, { "+": [{ "var": "current" }, { "var": "accumulator" }] }, 0] }
-  ```
-
-  Data: `{ "integers": [1, 2, 3, 4, 5] }`
-  Result: `15`
-
 - **all**: Test if all elements in an array pass a test.
 
   ```json
@@ -248,47 +239,8 @@ Here is a complete DSL specification for JsonLogic, including all supported oper
 
   Result: `true`
 
-- **merge**: Merge one or more arrays into one array.
-
-  ```json
-  {
-    "merge": [
-      [1, 2],
-      [3, 4]
-    ]
-  }
-  ```
-
-  Result: `[1, 2, 3, 4]`
-
 - **in**: Test if the first argument is a member of the array.
   ```json
   { "in": ["Ringo", ["John", "Paul", "George", "Ringo"]] }
   ```
   Result: `true`
-
-### String Operations
-
-- **in**: Test if the first argument is a substring of the second.
-
-  ```json
-  { "in": ["Spring", "Springfield"] }
-  ```
-
-  Result: `true`
-
-- **cat**: Concatenate all the supplied arguments.
-
-  ```json
-  { "cat": ["I love", " pie"] }
-  ```
-
-  Result: `"I love pie"`
-
-- **substr**: Get a portion of a string.
-  ```json
-  { "substr": ["jsonlogic", 4] }
-  ```
-  Result: `"logic"`
-
-This specification provides a comprehensive overview of the operations supported by JsonLogic, along with examples to illustrate their usage.

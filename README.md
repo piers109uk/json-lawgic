@@ -45,14 +45,15 @@ To see how I fetched the data, see the [law scraper project](https://github.com/
 # TO DO
 
 - [ ] Run batch requests with the pipeline
-- [ ] Support multiple rules for one law
+- [x] Support multiple rules for one law
 - [ ] Run on a larger body of laws
 - [ ] Classify laws into types using those referenced in [SALI](https://github.com/sali-legal)
 - [ ] Incorporate testing into the pipeline
   - [ ] Fix JsonLogic for Python
-  - [ ] Build self-review capability
+  - [x] Build self-review capability
+  - [ ] Build a dataset for testing
 - [ ] Try running model fast locally https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
-- [ ] Trim JsonLogic spec to reduce input size
+- [ ] Trim/simplify JsonLogic spec to reduce input size
 - [x] Instrument with Langfuse
 - [x] Law search & selector
 - [ ] Support real-time translation of a law into json-logic upon request

@@ -1,0 +1,95 @@
+{
+  "id": "175.05",
+  "url": "https://www.nysenate.gov/legislation/laws/PEN/175.05",
+  "title": "Falsifying business records in the second degree",
+  "text": "\u00a7 175.05 Falsifying business records in the second degree.\n\nA person is guilty of falsifying business records in the second degree\nwhen, with intent to defraud, he:\n\n1. Makes or causes a false entry in the business records of an\nenterprise; or\n\n2. Alters, erases, obliterates, deletes, removes or destroys a true\nentry in the business records of an enterprise; or\n\n3. Omits to make a true entry in the business records of an enterprise\nin violation of a duty to do so which he knows to be imposed upon him by\nlaw or by the nature of his position; or\n\n4. Prevents the making of a true entry or causes the omission thereof\nin the business records of an enterprise.\n\nFalsifying business records in the second degree is a class A\nmisdemeanor.\n",
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "intent_to_defraud"
+          },
+          {
+            "or": [
+              {
+                "var": "false_entry"
+              },
+              {
+                "var": "alter_true_entry"
+              },
+              {
+                "var": "omit_true_entry"
+              },
+              {
+                "var": "prevent_true_entry"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "intent_to_defraud": true,
+          "false_entry": true,
+          "alter_true_entry": false,
+          "omit_true_entry": false,
+          "prevent_true_entry": false
+        },
+        {
+          "intent_to_defraud": true,
+          "false_entry": false,
+          "alter_true_entry": true,
+          "omit_true_entry": false,
+          "prevent_true_entry": false
+        },
+        {
+          "intent_to_defraud": true,
+          "false_entry": false,
+          "alter_true_entry": false,
+          "omit_true_entry": true,
+          "prevent_true_entry": false
+        },
+        {
+          "intent_to_defraud": true,
+          "false_entry": false,
+          "alter_true_entry": false,
+          "omit_true_entry": false,
+          "prevent_true_entry": true
+        },
+        {
+          "intent_to_defraud": false,
+          "false_entry": true,
+          "alter_true_entry": false,
+          "omit_true_entry": false,
+          "prevent_true_entry": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "intent_to_defraud",
+          "description": "The person has the intent to defraud."
+        },
+        {
+          "name": "false_entry",
+          "description": "The person makes or causes a false entry in the business records of an enterprise."
+        },
+        {
+          "name": "alter_true_entry",
+          "description": "The person alters, erases, obliterates, deletes, removes or destroys a true entry in the business records of an enterprise."
+        },
+        {
+          "name": "omit_true_entry",
+          "description": "The person omits to make a true entry in the business records of an enterprise in violation of a duty to do so which he knows to be imposed upon him by law or by the nature of his position."
+        },
+        {
+          "name": "prevent_true_entry",
+          "description": "The person prevents the making of a true entry or causes the omission thereof in the business records of an enterprise."
+        }
+      ],
+      "consequences": [
+        "Falsifying business records in the second degree is a class A misdemeanor."
+      ]
+    }
+  ]
+}
