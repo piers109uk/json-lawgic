@@ -8,12 +8,7 @@
       "rule": {
         "and": [
           {
-            "==": [
-              {
-                "var": "intent_to_defraud"
-              },
-              true
-            ]
+            "var": "intent_to_defraud"
           },
           {
             "or": [
@@ -24,14 +19,7 @@
                 "var": "alter_true_entry"
               },
               {
-                "and": [
-                  {
-                    "var": "omit_true_entry"
-                  },
-                  {
-                    "var": "duty_to_make_entry"
-                  }
-                ]
+                "var": "omit_true_entry"
               },
               {
                 "var": "prevent_true_entry"
@@ -46,79 +34,61 @@
           "false_entry": true,
           "alter_true_entry": false,
           "omit_true_entry": false,
-          "prevent_true_entry": false,
-          "duty_to_make_entry": true
+          "prevent_true_entry": false
         },
         {
           "intent_to_defraud": true,
           "false_entry": false,
           "alter_true_entry": true,
           "omit_true_entry": false,
-          "prevent_true_entry": false,
-          "duty_to_make_entry": true
+          "prevent_true_entry": false
         },
         {
           "intent_to_defraud": true,
           "false_entry": false,
           "alter_true_entry": false,
           "omit_true_entry": true,
-          "prevent_true_entry": false,
-          "duty_to_make_entry": true
+          "prevent_true_entry": false
         },
         {
           "intent_to_defraud": true,
           "false_entry": false,
           "alter_true_entry": false,
           "omit_true_entry": false,
-          "prevent_true_entry": true,
-          "duty_to_make_entry": true
-        },
-        {
-          "intent_to_defraud": true,
-          "false_entry": false,
-          "alter_true_entry": false,
-          "omit_true_entry": true,
-          "prevent_true_entry": false,
-          "duty_to_make_entry": false
+          "prevent_true_entry": true
         },
         {
           "intent_to_defraud": false,
           "false_entry": true,
           "alter_true_entry": false,
           "omit_true_entry": false,
-          "prevent_true_entry": false,
-          "duty_to_make_entry": true
+          "prevent_true_entry": false
         }
       ],
       "variables": [
         {
           "name": "intent_to_defraud",
-          "description": "The person's intention to defraud."
+          "description": "The person has the intent to defraud."
         },
         {
           "name": "false_entry",
-          "description": "Whether a false entry was made or caused in the business records."
+          "description": "The person makes or causes a false entry in the business records of an enterprise."
         },
         {
           "name": "alter_true_entry",
-          "description": "Whether a true entry was altered, erased, obliterated, deleted, removed, or destroyed in the business records."
+          "description": "The person alters, erases, obliterates, deletes, removes or destroys a true entry in the business records of an enterprise."
         },
         {
           "name": "omit_true_entry",
-          "description": "Whether a true entry was omitted in the business records."
+          "description": "The person omits to make a true entry in the business records of an enterprise in violation of a duty to do so which he knows to be imposed upon him by law or by the nature of his position."
         },
         {
           "name": "prevent_true_entry",
-          "description": "Whether the making of a true entry was prevented or its omission was caused in the business records."
-        },
-        {
-          "name": "duty_to_make_entry",
-          "description": "Whether there was a known duty imposed by law or position to make the true entry."
+          "description": "The person prevents the making of a true entry or causes the omission thereof in the business records of an enterprise."
         }
       ],
       "consequences": [
-        "Guilty of falsifying business records in the second degree",
-        "Class A misdemeanor"
+        "Falsifying business records in the second degree is a class A misdemeanor."
       ]
     }
   ]

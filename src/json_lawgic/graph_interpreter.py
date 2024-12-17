@@ -1,5 +1,6 @@
 import asyncio
 import json
+import uuid
 from langgraph.graph import Graph, StateGraph, START, END
 from typing import Annotated, Literal, Optional, TypedDict, cast
 from json_lawgic.data_io import read_json, read_text, write_json
@@ -7,7 +8,7 @@ from json_lawgic.evaluator import JsonLogicEvaluator
 from json_lawgic.model import AIModel, get_model
 from json_lawgic.prompts import PromptManager, PromptType
 from json_lawgic.types import InterpretedLaw, JsonLogicRules, Law
-from json_lawgic.langfuse_setup import get_tracing_handler
+from json_lawgic.langfuse_setup import get_tracing_handler, langfuse
 from json_lawgic.util import pick
 from json_lawgic.logger import logger
 from pydantic import BaseModel, Field
@@ -148,10 +149,11 @@ async def interpret_law_with_review(law: Law) -> InterpretedLaw:
     }
     metadata = pick(law, ["id", "url", "title"])
     langfuse_handler = get_tracing_handler(metadata)
-    final_state = await graph.ainvoke(initial_state, config={"callbacks": [langfuse_handler]})
+    run_id = str(uuid.uuid4())
+
+    final_state = await graph.ainvoke(initial_state, config={"callbacks": [langfuse_handler], "run_id": run_id})
     rules = final_state["current_rules"].model_dump()
-    eval = JsonLogicEvaluator().evaluate(rules, law).model_dump()
-    print(eval)
+    JsonLogicEvaluator().evaluate(rules, law, run_id)
 
     return rules
 
@@ -165,7 +167,7 @@ async def _run_interpret(input_file: str, output_file: str):
 
 if __name__ == "__main__":
     # file_name = "000047905.json"
-    file_name = "1.json"
+    file_name = "2.json"
     input_file = f"data/examples/{file_name}"
 
     output_file = f"data/tests/{file_name}"
