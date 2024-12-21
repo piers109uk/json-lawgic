@@ -15,6 +15,8 @@ PromptType = Literal[
     "evaluate-interpretation",
 ]
 
+# TODO: Assess the quality of the prompts (and recent prompt engineering)
+
 
 class PromptManager:
     @staticmethod
@@ -75,22 +77,25 @@ And here are the corresponding rules interpreted from the law:
 """
 
 review_prompt = """
-You are a critical reviewer of JSON Logic rules that encode legal requirements.
-Your job is to ensure the rules represent the LOGIC of the law as comprehensively as possible. Details covered by variables are not important, but the logic must be comprehensive.
+You are a critical reviewer of JsonLogic rules that represent the given law.
+The JsonLogic rules can evaluate true or false depending on the variables.
+Your job is to ensure the rules represent the LOGIC of the law as comprehensively as possible. The logic must be comprehensive, even if a lot of information is contained in the variables.
 If any of the rules are incorrect or incomplete, provide feedback specifying precisely which elements are missed. 
 If any rule could be expressed in a simpler way, provide that as feedback.
 If any rules which should exist are missing, recommend them as new indexes.
 
-For each rule, provide specific feedback and boolean assessments.
-Only approve the entire ruleset if the law is completely covered and all rules are correct, complete, clear, and have good examples.
+For each rule, list what could be improved or an empty string..
+Only approve the entire ruleset if the law is completely covered and all rules are correct, complete, clear, and have good examples of true/false evaluations.
 
 LAW: 
 {law}
 
 RULES: 
 {rules}
+
 ---
-Remember to only provide feedback on how well the rules match the logic of the law.
+Remember the rules follow the JsonLogic DSL and it should be for them to evaluate true or false depending on the variables.
+Remember to only provide feedback on how well the rules match the logic of the law. 
 """
 
 interpret_with_feedback_prompt = """

@@ -17,15 +17,16 @@ from pydantic import BaseModel, Field
 class RuleReview(BaseModel):
     rule_index: int
     completeness_feedback: str = Field(
-        description="List of missing elements that should be included, or empty string if the rule is complete"
+        description="Brief list of missing elements that should be included, or empty string if the rule is complete",
+        examples=["", "Rule is missing X, Y, and Z."],
     )
     correctness_feedback: str = Field(description="List of incorrect elements or empty string if the rule is correct")
     simplicity_feedback: str = Field(
         description="Feedback recommending a simpler way to express the rule, or an empty string if the rule is simple enough"
     )
-    examples_feedback: str = Field(
-        description="Feedback on the quality of the examples, or an empty string if the examples are good"
-    )
+    # examples_feedback: str = Field(
+    #     description="Whether examples cover true and false evaluations, or an empty string if the examples are good"
+    # )
     variables_feedback: str = Field(
         description="Feedback on the quality of the variables, or an empty string if the variables are comprehensive"
     )
@@ -35,7 +36,10 @@ class RuleReview(BaseModel):
 class RulesReviewResponse(BaseModel):
     reviews: list[RuleReview]
     is_approved: bool
-    overall_feedback: str
+    overall_feedback: str = Field(
+        description="Notes on why the score was less than 1, or an empty string if the score is 1",
+        examples=["", "Rule 0 is missing X.", "Rule 1 could be expressed more simply."],
+    )
     overall_rating: Optional[float] = Field(description="Between 0 and 1")
 
 
@@ -159,8 +163,8 @@ async def _run_interpret(input_file: str, output_file: str):
 
 
 if __name__ == "__main__":
-    # file_name = "000047905.json"
-    file_name = "2.json"
+    file_name = "000047905.json"
+    # file_name = "2.json"
     input_file = f"data/examples/{file_name}"
 
     output_file = f"data/tests/{file_name}"
