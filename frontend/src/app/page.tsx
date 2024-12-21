@@ -1,7 +1,7 @@
 "use client"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import LawDisplay from "./law-display"
 import LawRules from "./law-rules"
 import LawsList from "./laws-list"
@@ -13,7 +13,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 // TODO: reducer?
 // TODO: Move to provider
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const tab = searchParams.get("tab") || "search"
@@ -57,6 +57,16 @@ export default function Home() {
           </TabsContent>
         </Tabs>
       </div>
+    </>
+  )
+}
+
+export default function Home() {
+  return (
+    <>
+      <Suspense>
+        <HomeContent />
+      </Suspense>
     </>
   )
 }
