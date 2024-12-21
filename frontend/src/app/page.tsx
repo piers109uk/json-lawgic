@@ -8,11 +8,17 @@ import LawsList from "./laws-list"
 import { ScaleCodeIcon } from "./scale-code-icon"
 import Search from "./Search"
 import { IStatuteData, showcase, statutes } from "./statutes"
+import { useRouter, useSearchParams } from "next/navigation"
 
 // TODO: reducer?
 // TODO: Move to provider
 
 export default function Home() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const tab = searchParams.get("tab") || "search"
+  const handleTabChange = (value: string) => router.push(`?tab=${value}`)
+
   const [selectedLaw, setSelectedLaw] = useState<IStatuteData>(statutes[0])
 
   return (
@@ -22,7 +28,7 @@ export default function Home() {
           <ScaleCodeIcon />
           <h1 className="text-2xl font-bold">JsonLawgic</h1>
         </header>
-        <Tabs defaultValue="search" className="">
+        <Tabs defaultValue="search" value={tab} onValueChange={handleTabChange} className="">
           <TabsList className="w-full justify-start">
             <TabsTrigger value="search">Search</TabsTrigger>
             <TabsTrigger value="showcase">Showcase</TabsTrigger>
