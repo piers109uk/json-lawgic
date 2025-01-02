@@ -1,0 +1,167 @@
+{
+  "id": "55.08",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.08",
+  "title": "55.08 LICENSE POSTED.",
+  "text": "Immediately upon the receipt of the license issued by the commissioner of commerce, pursuant to the provisions of this chapter, the licensee named therein shall cause the license to be posted and conspicuously displayed in the place of business for which it is issued, so that all persons visiting the place of business may readily see the same. It shall be unlawful for any safe deposit company holding a license to post the license, or permit the license to be posted, upon premises other than that designated therein, or knowingly deface or destroy any such license.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "license_posted"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_displayed_conspicuously"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_posted_correct_location"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_not_defaced"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "license_posted": true,
+          "license_displayed_conspicuously": true,
+          "license_posted_correct_location": true,
+          "license_not_defaced": true
+        },
+        {
+          "license_posted": true,
+          "license_displayed_conspicuously": false,
+          "license_posted_correct_location": true,
+          "license_not_defaced": true
+        },
+        {
+          "license_posted": true,
+          "license_displayed_conspicuously": true,
+          "license_posted_correct_location": false,
+          "license_not_defaced": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "license_posted",
+          "description": "Indicates whether the license is posted at the place of business."
+        },
+        {
+          "name": "license_displayed_conspicuously",
+          "description": "Indicates whether the license is displayed conspicuously so that all visitors can see it."
+        },
+        {
+          "name": "license_posted_correct_location",
+          "description": "Indicates whether the license is posted at the correct location as designated in the license."
+        },
+        {
+          "name": "license_not_defaced",
+          "description": "Indicates whether the license is not defaced or destroyed."
+        }
+      ],
+      "consequences": [
+        "The license is legally compliant and valid."
+      ]
+    },
+    {
+      "rule": {
+        "or": [
+          {
+            "==": [
+              {
+                "var": "license_posted"
+              },
+              false
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_displayed_conspicuously"
+              },
+              false
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_posted_correct_location"
+              },
+              false
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_not_defaced"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "license_posted": false,
+          "license_displayed_conspicuously": true,
+          "license_posted_correct_location": true,
+          "license_not_defaced": true
+        },
+        {
+          "license_posted": true,
+          "license_displayed_conspicuously": false,
+          "license_posted_correct_location": true,
+          "license_not_defaced": true
+        },
+        {
+          "license_posted": true,
+          "license_displayed_conspicuously": true,
+          "license_posted_correct_location": false,
+          "license_not_defaced": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "license_posted",
+          "description": "Indicates whether the license is posted at the place of business."
+        },
+        {
+          "name": "license_displayed_conspicuously",
+          "description": "Indicates whether the license is displayed conspicuously so that all visitors can see it."
+        },
+        {
+          "name": "license_posted_correct_location",
+          "description": "Indicates whether the license is posted at the correct location as designated in the license."
+        },
+        {
+          "name": "license_not_defaced",
+          "description": "Indicates whether the license is not defaced or destroyed."
+        }
+      ],
+      "consequences": [
+        "The license is not legally compliant and may be subject to penalties."
+      ]
+    }
+  ]
+}

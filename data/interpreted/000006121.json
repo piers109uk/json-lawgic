@@ -1,0 +1,209 @@
+{
+  "id": "55.01",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.01",
+  "title": "55.01 DEFINITIONS.",
+  "text": "Unless the language or context clearly indicates that a different meaning is intended, the following words, terms, and phrases shall, for the purposes of the laws of this state, be given the meanings subjoined to them.\nThe words \"safe deposit box\" mean any box, safe, safe deposit box, receptacle, or any part or parts thereof, and any space in a vault, which may be used for the safekeeping and storage of valuable personal property.\nThe words \"valuable personal property\" mean jewelry, plate, money, specie, bullion, stocks, bonds, valuable papers, or other personal property of value.\n\"Person\" means an individual, partnership, unincorporated association or a corporation. \"It\" includes \"he,\" \"she,\" and \"they.\"\n\"Safe deposit company\" means any person who lets out or rents, as lessor, for hire, safe deposit boxes, or space therein.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "term"
+              },
+              "safe deposit box"
+            ]
+          },
+          {
+            "cat": [
+              "any box, safe, safe deposit box, receptacle, or any part or parts thereof, and any space in a vault, which may be used for the safekeeping and storage of valuable personal property"
+            ]
+          },
+          ""
+        ]
+      },
+      "examples": [
+        {
+          "term": "safe deposit box"
+        },
+        {
+          "term": "vault"
+        },
+        {
+          "term": "receptacle"
+        }
+      ],
+      "variables": [
+        {
+          "name": "term",
+          "description": "The word or phrase to be defined according to the law."
+        }
+      ],
+      "consequences": [
+        "The term is defined as any box, safe, safe deposit box, receptacle, or any part or parts thereof, and any space in a vault, which may be used for the safekeeping and storage of valuable personal property."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "term"
+              },
+              "valuable personal property"
+            ]
+          },
+          {
+            "cat": [
+              "jewelry, plate, money, specie, bullion, stocks, bonds, valuable papers, or other personal property of value"
+            ]
+          },
+          ""
+        ]
+      },
+      "examples": [
+        {
+          "term": "valuable personal property"
+        },
+        {
+          "term": "jewelry"
+        },
+        {
+          "term": "money"
+        }
+      ],
+      "variables": [
+        {
+          "name": "term",
+          "description": "The word or phrase to be defined according to the law."
+        }
+      ],
+      "consequences": [
+        "The term is defined as jewelry, plate, money, specie, bullion, stocks, bonds, valuable papers, or other personal property of value."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "term"
+              },
+              "person"
+            ]
+          },
+          {
+            "cat": [
+              "an individual, partnership, unincorporated association or a corporation"
+            ]
+          },
+          ""
+        ]
+      },
+      "examples": [
+        {
+          "term": "person"
+        },
+        {
+          "term": "individual"
+        },
+        {
+          "term": "corporation"
+        }
+      ],
+      "variables": [
+        {
+          "name": "term",
+          "description": "The word or phrase to be defined according to the law."
+        }
+      ],
+      "consequences": [
+        "The term is defined as an individual, partnership, unincorporated association or a corporation."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "term"
+              },
+              "it"
+            ]
+          },
+          {
+            "cat": [
+              "he, she, and they"
+            ]
+          },
+          ""
+        ]
+      },
+      "examples": [
+        {
+          "term": "it"
+        },
+        {
+          "term": "he"
+        },
+        {
+          "term": "they"
+        }
+      ],
+      "variables": [
+        {
+          "name": "term",
+          "description": "The word or phrase to be defined according to the law."
+        }
+      ],
+      "consequences": [
+        "The term includes he, she, and they."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "===": [
+              {
+                "var": "term"
+              },
+              "safe deposit company"
+            ]
+          },
+          {
+            "cat": [
+              "any person who lets out or rents, as lessor, for hire, safe deposit boxes, or space therein"
+            ]
+          },
+          ""
+        ]
+      },
+      "examples": [
+        {
+          "term": "safe deposit company"
+        },
+        {
+          "term": "lessor"
+        },
+        {
+          "term": "rents"
+        }
+      ],
+      "variables": [
+        {
+          "name": "term",
+          "description": "The word or phrase to be defined according to the law."
+        }
+      ],
+      "consequences": [
+        "The term is defined as any person who lets out or rents, as lessor, for hire, safe deposit boxes, or space therein."
+      ]
+    }
+  ]
+}

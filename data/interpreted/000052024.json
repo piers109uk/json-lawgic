@@ -1,0 +1,183 @@
+{
+  "id": "611A.212",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611A.212",
+  "title": "611A.212 PROGRAMS FOR SEXUAL ASSAULT PRIMARY PREVENTION.",
+  "text": "The commissioner of public safety shall award grants for statewide organizations to provide subgrants, support, resources, and technical assistance to sexual assault programs that provide sexual assault primary prevention services to prevent initial perpetration or victimization of sexual assault.\nAny public or private nonprofit agency may apply to the commissioner for a grant. The commissioner may give preference to applications from an agency receiving a grant from the programs for victims of sexual assault under section 611A.211. The application shall be submitted in a form approved by the commissioner.\nEvery public or private nonprofit agency that receives a grant to provide sexual assault primary prevention services shall comply with rules of the commissioner related to the administration of the grant programs.\nFor the purpose of this section, \"sexual assault\" means a violation of sections 609.342 to 609.3453.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "applicant_type"
+              },
+              "nonprofit"
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "agency_type"
+                  },
+                  "public"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "agency_type"
+                  },
+                  "private"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "application_form"
+              },
+              "approved"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "applicant_type": "nonprofit",
+          "agency_type": "public",
+          "application_form": "approved"
+        },
+        {
+          "applicant_type": "nonprofit",
+          "agency_type": "private",
+          "application_form": "approved"
+        },
+        {
+          "applicant_type": "for-profit",
+          "agency_type": "public",
+          "application_form": "approved"
+        }
+      ],
+      "variables": [
+        {
+          "name": "applicant_type",
+          "description": "The type of applicant applying for the grant, either nonprofit or for-profit."
+        },
+        {
+          "name": "agency_type",
+          "description": "The type of agency, either public or private."
+        },
+        {
+          "name": "application_form",
+          "description": "The status of the application form, whether it is approved or not."
+        }
+      ],
+      "consequences": [
+        "The application is eligible for consideration by the commissioner."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "==": [
+              {
+                "var": "receiving_grant"
+              },
+              "yes"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "preference"
+              },
+              "not_given"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "receiving_grant": "yes",
+          "preference": "given"
+        },
+        {
+          "receiving_grant": "no",
+          "preference": "not_given"
+        },
+        {
+          "receiving_grant": "yes",
+          "preference": "not_given"
+        }
+      ],
+      "variables": [
+        {
+          "name": "receiving_grant",
+          "description": "Indicates if the agency is already receiving a grant under section 611A.211."
+        },
+        {
+          "name": "preference",
+          "description": "Indicates if preference is given to the application."
+        }
+      ],
+      "consequences": [
+        "Preference is given to the application."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "grant_received"
+              },
+              "yes"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "compliance"
+              },
+              "rules_followed"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "grant_received": "yes",
+          "compliance": "rules_followed"
+        },
+        {
+          "grant_received": "yes",
+          "compliance": "rules_not_followed"
+        },
+        {
+          "grant_received": "no",
+          "compliance": "rules_followed"
+        }
+      ],
+      "variables": [
+        {
+          "name": "grant_received",
+          "description": "Indicates if the agency has received a grant."
+        },
+        {
+          "name": "compliance",
+          "description": "Indicates if the agency complies with the commissioner's rules."
+        }
+      ],
+      "consequences": [
+        "The agency is in compliance with the grant program rules."
+      ]
+    }
+  ]
+}

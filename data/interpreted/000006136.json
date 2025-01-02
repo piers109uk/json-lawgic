@@ -1,0 +1,137 @@
+{
+  "id": "55.07",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.07",
+  "title": "55.07 DEPOSITS, HOW KEPT; ACCOUNTS KEPT.",
+  "text": "No person shall carry on the business of a safe deposit company as authorized by section 55.02 unless the safe deposit boxes let out or rented by it and the valuable personal property taken and received by it for safekeeping and storage are kept in a fireproof vault approved by the commissioner of commerce.\nEvery licensed safe deposit company shall keep books in which shall be entered an account of all its transactions relative to the letting, renting, or leasing of its safe deposit boxes, and to the receipt of valuable personal property for safekeeping or storage.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "business_type"
+              },
+              "safe_deposit_company"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "authorized_by_section"
+              },
+              "55.02"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "vault_fireproof"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "vault_approved_by_commissioner"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "business_type": "safe_deposit_company",
+          "authorized_by_section": "55.02",
+          "vault_fireproof": true,
+          "vault_approved_by_commissioner": true
+        },
+        {
+          "business_type": "safe_deposit_company",
+          "authorized_by_section": "55.02",
+          "vault_fireproof": false,
+          "vault_approved_by_commissioner": true
+        },
+        {
+          "business_type": "safe_deposit_company",
+          "authorized_by_section": "55.02",
+          "vault_fireproof": true,
+          "vault_approved_by_commissioner": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "business_type",
+          "description": "The type of business being carried on."
+        },
+        {
+          "name": "authorized_by_section",
+          "description": "The section authorizing the business."
+        },
+        {
+          "name": "vault_fireproof",
+          "description": "Whether the vault is fireproof."
+        },
+        {
+          "name": "vault_approved_by_commissioner",
+          "description": "Whether the vault is approved by the commissioner of commerce."
+        }
+      ],
+      "consequences": [
+        "The business can carry on as a safe deposit company."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "licensed"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "books_kept"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed": true,
+          "books_kept": true
+        },
+        {
+          "licensed": true,
+          "books_kept": false
+        },
+        {
+          "licensed": false,
+          "books_kept": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed",
+          "description": "Whether the company is licensed as a safe deposit company."
+        },
+        {
+          "name": "books_kept",
+          "description": "Whether the company keeps books of all transactions."
+        }
+      ],
+      "consequences": [
+        "The company complies with the requirement to keep transaction records."
+      ]
+    }
+  ]
+}

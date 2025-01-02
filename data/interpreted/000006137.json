@@ -1,0 +1,417 @@
+{
+  "id": "56.04",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.04",
+  "title": "56.04 INVESTIGATION; ISSUANCE OF LICENSE; DENIAL; REFUNDS.",
+  "text": "Upon the filing of the application and payment of these fees, the commissioner shall investigate the facts, and if the commissioner shall find (1) that the financial responsibility, experience, character, and general fitness of the applicant, and of the members thereof if the applicant be a copartnership or association, and of the person with direct responsibility for the operation and management of the proposed office are such as to command confidence and to warrant belief that the business will be operated honestly, fairly, and efficiently within the purposes of this chapter, and primarily for purposes other than making loans to finance the purchase of products or services, other than insurance products authorized in this chapter or chapter 62B, offered by the applicant, a person which controls or is controlled by the applicant, or a person which is controlled by persons which also control the applicant; and (2) that the applicant has available for the operation of the business, at the specified location, liquid assets of at least $50,000 (the foregoing facts being conditions precedent to the issuance of a license under this chapter), the commissioner shall thereupon issue and deliver a license to the applicant to make loans, in accordance with the provisions of this chapter, at the location specified in the application. If the commissioner shall not so find, the commissioner shall not issue a license and shall notify the applicant of the denial and return to the applicant the sum paid by the applicant as a license fee, retaining the $500 investigation fee to cover the costs of investigating the application. The commissioner shall approve or deny every application for license hereunder within 60 days from the filing thereof with the fees.\nIf the application is denied, the commissioner shall, within 20 days thereafter, file in the commissioner's office a written decision and findings with respect thereto containing the evidence and the reasons supporting the denial, and forthwith serve upon the applicant a copy thereof.\nThere is hereby appropriated to such persons as are entitled to such refund, from the fund or account in the state treasury to which the money was credited, an amount sufficient to make the refund and payment.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "application_filed"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "fees_paid"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "financial_responsibility"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "experience"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "character"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "general_fitness"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "honest_operation"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "fair_operation"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "efficient_operation"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "primary_purpose"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "liquid_assets"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "liquid_assets_amount"
+              },
+              50000
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "application_filed": true,
+          "fees_paid": true,
+          "financial_responsibility": true,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 50000
+        },
+        {
+          "application_filed": true,
+          "fees_paid": true,
+          "financial_responsibility": false,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 50000
+        },
+        {
+          "application_filed": true,
+          "fees_paid": true,
+          "financial_responsibility": true,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 40000
+        }
+      ],
+      "variables": [
+        {
+          "name": "application_filed",
+          "description": "Indicates if the application has been filed."
+        },
+        {
+          "name": "fees_paid",
+          "description": "Indicates if the required fees have been paid."
+        },
+        {
+          "name": "financial_responsibility",
+          "description": "Indicates if the applicant has financial responsibility."
+        },
+        {
+          "name": "experience",
+          "description": "Indicates if the applicant has the necessary experience."
+        },
+        {
+          "name": "character",
+          "description": "Indicates if the applicant has good character."
+        },
+        {
+          "name": "general_fitness",
+          "description": "Indicates if the applicant has general fitness for the role."
+        },
+        {
+          "name": "honest_operation",
+          "description": "Indicates if the business will be operated honestly."
+        },
+        {
+          "name": "fair_operation",
+          "description": "Indicates if the business will be operated fairly."
+        },
+        {
+          "name": "efficient_operation",
+          "description": "Indicates if the business will be operated efficiently."
+        },
+        {
+          "name": "primary_purpose",
+          "description": "Indicates if the primary purpose is not making loans to finance the purchase of products or services."
+        },
+        {
+          "name": "liquid_assets",
+          "description": "Indicates if the applicant has liquid assets available."
+        },
+        {
+          "name": "liquid_assets_amount",
+          "description": "The amount of liquid assets available for the operation of the business."
+        }
+      ],
+      "consequences": [
+        "Issue and deliver a license to the applicant to make loans at the specified location."
+      ]
+    },
+    {
+      "rule": {
+        "or": [
+          {
+            "!": {
+              "and": [
+                {
+                  "==": [
+                    {
+                      "var": "application_filed"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "fees_paid"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "financial_responsibility"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "experience"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "character"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "general_fitness"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "honest_operation"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "fair_operation"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "efficient_operation"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "primary_purpose"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "liquid_assets"
+                    },
+                    true
+                  ]
+                },
+                {
+                  "==": [
+                    {
+                      "var": "liquid_assets_amount"
+                    },
+                    50000
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "examples": [
+        {
+          "application_filed": true,
+          "fees_paid": true,
+          "financial_responsibility": false,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 50000
+        },
+        {
+          "application_filed": true,
+          "fees_paid": true,
+          "financial_responsibility": true,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 40000
+        },
+        {
+          "application_filed": false,
+          "fees_paid": true,
+          "financial_responsibility": true,
+          "experience": true,
+          "character": true,
+          "general_fitness": true,
+          "honest_operation": true,
+          "fair_operation": true,
+          "efficient_operation": true,
+          "primary_purpose": true,
+          "liquid_assets": true,
+          "liquid_assets_amount": 50000
+        }
+      ],
+      "variables": [
+        {
+          "name": "application_filed",
+          "description": "Indicates if the application has been filed."
+        },
+        {
+          "name": "fees_paid",
+          "description": "Indicates if the required fees have been paid."
+        },
+        {
+          "name": "financial_responsibility",
+          "description": "Indicates if the applicant has financial responsibility."
+        },
+        {
+          "name": "experience",
+          "description": "Indicates if the applicant has the necessary experience."
+        },
+        {
+          "name": "character",
+          "description": "Indicates if the applicant has good character."
+        },
+        {
+          "name": "general_fitness",
+          "description": "Indicates if the applicant has general fitness for the role."
+        },
+        {
+          "name": "honest_operation",
+          "description": "Indicates if the business will be operated honestly."
+        },
+        {
+          "name": "fair_operation",
+          "description": "Indicates if the business will be operated fairly."
+        },
+        {
+          "name": "efficient_operation",
+          "description": "Indicates if the business will be operated efficiently."
+        },
+        {
+          "name": "primary_purpose",
+          "description": "Indicates if the primary purpose is not making loans to finance the purchase of products or services."
+        },
+        {
+          "name": "liquid_assets",
+          "description": "Indicates if the applicant has liquid assets available."
+        },
+        {
+          "name": "liquid_assets_amount",
+          "description": "The amount of liquid assets available for the operation of the business."
+        }
+      ],
+      "consequences": [
+        "Do not issue a license.",
+        "Notify the applicant of the denial.",
+        "Return the sum paid by the applicant as a license fee, retaining the $500 investigation fee.",
+        "File a written decision and findings within 20 days.",
+        "Serve a copy of the decision to the applicant."
+      ]
+    }
+  ]
+}

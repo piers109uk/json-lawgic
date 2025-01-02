@@ -1,0 +1,51 @@
+{
+  "id": "56.0001",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.0001",
+  "title": "56.0001 CITATION.",
+  "text": "Sections 56.001 to 56.26 may be cited as the \"Minnesota Regulated Loan Act.\"",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              56.001,
+              {
+                "var": "section"
+              }
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "section"
+              },
+              56.26
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "section": 56.001
+        },
+        {
+          "section": 56.1
+        },
+        {
+          "section": 56.26
+        }
+      ],
+      "variables": [
+        {
+          "name": "section",
+          "description": "The section number of the law being referenced."
+        }
+      ],
+      "consequences": [
+        "The section may be cited as the 'Minnesota Regulated Loan Act.'"
+      ]
+    }
+  ]
+}

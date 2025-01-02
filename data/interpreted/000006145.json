@@ -1,0 +1,75 @@
+{
+  "id": "55.11",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.11",
+  "title": "55.11 NOT CHARGED WITH NOTICE OF FIDUCIARY RELATION.",
+  "text": "No such safe deposit company shall be obliged to ascertain or take notice of any trust or fiduciary relationship which the tenant of a safe deposit box may bear to the contents thereof, but shall be presumed to deal with the tenant of a box in an individual and not in a representative capacity, and shall be protected if it grants access to a box to the lessee thereof, according to the terms of the contract of rental.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "company_obligation_to_ascertain_trust"
+              },
+              false
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "deal_with_tenant_as_individual"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "protected_if_access_granted_according_to_contract"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "company_obligation_to_ascertain_trust": false,
+          "deal_with_tenant_as_individual": true,
+          "protected_if_access_granted_according_to_contract": true
+        },
+        {
+          "company_obligation_to_ascertain_trust": true,
+          "deal_with_tenant_as_individual": false,
+          "protected_if_access_granted_according_to_contract": false
+        },
+        {
+          "company_obligation_to_ascertain_trust": false,
+          "deal_with_tenant_as_individual": false,
+          "protected_if_access_granted_according_to_contract": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "company_obligation_to_ascertain_trust",
+          "description": "Indicates if the company is obliged to ascertain or take notice of any trust or fiduciary relationship."
+        },
+        {
+          "name": "deal_with_tenant_as_individual",
+          "description": "Indicates if the company deals with the tenant of a box in an individual capacity."
+        },
+        {
+          "name": "protected_if_access_granted_according_to_contract",
+          "description": "Indicates if the company is protected when it grants access to a box according to the terms of the contract of rental."
+        }
+      ],
+      "consequences": [
+        "The company is not obliged to ascertain or take notice of any trust or fiduciary relationship.",
+        "The company deals with the tenant in an individual capacity.",
+        "The company is protected if it grants access according to the contract."
+      ]
+    }
+  ]
+}

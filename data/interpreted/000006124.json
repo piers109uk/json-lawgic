@@ -1,0 +1,78 @@
+{
+  "id": "55.03",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.03",
+  "title": "55.03 LICENSE REQUIRED.",
+  "text": "Except as in this chapter otherwise provided, no person shall exercise the powers granted safe deposit companies by section 55.02 unless licensed so to do.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "person.licensed"
+                  },
+                  false
+                ]
+              },
+              {
+                "in": [
+                  "safe deposit company",
+                  {
+                    "var": "person.powers"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "var": "violation"
+          },
+          null
+        ]
+      },
+      "examples": [
+        {
+          "person": {
+            "licensed": false,
+            "powers": [
+              "safe deposit company"
+            ]
+          }
+        },
+        {
+          "person": {
+            "licensed": true,
+            "powers": [
+              "safe deposit company"
+            ]
+          }
+        },
+        {
+          "person": {
+            "licensed": false,
+            "powers": [
+              "other powers"
+            ]
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "person.licensed",
+          "description": "Indicates whether the person is licensed to exercise the powers."
+        },
+        {
+          "name": "person.powers",
+          "description": "The list of powers the person is exercising."
+        }
+      ],
+      "consequences": [
+        "The person is in violation of the law."
+      ]
+    }
+  ]
+}

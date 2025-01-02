@@ -1,0 +1,217 @@
+{
+  "id": "53B.68",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.68",
+  "title": "53B.68 TRANSITION PERIOD.",
+  "text": "(a) A person licensed in Minnesota to engage in the business of money transmission is not subject to the provisions of this chapter to the extent that this chapter's provisions conflict with current law or establish new requirements not imposed under current law until the licensee renews the licensee's current license or for five months after July 1, 2023, whichever is later.\n(b) Notwithstanding paragraph (a), a licensee is only required to amend the licensee's authorized delegate contracts for contracts entered into or amended after the effective date or the completion of any transition period contemplated under paragraph (a). Nothing in this section limits an authorized delegate's obligations to operate in full compliance with this chapter, as required under section 53B.51, paragraph (c).",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "licensed_in_minnesota"
+              },
+              true
+            ]
+          },
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "conflict_with_current_law"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "new_requirements"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "<=": [
+                  {
+                    "var": "license_renewal_date"
+                  },
+                  {
+                    "var": "five_months_after_july_1_2023"
+                  }
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "current_date"
+                  },
+                  {
+                    "var": "five_months_after_july_1_2023"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed_in_minnesota": true,
+          "conflict_with_current_law": true,
+          "new_requirements": false,
+          "license_renewal_date": "2023-12-01",
+          "five_months_after_july_1_2023": "2023-12-01",
+          "current_date": "2023-11-30"
+        },
+        {
+          "licensed_in_minnesota": true,
+          "conflict_with_current_law": false,
+          "new_requirements": true,
+          "license_renewal_date": "2023-08-01",
+          "five_months_after_july_1_2023": "2023-12-01",
+          "current_date": "2023-12-01"
+        },
+        {
+          "licensed_in_minnesota": false,
+          "conflict_with_current_law": true,
+          "new_requirements": true,
+          "license_renewal_date": "2023-12-01",
+          "five_months_after_july_1_2023": "2023-12-01",
+          "current_date": "2023-11-30"
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed_in_minnesota",
+          "description": "Indicates if the person is licensed in Minnesota for money transmission."
+        },
+        {
+          "name": "conflict_with_current_law",
+          "description": "Indicates if the chapter's provisions conflict with current law."
+        },
+        {
+          "name": "new_requirements",
+          "description": "Indicates if the chapter establishes new requirements not imposed under current law."
+        },
+        {
+          "name": "license_renewal_date",
+          "description": "The date when the licensee renews their current license."
+        },
+        {
+          "name": "five_months_after_july_1_2023",
+          "description": "The date five months after July 1, 2023."
+        },
+        {
+          "name": "current_date",
+          "description": "The current date."
+        }
+      ],
+      "consequences": [
+        "The person is not subject to the provisions of this chapter."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "licensed_in_minnesota"
+              },
+              true
+            ]
+          },
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "contract_entered_after_effective_date"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "contract_amended_after_effective_date"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed_in_minnesota": true,
+          "contract_entered_after_effective_date": true,
+          "contract_amended_after_effective_date": false
+        },
+        {
+          "licensed_in_minnesota": true,
+          "contract_entered_after_effective_date": false,
+          "contract_amended_after_effective_date": true
+        },
+        {
+          "licensed_in_minnesota": false,
+          "contract_entered_after_effective_date": true,
+          "contract_amended_after_effective_date": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed_in_minnesota",
+          "description": "Indicates if the person is licensed in Minnesota for money transmission."
+        },
+        {
+          "name": "contract_entered_after_effective_date",
+          "description": "Indicates if the contract was entered into after the effective date."
+        },
+        {
+          "name": "contract_amended_after_effective_date",
+          "description": "Indicates if the contract was amended after the effective date."
+        }
+      ],
+      "consequences": [
+        "The licensee is required to amend the authorized delegate contracts."
+      ]
+    },
+    {
+      "rule": {
+        "===": [
+          {
+            "var": "authorized_delegate_compliance"
+          },
+          false
+        ]
+      },
+      "examples": [
+        {
+          "authorized_delegate_compliance": false
+        },
+        {
+          "authorized_delegate_compliance": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "authorized_delegate_compliance",
+          "description": "Indicates if the authorized delegate is operating in full compliance with the chapter."
+        }
+      ],
+      "consequences": [
+        "The authorized delegate is not in compliance with section 53B.51, paragraph (c)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "611.273",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.273",
+  "title": "611.273 SURPLUS PROPERTY.",
+  "text": "Notwithstanding the provisions of sections 15.054 and 16B.2975, the Board of Public Defense, in its sole discretion, may provide surplus computers to its part-time employees for their use.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "entity"
+              },
+              "Board of Public Defense"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "item"
+              },
+              "surplus computers"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "recipient"
+              },
+              "part-time employees"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "entity": "Board of Public Defense",
+          "item": "surplus computers",
+          "recipient": "part-time employees"
+        },
+        {
+          "entity": "Board of Public Defense",
+          "item": "surplus computers",
+          "recipient": "full-time employees"
+        },
+        {
+          "entity": "Other Board",
+          "item": "surplus computers",
+          "recipient": "part-time employees"
+        }
+      ],
+      "variables": [
+        {
+          "name": "entity",
+          "description": "The entity making the decision."
+        },
+        {
+          "name": "item",
+          "description": "The item being provided."
+        },
+        {
+          "name": "recipient",
+          "description": "The recipient of the item."
+        }
+      ],
+      "consequences": [
+        "The Board of Public Defense may provide surplus computers to its part-time employees."
+      ]
+    }
+  ]
+}

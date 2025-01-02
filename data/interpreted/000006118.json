@@ -1,0 +1,186 @@
+{
+  "id": "53B.73",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.73",
+  "title": "53B.73 PROPERTY INTERESTS AND ENTITLEMENTS TO VIRTUAL CURRENCY.",
+  "text": "(a) A licensee that has control of virtual currency for one or more persons must maintain control of virtual currency in each type of virtual currency sufficient to satisfy the aggregate entitlements of the persons to the type of virtual currency.\n(b) If a licensee violates paragraph (a), the property interests of the persons in the virtual currency are pro rata property interests in the type of virtual currency to which the persons are entitled, without regard to the time the persons became entitled to the virtual currency or the licensee obtained control of the virtual currency.\n(c) The virtual currency referred to in this section is:\n(1) held for the persons entitled to the virtual currency;\n(2) not property of the licensee;\n(3) not subject to the claims of creditors of the licensee; and\n(4) a permissible investment under this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "licensee_control"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "virtual_currency_sufficient"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensee_control": true,
+          "virtual_currency_sufficient": true
+        },
+        {
+          "licensee_control": true,
+          "virtual_currency_sufficient": false
+        },
+        {
+          "licensee_control": false,
+          "virtual_currency_sufficient": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensee_control",
+          "description": "Indicates if the licensee has control of virtual currency for one or more persons."
+        },
+        {
+          "name": "virtual_currency_sufficient",
+          "description": "Indicates if the licensee maintains control of virtual currency in each type sufficient to satisfy the aggregate entitlements of the persons."
+        }
+      ],
+      "consequences": [
+        "Licensee is compliant with maintaining control of virtual currency."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "violation_of_a"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "pro_rata_property_interests"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "violation_of_a": true,
+          "pro_rata_property_interests": true
+        },
+        {
+          "violation_of_a": true,
+          "pro_rata_property_interests": false
+        },
+        {
+          "violation_of_a": false,
+          "pro_rata_property_interests": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "violation_of_a",
+          "description": "Indicates if there is a violation of maintaining sufficient control of virtual currency."
+        },
+        {
+          "name": "pro_rata_property_interests",
+          "description": "Indicates if the property interests of the persons are pro rata in the type of virtual currency."
+        }
+      ],
+      "consequences": [
+        "Property interests are pro rata in the type of virtual currency."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "held_for_persons"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "not_property_of_licensee"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "not_subject_to_creditors"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "permissible_investment"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "held_for_persons": true,
+          "not_property_of_licensee": true,
+          "not_subject_to_creditors": true,
+          "permissible_investment": true
+        },
+        {
+          "held_for_persons": true,
+          "not_property_of_licensee": false,
+          "not_subject_to_creditors": true,
+          "permissible_investment": true
+        },
+        {
+          "held_for_persons": false,
+          "not_property_of_licensee": true,
+          "not_subject_to_creditors": true,
+          "permissible_investment": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "held_for_persons",
+          "description": "Indicates if the virtual currency is held for the persons entitled to it."
+        },
+        {
+          "name": "not_property_of_licensee",
+          "description": "Indicates if the virtual currency is not the property of the licensee."
+        },
+        {
+          "name": "not_subject_to_creditors",
+          "description": "Indicates if the virtual currency is not subject to the claims of creditors of the licensee."
+        },
+        {
+          "name": "permissible_investment",
+          "description": "Indicates if the virtual currency is a permissible investment under this chapter."
+        }
+      ],
+      "consequences": [
+        "Virtual currency is protected and compliant with legal requirements."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "id": "53B.66",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.66",
+  "title": "53B.66 CRIMINAL PENALTIES.",
+  "text": "(a) A person who intentionally makes a false statement, misrepresentation, or false certification in a record filed or required to be maintained under this chapter or that intentionally makes a false entry or omits a material entry in a record filed or required to be maintained under this chapter is guilty of a felony.\n(b) A person who knowingly engages in an activity for which a license is required under this chapter without being licensed under this chapter, and who receives more than $1,000 in compensation within a 30-day period from the activity, is guilty of a felony.\n(c) A person who knowingly engages in an activity for which a license is required under this chapter without being licensed under this chapter, and who receives more than $500 but less than $1,000 in compensation within a 30-day period from the activity, is guilty of a gross misdemeanor.\n(d) A person who knowingly engages in an activity for which a license is required under this chapter without being licensed under this chapter, and who receives no more than $500 in compensation within a 30-day period from the activity, is guilty of a misdemeanor.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "statement_type"
+                  },
+                  "false statement"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "statement_type"
+                  },
+                  "misrepresentation"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "statement_type"
+                  },
+                  "false certification"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "entry_type"
+                  },
+                  "false entry"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "entry_type"
+                  },
+                  "omitted material entry"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "intent"
+              },
+              "intentionally"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "statement_type": "false statement",
+          "intent": "intentionally",
+          "entry_type": "false entry"
+        },
+        {
+          "statement_type": "misrepresentation",
+          "intent": "intentionally",
+          "entry_type": "omitted material entry"
+        },
+        {
+          "statement_type": "false certification",
+          "intent": "intentionally",
+          "entry_type": "false entry"
+        }
+      ],
+      "variables": [
+        {
+          "name": "statement_type",
+          "description": "The type of statement made in the record."
+        },
+        {
+          "name": "entry_type",
+          "description": "The type of entry made or omitted in the record."
+        },
+        {
+          "name": "intent",
+          "description": "The intent behind making the statement or entry."
+        }
+      ],
+      "consequences": [
+        "Guilty of a felony"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "licensed"
+              },
+              "no"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_required"
+              },
+              "yes"
+            ]
+          },
+          {
+            ">": [
+              {
+                "var": "compensation"
+              },
+              1000
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 1500
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 2000
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 1200
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed",
+          "description": "Whether the person is licensed under the chapter."
+        },
+        {
+          "name": "license_required",
+          "description": "Whether a license is required for the activity under the chapter."
+        },
+        {
+          "name": "compensation",
+          "description": "The amount of compensation received within a 30-day period."
+        }
+      ],
+      "consequences": [
+        "Guilty of a felony"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "licensed"
+              },
+              "no"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_required"
+              },
+              "yes"
+            ]
+          },
+          {
+            "and": [
+              {
+                ">": [
+                  {
+                    "var": "compensation"
+                  },
+                  500
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "compensation"
+                  },
+                  1000
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 600
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 800
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 999
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed",
+          "description": "Whether the person is licensed under the chapter."
+        },
+        {
+          "name": "license_required",
+          "description": "Whether a license is required for the activity under the chapter."
+        },
+        {
+          "name": "compensation",
+          "description": "The amount of compensation received within a 30-day period."
+        }
+      ],
+      "consequences": [
+        "Guilty of a gross misdemeanor"
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "licensed"
+              },
+              "no"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "license_required"
+              },
+              "yes"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "compensation"
+              },
+              500
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 400
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 500
+        },
+        {
+          "licensed": "no",
+          "license_required": "yes",
+          "compensation": 300
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed",
+          "description": "Whether the person is licensed under the chapter."
+        },
+        {
+          "name": "license_required",
+          "description": "Whether a license is required for the activity under the chapter."
+        },
+        {
+          "name": "compensation",
+          "description": "The amount of compensation received within a 30-day period."
+        }
+      ],
+      "consequences": [
+        "Guilty of a misdemeanor"
+      ]
+    }
+  ]
+}

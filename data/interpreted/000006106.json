@@ -1,0 +1,221 @@
+{
+  "id": "53B.64",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.64",
+  "title": "53B.64 AUTHORIZED DELEGATES; SUSPENSION AND REVOCATION.",
+  "text": "(a) The commissioner may issue an order suspending or revoking the designation of an authorized delegate if the commissioner finds:\n(1) the authorized delegate violated this chapter, or an administrative rule adopted or an order issued under this chapter;\n(2) the authorized delegate did not cooperate with an examination or investigation conducted by the commissioner;\n(3) the authorized delegate engaged in fraud, intentional misrepresentation, or gross negligence;\n(4) the authorized delegate is convicted of a violation of a state or federal anti-money laundering statute;\n(5) the competence, experience, character, or general fitness of the authorized delegate or a person in control of the authorized delegate indicates that it is not in the public interest to permit the authorized delegate to provide money transmission; or\n(6) the authorized delegate is engaging in an unsafe or unsound practice.\n(b) When determining whether an authorized delegate is engaging in an unsafe or unsound practice, the commissioner may consider the size and condition of the authorized delegate's provision of money transmission, the magnitude of the loss, the gravity of the violation of this chapter, or an administrative rule adopted or order issued under this chapter, and the previous conduct of the authorized delegate.\n(c) An authorized delegate may apply for relief from a suspension or revocation of designation as an authorized delegate in the same manner as a licensee.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "or": [
+          {
+            "var": "violated_chapter"
+          },
+          {
+            "var": "did_not_cooperate"
+          },
+          {
+            "var": "engaged_in_fraud"
+          },
+          {
+            "var": "convicted_of_aml_violation"
+          },
+          {
+            "var": "not_in_public_interest"
+          },
+          {
+            "var": "unsafe_practice"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "violated_chapter": true,
+          "did_not_cooperate": false,
+          "engaged_in_fraud": false,
+          "convicted_of_aml_violation": false,
+          "not_in_public_interest": false,
+          "unsafe_practice": false
+        },
+        {
+          "violated_chapter": false,
+          "did_not_cooperate": true,
+          "engaged_in_fraud": false,
+          "convicted_of_aml_violation": false,
+          "not_in_public_interest": false,
+          "unsafe_practice": false
+        },
+        {
+          "violated_chapter": false,
+          "did_not_cooperate": false,
+          "engaged_in_fraud": true,
+          "convicted_of_aml_violation": false,
+          "not_in_public_interest": false,
+          "unsafe_practice": false
+        },
+        {
+          "violated_chapter": false,
+          "did_not_cooperate": false,
+          "engaged_in_fraud": false,
+          "convicted_of_aml_violation": true,
+          "not_in_public_interest": false,
+          "unsafe_practice": false
+        },
+        {
+          "violated_chapter": false,
+          "did_not_cooperate": false,
+          "engaged_in_fraud": false,
+          "convicted_of_aml_violation": false,
+          "not_in_public_interest": true,
+          "unsafe_practice": false
+        },
+        {
+          "violated_chapter": false,
+          "did_not_cooperate": false,
+          "engaged_in_fraud": false,
+          "convicted_of_aml_violation": false,
+          "not_in_public_interest": false,
+          "unsafe_practice": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "violated_chapter",
+          "description": "The authorized delegate violated this chapter, or an administrative rule adopted or an order issued under this chapter."
+        },
+        {
+          "name": "did_not_cooperate",
+          "description": "The authorized delegate did not cooperate with an examination or investigation conducted by the commissioner."
+        },
+        {
+          "name": "engaged_in_fraud",
+          "description": "The authorized delegate engaged in fraud, intentional misrepresentation, or gross negligence."
+        },
+        {
+          "name": "convicted_of_aml_violation",
+          "description": "The authorized delegate is convicted of a violation of a state or federal anti-money laundering statute."
+        },
+        {
+          "name": "not_in_public_interest",
+          "description": "The competence, experience, character, or general fitness of the authorized delegate or a person in control of the authorized delegate indicates that it is not in the public interest to permit the authorized delegate to provide money transmission."
+        },
+        {
+          "name": "unsafe_practice",
+          "description": "The authorized delegate is engaging in an unsafe or unsound practice."
+        }
+      ],
+      "consequences": [
+        "The commissioner may issue an order suspending or revoking the designation of an authorized delegate."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "unsafe_practice"
+          },
+          {
+            "or": [
+              {
+                "var": "large_size_condition"
+              },
+              {
+                "var": "large_magnitude_loss"
+              },
+              {
+                "var": "grave_violation"
+              },
+              {
+                "var": "poor_previous_conduct"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "unsafe_practice": true,
+          "large_size_condition": true,
+          "large_magnitude_loss": false,
+          "grave_violation": false,
+          "poor_previous_conduct": false
+        },
+        {
+          "unsafe_practice": true,
+          "large_size_condition": false,
+          "large_magnitude_loss": true,
+          "grave_violation": false,
+          "poor_previous_conduct": false
+        },
+        {
+          "unsafe_practice": true,
+          "large_size_condition": false,
+          "large_magnitude_loss": false,
+          "grave_violation": true,
+          "poor_previous_conduct": false
+        },
+        {
+          "unsafe_practice": true,
+          "large_size_condition": false,
+          "large_magnitude_loss": false,
+          "grave_violation": false,
+          "poor_previous_conduct": true
+        },
+        {
+          "unsafe_practice": false,
+          "large_size_condition": true,
+          "large_magnitude_loss": true,
+          "grave_violation": true,
+          "poor_previous_conduct": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "unsafe_practice",
+          "description": "The authorized delegate is engaging in an unsafe or unsound practice."
+        },
+        {
+          "name": "large_size_condition",
+          "description": "The size and condition of the authorized delegate's provision of money transmission is large."
+        },
+        {
+          "name": "large_magnitude_loss",
+          "description": "The magnitude of the loss is large."
+        },
+        {
+          "name": "grave_violation",
+          "description": "The gravity of the violation of this chapter, or an administrative rule adopted or order issued under this chapter, is severe."
+        },
+        {
+          "name": "poor_previous_conduct",
+          "description": "The previous conduct of the authorized delegate is poor."
+        }
+      ],
+      "consequences": [
+        "The commissioner may consider the practice unsafe or unsound."
+      ]
+    },
+    {
+      "rule": {
+        "var": "apply_for_relief"
+      },
+      "examples": [
+        {
+          "apply_for_relief": true
+        },
+        {
+          "apply_for_relief": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "apply_for_relief",
+          "description": "The authorized delegate applies for relief from a suspension or revocation of designation as an authorized delegate."
+        }
+      ],
+      "consequences": [
+        "The authorized delegate may apply for relief in the same manner as a licensee."
+      ]
+    }
+  ]
+}

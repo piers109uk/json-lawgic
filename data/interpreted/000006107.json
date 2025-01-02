@@ -1,0 +1,36 @@
+{
+  "id": "53B.65",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.65",
+  "title": "53B.65 ENFORCEMENT.",
+  "text": "Section 45.027 applies to this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "var": [
+          "Section 45.027"
+        ]
+      },
+      "examples": [
+        {
+          "Section 45.027": true
+        },
+        {
+          "Section 45.027": false
+        },
+        {
+          "Section 45.027": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "Section 45.027",
+          "description": "Indicates whether Section 45.027 is applicable."
+        }
+      ],
+      "consequences": [
+        "This chapter is subject to the provisions of Section 45.027."
+      ]
+    }
+  ]
+}

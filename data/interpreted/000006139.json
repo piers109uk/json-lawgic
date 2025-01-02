@@ -1,0 +1,300 @@
+{
+  "id": "56.07",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.07",
+  "title": "56.07 CONTROL OVER LOCATION.",
+  "text": "Not more than one place of business shall be maintained under the same license, but the commissioner may issue more than one license to the same licensee upon compliance with all the provisions of this chapter governing an original issuance of a license, for each such new license. To the extent that previously filed applicable information remains substantially unchanged, the applicant need not refile this information, unless requested.\nWhen a licensee shall wish to change a place of business, the licensee shall give written notice thereof 30 days in advance to the commissioner, who shall within 30 days of receipt of such notice, issue an amended license approving the change. No change in the place of business of a licensee to a location outside of its current trade area or more than 25 miles from its present location, whichever distance is greater, shall be permitted under the same license unless all of the requirements of section 56.04 have been met.\nA licensed location must be open for business and examination purposes on a schedule provided to and approved by the commissioner. This schedule of regular business must be conspicuously posted at the licensed location.\nLicensed locations providing limited services on an interactive telephone-customer service communications terminal are required to comply with paragraphs (a) to (c).\n(a) The licensee must maintain business books, accounts, and records on a suitable alternative system of maintenance approved by the commissioner.\n(b) The license required to be posted under section 56.05 may be displayed on the customer service communications terminal screen for a period of no less than 15 seconds.\n(c) The full and accurate schedule of charges required by section 56.14, clause (5), may be displayed on the customer service communications terminal screen for no less than 20 seconds.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "places_of_business"
+              },
+              1
+            ]
+          },
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "license_type"
+                  },
+                  "original"
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "===": [
+                      {
+                        "var": "license_type"
+                      },
+                      "new"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "compliance_with_provisions"
+                      },
+                      true
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "places_of_business": 1,
+          "license_type": "original",
+          "compliance_with_provisions": true
+        },
+        {
+          "places_of_business": 2,
+          "license_type": "new",
+          "compliance_with_provisions": true
+        },
+        {
+          "places_of_business": 2,
+          "license_type": "original",
+          "compliance_with_provisions": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "places_of_business",
+          "description": "The number of places of business maintained under the same license."
+        },
+        {
+          "name": "license_type",
+          "description": "The type of license being issued, either 'original' or 'new'."
+        },
+        {
+          "name": "compliance_with_provisions",
+          "description": "Whether the licensee has complied with all provisions governing an original issuance of a license."
+        }
+      ],
+      "consequences": [
+        "A license can be issued or maintained."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "change_notice_given"
+              },
+              true
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "days_notice"
+              },
+              30
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "change_notice_given": true,
+          "days_notice": 30
+        },
+        {
+          "change_notice_given": false,
+          "days_notice": 20
+        },
+        {
+          "change_notice_given": true,
+          "days_notice": 31
+        }
+      ],
+      "variables": [
+        {
+          "name": "change_notice_given",
+          "description": "Whether the licensee has given written notice of a change in place of business."
+        },
+        {
+          "name": "days_notice",
+          "description": "The number of days in advance the notice was given."
+        }
+      ],
+      "consequences": [
+        "An amended license approving the change is issued."
+      ]
+    },
+    {
+      "rule": {
+        "or": [
+          {
+            "<=": [
+              {
+                "var": "distance_change"
+              },
+              25
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "requirements_met"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "distance_change": 20,
+          "requirements_met": false
+        },
+        {
+          "distance_change": 30,
+          "requirements_met": true
+        },
+        {
+          "distance_change": 30,
+          "requirements_met": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "distance_change",
+          "description": "The distance of the change in place of business from the present location."
+        },
+        {
+          "name": "requirements_met",
+          "description": "Whether all requirements of section 56.04 have been met."
+        }
+      ],
+      "consequences": [
+        "Change in place of business is permitted under the same license."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "location_open"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "schedule_approved"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "location_open": true,
+          "schedule_approved": true
+        },
+        {
+          "location_open": false,
+          "schedule_approved": true
+        },
+        {
+          "location_open": true,
+          "schedule_approved": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "location_open",
+          "description": "Whether the licensed location is open for business and examination purposes."
+        },
+        {
+          "name": "schedule_approved",
+          "description": "Whether the schedule of regular business is approved by the commissioner."
+        }
+      ],
+      "consequences": [
+        "Licensed location is compliant with business operation requirements."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "books_maintenance_approved"
+              },
+              true
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "license_display_time"
+              },
+              15
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "charges_display_time"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "books_maintenance_approved": true,
+          "license_display_time": 15,
+          "charges_display_time": 20
+        },
+        {
+          "books_maintenance_approved": false,
+          "license_display_time": 15,
+          "charges_display_time": 20
+        },
+        {
+          "books_maintenance_approved": true,
+          "license_display_time": 10,
+          "charges_display_time": 25
+        }
+      ],
+      "variables": [
+        {
+          "name": "books_maintenance_approved",
+          "description": "Whether the business books, accounts, and records are maintained on a suitable alternative system approved by the commissioner."
+        },
+        {
+          "name": "license_display_time",
+          "description": "The time in seconds the license is displayed on the customer service communications terminal screen."
+        },
+        {
+          "name": "charges_display_time",
+          "description": "The time in seconds the schedule of charges is displayed on the customer service communications terminal screen."
+        }
+      ],
+      "consequences": [
+        "Licensed location providing limited services is compliant with display requirements."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "624.30",
+  "url": "https://www.revisor.mn.gov/statutes/cite/624.30",
+  "title": "624.30 MANUFACTURE AND DISTRIBUTION OF TOKENS, WHEN PROHIBITED.",
+  "text": "The manufacture, sale, offering for sale, advertising for sale, or distribution of tokens, checks, or slugs similar in size and shape to lawful coin of the United States with knowledge or reason to believe that such tokens, checks, or slugs may be used in substitution for any such lawful coin in any vending machine, parking meter, service meter, coin box telephone, or other coin receptacle designed to receive or be operated only by lawful coin of the United States in connection with the sale, use, or enjoyment of property, privilege, or service, is hereby prohibited.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "manufacture"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "sale"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "offering for sale"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "advertising for sale"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "action"
+                  },
+                  "distribution"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "item_type"
+              },
+              "tokens"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "item_shape"
+              },
+              "similar"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "item_size"
+              },
+              "similar"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "coin_type"
+              },
+              "lawful coin of the United States"
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "usage_intent"
+                  },
+                  "vending machine"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_intent"
+                  },
+                  "parking meter"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_intent"
+                  },
+                  "service meter"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_intent"
+                  },
+                  "coin box telephone"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_intent"
+                  },
+                  "other coin receptacle"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "operation_requirement"
+              },
+              "lawful coin of the United States"
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "usage_context"
+                  },
+                  "sale"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_context"
+                  },
+                  "use"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_context"
+                  },
+                  "enjoyment of property"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_context"
+                  },
+                  "privilege"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "usage_context"
+                  },
+                  "service"
+                ]
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "knowledge"
+                  },
+                  "knowledge"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "knowledge"
+                  },
+                  "reason to believe"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "action": "manufacture",
+          "item_type": "tokens",
+          "item_shape": "similar",
+          "item_size": "similar",
+          "coin_type": "lawful coin of the United States",
+          "usage_intent": "vending machine",
+          "operation_requirement": "lawful coin of the United States",
+          "usage_context": "sale",
+          "knowledge": "knowledge"
+        },
+        {
+          "action": "sale",
+          "item_type": "tokens",
+          "item_shape": "similar",
+          "item_size": "similar",
+          "coin_type": "lawful coin of the United States",
+          "usage_intent": "parking meter",
+          "operation_requirement": "lawful coin of the United States",
+          "usage_context": "use",
+          "knowledge": "reason to believe"
+        },
+        {
+          "action": "advertising for sale",
+          "item_type": "tokens",
+          "item_shape": "similar",
+          "item_size": "similar",
+          "coin_type": "lawful coin of the United States",
+          "usage_intent": "coin box telephone",
+          "operation_requirement": "lawful coin of the United States",
+          "usage_context": "service",
+          "knowledge": "knowledge"
+        }
+      ],
+      "variables": [
+        {
+          "name": "action",
+          "description": "The action being performed, such as manufacture, sale, offering for sale, advertising for sale, or distribution."
+        },
+        {
+          "name": "item_type",
+          "description": "The type of item, such as tokens, checks, or slugs."
+        },
+        {
+          "name": "item_shape",
+          "description": "The shape of the item, which should be similar to lawful coin."
+        },
+        {
+          "name": "item_size",
+          "description": "The size of the item, which should be similar to lawful coin."
+        },
+        {
+          "name": "coin_type",
+          "description": "The type of coin, specifically lawful coin of the United States."
+        },
+        {
+          "name": "usage_intent",
+          "description": "The intended use of the item, such as in vending machines, parking meters, service meters, coin box telephones, or other coin receptacles."
+        },
+        {
+          "name": "operation_requirement",
+          "description": "The requirement for operation, specifically lawful coin of the United States."
+        },
+        {
+          "name": "usage_context",
+          "description": "The context in which the item is used, such as sale, use, enjoyment of property, privilege, or service."
+        },
+        {
+          "name": "knowledge",
+          "description": "The knowledge or reason to believe that the item may be used in substitution for lawful coin."
+        }
+      ],
+      "consequences": [
+        "Prohibition of the specified actions with the described items."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "id": "53B.59",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.59",
+  "title": "53B.59 NET WORTH.",
+  "text": "(a) A licensee under this chapter must maintain at all times a tangible net worth that is the greater of: (1) $100,000; or (2) three percent of total assets for the first $100,000,000; two percent of additional assets between $100,000,000 to $1,000,000,000; and one-half percent of additional assets over $1,000,000,000.\n(b) Tangible net worth must be demonstrated in the initial application by the applicant's most recent audited or unaudited financial statements under section 53B.38, paragraph (b), clause (6).\n(c) Notwithstanding paragraphs (a) and (b), the commissioner has the authority, for good cause shown, to exempt any applicant or licensee in part or in whole from the requirements of this section.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "or": [
+          {
+            "===": [
+              {
+                "var": "exempted"
+              },
+              true
+            ]
+          },
+          {
+            "and": [
+              {
+                "<=": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  100000
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "total_assets"
+                  },
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "<=": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  100000
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "total_assets"
+                  },
+                  100000000
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  {
+                    "*": [
+                      0.03,
+                      {
+                        "var": "total_assets"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "<=": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  100000
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "total_assets"
+                  },
+                  1000000000
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  {
+                    "+": [
+                      {
+                        "*": [
+                          0.03,
+                          100000000
+                        ]
+                      },
+                      {
+                        "*": [
+                          0.02,
+                          {
+                            "-": [
+                              {
+                                "var": "total_assets"
+                              },
+                              100000000
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "<=": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  100000
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "tangible_net_worth"
+                  },
+                  {
+                    "+": [
+                      {
+                        "*": [
+                          0.03,
+                          100000000
+                        ]
+                      },
+                      {
+                        "*": [
+                          0.02,
+                          900000000
+                        ]
+                      },
+                      {
+                        "*": [
+                          0.005,
+                          {
+                            "-": [
+                              {
+                                "var": "total_assets"
+                              },
+                              1000000000
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "tangible_net_worth": 150000,
+          "total_assets": 5000000,
+          "exempted": false
+        },
+        {
+          "tangible_net_worth": 500000,
+          "total_assets": 200000000,
+          "exempted": false
+        },
+        {
+          "tangible_net_worth": 1000000,
+          "total_assets": 2000000000,
+          "exempted": false
+        },
+        {
+          "tangible_net_worth": 50000,
+          "total_assets": 0,
+          "exempted": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "tangible_net_worth",
+          "description": "The tangible net worth of the licensee."
+        },
+        {
+          "name": "total_assets",
+          "description": "The total assets of the licensee."
+        },
+        {
+          "name": "exempted",
+          "description": "Whether the licensee is exempted from the requirements by the commissioner."
+        }
+      ],
+      "consequences": [
+        "Licensee meets the tangible net worth requirement."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "id": "53B.63",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.63",
+  "title": "53B.63 SUSPENSION; REVOCATION.",
+  "text": "(a) The commissioner may suspend or revoke a license or order a licensee to revoke the designation of an authorized delegate if:\n(1) the licensee violates this chapter, or an administrative rule adopted or an order issued under this chapter;\n(2) the licensee does not cooperate with an examination or investigation conducted by the commissioner;\n(3) the licensee engages in fraud, intentional misrepresentation, or gross negligence;\n(4) an authorized delegate is convicted of a violation of a state or federal statute prohibiting money laundering, or violates an administrative rule adopted or an order issued under this chapter, as a result of the licensee's willful misconduct or willful blindness;\n(5) the competence, experience, character, or general fitness of the licensee, authorized delegate, person in control of a licensee, key individual, or responsible person of the authorized delegate indicates that it is not in the public interest to permit the person to provide money transmission;\n(6) the licensee engages in an unsafe or unsound practice;\n(7) the licensee is insolvent, suspends payment of the licensee's obligations, or makes a general assignment for the benefit of the licensee's creditors; or\n(8) the licensee does not remove an authorized delegate after the commissioner issues and serves upon the licensee a final order that includes a finding that the authorized delegate has violated this chapter.\n(b) When determining whether a licensee is engaging in an unsafe or unsound practice, the commissioner may consider the size and condition of the licensee's money transmission, the magnitude of the loss, the gravity of the violation of this chapter, and the previous conduct of the person involved.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "or": [
+          {
+            "var": "licensee_violates_chapter"
+          },
+          {
+            "var": "licensee_does_not_cooperate"
+          },
+          {
+            "var": "licensee_engages_in_fraud"
+          },
+          {
+            "var": "delegate_convicted_due_to_licensee"
+          },
+          {
+            "var": "competence_not_in_public_interest"
+          },
+          {
+            "var": "licensee_engages_in_unsafe_practice"
+          },
+          {
+            "var": "licensee_insolvent"
+          },
+          {
+            "var": "licensee_does_not_remove_delegate_after_order"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensee_violates_chapter": true,
+          "licensee_does_not_cooperate": false,
+          "licensee_engages_in_fraud": false,
+          "delegate_convicted_due_to_licensee": false,
+          "competence_not_in_public_interest": false,
+          "licensee_engages_in_unsafe_practice": false,
+          "licensee_insolvent": false,
+          "licensee_does_not_remove_delegate_after_order": false
+        },
+        {
+          "licensee_violates_chapter": false,
+          "licensee_does_not_cooperate": true,
+          "licensee_engages_in_fraud": false,
+          "delegate_convicted_due_to_licensee": false,
+          "competence_not_in_public_interest": false,
+          "licensee_engages_in_unsafe_practice": false,
+          "licensee_insolvent": false,
+          "licensee_does_not_remove_delegate_after_order": false
+        },
+        {
+          "licensee_violates_chapter": false,
+          "licensee_does_not_cooperate": false,
+          "licensee_engages_in_fraud": false,
+          "delegate_convicted_due_to_licensee": false,
+          "competence_not_in_public_interest": false,
+          "licensee_engages_in_unsafe_practice": false,
+          "licensee_insolvent": false,
+          "licensee_does_not_remove_delegate_after_order": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensee_violates_chapter",
+          "description": "The licensee violates this chapter, or an administrative rule adopted or an order issued under this chapter."
+        },
+        {
+          "name": "licensee_does_not_cooperate",
+          "description": "The licensee does not cooperate with an examination or investigation conducted by the commissioner."
+        },
+        {
+          "name": "licensee_engages_in_fraud",
+          "description": "The licensee engages in fraud, intentional misrepresentation, or gross negligence."
+        },
+        {
+          "name": "delegate_convicted_due_to_licensee",
+          "description": "An authorized delegate is convicted of a violation of a state or federal statute prohibiting money laundering, or violates an administrative rule adopted or an order issued under this chapter, as a result of the licensee's willful misconduct or willful blindness."
+        },
+        {
+          "name": "competence_not_in_public_interest",
+          "description": "The competence, experience, character, or general fitness of the licensee, authorized delegate, person in control of a licensee, key individual, or responsible person of the authorized delegate indicates that it is not in the public interest to permit the person to provide money transmission."
+        },
+        {
+          "name": "licensee_engages_in_unsafe_practice",
+          "description": "The licensee engages in an unsafe or unsound practice."
+        },
+        {
+          "name": "licensee_insolvent",
+          "description": "The licensee is insolvent, suspends payment of the licensee's obligations, or makes a general assignment for the benefit of the licensee's creditors."
+        },
+        {
+          "name": "licensee_does_not_remove_delegate_after_order",
+          "description": "The licensee does not remove an authorized delegate after the commissioner issues and serves upon the licensee a final order that includes a finding that the authorized delegate has violated this chapter."
+        }
+      ],
+      "consequences": [
+        "The commissioner may suspend or revoke a license or order a licensee to revoke the designation of an authorized delegate."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "licensee_engages_in_unsafe_practice"
+          },
+          {
+            "<": [
+              {
+                "var": "size_and_condition_of_money_transmission"
+              },
+              {
+                "var": "magnitude_of_loss"
+              },
+              {
+                "var": "gravity_of_violation"
+              },
+              {
+                "var": "previous_conduct"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensee_engages_in_unsafe_practice": true,
+          "size_and_condition_of_money_transmission": 1,
+          "magnitude_of_loss": 2,
+          "gravity_of_violation": 3,
+          "previous_conduct": 4
+        },
+        {
+          "licensee_engages_in_unsafe_practice": false,
+          "size_and_condition_of_money_transmission": 2,
+          "magnitude_of_loss": 1,
+          "gravity_of_violation": 3,
+          "previous_conduct": 4
+        },
+        {
+          "licensee_engages_in_unsafe_practice": true,
+          "size_and_condition_of_money_transmission": 3,
+          "magnitude_of_loss": 2,
+          "gravity_of_violation": 1,
+          "previous_conduct": 4
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensee_engages_in_unsafe_practice",
+          "description": "The licensee engages in an unsafe or unsound practice."
+        },
+        {
+          "name": "size_and_condition_of_money_transmission",
+          "description": "The size and condition of the licensee's money transmission."
+        },
+        {
+          "name": "magnitude_of_loss",
+          "description": "The magnitude of the loss."
+        },
+        {
+          "name": "gravity_of_violation",
+          "description": "The gravity of the violation of this chapter."
+        },
+        {
+          "name": "previous_conduct",
+          "description": "The previous conduct of the person involved."
+        }
+      ],
+      "consequences": [
+        "The commissioner may consider these factors when determining whether a licensee is engaging in an unsafe or unsound practice."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,801 @@
+{
+  "id": "53B.62",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.62",
+  "title": "53B.62 PERMISSIBLE INVESTMENTS.",
+  "text": "The following investments are permissible under section 53B.61:\n(1) cash, including demand deposits, savings deposits, and funds in accounts held for the benefit of the licensee's customers in a federally insured depository financial institution; and cash equivalents, including ACH items in transit to the licensee and ACH items or international wires in transit to a payee, cash in transit via armored car, cash in smart safes, cash in licensee-owned locations, debit card or credit card funded transmission receivables owed by any bank, or money market mutual funds rated AAA or the equivalent from any eligible rating service;\n(2) certificates of deposit or senior debt obligations of an insured depository institution, as defined in section 3 of the Federal Deposit Insurance Act, United States Code, title 12, section 1813, as amended or recodified from time to time, or as defined under the federal Credit Union Act, United States Code, title 12, section 1781, as amended or recodified from time to time;\n(3) an obligation of the United States or a commission, agency, or instrumentality thereof; an obligation that is guaranteed fully as to principal and interest by the United States; or an obligation of a state or a governmental subdivision, agency, or instrumentality thereof;\n(4) the full drawable amount of an irrevocable standby letter of credit, for which the stated beneficiary is the commissioner, that stipulates that the beneficiary need only draw a sight draft under the letter of credit and present the sight draft to obtain funds up to the letter of credit amount within seven days of presentation of the items required by subdivision 2, paragraph (c); and\n(5) one hundred percent of the surety bond or deposit provided for under section 53B.60 that exceeds the average daily money transmission liability in Minnesota.\n(a) A letter of credit under subdivision 1, clause (4), must:\n(1) be issued by a federally insured depository financial institution, a foreign bank that is authorized under federal law to maintain a federal agency or federal branch office in a state or states, or a foreign bank that is authorized under state law to maintain a branch in a state that: (i) bears an eligible rating or whose parent company bears an eligible rating; and (ii) is regulated, supervised, and examined by United States federal or state authorities having regulatory authority over banks, credit unions, and trust companies;\n(2) be irrevocable, unconditional, and indicate that it is not subject to any condition or qualifications outside of the letter of credit;\n(3) not contain reference to any other agreements, documents, or entities, or otherwise provide for any security interest in the licensee; and\n(4) contain an issue date and expiration date, and expressly provide for automatic extension without a written amendment, for an additional period of one year from the present or each future expiration date, unless the issuer of the letter of credit notifies the commissioner in writing by certified or registered mail or courier mail or other receipted means, at least 60 days before any expiration date, that the irrevocable letter of credit will not be extended.\n(b) In the event of any notice of expiration or nonextension of a letter of credit issued under paragraph (a), clause (4), the licensee must demonstrate to the satisfaction of the commissioner, 15 days before the letter or credit's expiration, that the licensee maintains and will maintain permissible investments in accordance with section 53B.61, paragraph (a), upon the expiration of the letter of credit. If the licensee is not able to do so, the commissioner may draw on the letter of credit in an amount up to the amount necessary to meet the licensee's requirements to maintain permissible investments in accordance with section 53B.61, paragraph (a). Any draw under this paragraph must be offset against the licensee's outstanding money transmission obligations. The drawn funds must be held in trust by the commissioner or the commissioner's designated agent, to the extent authorized by law, as agent for the benefit of the purchasers and holders of the licensee's outstanding money transmission obligations.\n(c) The letter of credit must provide that the issuer of the letter of credit must honor, at sight, a presentation made by the beneficiary to the issuer of the following documents on or before the expiration date of the letter of credit:\n(1) the original letter of credit, including any amendments; and\n(2) a written statement from the beneficiary stating that any of the following events have occurred:\n(i) the filing of a petition by or against the licensee under the United States Bankruptcy Code, United States Code, title 11, sections 101 to 110, as amended or recodified from time to time, for bankruptcy or reorganization;\n(ii) the filing of a petition by or against the licensee for receivership, or the commencement of any other judicial or administrative proceeding for the licensee's dissolution or reorganization;\n(iii) the seizure of assets of a licensee by a commissioner of any other state pursuant to an emergency order issued in accordance with applicable law, on the basis of an action, violation, or condition that has caused or is likely to cause the insolvency of the licensee; or\n(iv) the beneficiary has received notice of expiration or nonextension of a letter of credit and the licensee failed to demonstrate to the satisfaction of the beneficiary that the licensee will maintain permissible investments in accordance with section 53B.61, paragraph (a), upon the expiration or nonextension of the letter of credit.\n(d) The commissioner may designate an agent to serve on the commissioner's behalf as beneficiary to a letter of credit, provided the agent and letter of credit meet requirements the commissioner establishes. The commissioner's agent may serve as agent for multiple licensing authorities for a single irrevocable letter of credit if the proceeds of the drawable amount for the purposes of subdivision 1, clause (4), and this subdivision are assigned to the commissioner.\n(e) The commissioner is authorized to participate in multistate processes designed to facilitate the issuance and administration of letters of credit, including but not limited to services provided by the NMLS and State Regulatory Registry, LLC.\nUnless the commissioner by administrative rule or order otherwise permits an investment to exceed the limit set forth in this subdivision, the following investments are permissible under section 53B.61 to the extent specified:\n(1) receivables that are payable to a licensee from its authorized delegates in the ordinary course of business that are less than seven days old, up to 50 percent of the aggregate value of the licensee's total permissible investments;\n(2) of the receivables permissible under clause (1), receivables that are payable to a licensee from a single authorized delegate in the ordinary course of business may not exceed ten percent of the aggregate value of the licensee's total permissible investments;\n(3) the following investments are permissible up to 20 percent per category and combined up to 50 percent of the aggregate value of the licensee's total permissible investments:\n(i) a short-term investment of up to six months bearing an eligible rating;\n(ii) commercial paper bearing an eligible rating;\n(iii) a bill, note, bond, or debenture bearing an eligible rating;\n(iv) United States tri-party repurchase agreements collateralized at 100 percent or more with United States government or agency securities, municipal bonds, or other securities bearing an eligible rating;\n(v) money market mutual funds rated less than \"AAA\" and equal to or higher than \"A-\" by S&P, or the equivalent from any other eligible rating service; and\n(vi) a mutual fund or other investment fund composed solely and exclusively of one or more permissible investments listed in subdivision 1, clauses (1) to (3); and\n(4) cash, including demand deposits, savings deposits, and funds in accounts held for the benefit of the licensee's customers, at foreign depository institutions are permissible up to ten percent of the aggregate value of the licensee's total permissible investments, if the licensee has received a satisfactory rating in the licensee's most recent examination and the foreign depository institution:\n(i) has an eligible rating;\n(ii) is registered under the Foreign Account Tax Compliance Act, Public Law 111-147;\n(iii) is not located in any country subject to sanctions from the Office of Foreign Asset Control; and\n(iv) is not located in a high-risk or noncooperative jurisdiction, as designated by the Financial Action Task Force.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "or": [
+          {
+            "in": [
+              {
+                "var": "investment_type"
+              },
+              [
+                "cash",
+                "demand deposits",
+                "savings deposits",
+                "funds in accounts held for the benefit of the licensee's customers",
+                "ACH items in transit to the licensee",
+                "ACH items or international wires in transit to a payee",
+                "cash in transit via armored car",
+                "cash in smart safes",
+                "cash in licensee-owned locations",
+                "debit card or credit card funded transmission receivables owed by any bank",
+                "money market mutual funds rated AAA"
+              ]
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "investment_type"
+              },
+              [
+                "certificates of deposit",
+                "senior debt obligations of an insured depository institution"
+              ]
+            ],
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "insured_depository_institution"
+                  },
+                  true
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "federal_credit_union"
+                  },
+                  true
+                ]
+              }
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "investment_type"
+              },
+              [
+                "obligation of the United States",
+                "obligation of a commission, agency, or instrumentality of the United States",
+                "obligation guaranteed fully as to principal and interest by the United States",
+                "obligation of a state or a governmental subdivision, agency, or instrumentality"
+              ]
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "cash"
+        },
+        {
+          "investment_type": "certificates of deposit"
+        },
+        {
+          "investment_type": "obligation of the United States"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "insured_depository_institution",
+          "description": "Whether the institution is an insured depository institution."
+        },
+        {
+          "name": "federal_credit_union",
+          "description": "Whether the institution is a federal credit union."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "irrevocable standby letter of credit"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "beneficiary"
+              },
+              "commissioner"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "issuer_type"
+              },
+              "federally insured depository financial institution"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "irrevocable"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "unconditional"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "automatic_extension"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "irrevocable standby letter of credit",
+          "beneficiary": "commissioner",
+          "issuer_type": "federally insured depository financial institution",
+          "irrevocable": true,
+          "unconditional": true,
+          "automatic_extension": true
+        },
+        {
+          "investment_type": "irrevocable standby letter of credit",
+          "beneficiary": "commissioner",
+          "issuer_type": "foreign bank",
+          "irrevocable": true,
+          "unconditional": true,
+          "automatic_extension": false
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "beneficiary",
+          "description": "The beneficiary of the letter of credit."
+        },
+        {
+          "name": "issuer_type",
+          "description": "The type of institution issuing the letter of credit."
+        },
+        {
+          "name": "irrevocable",
+          "description": "Whether the letter of credit is irrevocable."
+        },
+        {
+          "name": "unconditional",
+          "description": "Whether the letter of credit is unconditional."
+        },
+        {
+          "name": "automatic_extension",
+          "description": "Whether the letter of credit has automatic extension."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "surety bond or deposit"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "exceeds_average_daily_money_transmission_liability"
+              },
+              100
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "surety bond or deposit",
+          "exceeds_average_daily_money_transmission_liability": 100
+        },
+        {
+          "investment_type": "surety bond or deposit",
+          "exceeds_average_daily_money_transmission_liability": 50
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "exceeds_average_daily_money_transmission_liability",
+          "description": "The percentage by which the surety bond or deposit exceeds the average daily money transmission liability."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "receivables from authorized delegates"
+            ]
+          },
+          {
+            "<": [
+              {
+                "var": "age_of_receivables"
+              },
+              7
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              50
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "receivables from authorized delegates",
+          "age_of_receivables": 5,
+          "percentage_of_total_permissible_investments": 30
+        },
+        {
+          "investment_type": "receivables from authorized delegates",
+          "age_of_receivables": 10,
+          "percentage_of_total_permissible_investments": 30
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "age_of_receivables",
+          "description": "The age of the receivables in days."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the receivables represent."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "receivables from a single authorized delegate"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              10
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "receivables from a single authorized delegate",
+          "percentage_of_total_permissible_investments": 5
+        },
+        {
+          "investment_type": "receivables from a single authorized delegate",
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the receivables from a single authorized delegate represent."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "short-term investment"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "duration_in_months"
+              },
+              6
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "short-term investment",
+          "duration_in_months": 5,
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "short-term investment",
+          "duration_in_months": 7,
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "duration_in_months",
+          "description": "The duration of the short-term investment in months."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the short-term investment represents."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "commercial paper"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "commercial paper",
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "commercial paper",
+          "percentage_of_total_permissible_investments": 25
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the commercial paper represents."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "bill, note, bond, or debenture"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "bill, note, bond, or debenture",
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "bill, note, bond, or debenture",
+          "percentage_of_total_permissible_investments": 25
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the bill, note, bond, or debenture represents."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "tri-party repurchase agreements"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "tri-party repurchase agreements",
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "tri-party repurchase agreements",
+          "percentage_of_total_permissible_investments": 25
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the tri-party repurchase agreements represent."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "money market mutual funds"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "rating"
+              },
+              3
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "money market mutual funds",
+          "rating": 2,
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "money market mutual funds",
+          "rating": 4,
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "rating",
+          "description": "The rating of the money market mutual funds."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the money market mutual funds represent."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "mutual fund or other investment fund"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              20
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "mutual fund or other investment fund",
+          "percentage_of_total_permissible_investments": 15
+        },
+        {
+          "investment_type": "mutual fund or other investment fund",
+          "percentage_of_total_permissible_investments": 25
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the mutual fund or other investment fund represents."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "===": [
+              {
+                "var": "investment_type"
+              },
+              "cash at foreign depository institutions"
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "percentage_of_total_permissible_investments"
+              },
+              10
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "satisfactory_rating"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "eligible_rating"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "FATCA_registered"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "not_sanctioned"
+              },
+              true
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "not_high_risk"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "investment_type": "cash at foreign depository institutions",
+          "percentage_of_total_permissible_investments": 5,
+          "satisfactory_rating": true,
+          "eligible_rating": true,
+          "FATCA_registered": true,
+          "not_sanctioned": true,
+          "not_high_risk": true
+        },
+        {
+          "investment_type": "cash at foreign depository institutions",
+          "percentage_of_total_permissible_investments": 15,
+          "satisfactory_rating": true,
+          "eligible_rating": true,
+          "FATCA_registered": true,
+          "not_sanctioned": true,
+          "not_high_risk": true
+        },
+        {
+          "investment_type": "cash"
+        }
+      ],
+      "variables": [
+        {
+          "name": "investment_type",
+          "description": "The type of investment being evaluated."
+        },
+        {
+          "name": "percentage_of_total_permissible_investments",
+          "description": "The percentage of total permissible investments that the cash at foreign depository institutions represents."
+        },
+        {
+          "name": "satisfactory_rating",
+          "description": "Whether the licensee has received a satisfactory rating in the most recent examination."
+        },
+        {
+          "name": "eligible_rating",
+          "description": "Whether the foreign depository institution has an eligible rating."
+        },
+        {
+          "name": "FATCA_registered",
+          "description": "Whether the foreign depository institution is registered under the Foreign Account Tax Compliance Act."
+        },
+        {
+          "name": "not_sanctioned",
+          "description": "Whether the foreign depository institution is not located in a country subject to sanctions from the Office of Foreign Asset Control."
+        },
+        {
+          "name": "not_high_risk",
+          "description": "Whether the foreign depository institution is not located in a high-risk or noncooperative jurisdiction."
+        }
+      ],
+      "consequences": [
+        "Investment is permissible under section 53B.61."
+      ]
+    }
+  ]
+}

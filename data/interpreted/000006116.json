@@ -1,0 +1,123 @@
+{
+  "id": "53B.71",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.71",
+  "title": "53B.71 VIRTUAL CURRENCY BUSINESS ACTIVITY; CONDITIONS PRECEDENT.",
+  "text": "(a) A person may not engage in virtual-currency business activity, or hold itself out as being able to engage in virtual-currency business activity, with or on behalf of another person unless the person is:\n(1) licensed in Minnesota by the commissioner under section 53B.40; or\n(2) exempt from licensing under section 53B.29.\n(b) A person that is licensed to engage in virtual-currency business activity is engaged in the business of money transmission and is subject to the requirements of this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "or": [
+              {
+                "!": {
+                  "var": "licensed_in_minnesota"
+                }
+              },
+              {
+                "!": {
+                  "var": "exempt_from_licensing"
+                }
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "!": {
+                  "var": "engage_in_virtual_currency_business"
+                }
+              },
+              {
+                "!": {
+                  "var": "hold_out_as_engaging"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed_in_minnesota": true,
+          "exempt_from_licensing": false,
+          "engage_in_virtual_currency_business": true,
+          "hold_out_as_engaging": false
+        },
+        {
+          "licensed_in_minnesota": false,
+          "exempt_from_licensing": true,
+          "engage_in_virtual_currency_business": false,
+          "hold_out_as_engaging": true
+        },
+        {
+          "licensed_in_minnesota": false,
+          "exempt_from_licensing": false,
+          "engage_in_virtual_currency_business": true,
+          "hold_out_as_engaging": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed_in_minnesota",
+          "description": "Indicates if the person is licensed in Minnesota under section 53B.40."
+        },
+        {
+          "name": "exempt_from_licensing",
+          "description": "Indicates if the person is exempt from licensing under section 53B.29."
+        },
+        {
+          "name": "engage_in_virtual_currency_business",
+          "description": "Indicates if the person engages in virtual-currency business activity."
+        },
+        {
+          "name": "hold_out_as_engaging",
+          "description": "Indicates if the person holds itself out as being able to engage in virtual-currency business activity."
+        }
+      ],
+      "consequences": [
+        "The person may engage in virtual-currency business activity or hold itself out as being able to engage in such activity."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "licensed_in_minnesota"
+          },
+          {
+            "var": "engaged_in_money_transmission"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "licensed_in_minnesota": true,
+          "engaged_in_money_transmission": true
+        },
+        {
+          "licensed_in_minnesota": false,
+          "engaged_in_money_transmission": false
+        },
+        {
+          "licensed_in_minnesota": true,
+          "engaged_in_money_transmission": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "licensed_in_minnesota",
+          "description": "Indicates if the person is licensed in Minnesota under section 53B.40."
+        },
+        {
+          "name": "engaged_in_money_transmission",
+          "description": "Indicates if the person is engaged in the business of money transmission."
+        }
+      ],
+      "consequences": [
+        "The person is subject to the requirements of this chapter."
+      ]
+    }
+  ]
+}

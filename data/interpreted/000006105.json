@@ -1,0 +1,348 @@
+{
+  "id": "53B.60",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.60",
+  "title": "53B.60 SURETY BOND.",
+  "text": "(a) An applicant for a money transmission license must provide, and a licensee must at all times maintain (1) security consisting of a surety bond in a form satisfactory to the commissioner, or (2) with the commissioner's approval, a deposit instead of a bond in accordance with this section.\n(b) The amount of the required security under this section is:\n(1) the greater of (i) $100,000, or (ii) an amount equal to one hundred percent of the licensee's average daily money transmission liability in Minnesota, calculated for the most recently completed three-month period, up to a maximum of $500,000; or\n(2) in the event that the licensee's tangible net worth exceeds ten percent of total assets, the licensee must maintain a surety bond of $100,000.\n(c) A licensee that maintains a bond in the maximum amount provided for in paragraph (b), clause (1) or (2), as applicable, is not required to calculate the licensee's average daily money transmission liability in Minnesota for purposes of this section.\n(d) A licensee may exceed the maximum required bond amount pursuant to section 53B.62, paragraph (a), clause (5).\n(e) The security device remains effective until cancellation, which may occur only after 30 days' written notice to the commissioner. Cancellation does not affect the rights of any claimant for any liability incurred or accrued during the period for which the bond was in force.\n(f) The security device must remain in place for no longer than five years after the licensee ceases money transmission operations in Minnesota. Notwithstanding this paragraph, the commissioner may permit the security device to be reduced or eliminated before that time to the extent that the amount of the licensee's payment instruments outstanding in Minnesota are reduced. The commissioner may also permit a licensee to substitute a letter of credit or other form of security device acceptable to the commissioner for the security device in place at the time the licensee ceases money transmission operations in Minnesota.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "security_type"
+                  },
+                  "surety bond"
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "security_type"
+                  },
+                  "deposit"
+                ]
+              }
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "commissioner_approval"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "security_type": "surety bond",
+          "commissioner_approval": true
+        },
+        {
+          "security_type": "deposit",
+          "commissioner_approval": true
+        },
+        {
+          "security_type": "deposit",
+          "commissioner_approval": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "security_type",
+          "description": "The type of security provided by the applicant or licensee, either 'surety bond' or 'deposit'."
+        },
+        {
+          "name": "commissioner_approval",
+          "description": "Approval status from the commissioner for the security type."
+        }
+      ],
+      "consequences": [
+        "Applicant/licensee can maintain the security."
+      ]
+    },
+    {
+      "rule": {
+        "or": [
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "tangible_net_worth_exceeds_10_percent"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "surety_bond_amount"
+                  },
+                  100000
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "==": [
+                  {
+                    "var": "tangible_net_worth_exceeds_10_percent"
+                  },
+                  false
+                ]
+              },
+              {
+                "<=": [
+                  {
+                    "var": "average_daily_liability"
+                  },
+                  500000
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "surety_bond_amount"
+                  },
+                  {
+                    "max": [
+                      100000,
+                      {
+                        "var": "average_daily_liability"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "tangible_net_worth_exceeds_10_percent": true,
+          "surety_bond_amount": 100000
+        },
+        {
+          "tangible_net_worth_exceeds_10_percent": false,
+          "average_daily_liability": 200000,
+          "surety_bond_amount": 200000
+        },
+        {
+          "tangible_net_worth_exceeds_10_percent": false,
+          "average_daily_liability": 600000,
+          "surety_bond_amount": 500000
+        }
+      ],
+      "variables": [
+        {
+          "name": "tangible_net_worth_exceeds_10_percent",
+          "description": "Indicates if the licensee's tangible net worth exceeds ten percent of total assets."
+        },
+        {
+          "name": "average_daily_liability",
+          "description": "The licensee's average daily money transmission liability in Minnesota for the most recent three-month period."
+        },
+        {
+          "name": "surety_bond_amount",
+          "description": "The amount of the surety bond maintained by the licensee."
+        }
+      ],
+      "consequences": [
+        "Licensee maintains the required surety bond amount."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "bond_amount"
+              },
+              500000
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "calculate_average_daily_liability"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "bond_amount": 500000,
+          "calculate_average_daily_liability": false
+        },
+        {
+          "bond_amount": 100000,
+          "calculate_average_daily_liability": true
+        },
+        {
+          "bond_amount": 300000,
+          "calculate_average_daily_liability": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "bond_amount",
+          "description": "The amount of the bond maintained by the licensee."
+        },
+        {
+          "name": "calculate_average_daily_liability",
+          "description": "Indicates whether the licensee needs to calculate the average daily money transmission liability."
+        }
+      ],
+      "consequences": [
+        "Licensee is exempt from calculating average daily liability."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "exceed_maximum_bond_amount"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "exceed_maximum_bond_amount": true
+        },
+        {
+          "exceed_maximum_bond_amount": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "exceed_maximum_bond_amount",
+          "description": "Indicates if the licensee exceeds the maximum required bond amount as per section 53B.62, paragraph (a), clause (5)."
+        }
+      ],
+      "consequences": [
+        "Licensee may exceed the maximum required bond amount."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "cancellation_notice_period"
+              },
+              30
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "cancellation_effective"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "cancellation_notice_period": 30,
+          "cancellation_effective": false
+        },
+        {
+          "cancellation_notice_period": 20,
+          "cancellation_effective": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "cancellation_notice_period",
+          "description": "The notice period in days before the security device can be cancelled."
+        },
+        {
+          "name": "cancellation_effective",
+          "description": "Indicates if the cancellation affects the rights of any claimant for liabilities incurred during the bond period."
+        }
+      ],
+      "consequences": [
+        "Security device remains effective until proper notice period is completed."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "security_device_duration"
+              },
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "==": [
+                  {
+                    "var": "commissioner_permission"
+                  },
+                  true
+                ]
+              },
+              {
+                "==": [
+                  {
+                    "var": "outstanding_payment_instruments"
+                  },
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "security_device_duration": 5,
+          "commissioner_permission": true,
+          "outstanding_payment_instruments": 0
+        },
+        {
+          "security_device_duration": 6,
+          "commissioner_permission": false,
+          "outstanding_payment_instruments": 10
+        }
+      ],
+      "variables": [
+        {
+          "name": "security_device_duration",
+          "description": "The duration in years for which the security device remains in place after ceasing operations."
+        },
+        {
+          "name": "commissioner_permission",
+          "description": "Indicates if the commissioner permits reduction or elimination of the security device."
+        },
+        {
+          "name": "outstanding_payment_instruments",
+          "description": "The amount of the licensee's payment instruments outstanding in Minnesota."
+        }
+      ],
+      "consequences": [
+        "Security device may be reduced or eliminated before five years if conditions are met."
+      ]
+    }
+  ]
+}

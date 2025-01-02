@@ -1,0 +1,333 @@
+{
+  "id": "53B.74",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.74",
+  "title": "53B.74 VIRTUAL CURRENCY BUSINESS ACTIVITIES; ADDITIONAL REQUIREMENTS.",
+  "text": "(a) A licensee engaged in virtual currency business activities may include virtual currency in the licensee's calculation of tangible net worth, by measuring the average value of the virtual currency in United States dollar equivalent over the prior six months, excluding control of virtual currency for a person entitled to the protections under section 53B.73.\n(b) A licensee must maintain, for all virtual-currency business activity with or on behalf of a person five years after the date of the activity, a record of:\n(1) each of the licensee's transactions with or on behalf of the person, or for the licensee's account in Minnesota, including:\n(i) the identity of the person;\n(ii) the form of the transaction;\n(iii) the amount, date, and payment instructions given by the person; and\n(iv) the account number, name, and United States Postal Service address of the person, and, to the extent feasible, other parties to the transaction;\n(2) the aggregate number of transactions and aggregate value of transactions by the licensee with or on behalf of the person and for the licensee's account in this state, expressed in the United States dollar equivalent of the virtual currency for the previous 12 calendar months;\n(3) each transaction in which the licensee exchanges one form of virtual currency for money or another form of virtual currency with or on behalf of the person;\n(4) a general ledger posted at least monthly that lists all of the licensee's assets, liabilities, capital, income, and expenses;\n(5) each business-call report the licensee is required to create or provide to the department or NMLS;\n(6) bank statements and bank reconciliation records for the licensee and the name, account number, and United States Postal Service address of each bank the licensee uses to conduct virtual-currency business activity with or on behalf of the person;\n(7) a report of any dispute with the person; and\n(8) a report of any virtual-currency business activity transaction with or on behalf of a person which the licensee was unable to complete.\n(c) A licensee must maintain records required by paragraph (b) in a form that enables the commissioner to determine whether the licensee is in compliance with this chapter, any court order, and law of Minnesota other than this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "activity_type"
+              },
+              "virtual_currency"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "include_in_tangible_net_worth"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "currency_measurement_period"
+              },
+              "6_months"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "exclude_control_for_protected_persons"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "activity_type": "virtual_currency",
+          "include_in_tangible_net_worth": true,
+          "currency_measurement_period": "6_months",
+          "exclude_control_for_protected_persons": true
+        },
+        {
+          "activity_type": "virtual_currency",
+          "include_in_tangible_net_worth": false,
+          "currency_measurement_period": "6_months",
+          "exclude_control_for_protected_persons": true
+        },
+        {
+          "activity_type": "virtual_currency",
+          "include_in_tangible_net_worth": true,
+          "currency_measurement_period": "3_months",
+          "exclude_control_for_protected_persons": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "activity_type",
+          "description": "The type of business activity the licensee is engaged in."
+        },
+        {
+          "name": "include_in_tangible_net_worth",
+          "description": "Whether the virtual currency is included in the tangible net worth calculation."
+        },
+        {
+          "name": "currency_measurement_period",
+          "description": "The period over which the average value of the virtual currency is measured."
+        },
+        {
+          "name": "exclude_control_for_protected_persons",
+          "description": "Whether control of virtual currency for protected persons is excluded."
+        }
+      ],
+      "consequences": [
+        "Licensee can include virtual currency in tangible net worth calculation."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "record_maintenance_period"
+              },
+              "5_years"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "transaction_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "identity_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "form_of_transaction_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "amount_date_instructions_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "account_details_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "aggregate_transactions_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "exchange_transactions_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "general_ledger_posted"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "business_call_report_created"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "bank_statements_recorded"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "dispute_reported"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "incomplete_transaction_reported"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "record_maintenance_period": "5_years",
+          "transaction_recorded": true,
+          "identity_recorded": true,
+          "form_of_transaction_recorded": true,
+          "amount_date_instructions_recorded": true,
+          "account_details_recorded": true,
+          "aggregate_transactions_recorded": true,
+          "exchange_transactions_recorded": true,
+          "general_ledger_posted": true,
+          "business_call_report_created": true,
+          "bank_statements_recorded": true,
+          "dispute_reported": true,
+          "incomplete_transaction_reported": true
+        },
+        {
+          "record_maintenance_period": "3_years",
+          "transaction_recorded": true,
+          "identity_recorded": true,
+          "form_of_transaction_recorded": true,
+          "amount_date_instructions_recorded": true,
+          "account_details_recorded": true,
+          "aggregate_transactions_recorded": true,
+          "exchange_transactions_recorded": true,
+          "general_ledger_posted": true,
+          "business_call_report_created": true,
+          "bank_statements_recorded": true,
+          "dispute_reported": true,
+          "incomplete_transaction_reported": true
+        },
+        {
+          "record_maintenance_period": "5_years",
+          "transaction_recorded": false,
+          "identity_recorded": true,
+          "form_of_transaction_recorded": true,
+          "amount_date_instructions_recorded": true,
+          "account_details_recorded": true,
+          "aggregate_transactions_recorded": true,
+          "exchange_transactions_recorded": true,
+          "general_ledger_posted": true,
+          "business_call_report_created": true,
+          "bank_statements_recorded": true,
+          "dispute_reported": true,
+          "incomplete_transaction_reported": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "record_maintenance_period",
+          "description": "The period for which records must be maintained."
+        },
+        {
+          "name": "transaction_recorded",
+          "description": "Whether each transaction is recorded."
+        },
+        {
+          "name": "identity_recorded",
+          "description": "Whether the identity of the person involved in the transaction is recorded."
+        },
+        {
+          "name": "form_of_transaction_recorded",
+          "description": "Whether the form of the transaction is recorded."
+        },
+        {
+          "name": "amount_date_instructions_recorded",
+          "description": "Whether the amount, date, and payment instructions are recorded."
+        },
+        {
+          "name": "account_details_recorded",
+          "description": "Whether the account number, name, and address of the person are recorded."
+        },
+        {
+          "name": "aggregate_transactions_recorded",
+          "description": "Whether the aggregate number and value of transactions are recorded."
+        },
+        {
+          "name": "exchange_transactions_recorded",
+          "description": "Whether each exchange transaction is recorded."
+        },
+        {
+          "name": "general_ledger_posted",
+          "description": "Whether a general ledger is posted at least monthly."
+        },
+        {
+          "name": "business_call_report_created",
+          "description": "Whether each business-call report is created or provided."
+        },
+        {
+          "name": "bank_statements_recorded",
+          "description": "Whether bank statements and reconciliation records are maintained."
+        },
+        {
+          "name": "dispute_reported",
+          "description": "Whether any disputes with the person are reported."
+        },
+        {
+          "name": "incomplete_transaction_reported",
+          "description": "Whether any incomplete transactions are reported."
+        }
+      ],
+      "consequences": [
+        "Licensee is compliant with record-keeping requirements."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "record_format_compliance"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "record_format_compliance": true
+        },
+        {
+          "record_format_compliance": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "record_format_compliance",
+          "description": "Whether records are maintained in a form that enables compliance verification."
+        }
+      ],
+      "consequences": [
+        "Records are in a compliant format for commissioner review."
+      ]
+    }
+  ]
+}

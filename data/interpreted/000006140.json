@@ -1,0 +1,58 @@
+{
+  "id": "56.08",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.08",
+  "title": "56.08 ANNUAL LICENSE FEE.",
+  "text": "Every licensee shall, on or before the 20th day of each December, pay to the commissioner the sum of $150 as an annual license fee for the next succeeding calendar year.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "current_date"
+              },
+              20
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "current_month"
+              },
+              12
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "current_date": 15,
+          "current_month": 12
+        },
+        {
+          "current_date": 20,
+          "current_month": 12
+        },
+        {
+          "current_date": 21,
+          "current_month": 12
+        }
+      ],
+      "variables": [
+        {
+          "name": "current_date",
+          "description": "The current day of the month."
+        },
+        {
+          "name": "current_month",
+          "description": "The current month of the year."
+        }
+      ],
+      "consequences": [
+        "The licensee must pay $150 to the commissioner as an annual license fee for the next calendar year."
+      ]
+    }
+  ]
+}

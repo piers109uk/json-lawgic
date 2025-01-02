@@ -1,0 +1,380 @@
+{
+  "id": "55.15",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.15",
+  "title": "55.15 APPLICATION.",
+  "text": "This chapter shall not be held or construed as limiting, restricting, or in any way affecting the operation or management of safe deposit boxes or vaults, or a safe deposit business, by any savings bank, bank, credit union, or trust company. If any bank, savings bank, credit union, or trust company elects to transact the business of a safe deposit company under the provisions of this chapter, it shall so notify the commissioner of commerce and thereafter the provisions of sections 55.02 and 55.10 to 55.12 shall apply to such safe deposit business and said bank, savings bank, credit union, or trust company shall have the benefit thereof. The provisions of sections 55.03 to 55.08 and the provisions of section 55.095 shall not apply to a bank, savings bank, credit union, or trust company carrying on the business of a safe deposit company.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "business_type"
+                  },
+                  "safe_deposit"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "business_type"
+                  },
+                  "vault"
+                ]
+              }
+            ]
+          },
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "savings_bank"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "bank"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "credit_union"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "trust_company"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "savings_bank"
+        },
+        {
+          "business_type": "vault",
+          "entity_type": "bank"
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "credit_union"
+        }
+      ],
+      "variables": [
+        {
+          "name": "business_type",
+          "description": "The type of business being conducted, e.g., safe deposit or vault."
+        },
+        {
+          "name": "entity_type",
+          "description": "The type of entity conducting the business, e.g., savings bank, bank, credit union, or trust company."
+        }
+      ],
+      "consequences": [
+        "The operation or management of the business is not limited, restricted, or affected by this chapter."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "business_type"
+                  },
+                  "safe_deposit"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "savings_bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "credit_union"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "trust_company"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "var": "notify_commissioner"
+          },
+          {
+            "var": "do_nothing"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "bank",
+          "notify_commissioner": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "savings_bank",
+          "notify_commissioner": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "credit_union",
+          "notify_commissioner": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "business_type",
+          "description": "The type of business being conducted, e.g., safe deposit."
+        },
+        {
+          "name": "entity_type",
+          "description": "The type of entity conducting the business, e.g., bank, savings bank, credit union, or trust company."
+        },
+        {
+          "name": "notify_commissioner",
+          "description": "A flag indicating whether the entity has notified the commissioner of commerce."
+        }
+      ],
+      "consequences": [
+        "Notify the commissioner of commerce if electing to transact the business of a safe deposit company under this chapter."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "business_type"
+                  },
+                  "safe_deposit"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "savings_bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "credit_union"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "trust_company"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "var": "apply_sections_55_02_55_10_55_12"
+          },
+          {
+            "var": "do_nothing"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "bank",
+          "apply_sections_55_02_55_10_55_12": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "savings_bank",
+          "apply_sections_55_02_55_10_55_12": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "credit_union",
+          "apply_sections_55_02_55_10_55_12": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "business_type",
+          "description": "The type of business being conducted, e.g., safe deposit."
+        },
+        {
+          "name": "entity_type",
+          "description": "The type of entity conducting the business, e.g., bank, savings bank, credit union, or trust company."
+        },
+        {
+          "name": "apply_sections_55_02_55_10_55_12",
+          "description": "A flag indicating whether sections 55.02 and 55.10 to 55.12 apply."
+        }
+      ],
+      "consequences": [
+        "Sections 55.02 and 55.10 to 55.12 apply to the safe deposit business."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "===": [
+                  {
+                    "var": "business_type"
+                  },
+                  "safe_deposit"
+                ]
+              },
+              {
+                "or": [
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "savings_bank"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "credit_union"
+                    ]
+                  },
+                  {
+                    "===": [
+                      {
+                        "var": "entity_type"
+                      },
+                      "trust_company"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "var": "do_not_apply_sections_55_03_55_08_55_095"
+          },
+          {
+            "var": "do_nothing"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "bank",
+          "do_not_apply_sections_55_03_55_08_55_095": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "savings_bank",
+          "do_not_apply_sections_55_03_55_08_55_095": true
+        },
+        {
+          "business_type": "safe_deposit",
+          "entity_type": "credit_union",
+          "do_not_apply_sections_55_03_55_08_55_095": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "business_type",
+          "description": "The type of business being conducted, e.g., safe deposit."
+        },
+        {
+          "name": "entity_type",
+          "description": "The type of entity conducting the business, e.g., bank, savings bank, credit union, or trust company."
+        },
+        {
+          "name": "do_not_apply_sections_55_03_55_08_55_095",
+          "description": "A flag indicating whether sections 55.03 to 55.08 and section 55.095 do not apply."
+        }
+      ],
+      "consequences": [
+        "Sections 55.03 to 55.08 and section 55.095 do not apply to the safe deposit business."
+      ]
+    }
+  ]
+}

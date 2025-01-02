@@ -1,0 +1,112 @@
+{
+  "id": "55.02",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.02",
+  "title": "55.02 POWERS.",
+  "text": "Any safe deposit company which complies with the provisions of this chapter shall have power:\n(1) to let out or rent as lessor, for hire, safe deposit boxes, upon such terms and for such compensation as may be agreed upon by such safe deposit company and the lessee; and\n(2) to take and receive valuable personal property for safekeeping and storage, as bailee, for hire, upon such terms and for such compensation as may be agreed upon by such safe deposit company and the bailor. No such safe deposit company shall make any loans or advances upon any valuable personal property so left with it for safekeeping and storage.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "complies_with_provisions"
+          },
+          {
+            "==": [
+              {
+                "var": "action"
+              },
+              "rent_safe_deposit_box"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "complies_with_provisions": true,
+          "action": "rent_safe_deposit_box"
+        },
+        {
+          "complies_with_provisions": false,
+          "action": "rent_safe_deposit_box"
+        },
+        {
+          "complies_with_provisions": true,
+          "action": "store_valuable_property"
+        }
+      ],
+      "variables": [
+        {
+          "name": "complies_with_provisions",
+          "description": "Indicates if the company complies with the provisions of the chapter."
+        },
+        {
+          "name": "action",
+          "description": "The action the safe deposit company intends to perform."
+        }
+      ],
+      "consequences": [
+        "The company can rent out safe deposit boxes."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "complies_with_provisions"
+          },
+          {
+            "==": [
+              {
+                "var": "action"
+              },
+              "store_valuable_property"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "loan_made"
+              },
+              false
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "complies_with_provisions": true,
+          "action": "store_valuable_property",
+          "loan_made": false
+        },
+        {
+          "complies_with_provisions": true,
+          "action": "store_valuable_property",
+          "loan_made": true
+        },
+        {
+          "complies_with_provisions": false,
+          "action": "store_valuable_property",
+          "loan_made": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "complies_with_provisions",
+          "description": "Indicates if the company complies with the provisions of the chapter."
+        },
+        {
+          "name": "action",
+          "description": "The action the safe deposit company intends to perform."
+        },
+        {
+          "name": "loan_made",
+          "description": "Indicates if a loan or advance has been made on the property left for safekeeping."
+        }
+      ],
+      "consequences": [
+        "The company can store valuable personal property for safekeeping."
+      ]
+    }
+  ]
+}

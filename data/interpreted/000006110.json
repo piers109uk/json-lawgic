@@ -1,0 +1,49 @@
+{
+  "id": "53B.67",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.67",
+  "title": "53B.67 SEVERABILITY.",
+  "text": "If any provision of this chapter or the chapter's application to any person or circumstance is held invalid, the invalidity does not affect other provisions or applications of this chapter that can be given effect without the invalid provision or application.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "provision_invalid"
+          },
+          true,
+          {
+            "var": "other_provisions_effective"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "provision_invalid": true,
+          "other_provisions_effective": true
+        },
+        {
+          "provision_invalid": true,
+          "other_provisions_effective": false
+        },
+        {
+          "provision_invalid": false,
+          "other_provisions_effective": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "provision_invalid",
+          "description": "Indicates if a provision of the chapter is held invalid."
+        },
+        {
+          "name": "other_provisions_effective",
+          "description": "Indicates if other provisions or applications of the chapter can be given effect without the invalid provision."
+        }
+      ],
+      "consequences": [
+        "The invalidity of a provision does not affect other provisions that can be effective."
+      ]
+    }
+  ]
+}

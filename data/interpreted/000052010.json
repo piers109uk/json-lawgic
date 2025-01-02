@@ -1,0 +1,387 @@
+{
+  "id": "611.263",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.263",
+  "title": "611.263 EMPLOYER; RAMSEY, HENNEPIN DEFENDERS.",
+  "text": "(a) Except as provided in subdivision 3, assistant public defenders of the Second Judicial District are employees of Ramsey County in the unclassified service under section 383A.286.\n(b) Except as provided in subdivision 3, assistant public defenders of the Fourth Judicial District are employees of Hennepin County under section 383B.63, subdivision 6.\n(a) Except as provided in subdivision 3, and notwithstanding section 179A.03, subdivision 15, clause (c), the Ramsey County Board is the public employer under the Public Employment Labor Relations Act for the district public defender and assistant public defenders of the Second Judicial District.\n(b) Except as provided in subdivision 3, and notwithstanding section 179A.03, subdivision 15, clause (c), the Hennepin County Board is the public employer under the Public Employment Labor Relations Act for the district public defender and assistant public defenders of the Fourth Judicial District.\nNotwithstanding section 611.265, district public defenders and employees in the Second and Fourth Judicial Districts who are hired on or after January 1, 1999, are state employees of the Board of Public Defense and are governed by the personnel rules adopted by the Board of Public Defense. Employees of the public defender's office in the Second and Fourth Judicial Districts who are hired before January 1, 1999, remain employees of Ramsey and Hennepin Counties, respectively, under subdivisions 1 and 2.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "!==": [
+              {
+                "var": "subdivision"
+              },
+              3
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "judicial_district"
+              },
+              2
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "subdivision": 2,
+          "judicial_district": 2,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 3,
+          "judicial_district": 2,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 2,
+          "judicial_district": 4,
+          "hired_date": 1998
+        }
+      ],
+      "variables": [
+        {
+          "name": "subdivision",
+          "description": "The subdivision number referenced in the law."
+        },
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Employee is of Ramsey County in the unclassified service under section 383A.286."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "!==": [
+              {
+                "var": "subdivision"
+              },
+              3
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "judicial_district"
+              },
+              4
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "subdivision": 2,
+          "judicial_district": 4,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 3,
+          "judicial_district": 4,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 2,
+          "judicial_district": 4,
+          "hired_date": 1999
+        }
+      ],
+      "variables": [
+        {
+          "name": "subdivision",
+          "description": "The subdivision number referenced in the law."
+        },
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Employee is of Hennepin County under section 383B.63, subdivision 6."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "!==": [
+              {
+                "var": "subdivision"
+              },
+              3
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "judicial_district"
+              },
+              2
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "subdivision": 2,
+          "judicial_district": 2,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 3,
+          "judicial_district": 2,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 2,
+          "judicial_district": 2,
+          "hired_date": 1999
+        }
+      ],
+      "variables": [
+        {
+          "name": "subdivision",
+          "description": "The subdivision number referenced in the law."
+        },
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Ramsey County Board is the public employer under the Public Employment Labor Relations Act."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "!==": [
+              {
+                "var": "subdivision"
+              },
+              3
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "judicial_district"
+              },
+              4
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "subdivision": 2,
+          "judicial_district": 4,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 3,
+          "judicial_district": 4,
+          "hired_date": 1998
+        },
+        {
+          "subdivision": 2,
+          "judicial_district": 4,
+          "hired_date": 1999
+        }
+      ],
+      "variables": [
+        {
+          "name": "subdivision",
+          "description": "The subdivision number referenced in the law."
+        },
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Hennepin County Board is the public employer under the Public Employment Labor Relations Act."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "judicial_district"
+                  },
+                  2
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "judicial_district"
+                  },
+                  4
+                ]
+              }
+            ]
+          },
+          {
+            "<=": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "judicial_district": 2,
+          "hired_date": 1998
+        },
+        {
+          "judicial_district": 4,
+          "hired_date": 1998
+        },
+        {
+          "judicial_district": 3,
+          "hired_date": 1998
+        }
+      ],
+      "variables": [
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Employee is a state employee of the Board of Public Defense and governed by its personnel rules."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "judicial_district"
+                  },
+                  2
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "judicial_district"
+                  },
+                  4
+                ]
+              }
+            ]
+          },
+          {
+            ">": [
+              {
+                "var": "hired_date"
+              },
+              1999
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "judicial_district": 2,
+          "hired_date": 2000
+        },
+        {
+          "judicial_district": 4,
+          "hired_date": 2000
+        },
+        {
+          "judicial_district": 3,
+          "hired_date": 2000
+        }
+      ],
+      "variables": [
+        {
+          "name": "judicial_district",
+          "description": "The judicial district number."
+        },
+        {
+          "name": "hired_date",
+          "description": "The year the employee was hired."
+        }
+      ],
+      "consequences": [
+        "Employee remains an employee of Ramsey or Hennepin County, respectively."
+      ]
+    }
+  ]
+}

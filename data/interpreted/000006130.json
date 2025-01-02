@@ -1,0 +1,235 @@
+{
+  "id": "56.01",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.01",
+  "title": "56.01 NECESSITY OF LICENSE.",
+  "text": "(a) Except as authorized by this chapter and without first obtaining a license from the commissioner, no person shall engage in the business of making loans of money, credit, goods, or things in action, in an amount or of a value not exceeding that specified in section 56.131, subdivision 1, and charge, contract for, or receive on the loan a greater rate of interest, discount, or consideration than the lender would be permitted by law to charge if not a licensee under this chapter.\n(b) An agency or instrumentality of the United States government or a corporation otherwise created by an act of the United States Congress or a lender approved or certified by the secretary of housing and urban development, or approved or certified by the administrator of veterans affairs, or approved or certified by the administrator of the Farmers Home Administration, or approved or certified by the Federal Home Loan Mortgage Corporation, or approved or certified by the Federal National Mortgage Association, that engages in the business of purchasing or taking assignments of mortgage loans and undertakes direct collection of payments from or enforcement of rights against borrowers arising from mortgage loans, is not required to be licensed under this chapter in order to purchase or take assignments of mortgage loans from licensees under this chapter.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "!": {
+              "var": "authorized_by_chapter"
+            }
+          },
+          {
+            "!": {
+              "var": "has_license"
+            }
+          },
+          {
+            "<=": [
+              {
+                "var": "loan_amount"
+              },
+              {
+                "var": "max_amount_section_56_131"
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "<=": [
+                  {
+                    "var": "interest_rate"
+                  },
+                  {
+                    "var": "max_interest_rate_non_licensee"
+                  }
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "is_licensee"
+                  },
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "authorized_by_chapter": false,
+          "has_license": false,
+          "loan_amount": 1000,
+          "max_amount_section_56_131": 1500,
+          "interest_rate": 5,
+          "max_interest_rate_non_licensee": 5,
+          "is_licensee": false
+        },
+        {
+          "authorized_by_chapter": true,
+          "has_license": false,
+          "loan_amount": 1000,
+          "max_amount_section_56_131": 1500,
+          "interest_rate": 5,
+          "max_interest_rate_non_licensee": 5,
+          "is_licensee": false
+        },
+        {
+          "authorized_by_chapter": false,
+          "has_license": true,
+          "loan_amount": 1000,
+          "max_amount_section_56_131": 1500,
+          "interest_rate": 10,
+          "max_interest_rate_non_licensee": 5,
+          "is_licensee": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "authorized_by_chapter",
+          "description": "Whether the action is authorized by the chapter."
+        },
+        {
+          "name": "has_license",
+          "description": "Whether the person has obtained a license from the commissioner."
+        },
+        {
+          "name": "loan_amount",
+          "description": "The amount or value of the loan."
+        },
+        {
+          "name": "max_amount_section_56_131",
+          "description": "The maximum amount specified in section 56.131, subdivision 1."
+        },
+        {
+          "name": "interest_rate",
+          "description": "The rate of interest, discount, or consideration charged on the loan."
+        },
+        {
+          "name": "max_interest_rate_non_licensee",
+          "description": "The maximum interest rate a non-licensee is permitted to charge."
+        },
+        {
+          "name": "is_licensee",
+          "description": "Whether the lender is a licensee under this chapter."
+        }
+      ],
+      "consequences": [
+        "The person is prohibited from engaging in the business of making loans."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "US_government_agency"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "US_congress_corporation"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "HUD_approved_lender"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "VA_approved_lender"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "FHA_approved_lender"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "FHLMC_approved_lender"
+                ]
+              },
+              {
+                "===": [
+                  {
+                    "var": "entity_type"
+                  },
+                  "FNMA_approved_lender"
+                ]
+              }
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "engages_in_business"
+              },
+              "purchasing_or_taking_assignments"
+            ]
+          },
+          {
+            "===": [
+              {
+                "var": "undertakes_direct_collection"
+              },
+              "true"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "entity_type": "US_government_agency",
+          "engages_in_business": "purchasing_or_taking_assignments",
+          "undertakes_direct_collection": true
+        },
+        {
+          "entity_type": "HUD_approved_lender",
+          "engages_in_business": "purchasing_or_taking_assignments",
+          "undertakes_direct_collection": true
+        },
+        {
+          "entity_type": "private_lender",
+          "engages_in_business": "making_loans",
+          "undertakes_direct_collection": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "entity_type",
+          "description": "The type of entity engaging in the business."
+        },
+        {
+          "name": "engages_in_business",
+          "description": "The type of business the entity engages in."
+        },
+        {
+          "name": "undertakes_direct_collection",
+          "description": "Whether the entity undertakes direct collection of payments or enforcement of rights against borrowers."
+        }
+      ],
+      "consequences": [
+        "The entity is not required to be licensed under this chapter."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "611.262",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.262",
+  "title": "611.262 REPRESENTATION BEFORE APPOINTMENT.",
+  "text": "A district public defender or appointed assistant may, on request of a peace officer, a defendant, suspect, or other person, represent or consult with a person before formal appointment if there is a substantial factual basis to believe the person is indigent.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "var": "requester.isPeaceOfficer"
+              },
+              {
+                "var": "requester.isDefendant"
+              },
+              {
+                "var": "requester.isSuspect"
+              },
+              {
+                "var": "requester.isOtherPerson"
+              }
+            ]
+          },
+          {
+            "var": "person.isIndigent"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "requester": {
+            "isPeaceOfficer": true
+          },
+          "person": {
+            "isIndigent": true
+          }
+        },
+        {
+          "requester": {
+            "isDefendant": true
+          },
+          "person": {
+            "isIndigent": false
+          }
+        },
+        {
+          "requester": {
+            "isOtherPerson": true
+          },
+          "person": {
+            "isIndigent": true
+          }
+        },
+        {
+          "requester": {
+            "isSuspect": false
+          },
+          "person": {
+            "isIndigent": true
+          }
+        },
+        {
+          "requester": {
+            "isPeaceOfficer": false
+          },
+          "person": {
+            "isIndigent": false
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "requester.isPeaceOfficer",
+          "description": "Indicates if the requester is a peace officer."
+        },
+        {
+          "name": "requester.isDefendant",
+          "description": "Indicates if the requester is a defendant."
+        },
+        {
+          "name": "requester.isSuspect",
+          "description": "Indicates if the requester is a suspect."
+        },
+        {
+          "name": "requester.isOtherPerson",
+          "description": "Indicates if the requester is another person."
+        },
+        {
+          "name": "person.isIndigent",
+          "description": "Indicates if there is a substantial factual basis to believe the person is indigent."
+        }
+      ],
+      "consequences": [
+        "A district public defender or appointed assistant may represent or consult with the person before formal appointment."
+      ]
+    }
+  ]
+}

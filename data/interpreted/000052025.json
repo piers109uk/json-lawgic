@@ -1,0 +1,436 @@
+{
+  "id": "611.27",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.27",
+  "title": "611.27 OFFICES OF DISTRICT PUBLIC DEFENDER; FINANCING; REPRESENTATION.",
+  "text": "Money appropriated to the State Board of Public Defense for the board's administration, for the state public defender, for the judicial district public defenders, and for the public defense corporations shall be expended as determined by the board. In distributing funds to district public defenders, the board shall consider public defender case loads and the results of the weighted case load study.\n[Repealed, 1998 c 367 art 8 s 26]\n[Renumbered 611.24, subd 2]\n[Repealed, 1998 c 367 art 8 s 26]\nThe Board of Public Defense is solely responsible to provide counsel in adult criminal and juvenile cases, as specified under section 611.14. The court shall not appoint counsel at county expense for representation under section 611.14, except as provided in section 611.26, subdivision 3a, paragraph (c).\nMS 2022 [Repealed, 2024 c 123 art 14 s 23]\nThe state's obligation for the costs of the public defender services is limited to the appropriations made to the Board of Public Defense.\nIn a case where the chief district public defender does not believe that the office can provide adequate representation, the chief public defender of the district shall immediately notify the state public defender. The chief district public defender may request that the state public defender authorize appointment of counsel other than the district public defender in the case.\nMS 2022 [Repealed, 2024 c 123 art 14 s 23]\nThe chief public defender may not request nor may the state public defender approve the addition of permanent staff under this section.\n(a) If the state public defender finds that the provision of adequate legal representation, including associated services, is beyond the ability of the district public defender to provide, the state public defender may approve counsel to be appointed, with compensation and expenses to be paid under this subdivision. Counsel in these cases shall be appointed by the chief district public defender.\n(b) All billings for services rendered and ordered under this subdivision shall require the approval of the chief district public defender before being forwarded to the state public defender for payment. Counsel appointed under this subdivision shall document the time worked and expenses incurred in a manner prescribed by the chief district public defender. In cases where adequate representation cannot be provided by the district public defender and where counsel has been approved by the state public defender, the Board of Public Defense shall pay all services from county program aid transferred by the commissioner of revenue for that purpose under section 477A.03, subdivision 2b, paragraph (a).\n[Repealed, 2024 c 123 art 14 s 23]\nThe costs of appointed counsel and associated services in cases arising from new criminal charges brought against indigent inmates who are incarcerated in a Minnesota state correctional facility are the responsibility of the State Board of Public Defense. In these cases the state public defender may follow the procedures outlined in this section for obtaining court-ordered counsel.\n[Repealed, 1997 c 7 art 2 s 67]\n[Renumbered 611.24, subd 3]\n[Renumbered 611.24, subd 4]",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "funds_appropriated_to_board"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "funds_appropriated_to_board": true
+        },
+        {
+          "funds_appropriated_to_board": false
+        },
+        {
+          "funds_appropriated_to_board": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "funds_appropriated_to_board",
+          "description": "Indicates if funds are appropriated to the State Board of Public Defense."
+        }
+      ],
+      "consequences": [
+        "Funds shall be expended as determined by the board."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "distributing_funds_to_district_defenders"
+              },
+              {
+                "var": "consider_case_loads"
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "distributing_funds_to_district_defenders": true,
+          "consider_case_loads": true
+        },
+        {
+          "distributing_funds_to_district_defenders": true,
+          "consider_case_loads": false
+        },
+        {
+          "distributing_funds_to_district_defenders": false,
+          "consider_case_loads": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "distributing_funds_to_district_defenders",
+          "description": "Indicates if funds are being distributed to district public defenders."
+        },
+        {
+          "name": "consider_case_loads",
+          "description": "Indicates if public defender case loads and the results of the weighted case load study are considered."
+        }
+      ],
+      "consequences": [
+        "The board shall consider public defender case loads and the results of the weighted case load study."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "provide_counsel"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "provide_counsel": true
+        },
+        {
+          "provide_counsel": false
+        },
+        {
+          "provide_counsel": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "provide_counsel",
+          "description": "Indicates if the Board of Public Defense is providing counsel in adult criminal and juvenile cases."
+        }
+      ],
+      "consequences": [
+        "The Board of Public Defense is solely responsible to provide counsel in adult criminal and juvenile cases."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "court_appoint_counsel"
+              },
+              {
+                "!": {
+                  "var": "section_611_26_subd_3a_c"
+                }
+              }
+            ]
+          },
+          false,
+          true
+        ]
+      },
+      "examples": [
+        {
+          "court_appoint_counsel": true,
+          "section_611_26_subd_3a_c": false
+        },
+        {
+          "court_appoint_counsel": true,
+          "section_611_26_subd_3a_c": true
+        },
+        {
+          "court_appoint_counsel": false,
+          "section_611_26_subd_3a_c": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "court_appoint_counsel",
+          "description": "Indicates if the court is appointing counsel at county expense for representation under section 611.14."
+        },
+        {
+          "name": "section_611_26_subd_3a_c",
+          "description": "Indicates if the exception provided in section 611.26, subdivision 3a, paragraph (c) applies."
+        }
+      ],
+      "consequences": [
+        "The court shall not appoint counsel at county expense for representation under section 611.14."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "state_obligation_costs"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "state_obligation_costs": true
+        },
+        {
+          "state_obligation_costs": false
+        },
+        {
+          "state_obligation_costs": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_obligation_costs",
+          "description": "Indicates if the state's obligation for the costs of the public defender services is limited to the appropriations made to the Board of Public Defense."
+        }
+      ],
+      "consequences": [
+        "The state's obligation for the costs of the public defender services is limited to the appropriations made to the Board of Public Defense."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "chief_district_pd_inadequate_representation"
+              },
+              {
+                "var": "notify_state_pd"
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "chief_district_pd_inadequate_representation": true,
+          "notify_state_pd": true
+        },
+        {
+          "chief_district_pd_inadequate_representation": true,
+          "notify_state_pd": false
+        },
+        {
+          "chief_district_pd_inadequate_representation": false,
+          "notify_state_pd": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "chief_district_pd_inadequate_representation",
+          "description": "Indicates if the chief district public defender does not believe that the office can provide adequate representation."
+        },
+        {
+          "name": "notify_state_pd",
+          "description": "Indicates if the chief district public defender has notified the state public defender."
+        }
+      ],
+      "consequences": [
+        "The chief district public defender shall immediately notify the state public defender."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "chief_pd_request_add_staff"
+              },
+              {
+                "var": "state_pd_approve_add_staff"
+              }
+            ]
+          },
+          false,
+          true
+        ]
+      },
+      "examples": [
+        {
+          "chief_pd_request_add_staff": true,
+          "state_pd_approve_add_staff": true
+        },
+        {
+          "chief_pd_request_add_staff": true,
+          "state_pd_approve_add_staff": false
+        },
+        {
+          "chief_pd_request_add_staff": false,
+          "state_pd_approve_add_staff": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "chief_pd_request_add_staff",
+          "description": "Indicates if the chief public defender requests the addition of permanent staff."
+        },
+        {
+          "name": "state_pd_approve_add_staff",
+          "description": "Indicates if the state public defender approves the addition of permanent staff."
+        }
+      ],
+      "consequences": [
+        "The chief public defender may not request nor may the state public defender approve the addition of permanent staff."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "state_pd_inadequate_representation"
+              },
+              {
+                "var": "approve_counsel_appointment"
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "state_pd_inadequate_representation": true,
+          "approve_counsel_appointment": true
+        },
+        {
+          "state_pd_inadequate_representation": true,
+          "approve_counsel_appointment": false
+        },
+        {
+          "state_pd_inadequate_representation": false,
+          "approve_counsel_appointment": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "state_pd_inadequate_representation",
+          "description": "Indicates if the provision of adequate legal representation is beyond the ability of the district public defender to provide."
+        },
+        {
+          "name": "approve_counsel_appointment",
+          "description": "Indicates if the state public defender approves counsel to be appointed."
+        }
+      ],
+      "consequences": [
+        "The state public defender may approve counsel to be appointed."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "billings_approval"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "billings_approval": true
+        },
+        {
+          "billings_approval": false
+        },
+        {
+          "billings_approval": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "billings_approval",
+          "description": "Indicates if all billings for services rendered and ordered require the approval of the chief district public defender."
+        }
+      ],
+      "consequences": [
+        "All billings for services rendered and ordered shall require the approval of the chief district public defender."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "adequate_representation_not_provided"
+              },
+              {
+                "var": "counsel_approved"
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "adequate_representation_not_provided": true,
+          "counsel_approved": true
+        },
+        {
+          "adequate_representation_not_provided": true,
+          "counsel_approved": false
+        },
+        {
+          "adequate_representation_not_provided": false,
+          "counsel_approved": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "adequate_representation_not_provided",
+          "description": "Indicates if adequate representation cannot be provided by the district public defender."
+        },
+        {
+          "name": "counsel_approved",
+          "description": "Indicates if counsel has been approved by the state public defender."
+        }
+      ],
+      "consequences": [
+        "The Board of Public Defense shall pay all services from county program aid transferred by the commissioner of revenue."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "indigent_inmates_new_charges"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "indigent_inmates_new_charges": true
+        },
+        {
+          "indigent_inmates_new_charges": false
+        },
+        {
+          "indigent_inmates_new_charges": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "indigent_inmates_new_charges",
+          "description": "Indicates if new criminal charges are brought against indigent inmates incarcerated in a Minnesota state correctional facility."
+        }
+      ],
+      "consequences": [
+        "The costs of appointed counsel and associated services are the responsibility of the State Board of Public Defense."
+      ]
+    }
+  ]
+}

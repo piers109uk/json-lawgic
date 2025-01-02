@@ -2,6 +2,7 @@ import asyncio
 from enum import Enum
 from pprint import pprint
 from typing import cast
+import uuid
 
 from dotenv import load_dotenv
 from langchain_anthropic import ChatAnthropic
@@ -10,11 +11,12 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 
 from json_lawgic.data_io import read_json, read_text, write_json
+from json_lawgic.evaluator import JsonLogicEvaluator
 from json_lawgic.langfuse_setup import get_tracing_handler
 from json_lawgic.logger import logger
 from json_lawgic.model import AIModel, get_model
 from json_lawgic.prompts import PromptManager, PromptType
-from json_lawgic.types import JsonLogicRules
+from json_lawgic.types import JsonLogicRules, Law
 from json_lawgic.util import omit, pick
 
 # Load environment variables from .env file
@@ -61,11 +63,13 @@ class LawInterpreter:
         metadata = pick(law_object, ["id", "url", "title"])
         tags = [self.model_name]
         tracing_handler = get_tracing_handler(metadata, tags)
-        response = await structured_llm.ainvoke(prompt, config={"callbacks": [tracing_handler]})
+        run_id = str(uuid.uuid4())
+        response = await structured_llm.ainvoke(prompt, config={"callbacks": [tracing_handler], "run_id": run_id})
 
         rules = cast(JsonLogicRules, response)
 
         res_dict = rules.model_dump()
+        JsonLogicEvaluator().evaluate(res_dict, cast(Law, law_object), run_id)
         return {**res_dict}
 
     async def asimplify_interpretation(self, law_object: dict, interpretation: dict) -> dict:
@@ -84,6 +88,7 @@ class LawInterpreter:
         rules = cast(JsonLogicRules, response)
 
         res_dict = rules.model_dump()
+
         return {**res_dict}
 
 

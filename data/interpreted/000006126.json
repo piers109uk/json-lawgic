@@ -1,0 +1,147 @@
+{
+  "id": "56.001",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.001",
+  "title": "56.001 DEFINITIONS.",
+  "text": "When used in this chapter, the terms defined in this section have the meanings given them, unless their context requires a different meaning.\n\"Actuarial method\" means the method of allocating payments made on a loan between the principal amount and interest whereby a payment is applied first to the accumulated interest and then to the unpaid principal amount.\n\"Applicable charge\" means the amount of interest attributable to each monthly installment period of the loan contract. The applicable charge is computed as if each installment period were one month and any charge for extending the first installment period beyond one month, or reduction in charge for a first installment less than one month, is ignored. The applicable charge for any installment period is that which would have been made for the period had the loan been made on an interest-bearing basis at the single annual percentage rate permitted by section 56.131, subdivision 1, based upon the assumption that all payments were made according to schedule. For convenience in computation, the licensee may round the single annual rate to the nearest one quarter of one percent.\n\"Commissioner\" means the commissioner of commerce.\n[Repealed, 2014 c 222 art 1 s 58]\n[Repealed, 2014 c 222 art 1 s 58]\n\"Precomputed loan\" means a loan in which the debt is a sum comprising the principal amount and the amount of interest computed actuarially in advance on the assumption that all scheduled payments will be made when due.\n\"Person\" includes individuals, copartnerships, associations, and corporations.\n\"Principal amount\" means the amount of cash paid to, or paid or payable for, the account of the borrower.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "var": "actuarial_method"
+      },
+      "examples": [
+        {
+          "actuarial_method": "allocate payments between principal and interest"
+        },
+        "allocate payments first to interest, then to principal",
+        {
+          "actuarial_method": "allocate payments first to interest, then to principal"
+        }
+      ],
+      "variables": [
+        {
+          "name": "actuarial_method",
+          "description": "The method of allocating payments made on a loan between the principal amount and interest."
+        }
+      ],
+      "consequences": [
+        "Payment is applied first to accumulated interest, then to unpaid principal."
+      ]
+    },
+    {
+      "rule": {
+        "var": "applicable_charge"
+      },
+      "examples": [
+        {
+          "applicable_charge": "interest for each monthly installment period"
+        },
+        "computed as if each installment period were one month",
+        {
+          "applicable_charge": "computed as if each installment period were one month"
+        }
+      ],
+      "variables": [
+        {
+          "name": "applicable_charge",
+          "description": "The amount of interest attributable to each monthly installment period of the loan contract."
+        }
+      ],
+      "consequences": [
+        "Interest is computed as if each installment period were one month."
+      ]
+    },
+    {
+      "rule": {
+        "var": "commissioner"
+      },
+      "examples": [
+        {
+          "commissioner": "commissioner of commerce"
+        },
+        "The commissioner of commerce",
+        {
+          "commissioner": "The commissioner of commerce"
+        }
+      ],
+      "variables": [
+        {
+          "name": "commissioner",
+          "description": "The commissioner of commerce."
+        }
+      ],
+      "consequences": [
+        "Refers to the commissioner of commerce."
+      ]
+    },
+    {
+      "rule": {
+        "var": "precomputed_loan"
+      },
+      "examples": [
+        {
+          "precomputed_loan": "loan with interest computed in advance"
+        },
+        "loan with debt as sum of principal and interest",
+        {
+          "precomputed_loan": "loan with debt as sum of principal and interest"
+        }
+      ],
+      "variables": [
+        {
+          "name": "precomputed_loan",
+          "description": "A loan in which the debt is a sum comprising the principal amount and the amount of interest computed actuarially in advance."
+        }
+      ],
+      "consequences": [
+        "Debt is a sum of principal and interest computed in advance."
+      ]
+    },
+    {
+      "rule": {
+        "var": "person"
+      },
+      "examples": [
+        {
+          "person": "individuals, copartnerships, associations, corporations"
+        },
+        "includes individuals and corporations",
+        {
+          "person": "includes individuals and corporations"
+        }
+      ],
+      "variables": [
+        {
+          "name": "person",
+          "description": "Includes individuals, copartnerships, associations, and corporations."
+        }
+      ],
+      "consequences": [
+        "Refers to individuals, copartnerships, associations, and corporations."
+      ]
+    },
+    {
+      "rule": {
+        "var": "principal_amount"
+      },
+      "examples": [
+        {
+          "principal_amount": "amount of cash paid to borrower"
+        },
+        "cash paid to or for the borrower",
+        {
+          "principal_amount": "cash paid to or for the borrower"
+        }
+      ],
+      "variables": [
+        {
+          "name": "principal_amount",
+          "description": "The amount of cash paid to, or paid or payable for, the account of the borrower."
+        }
+      ],
+      "consequences": [
+        "Refers to the cash amount paid to or for the borrower."
+      ]
+    }
+  ]
+}

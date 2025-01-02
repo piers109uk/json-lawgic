@@ -1,0 +1,133 @@
+{
+  "id": "53B.57",
+  "url": "https://www.revisor.mn.gov/statutes/cite/53B.57",
+  "title": "53B.57 NOTICE.",
+  "text": "Every licensee or authorized delegate must include on a receipt or disclose on the licensee's website or mobile application the name and telephone number of the department and a statement that the licensee's customers can contact the department with questions or complaints about the licensee's money transmission services.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "in": [
+                  "name of the department",
+                  {
+                    "var": "receipt"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "name of the department",
+                  {
+                    "var": "website"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "name of the department",
+                  {
+                    "var": "mobile_application"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "in": [
+                  "telephone number of the department",
+                  {
+                    "var": "receipt"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "telephone number of the department",
+                  {
+                    "var": "website"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "telephone number of the department",
+                  {
+                    "var": "mobile_application"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "or": [
+              {
+                "in": [
+                  "contact the department with questions or complaints",
+                  {
+                    "var": "receipt"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "contact the department with questions or complaints",
+                  {
+                    "var": "website"
+                  }
+                ]
+              },
+              {
+                "in": [
+                  "contact the department with questions or complaints",
+                  {
+                    "var": "mobile_application"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "receipt": "name of the department, telephone number of the department, contact the department with questions or complaints",
+          "website": "",
+          "mobile_application": ""
+        },
+        {
+          "receipt": "",
+          "website": "name of the department, telephone number of the department, contact the department with questions or complaints",
+          "mobile_application": ""
+        },
+        {
+          "receipt": "",
+          "website": "",
+          "mobile_application": "name of the department, telephone number of the department, contact the department with questions or complaints"
+        }
+      ],
+      "variables": [
+        {
+          "name": "receipt",
+          "description": "The receipt provided to the customer by the licensee or authorized delegate."
+        },
+        {
+          "name": "website",
+          "description": "The website of the licensee or authorized delegate."
+        },
+        {
+          "name": "mobile_application",
+          "description": "The mobile application of the licensee or authorized delegate."
+        }
+      ],
+      "consequences": [
+        "The licensee or authorized delegate is compliant with the disclosure requirements."
+      ]
+    }
+  ]
+}

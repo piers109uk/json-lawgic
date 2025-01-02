@@ -1,0 +1,177 @@
+{
+  "id": "611.271",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.271",
+  "title": "611.271 COPIES OF DOCUMENTS; FEES.",
+  "text": "The court administrators of courts, the prosecuting attorneys of counties and municipalities, and the law enforcement agencies of the state and its political subdivisions shall furnish, upon the request of the district public defender, the state public defender, or an attorney working for a public defense corporation under section 611.216, copies of any documents in their possession at no charge to the public defender, including the following: police reports, photographs, copies of existing grand jury transcripts, audiotapes, videotapes, audio or video files on CD Rom or DVD Rom disc, copies of existing transcripts of audiotapes, videotapes, or audio or video files on CD Rom or DVD Rom disc and, in child protection cases, reports prepared by local welfare agencies. When files are provided on CD Rom or DVD Rom disc, the provider shall, upon the request of the public defender, include the software needed to open, view, or play the disc. Nothing in this section shall compel production of documents that are not discoverable under the rules of court, court order, or chapter 13.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "or": [
+              {
+                "in": [
+                  {
+                    "var": "requester"
+                  },
+                  [
+                    "district public defender",
+                    "state public defender",
+                    "attorney working for a public defense corporation under section 611.216"
+                  ]
+                ]
+              },
+              {
+                "in": [
+                  {
+                    "var": "requester_role"
+                  },
+                  [
+                    "district public defender",
+                    "state public defender",
+                    "attorney working for a public defense corporation under section 611.216"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "document_type"
+              },
+              [
+                "police reports",
+                "photographs",
+                "grand jury transcripts",
+                "audiotapes",
+                "videotapes",
+                "audio files on CD Rom",
+                "video files on CD Rom",
+                "audio files on DVD Rom",
+                "video files on DVD Rom",
+                "transcripts of audiotapes",
+                "transcripts of videotapes",
+                "transcripts of audio files on CD Rom",
+                "transcripts of video files on CD Rom",
+                "transcripts of audio files on DVD Rom",
+                "transcripts of video files on DVD Rom",
+                "child protection reports"
+              ]
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "requester": "district public defender",
+          "document_type": "police reports"
+        },
+        {
+          "requester": "state public defender",
+          "document_type": "audiotapes"
+        },
+        {
+          "requester": "attorney working for a public defense corporation under section 611.216",
+          "document_type": "child protection reports"
+        }
+      ],
+      "variables": [
+        {
+          "name": "requester",
+          "description": "The entity requesting the documents, which can be a district public defender, state public defender, or an attorney working for a public defense corporation under section 611.216."
+        },
+        {
+          "name": "document_type",
+          "description": "The type of document being requested, such as police reports, photographs, grand jury transcripts, etc."
+        }
+      ],
+      "consequences": [
+        "Provide copies of the requested documents at no charge to the public defender."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "in": [
+              {
+                "var": "document_type"
+              },
+              [
+                "CD Rom",
+                "DVD Rom"
+              ]
+            ]
+          },
+          {
+            "var": "request_software"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "document_type": "CD Rom",
+          "request_software": true
+        },
+        {
+          "document_type": "DVD Rom",
+          "request_software": true
+        },
+        {
+          "document_type": "CD Rom",
+          "request_software": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "document_type",
+          "description": "The type of media on which the files are provided, either CD Rom or DVD Rom."
+        },
+        {
+          "name": "request_software",
+          "description": "A boolean indicating whether the public defender has requested the software needed to open, view, or play the disc."
+        }
+      ],
+      "consequences": [
+        "Include the software needed to open, view, or play the disc."
+      ]
+    },
+    {
+      "rule": {
+        "!": {
+          "or": [
+            {
+              "in": [
+                {
+                  "var": "document_type"
+                },
+                [
+                  "non-discoverable documents"
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      "examples": [
+        {
+          "document_type": "police reports"
+        },
+        {
+          "document_type": "non-discoverable documents"
+        }
+      ],
+      "variables": [
+        {
+          "name": "document_type",
+          "description": "The type of document being requested, which should not include non-discoverable documents under the rules of court, court order, or chapter 13."
+        }
+      ],
+      "consequences": [
+        "Do not provide documents that are not discoverable under the rules of court, court order, or chapter 13."
+      ]
+    }
+  ]
+}

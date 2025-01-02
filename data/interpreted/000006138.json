@@ -1,0 +1,197 @@
+{
+  "id": "55.095",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.095",
+  "title": "55.095 DUTIES OF COMMISSIONER OF COMMERCE.",
+  "text": "Every safe deposit company is at all times under the supervision and subject to the control of the commissioner of commerce. The commissioner may at any time examine a licensed safe deposit company to ascertain whether the safe deposit company is complying with the provisions of this chapter and whether its methods and systems are in accordance with law and designed to protect the property of persons doing business with it. For each examination the commissioner shall charge the actual expenses of examination. If the commissioner of commerce determines that the safe deposit company is violating the provisions of this chapter, any law of the state, or has engaged or the commissioner has reason to believe that a licensee is about to engage in an unlawful, unsafe, or unsound practice in the conduct of its business, the commissioner may proceed pursuant to sections 46.24 to 46.33 or serve notice on the safe deposit company of intention to revoke the license, stating in general the grounds therefor and giving reasonable opportunity to be heard. If for a period of 15 days after the notice, the violation continues, the commissioner of commerce may revoke the license and take possession of the business and property of the safe deposit company and maintain possession until the time the commissioner permits it to continue business, or its affairs are finally liquidated. The liquidation must proceed pursuant to sections 49.04 to 49.32.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "supervision"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "supervision": true
+        },
+        {
+          "supervision": false
+        },
+        {
+          "supervision": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "supervision",
+          "description": "Indicates if the safe deposit company is under the supervision and control of the commissioner of commerce."
+        }
+      ],
+      "consequences": [
+        "The safe deposit company is under the supervision and control of the commissioner of commerce."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "examination_requested"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "examination_requested": true
+        },
+        {
+          "examination_requested": false
+        },
+        {
+          "examination_requested": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "examination_requested",
+          "description": "Indicates if the commissioner has requested an examination of the safe deposit company."
+        }
+      ],
+      "consequences": [
+        "The commissioner may examine the safe deposit company to ensure compliance with laws and protection of property."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "violation_detected"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "violation_detected": true
+        },
+        {
+          "violation_detected": false
+        },
+        {
+          "violation_detected": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "violation_detected",
+          "description": "Indicates if a violation of the provisions of the chapter or any state law by the safe deposit company is detected."
+        }
+      ],
+      "consequences": [
+        "The commissioner may proceed with actions according to sections 46.24 to 46.33 or serve notice of intention to revoke the license."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "notice_served"
+              },
+              {
+                "<": [
+                  {
+                    "var": "violation_duration"
+                  },
+                  15
+                ]
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "notice_served": true,
+          "violation_duration": 10
+        },
+        {
+          "notice_served": true,
+          "violation_duration": 20
+        },
+        {
+          "notice_served": false,
+          "violation_duration": 10
+        }
+      ],
+      "variables": [
+        {
+          "name": "notice_served",
+          "description": "Indicates if a notice of intention to revoke the license has been served to the safe deposit company."
+        },
+        {
+          "name": "violation_duration",
+          "description": "The duration in days for which the violation has continued after the notice was served."
+        }
+      ],
+      "consequences": [
+        "The commissioner may revoke the license and take possession of the business and property of the safe deposit company."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "and": [
+              {
+                "var": "license_revoked"
+              },
+              {
+                "var": "liquidation_proceeding"
+              }
+            ]
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "license_revoked": true,
+          "liquidation_proceeding": true
+        },
+        {
+          "license_revoked": true,
+          "liquidation_proceeding": false
+        },
+        {
+          "license_revoked": false,
+          "liquidation_proceeding": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "license_revoked",
+          "description": "Indicates if the license of the safe deposit company has been revoked."
+        },
+        {
+          "name": "liquidation_proceeding",
+          "description": "Indicates if the liquidation of the safe deposit company is proceeding according to sections 49.04 to 49.32."
+        }
+      ],
+      "consequences": [
+        "The liquidation of the safe deposit company must proceed according to sections 49.04 to 49.32."
+      ]
+    }
+  ]
+}

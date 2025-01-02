@@ -1,0 +1,178 @@
+{
+  "id": "611.265",
+  "url": "https://www.revisor.mn.gov/statutes/cite/611.265",
+  "title": "611.265 TRANSITION.",
+  "text": "(a) District public defenders and their employees, other than in the Second and Fourth Judicial Districts, are state employees in the judicial branch, and are governed by the personnel rules adopted by the State Board of Public Defense.\n(b) A district public defender or district public defender employee who becomes a state employee under this section, and who participated in the Public Employee Retirement Association on June 30, 1993, may elect to continue to participate in the Public Employees Retirement Association according to procedures established by the Board of Public Defense and the association. Notwithstanding any law to the contrary, a person who is first employed as a state employee or by a district public defender after July 1, 1993, must participate in the Minnesota State Retirement System.\n(c) A person performing district public defender work as an independent contractor is not eligible to be covered under the state group insurance plan or the Public Employee Retirement Association.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "!=": [
+              {
+                "var": "judicial_district"
+              },
+              "Second"
+            ]
+          },
+          {
+            "!=": [
+              {
+                "var": "judicial_district"
+              },
+              "Fourth"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "judicial_district": "First"
+        },
+        {
+          "judicial_district": "Third"
+        },
+        {
+          "judicial_district": "Fifth"
+        }
+      ],
+      "variables": [
+        {
+          "name": "judicial_district",
+          "description": "The judicial district where the public defender is employed."
+        }
+      ],
+      "consequences": [
+        "District public defenders and their employees are state employees in the judicial branch.",
+        "They are governed by the personnel rules adopted by the State Board of Public Defense."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "employment_status"
+              },
+              "state_employee"
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "participated_in_PERA_on_June_30_1993"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "employment_status": "state_employee",
+          "participated_in_PERA_on_June_30_1993": true
+        },
+        {
+          "employment_status": "state_employee",
+          "participated_in_PERA_on_June_30_1993": false
+        },
+        {
+          "employment_status": "contractor",
+          "participated_in_PERA_on_June_30_1993": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "employment_status",
+          "description": "The employment status of the individual, either as a state employee or contractor."
+        },
+        {
+          "name": "participated_in_PERA_on_June_30_1993",
+          "description": "Whether the individual participated in the Public Employee Retirement Association on June 30, 1993."
+        }
+      ],
+      "consequences": [
+        "The individual may elect to continue to participate in the Public Employees Retirement Association."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "employment_status"
+              },
+              "state_employee"
+            ]
+          },
+          {
+            ">=": [
+              {
+                "var": "employment_start_date"
+              },
+              "1993-07-01"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "employment_status": "state_employee",
+          "employment_start_date": "1994-01-01"
+        },
+        {
+          "employment_status": "state_employee",
+          "employment_start_date": "1993-07-01"
+        },
+        {
+          "employment_status": "state_employee",
+          "employment_start_date": "1993-06-30"
+        }
+      ],
+      "variables": [
+        {
+          "name": "employment_status",
+          "description": "The employment status of the individual, either as a state employee or contractor."
+        },
+        {
+          "name": "employment_start_date",
+          "description": "The date the individual started employment as a state employee or with a district public defender."
+        }
+      ],
+      "consequences": [
+        "The individual must participate in the Minnesota State Retirement System."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "employment_status"
+          },
+          "contractor"
+        ]
+      },
+      "examples": [
+        {
+          "employment_status": "contractor"
+        },
+        {
+          "employment_status": "state_employee"
+        }
+      ],
+      "variables": [
+        {
+          "name": "employment_status",
+          "description": "The employment status of the individual, either as a state employee or contractor."
+        }
+      ],
+      "consequences": [
+        "The individual is not eligible to be covered under the state group insurance plan.",
+        "The individual is not eligible to participate in the Public Employee Retirement Association."
+      ]
+    }
+  ]
+}

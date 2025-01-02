@@ -1,0 +1,149 @@
+{
+  "id": "56.10",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.10",
+  "title": "56.10 GENERAL OVERSIGHT AND ADMINISTRATION.",
+  "text": "For the purpose of discovering violations of this chapter or securing information lawfully required by the commissioner hereunder, the commissioner may, at any time, either personally or by a person or persons duly designated, investigate the loans and business and examine the books, accounts, records, and files used therein, of every licensee and of every person who shall be engaged in the business described in section 56.01, whether the person shall act or claim to act as principal or agent, or under or without the authority of this chapter. For that purpose the commissioner and a duly designated representative shall have free access to the offices and places of business, books, accounts, papers, records, files, safes, and vaults of all such persons. The commissioner and all persons duly designated shall have authority to require the attendance of and to examine, under oath, all persons whomsoever whose testimony the commissioner may require relative to the loan or the business or to the subject matter of any examination, investigation, or hearing. Upon written agreement with the licensee, the commissioner may conduct examinations applying the procedures for purposes of this subdivision and section 46.04, subdivision 1, to facilitate the qualifications of the licensee to participate in the United States Small Business Administration loan guarantee or similar programs.\nEach licensee shall pay to the commissioner such amount as may be required under section 46.131, and the commissioner may maintain an action for the recovery of such costs in any court of competent jurisdiction.\nThe commissioner may honor requests from interested parties for interpretive opinions in connection with the administration of this chapter. No provision of this chapter or of any other chapter to which this chapter refers which imposes any penalty shall apply to any act done or omitted to be done in conformity with any written interpretive opinion of the commissioner, notwithstanding that such written interpretive opinion may, after such act or omission, be amended or rescinded or be determined by judicial or other authority to be invalid for any reason.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "==": [
+              {
+                "var": "commissioner_access"
+              },
+              true
+            ]
+          },
+          {
+            "==": [
+              {
+                "var": "licensee_access"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "commissioner_access": true,
+          "licensee_access": true
+        },
+        {
+          "commissioner_access": true,
+          "licensee_access": false
+        },
+        {
+          "commissioner_access": false,
+          "licensee_access": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "commissioner_access",
+          "description": "Indicates if the commissioner has free access to the offices and places of business, books, accounts, papers, records, files, safes, and vaults of all such persons."
+        },
+        {
+          "name": "licensee_access",
+          "description": "Indicates if the licensee has agreed to allow the commissioner access for examination purposes."
+        }
+      ],
+      "consequences": [
+        "Commissioner can investigate and examine the business and records."
+      ]
+    },
+    {
+      "rule": {
+        "if": [
+          {
+            "var": "written_agreement"
+          },
+          true,
+          false
+        ]
+      },
+      "examples": [
+        {
+          "written_agreement": true
+        },
+        {
+          "written_agreement": false
+        },
+        {
+          "written_agreement": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "written_agreement",
+          "description": "Indicates if there is a written agreement with the licensee for examination purposes."
+        }
+      ],
+      "consequences": [
+        "Commissioner may conduct examinations to facilitate the qualifications of the licensee for loan guarantee programs."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "interpretive_opinion"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "interpretive_opinion": true
+        },
+        {
+          "interpretive_opinion": false
+        },
+        {
+          "interpretive_opinion": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "interpretive_opinion",
+          "description": "Indicates if there is a written interpretive opinion from the commissioner."
+        }
+      ],
+      "consequences": [
+        "No penalty for acts done in conformity with the interpretive opinion, even if later amended or rescinded."
+      ]
+    },
+    {
+      "rule": {
+        "==": [
+          {
+            "var": "payment_due"
+          },
+          true
+        ]
+      },
+      "examples": [
+        {
+          "payment_due": true
+        },
+        {
+          "payment_due": false
+        },
+        {
+          "payment_due": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "payment_due",
+          "description": "Indicates if the licensee has a payment due to the commissioner under section 46.131."
+        }
+      ],
+      "consequences": [
+        "Commissioner may maintain an action for recovery of costs in court."
+      ]
+    }
+  ]
+}

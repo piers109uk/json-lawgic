@@ -1,0 +1,130 @@
+{
+  "id": "55.06",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.06",
+  "title": "55.06 BUSINESS NOT TO BE CONDUCTED WITHOUT LICENSE.",
+  "text": "No person except a bank, a savings bank, a credit union, a savings association, industrial loan and thrift company issuing investment certificates of indebtedness, or a trust company may let out or rent as lessor, for hire, safe deposit boxes or take or receive valuable personal property for safekeeping and storage, as bailee, for hire, without procuring a license and giving a bond, as required by this chapter, except as otherwise authorized by law so to do.\nEvery person who shall violate the provisions of subdivision 1 or any other provision of this chapter shall forfeit to the state the sum of not to exceed $100 for each day the violation shall continue, after written notice by the commissioner of commerce to discontinue such violation, to be recovered in a civil action brought by the attorney general in the name of the state at the request of the commissioner of commerce, and may be enjoined by any court having jurisdiction from any further violation, in an equitable action brought by the attorney general in the name of the state for that purpose.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "!": {
+              "in": [
+                {
+                  "var": "entity_type"
+                },
+                [
+                  "bank",
+                  "savings bank",
+                  "credit union",
+                  "savings association",
+                  "industrial loan and thrift company",
+                  "trust company"
+                ]
+              ]
+            }
+          },
+          {
+            "!": {
+              "var": "has_license"
+            }
+          },
+          {
+            "!": {
+              "var": "authorized_by_law"
+            }
+          }
+        ]
+      },
+      "examples": [
+        {
+          "entity_type": "individual",
+          "has_license": false,
+          "authorized_by_law": false
+        },
+        {
+          "entity_type": "bank",
+          "has_license": false,
+          "authorized_by_law": false
+        },
+        {
+          "entity_type": "individual",
+          "has_license": true,
+          "authorized_by_law": false
+        },
+        {
+          "entity_type": "individual",
+          "has_license": false,
+          "authorized_by_law": true
+        }
+      ],
+      "variables": [
+        {
+          "name": "entity_type",
+          "description": "The type of entity attempting to rent out safe deposit boxes or receive valuable personal property for safekeeping."
+        },
+        {
+          "name": "has_license",
+          "description": "Whether the entity has procured a license as required by the chapter."
+        },
+        {
+          "name": "authorized_by_law",
+          "description": "Whether the entity is otherwise authorized by law to perform the action."
+        }
+      ],
+      "consequences": [
+        "Entity must procure a license and give a bond as required by the chapter."
+      ]
+    },
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "violates_provision"
+          },
+          {
+            "==": [
+              {
+                "var": "received_notice"
+              },
+              true
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "violates_provision": true,
+          "received_notice": true
+        },
+        {
+          "violates_provision": true,
+          "received_notice": false
+        },
+        {
+          "violates_provision": false,
+          "received_notice": true
+        },
+        {
+          "violates_provision": false,
+          "received_notice": false
+        }
+      ],
+      "variables": [
+        {
+          "name": "violates_provision",
+          "description": "Whether the entity violates the provisions of the chapter."
+        },
+        {
+          "name": "received_notice",
+          "description": "Whether the entity has received written notice by the commissioner of commerce to discontinue the violation."
+        }
+      ],
+      "consequences": [
+        "Entity forfeits up to $100 for each day the violation continues.",
+        "Entity may be enjoined from further violation by a court."
+      ]
+    }
+  ]
+}

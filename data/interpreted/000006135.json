@@ -1,0 +1,168 @@
+{
+  "id": "56.05",
+  "url": "https://www.revisor.mn.gov/statutes/cite/56.05",
+  "title": "56.05 LICENSE; TO BE POSTED.",
+  "text": "The license shall state the address at which the business is to be conducted and shall state fully the name of the licensee, and if the licensee is a copartnership or association, the names of the members thereof, and if a corporation, the date and place of its incorporation. The license shall be kept conspicuously posted in the place of business of the licensee, and shall not be transferable or assignable.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "var": "license.address"
+          },
+          {
+            "var": "license.name"
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "var": "license.type.copartnership"
+                  },
+                  {
+                    "var": "license.members"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "var": "license.type.association"
+                  },
+                  {
+                    "var": "license.members"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "var": "license.type.corporation"
+                  },
+                  {
+                    "var": "license.incorporation_date"
+                  },
+                  {
+                    "var": "license.incorporation_place"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "var": "license.posted"
+          },
+          {
+            "!": {
+              "var": "license.transferable"
+            }
+          },
+          {
+            "!": {
+              "var": "license.assignable"
+            }
+          }
+        ]
+      },
+      "examples": [
+        {
+          "license": {
+            "address": "123 Business St.",
+            "name": "ABC Corp",
+            "type": {
+              "corporation": true
+            },
+            "incorporation_date": "2020-01-01",
+            "incorporation_place": "New York",
+            "posted": true,
+            "transferable": false,
+            "assignable": false
+          }
+        },
+        {
+          "license": {
+            "address": "456 Commerce Ave.",
+            "name": "XYZ Partners",
+            "type": {
+              "copartnership": true
+            },
+            "members": [
+              "John Doe",
+              "Jane Smith"
+            ],
+            "posted": true,
+            "transferable": false,
+            "assignable": false
+          }
+        },
+        {
+          "license": {
+            "address": "789 Market Blvd.",
+            "name": "LMN Association",
+            "type": {
+              "association": true
+            },
+            "members": [
+              "Alice Brown",
+              "Bob White"
+            ],
+            "posted": true,
+            "transferable": false,
+            "assignable": false
+          }
+        }
+      ],
+      "variables": [
+        {
+          "name": "license.address",
+          "description": "The address at which the business is to be conducted."
+        },
+        {
+          "name": "license.name",
+          "description": "The name of the licensee."
+        },
+        {
+          "name": "license.type.copartnership",
+          "description": "Indicates if the licensee is a copartnership."
+        },
+        {
+          "name": "license.type.association",
+          "description": "Indicates if the licensee is an association."
+        },
+        {
+          "name": "license.type.corporation",
+          "description": "Indicates if the licensee is a corporation."
+        },
+        {
+          "name": "license.members",
+          "description": "The names of the members if the licensee is a copartnership or association."
+        },
+        {
+          "name": "license.incorporation_date",
+          "description": "The date of incorporation if the licensee is a corporation."
+        },
+        {
+          "name": "license.incorporation_place",
+          "description": "The place of incorporation if the licensee is a corporation."
+        },
+        {
+          "name": "license.posted",
+          "description": "Indicates if the license is conspicuously posted in the place of business."
+        },
+        {
+          "name": "license.transferable",
+          "description": "Indicates if the license is transferable."
+        },
+        {
+          "name": "license.assignable",
+          "description": "Indicates if the license is assignable."
+        }
+      ],
+      "consequences": [
+        "The license is valid and complies with the law."
+      ]
+    }
+  ]
+}

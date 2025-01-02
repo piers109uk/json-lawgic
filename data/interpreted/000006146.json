@@ -1,0 +1,86 @@
+{
+  "id": "55.12",
+  "url": "https://www.revisor.mn.gov/statutes/cite/55.12",
+  "title": "55.12 LIABILITY MAY BE LIMITED.",
+  "text": "Any licensed safe deposit company may, in any lease or contract governing or regulating the use of any safe deposit box to or by any customer or customers, limit its liability as such lessor or bailee in the following respects:\n(1) limit its total liability for any loss by negligence to such maximum amount as may be stipulated; and\n(2) stipulate that it shall in no event be liable for loss of such valuable property as may be excepted against in such lease or contract.",
+  "repealed": false,
+  "rules": [
+    {
+      "rule": {
+        "and": [
+          {
+            "<=": [
+              {
+                "var": "loss_by_negligence"
+              },
+              {
+                "var": "maximum_stipulated_amount"
+              }
+            ]
+          },
+          {
+            "in": [
+              {
+                "var": "valuable_property"
+              },
+              {
+                "var": "excepted_properties"
+              }
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "loss_by_negligence": 5000,
+          "maximum_stipulated_amount": 10000,
+          "valuable_property": "jewelry",
+          "excepted_properties": [
+            "jewelry",
+            "art"
+          ]
+        },
+        {
+          "loss_by_negligence": 15000,
+          "maximum_stipulated_amount": 10000,
+          "valuable_property": "jewelry",
+          "excepted_properties": [
+            "jewelry",
+            "art"
+          ]
+        },
+        {
+          "loss_by_negligence": 5000,
+          "maximum_stipulated_amount": 10000,
+          "valuable_property": "cash",
+          "excepted_properties": [
+            "jewelry",
+            "art"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "loss_by_negligence",
+          "description": "The amount of loss due to negligence."
+        },
+        {
+          "name": "maximum_stipulated_amount",
+          "description": "The maximum amount stipulated in the lease or contract for liability."
+        },
+        {
+          "name": "valuable_property",
+          "description": "The type of valuable property in question."
+        },
+        {
+          "name": "excepted_properties",
+          "description": "A list of properties excepted against in the lease or contract."
+        }
+      ],
+      "consequences": [
+        "The company's liability is limited to the stipulated maximum amount for negligence.",
+        "The company is not liable for loss of valuable property if it is excepted in the lease or contract."
+      ]
+    }
+  ]
+}
