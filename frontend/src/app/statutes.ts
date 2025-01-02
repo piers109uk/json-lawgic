@@ -27,7 +27,7 @@ export interface IStatuteData {
   rules: JsonLogicInterpretation[]
 }
 
-export const statutes: IStatuteData[] = interpretedLaws
+export const statutes: IStatuteData[] = interpretedLaws as IStatuteData[]
 
 export const showcase: IStatuteData[] = showcaseLaws
 
