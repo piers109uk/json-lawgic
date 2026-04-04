@@ -49,43 +49,71 @@
 
 ## 2. Key Architectural Decisions
 
-### 2.1 Backend Framework
+### 2.1 Backend Framework — Python vs TypeScript
+
+This is the most consequential decision because it determines the ecosystem for everything downstream.
 
 | Option | Pros | Cons | Recommendation |
 |---|---|---|---|
-| **FastAPI + LangGraph** | Native async, excellent streaming (SSE/WebSocket), Pydantic-native, huge ecosystem, pairs perfectly with LangChain/LangGraph | Separate deploy from Next.js frontend | **Recommended** |
-| **Next.js API routes (Node.js)** | Single deploy, same repo as frontend | Poor LangChain/LangGraph support in JS, JSON Logic execution less mature in JS, would need to rewrite Python pipeline | Not recommended |
-| **LangServe** | Built for LangChain, auto-generates endpoints | Less flexibility, deprecated in favour of LangGraph Platform | Not recommended |
-| **LangGraph Platform (Cloud)** | Managed hosting for LangGraph agents, built-in streaming, persistence | Vendor lock-in, cost, less control | Consider for Phase 3 |
+| **Mastra (TypeScript)** | All-in-one: agents, workflows, RAG, memory, evals, MCP. Built on Vercel AI SDK v6. TypeScript-native from scratch (not a port). 300k+ weekly npm downloads, YC-backed. Same language as Next.js frontend = single deploy possible. Built-in playground for local testing. 40+ model provider integrations. | Newer framework (1.0 Jan 2026), smaller community than LangGraph. Fewer battle-tested production deployments. Python pipeline code would need porting. | **Strong contender** |
+| **FastAPI + LangGraph (Python)** | Production-proven (Klarna, Uber, LinkedIn). Graph-based state machines with checkpointing, time-travel debugging, durable execution. Pydantic-native. Existing Python pipeline code stays as-is. | Separate deploy from frontend. Steeper learning curve. Heavier abstractions. | **Strong contender** |
+| **FastAPI + PydanticAI (Python)** | Type-safe, lightweight, Pydantic-native. Durable execution via Temporal/DBOS. Excellent Logfire observability. Cleaner API than LangGraph for simpler agent patterns. 25+ model providers. | Less suited for complex multi-agent graphs than LangGraph. Newer. | **Consider** |
+| **Next.js API routes + Vercel AI SDK v6** | Single deploy. AI SDK v6 has native agents, tool loops, streaming, structured output. AI Gateway for 100+ models. | No built-in workflow orchestration, RAG, or memory — more DIY. | Viable but more glue code |
+| **LangGraph Platform (Cloud)** | Managed hosting, built-in streaming + persistence | Vendor lock-in, cost, less control | Consider for Phase 3 |
 
-**Decision: FastAPI + LangGraph**. The existing Python codebase, LangChain/LangGraph integrations, and JSON Logic execution all favour Python. FastAPI gives us native SSE streaming and Pydantic model sharing.
+**The real question: Mastra (TS) or LangGraph/PydanticAI (Python)?**
+
+Arguments for **Mastra**:
+- Single language across the entire stack (frontend + backend + pipeline)
+- Built-in RAG with chunking, embedding, and vector store support
+- Built-in evals — directly relevant to the A/B comparison framework
+- Built-in memory — conversation persistence comes for free
+- Vercel AI SDK v6 underneath means best-in-class streaming and `useChat` integration
+- Deploying as a single Next.js app on Vercel is simpler than managing two services
+- MCP support for tool interop
+
+Arguments for **Python (LangGraph or PydanticAI)**:
+- Existing pipeline code is Python — no porting needed
+- LangGraph is the most production-proven agent framework (checkpointing, durability)
+- JSON Logic execution libraries are more mature in Python
+- The legal AI / NLP ecosystem is Python-first
+- If the project grows, Python has more ML/data science tooling
+
+**Recommendation: Mastra** — for this project specifically, the benefits of single-language full-stack, built-in RAG + evals + memory, and simplified deployment outweigh the Python ecosystem advantages. The existing Python pipeline is small enough to port. JSON Logic execution works fine in JS (`json-logic-js` is already in the frontend). The core hypothesis test (law-as-code vs RAG) benefits more from rapid iteration speed than from battle-hardened infrastructure.
+
+**Fallback**: If Mastra's RAG or agent primitives hit limitations during implementation, pivot to **FastAPI + PydanticAI** for the backend (cleaner than LangGraph for this use case) with the frontend still using Vercel AI SDK v6.
 
 ### 2.2 LLM Orchestration
 
 | Option | Pros | Cons | Recommendation |
 |---|---|---|---|
-| **LangGraph (stateful agents)** | Already used in codebase, excellent for multi-step tool-calling, built-in state management, checkpointing | Learning curve for complex graphs | **Recommended** |
-| **Plain LangChain** | Simpler | No state management, harder to handle multi-turn tool-calling loops | Not recommended for the chatbot |
-| **Raw OpenAI/Anthropic SDK** | Full control, lowest abstraction | Must build all orchestration from scratch | Not recommended |
-| **Instructor + raw SDK** | Great for structured output | No agent/tool-calling framework | Good for pipeline only |
+| **Mastra Agents + Workflows** | Agents handle open-ended tool-calling; Workflows handle deterministic multi-step orchestration (branching, parallel, suspend/resume). Built on Vercel AI SDK v6 Agent abstraction. | Newer, less battle-tested than LangGraph | **Recommended** (if Mastra backend) |
+| **LangGraph** | Most production-proven. Graph-based state machines, checkpointing, time-travel debugging. | Steep learning curve, heavy abstractions | **Recommended** (if Python backend) |
+| **PydanticAI** | Type-safe, clean API, durable execution via Temporal. Streams via AG-UI protocol. | Less suited for complex multi-agent graphs | Strong Python alternative |
+| **Vercel AI SDK v6 (standalone)** | Native Agent class with ToolLoopAgent, human-in-the-loop approval, subagents. | No built-in workflow orchestration beyond tool loops | Viable for simpler agent |
+| **OpenAI Agents SDK** | Easy, handoff-based multi-agent. | OpenAI model lock-in | Not recommended |
+| **Claude Agent SDK** | Best MCP integration. | Anthropic lock-in | Not recommended |
 
-**Decision: LangGraph for the chatbot agent, with tool definitions**. Use the existing LangGraph graph_interpreter pattern for the law-to-code pipeline. The chatbot agent graph looks like:
+**Decision**: If going with Mastra, use its **Agents** for the chatbot (tool-calling, streaming) and **Workflows** for the law-to-code pipeline (deterministic interpret → validate → review loop). If going Python, use PydanticAI for cleaner ergonomics than LangGraph for this specific use case.
 
-```
-START → route_intent → [retrieve_statutes] → [identify_rules] → [ask_clarifying_questions] 
-    → [execute_json_logic] → [synthesise_answer] → respond → (loop if follow-up)
-```
+### 2.3 LLM Model Selection (April 2026 Landscape)
 
-### 2.3 LLM Model Selection
+The model landscape has shifted dramatically. No single model dominates all categories.
 
-| Model | Use case | Notes |
-|---|---|---|
-| **GPT-4o** | Chatbot, law-to-code pipeline | Best tool-calling support, fast, good structured output |
-| **Claude 3.5/4 Sonnet** | Alternative chatbot, pipeline reviewer | Excellent at careful legal reasoning, long context |
-| **GPT-4o-mini / Claude Haiku** | Embedding classification, intent routing | Low-cost for simple decisions |
-| **Gemini 2.5 Pro** | Alternative for pipeline | Good at structured output, competitive pricing |
+| Model | Strengths | Pricing (in/out per 1M tokens) | Best for in this project |
+|---|---|---|---|
+| **Claude Opus 4.6** | #1 coding (80.8% SWE-bench), best instruction-following, best uncertainty calibration, 1M context, 128K output. τ²-bench retail 91.9%. | ~$15/$75 | **Primary chatbot model** — best at careful legal reasoning, honest about uncertainty, excellent structured output. Long context ideal for statute analysis. |
+| **GPT-5.4** | #1 autonomous computer use (75% OSWorld), fastest response times, 256K context, native reasoning. | ~$10/$30 | Alternative chatbot, good for tool-calling. |
+| **Gemini 3.1 Pro** | #1 reasoning (94.3% GPQA Diamond), 2M context (longest), best value. | $2/$12 | **Pipeline model** — cheapest frontier model, excellent for batch law-to-code conversion. 2M context means entire statute chapters in one pass. |
+| **Claude Sonnet 4** | Strong coding/reasoning at lower cost than Opus. | ~$3/$15 | Pipeline reviewer, intent routing |
+| **GPT-4o-mini** | Fast, cheap, good enough for simple tasks. | ~$0.15/$0.60 | Intent classification, simple routing |
+| **MiniMax M2.7** | Matches Opus 4.6 on coding at 1/20th cost. | Very low | Worth evaluating for pipeline batch processing |
 
-**Decision: Default to GPT-4o for tool-calling chatbot (best native tool-calling). Support Claude as configurable alternative. Use GPT-4o-mini for intent routing. Pipeline should support model switching.**
+**Decision:**
+- **Chatbot**: Claude Opus 4.6 (primary) — best at legal reasoning + uncertainty calibration (critical for legal advice). Configurable fallback to GPT-5.4.
+- **Pipeline (interpret/review)**: Gemini 3.1 Pro — 2M context window means we can include entire statute chapters + cross-references in one pass, at the lowest cost. Use Opus 4.6 for the reviewer agent for quality diversity.
+- **Routing/classification**: GPT-4o-mini or Claude Sonnet 4
+- **All models configurable** — the framework should make it trivial to swap.
 
 ### 2.4 Vector Store
 
@@ -99,29 +127,32 @@ START → route_intent → [retrieve_statutes] → [identify_rules] → [ask_cla
 
 **Decision: Start with Qdrant** (can run locally in Docker or use Qdrant Cloud free tier). It handles the ~54k statute chunks well and supports metadata filtering and hybrid search. If simplicity is paramount, pgvector is the backup since we need Postgres anyway for conversations.
 
-### 2.5 Embedding Model
+### 2.5 Embedding Model (2026 Landscape)
 
-| Option | Dimensions | Quality | Cost | Recommendation |
-|---|---|---|---|---|
-| **OpenAI text-embedding-3-large** | 3072 (or 256–1536 via dim reduction) | Excellent | $0.13/M tokens | **Recommended** |
-| **OpenAI text-embedding-3-small** | 1536 | Good | $0.02/M tokens | Budget option |
-| **Cohere embed-v3** | 1024 | Excellent, built-in search types | $0.10/M tokens | Strong alternative |
-| **BGE-M3 (open source)** | 1024 | Very good, multi-lingual, hybrid | Free (self-hosted) | Best if cost-sensitive |
-| **Jina embeddings v3** | 1024 | Good legal domain performance | $0.02/M tokens | Consider |
+The embedding space has evolved significantly. Note: changing embedding models means re-embedding the entire corpus, so this choice is sticky.
 
-**Decision: OpenAI text-embedding-3-large** for best quality with minimal infrastructure. 54k statutes ≈ ~5M tokens to embed ≈ $0.65 one-time cost. Trivial.
+| Option | Dimensions | MTEB Score | Cost/1M tokens | Notes | Recommendation |
+|---|---|---|---|---|---|
+| **Gemini Embedding 001** | Variable | 68.32 (#1 MTEB) | $0.006 (estimate) | Top benchmark score, cheap | **Recommended** |
+| **Voyage voyage-3-large** | 1024 | ~67 | $0.06–0.18 | Best for code + technical docs, 32K context | Strong alternative |
+| **Cohere embed-v4** | Variable | High | $0.10 | 100+ languages, 90% storage reduction via quantisation | Consider |
+| **OpenAI text-embedding-3-large** | 3072 | ~65 | $0.13 | Matryoshka dimension reduction, well-known | Still solid |
+| **OpenAI text-embedding-3-small** | 1536 | ~63 | $0.02 | Budget option | Budget option |
+| **BGE-M3 (open source)** | 1024 | ~65 | Free (self-hosted) | Hybrid dense+sparse, multi-lingual | Best if self-hosting |
 
-### 2.6 Reranker
+**Decision: Gemini Embedding 001** — top MTEB score and very cheap. For 54k statutes (~5M tokens) the embedding cost is negligible regardless of model. If you want to avoid Google dependency, Voyage voyage-3-large is the best alternative for technical/legal text.
+
+### 2.6 Reranker (2026 Landscape)
 
 | Option | Pros | Cons | Recommendation |
 |---|---|---|---|
-| **Cohere Rerank v3.5** | Best-in-class, simple API | API cost per query | **Recommended** |
-| **BGE-reranker-v2-m3** | Free, self-hosted, strong quality | Need to host the model | Good alternative |
-| **Jina Reranker v2** | Good quality, API | Less proven | Alternative |
-| **FlashRank** | Lightweight, fast, local | Lower quality | Budget option |
-| **LLM-based reranking** | Use GPT-4o-mini to rerank | Slow, expensive at scale | Not recommended for production |
+| **Cohere Rerank v4.0-pro** | Latest Cohere reranker, multilingual, state-of-art quality | API cost per query | **Recommended** |
+| **Cohere Rerank v4.0-fast** | Low-latency variant of v4.0 | Slightly lower quality than pro | Good for latency-critical paths |
+| **Jina Reranker v3** | 0.6B params, 93 languages, 131K context, 61.94 nDCG-10 BEIR, 10x smaller than generative rerankers | Newer, less proven at scale | Strong alternative |
+| **BGE-reranker-v2-m3** | Free, self-hosted, strong quality | Need to host the model | Best if self-hosting |
+| **Vercel AI SDK reranking** | Built-in reranking support in AI SDK v6 | Tied to Vercel ecosystem | Native option if using AI SDK |
 
-**Decision: Cohere Rerank v3.5** — best quality, simple integration, low cost per query (~$1/1k searches). Fall back to BGE-reranker if self-hosting is preferred.
+**Decision: Cohere Rerank v4.0-pro** — best quality, simple integration. If latency matters, use v4.0-fast for the interactive chatbot and v4.0-pro for the eval pipeline. Jina Reranker v3 is a strong budget alternative with impressive benchmark numbers.
 
 ### 2.7 Database (Conversations & Sessions)
 
@@ -161,7 +192,6 @@ User Query
 |---|---|---|---|
 | **Next.js 15 (App Router)** | Already in codebase, SSR, great ecosystem, Vercel deploy | Heavier than needed for chat-only | **Recommended** |
 | **Vite + React** | Lighter, faster dev | No SSR (not needed for chat app), separate from existing code | Alternative |
-| **Remix** | Good streaming primitives | Less ecosystem | Not recommended |
 
 **Decision: Next.js 15** — continue with existing frontend foundation, add chat UI as new route/page.
 
@@ -169,11 +199,11 @@ User Query
 
 | Option | Pros | Cons | Recommendation |
 |---|---|---|---|
-| **Vercel AI SDK (`ai` package)** | Best-in-class streaming hooks, `useChat`, tool-call rendering | Slightly opinionated | **Recommended** |
+| **Vercel AI SDK v6** (`ai` + `@ai-sdk/react`) | Best-in-class streaming hooks, `useChat`, tool-call rendering, native agent support, structured output streaming, AI Gateway for 100+ models with zero markup. Sub-50ms latency with caching. | Slightly opinionated | **Recommended** |
+| **Mastra client hooks** | Built on Vercel AI SDK, adds memory/thread management | Adds a layer; AI SDK v6 alone may suffice for the frontend | Use if Mastra backend |
 | **Custom WebSocket + state** | Full control | Lots of boilerplate | Not recommended |
-| **CopilotKit** | Pre-built chat UI | Too opinionated, less control | Not recommended |
 
-**Decision: Vercel AI SDK** (`ai` + `@ai-sdk/react`). It provides `useChat` hook with native streaming, tool-call events, and works seamlessly with Next.js. We render the tool-call display ourselves for full control over UX.
+**Decision: Vercel AI SDK v6** — it's the foundation layer regardless of whether we use Mastra (which is built on it). AI SDK v6's Agent abstraction, `useChat` hook, tool-call events, and streaming work seamlessly with Next.js. The AI Gateway feature ($5/mo free credit, zero markup on provider pricing) is a bonus for BYOK-style multi-provider support.
 
 ### 2.11 JSON Logic Execution
 
@@ -188,7 +218,7 @@ User Query
 
 ---
 
-## 3. Chatbot Agent Architecture (LangGraph)
+## 3. Chatbot Agent Architecture
 
 ### 3.1 Agent Graph
 
@@ -366,7 +396,7 @@ Raw Statute JSON
 
 | Area | Current | Upgraded |
 |---|---|---|
-| Model | GPT-4o only | Configurable: GPT-4o, Claude Sonnet, Gemini Pro |
+| Model | GPT-4o only (outdated) | Configurable: Gemini 3.1 Pro (best value, 2M context), Claude Opus 4.6 (best coding), GPT-5.4 |
 | Validation | None (examples not executed) | Programmatic JSON Logic execution check |
 | Cross-references | Not detected | Regex + LLM detection of statute references |
 | Variable naming | Inconsistent | Normalised naming convention enforced |
@@ -376,6 +406,7 @@ Raw Statute JSON
 | Review loop | Exists but not used in batch | Always on, with configurable max iterations |
 | Batch size | Hardcoded | CLI configurable |
 | Output quality | Variable | Minimum score threshold (e.g. 0.7) to accept |
+| Context strategy | Single statute per call | Gemini 3.1 Pro's 2M context = entire chapter + cross-references in one pass |
 
 ---
 
@@ -459,7 +490,13 @@ Golden Dataset (100+ questions)
 ### 7.1 Development
 
 ```
-Local machine:
+Local machine (Mastra option):
+├── Next.js + Mastra (pnpm dev, port 3000)  # Single process
+├── Mastra Playground (built-in agent testing UI)
+├── Qdrant (Docker, port 6333)
+└── SQLite (dev database)
+
+Local machine (Python option):
 ├── Next.js frontend (pnpm dev, port 3000)
 ├── FastAPI backend (uvicorn, port 8000)
 ├── Qdrant (Docker, port 6333)
@@ -468,112 +505,137 @@ Local machine:
 
 ### 7.2 Production
 
-| Component | Platform | Why |
+| Component | Mastra (Option A) | Python (Option B) |
 |---|---|---|
-| Frontend | **Vercel** | Free tier, excellent Next.js support, global CDN |
-| Backend API | **Railway** or **Fly.io** | Simple Docker deploy, good free/hobby tier, persistent storage |
-| Vector DB | **Qdrant Cloud** (free tier) or self-hosted on Railway | 1GB free, sufficient for 54k docs |
-| Database | **Supabase** (Postgres) | Free tier: 500MB, 50k rows, built-in auth |
-| Tracing | **Langfuse Cloud** | Free tier generous for this use case |
+| App | **Vercel** (single deploy: frontend + API routes + Mastra) | Vercel (frontend) + Railway (FastAPI backend) |
+| Vector DB | **Qdrant Cloud** (free tier) | Same |
+| Database | **Supabase** (Postgres) | Same |
+| Tracing | **Langfuse Cloud** or Vercel AI SDK observability | Langfuse Cloud or Pydantic Logfire |
 
 ### 7.3 Cost Estimate (Monthly, Post-Launch)
 
 | Item | Estimated cost | Notes |
 |---|---|---|
-| LLM API (free tier users) | $50–200 | Depends on usage, rate-limited |
+| LLM API (free tier users) | $30–150 | Gemini 3.1 Pro is 5-10x cheaper than old GPT-4o pricing |
 | LLM API (BYOK users) | $0 | User pays |
-| Vercel | $0 | Free tier |
-| Railway (backend) | $5–10 | Hobby plan |
-| Qdrant Cloud | $0 | Free tier |
+| Vercel | $0 | Free tier (Pro $20/mo if needed) |
+| Railway (Python option only) | $5–10 | Hobby plan |
+| Qdrant Cloud | $0 | Free tier (1GB) |
 | Supabase | $0 | Free tier |
-| Cohere Rerank | $10–30 | ~$1/1k queries |
+| Cohere Rerank v4.0 | $10–30 | ~$1/1k queries |
 | Langfuse | $0 | Free tier |
-| **Total** | **$65–240/mo** | Scales with free-tier usage |
+| Vercel AI Gateway | $0–5 | $5/mo free credit |
+| **Total (Mastra)** | **$40–185/mo** | Simpler, cheaper (no separate backend hosting) |
+| **Total (Python)** | **$45–195/mo** | Slightly more due to Railway |
 
 ---
 
 ## 8. Project Structure (Proposed)
 
+### Option A: Mastra full-stack (recommended)
+
 ```
 json-lawgic/
-├── plans/                         # This document + requirements
+├── plans/                           # This document + requirements
 ├── data/
-│   ├── default/                   # Raw MN statutes (~54k)
-│   ├── interpreted/               # JSON Logic interpretations
-│   ├── golden/                    # Golden evaluation dataset
-│   │   ├── questions.json         # 100+ annotated questions
-│   │   └── retrieval_labels.json  # Per-question relevant statutes
-│   └── cross_references/          # Statute cross-reference graph
+│   ├── default/                     # Raw MN statutes (~54k)
+│   ├── interpreted/                 # JSON Logic interpretations
+│   ├── golden/                      # Golden evaluation dataset
+│   │   ├── questions.json           # 100+ annotated questions
+│   │   └── retrieval_labels.json    # Per-question relevant statutes
+│   └── cross_references/            # Statute cross-reference graph
 │       └── graph.json
-├── backend/                       # Python backend (NEW)
+├── src/                             # Mastra backend (TypeScript)
+│   ├── mastra/
+│   │   ├── index.ts                 # Mastra instance config
+│   │   ├── agents/
+│   │   │   ├── chat-agent.ts        # Main chatbot agent (tool-calling)
+│   │   │   └── rag-agent.ts         # RAG-only baseline agent
+│   │   ├── tools/
+│   │   │   ├── search-statutes.ts   # Vector search + rerank
+│   │   │   ├── evaluate-logic.ts    # JSON Logic execution tool
+│   │   │   ├── get-statute-rules.ts # Fetch rules for a statute
+│   │   │   └── get-related.ts       # Cross-reference lookup
+│   │   ├── workflows/
+│   │   │   └── law-to-code.ts       # Pipeline: interpret → validate → review
+│   │   ├── rag/
+│   │   │   ├── embedder.ts          # Embedding + indexing
+│   │   │   ├── retriever.ts         # Hybrid retrieval
+│   │   │   └── reranker.ts          # Cross-encoder reranking
+│   │   └── evals/
+│   │       ├── answer-correctness.ts
+│   │       ├── faithfulness.ts
+│   │       └── retrieval-metrics.ts
+│   └── lib/
+│       ├── json-logic.ts            # JSON Logic executor wrapper
+│       ├── cross-refs.ts            # Cross-reference graph
+│       └── db.ts                    # Database client (Drizzle + Supabase)
+├── app/                             # Next.js frontend (extended)
+│   ├── chat/                        # Chat interface
+│   │   ├── page.tsx
+│   │   ├── chat-message.tsx
+│   │   ├── tool-call-card.tsx
+│   │   ├── statute-reference.tsx
+│   │   ├── confidence-badge.tsx
+│   │   └── split-view.tsx
+│   ├── api/                         # Next.js API routes (Mastra endpoints)
+│   │   └── chat/route.ts
+│   └── ...existing pages
+├── scripts/                         # Utility scripts
+│   ├── embed-statutes.ts            # One-time: embed all statutes
+│   ├── build-cross-refs.ts          # One-time: build cross-reference graph
+│   └── run-evaluation.ts            # Run A/B evaluation
+└── markdown/                        # DSL specs
+```
+
+### Option B: Python backend fallback
+
+```
+json-lawgic/
+├── backend/                         # FastAPI + PydanticAI
 │   ├── pyproject.toml
 │   ├── src/
-│   │   ├── api/                   # FastAPI routes
-│   │   │   ├── chat.py            # Chat endpoint (SSE streaming)
-│   │   │   ├── statutes.py        # Statute lookup endpoints
-│   │   │   └── eval.py            # Evaluation endpoints
-│   │   ├── agents/                # LangGraph agents
-│   │   │   ├── chat_agent.py      # Main chatbot agent graph
-│   │   │   ├── tools.py           # Tool definitions
-│   │   │   └── state.py           # Agent state schemas
-│   │   ├── rag/                   # RAG components
-│   │   │   ├── embedder.py        # Embedding + indexing
-│   │   │   ├── retriever.py       # Hybrid retrieval
-│   │   │   ├── reranker.py        # Cross-encoder reranking
-│   │   │   └── store.py           # Vector store interface
-│   │   ├── json_logic/            # JSON Logic execution
-│   │   │   ├── executor.py        # Rule evaluation
-│   │   │   └── cross_refs.py      # Cross-reference resolution
-│   │   ├── pipeline/              # Law-to-code (upgraded from src/json_lawgic/)
-│   │   │   ├── interpreter.py
-│   │   │   ├── reviewer.py
-│   │   │   ├── validator.py
-│   │   │   ├── pipeline.py
-│   │   │   └── prompts.py
-│   │   ├── eval/                  # Evaluation framework
-│   │   │   ├── runner.py          # Run both systems on golden set
-│   │   │   ├── metrics.py         # Scoring functions
-│   │   │   └── report.py          # Generate comparison report
-│   │   └── db/                    # Database models & queries
-│   │       ├── models.py
-│   │       └── conversations.py
+│   │   ├── api/                     # FastAPI routes
+│   │   ├── agents/                  # PydanticAI agents
+│   │   ├── rag/                     # Retrieval components
+│   │   ├── pipeline/                # Law-to-code (upgraded)
+│   │   └── eval/                    # Evaluation framework
 │   └── tests/
-├── frontend/                      # Next.js frontend (EXTENDED)
-│   └── src/
-│       ├── app/
-│       │   ├── chat/              # NEW: Chat interface
-│       │   │   ├── page.tsx
-│       │   │   ├── chat-message.tsx
-│       │   │   ├── tool-call-card.tsx
-│       │   │   ├── statute-reference.tsx
-│       │   │   ├── confidence-badge.tsx
-│       │   │   └── split-view.tsx
-│       │   └── ...existing pages
-│       └── lib/
-│           └── api.ts             # Backend API client
-├── markdown/                      # DSL specs
-└── scripts/                       # Utility scripts
-    ├── embed_statutes.py          # One-time: embed all statutes
-    ├── build_cross_refs.py        # One-time: build cross-reference graph
-    └── run_evaluation.py          # Run A/B evaluation
+├── frontend/                        # Next.js + Vercel AI SDK v6
+│   └── src/...
+└── ...same data/ structure
 ```
 
 ---
 
 ## 9. Technology Stack Summary
 
+### Option A: Mastra (TypeScript full-stack) — Recommended
+
 | Layer | Technology |
 |---|---|
-| **Frontend** | Next.js 15, React 18, TypeScript, Tailwind, Vercel AI SDK, shadcn/ui |
-| **Backend** | Python 3.12, FastAPI, LangGraph, LangChain, Pydantic v2 |
-| **LLM** | GPT-4o (primary), Claude Sonnet (alternative), GPT-4o-mini (routing) |
-| **Embeddings** | OpenAI text-embedding-3-large |
-| **Vector DB** | Qdrant |
-| **Reranker** | Cohere Rerank v3.5 |
+| **Frontend** | Next.js 15, React 18, TypeScript, Tailwind, Vercel AI SDK v6, shadcn/ui |
+| **Backend** | Mastra (TypeScript) — agents, workflows, RAG, memory, evals |
+| **LLM (Chatbot)** | Claude Opus 4.6 (primary), GPT-5.4 (alternative) |
+| **LLM (Pipeline)** | Gemini 3.1 Pro (interpreter), Claude Opus 4.6 (reviewer) |
+| **LLM (Routing)** | GPT-4o-mini / Claude Sonnet 4 |
+| **Embeddings** | Gemini Embedding 001 (or Voyage voyage-3-large) |
+| **Vector DB** | Qdrant (or pgvector in Supabase) |
+| **Reranker** | Cohere Rerank v4.0-pro |
 | **Database** | PostgreSQL (Supabase) / SQLite (dev) |
-| **Tracing** | Langfuse |
-| **Evaluation** | RAGAS, DeepEval, custom scripts |
-| **Deploy** | Vercel (frontend), Railway (backend), Qdrant Cloud, Supabase |
+| **Tracing** | Langfuse (or Vercel AI SDK observability dashboard) |
+| **Evaluation** | Mastra Evals + RAGAS + custom scripts |
+| **Deploy** | Vercel (single deploy) + Qdrant Cloud + Supabase |
+
+### Option B: Python backend fallback
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | Next.js 15, Vercel AI SDK v6, shadcn/ui |
+| **Backend** | FastAPI + PydanticAI (or LangGraph) |
+| **LLM** | Same model choices as Option A |
+| **Tracing** | Langfuse (or Pydantic Logfire if using PydanticAI) |
+| **Deploy** | Vercel (frontend) + Railway (backend) + Qdrant Cloud + Supabase |
 
 ---
 
@@ -584,22 +646,26 @@ json-lawgic/
 | JSON Logic can't represent all legal concepts (e.g. "reasonable", "good faith") | Core hypothesis weakened | Hybrid approach: tool-calling for deterministic logic + RAG for nuanced interpretation. Acknowledge limitations in UX. |
 | Cross-references create deep dependency chains | Incomplete answers | Limit graph traversal depth; LLM can reason about references it can't execute |
 | Rate-limited free tier gets abused | High API costs | IP-based limits, CAPTCHA on heavy use, BYOK as escape valve |
-| LLM-as-judge evaluation is noisy | Unreliable comparisons | Use multiple judges, aggregate scores, spot-check with human review |
+| LLM-as-judge evaluation is noisy | Unreliable comparisons | Use multiple judges (Opus 4.6 + GPT-5.4), aggregate scores, spot-check with human review |
 | Legal liability from incorrect answers | Legal risk | Prominent disclaimers, no storage of personal legal situations, terms of use |
-| Embedding quality for legal text | Poor retrieval | Fine-tune embeddings on legal corpus (Phase 3), or use legal-specific model |
+| Embedding quality for legal text | Poor retrieval | Gemini Embedding 001 tops MTEB; also consider Voyage for technical/legal text. Fine-tune in Phase 3 if needed. |
+| Mastra framework maturity | Hitting framework limitations mid-build | Mastra is built on Vercel AI SDK v6 — can drop down to raw AI SDK if needed. PydanticAI is the Python escape hatch. |
+| Model API costs spike with frontier models | Budget blow-out | Gemini 3.1 Pro at $2/$12 per 1M tokens for pipeline batch work; reserve Opus 4.6 for chatbot only. MiniMax M2.7 as budget fallback. |
 
 ---
 
 ## 11. Open Questions for Decision
 
-1. **Monorepo vs separate repos?** — Recommendation: monorepo (simpler for this project size). The existing repo already has both Python and Next.js.
+1. **Mastra (TypeScript) or Python backend?** — This doc recommends Mastra for single-language simplicity and built-in RAG/evals/memory. But if you prefer Python's ML ecosystem or want to keep existing pipeline code unchanged, FastAPI + PydanticAI is the cleanest Python option. LangGraph is overkill for this use case but remains an option if the agent complexity grows.
 
 2. **Qdrant vs pgvector?** — If you want absolute minimal infrastructure, pgvector in Supabase handles both vectors and conversations. Trade-off: slightly worse retrieval quality and no native hybrid search. Qdrant is better but adds a service.
 
 3. **How deep should cross-reference resolution go?** — Start with 1-hop. If evaluation shows multi-hop questions failing, extend. Graph RAG is a Phase 3 enhancement.
 
-4. **Should the law-to-code pipeline be part of the backend or stay separate?** — Recommendation: keep it as a separate CLI tool / batch process. It runs offline and doesn't need to be part of the API server. Share code via a shared `pipeline` package.
+4. **Should the law-to-code pipeline be part of the backend or stay separate?** — Recommendation: keep it as a separate CLI tool / batch process (Mastra Workflow or standalone script). It runs offline and doesn't need to be part of the API server.
 
-5. **BYOK key handling** — Keys should never be stored server-side. Option A: send key in every request header (simplest). Option B: encrypt in session cookie. Recommendation: Option A with HTTPS.
+5. **BYOK key handling** — Keys should never be stored server-side. Option A: send key in every request header (simplest). Option B: use Vercel AI SDK v6's AI Gateway (handles multi-provider routing with user keys). Recommendation: AI Gateway if using Vercel, otherwise Option A with HTTPS.
 
 6. **How to handle statutes that JSON Logic simply can't represent?** — Flag them with a `complexity: "beyond_json_logic"` marker. The chatbot falls back to RAG for these statutes and explains that the logic is too nuanced for formal evaluation.
+
+7. **Which models to use for the golden dataset?** — Generating 100+ high-quality test questions benefits from the best reasoning model. Gemini 3.1 Pro (94.3% GPQA Diamond) is the top reasoning model and cheapest. Use it for dataset generation, have Opus 4.6 review for quality.

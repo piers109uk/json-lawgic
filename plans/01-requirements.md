@@ -46,7 +46,7 @@ For every question the dataset must record which statutes are **relevant** (for 
 | Requirement | Detail |
 |---|---|
 | Target representation | JSON Logic (existing format, but quality-upgraded) |
-| Models | Use latest frontier models (GPT-4o, Claude 3.5/4 Sonnet/Opus, Gemini 2.5 Pro) — configurable |
+| Models | Use latest frontier models (Claude Opus 4.6, GPT-5.4, Gemini 3.1 Pro, Claude Sonnet 4) — configurable per stage |
 | Multi-agent flow | Interpreter → Reviewer → (optional) Simplifier loop, max N iterations. Existing `graph_interpreter.py` pattern, modernised |
 | Structured output | Pydantic v2 models with strict JSON schema enforcement |
 | Cross-reference support | When a statute references another statute, the pipeline must detect the reference and include a `referenced_statutes[]` field with the IDs |
@@ -82,9 +82,9 @@ For every question the dataset must record which statutes are **relevant** (for 
 |---|---|
 | Corpus | All MN statutes (~54k sections from `data/default/`) |
 | Chunking | Statute-level (each section = one chunk). Include title + section ID as metadata |
-| Embeddings | State-of-art embedding model (e.g. `text-embedding-3-large`, Cohere embed v3, or open-source `bge-m3`) |
+| Embeddings | State-of-art embedding model (e.g. Gemini Embedding 001, Voyage voyage-3-large, Cohere embed-v4, or open-source BGE-M3) |
 | Vector store | Local or managed (Chroma, Qdrant, pgvector, Pinecone — see architecture for trade-offs) |
-| Reranking | Cross-encoder reranker (Cohere Rerank, `bge-reranker-v2-m3`, or Jina Reranker) |
+| Reranking | Cross-encoder reranker (Cohere Rerank v4.0, Jina Reranker v3, or BGE-reranker-v2-m3) |
 | Hybrid search | BM25 + dense retrieval fusion (RRF or similar) |
 | Top-k | Configurable; default top-10 retrieval → top-5 after reranking |
 | Metadata filtering | Filter by chapter, topic, repealed status |
@@ -152,7 +152,7 @@ The chatbot operates in two modes (eventually side-by-side):
 
 | Requirement | Detail |
 |---|---|
-| Framework | Modern React (Next.js or standalone) with polished, accessible UI |
+| Framework | Next.js 15 + Vercel AI SDK v6 with polished, accessible UI |
 | Streaming | Token-by-token streaming display with typing indicator |
 | Chat interface | Full conversation history, markdown rendering, code block rendering |
 | Statute references | Inline links to MN Revisor website; expandable preview of statute text |
@@ -186,7 +186,7 @@ The chatbot operates in two modes (eventually side-by-side):
 
 | Requirement | Detail |
 |---|---|
-| Tool | Langfuse (already in use) or compatible (Langsmith, Helicone) |
+| Tool | Langfuse (already in use), Vercel AI SDK observability, or Pydantic Logfire |
 | Trace scope | Every chatbot conversation traced end-to-end: user input → retrieval → tool calls → LLM generation → response |
 | Cost tracking | Per-conversation and per-question token/cost tracking |
 | Evaluation scores | Automated scoring of every answer (faithfulness, relevance) logged to traces |
@@ -236,6 +236,6 @@ Run both systems (tool-calling and RAG-only) on the full golden question set:
 
 | Phase | Scope |
 |---|---|
-| **Phase 1: Foundation** | Golden dataset (100 questions), upgraded law-to-code pipeline, RAG system with evaluation metrics, basic chatbot with tool-calling |
-| **Phase 2: Polish & Compare** | Split-screen UI, A/B evaluation framework, cross-reference graph, conversation persistence, rate limiting |
-| **Phase 3: Scale & Validate** | Expand to more statutes, human evaluation, performance optimisation, public beta |
+| **Phase 1: Foundation** | Golden dataset (100 questions). Upgraded law-to-code pipeline (Gemini 3.1 Pro + Claude Opus 4.6 reviewer). RAG system with precision/recall evaluation. Chatbot with tool-calling (Mastra or PydanticAI). Streaming UI with Vercel AI SDK v6. |
+| **Phase 2: Polish & Compare** | Split-screen UI (JSON Logic vs RAG side-by-side). A/B evaluation framework. Cross-reference graph. Conversation persistence. Rate limiting + BYOK. |
+| **Phase 3: Scale & Validate** | Expand to more statutes. Human legal expert evaluation. Performance optimisation. Public beta. Fine-tuned embeddings for legal domain. |
